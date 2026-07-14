@@ -2,7 +2,7 @@
   "artifacts": [
     {
       "id": "cda_lot_adjustment_review_v1",
-      "kind": "task_template",
+      "kind": "generic_template",
       "version": "",
       "loader": "local",
       "path": "cda_lot_adjustment_review/cda_lot_adjustment_review_v1.json"
@@ -23,7 +23,7 @@
     },
     {
       "id": "cda_officer_verification_v1",
-      "kind": "task_template",
+      "kind": "generic_template",
       "version": "",
       "loader": "local",
       "path": "cda_officer_verification/cda_officer_verification_v1.json"
@@ -44,7 +44,7 @@
     },
     {
       "id": "cda_review_result_v1",
-      "kind": "task_template",
+      "kind": "generic_template",
       "version": "",
       "loader": "local",
       "path": "cda_review_result/cda_review_result_v1.json"

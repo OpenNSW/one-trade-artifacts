@@ -2,21 +2,21 @@
   "artifacts": [
     {
       "id": "customs_boat_note_approval_v1",
-      "kind": "task_template",
+      "kind": "generic_template",
       "version": "",
       "loader": "local",
       "path": "customs_boat_note_approval/customs_boat_note_approval_v1.json"
     },
     {
       "id": "customs_cdn_ack_wait_v1",
-      "kind": "task_template",
+      "kind": "generic_template",
       "version": "",
       "loader": "local",
       "path": "customs_cdn_ack_wait/customs_cdn_ack_wait_v1.json"
     },
     {
       "id": "customs_cusdec_review_v1",
-      "kind": "task_template",
+      "kind": "generic_template",
       "version": "",
       "loader": "local",
       "path": "customs_cusdec_review/customs_cusdec_review_v1.json"
@@ -37,14 +37,14 @@
     },
     {
       "id": "customs_export_release_wait_v1",
-      "kind": "task_template",
+      "kind": "generic_template",
       "version": "",
       "loader": "local",
       "path": "customs_export_release_wait/customs_export_release_wait_v1.json"
     },
     {
       "id": "customs_payment_wait_v1",
-      "kind": "task_template",
+      "kind": "generic_template",
       "version": "",
       "loader": "local",
       "path": "customs_payment_wait/customs_payment_wait_v1.json"
@@ -58,7 +58,7 @@
     },
     {
       "id": "customs_warranting_wait_v1",
-      "kind": "task_template",
+      "kind": "generic_template",
       "version": "",
       "loader": "local",
       "path": "customs_warranting_wait/customs_warranting_wait_v1.json"
