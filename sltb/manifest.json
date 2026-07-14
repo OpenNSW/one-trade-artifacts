@@ -1,0 +1,116 @@
+{
+  "artifacts": [
+    {
+      "id": "sltb_final_decision_v1",
+      "kind": "task_template",
+      "version": "",
+      "loader": "local",
+      "path": "sltb_final_decision/sltb_final_decision_v1.json"
+    },
+    {
+      "id": "sltb-final-decision--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "sltb_final_decision/officer_review_jsonform.json"
+    },
+    {
+      "id": "sltb-submit-blendsheet--user-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "sltb_final_decision/traderinput_jsonform.json"
+    },
+    {
+      "id": "sltb_lab_decision_v1",
+      "kind": "task_template",
+      "version": "",
+      "loader": "local",
+      "path": "sltb_lab_decision/sltb_lab_decision_v1.json"
+    },
+    {
+      "id": "sltb-lab-decision--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "sltb_lab_decision/officer_decision_jsonform.json"
+    },
+    {
+      "id": "sltb_lab_testing_v1",
+      "kind": "task_template",
+      "version": "",
+      "loader": "local",
+      "path": "sltb_lab_testing/sltb_lab_testing_v1.json"
+    },
+    {
+      "id": "sltb-lab-testing--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "sltb_lab_testing/officer_test_jsonform.json"
+    },
+    {
+      "id": "sltb_officer_review_v1",
+      "kind": "task_template",
+      "version": "",
+      "loader": "local",
+      "path": "sltb_officer_review/sltb_officer_review_v1.json"
+    },
+    {
+      "id": "sltb-submit-blendsheet--officer-review-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "sltb_officer_review/reviewerinput_jsonform.json"
+    },
+    {
+      "id": "sltb-submit-blendsheet--user-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "sltb_officer_review/traderinput_jsonform.json"
+    },
+    {
+      "id": "sltb_sample_ack_dropoff_v1",
+      "kind": "task_template",
+      "version": "",
+      "loader": "local",
+      "path": "sltb_sample_ack_dropoff/sltb_sample_ack_dropoff_v1.json"
+    },
+    {
+      "id": "sltb-dropoff--officer-ack-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "sltb_sample_ack_dropoff/officer_ack_jsonform.json"
+    },
+    {
+      "id": "sltb_sample_draw_v1",
+      "kind": "task_template",
+      "version": "",
+      "loader": "local",
+      "path": "sltb_sample_draw/sltb_sample_draw_v1.json"
+    },
+    {
+      "id": "sltb-record-sample-draw--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "sltb_sample_draw/officer_record_jsonform.json"
+    },
+    {
+      "id": "sltb_sample_schedule_v1",
+      "kind": "task_template",
+      "version": "",
+      "loader": "local",
+      "path": "sltb_sample_schedule/sltb_sample_schedule_v1.json"
+    },
+    {
+      "id": "sltb-schedule-pickup--officer-review-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "sltb_sample_schedule/officer_review_jsonform.json"
+    }
+  ]
+}
