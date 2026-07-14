@@ -1,0 +1,67 @@
+{
+  "artifacts": [
+    {
+      "id": "cda_lot_adjustment_review_v1",
+      "kind": "task_template",
+      "version": "",
+      "loader": "local",
+      "path": "cda_lot_adjustment_review/cda_lot_adjustment_review_v1.json"
+    },
+    {
+      "id": "cda-lot-adjustment-officer--review-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "cda_lot_adjustment_review/officerinput_jsonform.json"
+    },
+    {
+      "id": "cda-lot-adjustment-trader--user-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "cda_lot_adjustment_review/userinput_jsonform.json"
+    },
+    {
+      "id": "cda_officer_verification_v1",
+      "kind": "task_template",
+      "version": "",
+      "loader": "local",
+      "path": "cda_officer_verification/cda_officer_verification_v1.json"
+    },
+    {
+      "id": "cda-apply-coconut-cert--officer-verification-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "cda_officer_verification/officer_verification_jsonform.json"
+    },
+    {
+      "id": "cda-apply-coconut-cert--user-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "cda_officer_verification/userinput_jsonform.json"
+    },
+    {
+      "id": "cda_review_result_v1",
+      "kind": "task_template",
+      "version": "",
+      "loader": "local",
+      "path": "cda_review_result/cda_review_result_v1.json"
+    },
+    {
+      "id": "cda-review-result--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "cda_review_result/officerinput_jsonform.json"
+    },
+    {
+      "id": "cda-apply-coconut-cert--user-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "cda_review_result/userinput_jsonform.json"
+    }
+  ]
+}
