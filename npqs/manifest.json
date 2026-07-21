@@ -2,7 +2,7 @@
   "artifacts": [
     {
       "id": "npqs_application_review_v1",
-      "kind": "generic_template",
+      "kind": "task_config",
       "version": "",
       "loader": "local",
       "path": "npqs_application_review/npqs_application_review_v1.json"
@@ -23,7 +23,7 @@
     },
     {
       "id": "npqs_certificate_issue_v1",
-      "kind": "generic_template",
+      "kind": "task_config",
       "version": "",
       "loader": "local",
       "path": "npqs_certificate_issue/npqs_certificate_issue_v1.json"
@@ -44,7 +44,7 @@
     },
     {
       "id": "npqs_consignment_inspection_v1",
-      "kind": "generic_template",
+      "kind": "task_config",
       "version": "",
       "loader": "local",
       "path": "npqs_consignment_inspection/npqs_consignment_inspection_v1.json"
@@ -65,7 +65,7 @@
     },
     {
       "id": "npqs_docs_review_v1",
-      "kind": "generic_template",
+      "kind": "task_config",
       "version": "",
       "loader": "local",
       "path": "npqs_docs_review/npqs_docs_review_v1.json"
@@ -86,7 +86,7 @@
     },
     {
       "id": "npqs_lab_testing_v1",
-      "kind": "generic_template",
+      "kind": "task_config",
       "version": "",
       "loader": "local",
       "path": "npqs_lab_testing/npqs_lab_testing_v1.json"
@@ -107,7 +107,7 @@
     },
     {
       "id": "npqs_sample_draw_v1",
-      "kind": "generic_template",
+      "kind": "task_config",
       "version": "",
       "loader": "local",
       "path": "npqs_sample_draw/npqs_sample_draw_v1.json"
@@ -128,7 +128,7 @@
     },
     {
       "id": "npqs_sample_receive_v1",
-      "kind": "generic_template",
+      "kind": "task_config",
       "version": "",
       "loader": "local",
       "path": "npqs_sample_receive/npqs_sample_receive_v1.json"
@@ -149,7 +149,7 @@
     },
     {
       "id": "npqs_treatment_cert_issue_v1",
-      "kind": "generic_template",
+      "kind": "task_config",
       "version": "",
       "loader": "local",
       "path": "npqs_treatment_cert_issue/npqs_treatment_cert_issue_v1.json"
@@ -170,7 +170,7 @@
     },
     {
       "id": "npqs_treatment_request_review_v1",
-      "kind": "generic_template",
+      "kind": "task_config",
       "version": "",
       "loader": "local",
       "path": "npqs_treatment_request_review/npqs_treatment_request_review_v1.json"
@@ -191,7 +191,7 @@
     },
     {
       "id": "npqs_treatment_review_v1",
-      "kind": "generic_template",
+      "kind": "task_config",
       "version": "",
       "loader": "local",
       "path": "npqs_treatment_review/npqs_treatment_review_v1.json"
@@ -212,7 +212,7 @@
     },
     {
       "id": "npqs_treatment_supervision_v1",
-      "kind": "generic_template",
+      "kind": "task_config",
       "version": "",
       "loader": "local",
       "path": "npqs_treatment_supervision/npqs_treatment_supervision_v1.json"
@@ -233,7 +233,7 @@
     },
     {
       "id": "npqs_visual_sample_v1",
-      "kind": "generic_template",
+      "kind": "task_config",
       "version": "",
       "loader": "local",
       "path": "npqs_visual_sample/npqs_visual_sample_v1.json"
@@ -254,7 +254,7 @@
     },
     {
       "id": "npqs_visual_system_v1",
-      "kind": "generic_template",
+      "kind": "task_config",
       "version": "",
       "loader": "local",
       "path": "npqs_visual_system/npqs_visual_system_v1.json"

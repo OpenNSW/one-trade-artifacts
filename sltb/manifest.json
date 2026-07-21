@@ -2,7 +2,7 @@
   "artifacts": [
     {
       "id": "sltb_final_decision_v1",
-      "kind": "generic_template",
+      "kind": "task_config",
       "version": "",
       "loader": "local",
       "path": "sltb_final_decision/sltb_final_decision_v1.json"
@@ -23,7 +23,7 @@
     },
     {
       "id": "sltb_lab_decision_v1",
-      "kind": "generic_template",
+      "kind": "task_config",
       "version": "",
       "loader": "local",
       "path": "sltb_lab_decision/sltb_lab_decision_v1.json"
@@ -37,7 +37,7 @@
     },
     {
       "id": "sltb_lab_testing_v1",
-      "kind": "generic_template",
+      "kind": "task_config",
       "version": "",
       "loader": "local",
       "path": "sltb_lab_testing/sltb_lab_testing_v1.json"
@@ -51,7 +51,7 @@
     },
     {
       "id": "sltb_officer_review_v1",
-      "kind": "generic_template",
+      "kind": "task_config",
       "version": "",
       "loader": "local",
       "path": "sltb_officer_review/sltb_officer_review_v1.json"
@@ -72,7 +72,7 @@
     },
     {
       "id": "sltb_sample_ack_dropoff_v1",
-      "kind": "generic_template",
+      "kind": "task_config",
       "version": "",
       "loader": "local",
       "path": "sltb_sample_ack_dropoff/sltb_sample_ack_dropoff_v1.json"
@@ -86,7 +86,7 @@
     },
     {
       "id": "sltb_sample_draw_v1",
-      "kind": "generic_template",
+      "kind": "task_config",
       "version": "",
       "loader": "local",
       "path": "sltb_sample_draw/sltb_sample_draw_v1.json"
@@ -100,7 +100,7 @@
     },
     {
       "id": "sltb_sample_schedule_v1",
-      "kind": "generic_template",
+      "kind": "task_config",
       "version": "",
       "loader": "local",
       "path": "sltb_sample_schedule/sltb_sample_schedule_v1.json"
