@@ -246,11 +246,32 @@
       "path": "fcau_warehouse_inspection/officerinput_jsonform.json"
     },
     {
-      "id": "fcau-apply-health-cert--user-form",
+      "id": "fcau-warehouse-inspection--user-form",
       "kind": "generic_template",
       "version": "",
       "loader": "local",
       "path": "fcau_warehouse_inspection/userinput_jsonform.json"
+    },
+    {
+      "id": "fcau-warehouse-scheduling--review-v1",
+      "kind": "task_config",
+      "version": "",
+      "loader": "local",
+      "path": "fcau_warehouse_scheduling_review/fcau_warehouse_scheduling_review_v1.json"
+    },
+    {
+      "id": "fcau-warehouse-scheduling--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "fcau_warehouse_scheduling_review/officerinput_jsonform.json"
+    },
+    {
+      "id": "fcau-warehouse-scheduling--user-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "fcau_warehouse_scheduling_review/userinput_jsonform.json"
     }
   ]
 }

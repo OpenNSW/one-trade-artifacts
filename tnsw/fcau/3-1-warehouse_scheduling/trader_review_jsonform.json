@@ -1,0 +1,128 @@
+{
+  "id": "fcau-warehouse-scheduling--trader-review-form",
+  "title": "Review Officer Proposed Inspection Date",
+  "schema": {
+    "type": "object",
+    "required": [
+      "trader_decision"
+    ],
+    "properties": {
+      "warehouse_location": {
+        "type": "string",
+        "title": "Warehouse Location",
+        "readOnly": true
+      },
+      "proposed_inspection_date": {
+        "type": "string",
+        "format": "date",
+        "title": "Date Proposed by Officer",
+        "readOnly": true
+      },
+      "officer_comments": {
+        "type": "string",
+        "title": "Officer Comments",
+        "readOnly": true
+      },
+      "trader_decision": {
+        "type": "string",
+        "title": "Decision",
+        "oneOf": [
+          {
+            "const": "accept",
+            "title": "Accept Officer's Proposed Date"
+          },
+          {
+            "const": "reschedule",
+            "title": "Suggest Another Date"
+          }
+        ]
+      },
+      "counter_inspection_date": {
+        "type": "string",
+        "format": "date",
+        "title": "New Proposed Inspection Date"
+      },
+      "trader_comments": {
+        "type": "string",
+        "title": "Comments / Notes"
+      }
+    },
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "trader_decision": {
+              "const": "reschedule"
+            }
+          },
+          "required": [
+            "trader_decision"
+          ]
+        },
+        "then": {
+          "required": [
+            "counter_inspection_date"
+          ]
+        }
+      }
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/warehouse_location"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/proposed_inspection_date"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/officer_comments",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/officer_comments",
+            "schema": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/trader_decision"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/counter_inspection_date",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/trader_decision",
+            "schema": {
+              "const": "reschedule"
+            },
+            "failWhenUndefined": true
+          }
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/trader_comments",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/trader_decision",
+            "schema": {
+              "const": "reschedule"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

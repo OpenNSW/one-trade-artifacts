@@ -1,9 +1,20 @@
 {
-  "id": "fcau-apply-health-cert--user-form",
+  "id": "fcau-warehouse-inspection--user-form",
   "title": "FCAU Health Certificate Application",
   "schema": {
     "type": "object",
     "properties": {
+      "warehouse_location": {
+        "type": "string",
+        "title": "Warehouse Address / Location",
+        "example": "Warehouse A, Colombo Port Complex"
+      },
+      "inspection_date": {
+        "type": "string",
+        "format": "date",
+        "title": "Scheduled Inspection Date",
+        "example": "2026-08-05"
+      },
       "exporter_name": {
         "type": "string",
         "title": "Name of Applicant",
@@ -95,6 +106,8 @@
       }
     },
     "required": [
+      "warehouse_location",
+      "inspection_date",
       "exporter_name",
       "exporter_address",
       "consignee_name",
@@ -114,6 +127,20 @@
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
+      {
+        "type": "Group",
+        "label": "Warehouse Inspection Schedule",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/warehouse_location"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/inspection_date"
+          }
+        ]
+      },
       {
         "type": "Group",
         "label": "1. Consignment Details",

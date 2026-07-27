@@ -2,5 +2,7 @@
   "id": "fcau-warehouse-scheduling--trader-input",
   "task_type": "USER_INPUT",
   "output_namespace": "traderinput",
-  "plugin_properties": {}
+  "plugin_properties": {
+    "user_jsonforms_id": "fcau-warehouse-scheduling--form"
+  }
 }
