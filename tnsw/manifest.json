@@ -2233,54 +2233,6 @@
       "path": "sltb/6-lab_testing/task_template.json"
     },
     {
-      "id": "sltb-pay-lion-logo-flow:render",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/7-lion_logo_payment/render.json"
-    },
-    {
-      "id": "sltb-pay-lion-logo--select-method",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "sltb/7-lion_logo_payment/select_method.json"
-    },
-    {
-      "id": "sltb-pay-lion-logo--select-method-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/7-lion_logo_payment/select_method_jsonform.json"
-    },
-    {
-      "id": "sltb-pay-lion-logo--payment",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "sltb/7-lion_logo_payment/payment.json"
-    },
-    {
-      "id": "sltb-pay-lion-logo--payment-details-markdown",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/7-lion_logo_payment/payment_details_markdown.json"
-    },
-    {
-      "id": "sltb-pay-lion-logo--success-message",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/7-lion_logo_payment/success_message_jsonform.json"
-    },
-    {
-      "id": "sltb-pay-lion-logo-flow",
-      "kind": "workflow",
-      "version": "",
-      "path": "sltb/7-lion_logo_payment/workflow.json"
-    },
-    {
-      "id": "sltb-pay-lion-logo-flow",
-      "kind": "task_template",
-      "version": "",
-      "path": "sltb/7-lion_logo_payment/task_template.json"
-    },
-    {
       "id": "sltb-pay-lab-fee-flow:render",
       "kind": "generic_template",
       "version": "",
