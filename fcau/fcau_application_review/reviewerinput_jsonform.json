@@ -38,7 +38,8 @@
       "reference_number": {
         "type": "string",
         "title": "FCAU Application Reference Number",
-        "example": "REF-FCAU-2026-00481"
+        "pattern": "^034/[0-9]{5,}$",
+        "example": "034/00481"
       },
       "rejection_reason": {
         "type": "string",
