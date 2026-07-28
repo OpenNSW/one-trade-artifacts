@@ -2,9 +2,6 @@
   "id": "fcau-health-certificate-reg",
   "name": "FCAU Export Consignment & Health Certificate Registration",
   "version": 18,
-  "variables": {
-    "reference_number_format": "034/%05d"
-  },
   "nodes": [
     {
       "id": "start",
@@ -17,9 +14,7 @@
       "name": "[FCAU 1.0/1.1] Submit & Assess Application",
       "task_template_id": "fcau-apply-health-cert-flow",
       "lane": "FCAU Officer/NSW System",
-      "input_mapping": {
-        "reference_number_format": "reference_number_format"
-      },
+      "input_mapping": {},
       "output_mapping": {
         "reviewerform.application_review_outcome": "fcau.application_review_outcome",
         "reviewerform.sample_inspection_required": "fcau.sample_inspection_required",
