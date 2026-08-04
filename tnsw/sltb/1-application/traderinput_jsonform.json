@@ -49,8 +49,11 @@
       "blendsheet_file": {
         "type": "string",
         "format": "file",
-        "title": "Upload Blend Sheet Data (Excel File)",
-        "description": "Please upload the official Excel sheet containing the detailed blend analysis (.xlsx)"
+        "title": "Upload Blend Sheet Data (XML or Excel File)",
+        "description": "Please upload the official blend sheet containing the detailed blend analysis (.xml or .xlsx)",
+        "x-file": {
+          "accept": ".xml,.xlsx"
+        }
       },
       "lion_logo_requested": {
         "type": "string",
