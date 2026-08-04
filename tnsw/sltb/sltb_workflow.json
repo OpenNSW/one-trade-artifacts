@@ -67,8 +67,8 @@
       "output_mapping": {
         "schedule.visit_date": "sltb.schedule.visit_date",
         "schedule.visit_time": "sltb.schedule.visit_time",
-        "schedule.inspector_name": "sltb.schedule.inspector_name",
-        "schedule.contact_number": "sltb.schedule.contact_number"
+        "schedule.inspector_name?": "sltb.schedule.inspector_name",
+        "schedule.contact_number?": "sltb.schedule.contact_number"
       }
     },
     {
@@ -80,7 +80,7 @@
       "input_mapping": {
         "sltb.schedule.visit_date": "schedule.visit_date",
         "sltb.schedule.visit_time": "schedule.visit_time",
-        "sltb.schedule.inspector_name": "schedule.inspector_name"
+        "sltb.schedule.inspector_name?": "schedule.inspector_name"
       },
       "output_mapping": {
         "sample_number": "sltb.sample_number"
