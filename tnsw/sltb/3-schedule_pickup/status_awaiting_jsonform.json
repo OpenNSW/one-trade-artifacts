@@ -1,0 +1,4 @@
+{
+  "id": "sltb-schedule-pickup--status-awaiting",
+  "template": "### ⏳ Awaiting SLTB Officer Review\n\n{{if .schedule.schedule_outcome}}Your counter-proposal has been sent to the SLTB Officer.{{else}}Your suggested pickup schedule has been submitted. The SLTB Officer will review it.{{end}}\n\n* **Your Proposed Date**: `{{.suggest.suggested_date}}`\n* **Your Proposed Time**: `{{.suggest.suggested_time}}`\n{{if .suggest.trader_notes}}* **Your Notes**: {{.suggest.trader_notes}}\n{{end}}* **Status**: Awaiting SLTB Officer Review\n\nThe officer will either accept this slot or propose a different one. You will be able to respond here if they propose an alternative.\n"
+}

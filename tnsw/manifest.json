@@ -2053,6 +2053,12 @@
       "path": "sltb/3-schedule_pickup/status_message_jsonform.json"
     },
     {
+      "id": "sltb-schedule-pickup--status-awaiting",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/3-schedule_pickup/status_awaiting_jsonform.json"
+    },
+    {
       "id": "sltb-schedule-pickup--suggest",
       "kind": "subtask_template",
       "version": "",

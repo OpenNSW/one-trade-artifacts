@@ -1,20 +1,29 @@
 {
   "id": "sltb-schedule-pickup-flow",
   "name": "Schedule Warehouse Pickup",
-  "version": 1,
+  "version": 2,
   "nodes": [
     { "id": "start", "type": "START" },
     {
       "id": "trader_suggest",
       "type": "TASK",
-      "name": "Suggest Pickup Date & Time",
+      "name": "Suggest or Respond to Pickup Schedule",
       "task_template_id": "sltb-schedule-pickup--suggest",
-      "input_mapping": {},
+      "input_mapping": {
+        "schedule.schedule_outcome?": "suggest.officer_outcome"
+      },
       "output_mapping": {
-        "suggested_date": "suggest.suggested_date",
-        "suggested_time": "suggest.suggested_time",
+        "response?": "suggest.response",
+        "suggested_date?": "schedule.visit_date",
+        "suggested_time?": "schedule.visit_time",
         "trader_notes?": "suggest.trader_notes"
       }
+    },
+    {
+      "id": "trader_response_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Trader Accepted the Proposed Slot?"
     },
     {
       "id": "officer_review",
@@ -22,8 +31,8 @@
       "name": "Review Suggested Pickup Schedule",
       "task_template_id": "sltb-schedule-pickup--officer-review",
       "input_mapping": {
-        "suggest.suggested_date": "suggested_date",
-        "suggest.suggested_time": "suggested_time",
+        "schedule.visit_date": "suggested_date",
+        "schedule.visit_time": "suggested_time",
         "suggest.trader_notes?": "trader_notes"
       },
       "output_mapping": {
@@ -39,25 +48,37 @@
       "id": "schedule_gateway",
       "type": "GATEWAY",
       "gateway_type": "EXCLUSIVE_SPLIT",
-      "name": "Schedule Approved?"
+      "name": "Officer Accepted the Suggested Slot?"
     },
     { "id": "end", "type": "END" }
   ],
   "edges": [
     { "id": "e_start", "source_id": "start", "target_id": "trader_suggest" },
-    { "id": "e_suggest_review", "source_id": "trader_suggest", "target_id": "officer_review" },
-    { "id": "e_review_gateway", "source_id": "officer_review", "target_id": "schedule_gateway" },
+    { "id": "e_suggest_to_response_gateway", "source_id": "trader_suggest", "target_id": "trader_response_gateway" },
     {
-      "id": "e_reschedule",
-      "source_id": "schedule_gateway",
-      "target_id": "trader_suggest",
-      "condition": "schedule.schedule_outcome == 'request_reschedule'"
+      "id": "e_trader_proposes",
+      "source_id": "trader_response_gateway",
+      "target_id": "officer_review",
+      "condition": "schedule.schedule_outcome != 'propose_alternative' || suggest.response != 'accept'"
     },
     {
-      "id": "e_approved",
+      "id": "e_trader_accepts",
+      "source_id": "trader_response_gateway",
+      "target_id": "end",
+      "condition": "schedule.schedule_outcome == 'propose_alternative' && suggest.response == 'accept'"
+    },
+    { "id": "e_review_gateway", "source_id": "officer_review", "target_id": "schedule_gateway" },
+    {
+      "id": "e_officer_accepts",
       "source_id": "schedule_gateway",
       "target_id": "end",
       "condition": "schedule.schedule_outcome == 'approve'"
+    },
+    {
+      "id": "e_officer_proposes",
+      "source_id": "schedule_gateway",
+      "target_id": "trader_suggest",
+      "condition": "schedule.schedule_outcome == 'propose_alternative'"
     }
   ]
 }

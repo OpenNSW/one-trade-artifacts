@@ -1,10 +1,23 @@
 {
   "id": "sltb-schedule-pickup--suggest-form",
-  "title": "Suggest Warehouse Pickup Schedule",
+  "title": "Warehouse Pickup Schedule",
   "schema": {
     "type": "object",
-    "required": ["suggested_date", "suggested_time"],
     "properties": {
+      "officer_outcome": {
+        "type": "string",
+        "readOnly": true
+      },
+      "response": {
+        "type": "string",
+        "title": "Your Response to the Proposed Slot",
+        "description": "Accept the slot SLTB proposed above, or propose a different date and time.",
+        "oneOf": [
+          { "const": "propose", "title": "Propose a different date and time" },
+          { "const": "accept", "title": "Accept — the proposed date and time work for us" }
+        ],
+        "default": "propose"
+      },
       "suggested_date": {
         "type": "string",
         "format": "date",
@@ -24,17 +37,93 @@
         "description": "Provide contact person, gate numbers, or access requirements.",
         "example": "Contact: Mr. Perera, Gate 3, Loading Bay B"
       }
-    }
+    },
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "officer_outcome": { "const": "propose_alternative" }
+          },
+          "required": ["officer_outcome"]
+        },
+        "then": {
+          "required": ["response"]
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "response": { "const": "propose" }
+          },
+          "required": ["response"]
+        },
+        "then": {
+          "required": ["suggested_date", "suggested_time"]
+        }
+      },
+      {
+        "if": {
+          "not": {
+            "required": ["response"]
+          }
+        },
+        "then": {
+          "required": ["suggested_date", "suggested_time"]
+        }
+      }
+    ]
   },
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
-      { "type": "Control", "scope": "#/properties/suggested_date" },
-      { "type": "Control", "scope": "#/properties/suggested_time" },
+      {
+        "type": "Control",
+        "scope": "#/properties/response",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/officer_outcome",
+            "schema": { "const": "propose_alternative" },
+            "failWhenUndefined": true
+          }
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/suggested_date",
+        "rule": {
+          "effect": "HIDE",
+          "condition": {
+            "scope": "#/properties/response",
+            "schema": { "const": "accept" },
+            "failWhenUndefined": true
+          }
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/suggested_time",
+        "rule": {
+          "effect": "HIDE",
+          "condition": {
+            "scope": "#/properties/response",
+            "schema": { "const": "accept" },
+            "failWhenUndefined": true
+          }
+        }
+      },
       {
         "type": "Control",
         "scope": "#/properties/trader_notes",
-        "options": { "multiLine": true }
+        "options": { "multiLine": true },
+        "rule": {
+          "effect": "HIDE",
+          "condition": {
+            "scope": "#/properties/response",
+            "schema": { "const": "accept" },
+            "failWhenUndefined": true
+          }
+        }
       }
     ]
   }
