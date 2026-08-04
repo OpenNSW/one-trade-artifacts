@@ -8,12 +8,20 @@
       "title": "Schedule Status",
       "projector": "MARKDOWN",
       "visibleWhen": {
-        "states": ["PENDING_USER", "QUEUED_EXTERNALLY", "COMPLETED"]
+        "states": ["PENDING_USER", "COMPLETED"]
+      }
+    },
+    "status_awaiting": {
+      "templateId": "sltb-schedule-pickup--status-awaiting",
+      "title": "Schedule Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": ["QUEUED_EXTERNALLY"]
       }
     },
     "user_form": {
       "templateId": "sltb-schedule-pickup--suggest-form",
-      "title": "Suggest Pickup Schedule",
+      "title": "Pickup Schedule",
       "projector": "FORM",
       "dataKey": "suggest",
       "visibleWhen": {
@@ -22,7 +30,7 @@
       "handles": [
         {
           "command": "submit",
-          "label": "Submit Suggested Schedule",
+          "label": "Submit Response",
           "element": "primary_action"
         }
       ]
