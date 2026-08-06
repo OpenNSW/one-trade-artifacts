@@ -75,6 +75,19 @@
         "format": "file",
         "title": "Raw Materials & Product Analysis Certificates"
       },
+      "other_supporting_documents": {
+        "type": "array",
+        "title": "Other Supporting Documents",
+        "description": "Attach any additional supporting documents (up to 10 files).",
+        "items": {
+          "type": "string",
+          "format": "file"
+        },
+        "x-file": {
+          "maxFiles": 10,
+          "accept": ".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx"
+        }
+      },
       "other_declarations": {
         "type": "string",
         "title": "Any other Declarations",
@@ -204,6 +217,10 @@
           {
             "type": "Control",
             "scope": "#/properties/analysis_certificates"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/other_supporting_documents"
           },
           {
             "type": "Control",
