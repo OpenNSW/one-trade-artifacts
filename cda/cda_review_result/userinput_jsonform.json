@@ -9,18 +9,6 @@
         "title": "Exporter Name",
         "description": "Filled automatically from the company profile"
       },
-      "business_reg_no": {
-        "type": "string",
-        "title": "Business Registration No"
-      },
-      "vat_no": {
-        "type": "string",
-        "title": "VAT No"
-      },
-      "tin_no": {
-        "type": "string",
-        "title": "TIN No"
-      },
       "cusdec_number": {
         "type": "string",
         "title": "CUSDEC Number",
@@ -188,8 +176,11 @@
       "uploaded_dc_bags_details": {
         "type": "string",
         "format": "file",
-        "title": "Upload Completed DC Bags Details File",
-        "description": "Check below to download the template, then upload the completed sheet here."
+        "title": "Upload Completed DC Bags Details File (Excel)",
+        "description": "Check below to download the template, then upload the completed Excel sheet (.xlsx or .xls) here.",
+        "x-file": {
+          "accept": ".xlsx,.xls"
+        }
       }
     },
     "required": [
@@ -215,32 +206,6 @@
             "options": {
               "readonly": true
             }
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/business_reg_no",
-                "options": {
-                  "readonly": true
-                }
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/vat_no",
-                "options": {
-                  "readonly": true
-                }
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/tin_no",
-                "options": {
-                  "readonly": true
-                }
-              }
-            ]
           },
           {
             "type": "HorizontalLayout",
