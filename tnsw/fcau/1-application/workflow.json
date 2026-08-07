@@ -27,6 +27,7 @@
         "ingredients_details": "userform.ingredients_details",
         "in_house_quality_monitoring": "userform.in_house_quality_monitoring",
         "analysis_certificates": "userform.analysis_certificates",
+        "other_supporting_documents?": "userform.other_supporting_documents",
         "other_declarations": "userform.other_declarations"
       }
     },
