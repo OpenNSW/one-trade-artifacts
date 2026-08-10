@@ -1,0 +1,4 @@
+{
+  "id": "npqs-ephyto-upload--timeout-msg",
+  "template": "### Not Delivered Within the Automatic Checking Window\n\nThe certificate was accepted by the IPPC ePhyto Hub but the importing country's NPPO has not downloaded it within the automatic checking window (60 checks, one per minute). This does **not** mean the certificate failed — an envelope stays `PendingDelivery` until the destination NPPO pulls it, which can take longer than an hour.\n\n- **Reference Number**: `{{ .reference_number }}`\n- **Certificate Number**: `{{ .certificate_id }}`\n{{ with .ephyto }}- **Hub Tracking Number**: `{{ .tracking_number }}`\n{{ if .tracking_info }}- **Last Known Status**: `{{ .tracking_info }}`\n{{ end }}{{ end }}\nKeep the tracking number for follow-up with the destination NPPO, then acknowledge to close this step."
+}

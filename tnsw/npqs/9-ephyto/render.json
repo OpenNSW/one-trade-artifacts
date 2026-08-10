@@ -3,25 +3,71 @@
   "type": "APPLICATION",
   "title": "[NPQS] IPPC ePhyto Hub Transfer",
   "sections": {
-    "status_message": {
-      "templateId": "npqs-ephyto-upload--instructions",
-      "title": "ePhyto Transmission Status",
+    "submission_msg": {
+      "templateId": "npqs-ephyto-upload--submission-msg",
+      "title": "Transmit to IPPC ePhyto Hub",
       "projector": "MARKDOWN",
-      "visibleWhen": {
-        "states": ["PENDING_USER", "COMPLETED"]
-      },
+      "visibleWhen": { "states": ["PENDING_USER"] }
+    },
+    "submission_action": {
+      "templateId": "npqs-ephyto-upload--submit-form",
+      "title": "Submit",
+      "projector": "FORM",
+      "dataKey": "traderinput",
+      "visibleWhen": { "states": ["PENDING_USER"] },
       "handles": [
         {
           "command": "submit",
-          "label": "Acknowledge Transfer Complete",
+          "label": "Submit to IPPC Hub",
           "element": "primary_action"
         }
       ]
+    },
+    "polling_msg": {
+      "templateId": "npqs-ephyto-upload--polling-msg",
+      "title": "Delivery Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": { "states": ["EPHYTO_SUBMITTED", "EPHYTO_POLLING"] }
+    },
+    "timeout_msg": {
+      "templateId": "npqs-ephyto-upload--timeout-msg",
+      "title": "Delivery Not Confirmed",
+      "projector": "MARKDOWN",
+      "visibleWhen": { "states": ["EPHYTO_NOT_DELIVERED"] }
+    },
+    "timeout_action": {
+      "templateId": "npqs-ephyto-upload--action-form",
+      "title": "Acknowledge",
+      "projector": "FORM",
+      "dataKey": "traderinput",
+      "visibleWhen": { "states": ["EPHYTO_NOT_DELIVERED"] },
+      "handles": [
+        {
+          "command": "acknowledge",
+          "label": "Acknowledge",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "completed": {
+      "templateId": "npqs-ephyto-upload--completed-msg",
+      "title": "ePhyto Transmission Complete",
+      "projector": "MARKDOWN",
+      "visibleWhen": { "states": ["COMPLETED"] }
     }
   },
   "states": {
     "PENDING_USER": {
       "actions": [{ "command": "submit" }]
+    },
+    "EPHYTO_SUBMITTED": {
+      "actions": []
+    },
+    "EPHYTO_POLLING": {
+      "actions": []
+    },
+    "EPHYTO_NOT_DELIVERED": {
+      "actions": [{ "command": "acknowledge" }]
     }
   }
 }
