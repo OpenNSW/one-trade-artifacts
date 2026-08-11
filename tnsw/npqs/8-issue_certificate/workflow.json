@@ -13,7 +13,7 @@
       "task_template_id": "npqs-issue-certificate--officer-review",
       "input_mapping": {
         "reference_number": "reference_number",
-        "userform": "userform"
+        "userform": "submission"
       },
       "output_mapping": {
         "certificate_id": "certificate_id",

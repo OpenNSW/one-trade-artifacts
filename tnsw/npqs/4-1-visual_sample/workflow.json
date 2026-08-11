@@ -13,7 +13,7 @@
       "task_template_id": "npqs-visual-sample-inspection--officer-review",
       "input_mapping": {
         "reference_number": "reference_number",
-        "userform": "userform",
+        "userform": "submission",
         "sample_number": "sample_number"
       },
       "output_mapping": {
