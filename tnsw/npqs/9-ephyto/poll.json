@@ -1,0 +1,10 @@
+{
+  "id": "npqs-ephyto-upload--poll",
+  "task_type": "NPQS_EPHYTO_HUB",
+  "output_namespace": "ephyto",
+  "plugin_properties": {
+    "service_id": "ippc-hub",
+    "path": "DeliveryService",
+    "operation": "poll"
+  }
+}
