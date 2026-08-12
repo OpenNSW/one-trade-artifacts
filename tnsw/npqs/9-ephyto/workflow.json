@@ -143,13 +143,13 @@
       "id": "e_poll_again",
       "source_id": "gw_poll_cap",
       "target_id": "poll",
-      "condition": "poll_attempts < 60"
+      "condition": "poll_attempts < 1440"
     },
     {
       "id": "e_poll_exhausted",
       "source_id": "gw_poll_cap",
       "target_id": "poll_timeout",
-      "condition": "poll_attempts >= 60"
+      "condition": "poll_attempts >= 1440"
     },
     {
       "id": "e_timeout_end",
