@@ -1,19 +1,86 @@
 {
   "id": "npqs-ephyto-upload",
   "name": "Upload to IPPC ePhyto Hub",
-  "version": 1,
+  "version": 8,
   "nodes": [
     {
       "id": "start",
       "type": "START"
     },
     {
-      "id": "ephyto_upload_wait",
+      "id": "submission",
       "type": "TASK",
-      "task_template_id": "npqs-ephyto-upload--wait",
+      "task_template_id": "npqs-ephyto-upload--submission",
       "input_mapping": {
         "reference_number": "reference_number",
-        "certificate_id": "certificate_id"
+        "certificate_id": "certificate_id",
+        "ephyto.error?": "ephyto.error"
+      },
+      "output_mapping": {
+        "hub_destination": "traderinput.hub_destination"
+      }
+    },
+    {
+      "id": "submit",
+      "type": "TASK",
+      "task_template_id": "npqs-ephyto-upload--submit",
+      "input_mapping": {
+        "userform": "userform",
+        "certificate_id": "certificate_id",
+        "traderinput.hub_destination": "hub_destination"
+      },
+      "output_mapping": {
+        "ephyto.submitted": "ephyto.submitted",
+        "ephyto.tracking_number?": "ephyto.tracking_number",
+        "ephyto.tracking_info?": "ephyto.tracking_info",
+        "ephyto.error": "ephyto.error"
+      }
+    },
+    {
+      "id": "gw_submit",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "poll",
+      "type": "TASK",
+      "task_template_id": "npqs-ephyto-upload--poll",
+      "input_mapping": {
+        "ephyto.tracking_number": "tracking_number"
+      },
+      "output_mapping": {
+        "ephyto.delivered": "ephyto.delivered",
+        "ephyto.tracking_info?": "ephyto.tracking_info",
+        "ephyto.error": "ephyto.error"
+      }
+    },
+    {
+      "id": "gw_poll",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "wait",
+      "type": "TIMER",
+      "timer": {
+        "duration": "1m",
+        "counter_key": "poll_attempts"
+      }
+    },
+    {
+      "id": "gw_poll_cap",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "poll_timeout",
+      "type": "TASK",
+      "task_template_id": "npqs-ephyto-upload--poll-timeout",
+      "input_mapping": {
+        "reference_number": "reference_number",
+        "certificate_id": "certificate_id",
+        "ephyto.tracking_number?": "ephyto.tracking_number",
+        "ephyto.tracking_info?": "ephyto.tracking_info"
       },
       "output_mapping": {}
     },
@@ -24,13 +91,69 @@
   ],
   "edges": [
     {
-      "id": "e1",
+      "id": "e_start",
       "source_id": "start",
-      "target_id": "ephyto_upload_wait"
+      "target_id": "submission"
     },
     {
-      "id": "e2",
-      "source_id": "ephyto_upload_wait",
+      "id": "e_submission_submit",
+      "source_id": "submission",
+      "target_id": "submit"
+    },
+    {
+      "id": "e_submit_gw",
+      "source_id": "submit",
+      "target_id": "gw_submit"
+    },
+    {
+      "id": "e_submitted",
+      "source_id": "gw_submit",
+      "target_id": "wait",
+      "condition": "ephyto.submitted == true"
+    },
+    {
+      "id": "e_submit_failed",
+      "source_id": "gw_submit",
+      "target_id": "submission",
+      "condition": "ephyto.submitted != true"
+    },
+    {
+      "id": "e_poll_gw",
+      "source_id": "poll",
+      "target_id": "gw_poll"
+    },
+    {
+      "id": "e_delivered",
+      "source_id": "gw_poll",
+      "target_id": "end",
+      "condition": "ephyto.delivered == true"
+    },
+    {
+      "id": "e_not_delivered",
+      "source_id": "gw_poll",
+      "target_id": "wait",
+      "condition": "ephyto.delivered != true"
+    },
+    {
+      "id": "e_wait_cap",
+      "source_id": "wait",
+      "target_id": "gw_poll_cap"
+    },
+    {
+      "id": "e_poll_again",
+      "source_id": "gw_poll_cap",
+      "target_id": "poll",
+      "condition": "poll_attempts < 1440"
+    },
+    {
+      "id": "e_poll_exhausted",
+      "source_id": "gw_poll_cap",
+      "target_id": "poll_timeout",
+      "condition": "poll_attempts >= 1440"
+    },
+    {
+      "id": "e_timeout_end",
+      "source_id": "poll_timeout",
       "target_id": "end"
     }
   ]
