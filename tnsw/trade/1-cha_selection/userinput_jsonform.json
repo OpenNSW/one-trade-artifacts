@@ -12,36 +12,12 @@
       "cha_company_id": {
         "title": "Select Customs House Agent",
         "type": "string",
-        "oneOf": [
-          {
-            "const": "adam-pvt-ltd",
-            "title": "ADAM PVT LTD"
-          },
-          {
-            "const": "govtech",
-            "title": "GovTech Company"
-          },
-          {
-            "const": "piu",
-            "title": "PIU Company"
-          },
-          {
-            "const": "cda",
-            "title": "CDA Company"
-          },
-          {
-            "const": "npqs",
-            "title": "NPQS Company"
-          },
-          {
-            "const": "fcau",
-            "title": "FCAU Company"
-          },
-          {
-            "const": "sltb",
-            "title": "SLTB Company"
-          }
-        ]
+        "description": "Type to search for a Customs House Agent",
+        "x-search": {
+          "service": "cha",
+          "loadOnOpen": true
+        },
+        "example": "Adam Pvt Ltd"
       },
       "notifyRecipient": {
         "type": "string",
@@ -64,7 +40,10 @@
       },
       {
         "type": "Control",
-        "scope": "#/properties/cha_company_id"
+        "scope": "#/properties/cha_company_id",
+        "options": {
+          "placeholder": "Search for a CHA…"
+        }
       },
       {
         "type": "Control",
