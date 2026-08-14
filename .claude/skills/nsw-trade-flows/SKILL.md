@@ -63,6 +63,20 @@ always split across both halves.
   directly. Both patterns are correct; what's *not* correct is the same id
   resolving to genuinely different content in two places it's supposed to
   be identical (the validator below catches that).
+- **An agency can have more than one process.** An agency that runs more
+  than one certificate/approval process nests *both* halves one level
+  deeper under `process-<n>/` (`n = 1, 2, ...`):
+  `tnsw/<agency>/process-<n>/<agency>_workflow.json` + its step folders, and
+  `<agency>/process-<n>/<task_config_dir>/` for that process's agency-side
+  task_configs. `tnsw/manifest.json` and `<agency>/manifest.json` stay put
+  either way — only the artifact `path`s inside them gain the `process-<n>/`
+  segment. `cda/` is the first agency migrated to this layout (currently
+  just `process-1/`); everything else stays flat until it needs a second
+  process. This doesn't change how you trace or validate anything — ids
+  and manifest structure are identical either way, it's purely a path
+  prefix — but it does mean **don't assume every agency's steps live
+  directly under `tnsw/<agency>/`**; check whether a `process-<n>/`
+  directory exists first.
 
 ## Step sub-workflows: 3 shapes cover 93% of them
 
@@ -78,7 +92,7 @@ start -> <one TASK node, any task_type> -> end
 Used for a lone trader upload/view, or a lone officer
 wait/inspect/decide/issue step. Branching, if the macro flow needs it, is
 expressed one level up in `<agency>_workflow.json`, not inside this step.
-Examples: `cda/5-view_certificate`, `customs/2-wait_payment`,
+Examples: `cda/process-1/5-view_certificate`, `customs/2-wait_payment`,
 `npqs/8-issue_certificate`, `trade/1b-persist_cha`.
 
 **2. Payment step (6/54)** — a fixed 2-task shape, no gateway:
@@ -88,7 +102,7 @@ start -> select_method_task[USER_INPUT] -> pay_<x>_task[PAYMENT] -> end
 The `select_method_task`/`pay_..._task` id convention and the absence of a
 gateway are consistent across every instance — payment success/failure is
 handled inside the `PAYMENT` plugin, never exposed as a workflow branch.
-Examples: `cda/2-payment_app_fee`, `npqs/7-payment`, `sltb/4-lab_payment`.
+Examples: `cda/process-1/2-payment_app_fee`, `npqs/7-payment`, `sltb/4-lab_payment`.
 
 **3. Submit → review → resubmit loop (9/54)**:
 ```
@@ -101,7 +115,7 @@ Examples: `npqs/1-apply`, `fcau/1-application`, `fcau/4-3-payment_lab_fee`
 (the "receipt" being reviewed instead of an application). Known variants,
 still recognizably this pattern:
 - `sltb/1-application` adds a third **terminal** edge, `outcome == 'reject' -> end`.
-- `cda/4-lot_adjustment` and `sltb/3-schedule_pickup` prepend an extra
+- `cda/process-1/4-lot_adjustment` and `sltb/3-schedule_pickup` prepend an extra
   trader-choice gateway *before* `officer_review` (skip review entirely on
   one branch).
 - `customs/1-cusdec_submission` inserts an automated dispatch-and-retry
