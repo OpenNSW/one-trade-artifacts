@@ -64,6 +64,59 @@ always split across both halves.
   resolving to genuinely different content in two places it's supposed to
   be identical (the validator below catches that).
 
+## Step sub-workflows: 3 shapes cover 93% of them
+
+Surveyed across all 54 `tnsw/<agency>/<step>/workflow.json` files. Before
+authoring a new step from scratch, check whether it's one of these three —
+if so, copy the closest existing folder of that shape verbatim and rename,
+rather than designing edges from first principles.
+
+**1. Single-task pass-through (35/54)** — no gateway at all:
+```
+start -> <one TASK node, any task_type> -> end
+```
+Used for a lone trader upload/view, or a lone officer
+wait/inspect/decide/issue step. Branching, if the macro flow needs it, is
+expressed one level up in `<agency>_workflow.json`, not inside this step.
+Examples: `cda/5-view_certificate`, `customs/2-wait_payment`,
+`npqs/8-issue_certificate`, `trade/1b-persist_cha`.
+
+**2. Payment step (6/54)** — a fixed 2-task shape, no gateway:
+```
+start -> select_method_task[USER_INPUT] -> pay_<x>_task[PAYMENT] -> end
+```
+The `select_method_task`/`pay_..._task` id convention and the absence of a
+gateway are consistent across every instance — payment success/failure is
+handled inside the `PAYMENT` plugin, never exposed as a workflow branch.
+Examples: `cda/2-payment_app_fee`, `npqs/7-payment`, `sltb/4-lab_payment`.
+
+**3. Submit → review → resubmit loop (9/54)**:
+```
+start -> applicant_submission[USER_INPUT] -> officer_review[EXTERNAL_REVIEW]
+       -> review_gateway[EXCLUSIVE_SPLIT]
+            --[...outcome == 'approve']--> end
+            --[...outcome == 'needs_more_info']--> applicant_submission  (loop back)
+```
+Examples: `npqs/1-apply`, `fcau/1-application`, `fcau/4-3-payment_lab_fee`
+(the "receipt" being reviewed instead of an application). Known variants,
+still recognizably this pattern:
+- `sltb/1-application` adds a third **terminal** edge, `outcome == 'reject' -> end`.
+- `cda/4-lot_adjustment` and `sltb/3-schedule_pickup` prepend an extra
+  trader-choice gateway *before* `officer_review` (skip review entirely on
+  one branch).
+- `customs/1-cusdec_submission` inserts an automated dispatch-and-retry
+  gateway (`cig.accepted == true/false`) between submission and review.
+
+**The other 4/54 are genuinely bespoke — don't force a new step into one of
+the 3 above if it's actually one of these:**
+- `npqs/2-sample_collection` — `EXCLUSIVE_SPLIT`/`EXCLUSIVE_JOIN` fan-out by
+  collection method, no loop.
+- `npqs/4-2-visual_consignment` — two unconditional tasks chained, no gateway.
+- `npqs/9-ephyto` — `TIMER`-driven submit-and-poll loop (see the node
+  vocabulary note above).
+- `sltb/3-schedule_pickup` — two-way negotiation with compound `&&`/`||`
+  edge conditions.
+
 ## Making a change
 
 - **Editing an officer-facing form** (`*_jsonform.json`): if the id appears in
@@ -75,13 +128,15 @@ always split across both halves.
   Add an entry to `tnsw/manifest.json` (tnsw-side files) or the relevant
   `<agency>/manifest.json` (agency-side files) — there is no per-agency
   manifest under `tnsw/<agency>/`, only the one shared `tnsw/manifest.json`.
-- **Adding a new step**: mirror an existing numbered folder
-  (`workflow.json`, `task_template.json`, `userinput.json` +
-  `userinput_jsonform.json`, and if there's an officer step,
+- **Adding a new step**: first match it against the 3 shapes above and pick
+  the closest existing folder of that shape as your template — copy its
+  `workflow.json`, `task_template.json`, `userinput.json` +
+  `userinput_jsonform.json`, and (for the review-loop shape)
   `reviewerinput.json` (`EXTERNAL_REVIEW`, with `service_id`/`task_code`) +
-  its `reviewerinput_jsonform.json` — then add the matching `task_config` +
-  form copies under the agency's own top-level folder, and wire the new step
-  into the macro `<agency>_workflow.json` with a `TASK` node and gateway
+  its `reviewerinput_jsonform.json`, verbatim, then rename. Then add the
+  matching `task_config` + form copies under the agency's own top-level
+  folder, and wire the new step into the macro `<agency>_workflow.json` with
+  a `TASK` node and gateway
   edges as needed.
 - **Changing a gateway condition or officer outcome**: the condition string
   (`reviewerform.review_outcome == 'approve'`) and the agency
