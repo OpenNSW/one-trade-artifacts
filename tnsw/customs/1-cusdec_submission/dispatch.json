@@ -4,7 +4,7 @@
   "output_namespace": "cig",
   "plugin_properties": {
     "service_id": "customs-asycuda",
-    "path": "/api/customs-declarations/v1",
+    "path": "/api/declaration/v1",
     "result_field": "accepted"
   }
 }

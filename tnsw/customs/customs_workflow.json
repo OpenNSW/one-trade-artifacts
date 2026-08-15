@@ -111,6 +111,7 @@
       "task_template_id": "customs-wait-export-release-flow",
       "lane": "Trader/CHA",
       "input_mapping": {
+        "customs.cusdec_number": "cusdec_number",
         "customs.userform": "userform"
       },
       "output_mapping": {
@@ -140,8 +141,13 @@
       "target_id": "customs_3_wait_warranting"
     },
     {
-      "id": "e_3_to_4",
+      "id": "e_3_to_release",
       "source_id": "customs_3_wait_warranting",
+      "target_id": "customs_8_wait_export_release"
+    },
+    {
+      "id": "e_release_to_4",
+      "source_id": "customs_8_wait_export_release",
       "target_id": "customs_4_create_cdn"
     },
     {
@@ -160,13 +166,8 @@
       "target_id": "customs_7_boat_note_approval"
     },
     {
-      "id": "e_7_to_8",
+      "id": "e_7_to_end",
       "source_id": "customs_7_boat_note_approval",
-      "target_id": "customs_8_wait_export_release"
-    },
-    {
-      "id": "e_8_to_end",
-      "source_id": "customs_8_wait_export_release",
       "target_id": "end"
     }
   ]

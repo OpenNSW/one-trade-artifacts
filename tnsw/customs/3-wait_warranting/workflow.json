@@ -16,7 +16,8 @@
         "userform": "submission"
       },
       "output_mapping": {
-        "warranting_status": "warranting_status"
+        "warranting_status": "warranting_status",
+        "release_order_no?": "warranting_release_order_no"
       }
     },
     {
