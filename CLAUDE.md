@@ -33,6 +33,27 @@ Each agency has artifacts in two places that must be read together, not independ
    `manifest.json` indexing them. These are the officer-facing forms that the agency
    service injects into a task at runtime.
 
+### Agencies with more than one process
+
+An agency can run more than one certificate/approval **process** end-to-end (distinct
+macro workflows, e.g. a second CDA registration type alongside the existing coconut
+export certificate). An agency that needs this nests **both halves** one level deeper
+under `process-<n>/` (`n = 1, 2, ...`):
+
+- `tnsw/<agency>/process-<n>/<agency>_workflow.json` + that process's numbered step
+  folders — same internal structure as the single-process layout, just moved down a
+  level. `tnsw/manifest.json` stays put; only the `path` of that process's artifacts
+  gains the `process-<n>/` segment.
+- `<agency>/process-<n>/<task_config_dir>/` for that process's agency-side
+  `task_config`s. `<agency>/manifest.json` stays at the agency's top level; only its
+  artifact `path`s move under `process-<n>/`.
+
+Agencies are migrated to this layout only when they actually need a second process —
+premature nesting for a single-process agency is not the convention. `cda/` is the
+first agency migrated (currently just `process-1/`, holding its one existing process);
+`customs/`, `fcau/`, `npqs/`, `sltb/`, and `trade/` remain flat (no `process-<n>/`
+layer) until one of them needs a second process.
+
 The link between the two: a step's `EXTERNAL_REVIEW` task template
 (`tnsw/<agency>/<step>/officer_*.json`) references `service_id` + `task_code`, and that
 `task_code` resolves to the matching file under the agency's own top-level folder. The
