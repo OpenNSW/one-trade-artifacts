@@ -115,9 +115,8 @@ Examples: `npqs/1-apply`, `fcau/1-application`, `fcau/4-3-payment_lab_fee`
 (the "receipt" being reviewed instead of an application). Known variants,
 still recognizably this pattern:
 - `sltb/1-application` adds a third **terminal** edge, `outcome == 'reject' -> end`.
-- `cda/process-1/4-lot_adjustment` and `sltb/3-schedule_pickup` prepend an extra
-  trader-choice gateway *before* `officer_review` (skip review entirely on
-  one branch).
+- `cda/process-1/4-lot_adjustment` prepends an extra trader-choice gateway
+  *before* `officer_review` (skip review entirely on one branch).
 - `customs/1-cusdec_submission` inserts an automated dispatch-and-retry
   gateway (`cig.accepted == true/false`) between submission and review.
 

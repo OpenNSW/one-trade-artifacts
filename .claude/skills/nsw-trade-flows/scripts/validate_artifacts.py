@@ -3,7 +3,7 @@
 
 Stdlib-only (this repo has no package manager). Run from anywhere; paths are
 resolved relative to the repo root, which is detected as the directory
-containing this script's ancestor `.claude/skills/...` (three levels up from
+containing this script's ancestor `.claude/skills/...` (four levels up from
 `scripts/`) unless overridden with --root.
 
 Exit code is non-zero iff at least one ERROR was found. WARNINGs never affect
@@ -71,7 +71,7 @@ def check_paths_exist(manifests, report):
         by_id = {}
         for a in data.get("artifacts", []):
             p = mdir / a["path"]
-            if not p.exists():
+            if not p.is_file():
                 report.error(f"[{label}] manifest entry {a['id']!r} ({a['kind']}) points to missing file: {a['path']}")
                 continue
             by_id.setdefault(a["id"], []).append((p, a["kind"]))
@@ -130,10 +130,19 @@ def check_shared_ids_across_tnsw_and_agency(index, root, report):
             continue
         shared = set(tnsw_ids) & set(by_id)
         for artifact_id in sorted(shared):
-            all_paths = [p for p, _k in tnsw_ids[artifact_id]] + [p for p, _k in by_id[artifact_id]]
-            if not diff_contents(all_paths):
-                rels = ", ".join(str(p.relative_to(root)) for p in all_paths)
-                report.error(f"id {artifact_id!r} differs between tnsw/manifest.json and {label}/manifest.json: {rels}")
+            tnsw_by_kind = {}
+            for p, k in tnsw_ids[artifact_id]:
+                tnsw_by_kind.setdefault(k, []).append(p)
+            agency_by_kind = {}
+            for p, k in by_id[artifact_id]:
+                agency_by_kind.setdefault(k, []).append(p)
+            for kind in sorted(set(tnsw_by_kind) & set(agency_by_kind)):
+                all_paths = tnsw_by_kind[kind] + agency_by_kind[kind]
+                if not diff_contents(all_paths):
+                    rels = ", ".join(str(p.relative_to(root)) for p in all_paths)
+                    report.error(
+                        f"id {artifact_id!r} ({kind}) differs between tnsw/manifest.json and {label}/manifest.json: {rels}"
+                    )
 
 
 def check_external_review_linkage(manifests, index, root, report):
@@ -177,12 +186,15 @@ def check_external_review_linkage(manifests, index, root, report):
         # duplicated into the agency folder (see check_shared_ids_across_*),
         # others are only ever defined on the tnsw side and the agency
         # task_config just references that id directly.
-        global_ids = set(tnsw_ids) | set(agency_by_id)
+        global_template_ids = {
+            aid for aid, entries in (list(tnsw_ids.items()) + list(agency_by_id.items()))
+            for _p, k in entries if k == "generic_template"
+        }
         for form_role, form_id in (tc.get("forms") or {}).items():
-            if form_id not in global_ids:
+            if form_id not in global_template_ids:
                 report.error(
                     f"[{task_config_path.relative_to(root)}] forms.{form_role} references "
-                    f"{form_id!r}, not found in {service_id}/manifest.json or tnsw/manifest.json"
+                    f"{form_id!r}, not found as a generic_template in {service_id}/manifest.json or tnsw/manifest.json"
                 )
 
 
@@ -194,9 +206,13 @@ VALID_NODE_TYPES = {"START", "TASK", "GATEWAY", "END", "TIMER", "SPLIT_TASK"}
 VALID_GATEWAY_TYPES = {"EXCLUSIVE_SPLIT", "EXCLUSIVE_JOIN", "PARALLEL_SPLIT", "PARALLEL_JOIN"}
 
 
+TASK_TEMPLATE_ID_KINDS = {"task_template", "subtask_template"}
+
+
 def check_workflow_shapes(manifests, index, root, report):
     """Sanity-check node/gateway vocabulary and that every TASK's task_template_id
-    resolves to a subtask_template registered in tnsw/manifest.json."""
+    resolves to a task_template (macro workflows) or subtask_template (step
+    sub-workflows) registered in tnsw/manifest.json."""
     tnsw_mpath, tnsw_mdir = manifests.get("tnsw", (None, None))
     if tnsw_mdir is None:
         return
@@ -217,8 +233,12 @@ def check_workflow_shapes(manifests, index, root, report):
                 report.error(f"[{a['path']}] gateway {n['id']!r} has unknown gateway_type {n.get('gateway_type')!r}")
             if n["type"] == "TASK":
                 ttid = n.get("task_template_id")
-                if not ttid or ttid not in tnsw_ids:
-                    report.error(f"[{a['path']}] TASK {n['id']!r} task_template_id {ttid!r} not found in tnsw/manifest.json")
+                matches = ttid and any(k in TASK_TEMPLATE_ID_KINDS for _p, k in tnsw_ids.get(ttid, []))
+                if not matches:
+                    report.error(
+                        f"[{a['path']}] TASK {n['id']!r} task_template_id {ttid!r} not found as a "
+                        f"task_template or subtask_template in tnsw/manifest.json"
+                    )
         for e in wf.get("edges", []):
             if e["source_id"] not in node_ids:
                 report.error(f"[{a['path']}] edge {e['id']!r} source_id {e['source_id']!r} is not a node in this workflow")
@@ -231,7 +251,7 @@ def main():
     ap.add_argument("--root", type=Path, default=None, help="repo root (default: auto-detect from script location)")
     args = ap.parse_args()
 
-    root = args.root or Path(__file__).resolve().parents[3]
+    root = args.root or Path(__file__).resolve().parents[4]
     report = Report()
 
     manifests = find_manifests(root)
