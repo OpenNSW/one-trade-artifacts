@@ -1,12 +1,8 @@
-name: Push to R2
+name: Push to R2 (dev)
 
 on:
-  workflow_dispatch:
-    inputs:
-      dryrun:
-        description: "Preview the sync without uploading (--dryrun)"
-        type: boolean
-        default: false
+  push:
+    branches: [main]
 
 permissions:
   contents: read
@@ -31,8 +27,8 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: auto
         run: |
-          aws s3 sync . "s3://${{ secrets.R2_BUCKET }}" \
-            --endpoint-url "https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com" \
+          aws s3 sync . "s3://${{ vars.R2_BUCKET_DEV }}" \
+            --endpoint-url "https://${{ vars.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com" \
             --exclude "*" \
             --include "cda/*" \
             --include "customs/*" \
@@ -40,5 +36,4 @@ jobs:
             --include "npqs/*" \
             --include "sltb/*" \
             --include "tnsw/*" \
-            --delete \
-            ${{ inputs.dryrun && '--dryrun' || '' }}
+            --delete
