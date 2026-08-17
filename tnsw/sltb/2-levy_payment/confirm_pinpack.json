@@ -1,9 +1,12 @@
 {
   "id": "sltb-pay-levy--confirm-pinpack",
-  "task_type": "OFFICER_INPUT",
-  "output_namespace": "pinpack_deduction",
+  "task_type": "EXTERNAL_REVIEW",
+  "output_namespace": "payment",
   "plugin_properties": {
     "officer_jsonforms_id": "sltb-pay-levy--confirm-pinpack-form",
-    "task_code": "sltb_levy_payment_confirm_pinpack_v1"
+    "service_id": "sltb",
+    "path": "/api/v1/inject",
+    "task_code": "sltb_levy_payment_confirm_pinpack_v1",
+    "notification_template_id": "sltb-pay-levy--pinpack-notification-email"
   }
 }

@@ -29,7 +29,7 @@
     {
       "id": "sltb_2_pay_levy",
       "type": "TASK",
-      "name": "[SLTB 2] Pay SLTB Levy via GovPay",
+      "name": "[SLTB 2] Pay SLTB Levy",
       "task_template_id": "sltb-pay-levy-flow",
       "lane": "Trader/CHA & SLTB Officer",
       "input_mapping": {

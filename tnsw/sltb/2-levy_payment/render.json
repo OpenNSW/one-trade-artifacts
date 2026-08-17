@@ -28,7 +28,7 @@
       "dataKey": "payment",
       "visibleWhen": {
         "states": [
-          "PENDING_USER"
+          "PENDING_SLIP_UPLOAD"
         ]
       },
       "handles": [
@@ -39,41 +39,15 @@
         }
       ]
     },
-    "review_slip": {
-      "templateId": "sltb-pay-levy--review-form",
-      "title": "Verify Payment Receipt",
-      "projector": "FORM",
-      "dataKey": "payment_review",
+    "pending_verification": {
+      "templateId": "sltb-pay-levy--pending-verification-markdown",
+      "title": "Payment Verification Pending",
+      "projector": "MARKDOWN",
       "visibleWhen": {
         "states": [
-          "PENDING_OFFICER"
+          "QUEUED_EXTERNALLY"
         ]
-      },
-      "handles": [
-        {
-          "command": "submit",
-          "label": "Submit Verification",
-          "element": "primary_action"
-        }
-      ]
-    },
-    "confirm_pinpack": {
-      "templateId": "sltb-pay-levy--confirm-pinpack-form",
-      "title": "PinPack Deduction Confirmation",
-      "projector": "FORM",
-      "dataKey": "pinpack_deduction",
-      "visibleWhen": {
-        "states": [
-          "PENDING_OFFICER"
-        ]
-      },
-      "handles": [
-        {
-          "command": "submit",
-          "label": "Confirm PinPack Deduction",
-          "element": "primary_action"
-        }
-      ]
+      }
     },
     "payment_details": {
       "templateId": "sltb-pay-levy--payment-details-markdown",
@@ -90,7 +64,6 @@
       "templateId": "sltb-pay-levy--success-message",
       "title": "Payment Successful",
       "projector": "MARKDOWN",
-      "dataKey": "payment",
       "visibleWhen": {
         "states": [
           "COMPLETED"
@@ -106,12 +79,15 @@
         }
       ]
     },
-    "PENDING_OFFICER": {
+    "PENDING_SLIP_UPLOAD": {
       "actions": [
         {
           "command": "submit"
         }
       ]
+    },
+    "QUEUED_EXTERNALLY": {
+      "actions": []
     },
     "PENDING_PAYMENT": {
       "actions": []

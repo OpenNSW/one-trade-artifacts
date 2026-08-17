@@ -1,0 +1,4 @@
+{
+  "id": "sltb-pay-levy--pending-verification-markdown",
+  "template": "### Levy Payment Pending Officer Verification\n\nYour levy payment details have been submitted to SLTB and are currently pending officer verification / confirmation.\n\n{{if .reference_number}}* **Reference Number**: `{{.reference_number}}`\n{{end}}* **Status**: PENDING\n\nAn SLTB officer will review your uploaded receipt or confirm the PinPack account deduction. The application will advance automatically once verified."
+}

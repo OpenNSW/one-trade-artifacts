@@ -2137,6 +2137,12 @@
       "path": "sltb/2-levy_payment/payment_details_markdown.json"
     },
     {
+      "id": "sltb-pay-levy--pending-verification-markdown",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/2-levy_payment/pending_verification_markdown.json"
+    },
+    {
       "id": "sltb-pay-levy--success-message",
       "kind": "generic_template",
       "version": "",

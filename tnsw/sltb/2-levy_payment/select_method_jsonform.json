@@ -14,15 +14,15 @@
         "oneOf": [
           {
             "const": "govpay",
-            "title": "GovPay (Bank/ATM/Online Gateway)"
+            "title": "GovPay"
           },
           {
             "const": "payment_slip",
-            "title": "Payment Slip Upload (Manual Payment at Counter / Bank)"
+            "title": "Payment Slip Upload"
           },
           {
             "const": "pinpack",
-            "title": "PinPack Pre-Funded Account Deduction"
+            "title": "PinPack System"
           }
         ]
       }
@@ -33,7 +33,7 @@
     "elements": [
       {
         "type": "Label",
-        "text": "Please select your preferred SLTB Levy payment method. The next screen will guide you through completing or confirming the payment."
+        "text": "Please select your SLTB Levy payment option."
       },
       {
         "type": "Control",

@@ -11,9 +11,12 @@
       "id": "select_method_task",
       "type": "TASK",
       "task_template_id": "sltb-pay-levy--select-method",
-      "input_mapping": {},
+      "input_mapping": {
+        "reference_number": "reference_number"
+      },
       "output_mapping": {
-        "selected_method": "selected_method"
+        "selected_method": "selected_method",
+        "reference_number?": "payment_method.reference_number"
       }
     },
     {
@@ -42,10 +45,14 @@
       "type": "TASK",
       "task_template_id": "sltb-pay-levy--upload-receipt",
       "input_mapping": {
+        "reference_number": "reference_number",
+        "levy_amount": "amount",
         "payment_feedback?": "payment_feedback"
       },
       "output_mapping": {
-        "payment_slip": "payment_slip"
+        "payment_slip": "payment_slip",
+        "reference_number?": "payment.reference_number",
+        "amount?": "payment.amount"
       }
     },
     {
@@ -57,7 +64,7 @@
         "payment_slip": "payment_slip"
       },
       "output_mapping": {
-        "payment_review_outcome": "payment_review_outcome",
+        "payment_review_outcome": "payment_status",
         "payment_feedback?": "payment_feedback"
       }
     },
@@ -77,7 +84,7 @@
       },
       "output_mapping": {
         "pinpack_account_number": "pinpack_account_number",
-        "deduction_status": "deduction_status"
+        "deduction_status": "payment_status"
       }
     },
     {
@@ -133,13 +140,13 @@
       "id": "e_slip_needs_info",
       "source_id": "slip_review_gateway",
       "target_id": "upload_receipt_task",
-      "condition": "payment_review_outcome == 'needs_more_info'"
+      "condition": "payment_status == 'needs_more_info'"
     },
     {
       "id": "e_slip_approve",
       "source_id": "slip_review_gateway",
       "target_id": "join_gateway",
-      "condition": "payment_review_outcome == 'approve'"
+      "condition": "payment_status == 'approve'"
     },
     {
       "id": "e_pinpack",
