@@ -1,0 +1,77 @@
+{
+  "id": "cda-kernel-asycuda-approval-flow",
+  "name": "Submit ASYCUDA Approval Application for Kernel Products",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "applicant_submission",
+      "type": "TASK",
+      "task_template_id": "cda-kernel-asycuda--user-input",
+      "input_mapping": {
+        "rejection_reason?": "rejection_reason"
+      },
+      "output_mapping": {
+        "exporter_name": "userform.exporter_name",
+        "exporter_email": "userform.exporter_email",
+        "cusdec_number": "userform.cusdec_number",
+        "destination": "userform.destination",
+        "expected_export_date": "userform.expected_export_date",
+        "kernel_products": "userform.kernel_products"
+      }
+    },
+    {
+      "id": "officer_review",
+      "type": "TASK",
+      "task_template_id": "cda-kernel-asycuda--officer-review",
+      "input_mapping": {
+        "userform": "submission"
+      },
+      "output_mapping": {
+        "review_outcome": "reviewerform.review_outcome",
+        "rejection_reason?": "rejection_reason"
+      }
+    },
+    {
+      "id": "review_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "applicant_submission"
+    },
+    {
+      "id": "e2",
+      "source_id": "applicant_submission",
+      "target_id": "officer_review"
+    },
+    {
+      "id": "e3",
+      "source_id": "officer_review",
+      "target_id": "review_gateway"
+    },
+    {
+      "id": "e_needs_info",
+      "source_id": "review_gateway",
+      "target_id": "applicant_submission",
+      "condition": "reviewerform.review_outcome == 'needs_more_info'"
+    },
+    {
+      "id": "e_approve",
+      "source_id": "review_gateway",
+      "target_id": "end",
+      "condition": "reviewerform.review_outcome == 'approve'"
+    }
+  ]
+}

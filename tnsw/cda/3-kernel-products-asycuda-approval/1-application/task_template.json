@@ -1,0 +1,6 @@
+{
+  "id": "cda-kernel-asycuda-approval-flow",
+  "type": "APPLICATION",
+  "workflow_id": "cda-kernel-asycuda-approval-flow",
+  "render_config_id": "cda-kernel-asycuda-approval-flow:render"
+}
