@@ -23,6 +23,10 @@
               "title": "CDA Coconut Certificate (CDA Flow)"
             },
             {
+              "const": "cda-kernel-asycuda-approval",
+              "title": "CDA ASYCUDA Approval for Kernel Products (CDA Flow)"
+            },
+            {
               "const": "sltb-blendsheet-approval",
               "title": "SLTB Tea Export Blendsheet Approval (SLTB Flow)"
             },

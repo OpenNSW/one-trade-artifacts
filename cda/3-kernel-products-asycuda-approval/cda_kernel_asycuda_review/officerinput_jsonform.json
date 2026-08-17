@@ -1,0 +1,116 @@
+{
+  "id": "cda-kernel-asycuda--officer-review-form",
+  "title": "CDA Officer ASYCUDA Approval Review",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "review_outcome": {
+        "type": "string",
+        "title": "Review Outcome",
+        "oneOf": [
+          {
+            "const": "approve",
+            "title": "Approve"
+          },
+          {
+            "const": "needs_more_info",
+            "title": "Needs More Information (Send back to applicant)"
+          }
+        ],
+        "default": "approve",
+        "example": "approve"
+      },
+      "rejection_reason": {
+        "type": "string",
+        "title": "Comments / Feedback / Deficiencies (Required if Needs More Info)",
+        "example": "Please correct the CDA label range for manufacturer EOAS INTERNATIONAL PVT LTD."
+      },
+      "asycuda_approval_confirmed": {
+        "type": "boolean",
+        "title": "I have logged into the ASYCUDA System and pressed the green check (✓) button to approve this consignment",
+        "description": "Login to ASYCUDA and press the green check button for this consignment before approving here.",
+        "default": false,
+        "example": true
+      }
+    },
+    "required": [
+      "review_outcome"
+    ],
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "review_outcome": {
+              "const": "needs_more_info"
+            }
+          },
+          "required": [
+            "review_outcome"
+          ]
+        },
+        "then": {
+          "required": [
+            "rejection_reason"
+          ]
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "review_outcome": {
+              "const": "approve"
+            }
+          },
+          "required": [
+            "review_outcome"
+          ]
+        },
+        "then": {
+          "properties": {
+            "asycuda_approval_confirmed": {
+              "const": true
+            }
+          },
+          "required": [
+            "asycuda_approval_confirmed"
+          ]
+        }
+      }
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/review_outcome"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/rejection_reason",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/review_outcome",
+            "schema": {
+              "const": "needs_more_info"
+            }
+          }
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/asycuda_approval_confirmed",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/review_outcome",
+            "schema": {
+              "const": "approve"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

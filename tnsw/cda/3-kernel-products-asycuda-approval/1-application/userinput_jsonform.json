@@ -1,0 +1,982 @@
+{
+  "id": "cda-kernel-asycuda--user-form",
+  "title": "CDA ASYCUDA Approval Application for Kernel Products",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "exporter_name": {
+        "type": "string",
+        "title": "Exporter Name",
+        "description": "CDA-registered exporters.",
+        "example": "AALAM HOLDINGS PVT LTD",
+        "oneOf": [
+          {
+            "const": "AALAM HOLDINGS PVT LTD",
+            "title": "AALAM HOLDINGS PVT LTD"
+          },
+          {
+            "const": "ADAMJEE LUKMANJEE (PVT) LTD",
+            "title": "ADAMJEE LUKMANJEE (PVT) LTD"
+          },
+          {
+            "const": "ADAMJEE LUKMANJEE EXPORTS (PVT) LTD",
+            "title": "ADAMJEE LUKMANJEE EXPORTS (PVT) LTD"
+          },
+          {
+            "const": "ANODS COCOA (PVT) LTD",
+            "title": "ANODS COCOA (PVT) LTD"
+          },
+          {
+            "const": "ANURAJ AGENCIES",
+            "title": "ANURAJ AGENCIES"
+          },
+          {
+            "const": "Asian Agro Products Pvt Ltd",
+            "title": "Asian Agro Products Pvt Ltd"
+          },
+          {
+            "const": "Bio Extracts (Pvt) Ltd",
+            "title": "Bio Extracts (Pvt) Ltd"
+          },
+          {
+            "const": "CELEBRATION HOLDINGS (PRIVATE) LIMITED",
+            "title": "CELEBRATION HOLDINGS (PRIVATE) LIMITED"
+          },
+          {
+            "const": "CEYLON PLANT FOOD (PVT) LTD",
+            "title": "CEYLON PLANT FOOD (PVT) LTD"
+          },
+          {
+            "const": "COCO CEYLON EXPORTS PVT LTD",
+            "title": "COCO CEYLON EXPORTS PVT LTD"
+          },
+          {
+            "const": "COLOMBO EXPORT & IMPORT AGENCIES (PVT) LTD",
+            "title": "COLOMBO EXPORT & IMPORT AGENCIES (PVT) LTD"
+          },
+          {
+            "const": "Cafex Exports (Pvt) Ltd.",
+            "title": "Cafex Exports (Pvt) Ltd."
+          },
+          {
+            "const": "Ce'Nedra (Pvt) Ltd.",
+            "title": "Ce'Nedra (Pvt) Ltd."
+          },
+          {
+            "const": "Ceylon 2u Foods (pvt) Ltd",
+            "title": "Ceylon 2u Foods (pvt) Ltd"
+          },
+          {
+            "const": "Ceylon Exports & Tradings (Pvt) Ltd",
+            "title": "Ceylon Exports & Tradings (Pvt) Ltd"
+          },
+          {
+            "const": "Ceylonwin Natural Foods",
+            "title": "Ceylonwin Natural Foods"
+          },
+          {
+            "const": "Coco House (Pvt) Ltd",
+            "title": "Coco House (Pvt) Ltd"
+          },
+          {
+            "const": "Coconut Taprobane Pvt Ltd",
+            "title": "Coconut Taprobane Pvt Ltd"
+          },
+          {
+            "const": "DERANA MARKETING SERVICES (PVT) LTD",
+            "title": "DERANA MARKETING SERVICES (PVT) LTD"
+          },
+          {
+            "const": "ENRICH TEA AND FOOD EXPORTS (PVT) LTD.",
+            "title": "ENRICH TEA AND FOOD EXPORTS (PVT) LTD."
+          },
+          {
+            "const": "EOAS INTERNATIONAL PVT LTD",
+            "title": "EOAS INTERNATIONAL PVT LTD"
+          },
+          {
+            "const": "EOAS ORGANICS PVT LTD",
+            "title": "EOAS ORGANICS PVT LTD"
+          },
+          {
+            "const": "EXCEL IMPEX (PRIVATE) LIMITED",
+            "title": "EXCEL IMPEX (PRIVATE) LIMITED"
+          },
+          {
+            "const": "GLOBAL TRADING SERVICES",
+            "title": "GLOBAL TRADING SERVICES"
+          },
+          {
+            "const": "Greenfield Bio Plantations (pvt) Ltd",
+            "title": "Greenfield Bio Plantations (pvt) Ltd"
+          },
+          {
+            "const": "H.D.De Silva & Sons (Pvt) Ltd",
+            "title": "H.D.De Silva & Sons (Pvt) Ltd"
+          },
+          {
+            "const": "HDDES EXTRACTS (PVT)LTD",
+            "title": "HDDES EXTRACTS (PVT)LTD"
+          },
+          {
+            "const": "HERO NATURE PRODUCTS (PVT) LTD",
+            "title": "HERO NATURE PRODUCTS (PVT) LTD"
+          },
+          {
+            "const": "Hayleys Consumer Products Limited",
+            "title": "Hayleys Consumer Products Limited"
+          },
+          {
+            "const": "Heritage Lanka Nature Products Pvt Ltd",
+            "title": "Heritage Lanka Nature Products Pvt Ltd"
+          },
+          {
+            "const": "INTERMAX (PVT) lTD",
+            "title": "INTERMAX (PVT) lTD"
+          },
+          {
+            "const": "Jaindi Export (Pvt) Ltd",
+            "title": "Jaindi Export (Pvt) Ltd"
+          },
+          {
+            "const": "Joint Agri Products Ceylon (Private) Limited",
+            "title": "Joint Agri Products Ceylon (Private) Limited"
+          },
+          {
+            "const": "Kandetiya Agro Products Pvt Ltd",
+            "title": "Kandetiya Agro Products Pvt Ltd"
+          },
+          {
+            "const": "Kings Foods (Pvt) Ltd",
+            "title": "Kings Foods (Pvt) Ltd"
+          },
+          {
+            "const": "Leela Exports and Imports",
+            "title": "Leela Exports and Imports"
+          },
+          {
+            "const": "Lihini Nature Products (Pvt) Ltd",
+            "title": "Lihini Nature Products (Pvt) Ltd"
+          },
+          {
+            "const": "METSHU EXPORTS (PVT) LTD",
+            "title": "METSHU EXPORTS (PVT) LTD"
+          },
+          {
+            "const": "Manchanayaka Agri Foods Pvt Ltd",
+            "title": "Manchanayaka Agri Foods Pvt Ltd"
+          },
+          {
+            "const": "Manchiee De Coco Products",
+            "title": "Manchiee De Coco Products"
+          },
+          {
+            "const": "NDC Exports (Pvt)Ltd",
+            "title": "NDC Exports (Pvt)Ltd"
+          },
+          {
+            "const": "NESTLÉ LANKA LIMITED",
+            "title": "NESTLÉ LANKA LIMITED"
+          },
+          {
+            "const": "NRS International Pvt Ltd",
+            "title": "NRS International Pvt Ltd"
+          },
+          {
+            "const": "Nara coco Land (Pvt) Ltd",
+            "title": "Nara coco Land (Pvt) Ltd"
+          },
+          {
+            "const": "Navik Mills (Pvt) Ltd",
+            "title": "Navik Mills (Pvt) Ltd"
+          },
+          {
+            "const": "Nexpo Conversion (PVT) LTD",
+            "title": "Nexpo Conversion (PVT) LTD"
+          },
+          {
+            "const": "Omilco Export (Pvt) Ltd.",
+            "title": "Omilco Export (Pvt) Ltd."
+          },
+          {
+            "const": "Pasanka [Pvt] Ltd",
+            "title": "Pasanka [Pvt] Ltd"
+          },
+          {
+            "const": "Pearl Isle Foods Exports ( Pvt ) Ltd",
+            "title": "Pearl Isle Foods Exports ( Pvt ) Ltd"
+          },
+          {
+            "const": "RANRE INTERNATIONAL (PVT) LTD.",
+            "title": "RANRE INTERNATIONAL (PVT) LTD."
+          },
+          {
+            "const": "Renuka Agri Foods PLC",
+            "title": "Renuka Agri Foods PLC"
+          },
+          {
+            "const": "Ruhunu Foods (Pvt) Ltd",
+            "title": "Ruhunu Foods (Pvt) Ltd"
+          },
+          {
+            "const": "S.A Silva & Sons Lanka (Pvt) Ltd",
+            "title": "S.A Silva & Sons Lanka (Pvt) Ltd"
+          },
+          {
+            "const": "SANMIK FOOD (PVT) LTD",
+            "title": "SANMIK FOOD (PVT) LTD"
+          },
+          {
+            "const": "ST.ANNE'S ENTERPRISES PVT LTD",
+            "title": "ST.ANNE'S ENTERPRISES PVT LTD"
+          },
+          {
+            "const": "Senikma Holdings (Pvt) Ltd",
+            "title": "Senikma Holdings (Pvt) Ltd"
+          },
+          {
+            "const": "Silvermill Natural Beverages (Pvt) Ltd.",
+            "title": "Silvermill Natural Beverages (Pvt) Ltd."
+          },
+          {
+            "const": "Sri Lanka Co-operative Marketing Federation Ltd",
+            "title": "Sri Lanka Co-operative Marketing Federation Ltd"
+          },
+          {
+            "const": "Stassen Exports (Pvt) Ltd.",
+            "title": "Stassen Exports (Pvt) Ltd."
+          },
+          {
+            "const": "Sunfrost (Pvt) Ltd.",
+            "title": "Sunfrost (Pvt) Ltd."
+          },
+          {
+            "const": "TAHOMA COCONUT PRODUCTS (PVT) LTD",
+            "title": "TAHOMA COCONUT PRODUCTS (PVT) LTD"
+          },
+          {
+            "const": "THINEERA EXPORTS",
+            "title": "THINEERA EXPORTS"
+          },
+          {
+            "const": "Tradlanka Agricultural Enterprises (pvt) ltd",
+            "title": "Tradlanka Agricultural Enterprises (pvt) ltd"
+          },
+          {
+            "const": "Transfood Lanka (Pvt) Ltd",
+            "title": "Transfood Lanka (Pvt) Ltd"
+          },
+          {
+            "const": "Tropikal Life International (Pvt) Limited",
+            "title": "Tropikal Life International (Pvt) Limited"
+          },
+          {
+            "const": "Unilever Lanka Consumer Ltd",
+            "title": "Unilever Lanka Consumer Ltd"
+          },
+          {
+            "const": "Virco International (Pvt) Ltd",
+            "title": "Virco International (Pvt) Ltd"
+          },
+          {
+            "const": "Waguruwela Oil Mills Pvt Ltd",
+            "title": "Waguruwela Oil Mills Pvt Ltd"
+          },
+          {
+            "const": "Wichy Plantation Company (Pvt) Ltd",
+            "title": "Wichy Plantation Company (Pvt) Ltd"
+          }
+        ]
+      },
+      "exporter_email": {
+        "type": "string",
+        "format": "email",
+        "title": "Exporter Email",
+        "example": "trader@example.lk"
+      },
+      "cusdec_number": {
+        "type": "string",
+        "title": "CusDec Number",
+        "example": "CUSDEC-2026-904821"
+      },
+      "destination": {
+        "type": "string",
+        "title": "Destination",
+        "example": "Rotterdam, Netherlands"
+      },
+      "expected_export_date": {
+        "type": "string",
+        "format": "date",
+        "title": "Expected Date of Export",
+        "example": "2026-09-01"
+      },
+      "kernel_products": {
+        "type": "array",
+        "title": "Kernel Product Manufacturer Declarations",
+        "items": {
+          "type": "object",
+          "properties": {
+            "manufacturer_name": {
+              "type": "string",
+              "title": "Manufacturer Name",
+              "description": "CDA-registered kernel product manufacturers.",
+              "example": "EOAS INTERNATIONAL PVT LTD",
+              "oneOf": [
+                {
+                  "const": "EOAS INTERNATIONAL PVT LTD",
+                  "title": "EOAS INTERNATIONAL PVT LTD"
+                },
+                {
+                  "const": "HDDES Extracts (Pvt) Ltd",
+                  "title": "HDDES Extracts (Pvt) Ltd"
+                },
+                {
+                  "const": "Manchanayaka Agri Foods Pvt Ltd",
+                  "title": "Manchanayaka Agri Foods Pvt Ltd"
+                },
+                {
+                  "const": "Manchiee De Coco Products",
+                  "title": "Manchiee De Coco Products"
+                },
+                {
+                  "const": "NDC Exports (Pvt) Ltd",
+                  "title": "NDC Exports (Pvt) Ltd"
+                },
+                {
+                  "const": "Navik Mills (Pvt) Ltd",
+                  "title": "Navik Mills (Pvt) Ltd"
+                },
+                {
+                  "const": "Nestle Lanka Limited",
+                  "title": "Nestle Lanka Limited"
+                },
+                {
+                  "const": "Nexpo Conversion (PVT) LTD",
+                  "title": "Nexpo Conversion (PVT) LTD"
+                },
+                {
+                  "const": "Omilco Export (private) Ltd",
+                  "title": "Omilco Export (private) Ltd"
+                },
+                {
+                  "const": "Renuka Agri Foods PLC",
+                  "title": "Renuka Agri Foods PLC"
+                },
+                {
+                  "const": "SANMIK FOOD PVT LTD",
+                  "title": "SANMIK FOOD PVT LTD"
+                },
+                {
+                  "const": "St.Annes Factory Pvt Ltd",
+                  "title": "St.Annes Factory Pvt Ltd"
+                }
+              ]
+            },
+            "manufacturer_email": {
+              "type": "string",
+              "title": "Manufacturer's Email",
+              "description": "Registered contact email for the selected manufacturer.",
+              "example": "eoasorg@gmail.com",
+              "oneOf": [
+                {
+                  "const": "qm@omilco.com",
+                  "title": "qm@omilco.com — Omilco Export (private) Ltd"
+                },
+                {
+                  "const": "finance@omilco.com",
+                  "title": "finance@omilco.com — Omilco Export (private) Ltd"
+                },
+                {
+                  "const": "ariyakumra@omilco.com",
+                  "title": "ariyakumra@omilco.com — Omilco Export (private) Ltd"
+                },
+                {
+                  "const": "eoasorg@gmail.com",
+                  "title": "eoasorg@gmail.com — EOAS INTERNATIONAL PVT LTD"
+                },
+                {
+                  "const": "sampath@eoasorganics.com",
+                  "title": "sampath@eoasorganics.com — EOAS INTERNATIONAL PVT LTD"
+                },
+                {
+                  "const": "koshala@sanmikfood.com.au",
+                  "title": "koshala@sanmikfood.com.au — SANMIK FOOD PVT LTD"
+                },
+                {
+                  "const": "tharindu@sanmikfood.com",
+                  "title": "tharindu@sanmikfood.com — SANMIK FOOD PVT LTD"
+                },
+                {
+                  "const": "export@manchiee.com",
+                  "title": "export@manchiee.com — Manchanayaka Agri Foods Pvt Ltd"
+                },
+                {
+                  "const": "quality@manchiee.com",
+                  "title": "quality@manchiee.com — Manchanayaka Agri Foods Pvt Ltd / Manchiee De Coco Products"
+                },
+                {
+                  "const": "finance@manchiee.com",
+                  "title": "finance@manchiee.com — Manchanayaka Agri Foods Pvt Ltd"
+                },
+                {
+                  "const": "neomal.mp@gmail.com",
+                  "title": "neomal.mp@gmail.com — St.Annes Factory Pvt Ltd"
+                },
+                {
+                  "const": "evan@cocoana.com",
+                  "title": "evan@cocoana.com — St.Annes Factory Pvt Ltd"
+                },
+                {
+                  "const": "viraj@cocoana.com",
+                  "title": "viraj@cocoana.com — St.Annes Factory Pvt Ltd"
+                },
+                {
+                  "const": "finance@cocoana.com",
+                  "title": "finance@cocoana.com — St.Annes Factory Pvt Ltd"
+                },
+                {
+                  "const": "info@manchiee.com",
+                  "title": "info@manchiee.com — Manchiee De Coco Products"
+                },
+                {
+                  "const": "ranjitr@renukagroup.com",
+                  "title": "ranjitr@renukagroup.com — Renuka Agri Foods PLC"
+                },
+                {
+                  "const": "indur@renukagroup.com",
+                  "title": "indur@renukagroup.com — Renuka Agri Foods PLC"
+                },
+                {
+                  "const": "rangikaw.agri@renukafoods.com",
+                  "title": "rangikaw.agri@renukafoods.com — Renuka Agri Foods PLC"
+                },
+                {
+                  "const": "dulank.agri@renukafoods.com",
+                  "title": "dulank.agri@renukafoods.com — Renuka Agri Foods PLC"
+                },
+                {
+                  "const": "kapilaj.agri@renukafoods.com",
+                  "title": "kapilaj.agri@renukafoods.com — Renuka Agri Foods PLC"
+                },
+                {
+                  "const": "shipping1.agri@renukafoods.com",
+                  "title": "shipping1.agri@renukafoods.com — Renuka Agri Foods PLC"
+                },
+                {
+                  "const": "md@econutrena.com",
+                  "title": "md@econutrena.com — Navik Mills (Pvt) Ltd"
+                },
+                {
+                  "const": "headofqa@navikmills.com",
+                  "title": "headofqa@navikmills.com — Navik Mills (Pvt) Ltd"
+                },
+                {
+                  "const": "accountant@navikmills.com",
+                  "title": "accountant@navikmills.com — Navik Mills (Pvt) Ltd"
+                },
+                {
+                  "const": "factorymanager@navikmills.com",
+                  "title": "factorymanager@navikmills.com — Navik Mills (Pvt) Ltd"
+                },
+                {
+                  "const": "dayantha@sdchemlanka.com",
+                  "title": "dayantha@sdchemlanka.com — Nexpo Conversion (PVT) LTD"
+                },
+                {
+                  "const": "amjb@nexpoextracts.com",
+                  "title": "amjb@nexpoextracts.com — Nexpo Conversion (PVT) LTD"
+                },
+                {
+                  "const": "ruchira@nexpoextracts.com",
+                  "title": "ruchira@nexpoextracts.com — Nexpo Conversion (PVT) LTD"
+                },
+                {
+                  "const": "mangala@cocomate.com",
+                  "title": "mangala@cocomate.com — NDC Exports (Pvt) Ltd"
+                },
+                {
+                  "const": "quality@cocomate.com",
+                  "title": "quality@cocomate.com — NDC Exports (Pvt) Ltd"
+                },
+                {
+                  "const": "info@hddes.com",
+                  "title": "info@hddes.com — HDDES Extracts (Pvt) Ltd"
+                },
+                {
+                  "const": "tasela@hddes.com",
+                  "title": "tasela@hddes.com — HDDES Extracts (Pvt) Ltd"
+                },
+                {
+                  "const": "bernhard.stefan@lk.nestle.com",
+                  "title": "bernhard.stefan@lk.nestle.com — Nestle Lanka Limited"
+                },
+                {
+                  "const": "kumudu.dias@lk.nestle.com",
+                  "title": "kumudu.dias@lk.nestle.com — Nestle Lanka Limited"
+                },
+                {
+                  "const": "ranjitha.fernando@lk.nestle.com",
+                  "title": "ranjitha.fernando@lk.nestle.com — Nestle Lanka Limited"
+                },
+                {
+                  "const": "hiruni.yapa@lk.nestle.com",
+                  "title": "hiruni.yapa@lk.nestle.com — Nestle Lanka Limited"
+                },
+                {
+                  "const": "nandana.kumara@lk.nestle.com",
+                  "title": "nandana.kumara@lk.nestle.com — Nestle Lanka Limited"
+                },
+                {
+                  "const": "suhail.rahman@lk.nestle.com",
+                  "title": "suhail.rahman@lk.nestle.com — Nestle Lanka Limited"
+                }
+              ]
+            },
+            "product_type": {
+              "type": "string",
+              "title": "Product Type",
+              "oneOf": [
+                {
+                  "const": "Activated Carbon",
+                  "title": "Activated Carbon"
+                },
+                {
+                  "const": "Coco Pith Loose Form",
+                  "title": "Coco Pith Loose Form"
+                },
+                {
+                  "const": "Coconut Amino",
+                  "title": "Coconut Amino"
+                },
+                {
+                  "const": "Coconut Based Alcohol Products",
+                  "title": "Coconut Based Alcohol Products"
+                },
+                {
+                  "const": "Coconut Based Ice Cream",
+                  "title": "Coconut Based Ice Cream"
+                },
+                {
+                  "const": "Coconut Butter",
+                  "title": "Coconut Butter"
+                },
+                {
+                  "const": "Coconut Chips",
+                  "title": "Coconut Chips"
+                },
+                {
+                  "const": "Coconut Cluster",
+                  "title": "Coconut Cluster"
+                },
+                {
+                  "const": "Coconut Cream",
+                  "title": "Coconut Cream"
+                },
+                {
+                  "const": "Coconut Cream Processor",
+                  "title": "Coconut Cream Processor"
+                },
+                {
+                  "const": "Coconut Flakes",
+                  "title": "Coconut Flakes"
+                },
+                {
+                  "const": "Coconut Flour",
+                  "title": "Coconut Flour"
+                },
+                {
+                  "const": "Coconut Husk Chips",
+                  "title": "Coconut Husk Chips"
+                },
+                {
+                  "const": "Coconut Jam",
+                  "title": "Coconut Jam"
+                },
+                {
+                  "const": "Coconut Milk",
+                  "title": "Coconut Milk"
+                },
+                {
+                  "const": "Coconut Milk Powder",
+                  "title": "Coconut Milk Powder"
+                },
+                {
+                  "const": "Coconut Milk Processor",
+                  "title": "Coconut Milk Processor"
+                },
+                {
+                  "const": "Coconut Milk Related Products",
+                  "title": "Coconut Milk Related Products"
+                },
+                {
+                  "const": "Coconut Oil",
+                  "title": "Coconut Oil"
+                },
+                {
+                  "const": "Coconut Oil Distributors",
+                  "title": "Coconut Oil Distributors"
+                },
+                {
+                  "const": "Coconut Sambol",
+                  "title": "Coconut Sambol"
+                },
+                {
+                  "const": "Coconut Smile",
+                  "title": "Coconut Smile"
+                },
+                {
+                  "const": "Coconut Soft Gel Capsules",
+                  "title": "Coconut Soft Gel Capsules"
+                },
+                {
+                  "const": "Coconut Spread",
+                  "title": "Coconut Spread"
+                },
+                {
+                  "const": "Coconut Sugar",
+                  "title": "Coconut Sugar"
+                },
+                {
+                  "const": "Coconut Syrup",
+                  "title": "Coconut Syrup"
+                },
+                {
+                  "const": "Coconut Toddy",
+                  "title": "Coconut Toddy"
+                },
+                {
+                  "const": "Coconut Treacle",
+                  "title": "Coconut Treacle"
+                },
+                {
+                  "const": "Coconut Vinegar",
+                  "title": "Coconut Vinegar"
+                },
+                {
+                  "const": "Coconut Water",
+                  "title": "Coconut Water"
+                },
+                {
+                  "const": "Coconut Water Powder",
+                  "title": "Coconut Water Powder"
+                },
+                {
+                  "const": "Copra",
+                  "title": "Copra"
+                },
+                {
+                  "const": "Creamed Coconut",
+                  "title": "Creamed Coconut"
+                },
+                {
+                  "const": "DC Repacker",
+                  "title": "DC Repacker"
+                },
+                {
+                  "const": "Ekel & Brooms",
+                  "title": "Ekel & Brooms"
+                },
+                {
+                  "const": "Fibre Mill",
+                  "title": "Fibre Mill"
+                },
+                {
+                  "const": "Fresh Nut Collector",
+                  "title": "Fresh Nut Collector"
+                },
+                {
+                  "const": "Grated Coconut/ Chunks",
+                  "title": "Grated Coconut/ Chunks"
+                },
+                {
+                  "const": "High Fat Desiccated Coconut",
+                  "title": "High Fat Desiccated Coconut"
+                },
+                {
+                  "const": "Industrial Coconut Oil",
+                  "title": "Industrial Coconut Oil"
+                },
+                {
+                  "const": "Intermediate Fibre Processor (Cut Fibre/Dying/Trimming/Twisted)",
+                  "title": "Intermediate Fibre Processor (Cut Fibre/Dying/Trimming/Twisted)"
+                },
+                {
+                  "const": "Intermediate Fibre Processor (Fibre Balling)",
+                  "title": "Intermediate Fibre Processor (Fibre Balling)"
+                },
+                {
+                  "const": "King Coconut Collector",
+                  "title": "King Coconut Collector"
+                },
+                {
+                  "const": "King Coconut Processing Center",
+                  "title": "King Coconut Processing Center"
+                },
+                {
+                  "const": "King Coconut Water",
+                  "title": "King Coconut Water"
+                },
+                {
+                  "const": "Low Fat Desiccated Coconut",
+                  "title": "Low Fat Desiccated Coconut"
+                },
+                {
+                  "const": "MCT Oil",
+                  "title": "MCT Oil"
+                },
+                {
+                  "const": "MCT Oil Powder",
+                  "title": "MCT Oil Powder"
+                },
+                {
+                  "const": "Milk Powder Repack",
+                  "title": "Milk Powder Repack"
+                },
+                {
+                  "const": "Oil Repacker",
+                  "title": "Oil Repacker"
+                },
+                {
+                  "const": "Other Products",
+                  "title": "Other Products"
+                },
+                {
+                  "const": "Pairing Coconut Oil",
+                  "title": "Pairing Coconut Oil"
+                },
+                {
+                  "const": "Refined Bleached Deodorized Coconut Oil",
+                  "title": "Refined Bleached Deodorized Coconut Oil"
+                },
+                {
+                  "const": "Shell Charcoal",
+                  "title": "Shell Charcoal"
+                },
+                {
+                  "const": "Shell Charcoal Briquettes",
+                  "title": "Shell Charcoal Briquettes"
+                },
+                {
+                  "const": "Shell Charcoal Pellets",
+                  "title": "Shell Charcoal Pellets"
+                },
+                {
+                  "const": "Shell Charcoal Pieces",
+                  "title": "Shell Charcoal Pieces"
+                },
+                {
+                  "const": "Shell Collector",
+                  "title": "Shell Collector"
+                },
+                {
+                  "const": "Shell Pieces & Powder",
+                  "title": "Shell Pieces & Powder"
+                },
+                {
+                  "const": "Shell Related Ornamental Product",
+                  "title": "Shell Related Ornamental Product"
+                },
+                {
+                  "const": "Substrate/ Coco Pith",
+                  "title": "Substrate/ Coco Pith"
+                },
+                {
+                  "const": "Value Added Finished Products",
+                  "title": "Value Added Finished Products"
+                },
+                {
+                  "const": "Virgin Coconut Oil",
+                  "title": "Virgin Coconut Oil"
+                },
+                {
+                  "const": "Virgin Oil Powder",
+                  "title": "Virgin Oil Powder"
+                },
+                {
+                  "const": "White Coconut Oil",
+                  "title": "White Coconut Oil"
+                },
+                {
+                  "const": "Whole Kernel Oil",
+                  "title": "Whole Kernel Oil"
+                },
+                {
+                  "const": "Whole Kernel Virgin Coconut Oil",
+                  "title": "Whole Kernel Virgin Coconut Oil"
+                }
+              ],
+              "example": "Coconut Oil"
+            },
+            "hs_code": {
+              "type": "string",
+              "title": "HS Code",
+              "example": "15131900"
+            },
+            "quantity_weight_kg": {
+              "type": "number",
+              "title": "Quantity Weight (Kg)",
+              "example": 5000
+            },
+            "cda_label_start_number": {
+              "type": "string",
+              "title": "CDA Label Start Number",
+              "example": "CDA-LBL-100001"
+            },
+            "cda_label_end_number": {
+              "type": "string",
+              "title": "CDA Label End Number",
+              "example": "CDA-LBL-100500"
+            },
+            "manufactured_date": {
+              "type": "string",
+              "format": "date",
+              "title": "Manufactured Date",
+              "example": "2026-08-01"
+            },
+            "whatsapp_number": {
+              "type": "number",
+              "title": "WhatsApp Number",
+              "example": 94771234567
+            }
+          },
+          "required": [
+            "manufacturer_name",
+            "manufacturer_email",
+            "product_type",
+            "hs_code",
+            "quantity_weight_kg",
+            "cda_label_start_number",
+            "cda_label_end_number",
+            "manufactured_date",
+            "whatsapp_number"
+          ]
+        }
+      }
+    },
+    "required": [
+      "exporter_name",
+      "exporter_email",
+      "cusdec_number",
+      "destination",
+      "expected_export_date",
+      "kernel_products"
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Group",
+        "label": "1. Consignment Details",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/exporter_name",
+            "options": {
+              "placeholder": "Select the exporter…"
+            }
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/exporter_email"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/cusdec_number"
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/destination"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/expected_export_date"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "label": "2. Kernel Product Manufacturer Declarations",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/kernel_products",
+            "options": {
+              "detail": {
+                "type": "VerticalLayout",
+                "elements": [
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/manufacturer_name"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/manufacturer_email"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/product_type"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/hs_code"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/quantity_weight_kg"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/manufactured_date"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/cda_label_start_number"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/cda_label_end_number"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/whatsapp_number"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
