@@ -1,0 +1,60 @@
+{
+  "id": "cda-kernel-asycuda-approval-flow:render",
+  "type": "APPLICATION",
+  "title": "[CDA] Submit ASYCUDA Approval Application",
+  "sections": {
+    "approved_message": {
+      "templateId": "cda-kernel-asycuda--approved-message",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "dataKey": "userform",
+      "visibleWhen": {
+        "states": [
+          "COMPLETED"
+        ]
+      }
+    },
+    "status_message": {
+      "templateId": "cda-kernel-asycuda--submitted-message",
+      "title": "Submission Status",
+      "projector": "MARKDOWN",
+      "dataKey": "userform",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    },
+    "feedback": {
+      "templateId": "cda-kernel-asycuda--feedback",
+      "title": "Officer Feedback & Deficiencies",
+      "projector": "MARKDOWN",
+      "dataKey": "rejection_reason",
+      "visibleWhen": {
+        "requireDataKey": "rejection_reason"
+      }
+    },
+    "user_form": {
+      "templateId": "cda-kernel-asycuda--user-form",
+      "title": "CDA ASYCUDA Approval Application for Kernel Products",
+      "projector": "FORM",
+      "dataKey": "userform",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Application",
+          "element": "primary_action"
+        }
+      ]
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}

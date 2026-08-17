@@ -62,6 +62,27 @@
       "version": "",
       "loader": "local",
       "path": "process-1/cda_review_result/userinput_jsonform.json"
+    },
+    {
+      "id": "cda_kernel_asycuda_review_v1",
+      "kind": "task_config",
+      "version": "",
+      "loader": "local",
+      "path": "3-kernel-products-asycuda-approval/cda_kernel_asycuda_review/cda_kernel_asycuda_review_v1.json"
+    },
+    {
+      "id": "cda-kernel-asycuda--officer-review-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "3-kernel-products-asycuda-approval/cda_kernel_asycuda_review/officerinput_jsonform.json"
+    },
+    {
+      "id": "cda-kernel-asycuda--user-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "3-kernel-products-asycuda-approval/cda_kernel_asycuda_review/userinput_jsonform.json"
     }
   ]
 }

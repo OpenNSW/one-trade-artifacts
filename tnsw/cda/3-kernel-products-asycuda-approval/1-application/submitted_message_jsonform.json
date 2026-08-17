@@ -1,0 +1,4 @@
+{
+  "id": "cda-kernel-asycuda--submitted-message",
+  "template": "### Application Submitted Successfully\n\nYour CDA ASYCUDA Approval Application for Kernel Products has been submitted. The application is now undergoing review by a CDA Officer.\n\n* **CUSDEC Reference**: `{{.cusdec_number}}`\n* **Status**: Awaiting Officer Review"
+}

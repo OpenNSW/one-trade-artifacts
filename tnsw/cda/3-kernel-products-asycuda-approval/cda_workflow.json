@@ -1,0 +1,41 @@
+{
+  "id": "cda-kernel-asycuda-approval",
+  "name": "CDA ASYCUDA Approval for Kernel Products",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START",
+      "name": "Start"
+    },
+    {
+      "id": "cda_1_0_apply",
+      "type": "TASK",
+      "name": "[CDA 1.0] Submit ASYCUDA Approval Application",
+      "task_template_id": "cda-kernel-asycuda-approval-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {},
+      "output_mapping": {
+        "userform.cusdec_number": "cda_kernel.reference_number",
+        "userform": "cda_kernel.userform"
+      }
+    },
+    {
+      "id": "end_success",
+      "type": "END",
+      "name": "Approval Granted"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_start_to_apply",
+      "source_id": "start",
+      "target_id": "cda_1_0_apply"
+    },
+    {
+      "id": "e_apply_to_success",
+      "source_id": "cda_1_0_apply",
+      "target_id": "end_success"
+    }
+  ]
+}

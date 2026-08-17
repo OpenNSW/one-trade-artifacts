@@ -1,0 +1,9 @@
+{
+  "id": "cda-kernel-asycuda--user-input",
+  "task_type": "USER_INPUT",
+  "output_namespace": "userform",
+  "plugin_properties": {
+    "user_jsonforms_id": "cda-kernel-asycuda--user-form",
+    "reviewer_jsonforms_id": "cda-kernel-asycuda--officer-review-form"
+  }
+}

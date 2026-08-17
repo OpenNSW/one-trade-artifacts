@@ -1669,6 +1669,72 @@
       "path": "cda/process-1/cda_workflow.json"
     },
     {
+      "id": "cda-kernel-asycuda-approval-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/3-kernel-products-asycuda-approval/1-application/render.json"
+    },
+    {
+      "id": "cda-kernel-asycuda--user-input",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "cda/3-kernel-products-asycuda-approval/1-application/userinput.json"
+    },
+    {
+      "id": "cda-kernel-asycuda--user-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/3-kernel-products-asycuda-approval/1-application/userinput_jsonform.json"
+    },
+    {
+      "id": "cda-kernel-asycuda--submitted-message",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/3-kernel-products-asycuda-approval/1-application/submitted_message_jsonform.json"
+    },
+    {
+      "id": "cda-kernel-asycuda--approved-message",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/3-kernel-products-asycuda-approval/1-application/approved_message_jsonform.json"
+    },
+    {
+      "id": "cda-kernel-asycuda--feedback",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/3-kernel-products-asycuda-approval/1-application/feedback_jsonform.json"
+    },
+    {
+      "id": "cda-kernel-asycuda--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "cda/3-kernel-products-asycuda-approval/1-application/officer_review.json"
+    },
+    {
+      "id": "cda-kernel-asycuda--officer-review-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/3-kernel-products-asycuda-approval/1-application/officer_review_jsonform.json"
+    },
+    {
+      "id": "cda-kernel-asycuda-approval-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "cda/3-kernel-products-asycuda-approval/1-application/workflow.json"
+    },
+    {
+      "id": "cda-kernel-asycuda-approval-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "cda/3-kernel-products-asycuda-approval/1-application/task_template.json"
+    },
+    {
+      "id": "cda-kernel-asycuda-approval",
+      "kind": "workflow",
+      "version": "",
+      "path": "cda/3-kernel-products-asycuda-approval/cda_workflow.json"
+    },
+    {
       "id": "customs-workflow",
       "kind": "workflow",
       "version": "",
