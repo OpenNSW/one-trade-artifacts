@@ -1,0 +1,44 @@
+name: Push to R2 (staging)
+
+on:
+  workflow_dispatch:
+    inputs:
+      dryrun:
+        description: "Preview the sync without uploading (--dryrun)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Restore git file modification times
+        run: |
+          git ls-files -z | while IFS= read -r -d '' f; do
+            touch -d "@$(git log -1 --format=%ct -- "$f")" "$f"
+          done
+
+      - name: Sync to R2
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+        run: |
+          aws s3 sync . "s3://${{ vars.R2_BUCKET_STAGING }}" \
+            --endpoint-url "https://${{ vars.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com" \
+            --exclude "*" \
+            --include "cda/*" \
+            --include "customs/*" \
+            --include "fcau/*" \
+            --include "npqs/*" \
+            --include "sltb/*" \
+            --include "tnsw/*" \
+            --delete \
+            ${{ inputs.dryrun && '--dryrun' || '' }}
