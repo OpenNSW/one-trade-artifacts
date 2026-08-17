@@ -1,7 +1,6 @@
 name: Push to R2
 
 on:
-  pull_request:
   workflow_dispatch:
     inputs:
       dryrun:
@@ -11,7 +10,6 @@ on:
 
 permissions:
   contents: read
-  pull-requests: write
 
 jobs:
   sync:
@@ -33,26 +31,14 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: auto
         run: |
-          {
-            echo '### R2 sync preview'
-            echo '```'
-            aws s3 sync . "s3://${{ secrets.R2_BUCKET }}" \
-              --endpoint-url "https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com" \
-              --exclude "*" \
-              --include "cda/*" \
-              --include "customs/*" \
-              --include "fcau/*" \
-              --include "npqs/*" \
-              --include "sltb/*" \
-              --include "tnsw/*" \
-              --delete \
-              ${{ (github.event_name == 'pull_request' || inputs.dryrun) && '--dryrun' || '' }}
-            echo '```'
-          } | tee sync-output.md
-
-      - name: Comment sync preview on PR
-        if: github.event_name == 'pull_request'
-        uses: marocchino/sticky-pull-request-comment@v2
-        with:
-          header: r2-sync-preview
-          path: sync-output.md
+          aws s3 sync . "s3://${{ secrets.R2_BUCKET }}" \
+            --endpoint-url "https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com" \
+            --exclude "*" \
+            --include "cda/*" \
+            --include "customs/*" \
+            --include "fcau/*" \
+            --include "npqs/*" \
+            --include "sltb/*" \
+            --include "tnsw/*" \
+            --delete \
+            ${{ inputs.dryrun && '--dryrun' || '' }}
