@@ -1,0 +1,63 @@
+{
+  "id": "sltb-pay-levy--confirm-pinpack-form",
+  "title": "PinPack Account Levy Deduction Confirmation",
+  "schema": {
+    "type": "object",
+    "required": [
+      "pinpack_account_number",
+      "deduction_status"
+    ],
+    "properties": {
+      "pinpack_account_number": {
+        "type": "string",
+        "title": "Trader PinPack Account Number / ID",
+        "example": "PP-SLTB-88421"
+      },
+      "deducted_amount": {
+        "type": "string",
+        "title": "Deducted Levy Amount (LKR)",
+        "example": "12500.00"
+      },
+      "deduction_status": {
+        "type": "string",
+        "title": "PinPack Deduction Status",
+        "oneOf": [
+          {
+            "const": "deducted",
+            "title": "Confirm Levy Deducted from PinPack Account"
+          }
+        ],
+        "default": "deducted"
+      },
+      "remarks": {
+        "type": "string",
+        "title": "Officer Remarks (Optional)",
+        "example": "Levy auto-deducted upon CusDec & Blend Sheet upload integration."
+      }
+    }
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/pinpack_account_number"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/deducted_amount"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/deduction_status"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/remarks",
+        "options": {
+          "multiLine": true
+        }
+      }
+    ]
+  }
+}

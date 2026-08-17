@@ -72,7 +72,8 @@
     {
       "id": "end",
       "type": "END",
-      "name": "End"
+      "name": "End",
+      "end": { "outcome": "success" }
     }
   ],
   "edges": [

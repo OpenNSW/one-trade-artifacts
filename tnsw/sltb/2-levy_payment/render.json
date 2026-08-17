@@ -1,11 +1,11 @@
 {
   "id": "sltb-pay-levy-flow:render",
   "type": "PAYMENT",
-  "title": "[SLTB] Pay SLTB Levy via GovPay",
+  "title": "[SLTB] Pay SLTB Levy",
   "sections": {
-    "workspace": {
+    "select_method": {
       "templateId": "sltb-pay-levy--select-method-form",
-      "title": "Select Payment Gateway",
+      "title": "Select Payment Method",
       "projector": "FORM",
       "dataKey": "payment_method",
       "visibleWhen": {
@@ -17,6 +17,60 @@
         {
           "command": "submit",
           "label": "Proceed to Payment",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "upload_slip": {
+      "templateId": "sltb-pay-levy--upload-form",
+      "title": "Upload Payment Receipt",
+      "projector": "FORM",
+      "dataKey": "payment",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ]
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Payment Slip",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "review_slip": {
+      "templateId": "sltb-pay-levy--review-form",
+      "title": "Verify Payment Receipt",
+      "projector": "FORM",
+      "dataKey": "payment_review",
+      "visibleWhen": {
+        "states": [
+          "PENDING_OFFICER"
+        ]
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Verification",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "confirm_pinpack": {
+      "templateId": "sltb-pay-levy--confirm-pinpack-form",
+      "title": "PinPack Deduction Confirmation",
+      "projector": "FORM",
+      "dataKey": "pinpack_deduction",
+      "visibleWhen": {
+        "states": [
+          "PENDING_OFFICER"
+        ]
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Confirm PinPack Deduction",
           "element": "primary_action"
         }
       ]
@@ -52,8 +106,16 @@
         }
       ]
     },
+    "PENDING_OFFICER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    },
     "PENDING_PAYMENT": {
       "actions": []
-    }
+    },
+    "COMPLETED": {}
   }
 }

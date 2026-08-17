@@ -1,0 +1,26 @@
+{
+  "id": "sltb-pay-levy--upload-form",
+  "title": "Upload SLTB Levy Payment Receipt",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "payment_slip": {
+        "type": "string",
+        "format": "file",
+        "title": "Payment Slip / Bank Deposit Receipt (PDF/Image)"
+      }
+    },
+    "required": [
+      "payment_slip"
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/payment_slip"
+      }
+    ]
+  }
+}

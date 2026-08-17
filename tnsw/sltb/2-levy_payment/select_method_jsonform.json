@@ -1,6 +1,6 @@
 {
   "id": "sltb-pay-levy--select-method-form",
-  "title": "Select Payment Gateway",
+  "title": "Select Levy Payment Method",
   "schema": {
     "type": "object",
     "required": [
@@ -14,7 +14,15 @@
         "oneOf": [
           {
             "const": "govpay",
-            "title": "GovPay (Bank/ATM/Online) [Offline Instructions]"
+            "title": "GovPay (Bank/ATM/Online Gateway)"
+          },
+          {
+            "const": "payment_slip",
+            "title": "Payment Slip Upload (Manual Payment at Counter / Bank)"
+          },
+          {
+            "const": "pinpack",
+            "title": "PinPack Pre-Funded Account Deduction"
           }
         ]
       }
@@ -25,7 +33,7 @@
     "elements": [
       {
         "type": "Label",
-        "text": "Please select the preferred payment method. The next screen will show you the payment amount and instructions for completing the payment."
+        "text": "Please select your preferred SLTB Levy payment method. The next screen will guide you through completing or confirming the payment."
       },
       {
         "type": "Control",
