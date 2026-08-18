@@ -13,7 +13,7 @@
       "task_template_id": "cda-kcfn-payment--select-method",
       "input_mapping": {},
       "output_mapping": {
-        "selected_method": "selected_method"
+        "selected_method": "payment.selected_method"
       }
     },
     {
@@ -21,11 +21,11 @@
       "type": "TASK",
       "task_template_id": "cda-kcfn-payment--payment",
       "input_mapping": {
-        "reference_number": "reference_number",
-        "selected_method": "selected_method"
+        "payment.reference_number": "reference_number",
+        "payment.selected_method": "selected_method"
       },
       "output_mapping": {
-        "payment_status": "payment_status",
+        "payment_status": "payment.payment_status",
         "payment_receipt_url?": "payment.payment_receipt_url",
         "selected_method?": "payment.selected_method"
       }

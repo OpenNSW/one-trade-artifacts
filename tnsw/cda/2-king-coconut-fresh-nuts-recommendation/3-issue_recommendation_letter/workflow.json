@@ -12,8 +12,8 @@
       "type": "TASK",
       "task_template_id": "cda-kcfn-issue-letter--officer-review",
       "input_mapping": {
-        "reference_number": "reference_number",
-        "userform": "submission"
+        "letter.reference_number": "reference_number",
+        "letter.userform": "submission"
       },
       "output_mapping": {
         "recommendation_letter_id": "reviewerform.recommendation_letter_id",

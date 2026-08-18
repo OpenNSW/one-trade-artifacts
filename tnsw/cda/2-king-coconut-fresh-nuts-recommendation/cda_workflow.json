@@ -27,12 +27,12 @@
       "task_template_id": "cda-kcfn-payment-flow",
       "lane": "Trader/CHA",
       "input_mapping": {
-        "cda_kcfn.reference_number": "reference_number"
+        "cda_kcfn.reference_number": "payment.reference_number"
       },
       "output_mapping": {
-        "payment_status": "cda_kcfn.payment_status",
-        "payment_receipt_url?": "cda_kcfn.payment_receipt_url",
-        "selected_method?": "cda_kcfn.selected_method"
+        "payment.payment_status": "cda_kcfn.payment_status",
+        "payment.payment_receipt_url?": "cda_kcfn.payment_receipt_url",
+        "payment.selected_method?": "cda_kcfn.selected_method"
       }
     },
     {
@@ -48,8 +48,8 @@
       "task_template_id": "cda-kcfn-issue-letter-flow",
       "lane": "CDA Officer",
       "input_mapping": {
-        "cda_kcfn.reference_number": "reference_number",
-        "cda_kcfn.userform": "userform"
+        "cda_kcfn.reference_number": "letter.reference_number",
+        "cda_kcfn.userform": "letter.userform"
       },
       "output_mapping": {
         "reviewerform.recommendation_letter_id": "cda_kcfn.recommendation_letter_id",
