@@ -8,9 +8,18 @@
         "type": "string",
         "title": "Shipment Type",
         "oneOf": [
-          { "const": "FCL", "title": "FCL — Full Container Load" },
-          { "const": "LCL", "title": "LCL — Less than Container Load" },
-          { "const": "BREAK_BULK", "title": "Break Bulk" }
+          {
+            "const": "FCL",
+            "title": "FCL — Full Container Load"
+          },
+          {
+            "const": "LCL",
+            "title": "LCL — Less than Container Load"
+          },
+          {
+            "const": "BREAK_BULK",
+            "title": "Break Bulk"
+          }
         ],
         "example": "FCL"
       },
@@ -24,20 +33,42 @@
         "type": "object",
         "title": "Identification",
         "properties": {
-          "officeCode": { "type": "string", "title": "Customs Office Code", "example": "CBEX1" },
+          "officeCode": {
+            "type": "string",
+            "title": "Customs Office Code",
+            "example": "CBEX1"
+          },
           "declarationType": {
             "type": "string",
             "title": "Declaration Type",
             "oneOf": [
-              { "const": "EX", "title": "EX — Export" },
-              { "const": "IM", "title": "IM — Import" }
+              {
+                "const": "EX",
+                "title": "EX — Export"
+              },
+              {
+                "const": "IM",
+                "title": "IM — Import"
+              }
             ],
             "example": "EX"
           },
-          "generalProcedureCode": { "type": "string", "title": "General Procedure Code", "example": "1" },
-          "transitDocumentType": { "type": "string", "title": "Transit Document Type", "example": "01" }
+          "generalProcedureCode": {
+            "type": "string",
+            "title": "General Procedure Code",
+            "example": "1"
+          },
+          "transitDocumentType": {
+            "type": "string",
+            "title": "Transit Document Type",
+            "example": "01"
+          }
         },
-        "required": ["officeCode", "declarationType", "generalProcedureCode"]
+        "required": [
+          "officeCode",
+          "declarationType",
+          "generalProcedureCode"
+        ]
       },
       "traders": {
         "type": "object",
@@ -47,31 +78,78 @@
             "type": "object",
             "title": "Exporter",
             "properties": {
-              "code": { "type": "string", "title": "Exporter TIN / Code", "example": "1240016847000" },
-              "name": { "type": "string", "title": "Exporter Name", "example": "JOTHI COCONUT EXPORTERS" },
-              "address": { "type": "string", "title": "Exporter Address", "example": "45A, KANDY ROAD, PILIMATHALAWA" },
-              "countryCode": { "type": "string", "title": "Country Code", "example": "LK" }
+              "code": {
+                "type": "string",
+                "title": "Exporter TIN / Code",
+                "example": "1240016847000"
+              },
+              "name": {
+                "type": "string",
+                "title": "Exporter Name",
+                "example": "JOTHI COCONUT EXPORTERS"
+              },
+              "address": {
+                "type": "string",
+                "title": "Exporter Address",
+                "example": "45A, KANDY ROAD, PILIMATHALAWA"
+              },
+              "countryCode": {
+                "type": "string",
+                "title": "Country Code",
+                "example": "LK"
+              }
             },
-            "required": ["code", "name", "address", "countryCode"]
+            "required": [
+              "code",
+              "name",
+              "address",
+              "countryCode"
+            ]
           },
           "consignee": {
             "type": "object",
             "title": "Consignee",
             "properties": {
-              "name": { "type": "string", "title": "Consignee Name", "example": "COCO WORLD SDN BHD" },
-              "address": { "type": "string", "title": "Consignee Address", "example": "125, PUTRAJAYA, KUALA LUMPUR, MALAYSIA" },
-              "countryCode": { "type": "string", "title": "Country Code", "example": "MY" }
+              "name": {
+                "type": "string",
+                "title": "Consignee Name",
+                "example": "COCO WORLD SDN BHD"
+              },
+              "address": {
+                "type": "string",
+                "title": "Consignee Address",
+                "example": "125, PUTRAJAYA, KUALA LUMPUR, MALAYSIA"
+              },
+              "countryCode": {
+                "type": "string",
+                "title": "Country Code",
+                "example": "MY"
+              }
             },
-            "required": ["name", "address", "countryCode"]
+            "required": [
+              "name",
+              "address",
+              "countryCode"
+            ]
           },
           "declarant": {
             "type": "object",
             "title": "Declarant",
             "properties": {
-              "code": { "type": "string", "title": "Declarant Code", "example": "103167442" },
-              "referenceNo": { "type": "string", "title": "Reference No", "example": "#1" }
+              "code": {
+                "type": "string",
+                "title": "Declarant Code",
+                "example": "103167442"
+              },
+              "referenceNo": {
+                "type": "string",
+                "title": "Reference No",
+                "example": "#1"
+              }
             },
-            "required": ["code"]
+            "required": [
+              "code"
+            ]
           }
         }
       },
@@ -79,107 +157,290 @@
         "type": "object",
         "title": "General Information",
         "properties": {
-          "countryOfFirstDestination": { "type": "string", "title": "Country of First Destination", "example": "MY" },
-          "exportCountryCode": { "type": "string", "title": "Export Country Code", "example": "LK" },
-          "destinationCountryCode": { "type": "string", "title": "Destination Country Code", "example": "MY" },
-          "commentsText": { "type": "string", "title": "Comments", "example": "Test export declaration" }
+          "countryOfFirstDestination": {
+            "type": "string",
+            "title": "Country of First Destination",
+            "example": "MY"
+          },
+          "exportCountryCode": {
+            "type": "string",
+            "title": "Export Country Code",
+            "example": "LK"
+          },
+          "destinationCountryCode": {
+            "type": "string",
+            "title": "Destination Country Code",
+            "example": "MY"
+          },
+          "commentsText": {
+            "type": "string",
+            "title": "Comments",
+            "example": "Test export declaration"
+          }
         }
       },
       "transport": {
         "type": "object",
         "title": "Transport",
         "properties": {
-          "vesselName": { "type": "string", "title": "Vessel Name", "example": "MSC SAVANNA" },
-          "voyageNo": { "type": "string", "title": "Voyage No", "example": "185 E DATED 20/04/2026" },
+          "vesselName": {
+            "type": "string",
+            "title": "Vessel Name",
+            "example": "MSC SAVANNA"
+          },
+          "transportNationality": {
+            "type": "string",
+            "title": "Transport Nationality",
+            "description": "Country code of the vessel/aircraft at departure.",
+            "example": "LK"
+          },
+          "voyageNo": {
+            "type": "string",
+            "title": "Voyage No",
+            "example": "185 E DATED 20/04/2026"
+          },
+          "voyageNationality": {
+            "type": "string",
+            "title": "Voyage Nationality",
+            "example": "LK"
+          },
           "modeOfTransport": {
             "type": "string",
             "title": "Mode of Transport",
             "oneOf": [
-              { "const": "1", "title": "1 — Sea" },
-              { "const": "3", "title": "3 — Road" },
-              { "const": "4", "title": "4 — Air" }
+              {
+                "const": "1",
+                "title": "1 — Sea"
+              },
+              {
+                "const": "3",
+                "title": "3 — Road"
+              },
+              {
+                "const": "4",
+                "title": "4 — Air"
+              }
             ],
             "example": "1"
           },
-          "containerized": { "type": "boolean", "title": "Containerized", "example": true },
-          "deliveryTermsCode": { "type": "string", "title": "Delivery Terms Code", "example": "CIF" },
-          "deliveryTermsPlace": { "type": "string", "title": "Delivery Terms Place", "example": "TEST DELIVERY TERMS PLACE" },
-          "borderOfficeCode": { "type": "string", "title": "Border Office Code", "example": "CBEX1" },
-          "placeOfLoadingCode": { "type": "string", "title": "Place of Loading Code", "example": "CNNBO" },
-          "placeOfLoadingName": { "type": "string", "title": "Place of Loading Name", "example": "CNNBO" }
+          "containerized": {
+            "type": "boolean",
+            "title": "Containerized",
+            "example": true
+          },
+          "deliveryTermsCode": {
+            "type": "string",
+            "title": "Delivery Terms Code",
+            "example": "CIF"
+          },
+          "deliveryTermsPlace": {
+            "type": "string",
+            "title": "Delivery Terms Place",
+            "example": "TEST DELIVERY TERMS PLACE"
+          },
+          "borderOfficeCode": {
+            "type": "string",
+            "title": "Border Office Code",
+            "example": "CBEX1"
+          },
+          "placeOfLoadingCode": {
+            "type": "string",
+            "title": "Place of Loading Code",
+            "example": "CNNBO"
+          },
+          "placeOfLoadingName": {
+            "type": "string",
+            "title": "Place of Loading Name",
+            "example": "CNNBO"
+          },
+          "placeOfDischargeCode": {
+            "type": "string",
+            "title": "Place of Discharge Code",
+            "description": "UN/LOCODE of the place where the goods are discharged.",
+            "example": "LKADP"
+          }
         },
-        "required": ["vesselName", "modeOfTransport", "deliveryTermsCode"]
+        "required": [
+          "vesselName",
+          "modeOfTransport",
+          "deliveryTermsCode",
+          "transportNationality",
+          "placeOfDischargeCode"
+        ]
       },
       "financial": {
         "type": "object",
         "title": "Financial",
         "properties": {
-          "bankCode": { "type": "string", "title": "Bank Code", "example": "7056" },
-          "bankName": { "type": "string", "title": "Bank Name", "example": "Commercial Bank" },
-          "bankBranch": { "type": "string", "title": "Bank Branch", "example": "001" },
-          "bankReference": { "type": "string", "title": "Bank Reference", "example": "84004328" },
-          "paymentTermsCode": { "type": "string", "title": "Payment Terms Code", "example": "31" },
-          "modeOfPayment": { "type": "string", "title": "Mode of Payment", "example": "CASH" }
+          "bankCode": {
+            "type": "string",
+            "title": "Bank Code",
+            "example": "7056"
+          },
+          "bankName": {
+            "type": "string",
+            "title": "Bank Name",
+            "example": "Commercial Bank"
+          },
+          "bankBranch": {
+            "type": "string",
+            "title": "Bank Branch",
+            "example": "001"
+          },
+          "bankReference": {
+            "type": "string",
+            "title": "Bank Reference",
+            "example": "84004328"
+          },
+          "remittanceAmount": {
+            "type": "number",
+            "title": "Remittance Amount",
+            "description": "Amount remitted through the bank against this declaration.",
+            "example": 500
+          },
+          "paymentTermsCode": {
+            "type": "string",
+            "title": "Payment Terms Code",
+            "example": "31"
+          },
+          "modeOfPayment": {
+            "type": "string",
+            "title": "Mode of Payment",
+            "example": "CASH"
+          }
         }
       },
       "valuation": {
         "type": "object",
         "title": "Valuation",
         "properties": {
-          "invoiceAmountForeign": { "type": "number", "title": "Invoice Amount (Foreign)", "example": 2400 },
-          "invoiceCurrencyCode": { "type": "string", "title": "Invoice Currency", "example": "USD" },
-          "invoiceAmountLKR": { "type": "number", "title": "Invoice Amount (LKR)", "example": 0 },
+          "invoiceAmountForeign": {
+            "type": "number",
+            "title": "Invoice Amount (Foreign)",
+            "example": 2400
+          },
+          "invoiceCurrencyCode": {
+            "type": "string",
+            "title": "Invoice Currency",
+            "example": "USD"
+          },
+          "invoiceAmountLKR": {
+            "type": "number",
+            "title": "Invoice Amount (LKR)",
+            "example": 0
+          },
           "externalFreight": {
             "type": "object",
             "title": "External Freight",
             "properties": {
-              "amountForeign": { "type": "number", "title": "Amount (Foreign)", "example": 100 },
-              "amountLKR": { "type": "number", "title": "Amount (LKR)", "example": 0 },
-              "currencyCode": { "type": "string", "title": "Currency", "example": "USD" }
+              "amountForeign": {
+                "type": "number",
+                "title": "Amount (Foreign)",
+                "example": 100
+              },
+              "amountLKR": {
+                "type": "number",
+                "title": "Amount (LKR)",
+                "example": 0
+              },
+              "currencyCode": {
+                "type": "string",
+                "title": "Currency",
+                "example": "USD"
+              }
             }
           },
           "internalFreight": {
             "type": "object",
             "title": "Internal Freight",
             "properties": {
-              "amountForeign": { "type": "number", "title": "Amount (Foreign)", "example": 0 },
-              "amountLKR": { "type": "number", "title": "Amount (LKR)", "example": 0 }
+              "amountForeign": {
+                "type": "number",
+                "title": "Amount (Foreign)",
+                "example": 0
+              },
+              "amountLKR": {
+                "type": "number",
+                "title": "Amount (LKR)",
+                "example": 0
+              }
             }
           },
           "insurance": {
             "type": "object",
             "title": "Insurance",
             "properties": {
-              "amountForeign": { "type": "number", "title": "Amount (Foreign)", "example": 0 },
-              "amountLKR": { "type": "number", "title": "Amount (LKR)", "example": 0 }
+              "amountForeign": {
+                "type": "number",
+                "title": "Amount (Foreign)",
+                "example": 0
+              },
+              "amountLKR": {
+                "type": "number",
+                "title": "Amount (LKR)",
+                "example": 0
+              }
             }
           },
           "otherCost": {
             "type": "object",
             "title": "Other Cost",
             "properties": {
-              "amountForeign": { "type": "number", "title": "Amount (Foreign)", "example": 0 },
-              "amountLKR": { "type": "number", "title": "Amount (LKR)", "example": 0 }
+              "amountForeign": {
+                "type": "number",
+                "title": "Amount (Foreign)",
+                "example": 0
+              },
+              "amountLKR": {
+                "type": "number",
+                "title": "Amount (LKR)",
+                "example": 0
+              }
             }
           },
           "deduction": {
             "type": "object",
             "title": "Deduction",
             "properties": {
-              "amountForeign": { "type": "number", "title": "Amount (Foreign)", "example": 0 },
-              "amountLKR": { "type": "number", "title": "Amount (LKR)", "example": 0 }
+              "amountForeign": {
+                "type": "number",
+                "title": "Amount (Foreign)",
+                "example": 0
+              },
+              "amountLKR": {
+                "type": "number",
+                "title": "Amount (LKR)",
+                "example": 0
+              }
             }
           },
-          "totalGrossWeight": { "type": "number", "title": "Total Gross Weight (Kg)", "example": 1500 }
+          "totalGrossWeight": {
+            "type": "number",
+            "title": "Total Gross Weight (Kg)",
+            "example": 1500
+          }
         },
-        "required": ["invoiceAmountForeign", "invoiceCurrencyCode"]
+        "required": [
+          "invoiceAmountForeign",
+          "invoiceCurrencyCode"
+        ]
       },
       "packages": {
         "type": "object",
         "title": "Packages",
         "properties": {
-          "totalPackages": { "type": "integer", "title": "Total Packages", "minimum": 0, "example": 25 },
-          "numberOfLoadingLists": { "type": "integer", "title": "Number of Loading Lists", "minimum": 0, "example": 0 }
+          "totalPackages": {
+            "type": "integer",
+            "title": "Total Packages",
+            "minimum": 0,
+            "example": 25
+          },
+          "numberOfLoadingLists": {
+            "type": "integer",
+            "title": "Number of Loading Lists",
+            "minimum": 0,
+            "example": 0
+          }
         }
       },
       "items": {
@@ -193,65 +454,218 @@
               "type": "object",
               "title": "Packages",
               "properties": {
-                "quantity": { "type": "integer", "title": "Quantity", "minimum": 0, "example": 25 },
-                "kindCode": { "type": "string", "title": "Package Kind Code", "example": "PK" },
-                "kindName": { "type": "string", "title": "Package Kind Name", "example": "Package" }
+                "quantity": {
+                  "type": "integer",
+                  "title": "Quantity",
+                  "minimum": 0,
+                  "example": 25
+                },
+                "kindCode": {
+                  "type": "string",
+                  "title": "Package Kind Code",
+                  "example": "PK"
+                },
+                "kindName": {
+                  "type": "string",
+                  "title": "Package Kind Name",
+                  "example": "Package"
+                }
               }
             },
             "tarification": {
               "type": "object",
               "title": "Tarification",
               "properties": {
-                "hsCode": { "type": "string", "title": "HS Code", "example": "11063010" },
-                "hsPrecision1": { "type": "string", "title": "HS Precision 1", "example": "00" },
-                "preferenceCode": { "type": "string", "title": "Preference Code", "example": "ISFTA" },
-                "extendedProcedureCode": { "type": "string", "title": "Extended Procedure Code", "example": "1100" },
-                "nationalProcedureCode": { "type": "string", "title": "National Procedure Code", "example": "000" },
+                "hsCode": {
+                  "type": "string",
+                  "title": "HS Code",
+                  "example": "11063010"
+                },
+                "hsPrecision1": {
+                  "type": "string",
+                  "title": "HS Precision 1",
+                  "example": "00"
+                },
+                "preferenceCode": {
+                  "type": "string",
+                  "title": "Preference Code",
+                  "example": "ISFTA"
+                },
+                "extendedProcedureCode": {
+                  "type": "string",
+                  "title": "Extended Procedure Code",
+                  "example": "1100"
+                },
+                "nationalProcedureCode": {
+                  "type": "string",
+                  "title": "National Procedure Code",
+                  "example": "000"
+                },
                 "supplementaryUnit": {
                   "type": "object",
                   "title": "Supplementary Unit",
                   "properties": {
-                    "code": { "type": "string", "title": "Unit Code", "example": "KGM" },
-                    "quantity": { "type": "number", "title": "Quantity", "example": 250 }
+                    "code": {
+                      "type": "string",
+                      "title": "Unit Code",
+                      "example": "KGM"
+                    },
+                    "quantity": {
+                      "type": "number",
+                      "title": "Quantity",
+                      "example": 250
+                    }
                   }
                 },
-                "itemPrice": { "type": "number", "title": "Item Price", "example": 2400 },
-                "incoTermsCode": { "type": "string", "title": "Incoterms Code", "example": "CIF" },
-                "incoTermsPlace": { "type": "string", "title": "Incoterms Place", "example": "TEST INCO TERMS PLACE" }
+                "itemPrice": {
+                  "type": "number",
+                  "title": "Item Price",
+                  "example": 2400
+                },
+                "incoTermsCode": {
+                  "type": "string",
+                  "title": "Incoterms Code",
+                  "example": "CIF"
+                },
+                "incoTermsPlace": {
+                  "type": "string",
+                  "title": "Incoterms Place",
+                  "example": "TEST INCO TERMS PLACE"
+                }
               },
-              "required": ["hsCode"]
+              "required": [
+                "hsCode"
+              ]
             },
             "goodsDescription": {
               "type": "object",
               "title": "Goods Description",
               "properties": {
-                "originCountryCode": { "type": "string", "title": "Origin Country Code", "example": "LK" },
-                "description": { "type": "string", "title": "Description", "example": "TEST DESCRIPTION" },
-                "commercialDescription": { "type": "string", "title": "Commercial Description", "example": "COCONUT KERNEL POWDER" }
+                "originCountryCode": {
+                  "type": "string",
+                  "title": "Origin Country Code",
+                  "example": "LK"
+                },
+                "description": {
+                  "type": "string",
+                  "title": "Description",
+                  "example": "TEST DESCRIPTION"
+                },
+                "commercialDescription": {
+                  "type": "string",
+                  "title": "Commercial Description",
+                  "example": "COCONUT KERNEL POWDER"
+                },
+                "commercialDescription1": {
+                  "type": "string",
+                  "title": "Commercial Description (line 2)",
+                  "maxLength": 50,
+                  "example": "PACKED IN CARTONS"
+                }
               },
-              "required": ["description"]
+              "required": [
+                "description"
+              ]
             },
             "valuation": {
               "type": "object",
               "title": "Item Valuation",
               "properties": {
-                "grossWeight": { "type": "number", "title": "Gross Weight", "example": 1500 },
-                "netWeight": { "type": "number", "title": "Net Weight", "example": 1000 },
-                "totalCIF": { "type": "number", "title": "Total CIF", "example": 2400 },
-                "statisticalValue": { "type": "number", "title": "Statistical Value", "example": 2400 },
-                "invoiceAmountForeign": { "type": "number", "title": "Invoice Amount (Foreign)", "example": 2400 },
-                "invoiceCurrencyCode": { "type": "string", "title": "Invoice Currency", "example": "USD" },
-                "invoiceAmountLKR": { "type": "number", "title": "Invoice Amount (LKR)", "example": 0 }
+                "grossWeight": {
+                  "type": "number",
+                  "title": "Gross Weight",
+                  "example": 1500
+                },
+                "netWeight": {
+                  "type": "number",
+                  "title": "Net Weight",
+                  "example": 1000
+                },
+                "totalCIF": {
+                  "type": "number",
+                  "title": "Total CIF",
+                  "example": 2400
+                },
+                "statisticalValue": {
+                  "type": "number",
+                  "title": "Statistical Value",
+                  "example": 2400
+                },
+                "invoiceAmountForeign": {
+                  "type": "number",
+                  "title": "Invoice Amount (Foreign)",
+                  "example": 2400
+                },
+                "invoiceCurrencyCode": {
+                  "type": "string",
+                  "title": "Invoice Currency",
+                  "example": "USD"
+                },
+                "invoiceAmountLKR": {
+                  "type": "number",
+                  "title": "Invoice Amount (LKR)",
+                  "example": 0
+                }
               }
             },
-            "previousDocumentReference": { "type": "string", "title": "Previous Document Reference", "example": "PREV_DOC_REF" },
-            "summaryDeclaration": { "type": "string", "title": "Summary Declaration (BL No.)", "example": "BL789398639" }
+            "previousDocumentReference": {
+              "type": "string",
+              "title": "Previous Document Reference",
+              "example": "PREV_DOC_REF"
+            },
+            "summaryDeclaration": {
+              "type": "string",
+              "title": "Summary Declaration (BL No.)",
+              "example": "BL789398639"
+            }
           },
-          "required": ["tarification", "goodsDescription"]
+          "required": [
+            "tarification",
+            "goodsDescription"
+          ]
+        }
+      },
+      "supportingDocuments": {
+        "type": "array",
+        "title": "Supporting Documents",
+        "description": "Permits, licences and invoices supporting this declaration. PDF only, up to 300 KB each.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "documentCode": {
+              "type": "string",
+              "title": "Document Code",
+              "description": "UNATDTAB document type code.",
+              "example": "N380"
+            },
+            "file": {
+              "type": "string",
+              "format": "file",
+              "title": "Document",
+              "x-file": {
+                "accept": ".pdf",
+                "maxSize": 307200
+              }
+            }
+          },
+          "required": [
+            "documentCode",
+            "file"
+          ]
+        },
+        "x-file": {
+          "maxFiles": 10
         }
       }
     },
-    "required": ["shipmentType", "identification", "traders", "transport", "valuation", "items"]
+    "required": [
+      "shipmentType",
+      "identification",
+      "traders",
+      "transport",
+      "valuation",
+      "items"
+    ]
   },
   "uiSchema": {
     "type": "VerticalLayout",
@@ -263,8 +677,14 @@
           {
             "type": "HorizontalLayout",
             "elements": [
-              { "type": "Control", "scope": "#/properties/shipmentType" },
-              { "type": "Control", "scope": "#/properties/containerCount" }
+              {
+                "type": "Control",
+                "scope": "#/properties/shipmentType"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/containerCount"
+              }
             ]
           }
         ]
@@ -276,15 +696,27 @@
           {
             "type": "HorizontalLayout",
             "elements": [
-              { "type": "Control", "scope": "#/properties/identification/properties/officeCode" },
-              { "type": "Control", "scope": "#/properties/identification/properties/declarationType" }
+              {
+                "type": "Control",
+                "scope": "#/properties/identification/properties/officeCode"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/identification/properties/declarationType"
+              }
             ]
           },
           {
             "type": "HorizontalLayout",
             "elements": [
-              { "type": "Control", "scope": "#/properties/identification/properties/generalProcedureCode" },
-              { "type": "Control", "scope": "#/properties/identification/properties/transitDocumentType" }
+              {
+                "type": "Control",
+                "scope": "#/properties/identification/properties/generalProcedureCode"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/identification/properties/transitDocumentType"
+              }
             ]
           }
         ]
@@ -296,15 +728,27 @@
           {
             "type": "HorizontalLayout",
             "elements": [
-              { "type": "Control", "scope": "#/properties/traders/properties/exporter/properties/code" },
-              { "type": "Control", "scope": "#/properties/traders/properties/exporter/properties/name" }
+              {
+                "type": "Control",
+                "scope": "#/properties/traders/properties/exporter/properties/code"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/traders/properties/exporter/properties/name"
+              }
             ]
           },
           {
             "type": "HorizontalLayout",
             "elements": [
-              { "type": "Control", "scope": "#/properties/traders/properties/exporter/properties/address" },
-              { "type": "Control", "scope": "#/properties/traders/properties/exporter/properties/countryCode" }
+              {
+                "type": "Control",
+                "scope": "#/properties/traders/properties/exporter/properties/address"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/traders/properties/exporter/properties/countryCode"
+              }
             ]
           }
         ]
@@ -316,11 +760,20 @@
           {
             "type": "HorizontalLayout",
             "elements": [
-              { "type": "Control", "scope": "#/properties/traders/properties/consignee/properties/name" },
-              { "type": "Control", "scope": "#/properties/traders/properties/consignee/properties/countryCode" }
+              {
+                "type": "Control",
+                "scope": "#/properties/traders/properties/consignee/properties/name"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/traders/properties/consignee/properties/countryCode"
+              }
             ]
           },
-          { "type": "Control", "scope": "#/properties/traders/properties/consignee/properties/address" }
+          {
+            "type": "Control",
+            "scope": "#/properties/traders/properties/consignee/properties/address"
+          }
         ]
       },
       {
@@ -330,8 +783,14 @@
           {
             "type": "HorizontalLayout",
             "elements": [
-              { "type": "Control", "scope": "#/properties/traders/properties/declarant/properties/code" },
-              { "type": "Control", "scope": "#/properties/traders/properties/declarant/properties/referenceNo" }
+              {
+                "type": "Control",
+                "scope": "#/properties/traders/properties/declarant/properties/code"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/traders/properties/declarant/properties/referenceNo"
+              }
             ]
           }
         ]
@@ -343,12 +802,24 @@
           {
             "type": "HorizontalLayout",
             "elements": [
-              { "type": "Control", "scope": "#/properties/generalInfo/properties/countryOfFirstDestination" },
-              { "type": "Control", "scope": "#/properties/generalInfo/properties/exportCountryCode" },
-              { "type": "Control", "scope": "#/properties/generalInfo/properties/destinationCountryCode" }
+              {
+                "type": "Control",
+                "scope": "#/properties/generalInfo/properties/countryOfFirstDestination"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/generalInfo/properties/exportCountryCode"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/generalInfo/properties/destinationCountryCode"
+              }
             ]
           },
-          { "type": "Control", "scope": "#/properties/generalInfo/properties/commentsText" }
+          {
+            "type": "Control",
+            "scope": "#/properties/generalInfo/properties/commentsText"
+          }
         ]
       },
       {
@@ -358,30 +829,79 @@
           {
             "type": "HorizontalLayout",
             "elements": [
-              { "type": "Control", "scope": "#/properties/transport/properties/vesselName" },
-              { "type": "Control", "scope": "#/properties/transport/properties/voyageNo" }
+              {
+                "type": "Control",
+                "scope": "#/properties/transport/properties/vesselName"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/transport/properties/voyageNo"
+              }
             ]
           },
           {
             "type": "HorizontalLayout",
             "elements": [
-              { "type": "Control", "scope": "#/properties/transport/properties/modeOfTransport" },
-              { "type": "Control", "scope": "#/properties/transport/properties/containerized" }
+              {
+                "type": "Control",
+                "scope": "#/properties/transport/properties/modeOfTransport"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/transport/properties/containerized"
+              }
             ]
           },
           {
             "type": "HorizontalLayout",
             "elements": [
-              { "type": "Control", "scope": "#/properties/transport/properties/deliveryTermsCode" },
-              { "type": "Control", "scope": "#/properties/transport/properties/deliveryTermsPlace" }
+              {
+                "type": "Control",
+                "scope": "#/properties/transport/properties/deliveryTermsCode"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/transport/properties/deliveryTermsPlace"
+              }
             ]
           },
           {
             "type": "HorizontalLayout",
             "elements": [
-              { "type": "Control", "scope": "#/properties/transport/properties/borderOfficeCode" },
-              { "type": "Control", "scope": "#/properties/transport/properties/placeOfLoadingCode" },
-              { "type": "Control", "scope": "#/properties/transport/properties/placeOfLoadingName" }
+              {
+                "type": "Control",
+                "scope": "#/properties/transport/properties/borderOfficeCode"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/transport/properties/placeOfLoadingCode"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/transport/properties/placeOfLoadingName"
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/transport/properties/transportNationality"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/transport/properties/voyageNationality"
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/transport/properties/placeOfDischargeCode"
+              }
             ]
           }
         ]
@@ -393,17 +913,44 @@
           {
             "type": "HorizontalLayout",
             "elements": [
-              { "type": "Control", "scope": "#/properties/financial/properties/bankCode" },
-              { "type": "Control", "scope": "#/properties/financial/properties/bankName" },
-              { "type": "Control", "scope": "#/properties/financial/properties/bankBranch" }
+              {
+                "type": "Control",
+                "scope": "#/properties/financial/properties/bankCode"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/financial/properties/bankName"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/financial/properties/bankBranch"
+              }
             ]
           },
           {
             "type": "HorizontalLayout",
             "elements": [
-              { "type": "Control", "scope": "#/properties/financial/properties/bankReference" },
-              { "type": "Control", "scope": "#/properties/financial/properties/paymentTermsCode" },
-              { "type": "Control", "scope": "#/properties/financial/properties/modeOfPayment" }
+              {
+                "type": "Control",
+                "scope": "#/properties/financial/properties/bankReference"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/financial/properties/paymentTermsCode"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/financial/properties/modeOfPayment"
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/financial/properties/remittanceAmount"
+              }
             ]
           }
         ]
@@ -415,17 +962,35 @@
           {
             "type": "HorizontalLayout",
             "elements": [
-              { "type": "Control", "scope": "#/properties/valuation/properties/invoiceAmountForeign" },
-              { "type": "Control", "scope": "#/properties/valuation/properties/invoiceCurrencyCode" },
-              { "type": "Control", "scope": "#/properties/valuation/properties/invoiceAmountLKR" }
+              {
+                "type": "Control",
+                "scope": "#/properties/valuation/properties/invoiceAmountForeign"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/valuation/properties/invoiceCurrencyCode"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/valuation/properties/invoiceAmountLKR"
+              }
             ]
           },
           {
             "type": "HorizontalLayout",
             "elements": [
-              { "type": "Control", "scope": "#/properties/valuation/properties/externalFreight/properties/amountForeign" },
-              { "type": "Control", "scope": "#/properties/valuation/properties/externalFreight/properties/currencyCode" },
-              { "type": "Control", "scope": "#/properties/valuation/properties/totalGrossWeight" }
+              {
+                "type": "Control",
+                "scope": "#/properties/valuation/properties/externalFreight/properties/amountForeign"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/valuation/properties/externalFreight/properties/currencyCode"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/valuation/properties/totalGrossWeight"
+              }
             ]
           }
         ]
@@ -437,8 +1002,14 @@
           {
             "type": "HorizontalLayout",
             "elements": [
-              { "type": "Control", "scope": "#/properties/packages/properties/totalPackages" },
-              { "type": "Control", "scope": "#/properties/packages/properties/numberOfLoadingLists" }
+              {
+                "type": "Control",
+                "scope": "#/properties/packages/properties/totalPackages"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/packages/properties/numberOfLoadingLists"
+              }
             ]
           }
         ]
@@ -457,76 +1028,161 @@
                   {
                     "type": "HorizontalLayout",
                     "elements": [
-                      { "type": "Control", "scope": "#/properties/packages/properties/quantity" },
-                      { "type": "Control", "scope": "#/properties/packages/properties/kindCode" },
-                      { "type": "Control", "scope": "#/properties/packages/properties/kindName" }
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/packages/properties/quantity"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/packages/properties/kindCode"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/packages/properties/kindName"
+                      }
                     ]
                   },
                   {
                     "type": "HorizontalLayout",
                     "elements": [
-                      { "type": "Control", "scope": "#/properties/tarification/properties/hsCode" },
-                      { "type": "Control", "scope": "#/properties/tarification/properties/hsPrecision1" },
-                      { "type": "Control", "scope": "#/properties/tarification/properties/preferenceCode" }
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/tarification/properties/hsCode"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/tarification/properties/hsPrecision1"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/tarification/properties/preferenceCode"
+                      }
                     ]
                   },
                   {
                     "type": "HorizontalLayout",
                     "elements": [
-                      { "type": "Control", "scope": "#/properties/tarification/properties/extendedProcedureCode" },
-                      { "type": "Control", "scope": "#/properties/tarification/properties/nationalProcedureCode" }
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/tarification/properties/extendedProcedureCode"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/tarification/properties/nationalProcedureCode"
+                      }
                     ]
                   },
                   {
                     "type": "HorizontalLayout",
                     "elements": [
-                      { "type": "Control", "scope": "#/properties/tarification/properties/supplementaryUnit/properties/code" },
-                      { "type": "Control", "scope": "#/properties/tarification/properties/supplementaryUnit/properties/quantity" },
-                      { "type": "Control", "scope": "#/properties/tarification/properties/itemPrice" }
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/tarification/properties/supplementaryUnit/properties/code"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/tarification/properties/supplementaryUnit/properties/quantity"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/tarification/properties/itemPrice"
+                      }
                     ]
                   },
                   {
                     "type": "HorizontalLayout",
                     "elements": [
-                      { "type": "Control", "scope": "#/properties/tarification/properties/incoTermsCode" },
-                      { "type": "Control", "scope": "#/properties/tarification/properties/incoTermsPlace" }
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/tarification/properties/incoTermsCode"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/tarification/properties/incoTermsPlace"
+                      }
                     ]
                   },
                   {
                     "type": "HorizontalLayout",
                     "elements": [
-                      { "type": "Control", "scope": "#/properties/goodsDescription/properties/originCountryCode" },
-                      { "type": "Control", "scope": "#/properties/goodsDescription/properties/description" }
-                    ]
-                  },
-                  { "type": "Control", "scope": "#/properties/goodsDescription/properties/commercialDescription" },
-                  {
-                    "type": "HorizontalLayout",
-                    "elements": [
-                      { "type": "Control", "scope": "#/properties/valuation/properties/grossWeight" },
-                      { "type": "Control", "scope": "#/properties/valuation/properties/netWeight" },
-                      { "type": "Control", "scope": "#/properties/valuation/properties/totalCIF" }
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/goodsDescription/properties/originCountryCode"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/goodsDescription/properties/description"
+                      }
                     ]
                   },
                   {
-                    "type": "HorizontalLayout",
-                    "elements": [
-                      { "type": "Control", "scope": "#/properties/valuation/properties/statisticalValue" },
-                      { "type": "Control", "scope": "#/properties/valuation/properties/invoiceAmountForeign" },
-                      { "type": "Control", "scope": "#/properties/valuation/properties/invoiceCurrencyCode" },
-                      { "type": "Control", "scope": "#/properties/valuation/properties/invoiceAmountLKR" }
-                    ]
+                    "type": "Control",
+                    "scope": "#/properties/goodsDescription/properties/commercialDescription"
                   },
                   {
                     "type": "HorizontalLayout",
                     "elements": [
-                      { "type": "Control", "scope": "#/properties/previousDocumentReference" },
-                      { "type": "Control", "scope": "#/properties/summaryDeclaration" }
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/valuation/properties/grossWeight"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/valuation/properties/netWeight"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/valuation/properties/totalCIF"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/valuation/properties/statisticalValue"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/valuation/properties/invoiceAmountForeign"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/valuation/properties/invoiceCurrencyCode"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/valuation/properties/invoiceAmountLKR"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/previousDocumentReference"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/summaryDeclaration"
+                      }
                     ]
                   }
                 ]
               }
             }
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "label": "12. Supporting Documents",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/supportingDocuments"
           }
         ]
       }

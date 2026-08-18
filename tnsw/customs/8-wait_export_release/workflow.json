@@ -12,10 +12,14 @@
       "type": "TASK",
       "task_template_id": "customs-wait-export-release",
       "input_mapping": {
-        "userform": "submission"
+        "userform": "submission",
+        "cusdec_number": "cusdec_number"
       },
       "output_mapping": {
-        "release_status": "release_status"
+        "release_status": "release_status",
+        "vessel_name?": "export_vessel_name",
+        "voyage_no?": "export_voyage_no",
+        "port_of_loading?": "export_port_of_loading"
       }
     },
     {
