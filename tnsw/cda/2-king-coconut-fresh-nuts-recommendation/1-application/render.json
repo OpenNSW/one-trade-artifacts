@@ -29,9 +29,9 @@
       "templateId": "cda-kcfn-apply--feedback",
       "title": "Officer Feedback & Deficiencies",
       "projector": "MARKDOWN",
-      "dataKey": "rejection_reason",
+      "dataKey": "reviewerform.rejection_reason",
       "visibleWhen": {
-        "requireDataKey": "rejection_reason"
+        "requireDataKey": "reviewerform.rejection_reason"
       }
     },
     "user_form": {

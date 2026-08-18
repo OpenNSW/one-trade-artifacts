@@ -12,7 +12,7 @@
       "type": "TASK",
       "task_template_id": "cda-kcfn-apply--user-input",
       "input_mapping": {
-        "rejection_reason?": "rejection_reason"
+        "reviewerform.rejection_reason?": "rejection_reason"
       },
       "output_mapping": {
         "email": "userform.email",
@@ -61,7 +61,7 @@
       "output_mapping": {
         "review_outcome": "reviewerform.review_outcome",
         "inspection_notes?": "reviewerform.inspection_notes",
-        "rejection_reason?": "rejection_reason"
+        "rejection_reason?": "reviewerform.rejection_reason"
       }
     },
     {

@@ -36,6 +36,12 @@
       }
     },
     {
+      "id": "cda_kcfn_check_payment_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Is Payment Successful?"
+    },
+    {
       "id": "cda_kcfn_3_0_issue_letter",
       "type": "TASK",
       "name": "[CDA-KCFN 3.0] Officer Issues Recommendation Letter",
@@ -84,9 +90,21 @@
       "target_id": "cda_kcfn_2_0_payment"
     },
     {
-      "id": "e_payment_to_issue_letter",
+      "id": "e_payment_to_payment_gw",
       "source_id": "cda_kcfn_2_0_payment",
-      "target_id": "cda_kcfn_3_0_issue_letter"
+      "target_id": "cda_kcfn_check_payment_gateway"
+    },
+    {
+      "id": "e_payment_gw_to_issue_letter",
+      "source_id": "cda_kcfn_check_payment_gateway",
+      "target_id": "cda_kcfn_3_0_issue_letter",
+      "condition": "cda_kcfn.payment_status == 'success'"
+    },
+    {
+      "id": "e_payment_gw_to_retry",
+      "source_id": "cda_kcfn_check_payment_gateway",
+      "target_id": "cda_kcfn_2_0_payment",
+      "condition": "cda_kcfn.payment_status != 'success'"
     },
     {
       "id": "e_issue_letter_to_upload",

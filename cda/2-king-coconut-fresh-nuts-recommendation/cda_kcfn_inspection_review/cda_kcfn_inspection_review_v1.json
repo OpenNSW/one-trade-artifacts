@@ -6,7 +6,7 @@
     "category": "CDA"
   },
   "forms": {
-    "view": "cda-kcfn-apply--user-form",
+    "view": "cda-kcfn-inspection--apply-view-form",
     "review": "cda-kcfn-inspection--officer-review-form"
   }
 }

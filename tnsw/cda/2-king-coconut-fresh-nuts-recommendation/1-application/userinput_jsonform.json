@@ -12,43 +12,20 @@
       "company_name": {
         "type": "string",
         "title": "Company Name",
-        "description": "Populated via a Google Apps Script API call. Values shown here are placeholders.",
-        "oneOf": [
-          { "const": "lanka-fresh-nuts", "title": "Lanka Fresh Nuts (Pvt) Ltd" },
-          { "const": "ceylon-coconut-exporters", "title": "Ceylon Coconut Exporters (Pvt) Ltd" },
-          { "const": "king-coconut-traders-lanka", "title": "King Coconut Traders Lanka (Pvt) Ltd" },
-          { "const": "tropical-nuts-international", "title": "Tropical Nuts International (Pvt) Ltd" }
-        ],
-        "example": "lanka-fresh-nuts"
+        "description": "Populated via a Google Apps Script API call. Free text until that integration is wired in.",
+        "example": "Lanka Fresh Nuts (Pvt) Ltd"
       },
       "cda_registration_no": {
         "type": "string",
         "title": "CDA Registration No (Marketing Division)",
-        "description": "Populated via a Google Apps Script API call. Values shown here are placeholders.",
-        "oneOf": [
-          { "const": "CDA/MKT/REG/0001", "title": "CDA/MKT/REG/0001" },
-          { "const": "CDA/MKT/REG/0002", "title": "CDA/MKT/REG/0002" },
-          { "const": "CDA/MKT/REG/0003", "title": "CDA/MKT/REG/0003" }
-        ],
+        "description": "Populated via a Google Apps Script API call. Free text until that integration is wired in.",
         "example": "CDA/MKT/REG/0001"
       },
       "destination_country": {
         "type": "string",
         "title": "Country",
-        "description": "Placeholder subset. Should be replaced with the full ISO country list.",
-        "oneOf": [
-          { "const": "AE", "title": "United Arab Emirates" },
-          { "const": "SA", "title": "Saudi Arabia" },
-          { "const": "QA", "title": "Qatar" },
-          { "const": "IN", "title": "India" },
-          { "const": "MV", "title": "Maldives" },
-          { "const": "SG", "title": "Singapore" },
-          { "const": "GB", "title": "United Kingdom" },
-          { "const": "US", "title": "United States" },
-          { "const": "DE", "title": "Germany" },
-          { "const": "AU", "title": "Australia" }
-        ],
-        "example": "AE"
+        "description": "Free text until the full ISO country list / API integration is wired in.",
+        "example": "United Arab Emirates"
       },
       "destination_city": {
         "type": "string",
@@ -107,20 +84,8 @@
       "buyer_country": {
         "type": "string",
         "title": "Country",
-        "description": "Placeholder subset. Should be replaced with the full ISO country list.",
-        "oneOf": [
-          { "const": "AE", "title": "United Arab Emirates" },
-          { "const": "SA", "title": "Saudi Arabia" },
-          { "const": "QA", "title": "Qatar" },
-          { "const": "IN", "title": "India" },
-          { "const": "MV", "title": "Maldives" },
-          { "const": "SG", "title": "Singapore" },
-          { "const": "GB", "title": "United Kingdom" },
-          { "const": "US", "title": "United States" },
-          { "const": "DE", "title": "Germany" },
-          { "const": "AU", "title": "Australia" }
-        ],
-        "example": "AE"
+        "description": "Free text until the full ISO country list / API integration is wired in.",
+        "example": "United Arab Emirates"
       },
       "buyer_city": {
         "type": "string",
@@ -215,9 +180,9 @@
         "example": "K. Perera"
       },
       "tel_no": {
-        "type": "number",
+        "type": "string",
         "title": "Tel No",
-        "example": 771234567
+        "example": "0771234567"
       },
       "applicant_name": {
         "type": "string",
