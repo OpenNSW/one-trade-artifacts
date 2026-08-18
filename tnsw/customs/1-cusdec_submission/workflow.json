@@ -25,7 +25,8 @@
         "financial": "userform.financial",
         "valuation": "userform.valuation",
         "packages": "userform.packages",
-        "items": "userform.items"
+        "items": "userform.items",
+        "supportingDocuments?": "userform.supportingDocuments"
       }
     },
     {
