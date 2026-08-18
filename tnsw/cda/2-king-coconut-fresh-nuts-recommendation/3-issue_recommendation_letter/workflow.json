@@ -1,0 +1,41 @@
+{
+  "id": "cda-kcfn-issue-letter-flow",
+  "name": "CDA Officer Issues Recommendation Letter",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "officer_review",
+      "type": "TASK",
+      "task_template_id": "cda-kcfn-issue-letter--officer-review",
+      "input_mapping": {
+        "reference_number": "reference_number",
+        "userform": "submission"
+      },
+      "output_mapping": {
+        "recommendation_letter_id": "reviewerform.recommendation_letter_id",
+        "recommendation_letter_file": "reviewerform.recommendation_letter_file",
+        "remarks?": "reviewerform.remarks"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "officer_review"
+    },
+    {
+      "id": "e2",
+      "source_id": "officer_review",
+      "target_id": "end"
+    }
+  ]
+}

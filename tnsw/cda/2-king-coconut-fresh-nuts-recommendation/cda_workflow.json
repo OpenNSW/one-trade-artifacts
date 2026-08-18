@@ -1,0 +1,102 @@
+{
+  "id": "cda-kcfn-recommendation-letter",
+  "name": "CDA Recommendation Letter for King Coconut and Fresh Nuts Exports",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START",
+      "name": "Start"
+    },
+    {
+      "id": "cda_kcfn_1_0_apply",
+      "type": "TASK",
+      "name": "[CDA-KCFN 1.0] Submit Application & Container Inspection",
+      "task_template_id": "cda-kcfn-apply-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {},
+      "output_mapping": {
+        "userform.commercial_invoice_no": "cda_kcfn.reference_number",
+        "userform": "cda_kcfn.userform"
+      }
+    },
+    {
+      "id": "cda_kcfn_2_0_payment",
+      "type": "TASK",
+      "name": "[CDA-KCFN 2.0] Pay Recommendation Report Fee",
+      "task_template_id": "cda-kcfn-payment-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "cda_kcfn.reference_number": "reference_number"
+      },
+      "output_mapping": {
+        "payment_status": "cda_kcfn.payment_status",
+        "payment_receipt_url?": "cda_kcfn.payment_receipt_url",
+        "selected_method?": "cda_kcfn.selected_method"
+      }
+    },
+    {
+      "id": "cda_kcfn_3_0_issue_letter",
+      "type": "TASK",
+      "name": "[CDA-KCFN 3.0] Officer Issues Recommendation Letter",
+      "task_template_id": "cda-kcfn-issue-letter-flow",
+      "lane": "CDA Officer",
+      "input_mapping": {
+        "cda_kcfn.reference_number": "reference_number",
+        "cda_kcfn.userform": "userform"
+      },
+      "output_mapping": {
+        "reviewerform.recommendation_letter_id": "cda_kcfn.recommendation_letter_id",
+        "reviewerform.recommendation_letter_file": "cda_kcfn.recommendation_letter_file"
+      }
+    },
+    {
+      "id": "cda_kcfn_4_0_upload_documents",
+      "type": "TASK",
+      "name": "[CDA-KCFN 4.0] Trader Uploads Documents & Officer ASYCUDA Verification",
+      "task_template_id": "cda-kcfn-upload-docs-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "cda_kcfn.recommendation_letter_file": "recommendation_letter_file"
+      },
+      "output_mapping": {
+        "uploadform.uploaded_letter_file": "cda_kcfn.uploaded_letter_file",
+        "uploadform.reports": "cda_kcfn.reports",
+        "reviewerform.asycuda_approval_confirmed": "cda_kcfn.asycuda_approval_confirmed",
+        "reviewerform.agency_side_marked": "cda_kcfn.agency_side_marked"
+      }
+    },
+    {
+      "id": "end_success",
+      "type": "END",
+      "name": "Recommendation Letter Approved & ASYCUDA Verified"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_start_to_apply",
+      "source_id": "start",
+      "target_id": "cda_kcfn_1_0_apply"
+    },
+    {
+      "id": "e_apply_to_payment",
+      "source_id": "cda_kcfn_1_0_apply",
+      "target_id": "cda_kcfn_2_0_payment"
+    },
+    {
+      "id": "e_payment_to_issue_letter",
+      "source_id": "cda_kcfn_2_0_payment",
+      "target_id": "cda_kcfn_3_0_issue_letter"
+    },
+    {
+      "id": "e_issue_letter_to_upload",
+      "source_id": "cda_kcfn_3_0_issue_letter",
+      "target_id": "cda_kcfn_4_0_upload_documents"
+    },
+    {
+      "id": "e_upload_to_end",
+      "source_id": "cda_kcfn_4_0_upload_documents",
+      "target_id": "end_success"
+    }
+  ]
+}

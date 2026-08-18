@@ -83,6 +83,69 @@
       "version": "",
       "loader": "local",
       "path": "3-kernel-products-asycuda-approval/cda_kernel_asycuda_review/userinput_jsonform.json"
+    },
+    {
+      "id": "cda_kcfn_inspection_review_v1",
+      "kind": "task_config",
+      "version": "",
+      "loader": "local",
+      "path": "2-king-coconut-fresh-nuts-recommendation/cda_kcfn_inspection_review/cda_kcfn_inspection_review_v1.json"
+    },
+    {
+      "id": "cda-kcfn-apply--user-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "2-king-coconut-fresh-nuts-recommendation/cda_kcfn_inspection_review/userinput_jsonform.json"
+    },
+    {
+      "id": "cda-kcfn-inspection--officer-review-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "2-king-coconut-fresh-nuts-recommendation/cda_kcfn_inspection_review/officerinput_jsonform.json"
+    },
+    {
+      "id": "cda_kcfn_issue_letter_v1",
+      "kind": "task_config",
+      "version": "",
+      "loader": "local",
+      "path": "2-king-coconut-fresh-nuts-recommendation/cda_kcfn_issue_letter/cda_kcfn_issue_letter_v1.json"
+    },
+    {
+      "id": "cda-kcfn-apply--user-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "2-king-coconut-fresh-nuts-recommendation/cda_kcfn_issue_letter/userinput_jsonform.json"
+    },
+    {
+      "id": "cda-kcfn-issue-letter--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "2-king-coconut-fresh-nuts-recommendation/cda_kcfn_issue_letter/officerinput_jsonform.json"
+    },
+    {
+      "id": "cda_kcfn_asycuda_verification_v1",
+      "kind": "task_config",
+      "version": "",
+      "loader": "local",
+      "path": "2-king-coconut-fresh-nuts-recommendation/cda_kcfn_asycuda_verification/cda_kcfn_asycuda_verification_v1.json"
+    },
+    {
+      "id": "cda-kcfn-upload-docs--user-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "2-king-coconut-fresh-nuts-recommendation/cda_kcfn_asycuda_verification/userinput_jsonform.json"
+    },
+    {
+      "id": "cda-kcfn-asycuda-verification--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "2-king-coconut-fresh-nuts-recommendation/cda_kcfn_asycuda_verification/officerinput_jsonform.json"
     }
   ]
 }

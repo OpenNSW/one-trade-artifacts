@@ -1,0 +1,4 @@
+{
+  "id": "cda-kcfn-apply--approved-message",
+  "template": "### Inspection Recommendation Given\n\nThe container inspection is complete and a recommendation has been given by the inspection officer. Please proceed to the next step for document review.\n\n* **Commercial Invoice No.**: `{{.commercial_invoice_no}}`\n* **Status**: Recommended"
+}

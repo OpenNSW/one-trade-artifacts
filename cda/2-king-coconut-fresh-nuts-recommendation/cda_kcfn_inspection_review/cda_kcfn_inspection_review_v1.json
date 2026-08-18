@@ -1,0 +1,12 @@
+{
+  "taskCode": "cda_kcfn_inspection_review_v1",
+  "meta": {
+    "title": "CDA Container Inspection & Recommendation",
+    "description": "Inspection officer inspects the container against the application data and gives a recommendation before document review.",
+    "category": "CDA"
+  },
+  "forms": {
+    "view": "cda-kcfn-apply--user-form",
+    "review": "cda-kcfn-inspection--officer-review-form"
+  }
+}

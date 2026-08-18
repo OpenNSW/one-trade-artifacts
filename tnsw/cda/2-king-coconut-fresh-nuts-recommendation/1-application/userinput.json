@@ -1,0 +1,9 @@
+{
+  "id": "cda-kcfn-apply--user-input",
+  "task_type": "USER_INPUT",
+  "output_namespace": "userform",
+  "plugin_properties": {
+    "user_jsonforms_id": "cda-kcfn-apply--user-form",
+    "reviewer_jsonforms_id": "cda-kcfn-inspection--officer-review-form"
+  }
+}

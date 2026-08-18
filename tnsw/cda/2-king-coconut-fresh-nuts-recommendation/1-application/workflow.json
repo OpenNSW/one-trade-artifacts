@@ -1,0 +1,106 @@
+{
+  "id": "cda-kcfn-apply-flow",
+  "name": "Submit Application & Container Inspection",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "applicant_submission",
+      "type": "TASK",
+      "task_template_id": "cda-kcfn-apply--user-input",
+      "input_mapping": {
+        "rejection_reason?": "rejection_reason"
+      },
+      "output_mapping": {
+        "email": "userform.email",
+        "company_name": "userform.company_name",
+        "cda_registration_no": "userform.cda_registration_no",
+        "destination_country": "userform.destination_country",
+        "destination_city": "userform.destination_city",
+        "vessel": "userform.vessel",
+        "date_of_sailing": "userform.date_of_sailing",
+        "cargo_type": "userform.cargo_type",
+        "port_of_loading": "userform.port_of_loading",
+        "port_of_discharge": "userform.port_of_discharge",
+        "commercial_invoice_no": "userform.commercial_invoice_no",
+        "commercial_invoice_date": "userform.commercial_invoice_date",
+        "filling_date": "userform.filling_date",
+        "buyer_name": "userform.buyer_name",
+        "buyer_country": "userform.buyer_country",
+        "buyer_city": "userform.buyer_city",
+        "container_type": "userform.container_type",
+        "with_husk": "userform.with_husk",
+        "container_number": "userform.container_number",
+        "inner_packing_type": "userform.inner_packing_type",
+        "serial_no_from": "userform.serial_no_from",
+        "serial_no_to": "userform.serial_no_to",
+        "quantity_nuts": "userform.quantity_nuts",
+        "total_net_weight": "userform.total_net_weight",
+        "total_fob": "userform.total_fob",
+        "total_cif": "userform.total_cif",
+        "location": "userform.location",
+        "stuffing_date": "userform.stuffing_date",
+        "contact_person_at_venue": "userform.contact_person_at_venue",
+        "tel_no": "userform.tel_no",
+        "applicant_name": "userform.applicant_name",
+        "applicant_designation": "userform.applicant_designation",
+        "application_date": "userform.application_date",
+        "applicant_email": "userform.applicant_email"
+      }
+    },
+    {
+      "id": "inspection_review",
+      "type": "TASK",
+      "task_template_id": "cda-kcfn-inspection--officer-review",
+      "input_mapping": {
+        "userform": "submission"
+      },
+      "output_mapping": {
+        "review_outcome": "reviewerform.review_outcome",
+        "inspection_notes?": "reviewerform.inspection_notes",
+        "rejection_reason?": "rejection_reason"
+      }
+    },
+    {
+      "id": "inspection_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "applicant_submission"
+    },
+    {
+      "id": "e2",
+      "source_id": "applicant_submission",
+      "target_id": "inspection_review"
+    },
+    {
+      "id": "e3",
+      "source_id": "inspection_review",
+      "target_id": "inspection_gateway"
+    },
+    {
+      "id": "e_needs_info",
+      "source_id": "inspection_gateway",
+      "target_id": "applicant_submission",
+      "condition": "reviewerform.review_outcome == 'needs_more_info'"
+    },
+    {
+      "id": "e_approve",
+      "source_id": "inspection_gateway",
+      "target_id": "end",
+      "condition": "reviewerform.review_outcome == 'approve'"
+    }
+  ]
+}
