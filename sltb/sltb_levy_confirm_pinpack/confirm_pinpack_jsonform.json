@@ -4,15 +4,9 @@
   "schema": {
     "type": "object",
     "required": [
-      "pinpack_account_number",
       "deduction_status"
     ],
     "properties": {
-      "pinpack_account_number": {
-        "type": "string",
-        "title": "Trader PinPack Account Number / ID",
-        "example": "PP-SLTB-88421"
-      },
       "deduction_status": {
         "type": "string",
         "title": "PinPack Deduction Status",
@@ -34,10 +28,6 @@
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
-      {
-        "type": "Control",
-        "scope": "#/properties/pinpack_account_number"
-      },
       {
         "type": "Control",
         "scope": "#/properties/deduction_status"

@@ -83,7 +83,6 @@
         "levy_amount": "deducted_amount"
       },
       "output_mapping": {
-        "pinpack_account_number": "pinpack_account_number",
         "deduction_status": "payment_status"
       }
     },

@@ -1,0 +1,4 @@
+{
+  "id": "sltb-pay-levy--reupload-reason",
+  "template": "{{if .payment_feedback}}\n### Re-upload required\n\nThe officer has asked you to submit the payment slip again.\n\n**Reason:** {{.payment_feedback}}\n{{else if .payment.payment_feedback}}\n### Re-upload required\n\nThe officer has asked you to submit the payment slip again.\n\n**Reason:** {{.payment.payment_feedback}}\n{{end}}"
+}

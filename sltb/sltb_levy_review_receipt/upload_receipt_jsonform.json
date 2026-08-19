@@ -6,7 +6,7 @@
     "properties": {
       "payment_feedback": {
         "type": "string",
-        "title": "Officer Feedback (Re-upload Required)",
+        "title": "Reason for re-upload (from officer)",
         "readOnly": true
       },
       "payment_slip": {

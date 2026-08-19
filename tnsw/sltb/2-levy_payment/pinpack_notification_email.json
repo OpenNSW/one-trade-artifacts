@@ -1,5 +1,5 @@
 {
-  "subject": "SLTB Tea Board Levy Deduction Notification — {{.reference_number}}",
-  "body": "Dear Trader,\n\nPlease be informed that the applicable Sri Lanka Tea Board (SLTB) Levy has been successfully deducted from your pre-funded PinPack account for consignment reference {{.reference_number}}.\n\nDeducted Amount: {{.deducted_amount}} LKR\n\nThank you.\nSri Lanka Tea Board",
-  "html_body": "<p>Dear Trader,</p><p>Please be informed that the applicable Sri Lanka Tea Board (SLTB) Levy has been successfully deducted from your pre-funded PinPack account for consignment reference <strong>{{.reference_number}}</strong>.</p><p>Deducted Amount: <strong>{{.deducted_amount}} LKR</strong></p><p>Thank you.<br/>Sri Lanka Tea Board</p>"
+  "subject": "SLTB Tea Board Levy Deduction Notification",
+  "body": "Dear Trader,\n\nPlease be informed that the applicable Sri Lanka Tea Board (SLTB) Levy has been successfully deducted from your pre-funded PinPack account.\n\nDeducted Amount: {{printf \"%.0f\" .deducted_amount}} LKR\n\nThank you.\nSri Lanka Tea Board",
+  "html_body": "<p>Dear Trader,</p><p>Please be informed that the applicable Sri Lanka Tea Board (SLTB) Levy has been successfully deducted from your pre-funded PinPack account.</p><p>Deducted Amount: <strong>{{printf \"%.0f\" .deducted_amount}} LKR</strong></p><p>Thank you.<br/>Sri Lanka Tea Board</p>"
 }

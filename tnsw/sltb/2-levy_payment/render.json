@@ -21,6 +21,17 @@
         }
       ]
     },
+    "reupload_reason": {
+      "templateId": "sltb-pay-levy--reupload-reason",
+      "title": "Officer Requested Changes",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_SLIP_UPLOAD"
+        ],
+        "requireDataKey": "payment_feedback"
+      }
+    },
     "upload_slip": {
       "templateId": "sltb-pay-levy--upload-form",
       "title": "Upload Payment Receipt",
@@ -41,7 +52,7 @@
     },
     "pending_verification": {
       "templateId": "sltb-pay-levy--pending-verification-markdown",
-      "title": "Payment Verification Pending",
+      "title": "Waiting for Officer Verification",
       "projector": "MARKDOWN",
       "visibleWhen": {
         "states": [
