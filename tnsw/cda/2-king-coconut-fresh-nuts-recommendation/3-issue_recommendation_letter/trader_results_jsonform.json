@@ -1,0 +1,4 @@
+{
+  "id": "cda-kcfn-issue-letter--trader-results",
+  "template": "### Recommendation Letter Issued\n\nYour recommendation letter has been issued.\n\n* **Reference**: `{{.recommendation_letter_id}}`\n\nPlease proceed to upload the recommendation letter along with the necessary documents."
+}

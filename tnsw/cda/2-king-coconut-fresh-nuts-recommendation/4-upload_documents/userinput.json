@@ -1,0 +1,9 @@
+{
+  "id": "cda-kcfn-upload-docs--user-input",
+  "task_type": "USER_INPUT",
+  "output_namespace": "uploadform",
+  "plugin_properties": {
+    "user_jsonforms_id": "cda-kcfn-upload-docs--user-form",
+    "reviewer_jsonforms_id": "cda-kcfn-asycuda-verification--officer-form"
+  }
+}

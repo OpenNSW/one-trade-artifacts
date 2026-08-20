@@ -1,0 +1,6 @@
+{
+  "id": "cda-kcfn-upload-docs-flow",
+  "type": "APPLICATION",
+  "workflow_id": "cda-kcfn-upload-docs-flow",
+  "render_config_id": "cda-kcfn-upload-docs-flow:render"
+}

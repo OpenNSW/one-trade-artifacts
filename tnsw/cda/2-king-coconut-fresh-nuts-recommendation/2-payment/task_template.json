@@ -1,0 +1,6 @@
+{
+  "id": "cda-kcfn-payment-flow",
+  "type": "PAYMENT",
+  "workflow_id": "cda-kcfn-payment-flow",
+  "render_config_id": "cda-kcfn-payment-flow:render"
+}

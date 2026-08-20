@@ -1,0 +1,61 @@
+{
+  "id": "cda-kcfn-asycuda-verification--officer-form",
+  "title": "CDA Officer ASYCUDA Green Check Verification",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "documents_verified": {
+        "type": "boolean",
+        "title": "Uploaded recommendation letter and supporting documents verified",
+        "default": false
+      },
+      "asycuda_approval_confirmed": {
+        "type": "boolean",
+        "title": "I have logged into the ASYCUDA System and pressed the green check (✓) button to approve this consignment",
+        "description": "Login to ASYCUDA and press the green check button for this consignment before confirming here.",
+        "default": false,
+        "example": true
+      },
+      "agency_side_marked": {
+        "type": "boolean",
+        "title": "Marked as checked on the CDA agency side",
+        "default": false,
+        "example": true
+      },
+      "remarks": {
+        "type": "string",
+        "title": "Officer Remarks",
+        "example": "Green check confirmed on ASYCUDA and agency-side record updated."
+      }
+    },
+    "required": [
+      "documents_verified",
+      "asycuda_approval_confirmed",
+      "agency_side_marked"
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/documents_verified"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/asycuda_approval_confirmed"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/agency_side_marked"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/remarks",
+        "options": {
+          "multiLine": true
+        }
+      }
+    ]
+  }
+}

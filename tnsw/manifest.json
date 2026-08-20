@@ -1735,6 +1735,216 @@
       "path": "cda/3-kernel-products-asycuda-approval/cda_workflow.json"
     },
     {
+      "id": "cda-kcfn-apply-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/1-application/workflow.json"
+    },
+    {
+      "id": "cda-kcfn-apply-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/1-application/task_template.json"
+    },
+    {
+      "id": "cda-kcfn-apply--user-input",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/1-application/userinput.json"
+    },
+    {
+      "id": "cda-kcfn-inspection--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/1-application/officer_review.json"
+    },
+    {
+      "id": "cda-kcfn-apply-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/1-application/render.json"
+    },
+    {
+      "id": "cda-kcfn-apply--user-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/1-application/userinput_jsonform.json"
+    },
+    {
+      "id": "cda-kcfn-inspection--officer-review-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/1-application/officer_review_jsonform.json"
+    },
+    {
+      "id": "cda-kcfn-apply--feedback",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/1-application/feedback_jsonform.json"
+    },
+    {
+      "id": "cda-kcfn-apply--submitted-message",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/1-application/submitted_message_jsonform.json"
+    },
+    {
+      "id": "cda-kcfn-apply--approved-message",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/1-application/approved_message_jsonform.json"
+    },
+    {
+      "id": "cda-kcfn-payment-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/2-payment/workflow.json"
+    },
+    {
+      "id": "cda-kcfn-payment-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/2-payment/task_template.json"
+    },
+    {
+      "id": "cda-kcfn-payment--select-method",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/2-payment/select_method.json"
+    },
+    {
+      "id": "cda-kcfn-payment--payment",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/2-payment/payment.json"
+    },
+    {
+      "id": "cda-kcfn-payment--select-method-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/2-payment/select_method_jsonform.json"
+    },
+    {
+      "id": "cda-kcfn-payment--payment-details-markdown",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/2-payment/payment_details_markdown.json"
+    },
+    {
+      "id": "cda-kcfn-payment--success-message",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/2-payment/success_message_jsonform.json"
+    },
+    {
+      "id": "cda-kcfn-payment-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/2-payment/render.json"
+    },
+    {
+      "id": "cda-kcfn-issue-letter-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/3-issue_recommendation_letter/workflow.json"
+    },
+    {
+      "id": "cda-kcfn-issue-letter-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/3-issue_recommendation_letter/task_template.json"
+    },
+    {
+      "id": "cda-kcfn-issue-letter--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/3-issue_recommendation_letter/officerinput.json"
+    },
+    {
+      "id": "cda-kcfn-issue-letter--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/3-issue_recommendation_letter/officerinput_jsonform.json"
+    },
+    {
+      "id": "cda-kcfn-issue-letter--trader-instructions",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/3-issue_recommendation_letter/trader_instructions_jsonform.json"
+    },
+    {
+      "id": "cda-kcfn-issue-letter--trader-results",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/3-issue_recommendation_letter/trader_results_jsonform.json"
+    },
+    {
+      "id": "cda-kcfn-issue-letter-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/3-issue_recommendation_letter/render.json"
+    },
+    {
+      "id": "cda-kcfn-upload-docs-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/4-upload_documents/workflow.json"
+    },
+    {
+      "id": "cda-kcfn-upload-docs-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/4-upload_documents/task_template.json"
+    },
+    {
+      "id": "cda-kcfn-upload-docs--user-input",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/4-upload_documents/userinput.json"
+    },
+    {
+      "id": "cda-kcfn-upload-docs--user-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/4-upload_documents/userinput_jsonform.json"
+    },
+    {
+      "id": "cda-kcfn-upload-docs--submitted-message",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/4-upload_documents/submitted_message_jsonform.json"
+    },
+    {
+      "id": "cda-kcfn-upload-docs--verified-message",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/4-upload_documents/verified_message_jsonform.json"
+    },
+    {
+      "id": "cda-kcfn-asycuda-verification--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/4-upload_documents/officer_review.json"
+    },
+    {
+      "id": "cda-kcfn-asycuda-verification--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/4-upload_documents/officer_review_jsonform.json"
+    },
+    {
+      "id": "cda-kcfn-upload-docs-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/4-upload_documents/render.json"
+    },
+    {
+      "id": "cda-kcfn-recommendation-letter",
+      "kind": "workflow",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/cda_workflow.json"
+    },
+    {
       "id": "customs-workflow",
       "kind": "workflow",
       "version": "",

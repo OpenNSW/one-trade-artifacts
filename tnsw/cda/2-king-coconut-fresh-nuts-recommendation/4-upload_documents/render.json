@@ -1,0 +1,54 @@
+{
+  "id": "cda-kcfn-upload-docs-flow:render",
+  "type": "APPLICATION",
+  "title": "[CDA] Upload Recommendation Letter & ASYCUDA Verification",
+  "sections": {
+    "outcome_message": {
+      "templateId": "cda-kcfn-upload-docs--verified-message",
+      "title": "Verification Outcome",
+      "projector": "MARKDOWN",
+      "dataKey": "reviewerform",
+      "visibleWhen": {
+        "requireDataKey": "reviewerform"
+      }
+    },
+    "status_message": {
+      "templateId": "cda-kcfn-upload-docs--submitted-message",
+      "title": "Upload Status",
+      "projector": "MARKDOWN",
+      "dataKey": "uploadform",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    },
+    "user_form": {
+      "templateId": "cda-kcfn-upload-docs--user-form",
+      "title": "Upload Recommendation Letter & Supporting Documents",
+      "projector": "FORM",
+      "dataKey": "uploadform",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ]
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Upload Documents",
+          "element": "primary_action"
+        }
+      ]
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}

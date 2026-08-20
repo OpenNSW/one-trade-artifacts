@@ -1,0 +1,6 @@
+{
+  "id": "cda-kcfn-apply-flow",
+  "type": "APPLICATION",
+  "workflow_id": "cda-kcfn-apply-flow",
+  "render_config_id": "cda-kcfn-apply-flow:render"
+}
