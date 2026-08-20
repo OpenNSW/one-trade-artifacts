@@ -1,0 +1,48 @@
+{
+  "id": "sltb-pay-levy--upload-form",
+  "title": "Upload SLTB Levy Payment Receipt",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "payment_feedback": {
+        "type": "string",
+        "title": "Reason for re-upload (from officer)",
+        "readOnly": true
+      },
+      "payment_slip": {
+        "type": "string",
+        "format": "file",
+        "title": "SLTB Counter Payment Slip (PDF/Image)"
+      }
+    },
+    "required": [
+      "payment_slip"
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/payment_feedback",
+        "options": {
+          "multiLine": true
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/payment_feedback",
+            "schema": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/payment_slip"
+      }
+    ]
+  }
+}

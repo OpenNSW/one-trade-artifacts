@@ -29,7 +29,7 @@
     {
       "id": "sltb_2_pay_levy",
       "type": "TASK",
-      "name": "[SLTB 2] Pay SLTB Levy via GovPay",
+      "name": "[SLTB 2] Pay SLTB Levy",
       "task_template_id": "sltb-pay-levy-flow",
       "lane": "Trader/CHA & SLTB Officer",
       "input_mapping": {
@@ -37,7 +37,9 @@
         "sltb.reference_number": "reference_number"
       },
       "output_mapping": {
-        "payment_status": "sltb.levy_payment_outcome"
+        "payment.payment_status?": "sltb.levy_payment_outcome",
+        "payment_review.payment_review_outcome?": "sltb.levy_payment_outcome",
+        "payment.deduction_status?": "sltb.levy_payment_outcome"
       }
     },
     {
@@ -162,8 +164,22 @@
         "final_decision_outcome": "sltb.final_decision_outcome"
       }
     },
-    { "id": "end_success", "type": "END", "name": "Application Approved (Certificate Issued)" },
-    { "id": "end_rejected", "type": "END", "name": "Application Rejected (Blend Sheet Not Reconcilable)" }
+    {
+      "id": "end_success",
+      "type": "END",
+      "name": "Application Approved (Certificate Issued)",
+      "end": { "outcome": "success" }
+    },
+    {
+      "id": "end_rejected",
+      "type": "END",
+      "name": "Application Rejected (Blend Sheet Not Reconcilable)",
+      "end": {
+        "outcome": "rejected",
+        "title": "Application Rejected",
+        "description": "An officer rejected this application during review. This application is closed — please submit a new application with a corrected blend sheet."
+      }
+    }
   ],
   "edges": [
     { "id": "e_start", "source_id": "start", "target_id": "sltb_1_submit_blendsheet" },

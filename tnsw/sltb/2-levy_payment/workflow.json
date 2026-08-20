@@ -1,35 +1,96 @@
 {
   "id": "sltb-pay-levy-flow",
-  "name": "Pay SLTB Levy via GovPay",
-  "version": 1,
+  "name": "Pay SLTB Levy",
+  "version": 2,
   "nodes": [
     {
       "id": "start",
       "type": "START"
     },
     {
-      "id": "select_method_task",
+      "id": "select-method-task",
       "type": "TASK",
       "task_template_id": "sltb-pay-levy--select-method",
-      "input_mapping": {},
+      "input_mapping": {
+        "reference_number": "reference_number"
+      },
       "output_mapping": {
-        "selected_method": "selected_method"
+        "selected_method": "payment_method.selected_method",
+        "reference_number?": "payment_method.reference_number"
       }
     },
     {
-      "id": "pay_levy_task",
+      "id": "method-split",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Split on Payment Method"
+    },
+    {
+      "id": "pay-govpay-task",
       "type": "TASK",
       "task_template_id": "sltb-pay-levy--payment",
       "input_mapping": {
         "reference_number": "reference_number",
-        "selected_method": "selected_method",
+        "payment_method.selected_method": "selected_method",
         "levy_amount": "amount"
       },
       "output_mapping": {
-        "payment_status": "payment_status",
+        "payment_status": "payment.payment_status",
         "payment_receipt_url?": "payment.payment_receipt_url",
         "selected_method?": "payment.selected_method"
       }
+    },
+    {
+      "id": "upload-receipt-task",
+      "type": "TASK",
+      "task_template_id": "sltb-pay-levy--upload-receipt",
+      "input_mapping": {
+        "reference_number": "reference_number",
+        "levy_amount": "amount",
+        "payment_review.payment_feedback?": "payment_feedback"
+      },
+      "output_mapping": {
+        "payment_slip": "payment.payment_slip",
+        "reference_number?": "payment.reference_number",
+        "amount?": "payment.amount"
+      }
+    },
+    {
+      "id": "review-receipt-task",
+      "type": "TASK",
+      "task_template_id": "sltb-pay-levy--review-receipt",
+      "input_mapping": {
+        "reference_number": "reference_number",
+        "payment.payment_slip": "payment_slip"
+      },
+      "output_mapping": {
+        "payment_review_outcome": "payment_review.payment_review_outcome",
+        "payment_feedback?": "payment_review.payment_feedback"
+      }
+    },
+    {
+      "id": "slip-review-gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Slip Verified?"
+    },
+    {
+      "id": "confirm-pinpack-task",
+      "type": "TASK",
+      "task_template_id": "sltb-pay-levy--confirm-pinpack",
+      "input_mapping": {
+        "reference_number": "reference_number",
+        "levy_amount": "amount"
+      },
+      "output_mapping": {
+        "deduction_status": "payment.deduction_status"
+      }
+    },
+    {
+      "id": "join-gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_JOIN",
+      "name": "Join Payment Method"
     },
     {
       "id": "end",
@@ -38,18 +99,68 @@
   ],
   "edges": [
     {
-      "id": "e1",
+      "id": "e-start",
       "source_id": "start",
-      "target_id": "select_method_task"
+      "target_id": "select-method-task"
     },
     {
-      "id": "e2",
-      "source_id": "select_method_task",
-      "target_id": "pay_levy_task"
+      "id": "e-to-split",
+      "source_id": "select-method-task",
+      "target_id": "method-split"
     },
     {
-      "id": "e3",
-      "source_id": "pay_levy_task",
+      "id": "e-govpay",
+      "source_id": "method-split",
+      "target_id": "pay-govpay-task",
+      "condition": "payment_method.selected_method == 'govpay'"
+    },
+    {
+      "id": "e-govpay-join",
+      "source_id": "pay-govpay-task",
+      "target_id": "join-gateway"
+    },
+    {
+      "id": "e-slip-upload",
+      "source_id": "method-split",
+      "target_id": "upload-receipt-task",
+      "condition": "payment_method.selected_method == 'payment_slip'"
+    },
+    {
+      "id": "e-to-review",
+      "source_id": "upload-receipt-task",
+      "target_id": "review-receipt-task"
+    },
+    {
+      "id": "e-to-slip-gw",
+      "source_id": "review-receipt-task",
+      "target_id": "slip-review-gateway"
+    },
+    {
+      "id": "e-slip-needs-info",
+      "source_id": "slip-review-gateway",
+      "target_id": "upload-receipt-task",
+      "condition": "payment_review.payment_review_outcome == 'needs_more_info'"
+    },
+    {
+      "id": "e-slip-approve",
+      "source_id": "slip-review-gateway",
+      "target_id": "join-gateway",
+      "condition": "payment_review.payment_review_outcome == 'approve'"
+    },
+    {
+      "id": "e-pinpack",
+      "source_id": "method-split",
+      "target_id": "confirm-pinpack-task",
+      "condition": "payment_method.selected_method == 'pinpack'"
+    },
+    {
+      "id": "e-pinpack-join",
+      "source_id": "confirm-pinpack-task",
+      "target_id": "join-gateway"
+    },
+    {
+      "id": "e-join-end",
+      "source_id": "join-gateway",
       "target_id": "end"
     }
   ]
