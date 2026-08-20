@@ -1,0 +1,78 @@
+{
+  "id": "sltb-pay-levy--review-form",
+  "title": "SLTB Levy Payment Receipt Verification",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "payment_review_outcome": {
+        "type": "string",
+        "title": "Verification Outcome",
+        "oneOf": [
+          {
+            "const": "approve",
+            "title": "Confirm & Approve Payment"
+          },
+          {
+            "const": "needs_more_info",
+            "title": "Needs Re-upload / Clarification"
+          }
+        ],
+        "default": "approve",
+        "example": "approve"
+      },
+      "payment_feedback": {
+        "type": "string",
+        "title": "Officer Comments / Reason for Re-upload (Required if Needs Info)",
+        "example": "Payment slip is illegible. Please upload a clear deposit receipt."
+      }
+    },
+    "required": [
+      "payment_review_outcome"
+    ],
+    "if": {
+      "properties": {
+        "payment_review_outcome": {
+          "const": "needs_more_info"
+        }
+      },
+      "required": [
+        "payment_review_outcome"
+      ]
+    },
+    "then": {
+      "properties": {
+        "payment_feedback": {
+          "minLength": 1
+        }
+      },
+      "required": [
+        "payment_feedback"
+      ]
+    }
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/payment_review_outcome"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/payment_feedback",
+        "options": {
+          "multiLine": true
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/payment_review_outcome",
+            "schema": {
+              "const": "needs_more_info"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

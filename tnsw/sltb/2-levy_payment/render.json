@@ -1,11 +1,11 @@
 {
   "id": "sltb-pay-levy-flow:render",
   "type": "PAYMENT",
-  "title": "[SLTB] Pay SLTB Levy via GovPay",
+  "title": "[SLTB] Pay SLTB Levy",
   "sections": {
-    "workspace": {
+    "select_method": {
       "templateId": "sltb-pay-levy--select-method-form",
-      "title": "Select Payment Gateway",
+      "title": "Select Payment Method",
       "projector": "FORM",
       "dataKey": "payment_method",
       "visibleWhen": {
@@ -20,6 +20,45 @@
           "element": "primary_action"
         }
       ]
+    },
+    "reupload_reason": {
+      "templateId": "sltb-pay-levy--reupload-reason",
+      "title": "Officer Requested Changes",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_SLIP_UPLOAD"
+        ],
+        "requireDataKey": "payment_review"
+      }
+    },
+    "upload_slip": {
+      "templateId": "sltb-pay-levy--upload-form",
+      "title": "Upload Payment Receipt",
+      "projector": "FORM",
+      "dataKey": "payment",
+      "visibleWhen": {
+        "states": [
+          "PENDING_SLIP_UPLOAD"
+        ]
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Payment Slip",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "pending_verification": {
+      "templateId": "sltb-pay-levy--pending-verification-markdown",
+      "title": "Waiting for Officer Verification",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
     },
     "payment_details": {
       "templateId": "sltb-pay-levy--payment-details-markdown",
@@ -36,7 +75,6 @@
       "templateId": "sltb-pay-levy--success-message",
       "title": "Payment Successful",
       "projector": "MARKDOWN",
-      "dataKey": "payment",
       "visibleWhen": {
         "states": [
           "COMPLETED"
@@ -52,8 +90,19 @@
         }
       ]
     },
+    "PENDING_SLIP_UPLOAD": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    },
+    "QUEUED_EXTERNALLY": {
+      "actions": []
+    },
     "PENDING_PAYMENT": {
       "actions": []
-    }
+    },
+    "COMPLETED": {}
   }
 }
