@@ -1,0 +1,49 @@
+{
+  "id": "cda-kcfn-upload-docs--user-form",
+  "title": "Upload Recommendation Letter & Supporting Documents",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "uploaded_letter_file": {
+        "type": "string",
+        "format": "file",
+        "title": "Signed Recommendation Letter (PDF)",
+        "example": "https://trader-uploads.example.gov.lk/CDA-KCFN-REC-2026-00123-signed.pdf"
+      },
+      "reports": {
+        "type": "array",
+        "title": "Reports",
+        "description": "Upload the necessary supporting reports. Multiple files can be attached.",
+        "items": {
+          "type": "string",
+          "format": "file"
+        },
+        "minItems": 1,
+        "x-file": {
+          "multiple": true
+        },
+        "example": [
+          "https://trader-uploads.example.gov.lk/CDA-KCFN-2026-00123-report-1.pdf",
+          "https://trader-uploads.example.gov.lk/CDA-KCFN-2026-00123-report-2.pdf"
+        ]
+      }
+    },
+    "required": [
+      "uploaded_letter_file",
+      "reports"
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/uploaded_letter_file"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/reports"
+      }
+    ]
+  }
+}

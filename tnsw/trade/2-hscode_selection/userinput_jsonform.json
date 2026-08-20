@@ -33,6 +33,10 @@
             {
               "const": "customs-workflow",
               "title": "Customs Declaration & Clearance (Customs Flow)"
+            },
+            {
+              "const": "cda-kcfn-recommendation-letter",
+              "title": "King Coconut Fresh Nut (KCFN) Recommendation Letter (CDA Flow)"
             }
           ]
         },

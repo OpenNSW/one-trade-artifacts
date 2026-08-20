@@ -1,0 +1,27 @@
+{
+  "id": "cda-kcfn-issue-letter-flow:render",
+  "type": "REVIEW",
+  "title": "[CDA] Recommendation Letter Issuance",
+  "sections": {
+    "status_message": {
+      "templateId": "cda-kcfn-issue-letter--trader-instructions",
+      "title": "Issuance Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER",
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    },
+    "workspace": {
+      "templateId": "cda-kcfn-issue-letter--trader-results",
+      "title": "Recommendation Letter",
+      "projector": "MARKDOWN",
+      "dataKey": "reviewerform",
+      "visibleWhen": {
+        "requireDataKey": "reviewerform"
+      }
+    }
+  }
+}

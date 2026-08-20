@@ -1,0 +1,11 @@
+{
+  "id": "cda-kcfn-inspection--officer-review",
+  "task_type": "EXTERNAL_REVIEW",
+  "output_namespace": "reviewerform",
+  "plugin_properties": {
+    "officer_jsonforms_id": "cda-kcfn-inspection--officer-review-form",
+    "service_id": "cda",
+    "path": "/api/v1/inject",
+    "task_code": "cda_kcfn_inspection_review_v1"
+  }
+}

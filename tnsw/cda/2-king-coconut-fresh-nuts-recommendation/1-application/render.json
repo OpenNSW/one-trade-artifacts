@@ -1,0 +1,60 @@
+{
+  "id": "cda-kcfn-apply-flow:render",
+  "type": "APPLICATION",
+  "title": "[CDA] Submit Application for King Coconut / Fresh Nuts Export Recommendation",
+  "sections": {
+    "approved_message": {
+      "templateId": "cda-kcfn-apply--approved-message",
+      "title": "Inspection Status",
+      "projector": "MARKDOWN",
+      "dataKey": "userform",
+      "visibleWhen": {
+        "states": [
+          "COMPLETED"
+        ]
+      }
+    },
+    "status_message": {
+      "templateId": "cda-kcfn-apply--submitted-message",
+      "title": "Submission Status",
+      "projector": "MARKDOWN",
+      "dataKey": "userform",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    },
+    "feedback": {
+      "templateId": "cda-kcfn-apply--feedback",
+      "title": "Officer Feedback & Deficiencies",
+      "projector": "MARKDOWN",
+      "dataKey": "reviewerform.rejection_reason",
+      "visibleWhen": {
+        "requireDataKey": "reviewerform.rejection_reason"
+      }
+    },
+    "user_form": {
+      "templateId": "cda-kcfn-apply--user-form",
+      "title": "King Coconut / Fresh Nuts Export Recommendation Application",
+      "projector": "FORM",
+      "dataKey": "userform",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Application",
+          "element": "primary_action"
+        }
+      ]
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}

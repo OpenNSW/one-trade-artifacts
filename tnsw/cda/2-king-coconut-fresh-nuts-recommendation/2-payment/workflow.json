@@ -1,0 +1,55 @@
+{
+  "id": "cda-kcfn-payment-flow",
+  "name": "Pay Recommendation Report Fee",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "select_method_task",
+      "type": "TASK",
+      "task_template_id": "cda-kcfn-payment--select-method",
+      "input_mapping": {},
+      "output_mapping": {
+        "selected_method": "payment.selected_method"
+      }
+    },
+    {
+      "id": "pay_task",
+      "type": "TASK",
+      "task_template_id": "cda-kcfn-payment--payment",
+      "input_mapping": {
+        "payment.reference_number": "reference_number",
+        "payment.selected_method": "selected_method"
+      },
+      "output_mapping": {
+        "payment_status": "payment.payment_status",
+        "payment_receipt_url?": "payment.payment_receipt_url",
+        "selected_method?": "payment.selected_method"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "select_method_task"
+    },
+    {
+      "id": "e2",
+      "source_id": "select_method_task",
+      "target_id": "pay_task"
+    },
+    {
+      "id": "e3",
+      "source_id": "pay_task",
+      "target_id": "end"
+    }
+  ]
+}

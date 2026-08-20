@@ -1,0 +1,4 @@
+{
+  "id": "cda-kcfn-payment--success-message",
+  "template": "### Payment Successful\n\nYour CDA recommendation report fee payment has been successfully processed and verified.\n\n* **Reference Number**: {{.reference_number}}\n* **Amount Paid**: {{.currency}} {{.amount}}\n* **Status**: Completed\n\nNo further action is required for this step. The application has proceeded to the recommendation letter issuance stage."
+}

@@ -1,0 +1,371 @@
+{
+  "id": "cda-kcfn-inspection--apply-view-form",
+  "title": "King Coconut / Fresh Nuts Export Recommendation Application",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "email": {
+        "type": "string",
+        "title": "Email",
+        "example": "trader@example.com"
+      },
+      "company_name": {
+        "type": "string",
+        "title": "Company Name",
+        "description": "Populated via a Google Apps Script API call. Free text until that integration is wired in.",
+        "example": "Lanka Fresh Nuts (Pvt) Ltd"
+      },
+      "cda_registration_no": {
+        "type": "string",
+        "title": "CDA Registration No (Marketing Division)",
+        "description": "Populated via a Google Apps Script API call. Free text until that integration is wired in.",
+        "example": "CDA/MKT/REG/0001"
+      },
+      "destination_country": {
+        "type": "string",
+        "title": "Country",
+        "description": "Free text until the full ISO country list / API integration is wired in.",
+        "example": "United Arab Emirates"
+      },
+      "destination_city": {
+        "type": "string",
+        "title": "City",
+        "example": "Dubai"
+      },
+      "vessel": {
+        "type": "string",
+        "title": "Vessel",
+        "example": "MSC LORETO"
+      },
+      "date_of_sailing": {
+        "type": "string",
+        "format": "date",
+        "title": "Date of Sailing"
+      },
+      "cargo_type": {
+        "type": "string",
+        "title": "Cargo Type",
+        "oneOf": [
+          { "const": "sea", "title": "Sea" },
+          { "const": "air", "title": "Air" }
+        ],
+        "example": "sea"
+      },
+      "port_of_loading": {
+        "type": "string",
+        "title": "Port of Loading",
+        "example": "Colombo"
+      },
+      "port_of_discharge": {
+        "type": "string",
+        "title": "Port of Discharge",
+        "example": "Jebel Ali"
+      },
+      "commercial_invoice_no": {
+        "type": "string",
+        "title": "Commercial Invoice No.",
+        "example": "INV-2026-04521"
+      },
+      "commercial_invoice_date": {
+        "type": "string",
+        "format": "date",
+        "title": "Commercial Invoice Date"
+      },
+      "filling_date": {
+        "type": "string",
+        "format": "date",
+        "title": "Filling Date"
+      },
+      "buyer_name": {
+        "type": "string",
+        "title": "Name",
+        "example": "Al Barakah Trading LLC"
+      },
+      "buyer_country": {
+        "type": "string",
+        "title": "Country",
+        "description": "Free text until the full ISO country list / API integration is wired in.",
+        "example": "United Arab Emirates"
+      },
+      "buyer_city": {
+        "type": "string",
+        "title": "City",
+        "example": "Dubai"
+      },
+      "container_type": {
+        "type": "string",
+        "title": "Type of Container",
+        "oneOf": [
+          { "const": "40_gp", "title": "40' Gen Purpose" },
+          { "const": "20_gp", "title": "20' Gen Purpose" },
+          { "const": "40_hc", "title": "40' High Cube" },
+          { "const": "20_reefer", "title": "20' Reefer" },
+          { "const": "40_reefer", "title": "40' Reefer" },
+          { "const": "40_ot", "title": "40' Open Top" },
+          { "const": "20_ot", "title": "20' Open Top" },
+          { "const": "20_fr", "title": "20' Flat Rack" },
+          { "const": "40_fr", "title": "40' Flat Rack" },
+          { "const": "air", "title": "AIR" }
+        ],
+        "example": "40_gp"
+      },
+      "with_husk": {
+        "type": "boolean",
+        "title": "Nature of Coconuts — With Husk",
+        "description": "Check if the coconuts are supplied with husk.",
+        "default": false
+      },
+      "container_number": {
+        "type": "string",
+        "title": "Container Number",
+        "description": "Use example format, e.g. TCMU 1234567.",
+        "example": "TCMU1234567"
+      },
+      "inner_packing_type": {
+        "type": "string",
+        "title": "Type of Inner Packing",
+        "oneOf": [
+          { "const": "carton_box", "title": "Carton Box" },
+          { "const": "bunch", "title": "Bunch" },
+          { "const": "carton_box_and_bunch", "title": "Carton Box & Bunch" }
+        ],
+        "example": "carton_box"
+      },
+      "serial_no_from": {
+        "type": "string",
+        "title": "Serial No. (From)",
+        "description": "Enter 1 to 3 codes in the format: AB 012345, separated by commas and a space. Example: AB 0123457 or AB 0123456, AB 0234567",
+        "example": "AB 0123456"
+      },
+      "serial_no_to": {
+        "type": "string",
+        "title": "Serial No. (To)",
+        "description": "Enter 1 to 3 codes in the format: AB 012345, separated by commas and a space. Example: AB 0123456 or AB 0123457, AB 0234567",
+        "example": "AB 0123457"
+      },
+      "quantity_nuts": {
+        "type": "number",
+        "title": "Quantity (Number of Nuts)",
+        "example": 45000
+      },
+      "total_net_weight": {
+        "type": "number",
+        "title": "Total Net Weight",
+        "example": 18000
+      },
+      "total_fob": {
+        "type": "string",
+        "title": "Tot: FOB",
+        "example": "USD 12,500.00"
+      },
+      "total_cif": {
+        "type": "string",
+        "title": "Tot: CIF",
+        "example": "USD 13,200.00"
+      },
+      "location": {
+        "type": "string",
+        "title": "Location",
+        "description": "Location address with District and DS Division.",
+        "example": "8A, Mallampitiya, Madurankuliya - Puttalam - Chenaikudirippuwa"
+      },
+      "stuffing_date": {
+        "type": "string",
+        "format": "date",
+        "title": "Stuffing Date"
+      },
+      "contact_person_at_venue": {
+        "type": "string",
+        "title": "Contact Person at Venue",
+        "example": "K. Perera"
+      },
+      "tel_no": {
+        "type": "string",
+        "title": "Tel No",
+        "example": "0771234567"
+      },
+      "applicant_name": {
+        "type": "string",
+        "title": "Name of the Applicant",
+        "example": "K. Perera"
+      },
+      "applicant_designation": {
+        "type": "string",
+        "title": "Designation",
+        "example": "Export Manager"
+      },
+      "application_date": {
+        "type": "string",
+        "format": "date",
+        "title": "Date"
+      },
+      "applicant_email": {
+        "type": "string",
+        "title": "Email Address",
+        "example": "applicant@example.com"
+      }
+    },
+    "required": [
+      "email",
+      "company_name",
+      "cda_registration_no",
+      "destination_country",
+      "destination_city",
+      "vessel",
+      "date_of_sailing",
+      "cargo_type",
+      "port_of_loading",
+      "port_of_discharge",
+      "commercial_invoice_no",
+      "commercial_invoice_date",
+      "filling_date",
+      "buyer_name",
+      "buyer_country",
+      "buyer_city",
+      "container_type",
+      "with_husk",
+      "container_number",
+      "inner_packing_type",
+      "serial_no_from",
+      "serial_no_to",
+      "quantity_nuts",
+      "total_net_weight",
+      "total_fob",
+      "total_cif",
+      "location",
+      "stuffing_date",
+      "contact_person_at_venue",
+      "tel_no",
+      "applicant_name",
+      "applicant_designation",
+      "application_date",
+      "applicant_email"
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "HorizontalLayout",
+        "elements": [
+          { "type": "Control", "scope": "#/properties/email" },
+          { "type": "Control", "scope": "#/properties/company_name" }
+        ]
+      },
+      {
+        "type": "HorizontalLayout",
+        "elements": [
+          { "type": "Control", "scope": "#/properties/cda_registration_no" },
+          { "type": "Control", "scope": "#/properties/destination_country" }
+        ]
+      },
+      {
+        "type": "HorizontalLayout",
+        "elements": [
+          { "type": "Control", "scope": "#/properties/destination_city" },
+          { "type": "Control", "scope": "#/properties/vessel" }
+        ]
+      },
+      {
+        "type": "HorizontalLayout",
+        "elements": [
+          { "type": "Control", "scope": "#/properties/date_of_sailing" },
+          { "type": "Control", "scope": "#/properties/cargo_type" }
+        ]
+      },
+      {
+        "type": "HorizontalLayout",
+        "elements": [
+          { "type": "Control", "scope": "#/properties/port_of_loading" },
+          { "type": "Control", "scope": "#/properties/port_of_discharge" }
+        ]
+      },
+      {
+        "type": "HorizontalLayout",
+        "elements": [
+          { "type": "Control", "scope": "#/properties/commercial_invoice_no" },
+          { "type": "Control", "scope": "#/properties/commercial_invoice_date" }
+        ]
+      },
+      {
+        "type": "HorizontalLayout",
+        "elements": [
+          { "type": "Control", "scope": "#/properties/filling_date" },
+          { "type": "Control", "scope": "#/properties/buyer_name" }
+        ]
+      },
+      {
+        "type": "HorizontalLayout",
+        "elements": [
+          { "type": "Control", "scope": "#/properties/buyer_country" },
+          { "type": "Control", "scope": "#/properties/buyer_city" }
+        ]
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/container_type"
+      },
+      {
+        "type": "HorizontalLayout",
+        "elements": [
+          { "type": "Control", "scope": "#/properties/with_husk" },
+          { "type": "Control", "scope": "#/properties/container_number" }
+        ]
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/inner_packing_type"
+      },
+      {
+        "type": "HorizontalLayout",
+        "elements": [
+          { "type": "Control", "scope": "#/properties/serial_no_from" },
+          { "type": "Control", "scope": "#/properties/serial_no_to" }
+        ]
+      },
+      {
+        "type": "HorizontalLayout",
+        "elements": [
+          { "type": "Control", "scope": "#/properties/quantity_nuts" },
+          { "type": "Control", "scope": "#/properties/total_net_weight" }
+        ]
+      },
+      {
+        "type": "HorizontalLayout",
+        "elements": [
+          { "type": "Control", "scope": "#/properties/total_fob" },
+          { "type": "Control", "scope": "#/properties/total_cif" }
+        ]
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/location"
+      },
+      {
+        "type": "HorizontalLayout",
+        "elements": [
+          { "type": "Control", "scope": "#/properties/stuffing_date" },
+          { "type": "Control", "scope": "#/properties/contact_person_at_venue" }
+        ]
+      },
+      {
+        "type": "HorizontalLayout",
+        "elements": [
+          { "type": "Control", "scope": "#/properties/tel_no" },
+          { "type": "Control", "scope": "#/properties/applicant_name" }
+        ]
+      },
+      {
+        "type": "HorizontalLayout",
+        "elements": [
+          { "type": "Control", "scope": "#/properties/applicant_designation" },
+          { "type": "Control", "scope": "#/properties/application_date" }
+        ]
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/applicant_email"
+      }
+    ]
+  }
+}

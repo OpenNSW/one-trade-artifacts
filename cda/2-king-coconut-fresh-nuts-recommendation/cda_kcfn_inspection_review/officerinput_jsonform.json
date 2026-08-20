@@ -1,0 +1,84 @@
+{
+  "id": "cda-kcfn-inspection--officer-review-form",
+  "title": "CDA Container Inspection & Recommendation",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "review_outcome": {
+        "type": "string",
+        "title": "Inspection Outcome",
+        "oneOf": [
+          {
+            "const": "approve",
+            "title": "Accept"
+          },
+          {
+            "const": "needs_more_info",
+            "title": "Request Changes"
+          }
+        ],
+        "example": "approve"
+      },
+      "inspection_notes": {
+        "type": "string",
+        "title": "Inspection Notes",
+        "example": "Container contents match the declared quantity and product type."
+      },
+      "rejection_reason": {
+        "type": "string",
+        "title": "Comments / Deficiencies (Required if Requesting Changes)",
+        "example": "Declared quantity does not match the physically inspected container load."
+      }
+    },
+    "required": [
+      "review_outcome"
+    ],
+    "if": {
+      "properties": {
+        "review_outcome": {
+          "const": "needs_more_info"
+        }
+      },
+      "required": [
+        "review_outcome"
+      ]
+    },
+    "then": {
+      "required": [
+        "rejection_reason"
+      ]
+    }
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/review_outcome"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/inspection_notes",
+        "options": {
+          "multiLine": true
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/rejection_reason",
+        "options": {
+          "multiLine": true
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/review_outcome",
+            "schema": {
+              "const": "needs_more_info"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

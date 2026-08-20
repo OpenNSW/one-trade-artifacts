@@ -1,0 +1,58 @@
+{
+  "id": "cda-kcfn-upload-docs-flow",
+  "name": "Upload Recommendation Letter & ASYCUDA Verification",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "trader_upload",
+      "type": "TASK",
+      "task_template_id": "cda-kcfn-upload-docs--user-input",
+      "input_mapping": {
+        "recommendation_letter_file": "recommendation_letter_file"
+      },
+      "output_mapping": {
+        "uploaded_letter_file": "uploadform.uploaded_letter_file",
+        "reports": "uploadform.reports"
+      }
+    },
+    {
+      "id": "officer_review",
+      "type": "TASK",
+      "task_template_id": "cda-kcfn-asycuda-verification--officer-review",
+      "input_mapping": {
+        "uploadform": "submission"
+      },
+      "output_mapping": {
+        "documents_verified": "reviewerform.documents_verified",
+        "asycuda_approval_confirmed": "reviewerform.asycuda_approval_confirmed",
+        "agency_side_marked": "reviewerform.agency_side_marked",
+        "remarks?": "reviewerform.remarks"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "trader_upload"
+    },
+    {
+      "id": "e2",
+      "source_id": "trader_upload",
+      "target_id": "officer_review"
+    },
+    {
+      "id": "e3",
+      "source_id": "officer_review",
+      "target_id": "end"
+    }
+  ]
+}

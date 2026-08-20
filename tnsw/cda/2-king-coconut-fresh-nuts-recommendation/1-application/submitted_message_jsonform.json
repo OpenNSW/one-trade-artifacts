@@ -1,0 +1,4 @@
+{
+  "id": "cda-kcfn-apply--submitted-message",
+  "template": "### Application Submitted\n\nYour King Coconut / Fresh Nuts export recommendation application has been submitted and is awaiting container inspection.\n\n* **Commercial Invoice No.**: `{{.commercial_invoice_no}}`\n* **Status**: Awaiting Inspection"
+}
