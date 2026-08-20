@@ -4,6 +4,7 @@
   "output_namespace": "payment_review",
   "plugin_properties": {
     "officer_jsonforms_id": "sltb-pay-levy--review-form",
+    "reviewer_jsonforms_id": "sltb-pay-levy--review-form",
     "service_id": "sltb",
     "path": "/api/v1/inject",
     "task_code": "sltb_levy_payment_review_receipt_v1"

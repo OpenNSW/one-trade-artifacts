@@ -40,6 +40,11 @@
       ]
     },
     "then": {
+      "properties": {
+        "payment_feedback": {
+          "minLength": 1
+        }
+      },
       "required": [
         "payment_feedback"
       ]

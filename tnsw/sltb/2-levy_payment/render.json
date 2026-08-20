@@ -29,7 +29,7 @@
         "states": [
           "PENDING_SLIP_UPLOAD"
         ],
-        "requireDataKey": "payment_feedback"
+        "requireDataKey": "payment_review"
       }
     },
     "upload_slip": {

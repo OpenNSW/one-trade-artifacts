@@ -4,6 +4,7 @@
   "output_namespace": "payment",
   "plugin_properties": {
     "officer_jsonforms_id": "sltb-pay-levy--confirm-pinpack-form",
+    "reviewer_jsonforms_id": "sltb-pay-levy--confirm-pinpack-form",
     "service_id": "sltb",
     "path": "/api/v1/inject",
     "task_code": "sltb_levy_payment_confirm_pinpack_v1",

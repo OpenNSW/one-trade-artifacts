@@ -37,7 +37,9 @@
         "sltb.reference_number": "reference_number"
       },
       "output_mapping": {
-        "payment_status": "sltb.levy_payment_outcome"
+        "payment.payment_status?": "sltb.levy_payment_outcome",
+        "payment_review.payment_review_outcome?": "sltb.levy_payment_outcome",
+        "payment.deduction_status?": "sltb.levy_payment_outcome"
       }
     },
     {
