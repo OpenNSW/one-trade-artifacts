@@ -52,30 +52,45 @@
       }
     },
     {
-      "id": "customs_4_create_cdn",
+      "id": "customs_4a_prepare_cdn_items",
       "type": "TASK",
-      "name": "[Customs 4.0] Create CDN",
-      "task_template_id": "customs-create-cdn-flow",
+      "name": "[Customs 4.0a] Prepare CDN Items",
+      "task_template_id": "customs-prepare-cdn-items-flow",
       "lane": "Trader/CHA",
       "input_mapping": {
-        "customs.cusdec_number": "cusdec_number"
+        "customs.userform.containerCount": "container_count",
+        "customs.cusdec_number?": "cusdec_ref"
       },
       "output_mapping": {
-        "userform": "customs.cdn_userform",
-        "userform.cdn_number": "customs.cdn_number"
+        "split_items": "customs.cdn_split_items"
       }
     },
     {
-      "id": "customs_5_wait_cdn_ack",
+      "id": "customs_4_create_cdn",
+      "type": "SPLIT_TASK",
+      "name": "[Customs 4.0] Create CDNs",
+      "task_template_id": "customs-cdn-branch-flow",
+      "lane": "Trader/CHA",
+      "split_task": {
+        "mode": "SAME_TEMPLATE",
+        "items_variable": "customs.cdn_split_items",
+        "results_variable": "customs.cdn_results",
+        "failure_mode": "COLLECT_ALL"
+      }
+    },
+    {
+      "id": "customs_4b_collect_cdn_results",
       "type": "TASK",
-      "name": "[Customs 5.0] Wait on CDN Ack",
-      "task_template_id": "customs-wait-cdn-ack-flow",
+      "name": "[Customs 4.0b] Collect CDN Results",
+      "task_template_id": "customs-collect-cdn-results-flow",
       "lane": "Trader/CHA",
       "input_mapping": {
-        "customs.cdn_userform": "userform"
+        "customs.cdn_results": "cdn_results"
       },
       "output_mapping": {
-        "ack_status": "customs.cdn_ack_status"
+        "cdn_userform": "customs.cdn_userform",
+        "cdn_number?": "customs.cdn_number",
+        "cdn_numbers": "customs.cdn_numbers"
       }
     },
     {
@@ -148,17 +163,17 @@
     {
       "id": "e_release_to_4",
       "source_id": "customs_8_wait_export_release",
+      "target_id": "customs_4a_prepare_cdn_items"
+    },
+    {
+      "id": "e_4a_to_4",
+      "source_id": "customs_4a_prepare_cdn_items",
       "target_id": "customs_4_create_cdn"
     },
     {
       "id": "e_4_to_5",
       "source_id": "customs_4_create_cdn",
-      "target_id": "customs_5_wait_cdn_ack"
-    },
-    {
-      "id": "e_5_to_6",
-      "source_id": "customs_5_wait_cdn_ack",
-      "target_id": "customs_6_create_boat_note"
+      "target_id": "customs_4b_collect_cdn_results"
     },
     {
       "id": "e_6_to_7",
@@ -169,6 +184,11 @@
       "id": "e_7_to_end",
       "source_id": "customs_7_boat_note_approval",
       "target_id": "end"
+    },
+    {
+      "id": "e_4b_to_6",
+      "source_id": "customs_4b_collect_cdn_results",
+      "target_id": "customs_6_create_boat_note"
     }
   ]
 }

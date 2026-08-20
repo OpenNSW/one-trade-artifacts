@@ -1903,6 +1903,78 @@
       "path": "customs/4-create_cdn/task_template.json"
     },
     {
+      "id": "customs-cdn--cig-dispatch",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "customs/4-create_cdn/dispatch.json"
+    },
+    {
+      "id": "customs-cdn--cig-rejection",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/4-create_cdn/cig_rejection.json"
+    },
+    {
+      "id": "customs-cdn-branch-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "customs/4-create_cdn/branch_workflow.json"
+    },
+    {
+      "id": "customs-cdn--integration-wait",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "customs/4-create_cdn/integration_wait.json"
+    },
+    {
+      "id": "customs-prepare-cdn-items-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/4a-prepare_cdn_items/render.json"
+    },
+    {
+      "id": "customs-prepare-cdn-items--transform",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "customs/4a-prepare_cdn_items/transform.json"
+    },
+    {
+      "id": "customs-prepare-cdn-items-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "customs/4a-prepare_cdn_items/workflow.json"
+    },
+    {
+      "id": "customs-prepare-cdn-items-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "customs/4a-prepare_cdn_items/task_template.json"
+    },
+    {
+      "id": "customs-collect-cdn-results-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/4b-collect_cdn_results/render.json"
+    },
+    {
+      "id": "customs-collect-cdn-results--transform",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "customs/4b-collect_cdn_results/transform.json"
+    },
+    {
+      "id": "customs-collect-cdn-results-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "customs/4b-collect_cdn_results/workflow.json"
+    },
+    {
+      "id": "customs-collect-cdn-results-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "customs/4b-collect_cdn_results/task_template.json"
+    },
+    {
       "id": "customs-wait-cdn-ack-flow:render",
       "kind": "generic_template",
       "version": "",
