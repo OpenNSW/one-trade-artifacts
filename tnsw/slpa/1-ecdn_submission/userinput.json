@@ -1,0 +1,8 @@
+{
+  "id": "slpa-ecdn--user-input",
+  "task_type": "USER_INPUT",
+  "output_namespace": "userform",
+  "plugin_properties": {
+    "user_jsonforms_id": "slpa-ecdn--user-form"
+  }
+}
