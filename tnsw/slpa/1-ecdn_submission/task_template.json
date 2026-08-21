@@ -1,0 +1,6 @@
+{
+  "id": "slpa-ecdn-submission-flow",
+  "type": "APPLICATION",
+  "workflow_id": "slpa-ecdn-submission-flow",
+  "render_config_id": "slpa-ecdn-submission-flow:render"
+}

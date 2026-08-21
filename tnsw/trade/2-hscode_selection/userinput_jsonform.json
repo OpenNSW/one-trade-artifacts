@@ -31,6 +31,10 @@
               "title": "SLTB Tea Export Blendsheet Approval (SLTB Flow)"
             },
             {
+              "const": "slpa-ecdn-submission",
+              "title": "SLPA Electronic Cargo Declaration Note (SLPA Flow)"
+            },
+            {
               "const": "customs-workflow",
               "title": "Customs Declaration & Clearance (Customs Flow)"
             },
