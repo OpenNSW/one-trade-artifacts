@@ -1,0 +1,5 @@
+{
+  "id": "customs-prepare-cdn-items--transform",
+  "task_type": "CDN_SPLIT_BUILDER",
+  "plugin_properties": {}
+}

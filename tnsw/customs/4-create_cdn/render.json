@@ -3,6 +3,18 @@
   "type": "APPLICATION",
   "title": "[Customs] Cargo Dispatch Note (CDN) Application",
   "sections": {
+    "cig_rejection": {
+      "templateId": "customs-cdn--cig-rejection",
+      "title": "Sri Lanka Customs Submission Errors",
+      "projector": "MARKDOWN",
+      "dataKey": "cig_cdn",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "cig_cdn"
+      }
+    },
     "completed_message": {
       "templateId": "customs-cdn--completed-message",
       "title": "CDN Submission Status",

@@ -1,0 +1,60 @@
+{
+  "id": "customs-cdn-branch-flow",
+  "name": "Create CDN (one container)",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "create_cdn",
+      "type": "TASK",
+      "name": "Create CDN",
+      "task_template_id": "customs-create-cdn-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "_iter.input.cusdec_ref": "cusdec_ref",
+        "_iter.input.container_label?": "container_label"
+      },
+      "output_mapping": {
+        "userform": "userform",
+        "cig_cdn?": "cig_cdn"
+      }
+    },
+    {
+      "id": "wait_ack",
+      "type": "TASK",
+      "name": "Wait on CDN Acknowledgment",
+      "task_template_id": "customs-wait-cdn-ack-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "userform": "userform"
+      },
+      "output_mapping": {
+        "ack_status?": "ack_status"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "create_cdn"
+    },
+    {
+      "id": "e2",
+      "source_id": "create_cdn",
+      "target_id": "wait_ack"
+    },
+    {
+      "id": "e3",
+      "source_id": "wait_ack",
+      "target_id": "end"
+    }
+  ]
+}

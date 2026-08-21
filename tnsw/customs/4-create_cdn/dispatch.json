@@ -1,0 +1,10 @@
+{
+  "id": "customs-cdn--cig-dispatch",
+  "task_type": "CUSTOMS_CDN_DISPATCH",
+  "output_namespace": "cig_cdn",
+  "plugin_properties": {
+    "service_id": "customs-asycuda",
+    "path": "/api/cdn/v1",
+    "result_field": "accepted"
+  }
+}

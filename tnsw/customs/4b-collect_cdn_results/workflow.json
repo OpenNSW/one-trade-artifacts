@@ -1,0 +1,40 @@
+{
+  "id": "customs-collect-cdn-results-flow",
+  "name": "Collect CDN Results",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "collect_results",
+      "type": "TASK",
+      "task_template_id": "customs-collect-cdn-results--transform",
+      "input_mapping": {
+        "cdn_results": "cdn_results"
+      },
+      "output_mapping": {
+        "cdn_userform": "cdn_userform",
+        "cdn_number?": "cdn_number",
+        "cdn_numbers": "cdn_numbers"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "collect_results"
+    },
+    {
+      "id": "e2",
+      "source_id": "collect_results",
+      "target_id": "end"
+    }
+  ]
+}

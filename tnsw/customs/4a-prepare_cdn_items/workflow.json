@@ -1,0 +1,25 @@
+{
+  "id": "customs-prepare-cdn-items-flow",
+  "name": "Prepare CDN Split Items",
+  "version": 1,
+  "nodes": [
+    { "id": "start", "type": "START" },
+    {
+      "id": "build_split_items",
+      "type": "TASK",
+      "task_template_id": "customs-prepare-cdn-items--transform",
+      "input_mapping": {
+        "container_count": "container_count",
+        "cusdec_ref?": "cusdec_ref"
+      },
+      "output_mapping": {
+        "split_items": "split_items"
+      }
+    },
+    { "id": "end", "type": "END" }
+  ],
+  "edges": [
+    { "id": "e1", "source_id": "start", "target_id": "build_split_items" },
+    { "id": "e2", "source_id": "build_split_items", "target_id": "end" }
+  ]
+}

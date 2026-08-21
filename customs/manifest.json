@@ -8,6 +8,13 @@
       "path": "customs_boat_note_approval/customs_boat_note_approval_v1.json"
     },
     {
+      "id": "customs-boat-note-approval--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "customs_boat_note_approval/officer_form_jsonform.json"
+    },
+    {
       "id": "customs_cdn_ack_wait_v1",
       "kind": "task_config",
       "version": "",
