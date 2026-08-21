@@ -1,0 +1,4 @@
+{
+  "id": "customs-cdn--edge-id-testing",
+  "template": "> ⚠️ **Testing aid — not for production**\n>\n> This panel exposes the SLC Edge correlation id so a dispatch note can be traced end to end while the integration is being verified. It carries no meaning for the trader and should be removed before release.\n>\n> * **edgeId**: {{if .edgeId}}`{{.edgeId}}`{{else if .edge_id}}`{{.edge_id}}`{{else}}_not issued — Customs has not acknowledged this submission yet_{{end}}\n> * **Accepted by SLC Edge**: {{if .accepted}}yes{{else}}no{{end}}"
+}
