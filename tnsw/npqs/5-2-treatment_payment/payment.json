@@ -6,6 +6,10 @@
     "task_code": "npqs_treatment_payment_v1",
     "service_name": "Treatment Service Fee",
     "amount": "4500.00",
-    "currency": "LKR"
+    "currency": "LKR",
+    "gateway_metadata": {
+      "govpay_subinst_id": "002",
+      "govpay_service_id": "003"
+    }
   }
 }

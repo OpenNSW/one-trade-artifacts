@@ -6,6 +6,10 @@
     "task_code": "npqs_certificate_fee_payment_v1",
     "service_name": "Phytosanitary Certificate Fee",
     "amount": "2000.00",
-    "currency": "LKR"
+    "currency": "LKR",
+    "gateway_metadata": {
+      "govpay_subinst_id": "002",
+      "govpay_service_id": "001"
+    }
   }
 }

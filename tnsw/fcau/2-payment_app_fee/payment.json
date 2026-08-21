@@ -6,6 +6,10 @@
     "task_code": "fcau_app_fee_payment_v1",
     "service_name": "Application Fee",
     "amount": "1500.00",
-    "currency": "LKR"
+    "currency": "LKR",
+    "gateway_metadata": {
+      "govpay_subinst_id": "001",
+      "govpay_service_id": "001"
+    }
   }
 }
