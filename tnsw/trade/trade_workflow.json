@@ -52,7 +52,8 @@
       "task_template_id": "trade-prepare-split-items-flow",
       "lane": "Trader/CHA",
       "input_mapping": {
-        "trade.hs_codes": "hs_codes"
+        "trade.hs_codes": "hs_codes",
+        "traderCompany?": "company"
       },
       "output_mapping": {
         "split_items": "trade.split_items"
@@ -73,7 +74,9 @@
       "id": "end",
       "type": "END",
       "name": "End",
-      "end": { "outcome": "success" }
+      "end": {
+        "outcome": "success"
+      }
     }
   ],
   "edges": [
