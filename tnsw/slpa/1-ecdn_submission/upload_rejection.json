@@ -1,0 +1,4 @@
+{
+  "id": "slpa-ecdn--cms-rejection",
+  "template": "{{if .error}}{{.error}}{{end}}"
+}

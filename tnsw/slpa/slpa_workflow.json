@@ -1,0 +1,43 @@
+{
+  "id": "slpa-ecdn-submission",
+  "name": "SLPA Electronic Cargo Declaration Note (ECDN)",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START",
+      "name": "Start"
+    },
+    {
+      "id": "slpa_1_0_ecdn",
+      "type": "TASK",
+      "name": "[SLPA 1.0] Submit ECDN",
+      "task_template_id": "slpa-ecdn-submission-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "_iter.input.company.data.slpacmsuser_key?": "client_key"
+      },
+      "output_mapping": {
+        "userform": "slpa.userform",
+        "userform.cdnNumber": "slpa.cdn_number"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END",
+      "name": "ECDN Accepted"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_start_to_ecdn",
+      "source_id": "start",
+      "target_id": "slpa_1_0_ecdn"
+    },
+    {
+      "id": "e_ecdn_to_end",
+      "source_id": "slpa_1_0_ecdn",
+      "target_id": "end"
+    }
+  ]
+}

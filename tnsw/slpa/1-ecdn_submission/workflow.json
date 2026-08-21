@@ -1,0 +1,100 @@
+{
+  "id": "slpa-ecdn-submission-flow",
+  "name": "Submit ECDN to SLPA CMS",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "applicant_submission",
+      "type": "TASK",
+      "task_template_id": "slpa-ecdn--user-input",
+      "input_mapping": {
+        "cms.error?": "cms.error"
+      },
+      "output_mapping": {
+        "cusdecNo": "userform.cusdecNo",
+        "cusdecDate": "userform.cusdecDate",
+        "cusdecOffice": "userform.cusdecOffice",
+        "cusdecSerial?": "userform.cusdecSerial",
+        "cusdecSerLet": "userform.cusdecSerLet",
+        "cdnNumber": "userform.cdnNumber",
+        "terminal": "userform.terminal",
+        "status": "userform.status",
+        "shipperName": "userform.shipperName",
+        "shipperAddress": "userform.shipperAddress",
+        "consigneeName": "userform.consigneeName",
+        "consigneeAddress": "userform.consigneeAddress",
+        "packageNumber": "userform.packageNumber",
+        "packageType": "userform.packageType",
+        "volumeCBM": "userform.volumeCBM",
+        "weightKg": "userform.weightKg",
+        "goodsDescription": "userform.goodsDescription",
+        "voyageNumber?": "userform.voyageNumber",
+        "voyageDate": "userform.voyageDate",
+        "portOfLoading?": "userform.portOfLoading",
+        "portOfUnloading?": "userform.portOfUnloading",
+        "vesselOPCode?": "userform.vesselOPCode",
+        "contOPCode?": "userform.contOPCode",
+        "exVessel?": "userform.exVessel",
+        "email?": "userform.email",
+        "contactNo?": "userform.contactNo",
+        "remarks?": "userform.remarks",
+        "containers": "userform.containers"
+      }
+    },
+    {
+      "id": "cms_upload",
+      "type": "TASK",
+      "task_template_id": "slpa-ecdn--cms-upload",
+      "input_mapping": {
+        "userform": "payload",
+        "client_key?": "client_key"
+      },
+      "output_mapping": {
+        "cms.accepted": "cms.accepted",
+        "cms.error?": "cms.error"
+      }
+    },
+    {
+      "id": "upload_check",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "applicant_submission"
+    },
+    {
+      "id": "e2",
+      "source_id": "applicant_submission",
+      "target_id": "cms_upload"
+    },
+    {
+      "id": "e_check",
+      "source_id": "cms_upload",
+      "target_id": "upload_check"
+    },
+    {
+      "id": "e_accepted",
+      "source_id": "upload_check",
+      "target_id": "end",
+      "condition": "cms.accepted == true"
+    },
+    {
+      "id": "e_rejected",
+      "source_id": "upload_check",
+      "target_id": "applicant_submission",
+      "condition": "cms.accepted != true"
+    }
+  ]
+}
