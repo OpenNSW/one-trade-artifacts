@@ -3,26 +3,11 @@
   "title": "Review Proposed Inspection Date",
   "schema": {
     "type": "object",
+    "additionalProperties": false,
     "required": [
       "review_outcome"
     ],
     "properties": {
-      "warehouse_location": {
-        "type": "string",
-        "title": "Warehouse Location",
-        "readOnly": true
-      },
-      "proposed_inspection_date": {
-        "type": "string",
-        "format": "date",
-        "title": "Proposed Inspection Date",
-        "readOnly": true
-      },
-      "trader_comments": {
-        "type": "string",
-        "title": "Trader Comments",
-        "readOnly": true
-      },
       "review_outcome": {
         "type": "string",
         "title": "Decision",
@@ -70,28 +55,6 @@
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
-      {
-        "type": "Control",
-        "scope": "#/properties/warehouse_location"
-      },
-      {
-        "type": "Control",
-        "scope": "#/properties/proposed_inspection_date"
-      },
-      {
-        "type": "Control",
-        "scope": "#/properties/trader_comments",
-        "rule": {
-          "effect": "SHOW",
-          "condition": {
-            "scope": "#/properties/trader_comments",
-            "schema": {
-              "type": "string",
-              "minLength": 1
-            }
-          }
-        }
-      },
       {
         "type": "Control",
         "scope": "#/properties/review_outcome"

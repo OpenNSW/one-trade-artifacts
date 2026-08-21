@@ -61,7 +61,8 @@
         "fcau.userform": "userform"
       },
       "output_mapping": {
-        "scheduling.proposed_inspection_date": "fcau.warehouse_inspection_date",
+        "traderinput.inspection_date": "fcau.warehouse_inspection_date",
+        "scheduling.proposed_inspection_date?": "fcau.warehouse_inspection_date",
         "traderinput.warehouse_location": "fcau.warehouse_location"
       }
     },

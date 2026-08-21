@@ -3,13 +3,8 @@
   "title": "Warehouse Visual Inspection Outcome",
   "schema": {
     "type": "object",
+    "additionalProperties": false,
     "properties": {
-      "inspection_date": {
-        "type": "string",
-        "format": "date",
-        "title": "Scheduled Inspection Date",
-        "readOnly": true
-      },
       "inspection_outcome": {
         "type": "string",
         "title": "Visual Inspection Result",
@@ -50,10 +45,6 @@
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
-      {
-        "type": "Control",
-        "scope": "#/properties/inspection_date"
-      },
       {
         "type": "Control",
         "scope": "#/properties/inspection_outcome"

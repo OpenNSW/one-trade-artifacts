@@ -13,6 +13,7 @@
         "type": "string",
         "format": "date",
         "title": "Scheduled Inspection Date",
+        "readOnly": true,
         "example": "2026-08-05"
       },
       "exporter_name": {
@@ -133,11 +134,17 @@
         "elements": [
           {
             "type": "Control",
-            "scope": "#/properties/warehouse_location"
+            "scope": "#/properties/warehouse_location",
+            "options": {
+              "readonly": true
+            }
           },
           {
             "type": "Control",
-            "scope": "#/properties/inspection_date"
+            "scope": "#/properties/inspection_date",
+            "options": {
+              "readonly": true
+            }
           }
         ]
       },

@@ -1,7 +1,7 @@
 {
   "id": "fcau-warehouse-scheduling-flow",
   "name": "Warehouse Inspection Scheduling",
-  "version": 2,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
@@ -14,7 +14,7 @@
       "input_mapping": {},
       "output_mapping": {
         "warehouse_location": "traderinput.warehouse_location",
-        "inspection_date": "scheduling.proposed_inspection_date"
+        "inspection_date": "traderinput.inspection_date"
       }
     },
     {
@@ -22,9 +22,10 @@
       "type": "TASK",
       "task_template_id": "fcau-warehouse-scheduling--officer-review",
       "input_mapping": {
-        "traderinput.warehouse_location": "warehouse_location",
-        "scheduling.proposed_inspection_date": "proposed_inspection_date",
-        "scheduling.trader_comments?": "trader_comments"
+        "traderinput.warehouse_location": "submission.warehouse_location",
+        "traderinput.inspection_date": "submission.proposed_inspection_date",
+        "scheduling.proposed_inspection_date?": "submission.proposed_inspection_date",
+        "scheduling.trader_comments?": "submission.trader_comments"
       },
       "output_mapping": {
         "review_outcome": "officer_review.review_outcome",
