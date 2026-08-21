@@ -6,6 +6,10 @@
     "task_code": "sltb_levy_payment_v1",
     "service_name": "SLTB Levy Payment",
     "amount": "12500.00",
-    "currency": "LKR"
+    "currency": "LKR",
+    "gateway_metadata": {
+      "govpay_subinst_id": "003",
+      "govpay_service_id": "001"
+    }
   }
 }
