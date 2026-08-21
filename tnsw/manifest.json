@@ -2017,6 +2017,12 @@
       "path": "customs/1-cusdec_submission/task_template.json"
     },
     {
+      "id": "customs-cusdec--edge-id-testing",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/1-cusdec_submission/edge_id_testing.json"
+    },
+    {
       "id": "customs-wait-payment-flow:render",
       "kind": "generic_template",
       "version": "",
@@ -2135,6 +2141,12 @@
       "kind": "subtask_template",
       "version": "",
       "path": "customs/4-create_cdn/integration_wait.json"
+    },
+    {
+      "id": "customs-cdn--edge-id-testing",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/4-create_cdn/edge_id_testing.json"
     },
     {
       "id": "customs-prepare-cdn-items-flow:render",
