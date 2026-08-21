@@ -47,6 +47,20 @@
           "element": "primary_action"
         }
       ]
+    },
+    "testing_edge_id": {
+      "templateId": "customs-cusdec--edge-id-testing",
+      "title": "Integration Testing — SLC Edge Correlation",
+      "projector": "MARKDOWN",
+      "dataKey": "cig",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY",
+          "COMPLETED",
+          "PENDING_USER"
+        ],
+        "requireDataKey": "cig"
+      }
     }
   },
   "states": {
