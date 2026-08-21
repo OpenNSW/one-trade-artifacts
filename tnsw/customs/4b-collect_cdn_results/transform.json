@@ -1,0 +1,5 @@
+{
+  "id": "customs-collect-cdn-results--transform",
+  "task_type": "CDN_RESULTS_COLLECTOR",
+  "plugin_properties": {}
+}
