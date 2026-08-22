@@ -50,6 +50,18 @@
         "title": "Name of Vessel/ Number",
         "example": "CMA CGM MARCO POLO / V092"
       },
+      "port_and_country_of_loading": {
+        "type": "string",
+        "title": "Port and Country of Loading",
+        "description": "Format: {{PORT}} / {{COUNTRY}}",
+        "example": "Colombo / Sri Lanka"
+      },
+      "country_of_destination": {
+        "type": "string",
+        "title": "Country of Destination",
+        "description": "Format: {{PORT}} / {{COUNTRY}}",
+        "example": "Hamburg / Germany"
+      },
       "consignment_storage_address": {
         "type": "string",
         "title": "Address where consignment is stored",
@@ -104,6 +116,8 @@
       "lc_number",
       "container_numbers",
       "vessel_name",
+      "port_and_country_of_loading",
+      "country_of_destination",
       "consignment_storage_address",
       "package_batch_weight_details",
       "ingredients_details",
@@ -173,6 +187,19 @@
               {
                 "type": "Control",
                 "scope": "#/properties/vessel_name"
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/port_and_country_of_loading"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/country_of_destination"
               }
             ]
           }

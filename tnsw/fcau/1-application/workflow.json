@@ -22,6 +22,8 @@
         "lc_number": "userform.lc_number",
         "container_numbers": "userform.container_numbers",
         "vessel_name": "userform.vessel_name",
+        "port_and_country_of_loading": "userform.port_and_country_of_loading",
+        "country_of_destination": "userform.country_of_destination",
         "consignment_storage_address": "userform.consignment_storage_address",
         "package_batch_weight_details": "userform.package_batch_weight_details",
         "ingredients_details": "userform.ingredients_details",
