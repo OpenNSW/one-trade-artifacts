@@ -6,6 +6,10 @@
     "task_code": "cda_kcfn_payment_v1",
     "service_name": "CDA Recommendation Report Fee",
     "amount": "1500.00",
-    "currency": "LKR"
+    "currency": "LKR",
+    "gateway_metadata": {
+      "govpay_subinst_id": "004",
+      "govpay_service_id": "001"
+    }
   }
 }
