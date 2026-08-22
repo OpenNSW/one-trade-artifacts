@@ -14,7 +14,6 @@
       "templateId": "slpa-ecdn--submitted-message",
       "title": "ECDN Status",
       "projector": "MARKDOWN",
-      "dataKey": "userform",
       "visibleWhen": { "states": ["COMPLETED"] }
     },
     "user_form": {
