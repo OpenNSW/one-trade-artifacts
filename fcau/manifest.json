@@ -43,6 +43,13 @@
       "path": "fcau_issue_certificate/userinput_jsonform.json"
     },
     {
+      "id": "fcau-issue-certificate--certificate-template",
+      "kind": "certificate_template",
+      "version": "",
+      "loader": "local",
+      "path": "fcau_issue_certificate/certificate_template.gohtml"
+    },
+    {
       "id": "fcau_lab_fee_payment_review_v1",
       "kind": "task_config",
       "version": "",

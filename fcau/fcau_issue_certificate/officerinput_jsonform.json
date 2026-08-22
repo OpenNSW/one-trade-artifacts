@@ -9,6 +9,11 @@
         "title": "Health Certificate ID",
         "example": "CERT-FCAU-ACME-9024"
       },
+      "additional_declarations": {
+        "type": "string",
+        "title": "Additional Declarations",
+        "example": "WE HEREBY STATE THAT GOODS ARE FIT FOR HUMAN CONSUMPTION."
+      },
       "certificate": {
         "type": "string",
         "title": "Certificate File Upload (PDF)",
@@ -22,6 +27,7 @@
     },
     "required": [
       "certificate_id",
+      "additional_declarations",
       "certificate",
       "authorized_signature"
     ]
@@ -32,6 +38,10 @@
       {
         "type": "Control",
         "scope": "#/properties/certificate_id"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/additional_declarations"
       },
       {
         "type": "Control",
