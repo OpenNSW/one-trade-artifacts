@@ -2819,6 +2819,60 @@
       "kind": "workflow",
       "version": "",
       "path": "sltb/sltb_workflow.json"
+    },
+    {
+      "id": "slpa-ecdn-submission",
+      "kind": "workflow",
+      "version": "",
+      "path": "slpa/slpa_workflow.json"
+    },
+    {
+      "id": "slpa-ecdn-submission-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/1-ecdn_submission/render.json"
+    },
+    {
+      "id": "slpa-ecdn--user-input",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "slpa/1-ecdn_submission/userinput.json"
+    },
+    {
+      "id": "slpa-ecdn--user-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/1-ecdn_submission/userinput_jsonform.json"
+    },
+    {
+      "id": "slpa-ecdn--cms-upload",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "slpa/1-ecdn_submission/upload.json"
+    },
+    {
+      "id": "slpa-ecdn--cms-rejection",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/1-ecdn_submission/upload_rejection.json"
+    },
+    {
+      "id": "slpa-ecdn--submitted-message",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/1-ecdn_submission/submitted_message_jsonform.json"
+    },
+    {
+      "id": "slpa-ecdn-submission-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "slpa/1-ecdn_submission/workflow.json"
+    },
+    {
+      "id": "slpa-ecdn-submission-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "slpa/1-ecdn_submission/task_template.json"
     }
   ]
 }
