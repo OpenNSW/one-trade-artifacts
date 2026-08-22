@@ -6,7 +6,12 @@
     "instructions": {
       "templateId": "fcau-warehouse-scheduling--instructions",
       "title": "Scheduling Instructions",
-      "projector": "MARKDOWN"
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ]
+      }
     },
     "user_input": {
       "id": "workspace",
@@ -14,6 +19,11 @@
       "title": "Warehouse Inspection Scheduling",
       "projector": "FORM",
       "dataKey": "traderinput",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ]
+      },
       "handles": [
         {
           "command": "submit",
@@ -21,6 +31,36 @@
           "element": "primary_action"
         }
       ]
+    },
+    "trader_review": {
+      "id": "workspace_review",
+      "templateId": "fcau-warehouse-scheduling--trader-review-form",
+      "title": "Review Officer Proposed Date",
+      "projector": "FORM",
+      "dataKey": "trader_scheduling_review",
+      "visibleWhen": {
+        "states": [
+          "PENDING_TRADER_DATE_REVIEW"
+        ],
+        "requireDataKey": "officer_review"
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Response",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "pending_officer": {
+      "templateId": "fcau-warehouse-scheduling--pending-officer-markdown",
+      "title": "Inspection Scheduling Pending Review",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
     }
   },
   "states": {
@@ -30,6 +70,16 @@
           "command": "submit"
         }
       ]
+    },
+    "PENDING_TRADER_DATE_REVIEW": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    },
+    "QUEUED_EXTERNALLY": {
+      "actions": []
     }
   }
 }

@@ -1,0 +1,9 @@
+{
+  "id": "fcau-warehouse-scheduling--trader-review",
+  "task_type": "USER_INPUT",
+  "output_namespace": "trader_scheduling_review",
+  "plugin_properties": {
+    "user_jsonforms_id": "fcau-warehouse-scheduling--trader-review-form",
+    "status_override": "PENDING_TRADER_DATE_REVIEW"
+  }
+}

@@ -1,21 +1,62 @@
 {
   "id": "fcau-warehouse-scheduling-flow",
   "name": "Warehouse Inspection Scheduling",
-  "version": 1,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
       "type": "START"
     },
     {
-      "id": "trader_scheduling",
+      "id": "trader_initial_scheduling",
       "type": "TASK",
       "task_template_id": "fcau-warehouse-scheduling--trader-input",
       "input_mapping": {},
       "output_mapping": {
-        "inspection_date": "traderinput.inspection_date",
-        "warehouse_location": "traderinput.warehouse_location"
+        "warehouse_location": "traderinput.warehouse_location",
+        "inspection_date": "traderinput.inspection_date"
       }
+    },
+    {
+      "id": "officer_date_review",
+      "type": "TASK",
+      "task_template_id": "fcau-warehouse-scheduling--officer-review",
+      "input_mapping": {
+        "traderinput.warehouse_location": "submission.warehouse_location",
+        "traderinput.inspection_date": "submission.proposed_inspection_date",
+        "scheduling.proposed_inspection_date?": "submission.proposed_inspection_date",
+        "scheduling.trader_comments?": "submission.trader_comments"
+      },
+      "output_mapping": {
+        "review_outcome": "officer_review.review_outcome",
+        "counter_inspection_date?": "scheduling.proposed_inspection_date",
+        "officer_comments?": "scheduling.officer_comments"
+      }
+    },
+    {
+      "id": "officer_review_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "trader_date_review",
+      "type": "TASK",
+      "task_template_id": "fcau-warehouse-scheduling--trader-review",
+      "input_mapping": {
+        "traderinput.warehouse_location": "trader_scheduling_review.warehouse_location",
+        "scheduling.proposed_inspection_date": "trader_scheduling_review.proposed_inspection_date",
+        "scheduling.officer_comments?": "trader_scheduling_review.officer_comments"
+      },
+      "output_mapping": {
+        "trader_decision": "trader_review.trader_decision",
+        "counter_inspection_date?": "scheduling.proposed_inspection_date",
+        "trader_comments?": "scheduling.trader_comments"
+      }
+    },
+    {
+      "id": "trader_review_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
       "id": "end",
@@ -24,14 +65,48 @@
   ],
   "edges": [
     {
-      "id": "e1",
+      "id": "e_start_to_initial",
       "source_id": "start",
-      "target_id": "trader_scheduling"
+      "target_id": "trader_initial_scheduling"
     },
     {
-      "id": "e2",
-      "source_id": "trader_scheduling",
-      "target_id": "end"
+      "id": "e_initial_to_officer",
+      "source_id": "trader_initial_scheduling",
+      "target_id": "officer_date_review"
+    },
+    {
+      "id": "e_officer_to_gw",
+      "source_id": "officer_date_review",
+      "target_id": "officer_review_gateway"
+    },
+    {
+      "id": "e_officer_accept",
+      "source_id": "officer_review_gateway",
+      "target_id": "end",
+      "condition": "officer_review.review_outcome == 'accept'"
+    },
+    {
+      "id": "e_officer_reschedule",
+      "source_id": "officer_review_gateway",
+      "target_id": "trader_date_review",
+      "condition": "officer_review.review_outcome == 'reschedule'"
+    },
+    {
+      "id": "e_trader_to_gw",
+      "source_id": "trader_date_review",
+      "target_id": "trader_review_gateway"
+    },
+    {
+      "id": "e_trader_accept",
+      "source_id": "trader_review_gateway",
+      "target_id": "end",
+      "condition": "trader_review.trader_decision == 'accept'"
+    },
+    {
+      "id": "e_trader_reschedule",
+      "source_id": "trader_review_gateway",
+      "target_id": "officer_date_review",
+      "condition": "trader_review.trader_decision == 'reschedule'"
     }
   ]
 }

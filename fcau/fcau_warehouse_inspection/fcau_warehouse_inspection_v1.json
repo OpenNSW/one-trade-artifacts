@@ -5,7 +5,7 @@
     "description": "Officer records the outcome of the visual inspection conducted at the warehouse."
   },
   "forms": {
-    "view": "fcau-apply-health-cert--user-form",
+    "view": "fcau-warehouse-inspection--user-form",
     "review": "fcau-warehouse-inspection--officer-form"
   }
 }

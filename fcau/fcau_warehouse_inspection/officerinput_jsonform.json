@@ -3,6 +3,7 @@
   "title": "Warehouse Visual Inspection Outcome",
   "schema": {
     "type": "object",
+    "additionalProperties": false,
     "properties": {
       "inspection_outcome": {
         "type": "string",
@@ -28,6 +29,13 @@
         "type": "string",
         "title": "Inspection Notes / Observations",
         "example": "Visual inspection of storage area completed. Food containers intact and temperature controlled."
+      },
+      "revised_inspection_date": {
+        "type": "string",
+        "format": "date",
+        "title": "Revised Inspection Date",
+        "description": "Leave blank if the inspection took place on the scheduled date. Complete this only to record a different actual date.",
+        "example": "2026-08-07"
       }
     },
     "required": [
@@ -44,6 +52,10 @@
       {
         "type": "Control",
         "scope": "#/properties/inspection_comments"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/revised_inspection_date"
       }
     ]
   }

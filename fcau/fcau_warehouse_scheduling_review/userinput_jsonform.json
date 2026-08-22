@@ -1,0 +1,61 @@
+{
+  "id": "fcau-warehouse-scheduling--user-form",
+  "title": "Trader's Proposed Warehouse Inspection",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "warehouse_location": {
+        "type": "string",
+        "title": "Warehouse Location",
+        "readOnly": true
+      },
+      "proposed_inspection_date": {
+        "type": "string",
+        "format": "date",
+        "title": "Trader Proposed Inspection Date",
+        "readOnly": true
+      },
+      "trader_comments": {
+        "type": "string",
+        "title": "Trader Comments",
+        "readOnly": true
+      }
+    }
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/warehouse_location",
+        "options": {
+          "readonly": true
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/proposed_inspection_date",
+        "options": {
+          "readonly": true
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/trader_comments",
+        "options": {
+          "readonly": true
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/trader_comments",
+            "schema": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    ]
+  }
+}
