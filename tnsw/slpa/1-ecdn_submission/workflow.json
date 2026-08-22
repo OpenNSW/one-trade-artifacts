@@ -55,6 +55,8 @@
       },
       "output_mapping": {
         "cms.accepted": "cms.accepted",
+        "cms.cusdec_serial?": "cms.cusdec_serial",
+        "cms.validated_at?": "cms.validated_at",
         "cms.error?": "cms.error"
       }
     },
