@@ -1,7 +1,7 @@
 {
   "id": "fcau-health-certificate-reg",
   "name": "FCAU Export Consignment & Health Certificate Registration",
-  "version": 18,
+  "version": 19,
   "nodes": [
     {
       "id": "start",
@@ -62,6 +62,7 @@
       },
       "output_mapping": {
         "traderinput.inspection_date": "fcau.warehouse_inspection_date",
+        "scheduling.proposed_inspection_date?": "fcau.warehouse_inspection_date",
         "traderinput.warehouse_location": "fcau.warehouse_location"
       }
     },
@@ -73,10 +74,13 @@
       "lane": "FCAU Officer/NSW System",
       "input_mapping": {
         "fcau.reference_number": "reference_number",
-        "fcau.userform": "userform"
+        "fcau.userform": "userform",
+        "fcau.warehouse_location": "warehouse_location",
+        "fcau.warehouse_inspection_date": "inspection_date"
       },
       "output_mapping": {
-        "inspection_outcome": "fcau.warehouse_inspection_outcome"
+        "inspection_outcome": "fcau.warehouse_inspection_outcome",
+        "revised_inspection_date?": "fcau.warehouse_inspection_revised_date"
       }
     },
     {

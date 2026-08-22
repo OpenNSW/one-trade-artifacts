@@ -1045,6 +1045,36 @@
       "path": "fcau/3-1-warehouse_scheduling/task_template.json"
     },
     {
+      "id": "fcau-warehouse-scheduling--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "fcau/3-1-warehouse_scheduling/officerinput.json"
+    },
+    {
+      "id": "fcau-warehouse-scheduling--trader-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "fcau/3-1-warehouse_scheduling/trader_review.json"
+    },
+    {
+      "id": "fcau-warehouse-scheduling--trader-review-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau/3-1-warehouse_scheduling/trader_review_jsonform.json"
+    },
+    {
+      "id": "fcau-warehouse-scheduling--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau/3-1-warehouse_scheduling/officerinput_jsonform.json"
+    },
+    {
+      "id": "fcau-warehouse-scheduling--pending-officer-markdown",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau/3-1-warehouse_scheduling/pending_officer_markdown.json"
+    },
+    {
       "id": "fcau-warehouse-inspection--officer-review",
       "kind": "subtask_template",
       "version": "",
