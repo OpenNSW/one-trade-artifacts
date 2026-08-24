@@ -1,0 +1,178 @@
+{
+  "id": "slpa-so--user-form",
+  "title": "Raise Export Service Order",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "cusdecNo": {
+        "type": "string",
+        "title": "SLPA Cusdec Serial",
+        "description": "The declaration this order is raised against, as SLPA filed it.",
+        "readOnly": true
+      },
+      "cargoType": {
+        "type": "string",
+        "title": "Cargo Type",
+        "description": "Taken from the declaration. Only FCL declarations can raise a service order at present.",
+        "readOnly": true
+      },
+      "declaredVolumeCBM": {
+        "type": "number",
+        "title": "Declared Volume (CBM)",
+        "description": "The whole declaration's volume, to divide across the lines below.",
+        "readOnly": true
+      },
+      "containers": {
+        "type": "array",
+        "title": "Containers",
+        "description": "From the accepted declaration. Choose the service and commodity for each container, and its share of the volume.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "containerNo": {
+              "type": "string",
+              "title": "Container No",
+              "readOnly": true,
+              "minLength": 1,
+              "description": "From the declaration. Containers cannot be added to an order."
+            },
+            "containerType": {
+              "type": "string",
+              "title": "Type",
+              "readOnly": true
+            },
+            "containerSize": {
+              "type": "string",
+              "title": "Size",
+              "readOnly": true
+            },
+            "commodity": {
+              "type": "string",
+              "title": "Declared As",
+              "description": "From the declaration. SLPA takes the commodity from the service chosen.",
+              "readOnly": true
+            },
+            "cbm": {
+              "type": "number",
+              "title": "Volume (CBM)",
+              "description": "This container's share of the declared volume. SLPA requires at least 0.01.",
+              "minimum": 0.01
+            },
+            "serviceId": {
+              "type": "string",
+              "title": "Service",
+              "description": "The SLPA service to order. Dangerous cargo, reefer and liquor each have their own service, and choosing one tells SLPA the commodity.",
+              "oneOf": [
+                {
+                  "const": "75ra32uh",
+                  "title": "Food Cargo In Bag"
+                },
+                {
+                  "const": "d0n6oeqw",
+                  "title": "Natural Tea, Rubber, Coconut, Coconut Product"
+                },
+                {
+                  "const": "f0djx0p7",
+                  "title": "Fertilizer"
+                },
+                {
+                  "const": "spqbma83",
+                  "title": "Animal Feed, Fish Meal Including Fish"
+                },
+                {
+                  "const": "fxdjx0p7",
+                  "title": "Coconut Oil Through Other Form"
+                },
+                {
+                  "const": "cn90sg2a",
+                  "title": "Garment"
+                },
+                {
+                  "const": "xrw3cfz8",
+                  "title": "Dangerous Cargo"
+                },
+                {
+                  "const": "blk8tha4",
+                  "title": "Reefer"
+                },
+                {
+                  "const": "w5ebwga6",
+                  "title": "Liquor"
+                },
+                {
+                  "const": "zbtdfiyb",
+                  "title": "Other Cargo"
+                }
+              ]
+            }
+          },
+          "required": [
+            "containerNo",
+            "cbm",
+            "serviceId"
+          ]
+        },
+        "minItems": 1
+      },
+      "additionalNote": {
+        "type": "string",
+        "title": "Additional Note",
+        "description": "Optional. Reaches SLPA with the order."
+      }
+    },
+    "required": [
+      "cusdecNo"
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Group",
+        "label": "1. Declaration",
+        "elements": [
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/cusdecNo"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/cargoType"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/declaredVolumeCBM"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "label": "2. Services",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/containers"
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "label": "3. Notes",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/additionalNote",
+            "options": {
+              "multi": true
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
