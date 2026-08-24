@@ -1,0 +1,86 @@
+{
+  "id": "slpa-service-order-flow",
+  "name": "Raise SLPA Export Service Order",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "service_selection",
+      "type": "TASK",
+      "task_template_id": "slpa-so--user-input",
+      "input_mapping": {
+        "serviceform?": "serviceform",
+        "so.error?": "so.error"
+      },
+      "output_mapping": {
+        "cusdecNo?": "serviceform.cusdecNo",
+        "cargoType?": "serviceform.cargoType",
+        "declaredVolumeCBM?": "serviceform.declaredVolumeCBM",
+        "containers?": "serviceform.containers",
+        "additionalNote?": "serviceform.additionalNote"
+      }
+    },
+    {
+      "id": "create_order",
+      "type": "TASK",
+      "task_template_id": "slpa-so--create",
+      "input_mapping": {
+        "serviceform": "payload",
+        "_headers?": "_headers"
+      },
+      "output_mapping": {
+        "so.raised": "so.raised",
+        "so.error?": "so.error",
+        "so.status?": "so.status",
+        "so.service_order_no?": "so.service_order_no",
+        "so.slug?": "so.slug",
+        "so.invoice_no?": "so.invoice_no",
+        "so.cusdec_serial?": "so.cusdec_serial",
+        "so.total_lkr?": "so.total_lkr",
+        "so.total_usd?": "so.total_usd",
+        "so.created_at?": "so.created_at"
+      }
+    },
+    {
+      "id": "order_check",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "service_selection"
+    },
+    {
+      "id": "e2",
+      "source_id": "service_selection",
+      "target_id": "create_order"
+    },
+    {
+      "id": "e_check",
+      "source_id": "create_order",
+      "target_id": "order_check"
+    },
+    {
+      "id": "e_raised",
+      "source_id": "order_check",
+      "target_id": "end",
+      "condition": "so.raised == true"
+    },
+    {
+      "id": "e_refused",
+      "source_id": "order_check",
+      "target_id": "service_selection",
+      "condition": "so.raised != true"
+    }
+  ]
+}
