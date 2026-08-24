@@ -156,13 +156,8 @@
       "target_id": "customs_3_wait_warranting"
     },
     {
-      "id": "e_3_to_release",
+      "id": "e_3_to_4a",
       "source_id": "customs_3_wait_warranting",
-      "target_id": "customs_8_wait_export_release"
-    },
-    {
-      "id": "e_release_to_4",
-      "source_id": "customs_8_wait_export_release",
       "target_id": "customs_4a_prepare_cdn_items"
     },
     {
@@ -171,9 +166,14 @@
       "target_id": "customs_4_create_cdn"
     },
     {
-      "id": "e_4_to_5",
+      "id": "e_4_to_4b",
       "source_id": "customs_4_create_cdn",
       "target_id": "customs_4b_collect_cdn_results"
+    },
+    {
+      "id": "e_4b_to_6",
+      "source_id": "customs_4b_collect_cdn_results",
+      "target_id": "customs_6_create_boat_note"
     },
     {
       "id": "e_6_to_7",
@@ -181,14 +181,14 @@
       "target_id": "customs_7_boat_note_approval"
     },
     {
-      "id": "e_7_to_end",
+      "id": "e_7_to_8",
       "source_id": "customs_7_boat_note_approval",
-      "target_id": "end"
+      "target_id": "customs_8_wait_export_release"
     },
     {
-      "id": "e_4b_to_6",
-      "source_id": "customs_4b_collect_cdn_results",
-      "target_id": "customs_6_create_boat_note"
+      "id": "e_8_to_end",
+      "source_id": "customs_8_wait_export_release",
+      "target_id": "end"
     }
   ]
 }
