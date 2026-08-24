@@ -7,5 +7,15 @@
   "forms": {
     "view": "fcau-apply-health-cert--user-form",
     "review": "fcau-visual-assessment--reviewer-form"
-  }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
 }

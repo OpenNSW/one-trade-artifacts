@@ -14,5 +14,15 @@
       "approve": "DONE",
       "needs_more_info": "FEEDBACK_REQUESTED"
     }
-  }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
 }

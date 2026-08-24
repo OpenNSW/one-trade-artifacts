@@ -7,5 +7,15 @@
   "forms": {
     "view": "cda-apply-coconut-cert--user-form",
     "review": "cda-review-result--officer-form"
-  }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
 }

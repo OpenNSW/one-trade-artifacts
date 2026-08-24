@@ -6,5 +6,15 @@
   },
   "forms": {
     "review": "sltb-pay-levy--confirm-pinpack-form"
-  }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
 }
