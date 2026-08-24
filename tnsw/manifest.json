@@ -2885,6 +2885,54 @@
       "kind": "task_template",
       "version": "",
       "path": "slpa/1-ecdn_submission/task_template.json"
+    },
+    {
+      "id": "slpa-service-order-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "slpa/2-service_order/workflow.json"
+    },
+    {
+      "id": "slpa-service-order-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "slpa/2-service_order/task_template.json"
+    },
+    {
+      "id": "slpa-service-order-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/2-service_order/render.json"
+    },
+    {
+      "id": "slpa-so--user-input",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "slpa/2-service_order/userinput.json"
+    },
+    {
+      "id": "slpa-so--user-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/2-service_order/userinput_jsonform.json"
+    },
+    {
+      "id": "slpa-so--create",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "slpa/2-service_order/create_order.json"
+    },
+    {
+      "id": "slpa-so--refusal",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/2-service_order/order_rejection.json"
+    },
+    {
+      "id": "slpa-so--raised-message",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/2-service_order/submitted_message_jsonform.json"
     }
   ]
 }
