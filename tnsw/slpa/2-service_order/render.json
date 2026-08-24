@@ -1,0 +1,51 @@
+{
+  "id": "slpa-service-order-flow:render",
+  "type": "APPLICATION",
+  "title": "[SLPA] Export Service Order",
+  "sections": {
+    "order_refusal": {
+      "templateId": "slpa-so--refusal",
+      "title": "SLPA Service Order Errors",
+      "projector": "MARKDOWN",
+      "dataKey": "so",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "so"
+      }
+    },
+    "raised_message": {
+      "templateId": "slpa-so--raised-message",
+      "title": "Service Order Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "COMPLETED"
+        ]
+      }
+    },
+    "user_form": {
+      "templateId": "slpa-so--user-form",
+      "title": "Service Selection",
+      "projector": "FORM",
+      "dataKey": "serviceform",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Raise Service Order",
+          "element": "primary_action"
+        }
+      ]
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}

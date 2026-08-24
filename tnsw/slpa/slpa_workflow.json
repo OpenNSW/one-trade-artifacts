@@ -15,17 +15,37 @@
       "task_template_id": "slpa-ecdn-submission-flow",
       "lane": "Trader/CHA",
       "input_mapping": {
-        "_iter.input.company.data.slpacmsuser_key?": "client_key"
+        "_iter.input.company.data.slpacmsuser_key?": "_headers.slpacmsuser-key"
       },
       "output_mapping": {
         "userform": "slpa.userform",
-        "userform.cdnNumber": "slpa.cdn_number"
+        "userform.cdnNumber": "slpa.cdn_number",
+        "cms.cusdec_serial?": "slpa.cusdec_serial"
+      }
+    },
+    {
+      "id": "slpa_2_0_service_order",
+      "type": "TASK",
+      "name": "[SLPA 2.0] Raise Export Service Order",
+      "task_template_id": "slpa-service-order-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "_iter.input.company.data.slpacmsuser_key?": "_headers.slpacmsuser-key",
+        "slpa.cusdec_serial?": "serviceform.cusdecNo",
+        "slpa.userform.status?": "serviceform.cargoType",
+        "slpa.userform.containers?": "serviceform.containers",
+        "slpa.userform.volumeCBM?": "serviceform.declaredVolumeCBM"
+      },
+      "output_mapping": {
+        "so.service_order_no?": "slpa.service_order_no",
+        "so.slug?": "slpa.service_order_slug",
+        "so.invoice_no?": "slpa.invoice_no"
       }
     },
     {
       "id": "end",
       "type": "END",
-      "name": "ECDN Accepted"
+      "name": "Service Order Raised"
     }
   ],
   "edges": [
@@ -35,8 +55,13 @@
       "target_id": "slpa_1_0_ecdn"
     },
     {
-      "id": "e_ecdn_to_end",
+      "id": "e_ecdn_to_order",
       "source_id": "slpa_1_0_ecdn",
+      "target_id": "slpa_2_0_service_order"
+    },
+    {
+      "id": "e_order_to_end",
+      "source_id": "slpa_2_0_service_order",
       "target_id": "end"
     }
   ]

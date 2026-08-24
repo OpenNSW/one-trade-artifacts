@@ -51,7 +51,7 @@
       "task_template_id": "slpa-ecdn--cms-upload",
       "input_mapping": {
         "userform": "payload",
-        "client_key?": "client_key"
+        "_headers?": "_headers"
       },
       "output_mapping": {
         "cms.accepted": "cms.accepted",

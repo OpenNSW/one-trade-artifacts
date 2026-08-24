@@ -1,0 +1,4 @@
+{
+  "id": "slpa-so--raised-message",
+  "template": "### ✅ Export Service Order Raised\n\nSLPA has raised the service order for this declaration.\n\n{{with .so}}* **Service Order No**: {{if .service_order_no}}`{{.service_order_no}}`{{else}}—{{end}}\n* **SLPA Cusdec Serial**: {{if .cusdec_serial}}`{{.cusdec_serial}}`{{else}}—{{end}}\n{{if .total_usd}}* **Total (USD)**: {{.total_usd}}\n{{end}}{{if .total_lkr}}* **Total (LKR)**: {{.total_lkr}}\n{{end}}{{if .created_at}}* **Raised At**: {{.created_at}}\n{{end}}{{if .status}}* **SLPA Status**: `{{.status}}`\n{{end}}{{if .invoice_no}}* **Invoice No**: `{{.invoice_no}}`\n{{end}}{{end}}\nQuote the Service Order No when dealing with SLPA. The invoice is issued against this order once SLPA has priced it."
+}
