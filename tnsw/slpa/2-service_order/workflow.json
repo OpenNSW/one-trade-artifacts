@@ -29,7 +29,7 @@
       "task_template_id": "slpa-so--create",
       "input_mapping": {
         "serviceform": "payload",
-        "_headers?": "_headers"
+        "client_key?": "client_key"
       },
       "output_mapping": {
         "so.raised": "so.raised",
