@@ -15,7 +15,7 @@
       "task_template_id": "slpa-ecdn-submission-flow",
       "lane": "Trader/CHA",
       "input_mapping": {
-        "_iter.input.company.data.slpacmsuser_key?": "_headers.slpacmsuser-key"
+        "_iter.input.company.data.slpacmsuser_key?": "client_key"
       },
       "output_mapping": {
         "userform": "slpa.userform",
@@ -30,7 +30,7 @@
       "task_template_id": "slpa-service-order-flow",
       "lane": "Trader/CHA",
       "input_mapping": {
-        "_iter.input.company.data.slpacmsuser_key?": "_headers.slpacmsuser-key",
+        "_iter.input.company.data.slpacmsuser_key?": "client_key",
         "slpa.cusdec_serial?": "serviceform.cusdecNo",
         "slpa.userform.status?": "serviceform.cargoType",
         "slpa.userform.containers?": "serviceform.containers",
