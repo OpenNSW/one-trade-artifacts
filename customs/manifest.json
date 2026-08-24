@@ -13,6 +13,13 @@
       "version": "",
       "loader": "local",
       "path": "customs_boat_note_approval/officer_form_jsonform.json"
+    },
+    {
+      "id": "customs-boat-note--user-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "customs_boat_note_approval/userinput_jsonform.json"
     }
   ]
 }
