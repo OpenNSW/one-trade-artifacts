@@ -7,5 +7,15 @@
   "forms": {
     "view": "customs-boat-note--user-form",
     "review": "customs-boat-note-approval--officer-form"
-  }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
 }

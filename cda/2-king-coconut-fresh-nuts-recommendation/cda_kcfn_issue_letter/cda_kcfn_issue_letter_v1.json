@@ -8,5 +8,15 @@
   "forms": {
     "view": "cda-kcfn-issue-letter--apply-view-form",
     "review": "cda-kcfn-issue-letter--officer-form"
-  }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
 }

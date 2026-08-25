@@ -6,5 +6,15 @@
   },
   "forms": {
     "review": "sltb-record-sample-draw--officer-form"
-  }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
 }

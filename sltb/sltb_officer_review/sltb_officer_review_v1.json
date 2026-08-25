@@ -7,5 +7,15 @@
   "forms": {
     "view": "sltb-submit-blendsheet--user-form",
     "review": "sltb-submit-blendsheet--officer-review-form"
-  }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
 }

@@ -6,5 +6,15 @@
   },
   "forms": {
     "review": "sltb-lab-testing--officer-form"
-  }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
 }
