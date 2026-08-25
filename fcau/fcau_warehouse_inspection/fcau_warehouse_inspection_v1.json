@@ -7,5 +7,15 @@
   "forms": {
     "view": "fcau-warehouse-inspection--user-form",
     "review": "fcau-warehouse-inspection--officer-form"
-  }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
 }

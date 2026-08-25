@@ -7,5 +7,15 @@
   "forms": {
     "view": "fcau-pay-lab-fee--upload-form",
     "review": "fcau-pay-lab-fee--review-form"
-  }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
 }

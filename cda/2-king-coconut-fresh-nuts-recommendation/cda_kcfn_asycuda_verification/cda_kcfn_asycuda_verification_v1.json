@@ -8,5 +8,15 @@
   "forms": {
     "view": "cda-kcfn-upload-docs--user-form",
     "review": "cda-kcfn-asycuda-verification--officer-form"
-  }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
 }

@@ -8,5 +8,15 @@
   "forms": {
     "view": "cda-lot-adjustment-trader--user-form",
     "review": "cda-lot-adjustment-officer--review-form"
-  }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
 }

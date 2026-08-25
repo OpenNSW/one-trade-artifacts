@@ -7,5 +7,15 @@
   "forms": {
     "view": "fcau-warehouse-scheduling--user-form",
     "review": "fcau-warehouse-scheduling--officer-form"
-  }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
 }

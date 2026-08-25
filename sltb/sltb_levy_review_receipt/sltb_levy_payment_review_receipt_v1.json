@@ -7,5 +7,15 @@
   "forms": {
     "view": "sltb-pay-levy--upload-form",
     "review": "sltb-pay-levy--review-form"
-  }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
 }

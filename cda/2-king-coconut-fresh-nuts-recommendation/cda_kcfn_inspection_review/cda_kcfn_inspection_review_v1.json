@@ -8,5 +8,15 @@
   "forms": {
     "view": "cda-kcfn-inspection--apply-view-form",
     "review": "cda-kcfn-inspection--officer-review-form"
-  }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
 }
