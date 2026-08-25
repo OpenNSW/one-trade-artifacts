@@ -8,12 +8,30 @@
         "type": "string",
         "title": "Treatment Type Requested",
         "oneOf": [
-          { "const": "fumigation", "title": "Fumigation (Methyl Bromide / Phosphine)" },
-          { "const": "heat_treatment", "title": "Heat Treatment / Kiln Drying" },
-          { "const": "cold_treatment", "title": "Cold Treatment / Refrigeration" },
-          { "const": "other", "title": "Other Prescribed Treatment" }
+          { "const": "TPT", "title": "Temperature Treatment" },
+          { "const": "CHT", "title": "Chemical Treatment" },
+          { "const": "RAT", "title": "Radiation Treatment" },
+          { "const": "OTT", "title": "Other Treatment" },
+          { "const": "CT", "title": "Cold Treatment" },
+          { "const": "HT", "title": "Heat Treatment" },
+          { "const": "DR", "title": "Dry Heat" },
+          { "const": "MH", "title": "Moist Heat" },
+          { "const": "VH", "title": "Vapour Heat" },
+          { "const": "KD", "title": "Kiln drying" },
+          { "const": "HW", "title": "Hot water treatment" },
+          { "const": "DH", "title": "Dielectric Heating" },
+          { "const": "FG", "title": "Fungicide" },
+          { "const": "IN", "title": "Insecticide" },
+          { "const": "NE", "title": "Nematicide" },
+          { "const": "OP", "title": "Other pesticide" },
+          { "const": "CPI", "title": "Chemical pressure impregnation" },
+          { "const": "FU", "title": "Fumigation" },
+          { "const": "SC", "title": "Seed coating" },
+          { "const": "DV", "title": "Devitalization" },
+          { "const": "DB", "title": "Debarking" },
+          { "const": "CD", "title": "Cold disinfestation" }
         ],
-        "default": "fumigation"
+        "default": "FU"
       },
       "chemical_used": {
         "type": "string",
@@ -44,26 +62,11 @@
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
-      {
-        "type": "Control",
-        "scope": "#/properties/treatment_type"
-      },
-      {
-        "type": "Control",
-        "scope": "#/properties/chemical_used"
-      },
-      {
-        "type": "Control",
-        "scope": "#/properties/treatment_duration"
-      },
-      {
-        "type": "Control",
-        "scope": "#/properties/treatment_temperature"
-      },
-      {
-        "type": "Control",
-        "scope": "#/properties/treatment_concentration"
-      }
+      { "type": "Control", "scope": "#/properties/treatment_type" },
+      { "type": "Control", "scope": "#/properties/chemical_used" },
+      { "type": "Control", "scope": "#/properties/treatment_duration" },
+      { "type": "Control", "scope": "#/properties/treatment_temperature" },
+      { "type": "Control", "scope": "#/properties/treatment_concentration" }
     ]
   }
 }
