@@ -5,7 +5,7 @@
       "kind": "task_config",
       "version": "",
       "loader": "local",
-      "path": "sltb_final_decision/sltb_final_decision_v1.json"
+      "path": "sltb_final_decision/sltb_final_decision_v1.taskconfig.json"
     },
     {
       "id": "sltb-final-decision--officer-form",
@@ -26,7 +26,7 @@
       "kind": "task_config",
       "version": "",
       "loader": "local",
-      "path": "sltb_lab_decision/sltb_lab_decision_v1.json"
+      "path": "sltb_lab_decision/sltb_lab_decision_v1.taskconfig.json"
     },
     {
       "id": "sltb-lab-decision--officer-form",
@@ -40,7 +40,7 @@
       "kind": "task_config",
       "version": "",
       "loader": "local",
-      "path": "sltb_lab_testing/sltb_lab_testing_v1.json"
+      "path": "sltb_lab_testing/sltb_lab_testing_v1.taskconfig.json"
     },
     {
       "id": "sltb-lab-testing--officer-form",
@@ -54,7 +54,7 @@
       "kind": "task_config",
       "version": "",
       "loader": "local",
-      "path": "sltb_officer_review/sltb_officer_review_v1.json"
+      "path": "sltb_officer_review/sltb_officer_review_v1.taskconfig.json"
     },
     {
       "id": "sltb-submit-blendsheet--officer-review-form",
@@ -75,7 +75,7 @@
       "kind": "task_config",
       "version": "",
       "loader": "local",
-      "path": "sltb_sample_ack_dropoff/sltb_sample_ack_dropoff_v1.json"
+      "path": "sltb_sample_ack_dropoff/sltb_sample_ack_dropoff_v1.taskconfig.json"
     },
     {
       "id": "sltb-dropoff--officer-ack-form",
@@ -89,7 +89,7 @@
       "kind": "task_config",
       "version": "",
       "loader": "local",
-      "path": "sltb_sample_draw/sltb_sample_draw_v1.json"
+      "path": "sltb_sample_draw/sltb_sample_draw_v1.taskconfig.json"
     },
     {
       "id": "sltb-record-sample-draw--officer-form",
@@ -103,7 +103,7 @@
       "kind": "task_config",
       "version": "",
       "loader": "local",
-      "path": "sltb_sample_schedule/sltb_sample_schedule_v1.json"
+      "path": "sltb_sample_schedule/sltb_sample_schedule_v1.taskconfig.json"
     },
     {
       "id": "sltb-schedule-pickup--officer-review-form",
@@ -117,7 +117,7 @@
       "kind": "task_config",
       "version": "",
       "loader": "local",
-      "path": "sltb_levy_review_receipt/sltb_levy_payment_review_receipt_v1.json"
+      "path": "sltb_levy_review_receipt/sltb_levy_payment_review_receipt_v1.taskconfig.json"
     },
     {
       "id": "sltb-pay-levy--review-form",
@@ -138,7 +138,7 @@
       "kind": "task_config",
       "version": "",
       "loader": "local",
-      "path": "sltb_levy_confirm_pinpack/sltb_levy_payment_confirm_pinpack_v1.json"
+      "path": "sltb_levy_confirm_pinpack/sltb_levy_payment_confirm_pinpack_v1.taskconfig.json"
     },
     {
       "id": "sltb-pay-levy--confirm-pinpack-form",

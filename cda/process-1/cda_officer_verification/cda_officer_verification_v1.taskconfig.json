@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "taskCode": "cda_officer_verification_v1",
+  "meta": {
+    "title": "CDA Application Verification",
+    "description": "Officer verifies the CDA application details before proceeding to payment.",
+    "category": "CDA"
+  },
+  "forms": {
+    "view": "cda-apply-coconut-cert--user-form",
+    "review": "cda-apply-coconut-cert--officer-verification-form"
+  },
+  "behavior": {
+    "type": "statusMap",
+    "outcomeField": "verification_outcome",
+    "statusMap": {
+      "approve": "APPROVED",
+      "needs_more_info": "FEEDBACK_REQUESTED"
+    }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
+}

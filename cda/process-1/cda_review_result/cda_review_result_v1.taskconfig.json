@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "taskCode": "cda_review_result_v1",
+  "meta": {
+    "title": "CDA Application Review & Certification",
+    "description": "Officer reviews the Coconut Development Authority application and issues the final export certificate."
+  },
+  "forms": {
+    "view": "cda-apply-coconut-cert--user-form",
+    "review": "cda-review-result--officer-form"
+  },
+  "behavior": {
+    "type": "statusMap",
+    "outcomeField": "review_outcome",
+    "statusMap": {
+      "approve": "APPROVED",
+      "needs_more_info": "FEEDBACK_REQUESTED"
+    }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
+}

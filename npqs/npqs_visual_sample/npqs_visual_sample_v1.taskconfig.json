@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "taskCode": "npqs_visual_sample_v1",
+  "meta": {
+    "title": "NPQS Visual Sample Inspection",
+    "description": "Officer physical sample inspection outcome recording."
+  },
+  "forms": {
+    "view": "npqs-apply-phyto-cert--user-form",
+    "review": "npqs-visual-sample-inspection--officer-form"
+  },
+  "behavior": {
+    "type": "statusMap",
+    "outcomeField": "visual_result",
+    "statusMap": {
+      "pass": "APPROVED",
+      "fail": "REJECTED",
+      "escalate_consignment": "APPROVED"
+    }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
+}
