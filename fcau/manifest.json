@@ -5,7 +5,7 @@
       "kind": "task_config",
       "version": "",
       "loader": "local",
-      "path": "fcau_application_review/fcau_application_review_v1.json"
+      "path": "fcau_application_review/fcau_application_review_v1.taskconfig.json"
     },
     {
       "id": "fcau-apply-health-cert--reviewer-form",
@@ -26,7 +26,7 @@
       "kind": "task_config",
       "version": "",
       "loader": "local",
-      "path": "fcau_issue_certificate/fcau_issue_certificate_v1.json"
+      "path": "fcau_issue_certificate/fcau_issue_certificate_v1.taskconfig.json"
     },
     {
       "id": "fcau-issue-certificate--officer-form",
@@ -47,7 +47,7 @@
       "kind": "task_config",
       "version": "",
       "loader": "local",
-      "path": "fcau_lab_fee_payment_review/fcau_lab_fee_payment_review_v1.json"
+      "path": "fcau_lab_fee_payment_review/fcau_lab_fee_payment_review_v1.taskconfig.json"
     },
     {
       "id": "fcau-pay-lab-fee--review-form",
@@ -68,7 +68,7 @@
       "kind": "task_config",
       "version": "",
       "loader": "local",
-      "path": "fcau_lab_test/fcau_lab_test_v1.json"
+      "path": "fcau_lab_test/fcau_lab_test_v1.taskconfig.json"
     },
     {
       "id": "fcau-lab-testing--officer-form",
@@ -89,7 +89,7 @@
       "kind": "task_config",
       "version": "",
       "loader": "local",
-      "path": "fcau_post_wh_lab_fee_review/fcau_post_wh_lab_fee_review_v1.json"
+      "path": "fcau_post_wh_lab_fee_review/fcau_post_wh_lab_fee_review_v1.taskconfig.json"
     },
     {
       "id": "fcau-pay-post-wh-lab-fee--review-form",
@@ -110,7 +110,7 @@
       "kind": "task_config",
       "version": "",
       "loader": "local",
-      "path": "fcau_post_wh_lab_test/fcau_post_wh_lab_test_v1.json"
+      "path": "fcau_post_wh_lab_test/fcau_post_wh_lab_test_v1.taskconfig.json"
     },
     {
       "id": "fcau-post-wh-lab-testing--officer-form",
@@ -131,7 +131,7 @@
       "kind": "task_config",
       "version": "",
       "loader": "local",
-      "path": "fcau_sample_assessment/fcau_sample_assessment_v1.json"
+      "path": "fcau_sample_assessment/fcau_sample_assessment_v1.taskconfig.json"
     },
     {
       "id": "fcau-visual-assessment--reviewer-form",
@@ -152,7 +152,7 @@
       "kind": "task_config",
       "version": "",
       "loader": "local",
-      "path": "fcau_sample_collection/fcau_sample_collection_v1.json"
+      "path": "fcau_sample_collection/fcau_sample_collection_v1.taskconfig.json"
     },
     {
       "id": "fcau-sample-collection--reviewer-form",
@@ -173,7 +173,7 @@
       "kind": "task_config",
       "version": "",
       "loader": "local",
-      "path": "fcau_sample_decision/fcau_sample_decision_v1.json"
+      "path": "fcau_sample_decision/fcau_sample_decision_v1.taskconfig.json"
     },
     {
       "id": "fcau-sample-collection--reviewer-form",
@@ -194,7 +194,7 @@
       "kind": "task_config",
       "version": "",
       "loader": "local",
-      "path": "fcau_sample_wait/fcau_sample_wait_v1.json"
+      "path": "fcau_sample_wait/fcau_sample_wait_v1.taskconfig.json"
     },
     {
       "id": "fcau-sample-collection--reviewer-form",
@@ -215,7 +215,7 @@
       "kind": "task_config",
       "version": "",
       "loader": "local",
-      "path": "fcau_visual_assessment/fcau_visual_assessment_v1.json"
+      "path": "fcau_visual_assessment/fcau_visual_assessment_v1.taskconfig.json"
     },
     {
       "id": "fcau-visual-assessment--reviewer-form",
@@ -236,7 +236,7 @@
       "kind": "task_config",
       "version": "",
       "loader": "local",
-      "path": "fcau_warehouse_inspection/fcau_warehouse_inspection_v1.json"
+      "path": "fcau_warehouse_inspection/fcau_warehouse_inspection_v1.taskconfig.json"
     },
     {
       "id": "fcau-warehouse-inspection--officer-form",
@@ -257,7 +257,7 @@
       "kind": "task_config",
       "version": "",
       "loader": "local",
-      "path": "fcau_warehouse_scheduling_review/fcau_warehouse_scheduling_review_v1.json"
+      "path": "fcau_warehouse_scheduling_review/fcau_warehouse_scheduling_review_v1.taskconfig.json"
     },
     {
       "id": "fcau-warehouse-scheduling--officer-form",

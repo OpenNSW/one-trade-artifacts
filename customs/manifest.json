@@ -5,7 +5,7 @@
       "kind": "task_config",
       "version": "",
       "loader": "local",
-      "path": "customs_boat_note_approval/customs_boat_note_approval_v1.json"
+      "path": "customs_boat_note_approval/customs_boat_note_approval_v1.taskconfig.json"
     },
     {
       "id": "customs-boat-note-approval--officer-form",

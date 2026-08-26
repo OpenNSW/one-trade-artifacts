@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "taskCode": "sltb_officer_review_v1",
+  "meta": {
+    "title": "SLTB Blend Sheet Review",
+    "description": "Officer review of the submitted tea blend sheet and levy assessment."
+  },
+  "forms": {
+    "view": "sltb-submit-blendsheet--user-form",
+    "review": "sltb-submit-blendsheet--officer-review-form"
+  },
+  "behavior": {
+    "type": "statusMap",
+    "outcomeField": "review_outcome",
+    "statusMap": {
+      "approve": "APPROVED",
+      "needs_more_info": "FEEDBACK_REQUESTED",
+      "reject": "REJECTED"
+    }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
+}

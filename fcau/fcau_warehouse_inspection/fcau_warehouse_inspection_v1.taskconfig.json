@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "taskCode": "fcau_warehouse_inspection_v1",
+  "meta": {
+    "title": "FCAU Warehouse Visual Inspection",
+    "description": "Officer records the outcome of the visual inspection conducted at the warehouse."
+  },
+  "forms": {
+    "view": "fcau-warehouse-inspection--user-form",
+    "review": "fcau-warehouse-inspection--officer-form"
+  },
+  "behavior": {
+    "type": "statusMap",
+    "outcomeField": "inspection_outcome",
+    "statusMap": {
+      "pass": "APPROVED",
+      "fail": "REJECTED",
+      "lab_test_required": "APPROVED"
+    }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
+}
