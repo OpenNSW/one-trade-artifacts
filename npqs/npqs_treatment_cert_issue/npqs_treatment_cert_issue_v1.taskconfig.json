@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "taskCode": "npqs_treatment_cert_issue_v1",
+  "meta": {
+    "title": "NPQS Issue Treatment Certificate",
+    "description": "Officer issues the treatment certificate."
+  },
+  "forms": {
+    "view": "npqs-apply-phyto-cert--user-form",
+    "review": "npqs-issue-treatment-cert--officer-form"
+  },
+  "behavior": {
+    "type": "statusMap",
+    "outcomeField": "treatment_outcome",
+    "statusMap": {
+      "completed": "APPROVED",
+      "failed": "REJECTED"
+    }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
+}

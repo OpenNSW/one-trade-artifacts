@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "taskCode": "npqs_application_review_v1",
+  "meta": {
+    "title": "NPQS Application Review",
+    "description": "Officer review of the phytosanitary registration application."
+  },
+  "forms": {
+    "view": "npqs-apply-phyto-cert--user-form",
+    "review": "npqs-apply-phyto-cert--reviewer-form"
+  },
+  "behavior": {
+    "type": "statusMap",
+    "outcomeField": "review_outcome",
+    "statusMap": {
+      "approve": "APPROVED",
+      "needs_more_info": "FEEDBACK_REQUESTED"
+    }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
+}

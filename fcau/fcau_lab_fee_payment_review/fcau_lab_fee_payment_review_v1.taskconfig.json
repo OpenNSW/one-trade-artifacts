@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "taskCode": "fcau_lab_fee_payment_review_v1",
+  "meta": {
+    "title": "FCAU Lab Test Fee Payment Review",
+    "description": "Officer reviews the laboratory test fee payment receipt uploaded by the trader."
+  },
+  "forms": {
+    "view": "fcau-pay-lab-fee--upload-form",
+    "review": "fcau-pay-lab-fee--review-form"
+  },
+  "behavior": {
+    "type": "statusMap",
+    "outcomeField": "payment_review_outcome",
+    "statusMap": {
+      "approve": "APPROVED",
+      "needs_more_info": "FEEDBACK_REQUESTED"
+    }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
+}

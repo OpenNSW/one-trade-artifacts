@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "taskCode": "npqs_consignment_inspection_v1",
+  "meta": {
+    "title": "NPQS Consignment Inspection",
+    "description": "Officer consignment visual inspection outcome recording."
+  },
+  "forms": {
+    "view": "npqs-apply-phyto-cert--user-form",
+    "review": "npqs-visual-consignment--officer-form"
+  },
+  "behavior": {
+    "type": "statusMap",
+    "outcomeField": "visual_result",
+    "statusMap": {
+      "pass": "APPROVED",
+      "fail": "REJECTED"
+    }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
+}

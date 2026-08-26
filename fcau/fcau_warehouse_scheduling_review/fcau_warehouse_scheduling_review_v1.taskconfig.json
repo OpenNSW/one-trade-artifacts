@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "taskCode": "fcau-warehouse-scheduling--review-v1",
+  "meta": {
+    "title": "Warehouse Inspection Scheduling Review",
+    "description": "Officer accepts the trader's proposed warehouse inspection date or suggests a different date."
+  },
+  "forms": {
+    "view": "fcau-warehouse-scheduling--user-form",
+    "review": "fcau-warehouse-scheduling--officer-form"
+  },
+  "behavior": {
+    "type": "statusMap",
+    "outcomeField": "review_outcome",
+    "statusMap": {
+      "accept": "APPROVED",
+      "reschedule": "APPROVED"
+    }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
+}

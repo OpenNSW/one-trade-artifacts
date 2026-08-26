@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "taskCode": "cda_kernel_asycuda_review_v1",
+  "meta": {
+    "title": "CDA ASYCUDA Approval Review \u2014 Kernel Products",
+    "description": "Officer reviews the ASYCUDA approval application for kernel product consignments before approval.",
+    "category": "CDA"
+  },
+  "forms": {
+    "view": "cda-kernel-asycuda--user-form",
+    "review": "cda-kernel-asycuda--officer-review-form"
+  },
+  "behavior": {
+    "type": "statusMap",
+    "outcomeField": "review_outcome",
+    "statusMap": {
+      "approve": "APPROVED",
+      "needs_more_info": "FEEDBACK_REQUESTED"
+    }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
+}
