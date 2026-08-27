@@ -109,11 +109,18 @@
         "type": "string",
         "title": "Transport Mode",
         "oneOf": [
-          { "const": "sea", "title": "Maritime Transport (Sea)" },
-          { "const": "air", "title": "Air Transport" },
-          { "const": "unspecified", "title": "Transport mode not specified" }
+          { "const": "1", "title": "Air transport" },
+          { "const": "2", "title": "Mail" },
+          { "const": "3", "title": "Maritime transport" },
+          { "const": "4", "title": "Fixed transport installations" },
+          { "const": "5", "title": "Inland water transport" },
+          { "const": "6", "title": "Multimodal transport" },
+          { "const": "7", "title": "Rail transport" },
+          { "const": "8", "title": "Road transport" },
+          { "const": "9", "title": "Transport mode not applicable" },
+          { "const": "10", "title": "Transport mode not specified" }
         ],
-        "default": "unspecified"
+        "default": "10"
       },
       "commodities": {
         "type": "array",
@@ -143,55 +150,94 @@
             },
             "commodity_plant_part": {
               "type": "string",
-              "title": "Plant Part",
+              "title": "Product Description",
               "oneOf": [
-                { "const": "leaves", "title": "Leaves / Foliage" },
-                { "const": "stems", "title": "Stems / Cut flowers" },
-                { "const": "seeds", "title": "Seeds / Grains" },
-                { "const": "whole", "title": "Whole Plant" }
+                { "const": "1", "title": "bark" },
+                { "const": "2", "title": "barrel" },
+                { "const": "3", "title": "branches" },
+                { "const": "4", "title": "buds" },
+                { "const": "5", "title": "budwood" },
+                { "const": "6", "title": "bulbs" },
+                { "const": "7", "title": "Cinnamon quill" },
+                { "const": "8", "title": "corms" },
+                { "const": "9", "title": "Curry Sauce" },
+                { "const": "10", "title": "cuttings" },
+                { "const": "11", "title": "firewood" },
+                { "const": "12", "title": "flowers" },
+                { "const": "13", "title": "foliage" },
+                { "const": "14", "title": "fruits" },
+                { "const": "15", "title": "grain" },
+                { "const": "16", "title": "Husk" },
+                { "const": "17", "title": "kernel" },
+                { "const": "18", "title": "leaves" },
+                { "const": "19", "title": "Mid rib" },
+                { "const": "20", "title": "Milk" },
+                { "const": "21", "title": "minitubers" },
+                { "const": "22", "title": "Not Appilicable" },
+                { "const": "23", "title": "Nut" },
+                { "const": "24", "title": "peat" },
+                { "const": "25", "title": "plantlets" },
+                { "const": "26", "title": "plants" },
+                { "const": "27", "title": "Pod" },
+                { "const": "28", "title": "pollen" },
+                { "const": "29", "title": "rhizomes" },
+                { "const": "30", "title": "seeds" },
+                { "const": "31", "title": "shell" },
+                { "const": "32", "title": "stem" },
+                { "const": "33", "title": "stolons" },
+                { "const": "34", "title": "tubers" },
+                { "const": "35", "title": "vegetables" },
+                { "const": "36", "title": "wood" },
+                { "const": "37", "title": "wood packaging material" }
               ],
-              "default": "leaves"
+              "default": "18"
             },
             "commodity_condition": {
               "type": "string",
               "title": "Condition",
               "oneOf": [
-                { "const": "rooted", "title": "rooted" },
-                { "const": "unrooted", "title": "unrooted" },
-                { "const": "bare-rooted", "title": "bare-rooted" },
-                { "const": "without leaves or flowers", "title": "without leaves or flowers" },
-                { "const": "dormant", "title": "dormant" },
-                { "const": "with bark", "title": "with bark" },
-                { "const": "debarked", "title": "debarked" },
-                { "const": "bark-free", "title": "bark-free" },
-                { "const": "dried", "title": "dried" },
-                { "const": "chopped", "title": "chopped" },
-                { "const": "peeled", "title": "peeled" },
-                { "const": "shelled", "title": "shelled" },
-                { "const": "fresh", "title": "fresh" },
-                { "const": "frozen", "title": "frozen" },
-                { "const": "with growing medium", "title": "with growing medium" },
-                { "const": "potted", "title": "potted" },
-                { "const": "desiccated", "title": "desiccated" },
-                { "const": "processed", "title": "processed" },
-                { "const": "organic", "title": "organic" },
-                { "const": "organic-processed", "title": "organic-processed" },
-                { "const": "1cpn-rooted", "title": "1cpn-rooted" },
-                { "const": "3p-oasis-rooted", "title": "3p-oasis-rooted" },
-                { "const": "5p-oasis-rooted", "title": "5p-oasis-rooted" },
-                { "const": "1cp-oasis-rooted", "title": "1cp-oasis-rooted" }
+                { "const": "1", "title": "rooted" },
+                { "const": "2", "title": "unrooted" },
+                { "const": "3", "title": "bare-rooted" },
+                { "const": "4", "title": "without leaves or flowers" },
+                { "const": "5", "title": "dormant" },
+                { "const": "6", "title": "with bark" },
+                { "const": "7", "title": "debarked" },
+                { "const": "8", "title": "bark-free" },
+                { "const": "9", "title": "dried" },
+                { "const": "10", "title": "chopped" },
+                { "const": "11", "title": "peeled" },
+                { "const": "12", "title": "shelled" },
+                { "const": "13", "title": "fresh" },
+                { "const": "14", "title": "frozen" },
+                { "const": "15", "title": "with growing medium" },
+                { "const": "16", "title": "potted" },
+                { "const": "17", "title": "desiccated" },
+                { "const": "18", "title": "processed" },
+                { "const": "19", "title": "organic" },
+                { "const": "20", "title": "organic-processed" },
+                { "const": "21", "title": "1cpn-rooted" },
+                { "const": "22", "title": "3p-oasis-rooted" },
+                { "const": "23", "title": "5p-oasis-rooted" },
+                { "const": "24", "title": "1cp-oasis-rooted" }
               ],
-              "default": "fresh"
+              "default": "13"
             },
             "commodity_intended_use": {
               "type": "string",
               "title": "Intended Use",
               "oneOf": [
-                { "const": "consumption", "title": "Human Consumption" },
-                { "const": "propagation", "title": "Propagation / Planting" },
-                { "const": "decorative", "title": "Decorative / Floristry" }
+                { "const": "1", "title": "Breeding" },
+                { "const": "2", "title": "consumption" },
+                { "const": "3", "title": "decoration" },
+                { "const": "4", "title": "planting" },
+                { "const": "5", "title": "processing" },
+                { "const": "6", "title": "Research" },
+                { "const": "7", "title": "research" },
+                { "const": "8", "title": "Soil protection" },
+                { "const": "9", "title": "sprouting for consumption" }
               ],
-              "default": "decorative"
+              "default": "3"
             },
             "quantity_net_weight": {
               "type": "number",
@@ -201,11 +247,41 @@
             "quantity_net_weight_unit": {
               "type": "string",
               "title": "Net Weight Unit",
-              "default": "kg",
+              "default": "KGM",
               "oneOf": [
-                { "const": "kg", "title": "Kilograms (kg)" },
-                { "const": "g", "title": "Grams (g)" },
-                { "const": "t", "title": "Metric Tons (t)" }
+                { "const": "DG", "title": "decigram (dg)" },
+                { "const": "KGM", "title": "kilogram (kg)" },
+                { "const": "GRM", "title": "gram (g)" },
+                { "const": "TNE", "title": "ton (t)" },
+                { "const": "MGM", "title": "milligram (mg)" },
+                { "const": "KTN", "title": "kilotonne (kt)" },
+                { "const": "LBR", "title": "pound (lb)" },
+                { "const": "CWA", "title": "hundred pound (cwt)" },
+                { "const": "MTQ", "title": "cubic metre (m³)" },
+                { "const": "LTR", "title": "litre (l)" },
+                { "const": "MAL", "title": "megalitre (Ml)" },
+                { "const": "CMQ", "title": "cubic centimetre (cm³)" },
+                { "const": "MLT", "title": "millilitre (ml)" },
+                { "const": "K6", "title": "kilolitre (kl)" },
+                { "const": "FTQ", "title": "cubic foot (ft³)" },
+                { "const": "GLI", "title": "gallon (gal)" },
+                { "const": "G24", "title": "tablespoon (tablespoon)" },
+                { "const": "BLL", "title": "barrel (barrel)" },
+                { "const": "HUR", "title": "hour (h)" },
+                { "const": "DAY", "title": "day (d)" },
+                { "const": "SEC", "title": "Second (s)" },
+                { "const": "MIN", "title": "minute (min)" },
+                { "const": "MON", "title": "month (mo)" },
+                { "const": "WEE", "title": "week (wk)" },
+                { "const": "g/cm²", "title": "gram per square centimetre (g/cm²)" },
+                { "const": "g/cm³", "title": "gram per cubic centimetre (g/cm³)" },
+                { "const": "GL", "title": "gram per litre (g/l)" },
+                { "const": "GJ", "title": "gram per millilitre (g/ml)" },
+                { "const": "GM", "title": "gram per square metre (g/m²)" },
+                { "const": "g/m³", "title": "gram per cubic metre (g/m³)" },
+                { "const": "KMQ", "title": "kilogram per cubic metre (kg/m³)" },
+                { "const": "CEL", "title": "degree Celsius (°C)" },
+                { "const": "FAH", "title": "degree Fahrenheit (°F)" }
               ]
             },
             "quantity_gross_weight": {
@@ -216,11 +292,41 @@
             "quantity_gross_weight_unit": {
               "type": "string",
               "title": "Gross Weight Unit",
-              "default": "kg",
+              "default": "KGM",
               "oneOf": [
-                { "const": "kg", "title": "Kilograms (kg)" },
-                { "const": "g", "title": "Grams (g)" },
-                { "const": "t", "title": "Metric Tons (t)" }
+                { "const": "DG", "title": "decigram (dg)" },
+                { "const": "KGM", "title": "kilogram (kg)" },
+                { "const": "GRM", "title": "gram (g)" },
+                { "const": "TNE", "title": "ton (t)" },
+                { "const": "MGM", "title": "milligram (mg)" },
+                { "const": "KTN", "title": "kilotonne (kt)" },
+                { "const": "LBR", "title": "pound (lb)" },
+                { "const": "CWA", "title": "hundred pound (cwt)" },
+                { "const": "MTQ", "title": "cubic metre (m³)" },
+                { "const": "LTR", "title": "litre (l)" },
+                { "const": "MAL", "title": "megalitre (Ml)" },
+                { "const": "CMQ", "title": "cubic centimetre (cm³)" },
+                { "const": "MLT", "title": "millilitre (ml)" },
+                { "const": "K6", "title": "kilolitre (kl)" },
+                { "const": "FTQ", "title": "cubic foot (ft³)" },
+                { "const": "GLI", "title": "gallon (gal)" },
+                { "const": "G24", "title": "tablespoon (tablespoon)" },
+                { "const": "BLL", "title": "barrel (barrel)" },
+                { "const": "HUR", "title": "hour (h)" },
+                { "const": "DAY", "title": "day (d)" },
+                { "const": "SEC", "title": "Second (s)" },
+                { "const": "MIN", "title": "minute (min)" },
+                { "const": "MON", "title": "month (mo)" },
+                { "const": "WEE", "title": "week (wk)" },
+                { "const": "g/cm²", "title": "gram per square centimetre (g/cm²)" },
+                { "const": "g/cm³", "title": "gram per cubic centimetre (g/cm³)" },
+                { "const": "GL", "title": "gram per litre (g/l)" },
+                { "const": "GJ", "title": "gram per millilitre (g/ml)" },
+                { "const": "GM", "title": "gram per square metre (g/m²)" },
+                { "const": "g/m³", "title": "gram per cubic metre (g/m³)" },
+                { "const": "KMQ", "title": "kilogram per cubic metre (kg/m³)" },
+                { "const": "CEL", "title": "degree Celsius (°C)" },
+                { "const": "FAH", "title": "degree Fahrenheit (°F)" }
               ]
             },
             "packages_count": {
@@ -230,8 +336,89 @@
             },
             "packages_description": {
               "type": "string",
-              "title": "Description of Packages",
-              "example": "Cardboard boxes"
+              "title": "Package Type",
+              "oneOf": [
+                { "const": "1G", "title": "Drum, fibre" },
+                { "const": "1D", "title": "Drum, plywood" },
+                { "const": "1B", "title": "Drum, aluminium" },
+                { "const": "ZB", "title": "Bag, large" },
+                { "const": "XK", "title": "Bag, paper, multi-wall, water resistant" },
+                { "const": "XJ", "title": "Bag, paper, multi-wall" },
+                { "const": "XH", "title": "Bag, textile, water resistant" },
+                { "const": "XG", "title": "Bag, textile, sift proof" },
+                { "const": "XF", "title": "Bag, textile, without inner coat/liner" },
+                { "const": "XD", "title": "Bag, plastics film" },
+                { "const": "XC", "title": "Bag, woven plastic, water resistant" },
+                { "const": "XB", "title": "Bag, woven plastic, sift proof" },
+                { "const": "XA", "title": "Bag, woven plastic, without inner coat/liner" },
+                { "const": "VY", "title": "Bulk, solid, fine particles (“powders”)" },
+                { "const": "VI", "title": "Vial" },
+                { "const": "VG", "title": "Bulk, gas (at 1031 mbar and 15°C)" },
+                { "const": "UN", "title": "Unit" },
+                { "const": "TT", "title": "Bag, tote" },
+                { "const": "TC", "title": "Tea-chest" },
+                { "const": "ST", "title": "Sheet" },
+                { "const": "SS", "title": "Case, steel" },
+                { "const": "SI", "title": "Skid" },
+                { "const": "SH", "title": "Sachet" },
+                { "const": "SA", "title": "Sack" },
+                { "const": "RO", "title": "Roll" },
+                { "const": "QR", "title": "Box, plastic, expanded" },
+                { "const": "QQ", "title": "Box, wooden, natural wood, with sift proof walls" },
+                { "const": "QP", "title": "Box, wooden, natural wood, ordinary" },
+                { "const": "QJ", "title": "Barrel, wooden, removable head" },
+                { "const": "QC", "title": "Drum, aluminium, non-removable head" },
+                { "const": "PX", "title": "Pallet" },
+                { "const": "PU", "title": "Tray" },
+                { "const": "PT", "title": "Pot" },
+                { "const": "PO", "title": "Pouch" },
+                { "const": "PK", "title": "Package" },
+                { "const": "PA", "title": "Packet" },
+                { "const": "OK", "title": "Block" },
+                { "const": "NT", "title": "Net" },
+                { "const": "NA", "title": "Not available" },
+                { "const": "MB", "title": "Bag, multiply" },
+                { "const": "JT", "title": "Jutebag" },
+                { "const": "JB", "title": "Bag, jumbo" },
+                { "const": "GY", "title": "Bag, gunny" },
+                { "const": "GB", "title": "Bottle, gas" },
+                { "const": "FX", "title": "Bag, flexible container" },
+                { "const": "FB", "title": "Flexibag" },
+                { "const": "EF", "title": "Case, with pallet base, cardboard" },
+                { "const": "EC", "title": "Bag, plastic" },
+                { "const": "DR", "title": "Drum" },
+                { "const": "CZ", "title": "Canvas" },
+                { "const": "CW", "title": "Cage, roll" },
+                { "const": "CV", "title": "Cover" },
+                { "const": "CU", "title": "Cup" },
+                { "const": "CT", "title": "Carton" },
+                { "const": "CS", "title": "Case" },
+                { "const": "CR", "title": "Crate" },
+                { "const": "CN", "title": "Container" },
+                { "const": "CL", "title": "Coil" },
+                { "const": "CG", "title": "Cage" },
+                { "const": "CF", "title": "Coffer" },
+                { "const": "BX", "title": "Box" },
+                { "const": "BS", "title": "Bottle, non-protected, bulbous" },
+                { "const": "BQ", "title": "Bottle, protected cylindrical" },
+                { "const": "BJ", "title": "Bucket" },
+                { "const": "BI", "title": "Bin" },
+                { "const": "BH", "title": "Bunch" },
+                { "const": "BG", "title": "Bag" },
+                { "const": "BE", "title": "Bundle" },
+                { "const": "BA", "title": "Barrel" },
+                { "const": "AJ", "title": "Cone" },
+                { "const": "5M", "title": "Bag, paper" },
+                { "const": "5L", "title": "Bag, textile" },
+                { "const": "5H", "title": "Bag, woven plastic" },
+                { "const": "4G", "title": "Box, fibreboard" },
+                { "const": "4F", "title": "Box, reconstituted wood" },
+                { "const": "4A", "title": "Box, steel" },
+                { "const": "44", "title": "Bag, polybag" },
+                { "const": "43", "title": "Bag, super bulk" },
+                { "const": "2C", "title": "Barrel, wooden" },
+                { "const": "1W", "title": "Drum, wooden" }
+              ]
             },
             "packages_in_bulk": {
               "type": "boolean",
@@ -312,6 +499,20 @@
               "type": "string",
               "title": "Description",
               "example": "Commercial invoice of foliage export"
+            },
+            "file_type": {
+              "type": "string",
+              "title": "File Type",
+              "oneOf": [
+                { "const": "Fumigation Certificate", "title": "Fumigation Certificate" },
+                { "const": "Import Permit", "title": "Import Permit" },
+                { "const": "Lab Test", "title": "Lab Test" },
+                { "const": "Original Certificate", "title": "Original Certificate" },
+                { "const": "Survey Report", "title": "Survey Report" },
+                { "const": "Treatment Report", "title": "Treatment Report" },
+                { "const": "Other", "title": "Other" }
+              ],
+              "default": "Other"
             }
           },
           "required": [
@@ -377,8 +578,20 @@
           {
             "type": "HorizontalLayout",
             "elements": [
-              { "type": "Control", "scope": "#/properties/exporter_address", "options": { "multiLine": true } },
-              { "type": "Control", "scope": "#/properties/consignee_address", "options": { "multiLine": true } }
+              {
+                "type": "Control",
+                "scope": "#/properties/exporter_address",
+                "options": {
+                  "multiLine": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/consignee_address",
+                "options": {
+                  "multiLine": true
+                }
+              }
             ]
           },
           {
@@ -391,7 +604,9 @@
           {
             "type": "Control",
             "scope": "#/properties/distinguishing_marks",
-            "options": { "multiLine": true }
+            "options": {
+              "multiLine": true
+            }
           },
           {
             "type": "HorizontalLayout",
@@ -407,24 +622,15 @@
               { "type": "Control", "scope": "#/properties/estimated_shipment_date" }
             ]
           },
-          {
-            "type": "Control",
-            "scope": "#/properties/transport_mode"
-          }
+          { "type": "Control", "scope": "#/properties/transport_mode" }
         ]
       },
       {
         "type": "Group",
         "label": "3. Commodity Details",
         "elements": [
-          {
-            "type": "Control",
-            "scope": "#/properties/commodities"
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/import_permit_number"
-          },
+          { "type": "Control", "scope": "#/properties/commodities" },
+          { "type": "Control", "scope": "#/properties/import_permit_number" },
           {
             "type": "HorizontalLayout",
             "elements": [
@@ -435,17 +641,23 @@
           {
             "type": "Control",
             "scope": "#/properties/place_of_inspection",
-            "options": { "multiLine": true }
+            "options": {
+              "multiLine": true
+            }
           },
           {
             "type": "Control",
             "scope": "#/properties/additional_declaration",
-            "options": { "multiLine": true }
+            "options": {
+              "multiLine": true
+            }
           },
           {
             "type": "Control",
             "scope": "#/properties/disinfestation_treatment",
-            "options": { "multiLine": true }
+            "options": {
+              "multiLine": true
+            }
           }
         ]
       },
@@ -453,10 +665,7 @@
         "type": "Group",
         "label": "4. Attachments",
         "elements": [
-          {
-            "type": "Control",
-            "scope": "#/properties/attachments"
-          }
+          { "type": "Control", "scope": "#/properties/attachments" }
         ]
       }
     ]
