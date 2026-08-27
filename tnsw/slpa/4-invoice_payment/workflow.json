@@ -1,0 +1,65 @@
+{
+  "id": "slpa-invoice-flow",
+  "name": "Settle the SLPA Invoice",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "await_payment",
+      "type": "TASK",
+      "task_template_id": "slpa-invoice--wait",
+      "input_mapping": {
+        "so.slug?": "so.slug",
+        "so.service_order_no?": "so.service_order_no"
+      },
+      "output_mapping": {
+        "invoice_no?": "payment.invoice_no",
+        "paid_at?": "payment.paid_at",
+        "paid_amount?": "payment.paid_amount",
+        "receipt_url?": "payment.receipt_url",
+        "invoice_url?": "payment.invoice_url",
+        "cms_status?": "payment.cms_status",
+        "paid?": "payment.paid",
+        "payable?": "payment.payable",
+        "invoice_serial?": "payment.invoice_serial",
+        "generated_at?": "payment.generated_at"
+      }
+    },
+    {
+      "id": "payment_check",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "await_payment"
+    },
+    {
+      "id": "e_check",
+      "source_id": "await_payment",
+      "target_id": "payment_check"
+    },
+    {
+      "id": "e_paid",
+      "source_id": "payment_check",
+      "target_id": "end",
+      "condition": "payment.paid == true"
+    },
+    {
+      "id": "e_unpaid",
+      "source_id": "payment_check",
+      "target_id": "await_payment",
+      "condition": "payment.paid != true"
+    }
+  ]
+}

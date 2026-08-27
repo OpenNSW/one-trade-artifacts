@@ -43,9 +43,40 @@
       }
     },
     {
+      "id": "slpa_3_0_approval",
+      "type": "TASK",
+      "name": "[SLPA 3.0] Service Order Approval",
+      "task_template_id": "slpa-approval-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "slpa.service_order_slug?": "so.slug",
+        "slpa.service_order_no?": "so.service_order_no"
+      },
+      "output_mapping": {
+        "decision.decision?": "slpa.approval",
+        "decision.invoice_no?": "slpa.invoice_no"
+      }
+    },
+    {
+      "id": "slpa_4_0_invoice",
+      "type": "TASK",
+      "name": "[SLPA 4.0] Invoice & Payment",
+      "task_template_id": "slpa-invoice-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "slpa.service_order_slug?": "so.slug",
+        "slpa.service_order_no?": "so.service_order_no"
+      },
+      "output_mapping": {
+        "payment.invoice_no?": "slpa.invoice_no",
+        "payment.paid_at?": "slpa.invoice_paid_at",
+        "payment.receipt_url?": "slpa.invoice_receipt_url"
+      }
+    },
+    {
       "id": "end",
       "type": "END",
-      "name": "Service Order Raised"
+      "name": "SLPA Charges Settled"
     }
   ],
   "edges": [
@@ -60,8 +91,18 @@
       "target_id": "slpa_2_0_service_order"
     },
     {
-      "id": "e_order_to_end",
+      "id": "e_order_to_approval",
       "source_id": "slpa_2_0_service_order",
+      "target_id": "slpa_3_0_approval"
+    },
+    {
+      "id": "e_approval_to_invoice",
+      "source_id": "slpa_3_0_approval",
+      "target_id": "slpa_4_0_invoice"
+    },
+    {
+      "id": "e_invoice_to_end",
+      "source_id": "slpa_4_0_invoice",
       "target_id": "end"
     }
   ]

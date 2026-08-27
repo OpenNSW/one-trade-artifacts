@@ -1,0 +1,28 @@
+{
+  "id": "slpa-invoice-flow:render",
+  "type": "APPLICATION",
+  "title": "[SLPA] Invoice & Payment",
+  "sections": {
+    "awaiting_payment": {
+      "templateId": "slpa-invoice--awaiting-message",
+      "title": "Invoice Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "STARTING",
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    },
+    "paid_message": {
+      "templateId": "slpa-invoice--paid-message",
+      "title": "Payment Confirmed",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "COMPLETED"
+        ]
+      }
+    }
+  }
+}

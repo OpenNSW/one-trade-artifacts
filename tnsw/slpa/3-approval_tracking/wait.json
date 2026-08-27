@@ -1,0 +1,9 @@
+{
+  "id": "slpa-approval--wait",
+  "task_type": "USER_INPUT",
+  "output_namespace": "decision",
+  "plugin_properties": {
+    "status_override": "QUEUED_EXTERNALLY",
+    "user_jsonforms_id": "slpa-approval--decision-form"
+  }
+}
