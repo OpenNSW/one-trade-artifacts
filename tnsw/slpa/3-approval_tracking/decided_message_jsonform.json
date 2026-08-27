@@ -1,0 +1,4 @@
+{
+  "id": "slpa-approval--decided-message",
+  "template": "{{with .decision}}{{if eq .decision \"APPROVED\"}}### ✅ Service Order Approved by SLPA\n\nSLPA has approved the service order. The invoice is raised against it, and settling that with SLPA is what releases the cargo at the terminal.\n\n{{else}}### ❌ Service Order Rejected by SLPA\n\nSLPA did not approve the service order. Contact SLPA for the reason, and raise a new order once it is resolved.\n\n{{end}}* **Outcome**: {{if .stage}}{{.stage}}{{else}}{{.decision}}{{end}}\n* **Service Order No**: {{if .service_order_no}}`{{.service_order_no}}`{{else}}—{{end}}\n{{if .invoice_no}}* **Invoice No**: `{{.invoice_no}}`\n{{end}}{{if .total_amount}}* **Total**: {{.total_amount}}\n{{end}}{{if .decided_at}}* **Decided At**: {{.decided_at}}\n{{end}}{{end}}"
+}

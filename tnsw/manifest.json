@@ -2933,6 +2933,90 @@
       "kind": "generic_template",
       "version": "",
       "path": "slpa/2-service_order/submitted_message_jsonform.json"
+    },
+    {
+      "id": "slpa-approval-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "slpa/3-approval_tracking/workflow.json"
+    },
+    {
+      "id": "slpa-approval-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "slpa/3-approval_tracking/task_template.json"
+    },
+    {
+      "id": "slpa-approval-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/3-approval_tracking/render.json"
+    },
+    {
+      "id": "slpa-approval--wait",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "slpa/3-approval_tracking/wait.json"
+    },
+    {
+      "id": "slpa-approval--decision-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/3-approval_tracking/decision_form_jsonform.json"
+    },
+    {
+      "id": "slpa-approval--awaiting-message",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/3-approval_tracking/awaiting_message_jsonform.json"
+    },
+    {
+      "id": "slpa-approval--decided-message",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/3-approval_tracking/decided_message_jsonform.json"
+    },
+    {
+      "id": "slpa-invoice-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "slpa/4-invoice_payment/workflow.json"
+    },
+    {
+      "id": "slpa-invoice-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "slpa/4-invoice_payment/task_template.json"
+    },
+    {
+      "id": "slpa-invoice-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/4-invoice_payment/render.json"
+    },
+    {
+      "id": "slpa-invoice--wait",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "slpa/4-invoice_payment/wait.json"
+    },
+    {
+      "id": "slpa-invoice--payment-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/4-invoice_payment/payment_form_jsonform.json"
+    },
+    {
+      "id": "slpa-invoice--awaiting-message",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/4-invoice_payment/awaiting_payment_jsonform.json"
+    },
+    {
+      "id": "slpa-invoice--paid-message",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/4-invoice_payment/paid_message_jsonform.json"
     }
   ]
 }
