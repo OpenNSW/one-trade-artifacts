@@ -1,0 +1,10 @@
+{
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "**/*.taskconfig.json"
+      ],
+      "url": "./schemas/taskconfig.schema.json"
+    }
+  ]
+}

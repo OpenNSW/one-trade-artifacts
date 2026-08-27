@@ -1,0 +1,39 @@
+name: Validate task configs
+
+on:
+  pull_request:
+    paths:
+      - "**/*.taskconfig.json"
+      - "schemas/taskconfig.schema.json"
+      - ".github/workflows/validate-taskconfigs.yml"
+  push:
+    branches: [main]
+    paths:
+      - "**/*.taskconfig.json"
+      - "schemas/taskconfig.schema.json"
+      - ".github/workflows/validate-taskconfigs.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install check-jsonschema
+        run: pip install check-jsonschema
+
+      - name: Validate *.taskconfig.json against schemas/taskconfig.schema.json
+        run: |
+          mapfile -d '' -t files < <(find . -name '*.taskconfig.json' -print0)
+          if [ "${#files[@]}" -eq 0 ]; then
+            echo "No *.taskconfig.json files found."
+            exit 0
+          fi
+          check-jsonschema --schemafile schemas/taskconfig.schema.json "${files[@]}"
