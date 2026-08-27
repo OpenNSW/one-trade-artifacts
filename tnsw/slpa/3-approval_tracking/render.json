@@ -1,0 +1,28 @@
+{
+  "id": "slpa-approval-flow:render",
+  "type": "APPLICATION",
+  "title": "[SLPA] Service Order Approval",
+  "sections": {
+    "awaiting_decision": {
+      "templateId": "slpa-approval--awaiting-message",
+      "title": "SLPA Approval Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "STARTING",
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    },
+    "decided_message": {
+      "templateId": "slpa-approval--decided-message",
+      "title": "SLPA Decision",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "COMPLETED"
+        ]
+      }
+    }
+  }
+}
