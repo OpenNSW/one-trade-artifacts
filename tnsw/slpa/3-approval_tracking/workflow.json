@@ -1,0 +1,63 @@
+{
+  "id": "slpa-approval-flow",
+  "name": "Track the SLPA Service Order Approval",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "await_decision",
+      "type": "TASK",
+      "task_template_id": "slpa-approval--wait",
+      "input_mapping": {
+        "so.slug?": "so.slug",
+        "so.service_order_no?": "so.service_order_no"
+      },
+      "output_mapping": {
+        "decision?": "decision.decision",
+        "stage?": "decision.stage",
+        "cms_status?": "decision.cms_status",
+        "service_order_no?": "decision.service_order_no",
+        "invoice_no?": "decision.invoice_no",
+        "total_amount?": "decision.total_amount",
+        "decided_at?": "decision.decided_at",
+        "final?": "decision.final"
+      }
+    },
+    {
+      "id": "decision_check",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "await_decision"
+    },
+    {
+      "id": "e_check",
+      "source_id": "await_decision",
+      "target_id": "decision_check"
+    },
+    {
+      "id": "e_settled",
+      "source_id": "decision_check",
+      "target_id": "end",
+      "condition": "decision.final == true"
+    },
+    {
+      "id": "e_still_with_slpa",
+      "source_id": "decision_check",
+      "target_id": "await_decision",
+      "condition": "decision.final != true"
+    }
+  ]
+}
