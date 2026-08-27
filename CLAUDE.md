@@ -50,15 +50,16 @@ under one folder per process:
 
 `<process-slug>` is an arbitrary folder name, not a numbering scheme — it's whatever
 that process happens to be called at the time it's split out (e.g. a placeholder like
-`process-1` if the real name isn't decided yet). Don't assume sibling processes are
-numbered sequentially, or read any other meaning into the slug.
+`process-1` if the real name isn't decided yet, later renamed to something descriptive
+once the process is named). Don't assume sibling processes are numbered sequentially,
+or read any other meaning into the slug.
 
 Agencies are migrated to this layout only when they actually need a second process —
 premature nesting for a single-process agency is not the convention. `cda/` is the
 first agency making this transition: its original (and, until now, only) process was
-moved under `process-1/` as part of adding a second CDA process; `customs/`, `fcau/`,
-`npqs/`, `sltb/`, and `trade/` remain flat (no per-process folder) until one of them
-needs a second process.
+moved under its own process folder (`1-export-coconut-certificate-registration/`) as
+part of adding a second CDA process; `customs/`, `fcau/`, `npqs/`, `sltb/`, and `trade/`
+remain flat (no per-process folder) until one of them needs a second process.
 
 The link between the two: a step's `EXTERNAL_REVIEW` task template
 (`tnsw/<agency>/<step>/officer_*.json`) references `service_id` + `task_code`, and that
