@@ -1,7 +1,7 @@
 {
   "id": "sltb-schedule-pickup-flow",
   "name": "Schedule Warehouse Pickup",
-  "version": 2,
+  "version": 3,
   "nodes": [
     { "id": "start", "type": "START" },
     {
@@ -56,16 +56,21 @@
     { "id": "e_start", "source_id": "start", "target_id": "trader_suggest" },
     { "id": "e_suggest_to_response_gateway", "source_id": "trader_suggest", "target_id": "trader_response_gateway" },
     {
-      "id": "e_trader_proposes",
+      "id": "e_trader_first_pass",
       "source_id": "trader_response_gateway",
       "target_id": "officer_review",
-      "condition": "schedule.schedule_outcome != 'propose_alternative' || suggest.response != 'accept'"
+      "condition": "schedule.schedule_outcome != 'propose_alternative'"
     },
     {
       "id": "e_trader_accepts",
       "source_id": "trader_response_gateway",
       "target_id": "end",
-      "condition": "schedule.schedule_outcome == 'propose_alternative' && suggest.response == 'accept'"
+      "condition": "suggest.response == 'accept'"
+    },
+    {
+      "id": "e_trader_proposes",
+      "source_id": "trader_response_gateway",
+      "target_id": "officer_review"
     },
     { "id": "e_review_gateway", "source_id": "officer_review", "target_id": "schedule_gateway" },
     {
