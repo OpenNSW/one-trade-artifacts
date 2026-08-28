@@ -1,0 +1,62 @@
+{
+  "id": "slpa-consolidation-flow:render",
+  "type": "APPLICATION",
+  "title": "[SLPA] Container Consolidation",
+  "sections": {
+    "working": {
+      "templateId": "slpa-consolidation--status-message",
+      "title": "Consolidation Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "STARTING",
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    },
+    "what_slpa_holds": {
+      "templateId": "slpa-consolidation--problem",
+      "title": "SLPA Containers",
+      "projector": "MARKDOWN",
+      "dataKey": "consolidation",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "consolidation"
+      }
+    },
+    "done": {
+      "templateId": "slpa-consolidation--done-message",
+      "title": "Consolidation Result",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "COMPLETED"
+        ]
+      }
+    },
+    "select_form": {
+      "templateId": "slpa-consolidation--select-form",
+      "title": "Consolidate Containers",
+      "projector": "FORM",
+      "dataKey": "consolidationform",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Consolidation",
+          "element": "primary_action"
+        }
+      ]
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}

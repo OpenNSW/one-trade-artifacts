@@ -1,0 +1,6 @@
+{
+  "id": "slpa-consolidation-flow",
+  "type": "APPLICATION",
+  "workflow_id": "slpa-consolidation-flow",
+  "render_config_id": "slpa-consolidation-flow:render"
+}
