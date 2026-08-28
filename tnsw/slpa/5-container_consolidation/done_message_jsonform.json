@@ -1,0 +1,4 @@
+{
+  "id": "slpa-consolidation--done-message",
+  "template": "### \u2705 Containers Consolidated\n\n{{with .consolidation}}{{if .summary}}{{.summary}}\n{{end}}{{if .message}}\n*SLPA: {{.message}}*\n{{end}}{{end}}\nA gate pass can now be issued for each consolidated container."
+}

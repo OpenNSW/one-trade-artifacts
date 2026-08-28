@@ -1,0 +1,41 @@
+{
+  "id": "slpa-gate-pass-prepare-flow",
+  "name": "Prepare SLPA Gate Pass Items",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "build_split_items",
+      "type": "TASK",
+      "task_template_id": "slpa-gate-pass--prepare-transform",
+      "input_mapping": {
+        "rows?": "rows",
+        "containers?": "containers",
+        "slug?": "slug",
+        "client_key?": "client_key"
+      },
+      "output_mapping": {
+        "split_items": "split_items"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "build_split_items"
+    },
+    {
+      "id": "e2",
+      "source_id": "build_split_items",
+      "target_id": "end"
+    }
+  ]
+}
