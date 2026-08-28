@@ -1,0 +1,59 @@
+{
+  "id": "slpa-gp--user-form",
+  "title": "Gate Pass Details",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "container_no": {
+        "type": "string",
+        "title": "Container No",
+        "readOnly": true,
+        "description": "The container SLPA consolidated. A pass can only be issued for a consolidated container."
+      },
+      "truck_no": {
+        "type": "string",
+        "title": "Truck No",
+        "minLength": 1,
+        "description": "The vehicle the container leaves on, as it appears on the plate."
+      },
+      "driver_name": {
+        "type": "string",
+        "title": "Driver Name",
+        "minLength": 1,
+        "description": "The driver presenting this pass at the gate."
+      },
+      "seal_no": {
+        "type": "string",
+        "title": "Seal No",
+        "minLength": 1,
+        "description": "The seal the container leaves under."
+      }
+    },
+    "required": [
+      "truck_no",
+      "driver_name",
+      "seal_no"
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/container_no"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/truck_no"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/driver_name"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/seal_no"
+      }
+    ]
+  }
+}

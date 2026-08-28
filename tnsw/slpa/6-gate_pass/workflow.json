@@ -1,0 +1,88 @@
+{
+  "id": "slpa-gate-pass-flow",
+  "name": "Issue SLPA Container Gate Pass",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "haulage_details",
+      "type": "TASK",
+      "task_template_id": "slpa-gp--user-input",
+      "input_mapping": {
+        "container_no?": "gpform.container_no",
+        "gpform?": "gpform",
+        "gp.error?": "gp.error"
+      },
+      "output_mapping": {
+        "truck_no?": "gpform.truck_no",
+        "driver_name?": "gpform.driver_name",
+        "seal_no?": "gpform.seal_no"
+      }
+    },
+    {
+      "id": "issue",
+      "type": "TASK",
+      "task_template_id": "slpa-gp--issue",
+      "input_mapping": {
+        "gpform": "payload",
+        "container_no?": "container_no",
+        "slug?": "slug",
+        "client_key?": "client_key"
+      },
+      "output_mapping": {
+        "gp.issued": "gp.issued",
+        "gp.error?": "gp.error",
+        "gp.gate_pass_no?": "gp.gate_pass_no",
+        "gp.gate_pass_id?": "gp.gate_pass_id",
+        "gp.container_no?": "gp.container_no",
+        "gp.truck_no?": "gp.truck_no",
+        "gp.driver_name?": "gp.driver_name",
+        "gp.seal_no?": "gp.seal_no",
+        "gp.barcode?": "gp.barcode",
+        "gp.status?": "gp.status",
+        "gp.issued_at?": "gp.issued_at"
+      }
+    },
+    {
+      "id": "issue_check",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "haulage_details"
+    },
+    {
+      "id": "e2",
+      "source_id": "haulage_details",
+      "target_id": "issue"
+    },
+    {
+      "id": "e_check",
+      "source_id": "issue",
+      "target_id": "issue_check"
+    },
+    {
+      "id": "e_issued",
+      "source_id": "issue_check",
+      "target_id": "end",
+      "condition": "gp.issued == true"
+    },
+    {
+      "id": "e_refused",
+      "source_id": "issue_check",
+      "target_id": "haulage_details",
+      "condition": "gp.issued != true"
+    }
+  ]
+}

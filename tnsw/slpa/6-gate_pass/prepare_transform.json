@@ -1,0 +1,5 @@
+{
+  "id": "slpa-gate-pass--prepare-transform",
+  "task_type": "SLPA_GATE_PASS_SPLIT_BUILDER",
+  "plugin_properties": {}
+}

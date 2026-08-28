@@ -1,0 +1,4 @@
+{
+  "id": "slpa-consolidation--problem",
+  "template": "{{if .error}}### \u26a0\ufe0f Nothing To Consolidate Yet\n\n{{.error}}\n{{end}}{{if and .summary (not .error)}}### \ud83d\udce6 Containers SLPA Is Holding\n\n{{.summary}}\n\nThe real container numbers and the service order numbers are different by design: SLPA prices the order against placeholder containers, and consolidation is what ties each real container to one of them. Tick each container to consolidate, set the service order container it goes with, then submit.\n{{end}}"
+}

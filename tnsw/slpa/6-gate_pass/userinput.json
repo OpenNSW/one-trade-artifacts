@@ -1,0 +1,8 @@
+{
+  "id": "slpa-gp--user-input",
+  "task_type": "USER_INPUT",
+  "output_namespace": "gpform",
+  "plugin_properties": {
+    "user_jsonforms_id": "slpa-gp--user-form"
+  }
+}
