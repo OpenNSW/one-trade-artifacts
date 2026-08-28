@@ -1,0 +1,10 @@
+{
+  "id": "slpa-gp--issue",
+  "task_type": "SLPA_GATE_PASS",
+  "output_namespace": "gp",
+  "plugin_properties": {
+    "service_id": "slpa",
+    "path": "/api/nsw/v1/export/service-orders/{slug}/generate-gatepass",
+    "result_field": "issued"
+  }
+}

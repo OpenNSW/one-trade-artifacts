@@ -3017,6 +3017,144 @@
       "kind": "generic_template",
       "version": "",
       "path": "slpa/4-invoice_payment/paid_message_jsonform.json"
+    },
+    {
+      "id": "slpa-consolidation--done-message",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/5-container_consolidation/done_message_jsonform.json"
+    },
+    {
+      "id": "slpa-consolidation--fetch",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "slpa/5-container_consolidation/fetch.json"
+    },
+    {
+      "id": "slpa-consolidation--problem",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/5-container_consolidation/problem_message_jsonform.json"
+    },
+    {
+      "id": "slpa-consolidation-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/5-container_consolidation/render.json"
+    },
+    {
+      "id": "slpa-consolidation--save",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "slpa/5-container_consolidation/save.json"
+    },
+    {
+      "id": "slpa-consolidation--status-message",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/5-container_consolidation/status_message_jsonform.json"
+    },
+    {
+      "id": "slpa-consolidation-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "slpa/5-container_consolidation/task_template.json"
+    },
+    {
+      "id": "slpa-consolidation-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "slpa/5-container_consolidation/workflow.json"
+    },
+    {
+      "id": "slpa-gate-pass-branch",
+      "kind": "workflow",
+      "version": "",
+      "path": "slpa/6-gate_pass/branch_workflow.json"
+    },
+    {
+      "id": "slpa-gp--issue",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "slpa/6-gate_pass/issue.json"
+    },
+    {
+      "id": "slpa-gp--issued-message",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/6-gate_pass/issued_message_jsonform.json"
+    },
+    {
+      "id": "slpa-gate-pass-prepare-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/6-gate_pass/prepare_render.json"
+    },
+    {
+      "id": "slpa-gate-pass-prepare-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "slpa/6-gate_pass/prepare_task_template.json"
+    },
+    {
+      "id": "slpa-gate-pass--prepare-transform",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "slpa/6-gate_pass/prepare_transform.json"
+    },
+    {
+      "id": "slpa-gate-pass-prepare-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "slpa/6-gate_pass/prepare_workflow.json"
+    },
+    {
+      "id": "slpa-gp--refusal",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/6-gate_pass/refusal_jsonform.json"
+    },
+    {
+      "id": "slpa-gate-pass-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/6-gate_pass/render.json"
+    },
+    {
+      "id": "slpa-gate-pass-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "slpa/6-gate_pass/task_template.json"
+    },
+    {
+      "id": "slpa-gp--user-input",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "slpa/6-gate_pass/userinput.json"
+    },
+    {
+      "id": "slpa-gp--user-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/6-gate_pass/userinput_jsonform.json"
+    },
+    {
+      "id": "slpa-gate-pass-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "slpa/6-gate_pass/workflow.json"
+    },
+    {
+      "id": "slpa-consolidation--select",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "slpa/5-container_consolidation/select.json"
+    },
+    {
+      "id": "slpa-consolidation--select-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/5-container_consolidation/select_form_jsonform.json"
     }
   ]
 }
