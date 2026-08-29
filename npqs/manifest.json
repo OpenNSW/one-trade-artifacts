@@ -15,6 +15,13 @@
       "path": "npqs_application_review/reviewerinput_jsonform.json"
     },
     {
+      "id": "npqs-apply-phyto-cert--officer-view-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "npqs_application_review/officer_view_jsonform.json"
+    },
+    {
       "id": "npqs-apply-phyto-cert--user-form",
       "kind": "generic_template",
       "version": "",
@@ -181,6 +188,13 @@
       "version": "",
       "loader": "local",
       "path": "npqs_treatment_request_review/review_jsonform.json"
+    },
+    {
+      "id": "npqs-treatment-request--officer-view-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "npqs_treatment_request_review/officer_view_jsonform.json"
     },
     {
       "id": "npqs-treatment-request--trader-form",

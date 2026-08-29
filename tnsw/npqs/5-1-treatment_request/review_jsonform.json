@@ -69,39 +69,51 @@
     ]
   },
   "uiSchema": {
-    "type": "VerticalLayout",
+    "type": "Categorization",
     "elements": [
       {
-        "type": "Control",
-        "scope": "#/properties/treatment_request_outcome"
-      },
-      {
-        "type": "Control",
-        "scope": "#/properties/clarification_comments",
-        "options": {
-          "multiLine": true
-        }
-      },
-      {
-        "type": "Control",
-        "scope": "#/properties/treatment_provider"
-      },
-      {
-        "type": "Control",
-        "scope": "#/properties/treatment_supervision"
-      },
-      {
-        "type": "Control",
-        "scope": "#/properties/supervision_officer_type",
-        "rule": {
-          "effect": "SHOW",
-          "condition": {
-            "scope": "#/properties/treatment_supervision",
-            "schema": {
-              "const": "with_supervision"
+        "type": "Category",
+        "label": "Decision",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/treatment_request_outcome"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/clarification_comments",
+            "options": {
+              "multiLine": true
             }
           }
-        }
+        ]
+      },
+      {
+        "type": "Category",
+        "label": "Treatment & Supervision",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/treatment_provider"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/treatment_supervision"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/supervision_officer_type",
+            "rule": {
+              "effect": "SHOW",
+              "condition": {
+                "scope": "#/properties/treatment_supervision",
+                "schema": {
+                  "const": "with_supervision"
+                }
+              }
+            }
+          }
+        ]
       }
     ]
   }
