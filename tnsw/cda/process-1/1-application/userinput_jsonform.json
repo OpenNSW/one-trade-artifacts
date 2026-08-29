@@ -62,8 +62,12 @@
                   "title": "MEDIUM"
                 },
                 {
-                  "const": "CHIPS_VADC",
-                  "title": "CHIPS VADC"
+                  "const": "CHIPS",
+                  "title": "CHIPS"
+                },
+                {
+                  "const": "VADC",
+                  "title": "VADC"
                 },
                 {
                   "const": "M_MEDIUM",
