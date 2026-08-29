@@ -35,10 +35,37 @@
           { "const": "without_supervision", "title": "Without Supervision" }
         ],
         "default": "without_supervision"
+      },
+      "supervision_officer_type": {
+        "type": "string",
+        "title": "Supervision Officer Type",
+        "oneOf": [
+          { "const": "npqs_officer", "title": "Under NPQS Officer Supervision" },
+          { "const": "pqs_officer", "title": "Under PQS Officer Supervision" }
+        ]
       }
     },
     "required": [
       "treatment_request_outcome"
+    ],
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "treatment_supervision": {
+              "const": "with_supervision"
+            }
+          },
+          "required": [
+            "treatment_supervision"
+          ]
+        },
+        "then": {
+          "required": [
+            "supervision_officer_type"
+          ]
+        }
+      }
     ]
   },
   "uiSchema": {
@@ -50,7 +77,10 @@
       },
       {
         "type": "Control",
-        "scope": "#/properties/clarification_comments"
+        "scope": "#/properties/clarification_comments",
+        "options": {
+          "multiLine": true
+        }
       },
       {
         "type": "Control",
@@ -59,6 +89,19 @@
       {
         "type": "Control",
         "scope": "#/properties/treatment_supervision"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/supervision_officer_type",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/treatment_supervision",
+            "schema": {
+              "const": "with_supervision"
+            }
+          }
+        }
       }
     ]
   }

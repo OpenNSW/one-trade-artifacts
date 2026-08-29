@@ -33,6 +33,7 @@
         "treatment_request_outcome": "reviewerform.treatment_request_outcome",
         "treatment_provider": "reviewerform.treatment_provider",
         "treatment_supervision": "reviewerform.treatment_supervision",
+        "supervision_officer_type?": "reviewerform.supervision_officer_type",
         "clarification_comments?": "reviewerform.clarification_comments"
       }
     },

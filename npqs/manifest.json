@@ -183,7 +183,7 @@
       "path": "npqs_treatment_request_review/review_jsonform.json"
     },
     {
-      "id": "npqs-apply-phyto-cert--user-form",
+      "id": "npqs-treatment-request--trader-form",
       "kind": "generic_template",
       "version": "",
       "loader": "local",
