@@ -26,9 +26,9 @@
         "example": 987654
       },
       "lot_number": {
-        "type": "integer",
+        "type": "string",
         "title": "Lot Number",
-        "example": 321
+        "example": "LOT-A321"
       },
       "dc_grades": {
         "type": "array",
