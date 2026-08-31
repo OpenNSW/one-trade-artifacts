@@ -158,6 +158,27 @@
         }
       ]
     },
+    "consignmentFields": {
+      "type": "array",
+      "description": "Values to copy from this task's injected application data onto the parent consignment's own custom_data (e.g. for location-based access control), accumulated across every task that touches the consignment. Optional — most tasks have nothing consignment-relevant to contribute. See docs/consignment-custom-data.md in the agency backend repo.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source", "target"],
+        "properties": {
+          "source": {
+            "type": "string",
+            "pattern": "^/",
+            "description": "JSON Pointer (RFC 6901) into this task's injected data, e.g. '/nppo_office_location'. Arrays are not supported — a source whose path passes through one is silently skipped at runtime, not an error."
+          },
+          "target": {
+            "type": "string",
+            "pattern": "^/",
+            "description": "JSON Pointer (RFC 6901) into the consignment's custom_data, e.g. '/officeLocation'."
+          }
+        }
+      }
+    },
     "certificate": {
       "type": "object",
       "additionalProperties": false,
