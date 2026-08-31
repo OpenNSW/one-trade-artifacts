@@ -16,7 +16,7 @@
     },
     "status_awaiting": {
       "templateId": "sltb-submit-blendsheet--status-awaiting",
-      "title": "Submission Status",
+      "title": "Current Status",
       "projector": "MARKDOWN",
       "visibleWhen": {
         "states": [
@@ -24,9 +24,9 @@
         ]
       }
     },
-    "previous_feedback": {
+    "review_history": {
       "templateId": "sltb-submit-blendsheet--previous-feedback",
-      "title": "Previous Feedback",
+      "title": "Review History",
       "projector": "MARKDOWN",
       "visibleWhen": {
         "states": [
