@@ -12,7 +12,7 @@
       "id": "authz",
       "phase": "PRE_RESUME",
       "properties": {
-        "QUEUED_EXTERNALLY": { "approve": ["fcau"], "reject": ["fcau"] }
+        "QUEUED_EXTERNALLY": { "approve": ["fcau"], "reject": ["fcau"], "needs_more_info": ["fcau"] }
       }
     }
   ]

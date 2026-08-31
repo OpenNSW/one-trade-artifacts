@@ -1,4 +1,4 @@
 {
   "id": "fcau-apply-health-cert--submitted-message",
-  "template": "### Application Under Review\n\nYour FCAU Health Certificate Application has been submitted successfully and is currently being reviewed by FCAU officers. Please wait for an update.\n\n* **Status**: Awaiting Officer Review"
+  "template": "{{if .reviewerform}}\n### ✅ Application Resubmitted\n\nYour corrected FCAU Health Certificate Application has been resubmitted for review. An FCAU officer will review the updated details.\n\n* **Status**: Awaiting Officer Review\n{{else}}\n### Application Under Review\n\nYour FCAU Health Certificate Application has been submitted successfully and is currently being reviewed by FCAU officers. Please wait for an update.\n\n* **Status**: Awaiting Officer Review\n{{end}}"
 }
