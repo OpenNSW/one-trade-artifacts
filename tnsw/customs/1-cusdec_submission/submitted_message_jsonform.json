@@ -1,4 +1,4 @@
 {
   "id": "customs-cusdec--submitted-message",
-  "template": "### Customs Declaration (CusDec) Submitted Successfully\n\nYour Customs Declaration (CusDec) has been submitted. Customs officers will review the declaration and attached SAD documents.\n\nYou will be notified once the assessment is complete."
+  "template": "{{if .reviewerform}}\n### ✅ CusDec Resubmitted\n\nYour corrected Customs Declaration (CusDec) has been resubmitted for review. Customs officers will assess the updated declaration and attached SAD documents.\n\n* **Status**: Awaiting Officer Review\n{{else}}\n### Customs Declaration (CusDec) Submitted Successfully\n\nYour Customs Declaration (CusDec) has been submitted. Customs officers will review the declaration and attached SAD documents.\n\nYou will be notified once the assessment is complete.\n{{end}}"
 }

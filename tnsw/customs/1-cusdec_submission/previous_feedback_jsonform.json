@@ -1,0 +1,4 @@
+{
+  "id": "customs-cusdec--previous-feedback",
+  "template": "{{if .reviewerform.rejection_reason}}\n### Review History\n\nComments from the previous review round. Your latest submission is now with Sri Lanka Customs.\n\n> **Officer Comments**: {{.reviewerform.rejection_reason}}\n{{end}}"
+}

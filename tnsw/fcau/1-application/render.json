@@ -9,18 +9,32 @@
       "projector": "MARKDOWN",
       "dataKey": "reviewerform",
       "visibleWhen": {
+        "states": [
+          "PENDING_USER",
+          "COMPLETED"
+        ],
         "requireDataKey": "reviewerform"
       }
     },
     "status_message": {
       "templateId": "fcau-apply-health-cert--submitted-message",
-      "title": "Submission Status",
+      "title": "Current Status",
       "projector": "MARKDOWN",
-      "dataKey": "userform",
       "visibleWhen": {
         "states": [
           "QUEUED_EXTERNALLY"
         ]
+      }
+    },
+    "review_history": {
+      "templateId": "fcau-apply-health-cert--previous-feedback",
+      "title": "Review History",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ],
+        "requireDataKey": "reviewerform"
       }
     },
     "user_form": {
