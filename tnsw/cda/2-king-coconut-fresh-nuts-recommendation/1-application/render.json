@@ -16,9 +16,8 @@
     },
     "status_message": {
       "templateId": "cda-kcfn-apply--submitted-message",
-      "title": "Submission Status",
+      "title": "Current Status",
       "projector": "MARKDOWN",
-      "dataKey": "userform",
       "visibleWhen": {
         "states": [
           "QUEUED_EXTERNALLY"
@@ -31,6 +30,21 @@
       "projector": "MARKDOWN",
       "dataKey": "reviewerform.rejection_reason",
       "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "reviewerform.rejection_reason"
+      }
+    },
+    "review_history": {
+      "templateId": "cda-kcfn-apply--previous-feedback",
+      "title": "Review History",
+      "projector": "MARKDOWN",
+      "dataKey": "reviewerform.rejection_reason",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ],
         "requireDataKey": "reviewerform.rejection_reason"
       }
     },
