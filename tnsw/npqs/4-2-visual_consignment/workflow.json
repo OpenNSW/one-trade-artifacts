@@ -25,11 +25,11 @@
       "task_template_id": "npqs-visual-consignment--officer-review",
       "input_mapping": {
         "reference_number": "reference_number",
-        "userform": "traderinput",
-        "userform.inspection_date": "inspection_date",
-        "userform.inspection_time": "inspection_time",
-        "userform.contact_name": "contact_name",
-        "userform.contact_phone": "contact_phone"
+        "traderinput": "traderinput",
+        "traderinput.inspection_date": "inspection_date",
+        "traderinput.inspection_time": "inspection_time",
+        "traderinput.contact_name": "contact_name",
+        "traderinput.contact_phone": "contact_phone"
       },
       "output_mapping": {
         "visual_result": "visual_result"

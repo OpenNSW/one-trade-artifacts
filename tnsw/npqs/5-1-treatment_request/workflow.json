@@ -26,12 +26,12 @@
       "task_template_id": "npqs-treatment-request--officer-review",
       "input_mapping": {
         "reference_number": "reference_number",
-        "userform": "traderinput",
-        "userform.treatment_type": "treatment_type",
-        "userform.chemical_used?": "chemical_used",
-        "userform.treatment_duration": "treatment_duration",
-        "userform.treatment_temperature?": "treatment_temperature",
-        "userform.treatment_concentration?": "treatment_concentration"
+        "traderinput": "traderinput",
+        "traderinput.treatment_type": "treatment_type",
+        "traderinput.chemical_used?": "chemical_used",
+        "traderinput.treatment_duration": "treatment_duration",
+        "traderinput.treatment_temperature?": "treatment_temperature",
+        "traderinput.treatment_concentration?": "treatment_concentration"
       },
       "output_mapping": {
         "treatment_request_outcome": "reviewerform.treatment_request_outcome",
