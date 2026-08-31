@@ -1,0 +1,4 @@
+{
+  "id": "sltb-submit-blendsheet--previous-feedback",
+  "template": "### Previous officer comments\n\nThese comments were provided in an earlier review round. Your latest submission is now with the SLTB officer.\n\n> **Officer Comments**: {{if .reviewerform.feedback}}{{.reviewerform.feedback}}{{else}}No additional comments were provided.{{end}}\n"
+}

@@ -2407,6 +2407,18 @@
       "path": "sltb/1-application/status_message_jsonform.json"
     },
     {
+      "id": "sltb-submit-blendsheet--status-awaiting",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/1-application/status_awaiting_jsonform.json"
+    },
+    {
+      "id": "sltb-submit-blendsheet--previous-feedback",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/1-application/previous_feedback_jsonform.json"
+    },
+    {
       "id": "sltb-submit-blendsheet--officer-review",
       "kind": "subtask_template",
       "version": "",

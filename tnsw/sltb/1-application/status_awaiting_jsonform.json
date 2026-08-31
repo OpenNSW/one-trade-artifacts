@@ -1,0 +1,4 @@
+{
+  "id": "sltb-submit-blendsheet--status-awaiting",
+  "template": "{{if .reviewerform}}\n### ✅ Application Resubmitted\n\nYour corrected SLTB Tea Blend Sheet has been resubmitted for review. An SLTB Quality Officer will review the updated Excel blendsheet data.\n\n* **CUSDEC Reference**: `{{.userform.cusdec_number}}`\n* **Status**: Awaiting SLTB Officer Review\n{{else}}\n### ✅ Application Submitted\n\nYour SLTB Tea Blend Sheet and CUSDEC reference have been successfully submitted for review. An SLTB Quality Officer will review the Excel blendsheet data.\n\n* **CUSDEC Reference**: `{{.userform.cusdec_number}}`\n* **Status**: Awaiting SLTB Officer Review\n{{end}}"
+}
