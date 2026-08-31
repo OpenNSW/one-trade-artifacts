@@ -57,7 +57,7 @@
       "path": "npqs_consignment_inspection/inspection_jsonform.json"
     },
     {
-      "id": "npqs-apply-phyto-cert--user-form",
+      "id": "npqs-visual-consignment--trader-schedule-form",
       "kind": "generic_template",
       "version": "",
       "loader": "local",
