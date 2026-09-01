@@ -29,7 +29,6 @@
       "output_mapping": {
         "documents_verified": "reviewerform.documents_verified",
         "asycuda_approval_confirmed": "reviewerform.asycuda_approval_confirmed",
-        "agency_side_marked": "reviewerform.agency_side_marked",
         "remarks?": "reviewerform.remarks"
       }
     },

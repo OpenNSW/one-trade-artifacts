@@ -1,4 +1,4 @@
 {
   "id": "cda-kcfn-upload-docs--verified-message",
-  "template": "### Application Complete\n\nYour uploaded recommendation letter and supporting documents have been verified, and the green check has been confirmed on ASYCUDA.\n\n{{.remarks}}\n\n* **Status**: Approved & Closed"
+  "template": "### Application Complete\n\nYour uploaded recommendation letter and supporting documents have been verified, and the green check has been confirmed on ASYCUDA.\n\n{{if .remarks}}* **Officer Remarks**: {{.remarks}}\n{{end}}\n* **Status**: Approved & Closed"
 }

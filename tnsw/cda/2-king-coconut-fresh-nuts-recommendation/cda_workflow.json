@@ -68,8 +68,7 @@
       "output_mapping": {
         "uploadform.uploaded_letter_file": "cda_kcfn.uploaded_letter_file",
         "uploadform.reports": "cda_kcfn.reports",
-        "reviewerform.asycuda_approval_confirmed": "cda_kcfn.asycuda_approval_confirmed",
-        "reviewerform.agency_side_marked": "cda_kcfn.agency_side_marked"
+        "reviewerform.asycuda_approval_confirmed": "cda_kcfn.asycuda_approval_confirmed"
       }
     },
     {
