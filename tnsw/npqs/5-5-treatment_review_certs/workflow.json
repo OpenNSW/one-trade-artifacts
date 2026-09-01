@@ -13,8 +13,10 @@
       "task_template_id": "npqs-review-treatment-certs--officer-review",
       "input_mapping": {
         "reference_number": "reference_number",
-        "userform": "submission",
-        "traderinput": "traderinput"
+        "traderinput": "traderinput",
+        "traderinput.treatment_certificate_url": "treatment_certificate_url",
+        "traderinput.supervision_report_url?": "supervision_report_url",
+        "traderinput.upload_remarks?": "upload_remarks"
       },
       "output_mapping": {
         "treatment_review_result": "treatment_review_result",

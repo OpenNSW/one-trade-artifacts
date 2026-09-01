@@ -6,7 +6,7 @@
     "description": "Officer reviews the treatment request and specifies provider/supervision requirements."
   },
   "forms": {
-    "view": "npqs-apply-phyto-cert--user-form",
+    "view": "npqs-treatment-request--trader-form",
     "review": "npqs-treatment-request--reviewer-form"
   },
   "behavior": {

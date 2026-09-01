@@ -57,7 +57,7 @@
       "path": "npqs_consignment_inspection/inspection_jsonform.json"
     },
     {
-      "id": "npqs-apply-phyto-cert--user-form",
+      "id": "npqs-visual-consignment--trader-schedule-form",
       "kind": "generic_template",
       "version": "",
       "loader": "local",
@@ -78,7 +78,7 @@
       "path": "npqs_docs_review/officerinput_jsonform.json"
     },
     {
-      "id": "npqs-apply-phyto-cert--user-form",
+      "id": "npqs-upload-docs--trader-form",
       "kind": "generic_template",
       "version": "",
       "loader": "local",
@@ -183,7 +183,7 @@
       "path": "npqs_treatment_request_review/review_jsonform.json"
     },
     {
-      "id": "npqs-apply-phyto-cert--user-form",
+      "id": "npqs-treatment-request--trader-form",
       "kind": "generic_template",
       "version": "",
       "loader": "local",
@@ -204,7 +204,7 @@
       "path": "npqs_treatment_review/officerinput_jsonform.json"
     },
     {
-      "id": "npqs-apply-phyto-cert--user-form",
+      "id": "npqs-upload-treatment-certs--trader-form",
       "kind": "generic_template",
       "version": "",
       "loader": "local",

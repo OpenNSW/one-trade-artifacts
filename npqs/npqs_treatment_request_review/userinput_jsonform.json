@@ -1,910 +1,97 @@
 {
-  "id": "npqs-apply-phyto-cert--user-form",
-  "title": "Phytosanitary Certificate Application Details",
+  "id": "npqs-treatment-request--trader-form",
+  "title": "Treatment Request Details",
   "schema": {
     "type": "object",
     "properties": {
-      "certificate_type": {
+      "treatment_type": {
         "type": "string",
-        "title": "Certificate Type",
+        "title": "Treatment Type Requested",
+        "readOnly": true,
         "oneOf": [
-          { "const": "export", "title": "Export" },
-          { "const": "re-export", "title": "Re-Export" }
-        ],
-        "default": "export"
-      },
-      "shipment_value": {
-        "type": "string",
-        "title": "Shipment Value",
-        "oneOf": [
-          { "const": "commercial", "title": "Commercial" },
-          { "const": "non-commercial", "title": "Non-Commercial" }
-        ],
-        "default": "commercial"
-      },
-      "applicant_name": {
-        "type": "string",
-        "title": "Applicant Name",
-        "example": "abc Company"
-      },
-      "nppo_office_location": {
-        "type": "string",
-        "title": "NPPO Office Location",
-        "oneOf": [
-          { "const": "NPQS-KAT", "title": "National Plant Quarantine Service HQ - Katunayake" },
-          { "const": "SEA-CMB", "title": "Plant Quarantine Station - Seaport, Colombo" },
-          { "const": "AIR-BIA", "title": "Plant Quarantine Station - Bandaranayake International Airport, Katunayake" },
-          { "const": "AIR-JAF", "title": "Plant Quarantine Station - Jaffna International Airport, Palaly" },
-          { "const": "AIR-CIAR", "title": "Plant Quarantine Unit - Colombo International Airport, Ratmalana" },
-          { "const": "AIR-MRIA", "title": "Plant Quarantine Station - Mattala Rajapaksa International Airport, Mattala" },
-          { "const": "SEA-HAM", "title": "Plant Quarantine Station - Seaport, Hambanthota" },
-          { "const": "SEA-KKS", "title": "Plant Quarantine Unit - Seaport, Kankesanturai" },
-          { "const": "PO-CME", "title": "Plant Quarantine Unit - Central Mail Exchange, Colombo" },
-          { "const": "PO-GAL", "title": "Plant Quarantine Unit - Post Office, Galle" },
-          { "const": "PO-KDY", "title": "Plant Quarantine Unit - Post Office, Kandy" },
-          { "const": "PO-JAF", "title": "Plant Quarantine Unit - Post Office, Jaffna" }
-        ],
-        "default": "NPQS-KAT"
-      },
-      "importing_country": {
-        "type": "string",
-        "title": "Name of Importing Country",
-        "oneOf": [
-          { "const": "AF", "title": "Afghanistan" },
-          { "const": "AL", "title": "Albania" },
-          { "const": "DZ", "title": "Algeria" },
-          { "const": "AS", "title": "American Samoa" },
-          { "const": "AD", "title": "Andorra" },
-          { "const": "AO", "title": "Angola" },
-          { "const": "AI", "title": "Anguilla" },
-          { "const": "AG", "title": "Antigua and Barbuda" },
-          { "const": "AR", "title": "Argentina" },
-          { "const": "AM", "title": "Armenia" },
-          { "const": "AU", "title": "Australia" },
-          { "const": "AT", "title": "Austria" },
-          { "const": "AZ", "title": "Azerbaijan" },
-          { "const": "BS", "title": "Bahamas" },
-          { "const": "BH", "title": "Bahrain" },
-          { "const": "BD", "title": "Bangladesh" },
-          { "const": "BB", "title": "Barbados" },
-          { "const": "BY", "title": "Belarus" },
-          { "const": "BE", "title": "Belgium" },
-          { "const": "BZ", "title": "Belize" },
-          { "const": "BJ", "title": "Benin" },
-          { "const": "BM", "title": "Bermuda" },
-          { "const": "BT", "title": "Bhutan" },
-          { "const": "BO", "title": "Bolivia" },
-          { "const": "BA", "title": "Bosnia and Herzegovina" },
-          { "const": "BW", "title": "Botswana" },
-          { "const": "BR", "title": "Brazil" },
-          { "const": "BN", "title": "Brunei Darussalam" },
-          { "const": "BG", "title": "Bulgaria" },
-          { "const": "BF", "title": "Burkina Faso" },
-          { "const": "BI", "title": "Burundi" },
-          { "const": "CV", "title": "Cabo Verde" },
-          { "const": "KH", "title": "Cambodia" },
-          { "const": "CM", "title": "Cameroon" },
-          { "const": "CA", "title": "Canada" },
-          { "const": "IC", "title": "Canary Islands" },
-          { "const": "KY", "title": "Cayman Islands" },
-          { "const": "CF", "title": "Central African Republic" },
-          { "const": "TD", "title": "Chad" },
-          { "const": "CL", "title": "Chile" },
-          { "const": "CN", "title": "China" },
-          { "const": "CO", "title": "Colombia" },
-          { "const": "KM", "title": "Comoros" },
-          { "const": "CG", "title": "Congo" },
-          { "const": "CD", "title": "Congo, The Democratic Republic of the" },
-          { "const": "CK", "title": "Cook Islands" },
-          { "const": "CR", "title": "Costa Rica" },
-          { "const": "CI", "title": "Côte d'Ivoire" },
-          { "const": "HR", "title": "Croatia" },
-          { "const": "CU", "title": "Cuba" },
-          { "const": "CY", "title": "Cyprus" },
-          { "const": "CZ", "title": "Czechia" },
-          { "const": "KP", "title": "Democratic Peoples Republic of Korea" },
-          { "const": "DK", "title": "Denmark" },
-          { "const": "DJ", "title": "Djibouti" },
-          { "const": "DM", "title": "Dominica" },
-          { "const": "DO", "title": "Dominican Republic" },
-          { "const": "EC", "title": "Ecuador" },
-          { "const": "EG", "title": "Egypt" },
-          { "const": "SV", "title": "El Salvador" },
-          { "const": "GQ", "title": "Equatorial Guinea" },
-          { "const": "ER", "title": "Eritrea" },
-          { "const": "EE", "title": "Estonia" },
-          { "const": "SZ", "title": "Eswatini" },
-          { "const": "ET", "title": "Ethiopia" },
-          { "const": "EU", "title": "European Union" },
-          { "const": "FJ", "title": "Fiji" },
-          { "const": "FI", "title": "Finland" },
-          { "const": "FR", "title": "France" },
-          { "const": "GF", "title": "French Guiana" },
-          { "const": "PF", "title": "French Polynesia" },
-          { "const": "GA", "title": "Gabon" },
-          { "const": "GM", "title": "Gambia" },
-          { "const": "GE", "title": "Georgia" },
-          { "const": "DE", "title": "Germany" },
-          { "const": "GH", "title": "Ghana" },
-          { "const": "GR", "title": "Greece" },
-          { "const": "GD", "title": "Grenada" },
-          { "const": "GP", "title": "Guadeloupe" },
-          { "const": "GU", "title": "Guam" },
-          { "const": "GT", "title": "Guatemala" },
-          { "const": "GG", "title": "Guernsey" },
-          { "const": "GN", "title": "Guinea" },
-          { "const": "GW", "title": "Guinea-Bissau" },
-          { "const": "GY", "title": "Guyana" },
-          { "const": "HT", "title": "Haiti" },
-          { "const": "HN", "title": "Honduras" },
-          { "const": "HU", "title": "Hungary" },
-          { "const": "IS", "title": "Iceland" },
-          { "const": "IN", "title": "India" },
-          { "const": "ID", "title": "Indonesia" },
-          { "const": "IR", "title": "Iran- Islamic Republic of" },
-          { "const": "IQ", "title": "Iraq" },
-          { "const": "IE", "title": "Ireland" },
-          { "const": "IL", "title": "Israel" },
-          { "const": "IT", "title": "Italy" },
-          { "const": "JM", "title": "Jamaica" },
-          { "const": "JP", "title": "Japan" },
-          { "const": "JE", "title": "Jersey" },
-          { "const": "JO", "title": "Jordan" },
-          { "const": "KZ", "title": "Kazakhstan" },
-          { "const": "KE", "title": "Kenya" },
-          { "const": "KI", "title": "Kiribati" },
-          { "const": "KW", "title": "Kuwait" },
-          { "const": "KG", "title": "Kyrgyzstan" },
-          { "const": "LA", "title": "Lao People's Democratic Republic" },
-          { "const": "LV", "title": "Latvia" },
-          { "const": "LB", "title": "Lebanon" },
-          { "const": "LS", "title": "Lesotho" },
-          { "const": "LR", "title": "Liberia" },
-          { "const": "LY", "title": "Libya" },
-          { "const": "LI", "title": "Liechtenstein" },
-          { "const": "LT", "title": "Lithuania" },
-          { "const": "LU", "title": "Luxembourg" },
-          { "const": "MG", "title": "Madagascar" },
-          { "const": "MW", "title": "Malawi" },
-          { "const": "MY", "title": "Malaysia" },
-          { "const": "MV", "title": "Maldives" },
-          { "const": "ML", "title": "Mali" },
-          { "const": "MT", "title": "Malta" },
-          { "const": "MH", "title": "Marshall Islands" },
-          { "const": "MQ", "title": "Martinique" },
-          { "const": "MR", "title": "Mauritania" },
-          { "const": "MU", "title": "Mauritius" },
-          { "const": "YT", "title": "Mayotte" },
-          { "const": "MX", "title": "Mexico" },
-          { "const": "FM", "title": "Micronesia- Federated States of" },
-          { "const": "MD", "title": "Moldova- Republic of" },
-          { "const": "MC", "title": "Monaco" },
-          { "const": "MN", "title": "Mongolia" },
-          { "const": "ME", "title": "Montenegro" },
-          { "const": "MS", "title": "Montserrat" },
-          { "const": "MA", "title": "Morocco" },
-          { "const": "MZ", "title": "Mozambique" },
-          { "const": "MM", "title": "Myanmar" },
-          { "const": "NA", "title": "Namibia" },
-          { "const": "NR", "title": "Nauru" },
-          { "const": "NP", "title": "Nepal" },
-          { "const": "NL", "title": "Netherlands, Kingdom of the" },
-          { "const": "NC", "title": "New Caledonia" },
-          { "const": "NZ", "title": "New Zealand" },
-          { "const": "NI", "title": "Nicaragua" },
-          { "const": "NE", "title": "Niger" },
-          { "const": "NG", "title": "Nigeria" },
-          { "const": "NU", "title": "Niue" },
-          { "const": "MP", "title": "Northern Mariana Islands" },
-          { "const": "NO", "title": "Norway" },
-          { "const": "OM", "title": "Oman" },
-          { "const": "PK", "title": "Pakistan" },
-          { "const": "PW", "title": "Palau" },
-          { "const": "PA", "title": "Panama" },
-          { "const": "PG", "title": "Papua New Guinea" },
-          { "const": "PY", "title": "Paraguay" },
-          { "const": "PE", "title": "Peru" },
-          { "const": "PH", "title": "Philippines" },
-          { "const": "PL", "title": "Poland" },
-          { "const": "PT", "title": "Portugal" },
-          { "const": "PR", "title": "Puerto Rico" },
-          { "const": "QA", "title": "Qatar" },
-          { "const": "KR", "title": "Republic of Korea" },
-          { "const": "TR", "title": "Republic of Türkiye" },
-          { "const": "RE", "title": "Réunion" },
-          { "const": "RO", "title": "Romania" },
-          { "const": "RU", "title": "Russian Federation" },
-          { "const": "RW", "title": "Rwanda" },
-          { "const": "KN", "title": "Saint Kitts and Nevis" },
-          { "const": "LC", "title": "Saint Lucia" },
-          { "const": "VC", "title": "Saint Vincent and the Grenadines" },
-          { "const": "WS", "title": "Samoa" },
-          { "const": "SM", "title": "San Marino" },
-          { "const": "ST", "title": "Sao Tome and Principe" },
-          { "const": "SA", "title": "Saudi Arabia" },
-          { "const": "SN", "title": "Senegal" },
-          { "const": "RS", "title": "Serbia" },
-          { "const": "SC", "title": "Seychelles" },
-          { "const": "SL", "title": "Sierra Leone" },
-          { "const": "SG", "title": "Singapore" },
-          { "const": "SK", "title": "Slovakia" },
-          { "const": "SI", "title": "Slovenia" },
-          { "const": "SB", "title": "Solomon Islands" },
-          { "const": "SO", "title": "Somalia" },
-          { "const": "ZA", "title": "South Africa" },
-          { "const": "SS", "title": "South Sudan" },
-          { "const": "ES", "title": "Spain" },
-          { "const": "LK", "title": "Sri Lanka" },
-          { "const": "SD", "title": "Sudan" },
-          { "const": "SR", "title": "Suriname" },
-          { "const": "SE", "title": "Sweden" },
-          { "const": "CH", "title": "Switzerland" },
-          { "const": "SY", "title": "Syrian Arab Republic" },
-          { "const": "TJ", "title": "Tajikistan" },
-          { "const": "TZ", "title": "Tanzania- United Republic of" },
-          { "const": "TH", "title": "Thailand" },
-          { "const": "MK", "title": "The Republic of North Macedonia" },
-          { "const": "TL", "title": "Timor-Leste" },
-          { "const": "TG", "title": "Togo" },
-          { "const": "TK", "title": "Tokelau" },
-          { "const": "TO", "title": "Tonga" },
-          { "const": "TT", "title": "Trinidad and Tobago" },
-          { "const": "TN", "title": "Tunisia" },
-          { "const": "TM", "title": "Turkmenistan" },
-          { "const": "TC", "title": "Turks and Caicos Islands" },
-          { "const": "TV", "title": "Tuvalu" },
-          { "const": "UG", "title": "Uganda" },
-          { "const": "UA", "title": "Ukraine" },
-          { "const": "AE", "title": "United Arab Emirates" },
-          { "const": "GB", "title": "United Kingdom" },
-          { "const": "US", "title": "United States of America" },
-          { "const": "UY", "title": "Uruguay" },
-          { "const": "UZ", "title": "Uzbekistan" },
-          { "const": "VU", "title": "Vanuatu" },
-          { "const": "VE", "title": "Venezuela- Bolivarian Republic of" },
-          { "const": "VN", "title": "Viet Nam" },
-          { "const": "VG", "title": "Virgin Islands, British" },
-          { "const": "VI", "title": "Virgin Islands, U.S." },
-          { "const": "WF", "title": "Wallis and Futuna Islands" },
-          { "const": "YE", "title": "Yemen" },
-          { "const": "ZM", "title": "Zambia" },
-          { "const": "ZW", "title": "Zimbabwe" }
+          { "const": "TPT", "title": "Temperature Treatment" },
+          { "const": "CHT", "title": "Chemical Treatment" },
+          { "const": "RAT", "title": "Radiation Treatment" },
+          { "const": "OTT", "title": "Other Treatment" },
+          { "const": "CT", "title": "Cold Treatment" },
+          { "const": "HT", "title": "Heat Treatment" },
+          { "const": "DR", "title": "Dry Heat" },
+          { "const": "MH", "title": "Moist Heat" },
+          { "const": "VH", "title": "Vapour Heat" },
+          { "const": "KD", "title": "Kiln drying" },
+          { "const": "HW", "title": "Hot water treatment" },
+          { "const": "DH", "title": "Dielectric Heating" },
+          { "const": "FG", "title": "Fungicide" },
+          { "const": "IN", "title": "Insecticide" },
+          { "const": "NE", "title": "Nematicide" },
+          { "const": "OP", "title": "Other pesticide" },
+          { "const": "CPI", "title": "Chemical pressure impregnation" },
+          { "const": "FU", "title": "Fumigation" },
+          { "const": "SC", "title": "Seed coating" },
+          { "const": "DV", "title": "Devitalization" },
+          { "const": "DB", "title": "Debarking" },
+          { "const": "CD", "title": "Cold disinfestation" }
         ]
       },
-      "transit_countries": {
+      "chemical_used": {
         "type": "string",
-        "title": "Transit Countries (if required)",
-        "example": "Angola"
+        "title": "Chemical / Medium Used (If fumigation)",
+        "readOnly": true
       },
-      "exporter_name": {
+      "treatment_duration": {
         "type": "string",
-        "title": "Exporter Name",
-        "example": "abc Company"
+        "title": "Treatment Duration",
+        "readOnly": true
       },
-      "exporter_address": {
+      "treatment_temperature": {
         "type": "string",
-        "title": "Exporter Address",
-        "example": "123, Galle Road, Colombo 03, Sri Lanka"
+        "title": "Target Temperature (°C)",
+        "readOnly": true
       },
-      "exporter_country": {
+      "treatment_concentration": {
         "type": "string",
-        "title": "Country of Exporter",
-        "oneOf": [
-          { "const": "LK", "title": "Sri Lanka" }
-        ],
-        "default": "LK"
-      },
-      "consignee_name": {
-        "type": "string",
-        "title": "Consignee Name",
-        "example": "Global Import Corp"
-      },
-      "consignee_address": {
-        "type": "string",
-        "title": "Consignee Address",
-        "example": "456 Main St, Andorra la Vella, Andorra"
-      },
-      "consignee_country": {
-        "type": "string",
-        "title": "Country of Consignee",
-        "oneOf": [
-          { "const": "LK", "title": "Sri Lanka" }
-        ],
-        "default": "LK"
-      },
-      "distinguishing_marks": {
-        "type": "string",
-        "title": "Distinguishing Marks",
-        "example": "EXP-NPQS-2026-A"
-      },
-      "point_of_entry_country": {
-        "type": "string",
-        "title": "Declared Point of Entry - Country",
-        "oneOf": [
-          { "const": "LK", "title": "Sri Lanka" }
-        ],
-        "default": "LK"
-      },
-      "point_of_entry_port": {
-        "type": "string",
-        "title": "Declared Point of Entry - Ports/Locations",
-        "example": "Andorra la Vella"
-      },
-      "seal_number": {
-        "type": "string",
-        "title": "Seal Number",
-        "example": "SL-CUSTOMS-93820"
-      },
-      "estimated_shipment_date": {
-        "type": "string",
-        "format": "date",
-        "title": "Estimated Shipment Date"
-      },
-      "transport_mode": {
-        "type": "string",
-        "title": "Transport Mode",
-        "oneOf": [
-          { "const": "1", "title": "Air transport" },
-          { "const": "2", "title": "Mail" },
-          { "const": "3", "title": "Maritime transport" },
-          { "const": "4", "title": "Fixed transport installations" },
-          { "const": "5", "title": "Inland water transport" },
-          { "const": "6", "title": "Multimodal transport" },
-          { "const": "7", "title": "Rail transport" },
-          { "const": "8", "title": "Road transport" },
-          { "const": "9", "title": "Transport mode not applicable" },
-          { "const": "10", "title": "Transport mode not specified" }
-        ],
-        "default": "10"
-      },
-      "commodities": {
-        "type": "array",
-        "title": "Commodities List",
-        "items": {
-          "type": "object",
-          "properties": {
-            "commodity_common_name": {
-              "type": "string",
-              "title": "Commodity Common Name",
-              "example": "Fresh foliage (Monstera leaves)"
-            },
-            "commodity_botanical_name": {
-              "type": "string",
-              "title": "Botanical Name",
-              "example": "Monstera deliciosa"
-            },
-            "commodity_language": {
-              "type": "string",
-              "title": "Language",
-              "example": "English"
-            },
-            "commodity_description": {
-              "type": "string",
-              "title": "Description of the Commodity",
-              "example": "Cut foliage leaves for decorative purposes"
-            },
-            "commodity_plant_part": {
-              "type": "string",
-              "title": "Product Description",
-              "oneOf": [
-                { "const": "1", "title": "Bark" },
-                { "const": "2", "title": "Barrel" },
-                { "const": "3", "title": "Branches" },
-                { "const": "4", "title": "Buds" },
-                { "const": "5", "title": "Budwood" },
-                { "const": "6", "title": "Bulbs" },
-                { "const": "7", "title": "Cinnamon quill" },
-                { "const": "8", "title": "Corms" },
-                { "const": "9", "title": "Curry Sauce" },
-                { "const": "10", "title": "Cuttings" },
-                { "const": "11", "title": "Firewood" },
-                { "const": "12", "title": "Flowers" },
-                { "const": "13", "title": "Foliage" },
-                { "const": "14", "title": "Fruits" },
-                { "const": "15", "title": "Grain" },
-                { "const": "16", "title": "Husk" },
-                { "const": "17", "title": "Kernel" },
-                { "const": "18", "title": "Leaves" },
-                { "const": "19", "title": "Mid rib" },
-                { "const": "20", "title": "Milk" },
-                { "const": "21", "title": "Minitubers" },
-                { "const": "22", "title": "Not Appilicable" },
-                { "const": "23", "title": "Nut" },
-                { "const": "24", "title": "Peat" },
-                { "const": "25", "title": "Plantlets" },
-                { "const": "26", "title": "Plants" },
-                { "const": "27", "title": "Pod" },
-                { "const": "28", "title": "Pollen" },
-                { "const": "29", "title": "Rhizomes" },
-                { "const": "30", "title": "Seeds" },
-                { "const": "31", "title": "Shell" },
-                { "const": "32", "title": "Stem" },
-                { "const": "33", "title": "Stolons" },
-                { "const": "34", "title": "Tubers" },
-                { "const": "35", "title": "Vegetables" },
-                { "const": "36", "title": "Wood" },
-                { "const": "37", "title": "Wood packaging material" }
-              ],
-              "default": "18"
-            },
-            "commodity_condition": {
-              "type": "string",
-              "title": "Condition",
-              "oneOf": [
-                { "const": "1", "title": "Rooted" },
-                { "const": "2", "title": "Unrooted" },
-                { "const": "3", "title": "Bare-rooted" },
-                { "const": "4", "title": "Without leaves or flowers" },
-                { "const": "5", "title": "Dormant" },
-                { "const": "6", "title": "With bark" },
-                { "const": "7", "title": "Debarked" },
-                { "const": "8", "title": "Bark-free" },
-                { "const": "9", "title": "Dried" },
-                { "const": "10", "title": "Chopped" },
-                { "const": "11", "title": "Peeled" },
-                { "const": "12", "title": "Shelled" },
-                { "const": "13", "title": "Fresh" },
-                { "const": "14", "title": "Frozen" },
-                { "const": "15", "title": "With growing medium" },
-                { "const": "16", "title": "Potted" },
-                { "const": "17", "title": "Desiccated" },
-                { "const": "18", "title": "Processed" },
-                { "const": "19", "title": "Organic" },
-                { "const": "20", "title": "Organic-processed" },
-                { "const": "21", "title": "1cpn-rooted" },
-                { "const": "22", "title": "3p-oasis-rooted" },
-                { "const": "23", "title": "5p-oasis-rooted" },
-                { "const": "24", "title": "1cp-oasis-rooted" }
-              ],
-              "default": "13"
-            },
-            "commodity_intended_use": {
-              "type": "string",
-              "title": "Intended Use",
-              "oneOf": [
-                { "const": "1", "title": "Breeding" },
-                { "const": "2", "title": "Consumption" },
-                { "const": "3", "title": "Decoration" },
-                { "const": "4", "title": "Planting" },
-                { "const": "5", "title": "Processing" },
-                { "const": "6", "title": "Research" },
-                { "const": "7", "title": "Research" },
-                { "const": "8", "title": "Soil protection" },
-                { "const": "9", "title": "Sprouting for consumption" }
-              ],
-              "default": "3"
-            },
-            "quantity_net_weight": {
-              "type": "number",
-              "title": "Net Weight",
-              "example": 500
-            },
-            "quantity_net_weight_unit": {
-              "type": "string",
-              "title": "Net Weight Unit",
-              "default": "KGM",
-              "oneOf": [
-                { "const": "DG", "title": "decigram (dg)" },
-                { "const": "KGM", "title": "kilogram (kg)" },
-                { "const": "GRM", "title": "gram (g)" },
-                { "const": "TNE", "title": "ton (t)" },
-                { "const": "MGM", "title": "milligram (mg)" },
-                { "const": "KTN", "title": "kilotonne (kt)" },
-                { "const": "LBR", "title": "pound (lb)" },
-                { "const": "CWA", "title": "hundred pound (cwt)" },
-                { "const": "MTQ", "title": "cubic metre (m³)" },
-                { "const": "LTR", "title": "litre (l)" },
-                { "const": "MAL", "title": "megalitre (Ml)" },
-                { "const": "CMQ", "title": "cubic centimetre (cm³)" },
-                { "const": "MLT", "title": "millilitre (ml)" },
-                { "const": "K6", "title": "kilolitre (kl)" },
-                { "const": "FTQ", "title": "cubic foot (ft³)" },
-                { "const": "GLI", "title": "gallon (gal)" },
-                { "const": "G24", "title": "tablespoon (tablespoon)" },
-                { "const": "BLL", "title": "barrel (barrel)" },
-                { "const": "HUR", "title": "hour (h)" },
-                { "const": "DAY", "title": "day (d)" },
-                { "const": "SEC", "title": "Second (s)" },
-                { "const": "MIN", "title": "minute (min)" },
-                { "const": "MON", "title": "month (mo)" },
-                { "const": "WEE", "title": "week (wk)" },
-                { "const": "g/cm²", "title": "gram per square centimetre (g/cm²)" },
-                { "const": "g/cm³", "title": "gram per cubic centimetre (g/cm³)" },
-                { "const": "GL", "title": "gram per litre (g/l)" },
-                { "const": "GJ", "title": "gram per millilitre (g/ml)" },
-                { "const": "GM", "title": "gram per square metre (g/m²)" },
-                { "const": "g/m³", "title": "gram per cubic metre (g/m³)" },
-                { "const": "KMQ", "title": "kilogram per cubic metre (kg/m³)" },
-                { "const": "CEL", "title": "degree Celsius (°C)" },
-                { "const": "FAH", "title": "degree Fahrenheit (°F)" }
-              ]
-            },
-            "quantity_gross_weight": {
-              "type": "number",
-              "title": "Gross Weight",
-              "example": 550
-            },
-            "quantity_gross_weight_unit": {
-              "type": "string",
-              "title": "Gross Weight Unit",
-              "default": "KGM",
-              "oneOf": [
-                { "const": "DG", "title": "decigram (dg)" },
-                { "const": "KGM", "title": "kilogram (kg)" },
-                { "const": "GRM", "title": "gram (g)" },
-                { "const": "TNE", "title": "ton (t)" },
-                { "const": "MGM", "title": "milligram (mg)" },
-                { "const": "KTN", "title": "kilotonne (kt)" },
-                { "const": "LBR", "title": "pound (lb)" },
-                { "const": "CWA", "title": "hundred pound (cwt)" },
-                { "const": "MTQ", "title": "cubic metre (m³)" },
-                { "const": "LTR", "title": "litre (l)" },
-                { "const": "MAL", "title": "megalitre (Ml)" },
-                { "const": "CMQ", "title": "cubic centimetre (cm³)" },
-                { "const": "MLT", "title": "millilitre (ml)" },
-                { "const": "K6", "title": "kilolitre (kl)" },
-                { "const": "FTQ", "title": "cubic foot (ft³)" },
-                { "const": "GLI", "title": "gallon (gal)" },
-                { "const": "G24", "title": "tablespoon (tablespoon)" },
-                { "const": "BLL", "title": "barrel (barrel)" },
-                { "const": "HUR", "title": "hour (h)" },
-                { "const": "DAY", "title": "day (d)" },
-                { "const": "SEC", "title": "Second (s)" },
-                { "const": "MIN", "title": "minute (min)" },
-                { "const": "MON", "title": "month (mo)" },
-                { "const": "WEE", "title": "week (wk)" },
-                { "const": "g/cm²", "title": "gram per square centimetre (g/cm²)" },
-                { "const": "g/cm³", "title": "gram per cubic centimetre (g/cm³)" },
-                { "const": "GL", "title": "gram per litre (g/l)" },
-                { "const": "GJ", "title": "gram per millilitre (g/ml)" },
-                { "const": "GM", "title": "gram per square metre (g/m²)" },
-                { "const": "g/m³", "title": "gram per cubic metre (g/m³)" },
-                { "const": "KMQ", "title": "kilogram per cubic metre (kg/m³)" },
-                { "const": "CEL", "title": "degree Celsius (°C)" },
-                { "const": "FAH", "title": "degree Fahrenheit (°F)" }
-              ]
-            },
-            "packages_count": {
-              "type": "integer",
-              "title": "Number of Packages",
-              "example": 25
-            },
-            "packages_description": {
-              "type": "string",
-              "title": "Package Type",
-              "oneOf": [
-                { "const": "1G", "title": "Drum, fibre" },
-                { "const": "1D", "title": "Drum, plywood" },
-                { "const": "1B", "title": "Drum, aluminium" },
-                { "const": "ZB", "title": "Bag, large" },
-                { "const": "XK", "title": "Bag, paper, multi-wall, water resistant" },
-                { "const": "XJ", "title": "Bag, paper, multi-wall" },
-                { "const": "XH", "title": "Bag, textile, water resistant" },
-                { "const": "XG", "title": "Bag, textile, sift proof" },
-                { "const": "XF", "title": "Bag, textile, without inner coat/liner" },
-                { "const": "XD", "title": "Bag, plastics film" },
-                { "const": "XC", "title": "Bag, woven plastic, water resistant" },
-                { "const": "XB", "title": "Bag, woven plastic, sift proof" },
-                { "const": "XA", "title": "Bag, woven plastic, without inner coat/liner" },
-                { "const": "VY", "title": "Bulk, solid, fine particles (“powders”)" },
-                { "const": "VI", "title": "Vial" },
-                { "const": "VG", "title": "Bulk, gas (at 1031 mbar and 15°C)" },
-                { "const": "UN", "title": "Unit" },
-                { "const": "TT", "title": "Bag, tote" },
-                { "const": "TC", "title": "Tea-chest" },
-                { "const": "ST", "title": "Sheet" },
-                { "const": "SS", "title": "Case, steel" },
-                { "const": "SI", "title": "Skid" },
-                { "const": "SH", "title": "Sachet" },
-                { "const": "SA", "title": "Sack" },
-                { "const": "RO", "title": "Roll" },
-                { "const": "QR", "title": "Box, plastic, expanded" },
-                { "const": "QQ", "title": "Box, wooden, natural wood, with sift proof walls" },
-                { "const": "QP", "title": "Box, wooden, natural wood, ordinary" },
-                { "const": "QJ", "title": "Barrel, wooden, removable head" },
-                { "const": "QC", "title": "Drum, aluminium, non-removable head" },
-                { "const": "PX", "title": "Pallet" },
-                { "const": "PU", "title": "Tray" },
-                { "const": "PT", "title": "Pot" },
-                { "const": "PO", "title": "Pouch" },
-                { "const": "PK", "title": "Package" },
-                { "const": "PA", "title": "Packet" },
-                { "const": "OK", "title": "Block" },
-                { "const": "NT", "title": "Net" },
-                { "const": "NA", "title": "Not available" },
-                { "const": "MB", "title": "Bag, multiply" },
-                { "const": "JT", "title": "Jutebag" },
-                { "const": "JB", "title": "Bag, jumbo" },
-                { "const": "GY", "title": "Bag, gunny" },
-                { "const": "GB", "title": "Bottle, gas" },
-                { "const": "FX", "title": "Bag, flexible container" },
-                { "const": "FB", "title": "Flexibag" },
-                { "const": "EF", "title": "Case, with pallet base, cardboard" },
-                { "const": "EC", "title": "Bag, plastic" },
-                { "const": "DR", "title": "Drum" },
-                { "const": "CZ", "title": "Canvas" },
-                { "const": "CW", "title": "Cage, roll" },
-                { "const": "CV", "title": "Cover" },
-                { "const": "CU", "title": "Cup" },
-                { "const": "CT", "title": "Carton" },
-                { "const": "CS", "title": "Case" },
-                { "const": "CR", "title": "Crate" },
-                { "const": "CN", "title": "Container" },
-                { "const": "CL", "title": "Coil" },
-                { "const": "CG", "title": "Cage" },
-                { "const": "CF", "title": "Coffer" },
-                { "const": "BX", "title": "Box" },
-                { "const": "BS", "title": "Bottle, non-protected, bulbous" },
-                { "const": "BQ", "title": "Bottle, protected cylindrical" },
-                { "const": "BJ", "title": "Bucket" },
-                { "const": "BI", "title": "Bin" },
-                { "const": "BH", "title": "Bunch" },
-                { "const": "BG", "title": "Bag" },
-                { "const": "BE", "title": "Bundle" },
-                { "const": "BA", "title": "Barrel" },
-                { "const": "AJ", "title": "Cone" },
-                { "const": "5M", "title": "Bag, paper" },
-                { "const": "5L", "title": "Bag, textile" },
-                { "const": "5H", "title": "Bag, woven plastic" },
-                { "const": "4G", "title": "Box, fibreboard" },
-                { "const": "4F", "title": "Box, reconstituted wood" },
-                { "const": "4A", "title": "Box, steel" },
-                { "const": "44", "title": "Bag, polybag" },
-                { "const": "43", "title": "Bag, super bulk" },
-                { "const": "2C", "title": "Barrel, wooden" },
-                { "const": "1W", "title": "Drum, wooden" }
-              ]
-            },
-            "packages_in_bulk": {
-              "type": "boolean",
-              "title": "In Bulk",
-              "default": false
-            },
-            "packages_free_text_enabled": {
-              "type": "boolean",
-              "title": "Free Text Package Details",
-              "default": false
-            },
-            "packages_free_text": {
-              "type": "string",
-              "title": "Free Text Package Description",
-              "example": "Packed in standard wooden crates"
-            },
-            "origin_country": {
-              "type": "string",
-              "title": "Country of Origin",
-              "oneOf": [
-                { "const": "LK", "title": "Sri Lanka" }
-              ],
-              "default": "LK"
-            },
-            "origin_area": {
-              "type": "string",
-              "title": "Area of Origin",
-              "example": "Gampaha District"
-            }
-          },
-          "required": [
-            "commodity_common_name",
-            "commodity_botanical_name",
-            "quantity_net_weight",
-            "packages_count"
-          ]
-        }
-      },
-      "import_permit_number": {
-        "type": "string",
-        "title": "Import Permit Number",
-        "example": "IP-ANDORRA-2026-948"
-      },
-      "proposed_inspection_date": {
-        "type": "string",
-        "format": "date",
-        "title": "Proposed Inspection Date"
-      },
-      "proposed_inspection_time": {
-        "type": "string",
-        "format": "time",
-        "title": "Proposed Inspection Time"
-      },
-      "place_of_inspection": {
-        "type": "string",
-        "title": "Place of Inspection",
-        "example": "Bandaranaike International Airport Cargo Terminal"
-      },
-      "additional_declaration": {
-        "type": "string",
-        "title": "Additional Declaration",
-        "example": "CODE: SAD1 - The consignment was inspected and found free from quarantine pests."
-      },
-      "disinfestation_treatment": {
-        "type": "string",
-        "title": "Disinfestation and/or Treatment Details",
-        "example": "Fumigated with Methyl Bromide at 48g/m3 for 24h at 21C."
-      },
-      "attachments": {
-        "type": "array",
-        "title": "Attachments",
-        "items": {
-          "type": "object",
-          "properties": {
-            "attachment_file_url": {
-              "type": "string",
-              "format": "file",
-              "title": "Document Attachment (max. size 12MB)"
-            },
-            "attachment_description": {
-              "type": "string",
-              "title": "Description",
-              "example": "Commercial invoice of foliage export"
-            },
-            "file_type": {
-              "type": "string",
-              "title": "File Type",
-              "oneOf": [
-                { "const": "Fumigation Certificate", "title": "Fumigation Certificate" },
-                { "const": "Import Permit", "title": "Import Permit" },
-                { "const": "Lab Test", "title": "Lab Test" },
-                { "const": "Original Certificate", "title": "Original Certificate" },
-                { "const": "Survey Report", "title": "Survey Report" },
-                { "const": "Treatment Report", "title": "Treatment Report" },
-                { "const": "Other", "title": "Other" }
-              ],
-              "default": "Other"
-            }
-          },
-          "required": [
-            "attachment_file_url"
-          ]
-        }
+        "title": "Chemical Concentration / Dosage",
+        "readOnly": true
       }
-    },
-    "required": [
-      "certificate_type",
-      "shipment_value",
-      "applicant_name",
-      "nppo_office_location",
-      "importing_country",
-      "exporter_name",
-      "exporter_address",
-      "consignee_name",
-      "consignee_address",
-      "consignee_country"
-    ]
+    }
   },
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
       {
-        "type": "Group",
-        "label": "1. General Info",
-        "elements": [
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              { "type": "Control", "scope": "#/properties/certificate_type" },
-              { "type": "Control", "scope": "#/properties/shipment_value" }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              { "type": "Control", "scope": "#/properties/applicant_name" },
-              { "type": "Control", "scope": "#/properties/nppo_office_location" }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              { "type": "Control", "scope": "#/properties/importing_country" },
-              { "type": "Control", "scope": "#/properties/transit_countries" }
-            ]
-          }
-        ]
+        "type": "Control",
+        "scope": "#/properties/treatment_type",
+        "options": {
+          "readonly": true
+        }
       },
       {
-        "type": "Group",
-        "label": "2. Consignment Details",
-        "elements": [
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              { "type": "Control", "scope": "#/properties/exporter_name" },
-              { "type": "Control", "scope": "#/properties/consignee_name" }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/exporter_address",
-                "options": {
-                  "multiLine": true
-                }
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/consignee_address",
-                "options": {
-                  "multiLine": true
-                }
-              }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              { "type": "Control", "scope": "#/properties/exporter_country" },
-              { "type": "Control", "scope": "#/properties/consignee_country" }
-            ]
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/distinguishing_marks",
-            "options": {
-              "multiLine": true
-            }
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              { "type": "Control", "scope": "#/properties/point_of_entry_country" },
-              { "type": "Control", "scope": "#/properties/point_of_entry_port" }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              { "type": "Control", "scope": "#/properties/seal_number" },
-              { "type": "Control", "scope": "#/properties/estimated_shipment_date" }
-            ]
-          },
-          { "type": "Control", "scope": "#/properties/transport_mode" }
-        ]
+        "type": "Control",
+        "scope": "#/properties/chemical_used",
+        "options": {
+          "readonly": true
+        }
       },
       {
-        "type": "Group",
-        "label": "3. Commodity Details",
-        "elements": [
-          { "type": "Control", "scope": "#/properties/commodities" },
-          { "type": "Control", "scope": "#/properties/import_permit_number" },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              { "type": "Control", "scope": "#/properties/proposed_inspection_date" },
-              { "type": "Control", "scope": "#/properties/proposed_inspection_time" }
-            ]
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/place_of_inspection",
-            "options": {
-              "multiLine": true
-            }
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/additional_declaration",
-            "options": {
-              "multiLine": true
-            }
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/disinfestation_treatment",
-            "options": {
-              "multiLine": true
-            }
-          }
-        ]
+        "type": "Control",
+        "scope": "#/properties/treatment_duration",
+        "options": {
+          "readonly": true
+        }
       },
       {
-        "type": "Group",
-        "label": "4. Attachments",
-        "elements": [
-          { "type": "Control", "scope": "#/properties/attachments" }
-        ]
+        "type": "Control",
+        "scope": "#/properties/treatment_temperature",
+        "options": {
+          "readonly": true
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/treatment_concentration",
+        "options": {
+          "readonly": true
+        }
       }
     ]
   }

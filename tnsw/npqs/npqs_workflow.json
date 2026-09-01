@@ -246,7 +246,8 @@
       "output_mapping": {
         "reviewerform.treatment_request_outcome": "npqs.treatment_request_outcome",
         "reviewerform.treatment_provider?": "npqs.treatment_provider",
-        "reviewerform.treatment_supervision?": "npqs.treatment_supervision"
+        "reviewerform.treatment_supervision?": "npqs.treatment_supervision",
+        "reviewerform.supervision_officer_type?": "npqs.supervision_officer_type"
       }
     },
     {
