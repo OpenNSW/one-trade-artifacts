@@ -38,29 +38,9 @@
       "projector": "MARKDOWN",
       "visibleWhen": {
         "states": [
+          "QUEUED_EXTERNALLY",
           "COMPLETED"
         ]
-      }
-    },
-    "status_awaiting": {
-      "templateId": "fcau-pay-lab-fee--status-awaiting",
-      "title": "Current Status",
-      "projector": "MARKDOWN",
-      "visibleWhen": {
-        "states": [
-          "QUEUED_EXTERNALLY"
-        ]
-      }
-    },
-    "review_history": {
-      "templateId": "fcau-pay-lab-fee--previous-feedback",
-      "title": "Review History",
-      "projector": "MARKDOWN",
-      "visibleWhen": {
-        "states": [
-          "QUEUED_EXTERNALLY"
-        ],
-        "requireDataKey": "paymentreviewerform"
       }
     }
   },

@@ -16,8 +16,9 @@
     },
     "status_message": {
       "templateId": "cda-apply-coconut-cert--submitted-message",
-      "title": "Current Status",
+      "title": "Submission Status",
       "projector": "MARKDOWN",
+      "dataKey": "userform",
       "visibleWhen": {
         "states": [
           "QUEUED_EXTERNALLY"
@@ -30,21 +31,6 @@
       "projector": "MARKDOWN",
       "dataKey": "rejection_reason",
       "visibleWhen": {
-        "states": [
-          "PENDING_USER"
-        ],
-        "requireDataKey": "rejection_reason"
-      }
-    },
-    "review_history": {
-      "templateId": "cda-apply-coconut-cert--previous-feedback",
-      "title": "Review History",
-      "projector": "MARKDOWN",
-      "dataKey": "rejection_reason",
-      "visibleWhen": {
-        "states": [
-          "QUEUED_EXTERNALLY"
-        ],
         "requireDataKey": "rejection_reason"
       }
     },

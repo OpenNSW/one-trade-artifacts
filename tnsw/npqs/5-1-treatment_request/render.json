@@ -9,25 +9,15 @@
       "projector": "MARKDOWN",
       "dataKey": "reviewerform",
       "visibleWhen": {
-        "states": ["PENDING_USER", "COMPLETED"],
         "requireDataKey": "reviewerform"
       }
     },
-    "status_awaiting": {
-      "templateId": "npqs-treatment-request--status-awaiting",
-      "title": "Current Status",
+    "status_message": {
+      "templateId": "npqs-treatment-request--status",
+      "title": "Request Status",
       "projector": "MARKDOWN",
       "visibleWhen": {
         "states": ["QUEUED_EXTERNALLY"]
-      }
-    },
-    "review_history": {
-      "templateId": "npqs-treatment-request--previous-feedback",
-      "title": "Review History",
-      "projector": "MARKDOWN",
-      "visibleWhen": {
-        "states": ["QUEUED_EXTERNALLY"],
-        "requireDataKey": "reviewerform"
       }
     },
     "submission_form": {
