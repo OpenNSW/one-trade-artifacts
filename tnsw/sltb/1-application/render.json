@@ -10,9 +10,29 @@
       "visibleWhen": {
         "states": [
           "PENDING_USER",
-          "QUEUED_EXTERNALLY",
           "COMPLETED"
         ]
+      }
+    },
+    "status_awaiting": {
+      "templateId": "sltb-submit-blendsheet--status-awaiting",
+      "title": "Current Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    },
+    "review_history": {
+      "templateId": "sltb-submit-blendsheet--previous-feedback",
+      "title": "Review History",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ],
+        "requireDataKey": "reviewerform"
       }
     },
     "user_form": {
