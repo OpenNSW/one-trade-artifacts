@@ -1,4 +1,0 @@
-{
-  "id": "cda-kernel-asycuda--previous-feedback",
-  "template": "{{if .}}\n### Review History\n\nComments from the previous review round. Your latest submission is now with the CDA officer.\n\n> **Officer Comments**: {{.}}\n{{end}}"
-}

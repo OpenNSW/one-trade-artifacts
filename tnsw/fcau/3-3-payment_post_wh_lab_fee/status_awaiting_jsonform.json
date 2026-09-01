@@ -1,4 +1,0 @@
-{
-  "id": "fcau-pay-post-wh-lab-fee--status-awaiting",
-  "template": "{{if .paymentreviewerform}}\n### ✅ Receipt Resubmitted\n\nYour corrected laboratory fee payment receipt has been resubmitted for review. An FCAU officer will verify the updated proof of payment.\n\n**Receipt File**: [View Uploaded Receipt]({{.traderinput.lab_receipt}})\n\n* **Status**: Awaiting Officer Verification\n{{else}}\n### Payment Verification Pending\n\nYour laboratory test payment receipt has been submitted and is currently being reviewed by an FCAU officer.\n\n**Receipt File**: [View Uploaded Receipt]({{.traderinput.lab_receipt}})\n\nThis page will update automatically once the review is completed.\n{{end}}"
-}

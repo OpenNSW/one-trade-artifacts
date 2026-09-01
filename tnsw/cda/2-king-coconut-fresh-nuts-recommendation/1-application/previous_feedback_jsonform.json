@@ -1,4 +1,0 @@
-{
-  "id": "cda-kcfn-apply--previous-feedback",
-  "template": "{{if .}}\n### Review History\n\nComments from the previous review round. Your latest submission is now with the CDA inspection officer.\n\n> **Officer Comments**: {{.}}\n{{end}}"
-}
