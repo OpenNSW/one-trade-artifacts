@@ -85,27 +85,81 @@
       },
       {
         "type": "Control",
-        "scope": "#/properties/treatment_required"
+        "scope": "#/properties/treatment_required",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/review_outcome",
+            "schema": {
+              "const": "approve"
+            }
+          }
+        }
       },
       {
         "type": "Control",
-        "scope": "#/properties/visual_required"
+        "scope": "#/properties/visual_required",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/review_outcome",
+            "schema": {
+              "const": "approve"
+            }
+          }
+        }
       },
       {
         "type": "Control",
-        "scope": "#/properties/visual_approach"
+        "scope": "#/properties/visual_approach",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/review_outcome",
+            "schema": {
+              "const": "approve"
+            }
+          }
+        }
       },
       {
         "type": "Control",
-        "scope": "#/properties/lab_required"
+        "scope": "#/properties/lab_required",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/review_outcome",
+            "schema": {
+              "const": "approve"
+            }
+          }
+        }
       },
       {
         "type": "Control",
-        "scope": "#/properties/lab_sample_method"
+        "scope": "#/properties/lab_sample_method",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/review_outcome",
+            "schema": {
+              "const": "approve"
+            }
+          }
+        }
       },
       {
         "type": "Control",
-        "scope": "#/properties/ephyto_required"
+        "scope": "#/properties/ephyto_required",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/review_outcome",
+            "schema": {
+              "const": "approve"
+            }
+          }
+        }
       }
     ]
   }
