@@ -16,12 +16,6 @@
         "default": false,
         "example": true
       },
-      "agency_side_marked": {
-        "type": "boolean",
-        "title": "Marked as checked on the CDA agency side",
-        "default": false,
-        "example": true
-      },
       "remarks": {
         "type": "string",
         "title": "Officer Remarks",
@@ -30,8 +24,7 @@
     },
     "required": [
       "documents_verified",
-      "asycuda_approval_confirmed",
-      "agency_side_marked"
+      "asycuda_approval_confirmed"
     ]
   },
   "uiSchema": {
@@ -44,10 +37,6 @@
       {
         "type": "Control",
         "scope": "#/properties/asycuda_approval_confirmed"
-      },
-      {
-        "type": "Control",
-        "scope": "#/properties/agency_side_marked"
       },
       {
         "type": "Control",

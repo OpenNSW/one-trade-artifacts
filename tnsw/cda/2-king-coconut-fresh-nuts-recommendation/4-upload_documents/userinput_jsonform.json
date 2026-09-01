@@ -20,7 +20,7 @@
         },
         "minItems": 1,
         "x-file": {
-          "multiple": true
+          "maxFiles": 10
         },
         "example": [
           "https://trader-uploads.example.gov.lk/CDA-KCFN-2026-00123-report-1.pdf",
