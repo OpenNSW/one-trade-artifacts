@@ -9,16 +9,25 @@
       "projector": "MARKDOWN",
       "dataKey": "reviewerform",
       "visibleWhen": {
+        "states": ["PENDING_USER", "COMPLETED"],
         "requireDataKey": "reviewerform"
       }
     },
-    "status_message": {
-      "templateId": "npqs-apply-phyto-cert--status",
-      "title": "Application Status",
+    "status_awaiting": {
+      "templateId": "npqs-apply-phyto-cert--status-awaiting",
+      "title": "Current Status",
       "projector": "MARKDOWN",
-      "dataKey": "userform",
       "visibleWhen": {
         "states": ["QUEUED_EXTERNALLY"]
+      }
+    },
+    "review_history": {
+      "templateId": "npqs-apply-phyto-cert--previous-feedback",
+      "title": "Review History",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": ["QUEUED_EXTERNALLY"],
+        "requireDataKey": "reviewerform"
       }
     },
     "submission_form": {
