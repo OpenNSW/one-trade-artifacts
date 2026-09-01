@@ -81,7 +81,16 @@
       },
       {
         "type": "Control",
-        "scope": "#/properties/clarification_reason"
+        "scope": "#/properties/clarification_reason",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/review_outcome",
+            "schema": {
+              "const": "needs_more_info"
+            }
+          }
+        }
       },
       {
         "type": "Control",
