@@ -1,0 +1,261 @@
+{
+  "id": "npqs-treatment-request--officer-view-form",
+  "title": "Application Context",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "traderinput": {
+        "type": "object",
+        "title": "Treatment Request",
+        "properties": {
+          "treatment_type": {
+            "type": "string",
+            "title": "Treatment Type Requested",
+            "readOnly": true,
+            "oneOf": [
+              { "const": "TPT", "title": "Temperature Treatment" },
+              { "const": "CHT", "title": "Chemical Treatment" },
+              { "const": "RAT", "title": "Radiation Treatment" },
+              { "const": "OTT", "title": "Other Treatment" },
+              { "const": "CT", "title": "Cold Treatment" },
+              { "const": "HT", "title": "Heat Treatment" },
+              { "const": "DR", "title": "Dry Heat" },
+              { "const": "MH", "title": "Moist Heat" },
+              { "const": "VH", "title": "Vapour Heat" },
+              { "const": "KD", "title": "Kiln drying" },
+              { "const": "HW", "title": "Hot water treatment" },
+              { "const": "DH", "title": "Dielectric Heating" },
+              { "const": "FG", "title": "Fungicide" },
+              { "const": "IN", "title": "Insecticide" },
+              { "const": "NE", "title": "Nematicide" },
+              { "const": "OP", "title": "Other pesticide" },
+              { "const": "CPI", "title": "Chemical pressure impregnation" },
+              { "const": "FU", "title": "Fumigation" },
+              { "const": "SC", "title": "Seed coating" },
+              { "const": "DV", "title": "Devitalization" },
+              { "const": "DB", "title": "Debarking" },
+              { "const": "CD", "title": "Cold disinfestation" }
+            ]
+          },
+          "chemical_used": {
+            "type": "string",
+            "title": "Chemical / Medium Used (If fumigation)",
+            "readOnly": true
+          },
+          "treatment_duration": {
+            "type": "string",
+            "title": "Treatment Duration",
+            "readOnly": true
+          },
+          "treatment_temperature": {
+            "type": "string",
+            "title": "Target Temperature (°C)",
+            "readOnly": true
+          },
+          "treatment_concentration": {
+            "type": "string",
+            "title": "Chemical Concentration / Dosage",
+            "readOnly": true
+          }
+        }
+      },
+      "userform": {
+        "type": "object",
+        "title": "Phytosanitary Application",
+        "properties": {
+          "certificate_type": {
+            "type": "string",
+            "title": "Certificate Type",
+            "readOnly": true,
+            "oneOf": [
+              { "const": "export", "title": "Export" },
+              { "const": "re-export", "title": "Re-Export" }
+            ]
+          },
+          "applicant_name": {
+            "type": "string",
+            "title": "Applicant Name",
+            "readOnly": true
+          },
+          "importing_country": {
+            "type": "string",
+            "title": "Name of Importing Country",
+            "readOnly": true
+          },
+          "exporter_name": {
+            "type": "string",
+            "title": "Exporter Name",
+            "readOnly": true
+          },
+          "consignee_name": {
+            "type": "string",
+            "title": "Consignee Name",
+            "readOnly": true
+          },
+          "place_of_inspection": {
+            "type": "string",
+            "title": "Place of Inspection",
+            "readOnly": true
+          },
+          "commodities": {
+            "type": "array",
+            "title": "Commodities List",
+            "readOnly": true,
+            "items": {
+              "type": "object",
+              "properties": {
+                "commodity_common_name": {
+                  "type": "string",
+                  "title": "Commodity Common Name",
+                  "readOnly": true
+                },
+                "commodity_botanical_name": {
+                  "type": "string",
+                  "title": "Botanical Name",
+                  "readOnly": true
+                },
+                "commodity_quantity": {
+                  "type": "string",
+                  "title": "Quantity",
+                  "readOnly": true
+                }
+              }
+            }
+          },
+          "disinfestation_treatment": {
+            "type": "string",
+            "title": "Disinfestation and/or Treatment Details",
+            "readOnly": true
+          }
+        }
+      }
+    }
+  },
+  "uiSchema": {
+    "type": "Categorization",
+    "elements": [
+      {
+        "type": "Category",
+        "label": "Treatment Request",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/traderinput/properties/treatment_type",
+            "options": {
+              "readonly": true
+            }
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/traderinput/properties/chemical_used",
+            "options": {
+              "readonly": true
+            }
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/traderinput/properties/treatment_duration",
+            "options": {
+              "readonly": true
+            }
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/traderinput/properties/treatment_temperature",
+            "options": {
+              "readonly": true
+            }
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/traderinput/properties/treatment_concentration",
+            "options": {
+              "readonly": true
+            }
+          }
+        ]
+      },
+      {
+        "type": "Category",
+        "label": "Phytosanitary Application",
+        "elements": [
+          {
+            "type": "Group",
+            "label": "General Info",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/userform/properties/certificate_type",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/userform/properties/applicant_name",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/userform/properties/importing_country",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          },
+          {
+            "type": "Group",
+            "label": "Consignment Details",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/userform/properties/exporter_name",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/userform/properties/consignee_name",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/userform/properties/place_of_inspection",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          },
+          {
+            "type": "Group",
+            "label": "Commodity Details",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/userform/properties/commodities",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/userform/properties/disinfestation_treatment",
+                "options": {
+                  "readonly": true,
+                  "multiLine": true
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -6,7 +6,7 @@
     "description": "Officer reviews the treatment request and specifies provider/supervision requirements."
   },
   "forms": {
-    "view": "npqs-treatment-request--trader-form",
+    "view": "npqs-treatment-request--officer-view-form",
     "review": "npqs-treatment-request--reviewer-form"
   },
   "behavior": {
