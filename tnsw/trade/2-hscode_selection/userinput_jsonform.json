@@ -37,6 +37,218 @@
             {
               "const": "cda-kcfn-recommendation-letter",
               "title": "King Coconut Fresh Nut (KCFN) Recommendation Letter (CDA Flow)"
+            },
+            {
+              "const": "0902.30.11",
+              "title": "0902.30.11 - Black Tea Bags, Flavoured (Up to 4g)"
+            },
+            {
+              "const": "0902.30.12",
+              "title": "0902.30.12 - Black Tea Bags, Non-Flavoured (Up to 4g)"
+            },
+            {
+              "const": "0902.30.21",
+              "title": "0902.30.21 - Black Tea Packet / Tea Bags, Flavoured (4g - 1kg)"
+            },
+            {
+              "const": "0902.30.22",
+              "title": "0902.30.22 - Black Tea Packet / Tea Bags, Non-Flavoured (4g - 1kg)"
+            },
+            {
+              "const": "0902.30.31",
+              "title": "0902.30.31 - Black Tea Packets, Flavoured (1kg - 3kg)"
+            },
+            {
+              "const": "0902.30.32",
+              "title": "0902.30.32 - Black Tea Packets, Non-Flavoured (1kg - 3kg)"
+            },
+            {
+              "const": "0902.40.11",
+              "title": "0902.40.11 - Black Tea Packets, Flavoured (3kg - 5kg)"
+            },
+            {
+              "const": "0902.40.12",
+              "title": "0902.40.12 - Black Tea Packets, Non-Flavoured (3kg - 5kg)"
+            },
+            {
+              "const": "0902.40.21",
+              "title": "0902.40.21 - Black Tea Packets, Flavoured (5kg - 10kg)"
+            },
+            {
+              "const": "0902.40.22",
+              "title": "0902.40.22 - Black Tea Packets, Non-Flavoured (5kg - 10kg)"
+            },
+            {
+              "const": "0902.40.91",
+              "title": "0902.40.91 - Black Tea Bulk, Flavoured (Over 10kg)"
+            },
+            {
+              "const": "0902.40.92",
+              "title": "0902.40.92 - Black Tea Bulk, Non-Flavoured (Over 10kg)"
+            },
+            {
+              "const": "2101.20.11",
+              "title": "2101.20.11 - Instant Tea Bags (Up to 4g)"
+            },
+            {
+              "const": "2101.20.12",
+              "title": "2101.20.12 - Instant Tea Packets (4g - 1kg)"
+            },
+            {
+              "const": "2101.20.13",
+              "title": "2101.20.13 - Instant Tea Packets (1kg - 3kg)"
+            },
+            {
+              "const": "0902.10.11",
+              "title": "0902.10.11 - Green Tea Bags, Flavoured (Up to 4g)"
+            },
+            {
+              "const": "0902.10.12",
+              "title": "0902.10.12 - Green Tea Bags, Non-Flavoured (Up to 4g)"
+            },
+            {
+              "const": "0902.10.21",
+              "title": "0902.10.21 - Green Tea Packet / Tea Bags, Flavoured (4g - 1kg)"
+            },
+            {
+              "const": "0902.10.22",
+              "title": "0902.10.22 - Green Tea Packet / Tea Bags, Non-Flavoured (4g - 1kg)"
+            },
+            {
+              "const": "0902.10.31",
+              "title": "0902.10.31 - Green Tea Packets, Flavoured (1kg - 3kg)"
+            },
+            {
+              "const": "0902.10.32",
+              "title": "0902.10.32 - Green Tea Packets, Non-Flavoured (1kg - 3kg)"
+            },
+            {
+              "const": "0902.20.11",
+              "title": "0902.20.11 - Green Tea Packets, Flavoured (3kg - 5kg)"
+            },
+            {
+              "const": "0902.20.12",
+              "title": "0902.20.12 - Green Tea Packets, Non-Flavoured (3kg - 5kg)"
+            },
+            {
+              "const": "0902.20.21",
+              "title": "0902.20.21 - Green Tea Packets, Flavoured (5kg - 10kg)"
+            },
+            {
+              "const": "0902.20.22",
+              "title": "0902.20.22 - Green Tea Packets, Non-Flavoured (5kg - 10kg)"
+            },
+            {
+              "const": "0902.20.91",
+              "title": "0902.20.91 - Green Tea Bulk, Flavoured (Over 10kg)"
+            },
+            {
+              "const": "0902.20.92",
+              "title": "0902.20.92 - Green Tea Bulk, Non-Flavoured (Over 10kg)"
+            },
+            {
+              "const": "2202.90.10",
+              "title": "2202.90.10 - RTD / Packets - Ready to Drink (Tea in Liquid / Beverage, Up to 4g)"
+            },
+            {
+              "const": "0902.10.13",
+              "title": "0902.10.13 - Other Origin Green Tea Bags, Flavoured (Up to 4g)"
+            },
+            {
+              "const": "0902.10.19",
+              "title": "0902.10.19 - Other Origin Green Tea Bags, Non-Flavoured (Up to 4g)"
+            },
+            {
+              "const": "0902.10.23",
+              "title": "0902.10.23 - Other Origin Green Tea Packet / Tea Bags, Flavoured (4g - 1kg)"
+            },
+            {
+              "const": "0902.10.29",
+              "title": "0902.10.29 - Other Origin Green Tea Packet / Tea Bags, Non-Flavoured (4g - 1kg)"
+            },
+            {
+              "const": "0902.10.33",
+              "title": "0902.10.33 - Other Origin Green Tea Packets, Flavoured (1kg - 3kg)"
+            },
+            {
+              "const": "0902.10.39",
+              "title": "0902.10.39 - Other Origin Green Tea Packets, Non-Flavoured (1kg - 3kg)"
+            },
+            {
+              "const": "0902.10.90",
+              "title": "0902.10.90 - Other Origin Green Tea (Other)"
+            },
+            {
+              "const": "0902.20.13",
+              "title": "0902.20.13 - Other Origin Green Tea Packets, Flavoured (3kg - 5kg)"
+            },
+            {
+              "const": "0902.20.19",
+              "title": "0902.20.19 - Other Origin Green Tea Packets, Non-Flavoured (3kg - 5kg)"
+            },
+            {
+              "const": "0902.20.23",
+              "title": "0902.20.23 - Other Origin Green Tea Packets, Flavoured (5kg - 10kg)"
+            },
+            {
+              "const": "0902.20.29",
+              "title": "0902.20.29 - Other Origin Green Tea Packets, Non-Flavoured (5kg - 10kg)"
+            },
+            {
+              "const": "0902.20.93",
+              "title": "0902.20.93 - Other Origin Green Tea Bulk, Flavoured (Over 10kg)"
+            },
+            {
+              "const": "0902.20.99",
+              "title": "0902.20.99 - Other Origin Green Tea Bulk, Non-Flavoured (Over 10kg)"
+            },
+            {
+              "const": "0902.30.13",
+              "title": "0902.30.13 - Other Origin Black Tea Bags, Flavoured (Up to 4g)"
+            },
+            {
+              "const": "0902.30.19",
+              "title": "0902.30.19 - Other Origin Black Tea Bags, Non-Flavoured (Up to 4g)"
+            },
+            {
+              "const": "0902.30.23",
+              "title": "0902.30.23 - Other Origin Black Tea Packet / Tea Bags, Flavoured (4g - 1kg)"
+            },
+            {
+              "const": "0902.30.29",
+              "title": "0902.30.29 - Other Origin Black Tea Packet / Tea Bags, Non-Flavoured (4g - 1kg)"
+            },
+            {
+              "const": "0902.30.33",
+              "title": "0902.30.33 - Other Origin Black Tea Packets, Flavoured (1kg - 3kg)"
+            },
+            {
+              "const": "0902.30.39",
+              "title": "0902.30.39 - Other Origin Black Tea Packets, Non-Flavoured (1kg - 3kg)"
+            },
+            {
+              "const": "0902.40.13",
+              "title": "0902.40.13 - Other Origin Black Tea Packets, Flavoured (3kg - 5kg)"
+            },
+            {
+              "const": "0902.40.19",
+              "title": "0902.40.19 - Other Origin Black Tea Packets, Non-Flavoured (3kg - 5kg)"
+            },
+            {
+              "const": "0902.40.23",
+              "title": "0902.40.23 - Other Origin Black Tea Packets, Flavoured (5kg - 10kg)"
+            },
+            {
+              "const": "0902.40.29",
+              "title": "0902.40.29 - Other Origin Black Tea Packets, Non-Flavoured (5kg - 10kg)"
+            },
+            {
+              "const": "0902.40.93",
+              "title": "0902.40.93 - Other Origin Black Tea Bulk, Flavoured (Over 10kg)"
+            },
+            {
+              "const": "0902.40.99",
+              "title": "0902.40.99 - Other Origin Black Tea Bulk, Non-Flavoured (Over 10kg)"
             }
           ]
         },
