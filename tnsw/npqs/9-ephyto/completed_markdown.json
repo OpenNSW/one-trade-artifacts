@@ -1,4 +1,4 @@
 {
   "id": "npqs-ephyto-upload--completed-msg",
-  "template": "### ePhyto Transmission Complete\n\n✅ The phytosanitary certificate has been **delivered** to the importing country's NPPO via the IPPC ePhyto Hub.\n\n- **Reference Number**: `{{ .reference_number }}`\n- **Certificate Number**: `{{ .certificate_id }}`\n{{ with .ephyto }}- **Hub Tracking Number**: `{{ .tracking_number }}`\n{{ if .tracking_info }}- **Final Status**: `{{ .tracking_info }}`\n{{ end }}{{ end }}"
+  "template": "### ePhyto Transmission Complete\n\n✅ The phytosanitary certificate has been **delivered** to the importing country's NPPO via the IPPC ePhyto Hub.\n\n- **Reference Number**: `{{ .reference_number }}`\n- **Certificate Number**: `{{ .certificate_id }}`\n{{ with .ephyto }}{{ if .tracking_number }}- **Hub Tracking Number**: `{{ .tracking_number }}`\n{{ end }}{{ end }}{{ with .ephyto_poll }}{{ if .tracking_info }}- **Final Status**: `{{ .tracking_info }}`\n{{ end }}{{ end }}"
 }
