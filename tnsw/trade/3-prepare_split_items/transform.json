@@ -341,6 +341,444 @@
         "fcau-health-certificate-reg",
         "npqs-export-phytosanitary-reg",
         "customs-workflow"
+      ],
+      "0801.11.90": [
+        "cda-certificate-reg",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "0801.19.30": [
+        "cda-kcfn-recommendation-letter",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "0801.12.00": [
+        "cda-kcfn-recommendation-letter",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "0801.19.90": [
+        "cda-kcfn-recommendation-letter",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "0801.19.20": [
+        "cda-kcfn-recommendation-letter",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "5305.00.71": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "5305.00.72": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "5305.00.79": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "3802.10.10": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "3802.10.21": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "3802.10.22": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "3802.10.23": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "3802.10.24": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "3802.10.25": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "3802.10.29": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "2008.19.20": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "2008.19.90": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "1513.11.11": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "1513.11.21": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "2008.19.30": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "2008.19.40": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "2106.90.97": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "1513.11.19": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "1513.11.29": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "1513.19.10": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "1513.19.90": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "2306.50.10": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "5305.00.21": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "5305.00.23": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "5305.00.69": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "9603.10.10": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "9603.10.60": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "4402.20.10": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "1404.90.93": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "5607.90.20": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "5607.90.30": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "1106.30.10": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "1404.90.60": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "5311.00.10": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "9603.10.30": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "9603.10.40": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "9603.10.50": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "5305.00.11": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "5305.00.22": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "5305.00.30": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "5305.00.41": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "5305.00.61": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "2306.50.20": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "1203.00.00": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "0801.11.10": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "1517.10.20": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "5305.00.12": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "5305.00.13": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "5305.00.14": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "5305.00.42": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "1404.90.50": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "5701.90.10": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "5702.20.10": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "5702.20.90": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "2306.50.90": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "9404.29.10": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "9404.29.20": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "5308.10.00": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "3823.19.10": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "1404.90.30": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "1404.90.40": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "2208.90.10": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "5702.20.20": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "4421.99.41": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "2209.00.00": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "0604.90.00": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "060490": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
+      ],
+      "0604.90": [
+        "cda-kernel-asycuda-approval",
+        "fcau-health-certificate-reg",
+        "npqs-export-phytosanitary-reg",
+        "customs-workflow"
       ]
     }
   }
