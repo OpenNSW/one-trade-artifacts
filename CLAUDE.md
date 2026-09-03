@@ -37,22 +37,28 @@ Each agency has artifacts in two places that must be read together, not independ
 
 An agency can run more than one certificate/approval **process** end-to-end (distinct
 macro workflows, e.g. a second CDA registration type alongside the existing coconut
-export certificate). An agency that needs this nests **both halves** one level deeper
-under `process-<n>/` (`n = 1, 2, ...`):
+export certificate). An agency that needs this nests **both halves** one level deeper,
+under one folder per process:
 
-- `tnsw/<agency>/process-<n>/<agency>_workflow.json` + that process's numbered step
+- `tnsw/<agency>/<process-slug>/<agency>_workflow.json` + that process's numbered step
   folders — same internal structure as the single-process layout, just moved down a
   level. `tnsw/manifest.json` stays put; only the `path` of that process's artifacts
-  gains the `process-<n>/` segment.
-- `<agency>/process-<n>/<task_config_dir>/` for that process's agency-side
+  gains the `<process-slug>/` segment.
+- `<agency>/<process-slug>/<task_config_dir>/` for that process's agency-side
   `task_config`s. `<agency>/manifest.json` stays at the agency's top level; only its
-  artifact `path`s move under `process-<n>/`.
+  artifact `path`s move under `<process-slug>/`.
+
+`<process-slug>` is an arbitrary folder name, not a numbering scheme — it's whatever
+that process happens to be called at the time it's split out (e.g. a placeholder like
+`process-1` if the real name isn't decided yet). Don't assume sibling processes are
+numbered sequentially, or read any other meaning into the slug.
 
 Agencies are migrated to this layout only when they actually need a second process —
 premature nesting for a single-process agency is not the convention. `cda/` is the
-first agency migrated (currently just `process-1/`, holding its one existing process);
-`customs/`, `fcau/`, `npqs/`, `sltb/`, and `trade/` remain flat (no `process-<n>/`
-layer) until one of them needs a second process.
+first agency making this transition: its original (and, until now, only) process was
+moved under `process-1/` as part of adding a second CDA process; `customs/`, `fcau/`,
+`npqs/`, `sltb/`, and `trade/` remain flat (no per-process folder) until one of them
+needs a second process.
 
 The link between the two: a step's `EXTERNAL_REVIEW` task template
 (`tnsw/<agency>/<step>/officer_*.json`) references `service_id` + `task_code`, and that
