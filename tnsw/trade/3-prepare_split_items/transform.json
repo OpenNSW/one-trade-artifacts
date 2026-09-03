@@ -767,18 +767,6 @@
         "fcau-health-certificate-reg",
         "npqs-export-phytosanitary-reg",
         "customs-workflow"
-      ],
-      "060490": [
-        "cda-kernel-asycuda-approval",
-        "fcau-health-certificate-reg",
-        "npqs-export-phytosanitary-reg",
-        "customs-workflow"
-      ],
-      "0604.90": [
-        "cda-kernel-asycuda-approval",
-        "fcau-health-certificate-reg",
-        "npqs-export-phytosanitary-reg",
-        "customs-workflow"
       ]
     }
   }
