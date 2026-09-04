@@ -1,0 +1,4 @@
+{
+  "id": "npqs-apply-phyto-cert--previous-feedback",
+  "template": "{{if .reviewerform.clarification_reason}}\n### Review History\n\nComments from the previous review round. Your latest submission is now with the PQS/NPQS officer.\n\n> **Officer Comments**: {{.reviewerform.clarification_reason}}\n{{end}}"
+}

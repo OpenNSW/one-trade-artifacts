@@ -1,0 +1,4 @@
+{
+  "id": "npqs-apply-phyto-cert--status-awaiting",
+  "template": "{{if .reviewerform}}\n### ✅ Application Resubmitted\n\nYour corrected phytosanitary certificate application has been resubmitted for review. The assigned PQS/NPQS officer will review the updated details.\n\n* **Applicant Name**: {{.userform.applicant_name}}\n* **Importing Country**: {{.userform.importing_country}}\n* **Status**: Awaiting Officer Review\n{{else}}\n### ⏳ Application Under Review\n\nYour phytosanitary certificate application has been submitted and is awaiting review by the assigned PQS/NPQS officer at **{{.userform.nppo_office_location}}**.\n\n* **Applicant Name**: {{.userform.applicant_name}}\n* **Importing Country**: {{.userform.importing_country}}\n* **Exporter**: {{.userform.exporter_name}}\n\nYou will be notified once the review is completed. No action is required from you at this stage.\n{{end}}"
+}

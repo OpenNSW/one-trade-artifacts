@@ -1,0 +1,4 @@
+{
+  "id": "npqs-treatment-request--status-awaiting",
+  "template": "{{if .reviewerform}}\n### ✅ Treatment Request Resubmitted\n\nYour corrected treatment request has been resubmitted for review. An NPQS officer will review the updated details.\n\n* **Reference Number**: `{{.reference_number}}`\n* **Status**: Awaiting Officer Review\n{{else}}\n### ⏳ Treatment Request Under Review\n\nYour treatment request has been submitted and is awaiting review by the NPQS officer.\n\n* **Reference Number**: `{{.reference_number}}`\n* **Treatment Type**: {{.traderinput.treatment_type}}\n* **Duration**: {{.traderinput.treatment_duration}}\n\nYou will be notified once the officer has reviewed your request.\n{{end}}"
+}

@@ -187,6 +187,18 @@
       "path": "npqs/1-apply/status_markdown.json"
     },
     {
+      "id": "npqs-apply-phyto-cert--status-awaiting",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/1-apply/status_awaiting_jsonform.json"
+    },
+    {
+      "id": "npqs-apply-phyto-cert--previous-feedback",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/1-apply/previous_feedback_jsonform.json"
+    },
+    {
       "id": "npqs-draw-sample--officer-draw",
       "kind": "subtask_template",
       "version": "",
@@ -455,6 +467,18 @@
       "kind": "generic_template",
       "version": "",
       "path": "npqs/5-1-treatment_request/status_markdown.json"
+    },
+    {
+      "id": "npqs-treatment-request--status-awaiting",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/5-1-treatment_request/status_awaiting_jsonform.json"
+    },
+    {
+      "id": "npqs-treatment-request--previous-feedback",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/5-1-treatment_request/previous_feedback_jsonform.json"
     },
     {
       "id": "npqs-pay-for-treatment--instructions-wrapper",
@@ -931,6 +955,12 @@
       "path": "fcau/1-application/submitted_message_jsonform.json"
     },
     {
+      "id": "fcau-apply-health-cert--previous-feedback",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau/1-application/previous_feedback_jsonform.json"
+    },
+    {
       "id": "fcau-apply-health-cert--user-input",
       "kind": "subtask_template",
       "version": "",
@@ -1153,6 +1183,18 @@
       "path": "fcau/3-3-payment_post_wh_lab_fee/review_status_jsonform.json"
     },
     {
+      "id": "fcau-pay-post-wh-lab-fee--status-awaiting",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau/3-3-payment_post_wh_lab_fee/status_awaiting_jsonform.json"
+    },
+    {
+      "id": "fcau-pay-post-wh-lab-fee--previous-feedback",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau/3-3-payment_post_wh_lab_fee/previous_feedback_jsonform.json"
+    },
+    {
       "id": "fcau-pay-post-wh-lab-fee-flow:render",
       "kind": "generic_template",
       "version": "",
@@ -1327,6 +1369,18 @@
       "path": "fcau/4-3-payment_lab_fee/review_status_jsonform.json"
     },
     {
+      "id": "fcau-pay-lab-fee--status-awaiting",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau/4-3-payment_lab_fee/status_awaiting_jsonform.json"
+    },
+    {
+      "id": "fcau-pay-lab-fee--previous-feedback",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau/4-3-payment_lab_fee/previous_feedback_jsonform.json"
+    },
+    {
       "id": "fcau-pay-lab-fee-flow:render",
       "kind": "generic_template",
       "version": "",
@@ -1463,6 +1517,12 @@
       "kind": "generic_template",
       "version": "",
       "path": "cda/process-1/1-application/feedback_jsonform.json"
+    },
+    {
+      "id": "cda-apply-coconut-cert--previous-feedback",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/process-1/1-application/previous_feedback_jsonform.json"
     },
     {
       "id": "cda-apply-coconut-cert--bag-template",
@@ -1741,6 +1801,12 @@
       "path": "cda/3-kernel-products-asycuda-approval/1-application/feedback_jsonform.json"
     },
     {
+      "id": "cda-kernel-asycuda--previous-feedback",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/3-kernel-products-asycuda-approval/1-application/previous_feedback_jsonform.json"
+    },
+    {
       "id": "cda-kernel-asycuda--officer-review",
       "kind": "subtask_template",
       "version": "",
@@ -1817,6 +1883,12 @@
       "kind": "generic_template",
       "version": "",
       "path": "cda/2-king-coconut-fresh-nuts-recommendation/1-application/feedback_jsonform.json"
+    },
+    {
+      "id": "cda-kcfn-apply--previous-feedback",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/1-application/previous_feedback_jsonform.json"
     },
     {
       "id": "cda-kcfn-apply--submitted-message",
@@ -2021,6 +2093,12 @@
       "kind": "generic_template",
       "version": "",
       "path": "customs/1-cusdec_submission/submitted_message_jsonform.json"
+    },
+    {
+      "id": "customs-cusdec--previous-feedback",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/1-cusdec_submission/previous_feedback_jsonform.json"
     },
     {
       "id": "customs-cusdec--trader-results",
