@@ -2,6 +2,12 @@
   "id": "trade-hscode-selection-flow:render",
   "type": "APPLICATION",
   "title": "[Trade] Select HS Codes",
+  "read": {
+    "roles": [
+      "cha",
+      "trader"
+    ]
+  },
   "sections": {
     "instructions": {
       "templateId": "trade-hscode-selection--summary-markdown",
@@ -14,6 +20,18 @@
         ]
       }
     },
+    "status_message": {
+      "templateId": "trade-hscode-selection--waiting-markdown",
+      "title": "Awaiting HS Code Selection",
+      "projector": "MARKDOWN",
+      "dataKey": "traderinput",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:trader"
+      }
+    },
     "workspace": {
       "templateId": "trade-hscode-selection--form",
       "title": "Select HS Codes",
@@ -22,7 +40,8 @@
       "visibleWhen": {
         "states": [
           "PENDING_USER"
-        ]
+        ],
+        "requireClaim": "role:cha"
       },
       "handles": [
         {

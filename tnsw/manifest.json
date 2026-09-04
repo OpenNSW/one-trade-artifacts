@@ -91,6 +91,12 @@
       "path": "trade/2-hscode_selection/summary_markdown.json"
     },
     {
+      "id": "trade-hscode-selection--waiting-markdown",
+      "kind": "generic_template",
+      "version": "",
+      "path": "trade/2-hscode_selection/waiting_markdown.json"
+    },
+    {
       "id": "trade-hscode-selection-flow",
       "kind": "workflow",
       "version": "",

@@ -1,0 +1,4 @@
+{
+  "id": "trade-hscode-selection--waiting-markdown",
+  "template": "### Waiting for your CHA to select HS codes\n\nYour Customs House Agent is choosing the HS codes for this consignment. The regulatory flows for this shipment are created from that selection, so nothing is needed from you at this step.\n\nYou will be notified once the selection is complete."
+}
