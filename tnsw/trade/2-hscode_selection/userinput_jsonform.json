@@ -37,6 +37,502 @@
             {
               "const": "cda-kcfn-recommendation-letter",
               "title": "King Coconut Fresh Nut (KCFN) Recommendation Letter (CDA Flow)"
+            },
+            {
+              "const": "0902.30.11",
+              "title": "0902.30.11 - Black Tea Bags, Flavoured (Up to 4g)"
+            },
+            {
+              "const": "0902.30.12",
+              "title": "0902.30.12 - Black Tea Bags, Non-Flavoured (Up to 4g)"
+            },
+            {
+              "const": "0902.30.21",
+              "title": "0902.30.21 - Black Tea Packet / Tea Bags, Flavoured (4g - 1kg)"
+            },
+            {
+              "const": "0902.30.22",
+              "title": "0902.30.22 - Black Tea Packet / Tea Bags, Non-Flavoured (4g - 1kg)"
+            },
+            {
+              "const": "0902.30.31",
+              "title": "0902.30.31 - Black Tea Packets, Flavoured (1kg - 3kg)"
+            },
+            {
+              "const": "0902.30.32",
+              "title": "0902.30.32 - Black Tea Packets, Non-Flavoured (1kg - 3kg)"
+            },
+            {
+              "const": "0902.40.11",
+              "title": "0902.40.11 - Black Tea Packets, Flavoured (3kg - 5kg)"
+            },
+            {
+              "const": "0902.40.12",
+              "title": "0902.40.12 - Black Tea Packets, Non-Flavoured (3kg - 5kg)"
+            },
+            {
+              "const": "0902.40.21",
+              "title": "0902.40.21 - Black Tea Packets, Flavoured (5kg - 10kg)"
+            },
+            {
+              "const": "0902.40.22",
+              "title": "0902.40.22 - Black Tea Packets, Non-Flavoured (5kg - 10kg)"
+            },
+            {
+              "const": "0902.40.91",
+              "title": "0902.40.91 - Black Tea Bulk, Flavoured (Over 10kg)"
+            },
+            {
+              "const": "0902.40.92",
+              "title": "0902.40.92 - Black Tea Bulk, Non-Flavoured (Over 10kg)"
+            },
+            {
+              "const": "2101.20.11",
+              "title": "2101.20.11 - Instant Tea Bags (Up to 4g)"
+            },
+            {
+              "const": "2101.20.12",
+              "title": "2101.20.12 - Instant Tea Packets (4g - 1kg)"
+            },
+            {
+              "const": "2101.20.13",
+              "title": "2101.20.13 - Instant Tea Packets (1kg - 3kg)"
+            },
+            {
+              "const": "0902.10.11",
+              "title": "0902.10.11 - Green Tea Bags, Flavoured (Up to 4g)"
+            },
+            {
+              "const": "0902.10.12",
+              "title": "0902.10.12 - Green Tea Bags, Non-Flavoured (Up to 4g)"
+            },
+            {
+              "const": "0902.10.21",
+              "title": "0902.10.21 - Green Tea Packet / Tea Bags, Flavoured (4g - 1kg)"
+            },
+            {
+              "const": "0902.10.22",
+              "title": "0902.10.22 - Green Tea Packet / Tea Bags, Non-Flavoured (4g - 1kg)"
+            },
+            {
+              "const": "0902.10.31",
+              "title": "0902.10.31 - Green Tea Packets, Flavoured (1kg - 3kg)"
+            },
+            {
+              "const": "0902.10.32",
+              "title": "0902.10.32 - Green Tea Packets, Non-Flavoured (1kg - 3kg)"
+            },
+            {
+              "const": "0902.20.11",
+              "title": "0902.20.11 - Green Tea Packets, Flavoured (3kg - 5kg)"
+            },
+            {
+              "const": "0902.20.12",
+              "title": "0902.20.12 - Green Tea Packets, Non-Flavoured (3kg - 5kg)"
+            },
+            {
+              "const": "0902.20.21",
+              "title": "0902.20.21 - Green Tea Packets, Flavoured (5kg - 10kg)"
+            },
+            {
+              "const": "0902.20.22",
+              "title": "0902.20.22 - Green Tea Packets, Non-Flavoured (5kg - 10kg)"
+            },
+            {
+              "const": "0902.20.91",
+              "title": "0902.20.91 - Green Tea Bulk, Flavoured (Over 10kg)"
+            },
+            {
+              "const": "0902.20.92",
+              "title": "0902.20.92 - Green Tea Bulk, Non-Flavoured (Over 10kg)"
+            },
+            {
+              "const": "2202.90.10",
+              "title": "2202.90.10 - RTD / Packets - Ready to Drink (Tea in Liquid / Beverage, Up to 4g)"
+            },
+            {
+              "const": "0902.10.13",
+              "title": "0902.10.13 - Other Origin Green Tea Bags, Flavoured (Up to 4g)"
+            },
+            {
+              "const": "0902.10.19",
+              "title": "0902.10.19 - Other Origin Green Tea Bags, Non-Flavoured (Up to 4g)"
+            },
+            {
+              "const": "0902.10.23",
+              "title": "0902.10.23 - Other Origin Green Tea Packet / Tea Bags, Flavoured (4g - 1kg)"
+            },
+            {
+              "const": "0902.10.29",
+              "title": "0902.10.29 - Other Origin Green Tea Packet / Tea Bags, Non-Flavoured (4g - 1kg)"
+            },
+            {
+              "const": "0902.10.33",
+              "title": "0902.10.33 - Other Origin Green Tea Packets, Flavoured (1kg - 3kg)"
+            },
+            {
+              "const": "0902.10.39",
+              "title": "0902.10.39 - Other Origin Green Tea Packets, Non-Flavoured (1kg - 3kg)"
+            },
+            {
+              "const": "0902.10.90",
+              "title": "0902.10.90 - Other Origin Green Tea (Other)"
+            },
+            {
+              "const": "0902.20.13",
+              "title": "0902.20.13 - Other Origin Green Tea Packets, Flavoured (3kg - 5kg)"
+            },
+            {
+              "const": "0902.20.19",
+              "title": "0902.20.19 - Other Origin Green Tea Packets, Non-Flavoured (3kg - 5kg)"
+            },
+            {
+              "const": "0902.20.23",
+              "title": "0902.20.23 - Other Origin Green Tea Packets, Flavoured (5kg - 10kg)"
+            },
+            {
+              "const": "0902.20.29",
+              "title": "0902.20.29 - Other Origin Green Tea Packets, Non-Flavoured (5kg - 10kg)"
+            },
+            {
+              "const": "0902.20.93",
+              "title": "0902.20.93 - Other Origin Green Tea Bulk, Flavoured (Over 10kg)"
+            },
+            {
+              "const": "0902.20.99",
+              "title": "0902.20.99 - Other Origin Green Tea Bulk, Non-Flavoured (Over 10kg)"
+            },
+            {
+              "const": "0902.30.13",
+              "title": "0902.30.13 - Other Origin Black Tea Bags, Flavoured (Up to 4g)"
+            },
+            {
+              "const": "0902.30.19",
+              "title": "0902.30.19 - Other Origin Black Tea Bags, Non-Flavoured (Up to 4g)"
+            },
+            {
+              "const": "0902.30.23",
+              "title": "0902.30.23 - Other Origin Black Tea Packet / Tea Bags, Flavoured (4g - 1kg)"
+            },
+            {
+              "const": "0902.30.29",
+              "title": "0902.30.29 - Other Origin Black Tea Packet / Tea Bags, Non-Flavoured (4g - 1kg)"
+            },
+            {
+              "const": "0902.30.33",
+              "title": "0902.30.33 - Other Origin Black Tea Packets, Flavoured (1kg - 3kg)"
+            },
+            {
+              "const": "0902.30.39",
+              "title": "0902.30.39 - Other Origin Black Tea Packets, Non-Flavoured (1kg - 3kg)"
+            },
+            {
+              "const": "0902.40.13",
+              "title": "0902.40.13 - Other Origin Black Tea Packets, Flavoured (3kg - 5kg)"
+            },
+            {
+              "const": "0902.40.19",
+              "title": "0902.40.19 - Other Origin Black Tea Packets, Non-Flavoured (3kg - 5kg)"
+            },
+            {
+              "const": "0902.40.23",
+              "title": "0902.40.23 - Other Origin Black Tea Packets, Flavoured (5kg - 10kg)"
+            },
+            {
+              "const": "0902.40.29",
+              "title": "0902.40.29 - Other Origin Black Tea Packets, Non-Flavoured (5kg - 10kg)"
+            },
+            {
+              "const": "0902.40.93",
+              "title": "0902.40.93 - Other Origin Black Tea Bulk, Flavoured (Over 10kg)"
+            },
+            {
+              "const": "0902.40.99",
+              "title": "0902.40.99 - Other Origin Black Tea Bulk, Non-Flavoured (Over 10kg)"
+            },
+            {
+              "const": "0801.11.90",
+              "title": "0801.11.90 - Desiccated Coconut"
+            },
+            {
+              "const": "0801.19.30",
+              "title": "0801.19.30 - King Coconut"
+            },
+            {
+              "const": "0801.12.00",
+              "title": "0801.12.00 - Fresh Nuts (In the inner shell / endocarp)"
+            },
+            {
+              "const": "0801.19.90",
+              "title": "0801.19.90 - Fresh Nuts (Other)"
+            },
+            {
+              "const": "0801.19.20",
+              "title": "0801.19.20 - Fresh Nuts (Seed Coconut)"
+            },
+            {
+              "const": "5305.00.71",
+              "title": "5305.00.71 - Moulded products of coconut (coir) for use in horticulture"
+            },
+            {
+              "const": "5305.00.72",
+              "title": "5305.00.72 - Other, raw noils and waste of coconut (coir)"
+            },
+            {
+              "const": "5305.00.79",
+              "title": "5305.00.79 - Other of coconut coir"
+            },
+            {
+              "const": "3802.10.10",
+              "title": "3802.10.10 - Activated Carbon - Spent"
+            },
+            {
+              "const": "3802.10.21",
+              "title": "3802.10.21 - Activated Carbon - Other granular of coconut shell"
+            },
+            {
+              "const": "3802.10.22",
+              "title": "3802.10.22 - Activated Carbon - Other powdered of coconut shell"
+            },
+            {
+              "const": "3802.10.23",
+              "title": "3802.10.23 - Other Extruded / Palletized of Coconut Shell"
+            },
+            {
+              "const": "3802.10.24",
+              "title": "3802.10.24 - Other washed and purified of coconut shell"
+            },
+            {
+              "const": "3802.10.25",
+              "title": "3802.10.25 - Other chemically impregnated of coconut Shell"
+            },
+            {
+              "const": "3802.10.29",
+              "title": "3802.10.29 - Activated carbon of coconut shell (Other, nes)"
+            },
+            {
+              "const": "2008.19.20",
+              "title": "2008.19.20 - Liquid Coconut Milk"
+            },
+            {
+              "const": "2008.19.90",
+              "title": "2008.19.90 - Coconut Milk (Other)"
+            },
+            {
+              "const": "1513.11.11",
+              "title": "1513.11.11 - Virgin Coconut Oil (In Bulk)"
+            },
+            {
+              "const": "1513.11.21",
+              "title": "1513.11.21 - Virgin Coconut Oil (Not in Bulk)"
+            },
+            {
+              "const": "2008.19.30",
+              "title": "2008.19.30 - Coconut Milk Powder"
+            },
+            {
+              "const": "2008.19.40",
+              "title": "2008.19.40 - Coconut Cream"
+            },
+            {
+              "const": "2106.90.97",
+              "title": "2106.90.97 - Coconut Water / King Coconut Water"
+            },
+            {
+              "const": "1513.11.19",
+              "title": "1513.11.19 - Crude coconut oil, in bulk, excl virgin coconut oil Crude"
+            },
+            {
+              "const": "1513.11.29",
+              "title": "1513.11.29 - Coconut oil (excl virgin), not in bulk"
+            },
+            {
+              "const": "1513.19.10",
+              "title": "1513.19.10 - Coconut oil, not crude, in bulk"
+            },
+            {
+              "const": "1513.19.90",
+              "title": "1513.19.90 - Coconut oil, not crude, not in bulk"
+            },
+            {
+              "const": "2306.50.10",
+              "title": "2306.50.10 - Defatted Coconut"
+            },
+            {
+              "const": "5305.00.21",
+              "title": "5305.00.21 - Raw mattress fibre of coconut (coir) mixed with animal hair and not twisted"
+            },
+            {
+              "const": "5305.00.23",
+              "title": "5305.00.23 - Raw Mattress fibre of coconut coir not twisted"
+            },
+            {
+              "const": "5305.00.69",
+              "title": "5305.00.69 - Other raw of coconut (coir)"
+            },
+            {
+              "const": "9603.10.10",
+              "title": "9603.10.10 - Brooms made of coconut fibre"
+            },
+            {
+              "const": "9603.10.60",
+              "title": "9603.10.60 - Other brushes made of coconut fibre"
+            },
+            {
+              "const": "4402.20.10",
+              "title": "4402.20.10 - Coconut Shell Charcoal"
+            },
+            {
+              "const": "1404.90.93",
+              "title": "1404.90.93 - Fibre pith (compressed or not)"
+            },
+            {
+              "const": "5607.90.20",
+              "title": "5607.90.20 - Coir Twine"
+            },
+            {
+              "const": "5607.90.30",
+              "title": "5607.90.30 - Coir Rope"
+            },
+            {
+              "const": "1106.30.10",
+              "title": "1106.30.10 - Coconut Flour"
+            },
+            {
+              "const": "1404.90.60",
+              "title": "1404.90.60 - Coconut Ekels"
+            },
+            {
+              "const": "5311.00.10",
+              "title": "5311.00.10 - Geo Textiles"
+            },
+            {
+              "const": "9603.10.30",
+              "title": "9603.10.30 - Tawashi brushes made of 100% coconut fibre"
+            },
+            {
+              "const": "9603.10.40",
+              "title": "9603.10.40 - Tawashi brushes made of coconut fibre mixed with other Vegetable fibre"
+            },
+            {
+              "const": "9603.10.50",
+              "title": "9603.10.50 - Tawashi brushes made of coir fibre mixed with artificial fibre"
+            },
+            {
+              "const": "5305.00.11",
+              "title": "5305.00.11 - Raw bristle fibre of coconut (coir) twisted"
+            },
+            {
+              "const": "5305.00.22",
+              "title": "5305.00.22 - Raw mattress fibre of coconut (coir) twisted"
+            },
+            {
+              "const": "5305.00.30",
+              "title": "5305.00.30 - Raw mixed fibre of coconut (coir) twisted"
+            },
+            {
+              "const": "5305.00.41",
+              "title": "5305.00.41 - Raw omatt fibre of coconut (coir) twisted"
+            },
+            {
+              "const": "5305.00.61",
+              "title": "5305.00.61 - Other raw fibre of coconut (coir) twisted"
+            },
+            {
+              "const": "2306.50.20",
+              "title": "2306.50.20 - Coconut Poonac"
+            },
+            {
+              "const": "1203.00.00",
+              "title": "1203.00.00 - Copra"
+            },
+            {
+              "const": "0801.11.10",
+              "title": "0801.11.10 - Edible Copra"
+            },
+            {
+              "const": "1517.10.20",
+              "title": "1517.10.20 - Coconut Butter"
+            },
+            {
+              "const": "5305.00.12",
+              "title": "5305.00.12 - Raw bristle Fibre of coconut (coir) not twisted"
+            },
+            {
+              "const": "5305.00.13",
+              "title": "5305.00.13 - Raw bristle Fibre of coconut (coir) bleached"
+            },
+            {
+              "const": "5305.00.14",
+              "title": "5305.00.14 - Raw bristle Fibre of coconut (coir) dyed"
+            },
+            {
+              "const": "5305.00.42",
+              "title": "5305.00.42 - Raw omatt fibre of coconut (coir) not twisted"
+            },
+            {
+              "const": "1404.90.50",
+              "title": "1404.90.50 - Husk Chips"
+            },
+            {
+              "const": "5701.90.10",
+              "title": "5701.90.10 - Coir Carpets & Rugs"
+            },
+            {
+              "const": "5702.20.10",
+              "title": "5702.20.10 - Coir Matts & Rugs"
+            },
+            {
+              "const": "5702.20.90",
+              "title": "5702.20.90 - Coir Mats & Rugs (Other)"
+            },
+            {
+              "const": "2306.50.90",
+              "title": "2306.50.90 - Oil Cake (other solid residuals of coconut copra)"
+            },
+            {
+              "const": "9404.29.10",
+              "title": "9404.29.10 - Unused rubberized coir pads for mattresses, below 60mm in thickness"
+            },
+            {
+              "const": "9404.29.20",
+              "title": "9404.29.20 - Unused rubberized coir pads for mattresses for bedding, above 60mm in thickness"
+            },
+            {
+              "const": "5308.10.00",
+              "title": "5308.10.00 - Coir Yarn"
+            },
+            {
+              "const": "3823.19.10",
+              "title": "3823.19.10 - Coconut Fatty Acid"
+            },
+            {
+              "const": "1404.90.30",
+              "title": "1404.90.30 - Coconut Shell Pieces"
+            },
+            {
+              "const": "1404.90.40",
+              "title": "1404.90.40 - Coconut Shell Powder"
+            },
+            {
+              "const": "2208.90.10",
+              "title": "2208.90.10 - Coconut based Arrack (All types)"
+            },
+            {
+              "const": "5702.20.20",
+              "title": "5702.20.20 - Coir Mattings"
+            },
+            {
+              "const": "4421.99.41",
+              "title": "4421.99.41 - Handicrafts, Coconut Wood"
+            },
+            {
+              "const": "2209.00.00",
+              "title": "2209.00.00 - Vinegar (All types)"
+            },
+            {
+              "const": "0604.90.00",
+              "title": "0604.90.00 - Matured Leaves Based Products"
             }
           ]
         },
