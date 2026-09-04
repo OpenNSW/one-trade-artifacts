@@ -7,7 +7,7 @@
       "exporter_registration_no",
       "cusdec_number",
       "warehouse_id",
-      "blendsheet_file"
+      "blendsheet_data"
     ],
     "properties": {
       "exporter_registration_no": {
@@ -46,14 +46,177 @@
           }
         ]
       },
-      "blendsheet_file": {
-        "type": "string",
-        "format": "file",
-        "title": "Upload Blend Sheet Data (XML or Excel File)",
-        "description": "Please upload the official blend sheet containing the detailed blend analysis (.xml or .xlsx)",
-        "x-file": {
-          "accept": ".xml,.xlsx"
-        }
+      "blendsheet_data": {
+        "type": "array",
+        "title": "Blend Sheet Data Upload",
+        "items": {
+          "type": "object",
+          "properties": {
+            "avg_rate_per_kg": {
+              "type": "number",
+              "title": "Average Value Per KG",
+              "description": "This value need to enter manually",
+              "example": 1054.56
+            },
+            "fob_avg": {
+              "type": "number",
+              "title": "FOB Average Value",
+              "description": "This value need to enter manually",
+              "example": 2359
+            },
+            "quality_to_be_exported": {
+              "type": "number",
+              "title": "Quality to be Exported (Kg)",
+              "description": "This value need to enter manually",
+              "example": 16128
+            },
+            "grade_or_standard": {
+              "type": "string",
+              "title": "Grade/Standard",
+              "description": "This value need to enter manually",
+              "example": "BOPF"
+            },
+            "date_of_blend": {
+              "type": "string",
+              "format": "date",
+              "title": "Date of Blend",
+              "description": "This value need to enter manually",
+              "example": "2026-07-23"
+            },
+            "sales": {
+              "type": "object",
+              "title": "PARTICULAR OF SALE",
+              "description": "Please upload the official sale sheet containing the detailed blend analysis (.xlsx, .xls, .csv)",
+              "x-spreadsheet": {
+                "accept": ".xlsx,.xls,.csv",
+                "maxSize": 10485760,
+                "persistSheet": true,
+                "columnHeader": true
+              },
+              "x-evaluate": [
+                { "id": "total_sales", "label": "Total Sales Quantity (KG)", "expression": "=SUM(I2:I)" },
+                { "id": "average_value_per_kg", "label": "Average Value Per KG", "expression": "=AVERAGE(H2:H)" }
+              ],
+              "properties": {
+                "sheet": { "type": "array" },
+                "derivations": { "type": "object" }
+              }
+            },
+            "imported_tea": {
+              "type": "object",
+              "title": "PARTICULAR OF IMPORTED TEA",
+              "description": "Please upload the official import sheet containing the detailed import analysis (.xlsx, .xls, .csv)",
+              "x-spreadsheet": {
+                "accept": ".xlsx,.xls,.csv",
+                "maxSize": 10485760,
+                "persistSheet": true,
+                "columnHeader": true
+              },
+              "x-evaluate": [
+                { "id": "total_import", "label": "Total Import Quantity (KG)", "expression": "=SUM(F2:F)" }
+              ],
+              "properties": {
+                "sheet": { "type": "array" },
+                "derivations": { "type": "object" }
+              }
+            },
+            "blend_balances": {
+              "type": "object",
+              "title": "PARTICULARS OF BLEND BALANCES USED (IF APPLICABLE)",
+              "description": "Please upload the official blend balances sheet containing the detailed blend analysis (.xlsx, .xls, .csv)",
+              "x-spreadsheet": {
+                "accept": ".xlsx,.xls,.csv",
+                "maxSize": 10485760,
+                "persistSheet": true,
+                "columnHeader": true
+              },
+              "x-evaluate": [
+                { "id": "total_blend_balances", "label": "Total Blend Balances (KG)", "expression": "=SUM(C2:C)" },
+                { "id": "total_blend_gain", "label": "Total Blend Gain (KG)", "expression": "=SUM(D2:D)" }
+              ],
+              "properties": {
+                "sheet": { "type": "array" },
+                "derivations": { "type": "object" }
+              }
+            },
+            "total_blend_balances_and_gain": {
+              "type": "number",
+              "title": "Total Blend Balances and Gain (KG)",
+              "description": "Total Blend Balances and Gain = Total Blend Balances + Total Blend Gain",
+              "x-computed": {
+                "inputs": {
+                  "blend_balances": {
+                    "path": "blend_balances.derivations.total_blend_balances.value",
+                    "default": 0
+                  },
+                  "blend_gain": {
+                    "path": "blend_balances.derivations.total_blend_gain.value",
+                    "default": 0
+                  }
+                },
+                "formula": "blend_balances + blend_gain",
+                "decimals": 4
+              }
+            },
+            "total": {
+              "type": "number",
+              "title": "Total Quantity (KG)",
+              "description": "Total Quantity = Total Sales + Total Imported + Total Blend Balances and Gain",
+              "x-computed": {
+                "inputs": {
+                  "sales_quantity": {
+                    "path": "sales.derivations.total_sales.value",
+                    "default": 0
+                  },
+                  "imported_quantity": {
+                    "path": "imported_tea.derivations.total_import.value",
+                    "default": 0
+                  },
+                  "total_blend_balances_and_gain": {
+                    "path": "total_blend_balances_and_gain",
+                    "default": 0
+                  }
+                },
+                "formula": "sales_quantity + imported_quantity + total_blend_balances_and_gain",
+                "decimals": 4
+              }
+            },
+            "blend_balance": {
+              "type": "number",
+              "title": "Blend Balance (KG)",
+              "description": "Blend Balance = Total Quantity - Quality to be Exported",
+              "x-computed": {
+                "inputs": {
+                  "total_quantity": {
+                    "path": "total",
+                    "default": 0
+                  },
+                  "quality_to_be_exported": {
+                    "path": "quality_to_be_exported",
+                    "default": 0
+                  }
+                },
+                "formula": "total_quantity - quality_to_be_exported",
+                "decimals": 4
+              }
+            }
+          },
+          "required": [
+            "avg_rate_per_kg",
+            "fob_avg",
+            "quality_to_be_exported",
+            "grade_or_standard",
+            "date_of_blend",
+            "sales",
+            "imported_tea",
+            "blend_balances",
+            "total_blend_balances_and_gain",
+            "total",
+            "blend_balance"
+          ]
+        },
+        "uniqueItems": true,
+        "minItems": 1
       },
       "lion_logo_requested": {
         "type": "string",
@@ -72,7 +235,7 @@
     "elements": [
       {
         "type": "Group",
-        "label": "Exporter & Blend Information",
+        "label": "1. Exporter & Blend Information",
         "elements": [
           {
             "type": "Control",
@@ -90,17 +253,68 @@
       },
       {
         "type": "Group",
-        "label": "Excel Blendsheet Data Upload",
+        "label": "2. Blend Sheet Data Upload",
         "elements": [
           {
             "type": "Control",
-            "scope": "#/properties/blendsheet_file"
+            "scope": "#/properties/blendsheet_data",
+            "options": {
+              "detail": {
+                "type": "VerticalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/avg_rate_per_kg"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/fob_avg"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/quality_to_be_exported"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/grade_or_standard"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/date_of_blend"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/sales"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/imported_tea"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/blend_balances"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/total_blend_balances_and_gain"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/total"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/blend_balance"
+                  }
+                ]
+              }
+            }
           }
         ]
       },
       {
         "type": "Group",
-        "label": "Lion Logo Certification",
+        "label": "3. Lion Logo Certification",
         "elements": [
           {
             "type": "Control",

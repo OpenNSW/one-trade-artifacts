@@ -18,7 +18,7 @@
         "exporter_registration_no": "userform.exporter_registration_no",
         "cusdec_number": "userform.cusdec_number",
         "warehouse_id": "userform.warehouse_id",
-        "blendsheet_file": "userform.blendsheet_file",
+        "blendsheet_data": "userform.blendsheet_data",
         "lion_logo_requested?": "userform.lion_logo_requested"
       }
     },
