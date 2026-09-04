@@ -1,7 +1,7 @@
 {
   "id": "npqs-ephyto-upload",
   "name": "Upload to IPPC ePhyto Hub",
-  "version": 8,
+  "version": 10,
   "nodes": [
     {
       "id": "start",
@@ -17,7 +17,13 @@
         "ephyto.error?": "ephyto.error"
       },
       "output_mapping": {
-        "hub_destination": "traderinput.hub_destination"
+        "hub_destination": "traderinput.hub_destination",
+        "send_application_documents?": "traderinput.send_application_documents",
+        "send_treatment_certificate?": "traderinput.send_treatment_certificate",
+        "send_supervision_report?": "traderinput.send_supervision_report",
+        "send_invoice?": "traderinput.send_invoice",
+        "send_packing_list?": "traderinput.send_packing_list",
+        "send_additional_document?": "traderinput.send_additional_document"
       }
     },
     {
@@ -27,7 +33,18 @@
       "input_mapping": {
         "userform": "userform",
         "certificate_id": "certificate_id",
-        "traderinput.hub_destination": "hub_destination"
+        "traderinput.hub_destination": "hub_destination",
+        "treatment_certificate_url?": "treatment_certificate_url",
+        "supervision_report_url?": "supervision_report_url",
+        "invoice_file_url?": "invoice_file_url",
+        "packing_list_file_url?": "packing_list_file_url",
+        "additional_file_url?": "additional_file_url",
+        "traderinput.send_application_documents?": "send_application_documents",
+        "traderinput.send_treatment_certificate?": "send_treatment_certificate",
+        "traderinput.send_supervision_report?": "send_supervision_report",
+        "traderinput.send_invoice?": "send_invoice",
+        "traderinput.send_packing_list?": "send_packing_list",
+        "traderinput.send_additional_document?": "send_additional_document"
       },
       "output_mapping": {
         "ephyto.submitted": "ephyto.submitted",
@@ -49,9 +66,9 @@
         "ephyto.tracking_number": "tracking_number"
       },
       "output_mapping": {
-        "ephyto.delivered": "ephyto.delivered",
-        "ephyto.tracking_info?": "ephyto.tracking_info",
-        "ephyto.error": "ephyto.error"
+        "ephyto_poll.delivered": "ephyto_poll.delivered",
+        "ephyto_poll.tracking_info?": "ephyto_poll.tracking_info",
+        "ephyto_poll.error": "ephyto_poll.error"
       }
     },
     {
@@ -80,7 +97,7 @@
         "reference_number": "reference_number",
         "certificate_id": "certificate_id",
         "ephyto.tracking_number?": "ephyto.tracking_number",
-        "ephyto.tracking_info?": "ephyto.tracking_info"
+        "ephyto_poll.tracking_info?": "ephyto_poll.tracking_info"
       },
       "output_mapping": {}
     },
@@ -126,13 +143,13 @@
       "id": "e_delivered",
       "source_id": "gw_poll",
       "target_id": "end",
-      "condition": "ephyto.delivered == true"
+      "condition": "ephyto_poll.delivered == true"
     },
     {
       "id": "e_not_delivered",
       "source_id": "gw_poll",
       "target_id": "wait",
-      "condition": "ephyto.delivered != true"
+      "condition": "ephyto_poll.delivered != true"
     },
     {
       "id": "e_wait_cap",
