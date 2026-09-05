@@ -1,7 +1,7 @@
 {
   "id": "slpa-gate-pass-flow",
   "name": "Issue SLPA Container Gate Pass",
-  "version": 2,
+  "version": 4,
   "nodes": [
     {
       "id": "start",
@@ -21,7 +21,7 @@
         "truck_no?": "gpform.truck_no",
         "driver_name?": "gpform.driver_name",
         "seal_no?": "gpform.seal_no",
-        "__command?": "gpform.command"
+        "action?": "gpform.action"
       }
     },
     {
@@ -63,7 +63,8 @@
         "gp.seal_no?": "gp.seal_no",
         "gp.barcode?": "gp.barcode",
         "gp.status?": "gp.status",
-        "gp.issued_at?": "gp.issued_at"
+        "gp.issued_at?": "gp.issued_at",
+        "gp.gate_pass_url?": "gp.gate_pass_url"
       }
     },
     {
@@ -91,7 +92,7 @@
       "id": "e_delete",
       "source_id": "action_check",
       "target_id": "delete_consolidation",
-      "condition": "gpform.command == 'delete_consolidation'"
+      "condition": "gpform.action == 'delete_consolidation'"
     },
     {
       "id": "e_generate",

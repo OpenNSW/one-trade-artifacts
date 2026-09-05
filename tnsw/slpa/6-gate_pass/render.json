@@ -48,13 +48,8 @@
       "handles": [
         {
           "command": "submit",
-          "label": "Generate Gate Pass",
+          "label": "Submit",
           "element": "primary_action"
-        },
-        {
-          "command": "delete_consolidation",
-          "label": "Delete Consolidation",
-          "element": "danger_action"
         }
       ]
     }
@@ -64,9 +59,6 @@
       "actions": [
         {
           "command": "submit"
-        },
-        {
-          "command": "delete_consolidation"
         }
       ]
     }

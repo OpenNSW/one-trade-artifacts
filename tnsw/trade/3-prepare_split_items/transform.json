@@ -767,6 +767,9 @@
         "fcau-health-certificate-reg",
         "npqs-export-phytosanitary-reg",
         "customs-workflow"
+      ],
+      "slpa-ecdn-submission": [
+        "slpa-ecdn-submission"
       ]
     }
   }
