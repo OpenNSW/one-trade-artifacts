@@ -38,13 +38,17 @@
     },
     "select_form": {
       "templateId": "slpa-consolidation--select-form",
-      "title": "Consolidate Containers",
-      "projector": "FORM",
-      "dataKey": "consolidationform",
+      "title": "Consolidate This Container",
+      "projector": "SLPA_CONSOLIDATION",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ]
+      },
       "handles": [
         {
           "command": "submit",
-          "label": "Submit Consolidation",
+          "label": "Consolidate",
           "element": "primary_action"
         }
       ]

@@ -1,0 +1,88 @@
+{
+  "id": "slpa-container-branch",
+  "name": "Consolidate and Gate Pass (one container)",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "consolidate",
+      "type": "TASK",
+      "name": "[SLPA 5.0] Container Consolidation",
+      "task_template_id": "slpa-consolidation-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "_iter.input.so_container_no?": "so_container_no",
+        "_iter.input.container_label?": "container_label",
+        "_iter.input.cusdec_serial?": "cusdec_serial",
+        "_iter.input.slug?": "slug",
+        "_iter.input.client_key?": "client_key",
+        "_iter.input.cap_container_no?": "cap_container_no"
+      },
+      "output_mapping": {
+        "consolidation.saved?": "cc.saved",
+        "cap_sqid?": "cc.cap_id",
+        "container_no?": "cc.container_no"
+      }
+    },
+    {
+      "id": "gate_pass",
+      "type": "TASK",
+      "name": "[SLPA 6.0] Container Gate Pass",
+      "task_template_id": "slpa-gate-pass-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "_iter.input.container_label?": "container_label",
+        "_iter.input.slug?": "slug",
+        "_iter.input.client_key?": "client_key",
+        "cc.cap_id?": "cap_id",
+        "cc.container_no?": "container_no"
+      },
+      "output_mapping": {
+        "gp.gate_pass_no?": "gate_pass_no",
+        "gp.barcode?": "barcode",
+        "gp.issued_at?": "issued_at",
+        "consolidation.deleted?": "deleted"
+      }
+    },
+    {
+      "id": "gate_pass_check",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_start",
+      "source_id": "start",
+      "target_id": "consolidate"
+    },
+    {
+      "id": "e_consolidated",
+      "source_id": "consolidate",
+      "target_id": "gate_pass"
+    },
+    {
+      "id": "e_gp_gw",
+      "source_id": "gate_pass",
+      "target_id": "gate_pass_check"
+    },
+    {
+      "id": "e_redo",
+      "source_id": "gate_pass_check",
+      "target_id": "consolidate",
+      "condition": "deleted == true"
+    },
+    {
+      "id": "e_done",
+      "source_id": "gate_pass_check",
+      "target_id": "end"
+    }
+  ]
+}
