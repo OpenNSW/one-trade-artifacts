@@ -1,0 +1,770 @@
+{
+  "id": "slpa-ecdn--user-form",
+  "title": "Electronic Cargo Declaration Note (ECDN)",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "cusdecNo": {
+        "type": "string",
+        "title": "Cusdec No",
+        "example": "CBEX1-2026-E-1050"
+      },
+      "cusdecDate": {
+        "type": "string",
+        "title": "Cusdec Date",
+        "example": "2026-08-20",
+        "format": "date"
+      },
+      "cusdecOffice": {
+        "type": "string",
+        "title": "Cusdec Office",
+        "oneOf": [
+          {
+            "const": "BIBE1",
+            "title": "BIBE1"
+          },
+          {
+            "const": "BIBE3",
+            "title": "BIBE3"
+          },
+          {
+            "const": "BIBI1",
+            "title": "BIBI1"
+          },
+          {
+            "const": "CBBD1",
+            "title": "CBBD1"
+          },
+          {
+            "const": "CBBE3",
+            "title": "CBBE3"
+          },
+          {
+            "const": "CBBI1",
+            "title": "CBBI1"
+          },
+          {
+            "const": "CBBO1",
+            "title": "CBBO1"
+          },
+          {
+            "const": "CBBI3",
+            "title": "CBBI3"
+          },
+          {
+            "const": "CBMV1",
+            "title": "CBMV1"
+          },
+          {
+            "const": "CBEX1",
+            "title": "CBEX1"
+          },
+          {
+            "const": "CBLR1",
+            "title": "CBLR1"
+          },
+          {
+            "const": "CBIF1",
+            "title": "CBIF1"
+          },
+          {
+            "const": "CBBD3",
+            "title": "CBBD3"
+          },
+          {
+            "const": "CBHQ1",
+            "title": "CBHQ1"
+          },
+          {
+            "const": "CBOND",
+            "title": "CBOND"
+          },
+          {
+            "const": "CBCDU",
+            "title": "CBCDU"
+          },
+          {
+            "const": "CBBE1",
+            "title": "CBBE1"
+          },
+          {
+            "const": "CBTRS",
+            "title": "CBTRS"
+          },
+          {
+            "const": "HBIM1",
+            "title": "HBIM1"
+          },
+          {
+            "const": "KGBE1",
+            "title": "KGBE1"
+          },
+          {
+            "const": "KTBE1",
+            "title": "KTBE1"
+          },
+          {
+            "const": "KTBE3",
+            "title": "KTBE3"
+          },
+          {
+            "const": "KTBG1",
+            "title": "KTBG1"
+          },
+          {
+            "const": "KTBI1",
+            "title": "KTBI1"
+          },
+          {
+            "const": "KTCC2",
+            "title": "KTCC2"
+          },
+          {
+            "const": "KTEX1",
+            "title": "KTEX1"
+          },
+          {
+            "const": "KTIM1",
+            "title": "KTIM1"
+          },
+          {
+            "const": "MRBG1",
+            "title": "MRBG1"
+          },
+          {
+            "const": "MREX1",
+            "title": "MREX1"
+          },
+          {
+            "const": "MRIM1",
+            "title": "MRIM1"
+          },
+          {
+            "const": "PGBI1",
+            "title": "PGBI1"
+          },
+          {
+            "const": "PKBE1",
+            "title": "PKBE1"
+          },
+          {
+            "const": "PKBI1",
+            "title": "PKBI1"
+          },
+          {
+            "const": "GEME1",
+            "title": "GEME1"
+          },
+          {
+            "const": "GEME2",
+            "title": "GEME2"
+          }
+        ],
+        "description": "SLPA office code list."
+      },
+      "cusdecSerial": {
+        "type": "string",
+        "title": "Cusdec Serial",
+        "example": "E",
+        "description": "Optional on the SLPA form."
+      },
+      "cusdecSerLet": {
+        "type": "string",
+        "title": "CusDec SerLet",
+        "example": "E"
+      },
+      "cdnNumber": {
+        "type": "string",
+        "title": "CDN Number",
+        "example": "CDN-2026-00481"
+      },
+      "terminal": {
+        "type": "string",
+        "title": "Terminal",
+        "oneOf": [
+          {
+            "const": "JCT",
+            "title": "JCT"
+          },
+          {
+            "const": "CICT",
+            "title": "CICT"
+          },
+          {
+            "const": "SAGT",
+            "title": "SAGT"
+          },
+          {
+            "const": "UCT",
+            "title": "UCT"
+          },
+          {
+            "const": "ECT",
+            "title": "ECT"
+          },
+          {
+            "const": "CWIT",
+            "title": "CWIT"
+          }
+        ]
+      },
+      "status": {
+        "type": "string",
+        "title": "Status",
+        "oneOf": [
+          {
+            "const": "FCL",
+            "title": "FCL"
+          },
+          {
+            "const": "LCL",
+            "title": "LCL"
+          }
+        ],
+        "default": "FCL",
+        "description": "FCL and LCL are validated differently by the CMS."
+      },
+      "shipperName": {
+        "type": "string",
+        "title": "Shipper Name",
+        "example": "JOTHI COCONUT EXPORTERS"
+      },
+      "shipperAddress": {
+        "type": "string",
+        "title": "Shipper Address",
+        "example": "45A, KANDY ROAD, PILIMATHALAWA"
+      },
+      "consigneeName": {
+        "type": "string",
+        "title": "Consignee Name",
+        "example": "COCO WORLD SDN BHD"
+      },
+      "consigneeAddress": {
+        "type": "string",
+        "title": "Consignee Address",
+        "example": "125, PUTRAJAYA, KUALA LUMPUR"
+      },
+      "packageNumber": {
+        "type": "number",
+        "title": "Package Number",
+        "example": 80
+      },
+      "packageType": {
+        "type": "string",
+        "title": "Package Type",
+        "oneOf": [
+          {
+            "const": "Bags",
+            "title": "Bags"
+          },
+          {
+            "const": "Bales",
+            "title": "Bales"
+          },
+          {
+            "const": "Barrels",
+            "title": "Barrels"
+          },
+          {
+            "const": "Boxes",
+            "title": "Boxes"
+          },
+          {
+            "const": "Bulk",
+            "title": "Bulk"
+          },
+          {
+            "const": "Bundles",
+            "title": "Bundles"
+          },
+          {
+            "const": "Cartoons",
+            "title": "Cartoons"
+          },
+          {
+            "const": "Cases",
+            "title": "Cases"
+          },
+          {
+            "const": "Crate",
+            "title": "Crate"
+          },
+          {
+            "const": "Drums",
+            "title": "Drums"
+          },
+          {
+            "const": "Meteres",
+            "title": "Meteres"
+          },
+          {
+            "const": "Numbers",
+            "title": "Numbers"
+          },
+          {
+            "const": "Packages",
+            "title": "Packages"
+          },
+          {
+            "const": "Packets",
+            "title": "Packets"
+          },
+          {
+            "const": "Packs",
+            "title": "Packs"
+          },
+          {
+            "const": "Pallets",
+            "title": "Pallets"
+          },
+          {
+            "const": "Pieces",
+            "title": "Pieces"
+          },
+          {
+            "const": "Plates",
+            "title": "Plates"
+          },
+          {
+            "const": "Reels",
+            "title": "Reels"
+          },
+          {
+            "const": "Roles",
+            "title": "Roles"
+          },
+          {
+            "const": "Sets",
+            "title": "Sets"
+          },
+          {
+            "const": "Units",
+            "title": "Units"
+          },
+          {
+            "const": "W.Boxes",
+            "title": "W.Boxes"
+          },
+          {
+            "const": "Other",
+            "title": "Other"
+          }
+        ]
+      },
+      "volumeCBM": {
+        "type": "number",
+        "title": "Volume (CBM)",
+        "example": 32.5
+      },
+      "weightKg": {
+        "type": "number",
+        "title": "Weight (Kg.)",
+        "example": 16500.5
+      },
+      "goodsDescription": {
+        "type": "string",
+        "title": "Goods Description",
+        "example": "Refined Organic Coconut Oil"
+      },
+      "voyageNumber": {
+        "type": "string",
+        "title": "Voyage Number",
+        "example": "V092",
+        "description": "Optional on the SLPA form."
+      },
+      "voyageDate": {
+        "type": "string",
+        "title": "Voyage Date",
+        "example": "2026-08-25",
+        "format": "date"
+      },
+      "portOfLoading": {
+        "type": "string",
+        "title": "Port Of Loading",
+        "example": "LKCMB",
+        "description": "Optional on the SLPA form."
+      },
+      "portOfUnloading": {
+        "type": "string",
+        "title": "Port Of Unloading",
+        "example": "DEHAM",
+        "description": "Optional on the SLPA form."
+      },
+      "vesselOPCode": {
+        "type": "string",
+        "title": "Vessel OPCode",
+        "example": "OP-MSC",
+        "description": "Optional on the SLPA form."
+      },
+      "contOPCode": {
+        "type": "string",
+        "title": "Cont. OPCode",
+        "example": "CO-882",
+        "description": "Optional on the SLPA form."
+      },
+      "exVessel": {
+        "type": "string",
+        "title": "EX Vessel",
+        "example": "MAERSK KOWLOON",
+        "description": "Optional on the SLPA form."
+      },
+      "email": {
+        "type": "string",
+        "title": "Email",
+        "example": "exports@jothicoconut.lk",
+        "format": "email",
+        "description": "Optional on the SLPA form."
+      },
+      "contactNo": {
+        "type": "string",
+        "title": "Contact No",
+        "example": "0112345678",
+        "description": "Optional on the SLPA form."
+      },
+      "remarks": {
+        "type": "string",
+        "title": "Remarks",
+        "description": "Optional on the SLPA form."
+      },
+      "containers": {
+        "type": "array",
+        "title": "Container Details",
+        "description": "One row per container. The CMS applies FCL/LCL rules against these.",
+        "minItems": 1,
+        "items": {
+          "type": "object",
+          "properties": {
+            "containerNo": {
+              "type": "string",
+              "title": "Container No",
+              "example": "MSCU8492019"
+            },
+            "containerType": {
+              "type": "string",
+              "title": "Container Type",
+              "oneOf": [
+                {
+                  "const": "General",
+                  "title": "General"
+                },
+                {
+                  "const": "Open Top",
+                  "title": "Open Top"
+                },
+                {
+                  "const": "Flat Rack",
+                  "title": "Flat Rack"
+                },
+                {
+                  "const": "Reefer",
+                  "title": "Reefer"
+                }
+              ],
+              "default": "General"
+            },
+            "containerSize": {
+              "type": "string",
+              "title": "Container Size",
+              "oneOf": [
+                {
+                  "const": "20",
+                  "title": "20"
+                },
+                {
+                  "const": "40",
+                  "title": "40"
+                },
+                {
+                  "const": "45",
+                  "title": "45"
+                }
+              ],
+              "default": "20"
+            },
+            "sealNumber": {
+              "type": "string",
+              "title": "Seal Number",
+              "example": "894021"
+            },
+            "containerMark": {
+              "type": "string",
+              "title": "Container Mark",
+              "example": "MSCU-849201-9"
+            },
+            "commodity": {
+              "type": "string",
+              "title": "Commodity",
+              "oneOf": [
+                {
+                  "const": "DC/Reefer/Liquor",
+                  "title": "DC/Reefer/Liquor"
+                },
+                {
+                  "const": "Non DC",
+                  "title": "Non DC"
+                }
+              ],
+              "default": "Non DC"
+            }
+          },
+          "required": [
+            "containerNo",
+            "containerType",
+            "containerSize",
+            "sealNumber",
+            "containerMark",
+            "commodity"
+          ]
+        }
+      }
+    },
+    "required": [
+      "cusdecNo",
+      "cusdecDate",
+      "cusdecOffice",
+      "cusdecSerLet",
+      "cdnNumber",
+      "terminal",
+      "status",
+      "shipperName",
+      "shipperAddress",
+      "consigneeName",
+      "consigneeAddress",
+      "packageNumber",
+      "packageType",
+      "volumeCBM",
+      "weightKg",
+      "goodsDescription",
+      "voyageDate",
+      "containers"
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Group",
+        "label": "1. Cusdec Details",
+        "elements": [
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/cusdecNo"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/cusdecDate"
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/cusdecOffice"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/cusdecSerial"
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/cusdecSerLet"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/cdnNumber"
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/terminal"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/status"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "label": "2. Shipper & Consignee",
+        "elements": [
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/shipperName"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/shipperAddress"
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/consigneeName"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/consigneeAddress"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "label": "3. Cargo",
+        "elements": [
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/goodsDescription"
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/packageNumber"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/packageType"
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/volumeCBM"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/weightKg"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "label": "4. Voyage & Route",
+        "elements": [
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/voyageNumber"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/voyageDate"
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/portOfLoading"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/portOfUnloading"
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/vesselOPCode"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/contOPCode"
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/exVessel"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "label": "5. Contact",
+        "elements": [
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/email"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/contactNo"
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/remarks"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "label": "6. Container Details",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/containers"
+          }
+        ]
+      }
+    ]
+  }
+}

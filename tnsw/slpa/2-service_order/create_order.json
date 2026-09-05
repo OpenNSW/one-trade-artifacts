@@ -1,0 +1,10 @@
+{
+  "id": "slpa-so--create",
+  "task_type": "SLPA_SERVICE_ORDER",
+  "output_namespace": "so",
+  "plugin_properties": {
+    "service_id": "slpa",
+    "path": "/api/nsw/v1/export/service-orders",
+    "result_field": "raised"
+  }
+}
