@@ -10,6 +10,21 @@
         "readOnly": true,
         "description": "The container SLPA consolidated. A pass can only be issued for a consolidated container."
       },
+      "action": {
+        "type": "string",
+        "title": "What would you like to do?",
+        "oneOf": [
+          {
+            "const": "generate_gate_pass",
+            "title": "Generate the gate pass"
+          },
+          {
+            "const": "delete_consolidation",
+            "title": "Delete the consolidation and choose a different container"
+          }
+        ],
+        "description": "Deleting removes the pairing at SLPA and returns you to this container\u2019s consolidation step. It is only offered before a pass exists."
+      },
       "truck_no": {
         "type": "string",
         "title": "Truck No",
@@ -30,9 +45,28 @@
       }
     },
     "required": [
-      "truck_no",
-      "driver_name",
-      "seal_no"
+      "action"
+    ],
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "action": {
+              "const": "generate_gate_pass"
+            }
+          },
+          "required": [
+            "action"
+          ]
+        },
+        "then": {
+          "required": [
+            "truck_no",
+            "driver_name",
+            "seal_no"
+          ]
+        }
+      }
     ]
   },
   "uiSchema": {
@@ -44,15 +78,46 @@
       },
       {
         "type": "Control",
-        "scope": "#/properties/truck_no"
+        "scope": "#/properties/action"
       },
       {
         "type": "Control",
-        "scope": "#/properties/driver_name"
+        "scope": "#/properties/truck_no",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/action",
+            "schema": {
+              "const": "generate_gate_pass"
+            }
+          }
+        }
       },
       {
         "type": "Control",
-        "scope": "#/properties/seal_no"
+        "scope": "#/properties/driver_name",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/action",
+            "schema": {
+              "const": "generate_gate_pass"
+            }
+          }
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/seal_no",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/action",
+            "schema": {
+              "const": "generate_gate_pass"
+            }
+          }
+        }
       }
     ]
   }

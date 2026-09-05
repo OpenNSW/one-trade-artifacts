@@ -44,7 +44,8 @@
         "gp.gate_pass_no?": "gate_pass_no",
         "gp.barcode?": "barcode",
         "gp.issued_at?": "issued_at",
-        "consolidation.deleted?": "deleted"
+        "consolidation.deleted?": "deleted",
+        "gp.gate_pass_url?": "gate_pass_url"
       }
     },
     {
