@@ -1,0 +1,11 @@
+{
+  "id": "slpa-consolidation--delete",
+  "task_type": "SLPA_CONSOLIDATION_DELETE",
+  "output_namespace": "consolidation",
+  "plugin_properties": {
+    "service_id": "slpa",
+    "path": "/api/nsw/v1/export/container-consolidation/{cap_id}",
+    "method": "DELETE",
+    "result_field": "deleted"
+  }
+}

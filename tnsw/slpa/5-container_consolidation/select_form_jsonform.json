@@ -1,0 +1,27 @@
+{
+  "id": "slpa-consolidation--select-form",
+  "title": "Consolidate This Container",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "so_container_no": {
+        "type": "string",
+        "title": "Service Order Container",
+        "readOnly": true,
+        "description": "The container number you put on the service order. Consolidation ties it to a real container."
+      },
+      "cap_container_no": {
+        "type": "string",
+        "title": "Real Container",
+        "description": "Pick the container this one is. Only containers pre-advised in Navis appear here — if yours is missing, complete the pre-advice and use Check Again."
+      }
+    }
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      { "type": "Control", "scope": "#/properties/so_container_no" },
+      { "type": "Control", "scope": "#/properties/cap_container_no" }
+    ]
+  }
+}

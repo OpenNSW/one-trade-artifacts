@@ -1,0 +1,74 @@
+{
+  "id": "slpa-gate-pass-flow:render",
+  "type": "APPLICATION",
+  "title": "[SLPA] Container Gate Pass",
+  "sections": {
+    "refusal": {
+      "templateId": "slpa-gp--refusal",
+      "title": "SLPA Gate Pass",
+      "projector": "MARKDOWN",
+      "dataKey": "gp",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "gp"
+      }
+    },
+    "issuing": {
+      "templateId": "slpa-consolidation--status-message",
+      "title": "Gate Pass Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    },
+    "issued_message": {
+      "templateId": "slpa-gp--issued-message",
+      "title": "Gate Pass",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "COMPLETED"
+        ]
+      }
+    },
+    "user_form": {
+      "templateId": "slpa-gp--user-form",
+      "title": "Haulage Details",
+      "projector": "FORM",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ]
+      },
+      "dataKey": "gpform",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Generate Gate Pass",
+          "element": "primary_action"
+        },
+        {
+          "command": "delete_consolidation",
+          "label": "Delete Consolidation",
+          "element": "danger_action"
+        }
+      ]
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        },
+        {
+          "command": "delete_consolidation"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "id": "slpa-gate-pass-branch",
+  "name": "Issue SLPA Gate Pass (one container)",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "gate_pass",
+      "type": "TASK",
+      "name": "[SLPA 6.0] Container Gate Pass",
+      "task_template_id": "slpa-gate-pass-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "_iter.input.container_no?": "container_no",
+        "_iter.input.container_label?": "container_label",
+        "_iter.input.slug?": "slug",
+        "_iter.input.client_key?": "client_key"
+      },
+      "output_mapping": {
+        "gp.gate_pass_no?": "gate_pass_no",
+        "gp.barcode?": "barcode",
+        "gp.container_no?": "container_no",
+        "gp.issued_at?": "issued_at"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "gate_pass"
+    },
+    {
+      "id": "e2",
+      "source_id": "gate_pass",
+      "target_id": "end"
+    }
+  ]
+}

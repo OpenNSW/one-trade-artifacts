@@ -1,0 +1,4 @@
+{
+  "id": "slpa-gp--issued-message",
+  "template": "### \u2705 Gate Pass Issued\n\n{{with .gp}}* **Gate Pass No**: {{if .gate_pass_no}}`{{.gate_pass_no}}`{{else}}\u2014{{end}}\n* **Container**: {{if .container_no}}`{{.container_no}}`{{else}}\u2014{{end}}\n* **Truck**: {{if .truck_no}}{{.truck_no}}{{else}}\u2014{{end}}\n* **Driver**: {{if .driver_name}}{{.driver_name}}{{else}}\u2014{{end}}\n* **Seal**: {{if .seal_no}}`{{.seal_no}}`{{else}}\u2014{{end}}\n{{if .issued_at}}* **Issued At**: {{.issued_at}}\n{{end}}{{if .barcode}}* **Barcode**: `{{.barcode}}`\n{{end}}{{end}}\nPresent this pass at the terminal gate."
+}
