@@ -3161,6 +3161,48 @@
       "kind": "generic_template",
       "version": "",
       "path": "slpa/5-container_consolidation/select_form_jsonform.json"
+    },
+    {
+      "id": "slpa-consolidation--delete",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "slpa/5-container_consolidation/delete.json"
+    },
+    {
+      "id": "slpa-container-branch",
+      "kind": "workflow",
+      "version": "",
+      "path": "slpa/5-container_consolidation/branch_workflow.json"
+    },
+    {
+      "id": "slpa-container-prepare-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "slpa/5-container_consolidation/prepare_task_template.json"
+    },
+    {
+      "id": "slpa-container-prepare-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "slpa/5-container_consolidation/prepare_workflow.json"
+    },
+    {
+      "id": "slpa-container--prepare-transform",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "slpa/5-container_consolidation/prepare_transform.json"
+    },
+    {
+      "id": "slpa-container-prepare-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/5-container_consolidation/prepare_render.json"
+    },
+    {
+      "id": "slpa-consolidation--resolve",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "slpa/5-container_consolidation/resolve.json"
     }
   ]
 }

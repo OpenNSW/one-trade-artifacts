@@ -1,0 +1,6 @@
+{
+  "id": "slpa-container-prepare-flow",
+  "type": "SYSTEM",
+  "workflow_id": "slpa-container-prepare-flow",
+  "render_config_id": "slpa-container-prepare-flow:render"
+}
