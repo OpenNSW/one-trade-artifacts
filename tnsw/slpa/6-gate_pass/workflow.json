@@ -1,7 +1,7 @@
 {
   "id": "slpa-gate-pass-flow",
   "name": "Issue SLPA Container Gate Pass",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -14,12 +14,32 @@
       "input_mapping": {
         "container_no?": "gpform.container_no",
         "gpform?": "gpform",
-        "gp.error?": "gp.error"
+        "gp.error?": "gp.error",
+        "cap_id?": "cap_id"
       },
       "output_mapping": {
         "truck_no?": "gpform.truck_no",
         "driver_name?": "gpform.driver_name",
-        "seal_no?": "gpform.seal_no"
+        "seal_no?": "gpform.seal_no",
+        "__command?": "gpform.command"
+      }
+    },
+    {
+      "id": "action_check",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "delete_consolidation",
+      "type": "TASK",
+      "task_template_id": "slpa-consolidation--delete",
+      "input_mapping": {
+        "cap_id": "cap_id",
+        "client_key?": "client_key"
+      },
+      "output_mapping": {
+        "consolidation.deleted": "consolidation.deleted",
+        "consolidation.error?": "consolidation.error"
       }
     },
     {
@@ -58,14 +78,30 @@
   ],
   "edges": [
     {
-      "id": "e1",
+      "id": "e_start",
       "source_id": "start",
       "target_id": "haulage_details"
     },
     {
-      "id": "e2",
+      "id": "e_choice",
       "source_id": "haulage_details",
+      "target_id": "action_check"
+    },
+    {
+      "id": "e_delete",
+      "source_id": "action_check",
+      "target_id": "delete_consolidation",
+      "condition": "gpform.command == 'delete_consolidation'"
+    },
+    {
+      "id": "e_generate",
+      "source_id": "action_check",
       "target_id": "issue"
+    },
+    {
+      "id": "e_deleted",
+      "source_id": "delete_consolidation",
+      "target_id": "end"
     },
     {
       "id": "e_check",
