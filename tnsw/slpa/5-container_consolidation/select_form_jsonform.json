@@ -1,58 +1,27 @@
 {
   "id": "slpa-consolidation--select-form",
-  "title": "Consolidate Containers",
+  "title": "Consolidate This Container",
   "schema": {
     "type": "object",
     "properties": {
-      "available_so_containers": {
+      "so_container_no": {
         "type": "string",
-        "title": "Service Order Containers (choose from these)",
+        "title": "Service Order Container",
         "readOnly": true,
-        "description": "The placeholder containers your service order was priced against. They are not the real container numbers \u2014 consolidation is what ties each real container to one of them."
+        "description": "The container number you put on the service order. Consolidation ties it to a real container."
       },
-      "rows": {
-        "type": "array",
-        "title": "Pre-advised Containers (real)",
-        "description": "The containers the terminal pre-advised against your declaration, by their real number. Tick each one to consolidate and enter which service order container it goes with.",
-        "items": {
-          "type": "object",
-          "properties": {
-            "cap_container_no": {
-              "type": "string",
-              "title": "Real Container No",
-              "readOnly": true,
-              "description": "As the terminal pre-advised it to SLPA."
-            },
-            "so_container_no": {
-              "type": "string",
-              "title": "Service Order Container",
-              "description": "One of the placeholder numbers listed above. The two numbers are unrelated, so only you can say which goes with which."
-            },
-            "consolidate": {
-              "type": "boolean",
-              "title": "Consolidate"
-            },
-            "cap_sqid": {
-              "type": "string",
-              "title": "SLPA Reference",
-              "readOnly": true
-            }
-          }
-        }
+      "cap_container_no": {
+        "type": "string",
+        "title": "Real Container",
+        "description": "Pick the container this one is. Only containers pre-advised in Navis appear here — if yours is missing, complete the pre-advice and use Check Again."
       }
     }
   },
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
-      {
-        "type": "Control",
-        "scope": "#/properties/available_so_containers"
-      },
-      {
-        "type": "Control",
-        "scope": "#/properties/rows"
-      }
+      { "type": "Control", "scope": "#/properties/so_container_no" },
+      { "type": "Control", "scope": "#/properties/cap_container_no" }
     ]
   }
 }

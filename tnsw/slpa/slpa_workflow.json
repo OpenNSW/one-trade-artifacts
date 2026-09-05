@@ -1,7 +1,7 @@
 {
   "id": "slpa-ecdn-submission",
   "name": "SLPA Electronic Cargo Declaration Note (ECDN)",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -74,48 +74,33 @@
       }
     },
     {
-      "id": "slpa_5_0_consolidation",
+      "id": "slpa_5_0_prepare_containers",
+      "name": "Prepare Container Branches",
       "type": "TASK",
-      "name": "[SLPA 5.0] Container Consolidation",
-      "task_template_id": "slpa-consolidation-flow",
-      "lane": "Trader/CHA",
+      "task_template_id": "slpa-container-prepare-flow",
       "input_mapping": {
-        "_iter.input.company.data.slpacmsuser_key?": "client_key",
-        "slpa.cusdec_serial?": "cusdec_serial"
-      },
-      "output_mapping": {
-        "consolidationform.rows?": "slpa.consolidation_rows",
-        "consolidation.already_consolidated?": "slpa.already_consolidated",
-        "consolidation.summary?": "slpa.consolidation_summary"
-      }
-    },
-    {
-      "id": "slpa_6_0_prepare_gate_passes",
-      "type": "TASK",
-      "name": "[SLPA 6.0] Prepare Gate Pass Items",
-      "task_template_id": "slpa-gate-pass-prepare-flow",
-      "lane": "System",
-      "input_mapping": {
-        "slpa.consolidation_rows?": "rows",
-        "slpa.already_consolidated?": "containers",
+        "slpa.userform.containers?": "containers",
+        "slpa.cusdec_serial?": "cusdec_serial",
         "slpa.service_order_slug?": "slug",
         "_iter.input.company.data.slpacmsuser_key?": "client_key"
       },
       "output_mapping": {
-        "split_items": "slpa.gate_pass_items"
+        "split_items": "slpa.container_items"
       }
     },
     {
-      "id": "slpa_6_1_gate_passes",
+      "id": "slpa_5_1_containers",
+      "name": "Consolidate Containers and Issue Gate Passes",
       "type": "SPLIT_TASK",
-      "name": "[SLPA 6.1] Issue Container Gate Passes",
-      "task_template_id": "slpa-gate-pass-branch",
+      "task_template_id": "slpa-container-branch",
       "split_task": {
         "mode": "SAME_TEMPLATE",
-        "items_variable": "slpa.gate_pass_items",
-        "results_variable": "slpa.gate_passes",
+        "items_variable": "slpa.container_items",
+        "results_variable": "slpa.container_results",
         "failure_mode": "COLLECT_ALL"
-      }
+      },
+      "input_mapping": {},
+      "output_mapping": {}
     },
     {
       "id": "end",
@@ -145,23 +130,18 @@
       "target_id": "slpa_4_0_invoice"
     },
     {
-      "id": "e_invoice_to_consolidation",
+      "id": "e_invoice_prepare",
       "source_id": "slpa_4_0_invoice",
-      "target_id": "slpa_5_0_consolidation"
+      "target_id": "slpa_5_0_prepare_containers"
     },
     {
-      "id": "e_consolidation_to_prepare",
-      "source_id": "slpa_5_0_consolidation",
-      "target_id": "slpa_6_0_prepare_gate_passes"
+      "id": "e_prepare_split",
+      "source_id": "slpa_5_0_prepare_containers",
+      "target_id": "slpa_5_1_containers"
     },
     {
-      "id": "e_prepare_to_gate_passes",
-      "source_id": "slpa_6_0_prepare_gate_passes",
-      "target_id": "slpa_6_1_gate_passes"
-    },
-    {
-      "id": "e_gate_passes_to_end",
-      "source_id": "slpa_6_1_gate_passes",
+      "id": "e_split_end",
+      "source_id": "slpa_5_1_containers",
       "target_id": "end"
     }
   ]

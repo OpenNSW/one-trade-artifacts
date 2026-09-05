@@ -1,0 +1,41 @@
+{
+  "id": "slpa-container-prepare-flow",
+  "name": "Prepare SLPA Container Branches",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "build_split_items",
+      "type": "TASK",
+      "task_template_id": "slpa-container--prepare-transform",
+      "input_mapping": {
+        "containers?": "containers",
+        "cusdec_serial?": "cusdec_serial",
+        "slug?": "slug",
+        "client_key?": "client_key"
+      },
+      "output_mapping": {
+        "split_items": "split_items"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "build_split_items"
+    },
+    {
+      "id": "e2",
+      "source_id": "build_split_items",
+      "target_id": "end"
+    }
+  ]
+}
