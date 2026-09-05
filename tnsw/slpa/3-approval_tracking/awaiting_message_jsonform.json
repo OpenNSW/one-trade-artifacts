@@ -1,0 +1,4 @@
+{
+  "id": "slpa-approval--awaiting-message",
+  "template": "### ⏳ With SLPA for Approval\n\nYour service order has been raised and is being reviewed by SLPA. It goes to the accounts clerk first, then to the accountant. Nothing is needed from you while it is with them.\n\n{{with .so}}* **Service Order No**: {{if .service_order_no}}`{{.service_order_no}}`{{else}}—{{end}}\n{{end}}* **Current Stage**: {{with .decision}}{{if .stage}}{{.stage}}{{else}}Raised, with the accounts clerk{{end}}{{else}}Raised, with the accounts clerk{{end}}\n{{with .decision}}{{if .decided_at}}* **Last Update**: {{.decided_at}}\n{{end}}{{end}}"
+}

@@ -1,0 +1,4 @@
+{
+  "id": "slpa-so--refusal",
+  "template": "{{if .error}}{{.error}}{{end}}"
+}
