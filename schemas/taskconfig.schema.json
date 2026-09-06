@@ -179,6 +179,37 @@
         }
       }
     },
+    "refid": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["issuer", "idType", "path"],
+      "description": "Declares that this task's applications get an agency-issued reference ID, generated once when the application is first injected and written into the officer's response document. Optional — omit it for tasks that need no reference number. Re-injecting an existing application never mints a second number.",
+      "properties": {
+        "issuer": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Issuing authority, e.g. 'NPQS'. Must match an issuer in the deployment's own refIDGen config (see backend/config.example.yaml in the agency backend repo) — a task declaring a format the deployment has not configured fails at inject."
+        },
+        "idType": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Which of that issuer's formats to generate, e.g. 'application_id'."
+        },
+        "path": {
+          "type": "string",
+          "pattern": "^/",
+          "description": "JSON Pointer (RFC 6901) into the officer response document where the generated ID is written, e.g. '/reference_number'. The task's forms.review should declare a control at this path, or the officer never sees the number."
+        },
+        "params": {
+          "type": "object",
+          "description": "Inputs the configured format needs, keyed by the format's own param name. Each value is a JSON Pointer (RFC 6901) into this task's injected data, e.g. {'officeCode': '/nppo_office_location'} — which is what lets one task config serve every office rather than needing one config per office. Params the format does not use are ignored, so these may be declared generously; a param the format does require but which does not resolve fails the inject.",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^/"
+          }
+        }
+      }
+    },
     "certificate": {
       "type": "object",
       "additionalProperties": false,
