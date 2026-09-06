@@ -1,7 +1,7 @@
 {
   "id": "customs-cusdec-apply-flow",
   "name": "Submit & Review Customs Declaration",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -34,7 +34,8 @@
       "type": "TASK",
       "task_template_id": "customs-cusdec--cig-dispatch",
       "input_mapping": {
-        "userform": "payload"
+        "userform": "payload",
+        "cig.edgeId?": "previous_edge_id"
       },
       "output_mapping": {
         "cig.accepted": "cig.accepted",
