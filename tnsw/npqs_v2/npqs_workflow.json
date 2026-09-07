@@ -267,9 +267,6 @@
       },
       "output_mapping": {
         "reviewerform.treatment_request_outcome": "npqs.treatment_request_outcome",
-        "reviewerform.treatment_provider?": "npqs.treatment_provider",
-        "reviewerform.treatment_supervision?": "npqs.treatment_supervision",
-        "reviewerform.supervision_officer_type?": "npqs.supervision_officer_type",
         "traderinput.treatment_items?": "npqs.treatment_items"
       }
     },
@@ -277,7 +274,22 @@
       "id": "treatment_provider_split",
       "name": "Treatment Performed By?",
       "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
+      "gateway_type": "BATCH_SPLIT",
+      "batch_gateway": {
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
+    },
+    {
+      "id": "treatment_provider_join",
+      "name": "Merge Treatment Provider Sub-Paths",
+      "type": "GATEWAY",
+      "gateway_type": "BATCH_JOIN",
+      "batch_join": {
+        "gateway_node_id": "treatment_provider_split",
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
     },
     {
       "id": "n3_2_treatment_payment",
@@ -300,7 +312,6 @@
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
-        "npqs.treatment_supervision?": "treatment_supervision",
         "npqs.treatment_items?": "treatment_items"
       },
       "output_mapping": {
@@ -311,7 +322,22 @@
       "id": "n3_3_1_supervision_split",
       "name": "Supervision Required?",
       "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
+      "gateway_type": "BATCH_SPLIT",
+      "batch_gateway": {
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
+    },
+    {
+      "id": "n3_3_1_supervision_join",
+      "name": "Merge Supervision Sub-Path",
+      "type": "GATEWAY",
+      "gateway_type": "BATCH_JOIN",
+      "batch_join": {
+        "gateway_node_id": "n3_3_1_supervision_split",
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
     },
     {
       "id": "n3_3_2_treatment_supervisor_report",
@@ -335,8 +361,6 @@
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
-        "npqs.treatment_provider?": "treatment_provider",
-        "npqs.treatment_supervision?": "treatment_supervision",
         "npqs.treatment_items?": "treatment_items"
       },
       "output_mapping": {
@@ -735,13 +759,13 @@
       "id": "e_treatment_by_npqs",
       "source_id": "treatment_provider_split",
       "target_id": "n3_2_treatment_payment",
-      "condition": "npqs.treatment_provider == 'npqs'"
+      "condition": "item.treatment_provider == 'npqs'"
     },
     {
       "id": "e_treatment_by_provider",
       "source_id": "treatment_provider_split",
       "target_id": "n3_4_treatment_upload_certs",
-      "condition": "npqs.treatment_provider == 'external'"
+      "condition": "item.treatment_provider == 'external'"
     },
     {
       "id": "e_treatment_payment_to_cert",
@@ -757,17 +781,22 @@
       "id": "e_supervision_split_true",
       "source_id": "n3_3_1_supervision_split",
       "target_id": "n3_3_2_treatment_supervisor_report",
-      "condition": "npqs.treatment_supervision == 'with_supervision'"
+      "condition": "item.treatment_supervision == 'with_supervision'"
     },
     {
       "id": "e_supervision_split_false",
       "source_id": "n3_3_1_supervision_split",
-      "target_id": "n3_4_treatment_upload_certs",
-      "condition": "npqs.treatment_supervision != 'with_supervision'"
+      "target_id": "n3_3_1_supervision_join",
+      "condition": "item.treatment_supervision != 'with_supervision'"
     },
     {
       "id": "e_supervisor_report_to_upload",
       "source_id": "n3_3_2_treatment_supervisor_report",
+      "target_id": "n3_3_1_supervision_join"
+    },
+    {
+      "id": "e_supervision_join_to_upload",
+      "source_id": "n3_3_1_supervision_join",
       "target_id": "n3_4_treatment_upload_certs"
     },
     {
@@ -789,7 +818,7 @@
     {
       "id": "e_treatment_fail",
       "source_id": "treatment_review_split",
-      "target_id": "gw_treatment_join",
+      "target_id": "treatment_provider_join",
       "condition": "npqs.treatment_review_result == 'fail'"
     },
     {
@@ -807,7 +836,7 @@
     {
       "id": "e_post_treatment_visual_false",
       "source_id": "npqs_gw_check_post_treatment_visual",
-      "target_id": "gw_treatment_join",
+      "target_id": "treatment_provider_join",
       "condition": "npqs.post_treatment_visual_required != true"
     },
     {
@@ -818,14 +847,19 @@
     {
       "id": "e_treatment_triggered_visual_fail",
       "source_id": "treatment_triggered_visual_result_split",
-      "target_id": "gw_treatment_join",
+      "target_id": "treatment_provider_join",
       "condition": "npqs.treatment_triggered_visual_result == 'fail'"
     },
     {
       "id": "e_treatment_triggered_visual_pass",
       "source_id": "treatment_triggered_visual_result_split",
-      "target_id": "gw_treatment_join",
+      "target_id": "treatment_provider_join",
       "condition": "npqs.treatment_triggered_visual_result == 'pass'"
+    },
+    {
+      "id": "e_provider_join_to_treatment_join",
+      "source_id": "treatment_provider_join",
+      "target_id": "gw_treatment_join"
     },
     {
       "id": "e_treat_join_to_par_join",

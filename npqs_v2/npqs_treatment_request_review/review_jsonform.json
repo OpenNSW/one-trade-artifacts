@@ -23,121 +23,25 @@
         "type": "string",
         "title": "Clarifications / Feedback / Comments",
         "example": "Dosage is approved. Please ensure treatment is conducted at a certified facility."
-      },
-      "treatment_provider": {
-        "type": "string",
-        "title": "Treatment Performed By",
-        "oneOf": [
-          {
-            "const": "npqs",
-            "title": "NPQS Treatment Division"
-          },
-          {
-            "const": "external",
-            "title": "Registered Private Treatment Provider"
-          }
-        ],
-        "default": "external"
-      },
-      "treatment_supervision": {
-        "type": "string",
-        "title": "Supervision Required?",
-        "oneOf": [
-          {
-            "const": "with_supervision",
-            "title": "With Supervision (requires supervision report)"
-          },
-          {
-            "const": "without_supervision",
-            "title": "Without Supervision"
-          }
-        ],
-        "default": "without_supervision"
-      },
-      "supervision_officer_type": {
-        "type": "string",
-        "title": "Supervision Officer Type",
-        "oneOf": [
-          {
-            "const": "npqs_officer",
-            "title": "Under NPQS Officer Supervision"
-          },
-          {
-            "const": "pqs_officer",
-            "title": "Under PQS Officer Supervision"
-          }
-        ]
       }
     },
     "required": [
       "treatment_request_outcome"
-    ],
-    "allOf": [
-      {
-        "if": {
-          "properties": {
-            "treatment_supervision": {
-              "const": "with_supervision"
-            }
-          },
-          "required": [
-            "treatment_supervision"
-          ]
-        },
-        "then": {
-          "required": [
-            "supervision_officer_type"
-          ]
-        }
-      }
     ]
   },
   "uiSchema": {
-    "type": "Categorization",
+    "type": "VerticalLayout",
     "elements": [
       {
-        "type": "Category",
-        "label": "Decision",
-        "elements": [
-          {
-            "type": "Control",
-            "scope": "#/properties/treatment_request_outcome"
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/clarification_comments",
-            "options": {
-              "multiLine": true
-            }
-          }
-        ]
+        "type": "Control",
+        "scope": "#/properties/treatment_request_outcome"
       },
       {
-        "type": "Category",
-        "label": "Treatment & Supervision",
-        "elements": [
-          {
-            "type": "Control",
-            "scope": "#/properties/treatment_provider"
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/treatment_supervision"
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/supervision_officer_type",
-            "rule": {
-              "effect": "SHOW",
-              "condition": {
-                "scope": "#/properties/treatment_supervision",
-                "schema": {
-                  "const": "with_supervision"
-                }
-              }
-            }
-          }
-        ]
+        "type": "Control",
+        "scope": "#/properties/clarification_comments",
+        "options": {
+          "multiLine": true
+        }
       }
     ]
   }
