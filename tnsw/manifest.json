@@ -3953,6 +3953,42 @@
       "kind": "generic_template",
       "version": "",
       "path": "npqs_v2/5-1-treatment_request/items_summary_markdown.json"
+    },
+    {
+      "id": "npqs-v2-visual-sample-collection",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs_v2/4-0-visual_sample_collection/task_template.json"
+    },
+    {
+      "id": "npqs-v2-visual-sample-collection",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_v2/4-0-visual_sample_collection/workflow.json"
+    },
+    {
+      "id": "npqs-v2-visual-sample-collection--officer-receive",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_v2/4-0-visual_sample_collection/officer_receive.json"
+    },
+    {
+      "id": "npqs-v2-visual-sample-collection--officer-receive-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_v2/4-0-visual_sample_collection/officer_receive_jsonform.json"
+    },
+    {
+      "id": "npqs-v2-visual-sample-collection:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_v2/4-0-visual_sample_collection/render.json"
+    },
+    {
+      "id": "npqs-v2-visual-sample-collection--status",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_v2/4-0-visual_sample_collection/status_markdown.json"
     }
   ]
 }

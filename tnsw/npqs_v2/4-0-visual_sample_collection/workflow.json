@@ -8,16 +8,6 @@
       "type": "START"
     },
     {
-      "id": "trader_submit",
-      "type": "TASK",
-      "task_template_id": "npqs-v2-visual-sample-collection--trader-submit",
-      "input_mapping": {},
-      "output_mapping": {
-        "dropoff_date": "dropoff_date",
-        "courier_or_person_name": "courier_or_person_name"
-      }
-    },
-    {
       "id": "officer_receive",
       "type": "TASK",
       "task_template_id": "npqs-v2-visual-sample-collection--officer-receive",
@@ -25,12 +15,10 @@
         "reference_number": "reference_number",
         "userform": "submission",
         "userform.nppo_office_location?": "nppo_office_location",
-        "commodities?": "commodities",
-        "dropoff_date?": "dropoff_date",
-        "courier_or_person_name?": "courier_or_person_name"
+        "commodities?": "commodities"
       },
       "output_mapping": {
-        "reviewerform.sample_number": "sample_number"
+        "sample_number": "sample_number"
       }
     },
     {
@@ -40,13 +28,8 @@
   ],
   "edges": [
     {
-      "id": "e_start_to_submit",
+      "id": "e_start_to_receive",
       "source_id": "start",
-      "target_id": "trader_submit"
-    },
-    {
-      "id": "e_submit_to_receive",
-      "source_id": "trader_submit",
       "target_id": "officer_receive"
     },
     {
