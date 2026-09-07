@@ -8,8 +8,14 @@
         "type": "string",
         "title": "Inspection Outcome",
         "oneOf": [
-          { "const": "pass", "title": "Pass (Verified in separate internal system)" },
-          { "const": "fail", "title": "Fail (System inspection recorded negative outcome)" }
+          {
+            "const": "pass",
+            "title": "Pass (Verified in separate internal system)"
+          },
+          {
+            "const": "fail",
+            "title": "Fail (System inspection recorded negative outcome)"
+          }
         ],
         "default": "pass"
       },
@@ -22,6 +28,47 @@
         "type": "string",
         "title": "Verification Comments",
         "example": "Checked internal system database. Inspection recorded on 2026-06-01 is clean."
+      },
+      "items": {
+        "type": "array",
+        "title": "Commodity System Verification (Per Item)",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Item ID"
+            },
+            "commodity_common_name": {
+              "type": "string",
+              "title": "Common Name"
+            },
+            "visual_result": {
+              "type": "string",
+              "title": "Verification Outcome",
+              "oneOf": [
+                {
+                  "const": "pass",
+                  "title": "Pass (Verified clean)"
+                },
+                {
+                  "const": "fail",
+                  "title": "Fail (Negative outcome in system)"
+                }
+              ],
+              "default": "pass"
+            },
+            "failure_reason": {
+              "type": "string",
+              "title": "Failure Reason",
+              "example": "Previous inspection hold on commodity batch in external system."
+            }
+          },
+          "required": [
+            "id",
+            "visual_result"
+          ]
+        }
       }
     },
     "required": [
@@ -43,6 +90,55 @@
       {
         "type": "Control",
         "scope": "#/properties/comments"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/items",
+        "options": {
+          "detail": {
+            "type": "VerticalLayout",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/id",
+                    "options": {
+                      "readOnly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/commodity_common_name",
+                    "options": {
+                      "readOnly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/visual_result"
+                  }
+                ]
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/failure_reason",
+                "rule": {
+                  "effect": "SHOW",
+                  "condition": {
+                    "scope": "#/properties/visual_result",
+                    "schema": {
+                      "const": "fail"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "addable": false,
+          "removable": false
+        }
       }
     ]
   }
