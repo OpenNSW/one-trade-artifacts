@@ -19,10 +19,14 @@
         ],
         "default": "complete_application"
       },
-      "lots_to_remove": {
+      "revised_dc_bags_details": {
         "type": "string",
-        "title": "Lot Numbers / Details to Remove",
-        "description": "Please list the lot numbers that cannot fit in the container and should be removed from the certificate."
+        "format": "file",
+        "title": "Upload Revised DC Bags Details File (Excel)",
+        "description": "Upload the completed Excel sheet (.xlsx or .xls) with the amended DC bag details for this consignment.",
+        "x-file": {
+          "accept": ".xlsx,.xls"
+        }
       }
     },
     "required": [
@@ -38,7 +42,7 @@
     },
     "then": {
       "required": [
-        "lots_to_remove"
+        "revised_dc_bags_details"
       ]
     }
   },
@@ -51,10 +55,7 @@
       },
       {
         "type": "Control",
-        "scope": "#/properties/lots_to_remove",
-        "options": {
-          "multiLine": true
-        },
+        "scope": "#/properties/revised_dc_bags_details",
         "rule": {
           "effect": "SHOW",
           "condition": {

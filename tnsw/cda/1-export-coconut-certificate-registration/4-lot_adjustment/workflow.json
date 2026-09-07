@@ -18,7 +18,7 @@
       },
       "output_mapping": {
         "adjustment_choice": "adjustment_choice",
-        "lots_to_remove?": "lots_to_remove"
+        "revised_dc_bags_details?": "revised_dc_bags_details"
       }
     },
     {
@@ -32,7 +32,7 @@
       "task_template_id": "cda-lot-adjustment-officer--review",
       "input_mapping": {
         "reference_number": "reference_number",
-        "lots_to_remove": "lots_to_remove"
+        "revised_dc_bags_details": "revised_dc_bags_details"
       },
       "output_mapping": {
         "adjustment_outcome": "adjustment_outcome",
