@@ -15,13 +15,6 @@
       "path": "npqs_application_review/reviewerinput_jsonform.json"
     },
     {
-      "id": "npqs-apply-phyto-cert--officer-view-form",
-      "kind": "generic_template",
-      "version": "",
-      "loader": "local",
-      "path": "npqs_application_review/officer_view_jsonform.json"
-    },
-    {
       "id": "npqs-apply-phyto-cert--user-form",
       "kind": "generic_template",
       "version": "",
