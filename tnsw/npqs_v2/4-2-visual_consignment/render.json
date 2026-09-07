@@ -17,6 +17,7 @@
       "projector": "MARKDOWN",
       "visibleWhen": {
         "states": [
+          "PENDING_USER",
           "QUEUED_EXTERNALLY"
         ]
       }
