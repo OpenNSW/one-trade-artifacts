@@ -15,7 +15,7 @@
         "reference_number": "reference_number",
         "userform": "submission",
         "userform.nppo_office_location?": "nppo_office_location",
-        "commodities?": "commodities"
+        "commodities?": "items"
       },
       "output_mapping": {
         "sample_number": "sample_number"
