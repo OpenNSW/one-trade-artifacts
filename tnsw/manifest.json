@@ -187,6 +187,12 @@
       "path": "npqs/1-apply/status_markdown.json"
     },
     {
+      "id": "npqs-apply-phyto-cert--importing-countries",
+      "kind": "static_data",
+      "version": "1",
+      "path": "npqs/1-apply/importing_countries.data.json"
+    },
+    {
       "id": "npqs-draw-sample--officer-draw",
       "kind": "subtask_template",
       "version": "",

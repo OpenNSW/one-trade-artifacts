@@ -28,7 +28,7 @@
       "role": "officer",
       "actions": [
         "VIEW",
-        "REVIEW",
+      "REVIEW",
         "FEEDBACK"
       ]
     }
