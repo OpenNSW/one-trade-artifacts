@@ -13,7 +13,7 @@
       "cap_container_no": {
         "type": "string",
         "title": "Real Container",
-        "description": "Pick the container this one is. Only containers pre-advised in Navis appear here — if yours is missing, complete the pre-advice and use Check Again."
+        "description": "Pick the container this one is. Only containers pre-advised in Navis appear here — if yours is missing, complete the pre-advice in Navis, then submit without choosing to look again."
       }
     }
   },
