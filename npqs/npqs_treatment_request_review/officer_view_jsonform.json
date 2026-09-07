@@ -78,9 +78,14 @@
             "readOnly": true
           },
           "importing_country": {
-            "type": "string",
+            "type": "object",
             "title": "Name of Importing Country",
-            "readOnly": true
+            "readOnly": true,
+            "properties": {
+              "value": { "type": "string", "minLength": 1 },
+              "label": { "type": "string" }
+            },
+            "required": ["value"]
           },
           "exporter_name": {
             "type": "string",
