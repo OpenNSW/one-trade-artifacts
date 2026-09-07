@@ -1,0 +1,6 @@
+{
+  "id": "npqs-v2-ephyto-upload",
+  "type": "APPLICATION",
+  "workflow_id": "npqs-v2-ephyto-upload",
+  "render_config_id": "npqs-v2-ephyto-upload:render"
+}

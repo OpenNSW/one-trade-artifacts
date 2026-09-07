@@ -1,0 +1,20 @@
+{
+  "id": "npqs-v2-visual-sample-inspection:render",
+  "type": "REVIEW",
+  "title": "[NPQS] Visual Sample Inspection",
+  "sections": {
+    "assessment_outcome": {
+      "templateId": "npqs-v2-visual-sample--status",
+      "title": "Visual Sample Inspection Results",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "requireDataKey": "visual_result"
+      }
+    },
+    "status_message": {
+      "templateId": "npqs-v2-visual-sample--status",
+      "title": "Visual Sample Inspection Details",
+      "projector": "MARKDOWN"
+    }
+  }
+}

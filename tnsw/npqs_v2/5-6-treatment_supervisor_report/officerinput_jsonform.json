@@ -1,0 +1,92 @@
+{
+  "id": "npqs-v2-treatment-supervisor-report--officer-form",
+  "title": "Issue Supervision Report",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "treatment_items": {
+        "type": "array",
+        "title": "Items Under Treatment (Context)",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Item ID"
+            },
+            "commodity_common_name": {
+              "type": "string",
+              "title": "Commodity Name"
+            },
+            "treatment_type": {
+              "type": "string",
+              "title": "Treatment Type Requested"
+            }
+          }
+        }
+      },
+      "supervisor_notes": {
+        "type": "string",
+        "title": "Supervision Assessment & Notes",
+        "example": "Supervised the fumigation at the site. Verified dosage levels and container sealing."
+      },
+      "supervision_report_url": {
+        "type": "string",
+        "format": "file",
+        "title": "Supervision Report Document URL",
+        "example": "https://nsw.gov.lk/storage/certs/supervision-report-doc-1092.pdf"
+      }
+    },
+    "required": [
+      "supervisor_notes"
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/treatment_items",
+        "options": {
+          "readonly": true,
+          "detail": {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/id",
+                "options": {
+                  "readOnly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/commodity_common_name",
+                "options": {
+                  "readOnly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/treatment_type",
+                "options": {
+                  "readOnly": true
+                }
+              }
+            ]
+          },
+          "addable": false,
+          "removable": false
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/supervisor_notes"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/supervision_report_url"
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "npqs-v2-draw-sample:render",
+  "type": "APPLICATION",
+  "title": "[NPQS] Sample Collection",
+  "sections": {
+    "status_message": {
+      "templateId": "npqs-v2-draw-sample--status",
+      "title": "Sample Collection Details",
+      "projector": "MARKDOWN"
+    },
+    "results_summary": {
+      "templateId": "npqs-v2-draw-sample--results",
+      "title": "Sample Registration Confirmed",
+      "projector": "MARKDOWN",
+      "dataKey": "officer_receive",
+      "visibleWhen": {
+        "requireDataKey": "officer_receive"
+      }
+    }
+  }
+}

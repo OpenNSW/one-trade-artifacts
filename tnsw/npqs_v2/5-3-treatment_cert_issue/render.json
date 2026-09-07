@@ -1,0 +1,23 @@
+{
+  "id": "npqs-v2-issue-treatment-cert:render",
+  "type": "REVIEW",
+  "title": "[NPQS] Issue Treatment Certificate",
+  "sections": {
+    "assessment_outcome": {
+      "templateId": "npqs-v2-treatment-cert-issue--status",
+      "title": "Treatment Certificate Issued",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "requireDataKey": "treatment_certificate_id"
+      }
+    },
+    "status_message": {
+      "templateId": "npqs-v2-treatment-cert-issue--status",
+      "title": "Certificate Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": ["QUEUED_EXTERNALLY"]
+      }
+    }
+  }
+}

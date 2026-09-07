@@ -1,0 +1,6 @@
+{
+  "id": "npqs-v2-apply-phyto-cert",
+  "type": "APPLICATION",
+  "workflow_id": "npqs-v2-apply-phyto-cert",
+  "render_config_id": "npqs-v2-apply-phyto-cert:render"
+}

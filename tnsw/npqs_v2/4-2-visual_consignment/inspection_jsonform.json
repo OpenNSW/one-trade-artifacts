@@ -1,0 +1,136 @@
+{
+  "id": "npqs-v2-visual-consignment--officer-form",
+  "title": "Consignment Visual Inspection Outcome",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "visual_result": {
+        "type": "string",
+        "title": "Overall Batch Result (worst outcome across the items below)",
+        "oneOf": [
+          {
+            "const": "pass",
+            "title": "Pass — All Items Approved"
+          },
+          {
+            "const": "fail",
+            "title": "Fail — One or More Items Rejected"
+          }
+        ],
+        "default": "pass"
+      },
+      "inspection_comments": {
+        "type": "string",
+        "title": "Overall Inspection Notes",
+        "example": "Conducted visual inspection of packages at port. Storage conditions acceptable."
+      },
+      "items": {
+        "type": "array",
+        "title": "Commodity Consignment Inspection Results (Per Item)",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Item ID"
+            },
+            "commodity_common_name": {
+              "type": "string",
+              "title": "Common Name"
+            },
+            "visual_result": {
+              "type": "string",
+              "title": "Inspection Result",
+              "oneOf": [
+                {
+                  "const": "pass",
+                  "title": "Pass (Approved visually)"
+                },
+                {
+                  "const": "fail",
+                  "title": "Fail (Pests, rot, or damage detected)"
+                }
+              ],
+              "default": "pass"
+            },
+            "failure_reason": {
+              "type": "string",
+              "title": "Failure Reason",
+              "example": "Rot and physical fungal damage observed on packaging."
+            }
+          },
+          "required": [
+            "id",
+            "visual_result"
+          ]
+        }
+      }
+    },
+    "required": [
+      "visual_result",
+      "items"
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/visual_result"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/inspection_comments"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/items",
+        "options": {
+          "detail": {
+            "type": "VerticalLayout",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/id",
+                    "options": {
+                      "readOnly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/commodity_common_name",
+                    "options": {
+                      "readOnly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/visual_result"
+                  }
+                ]
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/failure_reason",
+                "rule": {
+                  "effect": "SHOW",
+                  "condition": {
+                    "scope": "#/properties/visual_result",
+                    "schema": {
+                      "const": "fail"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "addable": false,
+          "removable": false
+        }
+      }
+    ]
+  }
+}

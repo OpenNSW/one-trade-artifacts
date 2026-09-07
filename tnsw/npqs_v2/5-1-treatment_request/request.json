@@ -1,0 +1,8 @@
+{
+  "id": "npqs-v2-treatment-request--trader-request",
+  "task_type": "USER_INPUT",
+  "output_namespace": "traderinput",
+  "plugin_properties": {
+    "user_jsonforms_id": "npqs-v2-treatment-request--trader-form"
+  }
+}
