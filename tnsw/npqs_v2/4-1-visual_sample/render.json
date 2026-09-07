@@ -8,13 +8,18 @@
       "title": "Visual Sample Inspection Results",
       "projector": "MARKDOWN",
       "visibleWhen": {
-        "requireDataKey": "visual_result"
+        "requireDataKey": "reviewerform"
       }
     },
     "status_message": {
       "templateId": "npqs-v2-visual-sample--status",
       "title": "Visual Sample Inspection Details",
-      "projector": "MARKDOWN"
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
     }
   }
 }
