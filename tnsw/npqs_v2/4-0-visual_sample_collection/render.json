@@ -1,0 +1,12 @@
+{
+  "id": "npqs-v2-visual-sample-collection:render",
+  "type": "APPLICATION",
+  "title": "[NPQS] Sample Collection for Visual Inspection",
+  "sections": {
+    "status_message": {
+      "templateId": "npqs-v2-visual-sample-collection--status",
+      "title": "Sample Collection Details",
+      "projector": "MARKDOWN"
+    }
+  }
+}

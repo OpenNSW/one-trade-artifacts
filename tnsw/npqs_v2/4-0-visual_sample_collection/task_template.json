@@ -1,0 +1,6 @@
+{
+  "id": "npqs-v2-visual-sample-collection",
+  "type": "APPLICATION",
+  "workflow_id": "npqs-v2-visual-sample-collection",
+  "render_config_id": "npqs-v2-visual-sample-collection:render"
+}

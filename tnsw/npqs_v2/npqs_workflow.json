@@ -140,6 +140,20 @@
       }
     },
     {
+      "id": "n_visual_sample_collect",
+      "name": "Collect Sample for Visual Inspection",
+      "type": "TASK",
+      "task_template_id": "npqs-v2-visual-sample-collection",
+      "input_mapping": {
+        "npqs.reference_number": "reference_number",
+        "npqs.userform": "userform",
+        "commodities": "commodities"
+      },
+      "output_mapping": {
+        "sample_number": "npqs.visual_sample_number"
+      }
+    },
+    {
       "id": "n_visual_sample_inspection",
       "name": "Conduct Visual Sample Inspection",
       "type": "TASK",
@@ -147,8 +161,8 @@
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
-        "npqs.sample_number?": "sample_number",
-        "commodities": "commodities"
+        "commodities": "commodities",
+        "npqs.visual_sample_number?": "sample_number"
       },
       "output_mapping": {
         "visual_result": "npqs.visual_sample_result"
@@ -601,8 +615,13 @@
     {
       "id": "e_vis_split_to_sample",
       "source_id": "gw_visual_split",
-      "target_id": "n_visual_sample_inspection",
+      "target_id": "n_visual_sample_collect",
       "condition": "item.visual_required == true && item.visual_approach == 'sample'"
+    },
+    {
+      "id": "e_vis_collect_to_sample",
+      "source_id": "n_visual_sample_collect",
+      "target_id": "n_visual_sample_inspection"
     },
     {
       "id": "e_vis_split_to_system",
