@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "taskCode": "npqs_visual_system_v2",
+  "meta": {
+    "title": "NPQS System Inspection",
+    "description": "Officer recording system approach inspection outcome."
+  },
+  "forms": {
+    "view": "npqs-apply-phyto-cert--officer-view-form-v2",
+    "review": "npqs-visual-system-inspection--officer-form-v2"
+  },
+  "behavior": {
+    "type": "statusMap",
+    "outcomeField": "visual_result",
+    "statusMap": {
+      "pass": "APPROVED",
+      "fail": "REJECTED"
+    }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,399 @@
+{
+  "id": "npqs-apply-phyto-cert--reviewer-form-v2",
+  "title": "Application Assessment Review",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "reference_number": {
+        "type": "string",
+        "title": "NPQS Reference Number",
+        "example": "NPQS-2026-EXP-1092"
+      },
+      "review_outcome": {
+        "type": "string",
+        "title": "Review Decision",
+        "oneOf": [
+          {
+            "const": "approve",
+            "title": "Accept & Proceed"
+          },
+          {
+            "const": "needs_more_info",
+            "title": "Request Modifications (Send Back to Trader)"
+          }
+        ],
+        "default": "approve"
+      },
+      "clarification_reason": {
+        "type": "string",
+        "title": "Clarification Required (If sending back to trader)",
+        "example": "Please specify the exact scientific name of the cut foliage."
+      },
+      "ephyto_required": {
+        "type": "boolean",
+        "title": "IPPC ePhyto Hub Upload Required (for Consignment)",
+        "default": false
+      },
+      "commodities": {
+        "type": "array",
+        "title": "Commodity Inspection & Treatment Pathways (Per Item)",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Item ID"
+            },
+            "commodity_common_name": {
+              "type": "string",
+              "title": "Common Name"
+            },
+            "commodity_botanical_name": {
+              "type": "string",
+              "title": "Botanical Name"
+            },
+            "quantity_net_weight": {
+              "type": "number",
+              "title": "Net Weight"
+            },
+            "quantity_net_weight_unit": {
+              "type": "string",
+              "title": "Unit"
+            },
+            "packages_count": {
+              "type": "integer",
+              "title": "Packages"
+            },
+            "lab_required": {
+              "type": "boolean",
+              "title": "Lab Test Required",
+              "default": false
+            },
+            "lab_sample_method": {
+              "type": "string",
+              "title": "Sample Collection Method",
+              "oneOf": [
+                {
+                  "const": "drop_off",
+                  "title": "Sample Drop Off"
+                },
+                {
+                  "const": "drawn_at_site",
+                  "title": "Sample Drawn by Officer at Site"
+                }
+              ],
+              "default": "drop_off"
+            },
+            "visual_required": {
+              "type": "boolean",
+              "title": "Visual Inspection Required",
+              "default": true
+            },
+            "visual_approach": {
+              "type": "string",
+              "title": "Visual Inspection Approach",
+              "oneOf": [
+                {
+                  "const": "none",
+                  "title": "None (Exempt)"
+                },
+                {
+                  "const": "sample",
+                  "title": "Sample Inspection (requires sample collection)"
+                },
+                {
+                  "const": "consignment",
+                  "title": "Consignment Inspection (scheduled at site)"
+                },
+                {
+                  "const": "system",
+                  "title": "Through System Approach (recorded from external system)"
+                }
+              ],
+              "default": "consignment"
+            },
+            "treatment_required": {
+              "type": "boolean",
+              "title": "Treatment Required",
+              "default": false
+            },
+            "treatment_provider": {
+              "type": "string",
+              "title": "Treatment Provider",
+              "oneOf": [
+                {
+                  "const": "npqs",
+                  "title": "NPQS Treatment Station"
+                },
+                {
+                  "const": "external",
+                  "title": "Authorized External Provider"
+                }
+              ],
+              "default": "npqs"
+            },
+            "treatment_supervision": {
+              "type": "string",
+              "title": "Supervision Required",
+              "oneOf": [
+                {
+                  "const": "with_supervision",
+                  "title": "With NPQS Supervision"
+                },
+                {
+                  "const": "without_supervision",
+                  "title": "Without Supervision"
+                }
+              ],
+              "default": "without_supervision"
+            }
+          },
+          "required": [
+            "id",
+            "commodity_common_name",
+            "lab_required",
+            "visual_required",
+            "treatment_required"
+          ]
+        },
+        "example": [
+          {
+            "id": "item-1",
+            "commodity_common_name": "Cut Rose Flowers",
+            "commodity_botanical_name": "Rosa hybrida",
+            "quantity_net_weight": 250.0,
+            "quantity_net_weight_unit": "KGM",
+            "packages_count": 50,
+            "lab_required": true,
+            "lab_sample_method": "drop_off",
+            "visual_required": false,
+            "visual_approach": "none",
+            "treatment_required": false,
+            "treatment_provider": "npqs",
+            "treatment_supervision": "without_supervision"
+          },
+          {
+            "id": "item-2",
+            "commodity_common_name": "Fresh Cut Foliage",
+            "commodity_botanical_name": "Monstera deliciosa",
+            "quantity_net_weight": 500.0,
+            "quantity_net_weight_unit": "KGM",
+            "packages_count": 80,
+            "lab_required": false,
+            "lab_sample_method": "drop_off",
+            "visual_required": true,
+            "visual_approach": "consignment",
+            "treatment_required": false,
+            "treatment_provider": "npqs",
+            "treatment_supervision": "without_supervision"
+          },
+          {
+            "id": "item-3",
+            "commodity_common_name": "Sawn Timber",
+            "commodity_botanical_name": "Hevea brasiliensis",
+            "quantity_net_weight": 4200.0,
+            "quantity_net_weight_unit": "KGM",
+            "packages_count": 12,
+            "lab_required": false,
+            "lab_sample_method": "drop_off",
+            "visual_required": false,
+            "visual_approach": "none",
+            "treatment_required": true,
+            "treatment_provider": "npqs",
+            "treatment_supervision": "without_supervision"
+          },
+          {
+            "id": "item-4",
+            "commodity_common_name": "Coir Pith Block",
+            "commodity_botanical_name": "Cocos nucifera",
+            "quantity_net_weight": 5000.0,
+            "quantity_net_weight_unit": "KGM",
+            "packages_count": 200,
+            "lab_required": false,
+            "lab_sample_method": "drop_off",
+            "visual_required": false,
+            "visual_approach": "none",
+            "treatment_required": false,
+            "treatment_provider": "npqs",
+            "treatment_supervision": "without_supervision"
+          }
+        ]
+      }
+    },
+    "required": [
+      "reference_number",
+      "review_outcome"
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/reference_number"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/review_outcome"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/clarification_reason",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/review_outcome",
+            "schema": {
+              "const": "needs_more_info"
+            }
+          }
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/ephyto_required",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/review_outcome",
+            "schema": {
+              "const": "approve"
+            }
+          }
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/commodities",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/review_outcome",
+            "schema": {
+              "const": "approve"
+            }
+          }
+        },
+        "options": {
+          "detail": {
+            "type": "VerticalLayout",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/id",
+                    "options": {
+                      "readOnly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/commodity_common_name",
+                    "options": {
+                      "readOnly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/commodity_botanical_name",
+                    "options": {
+                      "readOnly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/quantity_net_weight",
+                    "options": {
+                      "readOnly": true
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/lab_required"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/lab_sample_method",
+                    "rule": {
+                      "effect": "ENABLE",
+                      "condition": {
+                        "scope": "#/properties/lab_required",
+                        "schema": {
+                          "const": true
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/visual_required"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/visual_approach",
+                    "rule": {
+                      "effect": "ENABLE",
+                      "condition": {
+                        "scope": "#/properties/visual_required",
+                        "schema": {
+                          "const": true
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/treatment_required"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/treatment_provider",
+                    "rule": {
+                      "effect": "ENABLE",
+                      "condition": {
+                        "scope": "#/properties/treatment_required",
+                        "schema": {
+                          "const": true
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/treatment_supervision",
+                    "rule": {
+                      "effect": "ENABLE",
+                      "condition": {
+                        "scope": "#/properties/treatment_required",
+                        "schema": {
+                          "const": true
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

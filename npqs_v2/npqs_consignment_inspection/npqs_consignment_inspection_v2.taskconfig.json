@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "taskCode": "npqs_consignment_inspection_v2",
+  "meta": {
+    "title": "NPQS Consignment Inspection",
+    "description": "Officer consignment visual inspection outcome recording."
+  },
+  "forms": {
+    "view": "npqs-visual-consignment--trader-schedule-form-v2",
+    "review": "npqs-visual-consignment--officer-form-v2"
+  },
+  "behavior": {
+    "type": "statusMap",
+    "outcomeField": "visual_result",
+    "statusMap": {
+      "pass": "APPROVED",
+      "fail": "REJECTED"
+    }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
+}
