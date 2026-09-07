@@ -61,7 +61,7 @@
               ],
               "default": "pass"
             },
-            "failure_reason": {
+            "visual_failure_reason": {
               "type": "string",
               "title": "Failure / Escalation Reason",
               "example": "Signs of suspected scale insect infestation requiring site verification."
@@ -121,7 +121,7 @@
               },
               {
                 "type": "Control",
-                "scope": "#/properties/failure_reason",
+                "scope": "#/properties/visual_failure_reason",
                 "rule": {
                   "effect": "SHOW",
                   "condition": {

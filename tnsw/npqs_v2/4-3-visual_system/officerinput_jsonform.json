@@ -58,7 +58,7 @@
               ],
               "default": "pass"
             },
-            "failure_reason": {
+            "visual_failure_reason": {
               "type": "string",
               "title": "Failure Reason",
               "example": "Previous inspection hold on commodity batch in external system."
@@ -124,7 +124,7 @@
               },
               {
                 "type": "Control",
-                "scope": "#/properties/failure_reason",
+                "scope": "#/properties/visual_failure_reason",
                 "rule": {
                   "effect": "SHOW",
                   "condition": {

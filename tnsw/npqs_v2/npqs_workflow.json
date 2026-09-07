@@ -490,7 +490,13 @@
       "id": "gw_par_join",
       "name": "Join Concurrent Inspection & Treatment Tracks",
       "type": "GATEWAY",
-      "gateway_type": "PARALLEL_JOIN"
+      "gateway_type": "PARALLEL_JOIN",
+      "parallel_join": {
+        "gateway_node_id": "gw_par_split",
+        "merge_by_id": {
+          "commodities": "id"
+        }
+      }
     },
     {
       "id": "gw_consignment_clearance",
