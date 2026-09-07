@@ -66,8 +66,9 @@
         "cda_kcfn.recommendation_letter_file": "recommendation_letter_file"
       },
       "output_mapping": {
-        "uploadform.uploaded_letter_file": "cda_kcfn.uploaded_letter_file",
-        "uploadform.reports": "cda_kcfn.reports",
+        "uploadform.commercial_invoice": "cda_kcfn.commercial_invoice",
+        "uploadform.packing_list": "cda_kcfn.packing_list",
+        "uploadform.additional_documents?": "cda_kcfn.additional_documents",
         "reviewerform.asycuda_approval_confirmed": "cda_kcfn.asycuda_approval_confirmed"
       }
     },
