@@ -8,7 +8,7 @@
       "title": "Certificate Issued",
       "projector": "MARKDOWN",
       "visibleWhen": {
-        "requireDataKey": "reviewerform"
+        "requireDataKey": "certificate_id"
       }
     },
     "status_message": {
@@ -16,9 +16,7 @@
       "title": "Certificate Status",
       "projector": "MARKDOWN",
       "visibleWhen": {
-        "states": [
-          "QUEUED_EXTERNALLY"
-        ]
+        "states": ["QUEUED_EXTERNALLY"]
       }
     }
   }

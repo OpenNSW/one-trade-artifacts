@@ -8,7 +8,7 @@
       "title": "Document Review Outcome",
       "projector": "MARKDOWN",
       "visibleWhen": {
-        "requireDataKey": "reviewerform"
+        "requireDataKey": "docs_review_outcome"
       }
     },
     "status_message": {
@@ -16,9 +16,7 @@
       "title": "Review Status",
       "projector": "MARKDOWN",
       "visibleWhen": {
-        "states": [
-          "QUEUED_EXTERNALLY"
-        ]
+        "states": ["QUEUED_EXTERNALLY"]
       }
     }
   }

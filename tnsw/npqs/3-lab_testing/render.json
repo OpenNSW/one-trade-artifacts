@@ -8,7 +8,7 @@
       "title": "Laboratory Test Results",
       "projector": "MARKDOWN",
       "visibleWhen": {
-        "requireDataKey": "reviewerform"
+        "requireDataKey": "sample_test_result"
       }
     },
     "status_message": {
@@ -16,9 +16,7 @@
       "title": "Lab Test Status",
       "projector": "MARKDOWN",
       "visibleWhen": {
-        "states": [
-          "QUEUED_EXTERNALLY"
-        ]
+        "states": ["QUEUED_EXTERNALLY"]
       }
     }
   }

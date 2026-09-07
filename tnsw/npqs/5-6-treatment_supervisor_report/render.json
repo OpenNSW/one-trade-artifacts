@@ -8,7 +8,7 @@
       "title": "Supervision Report",
       "projector": "MARKDOWN",
       "visibleWhen": {
-        "requireDataKey": "reviewerform"
+        "requireDataKey": "supervisor_notes"
       }
     },
     "status_message": {
@@ -16,9 +16,7 @@
       "title": "Supervision Status",
       "projector": "MARKDOWN",
       "visibleWhen": {
-        "states": [
-          "QUEUED_EXTERNALLY"
-        ]
+        "states": ["QUEUED_EXTERNALLY"]
       }
     }
   }
