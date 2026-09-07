@@ -14,7 +14,7 @@
       "input_mapping": {
         "reference_number": "reference_number",
         "userform": "submission",
-        "treatment_items?": "treatment_items"
+        "commodities?": "commodities"
       },
       "output_mapping": {
         "treatment_certificate_id": "treatment_certificate_id",

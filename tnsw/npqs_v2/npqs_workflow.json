@@ -312,7 +312,7 @@
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
-        "npqs.treatment_items?": "treatment_items"
+        "commodities": "commodities"
       },
       "output_mapping": {
         "treatment_certificate_id": "npqs.treatment_certificate_id"
@@ -347,7 +347,7 @@
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
-        "npqs.treatment_items?": "treatment_items"
+        "commodities": "commodities"
       },
       "output_mapping": {
         "supervisor_notes": "npqs.treatment_supervisor_notes"
@@ -361,7 +361,7 @@
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
-        "npqs.treatment_items?": "treatment_items"
+        "commodities": "commodities"
       },
       "output_mapping": {
         "traderinput": "npqs.treatment_traderinput"
@@ -376,7 +376,7 @@
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
         "npqs.treatment_traderinput": "traderinput",
-        "npqs.treatment_items?": "treatment_items"
+        "commodities": "commodities"
       },
       "output_mapping": {
         "treatment_review_result": "npqs.treatment_review_result",

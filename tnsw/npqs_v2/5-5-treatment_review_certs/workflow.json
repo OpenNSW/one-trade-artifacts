@@ -17,7 +17,7 @@
         "traderinput.treatment_certificate_url?": "treatment_certificate_url",
         "traderinput.supervision_report_url?": "supervision_report_url",
         "traderinput.upload_remarks?": "upload_remarks",
-        "treatment_items?": "treatment_items"
+        "commodities?": "commodities"
       },
       "output_mapping": {
         "treatment_review_result": "treatment_review_result",
