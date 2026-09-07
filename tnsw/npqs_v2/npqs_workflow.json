@@ -165,14 +165,29 @@
         "npqs.visual_sample_number?": "sample_number"
       },
       "output_mapping": {
-        "visual_result": "npqs.visual_sample_result"
+        "commodities": "commodities"
       }
     },
     {
       "id": "visual_sample_result_split",
       "name": "Sample Visual Result",
       "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
+      "gateway_type": "BATCH_SPLIT",
+      "batch_gateway": {
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
+    },
+    {
+      "id": "visual_sample_result_join",
+      "name": "Merge Sample Visual Results",
+      "type": "GATEWAY",
+      "gateway_type": "BATCH_JOIN",
+      "batch_join": {
+        "gateway_node_id": "visual_sample_result_split",
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
     },
     {
       "id": "n_visual_sample_escalated_consignment",
@@ -185,14 +200,29 @@
         "commodities": "commodities"
       },
       "output_mapping": {
-        "visual_result": "npqs.visual_consignment_escalated_result"
+        "commodities": "commodities"
       }
     },
     {
       "id": "visual_sample_escalated_result_split",
       "name": "Escalated Consignment Result",
       "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
+      "gateway_type": "BATCH_SPLIT",
+      "batch_gateway": {
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
+    },
+    {
+      "id": "visual_sample_escalated_result_join",
+      "name": "Merge Escalated Consignment Results",
+      "type": "GATEWAY",
+      "gateway_type": "BATCH_JOIN",
+      "batch_join": {
+        "gateway_node_id": "visual_sample_escalated_result_split",
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
     },
     {
       "id": "n_visual_consignment_flow",
@@ -205,14 +235,29 @@
         "commodities": "commodities"
       },
       "output_mapping": {
-        "visual_result": "npqs.visual_consignment_result"
+        "commodities": "commodities"
       }
     },
     {
       "id": "visual_consignment_result_split",
       "name": "Consignment Inspection Result",
       "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
+      "gateway_type": "BATCH_SPLIT",
+      "batch_gateway": {
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
+    },
+    {
+      "id": "visual_consignment_result_join",
+      "name": "Merge Consignment Inspection Results",
+      "type": "GATEWAY",
+      "gateway_type": "BATCH_JOIN",
+      "batch_join": {
+        "gateway_node_id": "visual_consignment_result_split",
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
     },
     {
       "id": "n5_0_visual_inspection",
@@ -225,14 +270,29 @@
         "commodities": "commodities"
       },
       "output_mapping": {
-        "visual_result": "npqs.visual_system_result"
+        "commodities": "commodities"
       }
     },
     {
       "id": "visual_system_result_split",
       "name": "System Inspection Result",
       "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
+      "gateway_type": "BATCH_SPLIT",
+      "batch_gateway": {
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
+    },
+    {
+      "id": "visual_system_result_join",
+      "name": "Merge System Inspection Results",
+      "type": "GATEWAY",
+      "gateway_type": "BATCH_JOIN",
+      "batch_join": {
+        "gateway_node_id": "visual_system_result_split",
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
     },
     {
       "id": "gw_visual_join",
@@ -667,14 +727,14 @@
     {
       "id": "e_vis_consign_fail",
       "source_id": "visual_consignment_result_split",
-      "target_id": "gw_visual_join",
-      "condition": "npqs.visual_consignment_result == 'fail'"
+      "target_id": "visual_consignment_result_join",
+      "condition": "item.visual_result == 'fail'"
     },
     {
       "id": "e_vis_consign_pass",
       "source_id": "visual_consignment_result_split",
-      "target_id": "gw_visual_join",
-      "condition": "npqs.visual_consignment_result == 'pass'"
+      "target_id": "visual_consignment_result_join",
+      "condition": "item.visual_result == 'pass'"
     },
     {
       "id": "e_vis_sample_to_split",
@@ -684,20 +744,20 @@
     {
       "id": "e_vis_sample_fail",
       "source_id": "visual_sample_result_split",
-      "target_id": "gw_visual_join",
-      "condition": "npqs.visual_sample_result == 'fail'"
+      "target_id": "visual_sample_result_join",
+      "condition": "item.visual_result == 'fail'"
     },
     {
       "id": "e_vis_sample_escalate",
       "source_id": "visual_sample_result_split",
       "target_id": "n_visual_sample_escalated_consignment",
-      "condition": "npqs.visual_sample_result == 'escalate_consignment'"
+      "condition": "item.visual_result == 'escalate_consignment'"
     },
     {
       "id": "e_vis_sample_pass",
       "source_id": "visual_sample_result_split",
-      "target_id": "gw_visual_join",
-      "condition": "npqs.visual_sample_result == 'pass'"
+      "target_id": "visual_sample_result_join",
+      "condition": "item.visual_result == 'pass'"
     },
     {
       "id": "e_escalated_to_split",
@@ -707,14 +767,14 @@
     {
       "id": "e_escalated_fail",
       "source_id": "visual_sample_escalated_result_split",
-      "target_id": "gw_visual_join",
-      "condition": "npqs.visual_consignment_escalated_result == 'fail'"
+      "target_id": "visual_sample_escalated_result_join",
+      "condition": "item.visual_result == 'fail'"
     },
     {
       "id": "e_escalated_pass",
       "source_id": "visual_sample_escalated_result_split",
-      "target_id": "gw_visual_join",
-      "condition": "npqs.visual_consignment_escalated_result == 'pass'"
+      "target_id": "visual_sample_escalated_result_join",
+      "condition": "item.visual_result == 'pass'"
     },
     {
       "id": "e_vis_system_to_split",
@@ -724,14 +784,14 @@
     {
       "id": "e_vis_system_fail",
       "source_id": "visual_system_result_split",
-      "target_id": "gw_visual_join",
-      "condition": "npqs.visual_system_result == 'fail'"
+      "target_id": "visual_system_result_join",
+      "condition": "item.visual_result == 'fail'"
     },
     {
       "id": "e_vis_system_pass",
       "source_id": "visual_system_result_split",
-      "target_id": "gw_visual_join",
-      "condition": "npqs.visual_system_result == 'pass'"
+      "target_id": "visual_system_result_join",
+      "condition": "item.visual_result == 'pass'"
     },
     {
       "id": "e_vis_join_to_par_join",
@@ -943,6 +1003,26 @@
       "id": "e_ephyto_upload_to_end",
       "source_id": "n9_0_ephyto_upload",
       "target_id": "end_success"
+    },
+    {
+      "id": "e_vis_consign_join_to_visual_join",
+      "source_id": "visual_consignment_result_join",
+      "target_id": "gw_visual_join"
+    },
+    {
+      "id": "e_vis_sample_join_to_visual_join",
+      "source_id": "visual_sample_result_join",
+      "target_id": "gw_visual_join"
+    },
+    {
+      "id": "e_escalated_join_to_sample_join",
+      "source_id": "visual_sample_escalated_result_join",
+      "target_id": "visual_sample_result_join"
+    },
+    {
+      "id": "e_vis_system_join_to_visual_join",
+      "source_id": "visual_system_result_join",
+      "target_id": "gw_visual_join"
     }
   ]
 }

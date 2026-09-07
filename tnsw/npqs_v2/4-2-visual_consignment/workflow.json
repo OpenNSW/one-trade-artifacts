@@ -33,7 +33,8 @@
         "commodities?": "items"
       },
       "output_mapping": {
-        "visual_result": "visual_result"
+        "visual_result": "visual_result",
+        "items": "commodities"
       }
     },
     {
