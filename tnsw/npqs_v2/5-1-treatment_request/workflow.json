@@ -12,7 +12,7 @@
       "type": "TASK",
       "task_template_id": "npqs-v2-treatment-request--trader-request",
       "input_mapping": {
-        "commodities": "traderinput.treatment_items"
+        "traderinput.treatment_items": "traderinput.treatment_items"
       },
       "output_mapping": {
         "treatment_items": "traderinput.treatment_items",
@@ -26,14 +26,10 @@
       "input_mapping": {
         "reference_number": "reference_number",
         "traderinput": "submission",
-        "userform?": "userform",
-        "commodities?": "commodities"
+        "userform?": "userform"
       },
       "output_mapping": {
         "treatment_request_outcome": "reviewerform.treatment_request_outcome",
-        "treatment_provider?": "reviewerform.treatment_provider",
-        "treatment_supervision?": "reviewerform.treatment_supervision",
-        "supervision_officer_type?": "reviewerform.supervision_officer_type",
         "clarification_comments?": "reviewerform.clarification_comments"
       }
     },

@@ -323,7 +323,7 @@
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
-        "commodities": "commodities"
+        "commodities": "traderinput.treatment_items"
       },
       "output_mapping": {
         "reviewerform.treatment_request_outcome": "npqs.treatment_request_outcome",
@@ -421,7 +421,10 @@
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
-        "commodities": "commodities"
+        "commodities": "commodities",
+        "npqs.treatment_traderinput.treatment_certificate_url?": "prior_treatment_certificate_url",
+        "npqs.treatment_traderinput.supervision_report_url?": "prior_supervision_report_url",
+        "npqs.treatment_traderinput.upload_remarks?": "prior_upload_remarks"
       },
       "output_mapping": {
         "traderinput": "npqs.treatment_traderinput"
@@ -518,7 +521,10 @@
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
         "npqs.docs_review_outcome?": "docs_review_outcome",
-        "npqs.docs_review_comments?": "review_comments"
+        "npqs.docs_review_comments?": "review_comments",
+        "npqs.docs_traderinput.invoice_file_url?": "prior_invoice_file_url",
+        "npqs.docs_traderinput.packing_list_file_url?": "prior_packing_list_file_url",
+        "npqs.docs_traderinput.additional_file_url?": "prior_additional_file_url"
       },
       "output_mapping": {
         "traderinput": "npqs.docs_traderinput"
