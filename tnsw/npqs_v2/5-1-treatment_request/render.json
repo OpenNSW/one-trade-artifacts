@@ -6,7 +6,12 @@
     "items_summary": {
       "templateId": "npqs-v2-treatment-request--items-summary",
       "title": "Items Requiring Quarantine Treatment",
-      "projector": "MARKDOWN"
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ]
+      }
     },
     "assessment_outcome": {
       "templateId": "npqs-v2-treatment-request--status",
