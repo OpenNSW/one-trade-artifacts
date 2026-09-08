@@ -3,67 +3,241 @@
   "title": "SLTB Blend Sheet Submission",
   "schema": {
     "type": "object",
-    "required": [
-      "exporter_registration_no",
-      "cusdec_number",
-      "warehouse_id",
-      "blendsheet_file"
-    ],
+    "required": ["blendsheet_data"],
     "properties": {
-      "exporter_registration_no": {
-        "type": "string",
-        "title": "Exporter Registration Number",
-        "default": "SLTB/EXP/2026/0498",
-        "oneOf": [
-          {
-            "const": "SLTB/EXP/2026/0498",
-            "title": "Ceylon Tea Gardens PLC (SLTB/EXP/2026/0498)"
+      "blendsheet_data": {
+        "type": "array",
+        "title": "Blend Sheets",
+        "description": "Add one entry per blend sheet. Each entry mirrors one printed SLTB Blend Sheet.",
+        "minItems": 1,
+        "items": {
+          "type": "object",
+          "properties": {
+            "form": {
+              "type": "string",
+              "title": "Form",
+              "description": "Printed top-right of the blend sheet. Not carried by the XML — select manually.",
+              "default": "100_local",
+              "oneOf": [
+                { "const": "100_local", "title": "100% LOCAL" },
+                { "const": "local_and_imported", "title": "LOCAL+IMPORTED" },
+                { "const": "imported", "title": "IMPORTED" }
+              ]
+            },
+            "blendsheet_no": {
+              "type": "string",
+              "title": "Blend Sheet No.",
+              "description": "Not carried by the XML — enter manually.",
+              "example": "2026/34254"
+            },
+            "exporter_registration_no": {
+              "type": "string",
+              "title": "Exporter Reg. No.",
+              "description": "SLTB exporter registration number as printed on the blend sheet.",
+              "example": "R/473"
+            },
+            "exporter_tin": {
+              "type": "string",
+              "title": "Exporter TIN No.",
+              "description": "Should be automatically fetched",
+              "example": "900000000004"
+            },
+            "private_treaty_to_be_exported": {
+              "type": "string",
+              "title": "To Be Exported To",
+              "description": "Destination country named in the blend sheet declaration.",
+              "example": "Jordan"
+            },
+            "cusdec_number": {
+              "type": "string",
+              "title": "CUSDEC Reg No.",
+              "description": "Office, year, serial and number as printed on the blend sheet.",
+              "example": "CBEX1 2026 E 48428"
+            },
+            "blend_no": {
+              "type": "string",
+              "title": "Blend No.",
+              "example": "26/1386"
+            },
+            "quality_to_be_exported": {
+              "type": "number",
+              "title": "Quantity to be Exported (KGs)",
+              "example": 16128
+            },
+            "avg_rate_per_kg": {
+              "type": "number",
+              "title": "Avg Rate Per KG",
+              "example": 1054.56
+            },
+            "grade_or_standard": {
+              "type": "string",
+              "title": "Grade/Standard",
+              "description": "Blend grade as declared, e.g. BOPF, BOP, PF1, FGS1, PF.",
+              "example": "BOPF"
+            },
+            "fob_avg": {
+              "type": "number",
+              "title": "FOB Avg",
+              "example": 2359
+            },
+            "date_of_blend": {
+              "type": "string",
+              "format": "date",
+              "title": "Date of Blend",
+              "example": "2026-07-23"
+            },
+            "lion_logo_requested": {
+              "type": "string",
+              "title": "Logo Lion",
+              "description": "Select 'Yes' if this blend sheet requires SLTB Lion Logo certification.",
+              "default": "no",
+              "oneOf": [
+                { "const": "no", "title": "No — Lion Logo not required" },
+                { "const": "yes", "title": "Yes — Apply for Lion Logo (USED)" }
+              ]
+            },
+            "sales": {
+              "type": "object",
+              "title": "PARTICULAR OF SALE",
+              "description": "Please upload the official sale sheet containing the detailed blend analysis (.xlsx, .xls, .csv)",
+              "x-spreadsheet": {
+                "accept": ".xlsx,.xls,.csv",
+                "maxSize": 10485760,
+                "persistSheet": true,
+                "columnHeader": true
+              },
+              "x-evaluate": [
+                {
+                  "id": "average_value_per_kg",
+                  "label": "Average Value Per KG (Total Value ÷ Total Quantity)",
+                  "expression": "=SUM(J2:J10000)/SUM(I2:I10000)"
+                },
+                { "id": "total_sales_quantity", "label": "Total Sales Quantity (KG)", "expression": "=SUM(I2:I10000)" },
+                { "id": "total_sales_value", "label": "Total Sales Value (LKR)", "expression": "=SUM(J2:J10000)" }
+              ],
+              "properties": {
+                "sheet": { "type": "array" },
+                "derivations": { "type": "object" }
+              }
+            },
+            "imported_tea": {
+              "type": "object",
+              "title": "PARTICULAR OF IMPORTED TEA",
+              "description": "Please upload the official import sheet containing the detailed import analysis (.xlsx, .xls, .csv)",
+              "x-spreadsheet": {
+                "accept": ".xlsx,.xls,.csv",
+                "maxSize": 10485760,
+                "persistSheet": true,
+                "columnHeader": true
+              },
+              "x-evaluate": [
+                { "id": "total_import_quantity", "label": "Total Import Quantity (KG)", "expression": "=SUM(F2:F10000)" },
+                { "id": "total_import_value", "label": "Total Import Value (LKR)", "expression": "=SUM(G2:G10000)" }
+              ],
+              "properties": {
+                "sheet": { "type": "array" },
+                "derivations": { "type": "object" }
+              }
+            },
+            "blend_balances": {
+              "type": "object",
+              "title": "PARTICULARS OF BLEND BALANCES USED (IF APPLICABLE)",
+              "description": "Please upload the official blend balances sheet containing the detailed blend analysis (.xlsx, .xls, .csv)",
+              "x-spreadsheet": {
+                "accept": ".xlsx,.xls,.csv",
+                "maxSize": 10485760,
+                "persistSheet": true,
+                "columnHeader": true
+              },
+              "x-evaluate": [
+                { "id": "total_blend_balances", "label": "Total Blend Balances (KG)", "expression": "=SUM(C2:C10000)" },
+                { "id": "total_blend_gain", "label": "Total Blend Gain (KG)", "expression": "=SUM(D2:D10000)" }
+              ],
+              "properties": {
+                "sheet": { "type": "array" },
+                "derivations": { "type": "object" }
+              }
+            },
+            "total_blend_balances_and_gain": {
+              "type": "number",
+              "title": "Total (Blend Balances & Gain) (KG)",
+              "description": "Total Blend Balances and Gain = Total Blend Balances + Total Blend Gain"
+            },
+            "remarks": {
+              "type": "string",
+              "title": "Remarks",
+              "description": "This value need to enter manually",
+              "example": "This is a sample remark for the blend sheet."
+            },
+            "sample_rediness_date": {
+              "type": "string",
+              "format": "date",
+              "title": "Sample Readiness Date",
+              "description": "This value need to enter manually",
+              "example": "2026-07-24"
+            },
+            "warehouse_address": {
+              "type": "string",
+              "title": "Warehouse Address",
+              "description": "This value need to enter manually",
+              "example": "Quick Tea (Pvt) Ltd, 119, 119/1 Attampolawatte, Mabole, Wattala"
+            },
+            "blend_gain_determined": {
+              "type": "number",
+              "title": "Blend Gain Determined (KG)",
+              "description": "This value need to enter manually",
+              "example": 0
+            },
+            "flavors": {
+              "type": "number",
+              "title": "Flavors (KG)",
+              "description": "This value need to enter manually",
+              "example": 0
+            },
+            "total": {
+              "type": "number",
+              "title": "Total (KG)",
+              "description": "Total Quantity = Total Sales + Total Imported + Total Blend Balances and Gain"
+            },
+            "avg_value_per_kg": {
+              "type": "number",
+              "title": "Avg Value Per KG",
+              "description": "Declared average value per KG as printed in the blend sheet footer. May differ from the value-weighted average derived from the sale table.",
+              "example": 1054.56
+            },
+            "quantity_to_be_shipped_imported": {
+              "type": "number",
+              "title": "Quantity to be Shipped — Imported (KG)",
+              "description": "This value need to enter manually",
+              "example": 0
+            },
+            "quantity_to_be_shipped_local": {
+              "type": "number",
+              "title": "Quantity to be Shipped — Local (KG)",
+              "description": "This value need to enter manually",
+              "example": 16128
+            },
+            "blend_balance": {
+              "type": "number",
+              "title": "Blend Balance C/F (KG)",
+              "description": "Blend Balance = Total Quantity - Quantity to be Exported"
+            }
           },
-          {
-            "const": "SLTB/EXP/2026/0812",
-            "title": "Lanka Blend Masters Ltd (SLTB/EXP/2026/0812)"
-          }
-        ]
-      },
-      "cusdec_number": {
-        "type": "string",
-        "title": "CUSDEC Number",
-        "example": "CUSDEC-2026-778120"
-      },
-
-      "warehouse_id": {
-        "type": "string",
-        "title": "Warehouse Name / ID",
-        "default": "WH-COLOMBO-TEA-01",
-        "oneOf": [
-          {
-            "const": "WH-COLOMBO-TEA-01",
-            "title": "SLTB Colombo Central Warehouse (WH-COLOMBO-TEA-01)"
-          },
-          {
-            "const": "WH-GAMPOLA-TEA-02",
-            "title": "SLTB Gampola Tea Logistics Hub (WH-GAMPOLA-TEA-02)"
-          }
-        ]
-      },
-      "blendsheet_file": {
-        "type": "string",
-        "format": "file",
-        "title": "Upload Blend Sheet Data (XML or Excel File)",
-        "description": "Please upload the official blend sheet containing the detailed blend analysis (.xml or .xlsx)",
-        "x-file": {
-          "accept": ".xml,.xlsx"
+          "required": [
+            "exporter_registration_no",
+            "exporter_tin",
+            "cusdec_number",
+            "quality_to_be_exported",
+            "avg_rate_per_kg",
+            "grade_or_standard",
+            "fob_avg",
+            "date_of_blend",
+            "sales",
+            "total_blend_balances_and_gain",
+            "total",
+            "blend_balance"
+          ]
         }
-      },
-      "lion_logo_requested": {
-        "type": "string",
-        "title": "Apply for Lion Logo Certification",
-        "description": "Select 'Yes' if this consignment requires SLTB Lion Logo certification.",
-        "oneOf": [
-          { "const": "no", "title": "No — Lion Logo not required" },
-          { "const": "yes", "title": "Yes — Apply for Lion Logo" }
-        ],
-        "default": "no"
       }
     }
   },
@@ -71,42 +245,127 @@
     "type": "VerticalLayout",
     "elements": [
       {
-        "type": "Group",
-        "label": "Exporter & Blend Information",
-        "elements": [
-          {
-            "type": "Control",
-            "scope": "#/properties/exporter_registration_no"
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/cusdec_number"
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/warehouse_id"
+        "type": "Control",
+        "scope": "#/properties/blendsheet_data",
+        "options": {
+          "detail": {
+            "type": "VerticalLayout",
+            "elements": [
+              {
+                "type": "Group",
+                "elements": [
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      { "type": "VerticalLayout", "elements": [] },
+                      { "type": "Control", "scope": "#/properties/form" }
+                    ]
+                  },
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      {
+                        "type": "VerticalLayout",
+                        "elements": [
+                          { "type": "Control", "scope": "#/properties/blendsheet_no" },
+                          { "type": "Control", "scope": "#/properties/exporter_registration_no" },
+                          { "type": "Control", "scope": "#/properties/exporter_tin" }
+                        ]
+                      },
+                      {
+                        "type": "VerticalLayout",
+                        "elements": [
+                          {
+                            "type": "Label",
+                            "text": "PARTICULARS OF THE TEA BOUGHT AT THE COLOMBO TEA AUCTION AND PRIVATE TREATY TO BE EXPORTED TO"
+                          },
+                          { "type": "Control", "scope": "#/properties/private_treaty_to_be_exported" },
+                          {
+                            "type": "Label",
+                            "text": "AS UNBLENDED STRAIGHT LINES/BLEND BULK/PACKETS/TEA IN TEA BAGS"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Group",
+                "elements": [
+                  { "type": "Control", "scope": "#/properties/cusdec_number" },
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      { "type": "Control", "scope": "#/properties/blend_no" },
+                      { "type": "Control", "scope": "#/properties/quality_to_be_exported" }
+                    ]
+                  },
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      { "type": "Control", "scope": "#/properties/avg_rate_per_kg" },
+                      { "type": "Control", "scope": "#/properties/grade_or_standard" }
+                    ]
+                  },
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      { "type": "Control", "scope": "#/properties/fob_avg" },
+                      { "type": "Control", "scope": "#/properties/date_of_blend" }
+                    ]
+                  },
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      { "type": "Control", "scope": "#/properties/lion_logo_requested" },
+                      { "type": "VerticalLayout", "elements": [] }
+                    ]
+                  }
+                ]
+              },
+              { "type": "Control", "scope": "#/properties/sales" },
+              { "type": "Control", "scope": "#/properties/imported_tea" },
+              {
+                "type": "Group",
+                "elements": [
+                  { "type": "Control", "scope": "#/properties/blend_balances" },
+                  { "type": "Control", "scope": "#/properties/total_blend_balances_and_gain" }
+                ]
+              },
+              {
+                "type": "Group",
+                "elements": [
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      {
+                        "type": "VerticalLayout",
+                        "elements": [
+                          { "type": "Control", "scope": "#/properties/remarks" },
+                          { "type": "Control", "scope": "#/properties/sample_rediness_date" },
+                          { "type": "Control", "scope": "#/properties/warehouse_address" }
+                        ]
+                      },
+                      {
+                        "type": "VerticalLayout",
+                        "elements": [
+                          { "type": "Control", "scope": "#/properties/blend_gain_determined" },
+                          { "type": "Control", "scope": "#/properties/flavors" },
+                          { "type": "Control", "scope": "#/properties/total" },
+                          { "type": "Control", "scope": "#/properties/avg_value_per_kg" },
+                          { "type": "Control", "scope": "#/properties/quantity_to_be_shipped_imported" },
+                          { "type": "Control", "scope": "#/properties/quantity_to_be_shipped_local" },
+                          { "type": "Control", "scope": "#/properties/blend_balance" }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           }
-        ]
-      },
-      {
-        "type": "Group",
-        "label": "Excel Blendsheet Data Upload",
-        "elements": [
-          {
-            "type": "Control",
-            "scope": "#/properties/blendsheet_file"
-          }
-        ]
-      },
-      {
-        "type": "Group",
-        "label": "Lion Logo Certification",
-        "elements": [
-          {
-            "type": "Control",
-            "scope": "#/properties/lion_logo_requested"
-          }
-        ]
+        }
       }
     ]
   }
