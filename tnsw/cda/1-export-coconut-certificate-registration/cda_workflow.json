@@ -50,6 +50,12 @@
       "name": "Is Payment Required?"
     },
     {
+      "id": "cda_check_product_type_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Does the consignment include DC?"
+    },
+    {
       "id": "cda_2_0_pay_fee",
       "type": "TASK",
       "name": "[CDA 2.0] Pay Application Fee",
@@ -167,13 +173,25 @@
     {
       "id": "e_pay_bypass",
       "source_id": "cda_check_payment_gateway",
-      "target_id": "cda_3_0_review",
+      "target_id": "cda_check_product_type_gateway",
       "condition": "cda.payment_status == 'success'"
     },
     {
-      "id": "e_pay_to_review",
+      "id": "e_pay_to_product_type_gw",
       "source_id": "cda_2_0_pay_fee",
-      "target_id": "cda_3_0_review"
+      "target_id": "cda_check_product_type_gateway"
+    },
+    {
+      "id": "e_dc_certificate_path",
+      "source_id": "cda_check_product_type_gateway",
+      "target_id": "cda_3_0_review",
+      "condition": "cda.userform.product_type_dc == true"
+    },
+    {
+      "id": "e_value_added_green_check",
+      "source_id": "cda_check_product_type_gateway",
+      "target_id": "end_green_check",
+      "condition": "cda.userform.product_type_dc != true"
     },
     {
       "id": "e_review_to_lot_adj",
