@@ -67,6 +67,22 @@ The link between the two: a step's `EXTERNAL_REVIEW` task template
 officer-facing JSONForm (`*_jsonform.json`) is duplicated in both locations byte-for-byte
 — **when changing an officer-facing form, update both copies.**
 
+**Exception — a reused "view" form may intentionally diverge from its trader-facing
+twin.** A `task_config`'s `forms.view` sometimes points at the *same id* as the
+applicant/trader's own input form, rather than a dedicated view-only copy. When the
+officer needs to see one extra field the trader doesn't (typically a value produced by
+an earlier step — a certificate/letter the officer must reference, not something the
+trader re-submits), it's correct to add that field, marked `readOnly`, to the
+agency-side copy only and leave the trader-facing copy untouched. Don't add it to both
+copies just to satisfy the byte-for-byte rule above — doing so puts an unpopulated (or
+wrongly-wired) field in front of the trader and risks breaking their form. Wire the
+extra field's data via the officer's `EXTERNAL_REVIEW` `TASK` node's `input_mapping`
+(see the merge idiom below), not by routing it through the trader's own task
+output_mapping. This is a known, repeated pattern (e.g. `npqs-upload-docs--trader-form`,
+`npqs-treatment-request--trader-form`) — the validator will flag the resulting
+tnsw/agency drift for that id as an error; that's expected here and worth a one-line
+mention in the PR description, not something to "fix" by re-syncing the copies.
+
 ## Artifact kinds (see any `manifest.json`)
 
 - `workflow` — an FSM: `nodes` (`START`, `TASK`, `GATEWAY`, `END`) + `edges` (with
@@ -93,6 +109,17 @@ namespaced per step's `output_namespace` (e.g. `schedule.visit_date`,
 `sltb.schedule.visit_date`). A trailing `?` on a mapping key/value marks it optional.
 Gateway edge `condition` strings reference these namespaced fields (e.g.
 `sltb.collection_method == 'pickup'`).
+
+A `TASK` node's `input_mapping` can combine a whole-namespace mapping
+(`"userform": "submission"`) with one or more dotted single-field additions into that
+*same* destination object (`"reference_number": "submission.reference_number"`) — these
+merge into one object rather than overwrite each other. This is the standard way to
+hand an `EXTERNAL_REVIEW` task one extra field that's already sitting in the step's
+shared context (e.g. a value an earlier step pushed to the macro workflow and the
+current step's own node received back via its input_mapping) without needing that field
+to flow through the immediately-preceding `TASK` node's own schema/output_mapping first.
+See `tnsw/fcau/3-2-warehouse_inspection/workflow.json` or
+`tnsw/customs/4-create_cdn/workflow.json` for existing examples of this idiom.
 
 ## Conventions
 

@@ -1,6 +1,6 @@
 {
   "id": "cda-kcfn-upload-docs-flow",
-  "name": "Upload Recommendation Letter & ASYCUDA Verification",
+  "name": "Submit Necessary Documents & ASYCUDA Verification",
   "version": 1,
   "nodes": [
     {
@@ -12,11 +12,11 @@
       "type": "TASK",
       "task_template_id": "cda-kcfn-upload-docs--user-input",
       "input_mapping": {
-        "recommendation_letter_file": "recommendation_letter_file"
       },
       "output_mapping": {
-        "uploaded_letter_file": "uploadform.uploaded_letter_file",
-        "reports": "uploadform.reports"
+        "commercial_invoice": "uploadform.commercial_invoice",
+        "packing_list": "uploadform.packing_list",
+        "additional_documents?": "uploadform.additional_documents"
       }
     },
     {
@@ -24,7 +24,8 @@
       "type": "TASK",
       "task_template_id": "cda-kcfn-asycuda-verification--officer-review",
       "input_mapping": {
-        "uploadform": "submission"
+        "uploadform": "submission",
+        "recommendation_letter_file": "submission.recommendation_letter_file"
       },
       "output_mapping": {
         "documents_verified": "reviewerform.documents_verified",

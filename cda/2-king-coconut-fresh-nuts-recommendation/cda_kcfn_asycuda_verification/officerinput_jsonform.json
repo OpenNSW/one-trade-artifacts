@@ -6,7 +6,7 @@
     "properties": {
       "documents_verified": {
         "type": "boolean",
-        "title": "Uploaded recommendation letter and supporting documents verified",
+        "title": "Recommendation letter, commercial invoice, packing list, and supporting documents verified",
         "default": false
       },
       "asycuda_approval_confirmed": {
