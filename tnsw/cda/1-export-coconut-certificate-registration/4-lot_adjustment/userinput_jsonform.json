@@ -19,7 +19,7 @@
         ],
         "default": "complete_application"
       },
-      "revised_dc_bags_details": {
+      "lots_to_remove": {
         "type": "string",
         "format": "file",
         "title": "Upload Revised DC Bags Details File (Excel)",
@@ -42,7 +42,7 @@
     },
     "then": {
       "required": [
-        "revised_dc_bags_details"
+        "lots_to_remove"
       ]
     }
   },
@@ -55,7 +55,7 @@
       },
       {
         "type": "Control",
-        "scope": "#/properties/revised_dc_bags_details",
+        "scope": "#/properties/lots_to_remove",
         "rule": {
           "effect": "SHOW",
           "condition": {
