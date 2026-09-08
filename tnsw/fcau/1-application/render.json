@@ -35,8 +35,8 @@
           "element": "primary_action"
         },
         {
-          "command": "save_draft",
-          "label": "Save as draft",
+          "command": "SAVE_AS_DRAFT",
+          "label": "Save as Draft",
           "element": "secondary_action"
         }
       ]
@@ -49,7 +49,7 @@
           "command": "submit"
         },
         {
-          "command": "save_draft"
+          "command": "SAVE_AS_DRAFT"
         }
       ]
     }

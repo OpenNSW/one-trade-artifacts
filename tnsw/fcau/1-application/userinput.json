@@ -11,7 +11,7 @@
       "id": "authz",
       "phase": "PRE_RESUME",
       "properties": {
-        "PENDING_USER": { "submit": ["trader", "cha"], "save_draft": ["trader", "cha"] }
+        "PENDING_USER": { "submit": ["trader", "cha"], "SAVE_AS_DRAFT": ["trader", "cha"] }
       }
     }
   ]

@@ -65,7 +65,7 @@
       "id": "e_draft",
       "source_id": "draft_gateway",
       "target_id": "applicant_submission",
-      "condition": "command == 'save_draft'"
+      "condition": "command == 'SAVE_AS_DRAFT'"
     },
     {
       "id": "e_submit",
