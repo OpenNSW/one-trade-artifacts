@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://opennsw.dev/schemas/staticdata.schema.json",
+  "title": "StaticData",
+  "description": "Schema for *.data.json artifacts (kind: static_data). A flat list of options an agency-side generic_template's JSONForms enum/oneOf can be populated from at runtime, e.g. tnsw/npqs/1-apply/importing_countries.data.json.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["data"],
+  "properties": {
+    "data": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["const", "title"],
+        "properties": {
+          "const": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Value stored when this option is selected, e.g. a country code or commodity name."
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Human-readable label shown for this option."
+          }
+        }
+      }
+    }
+  }
+}
