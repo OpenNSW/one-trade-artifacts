@@ -1,0 +1,4 @@
+{
+  "id": "slpa-consolidation--status-message",
+  "template": "### \u23f3 Asking SLPA Which Containers Are Available\n\nSLPA holds the containers a terminal pre-advised against your declaration separately from the containers priced on your service order. Consolidation ties each pair together, and it has to be done before a gate pass can be issued.\n\nNothing is needed from you while this runs."
+}

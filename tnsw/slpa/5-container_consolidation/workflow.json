@@ -1,0 +1,134 @@
+{
+  "id": "slpa-consolidation-flow",
+  "name": "Consolidate One SLPA Container",
+  "version": 3,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "fetch",
+      "type": "TASK",
+      "task_template_id": "slpa-consolidation--fetch",
+      "input_mapping": {
+        "cusdec_serial?": "cusdec_serial",
+        "client_key?": "client_key"
+      },
+      "output_mapping": {
+        "consolidation.outcome": "consolidation.outcome",
+        "consolidation.cap_containers?": "consolidation.cap_containers",
+        "consolidation.cap_container_numbers?": "consolidation.cap_container_numbers",
+        "consolidation.so_containers?": "consolidation.so_containers",
+        "consolidation.summary?": "consolidation.summary",
+        "consolidation.error?": "consolidation.error"
+      }
+    },
+    {
+      "id": "select",
+      "type": "TASK",
+      "task_template_id": "slpa-consolidation--select",
+      "input_mapping": {
+        "consolidation?": "consolidation",
+        "so_container_no?": "consolidationform.so_container_no",
+        "cap_container_no?": "consolidationform.cap_container_no"
+      },
+      "output_mapping": {
+        "cap_container_no?": "cap_container_no"
+      }
+    },
+    {
+      "id": "selection_check",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "save",
+      "type": "TASK",
+      "task_template_id": "slpa-consolidation--save",
+      "input_mapping": {
+        "cap_container_no": "cap_container_no",
+        "so_container_no": "so_container_no",
+        "consolidation.cap_containers": "cap_containers",
+        "consolidation.so_containers": "so_containers",
+        "client_key?": "client_key"
+      },
+      "output_mapping": {
+        "consolidation.saved": "consolidation.saved",
+        "consolidation.message?": "consolidation.message",
+        "consolidation.error?": "consolidation.error"
+      }
+    },
+    {
+      "id": "save_check",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "resolve",
+      "type": "TASK",
+      "task_template_id": "slpa-consolidation--resolve",
+      "input_mapping": {
+        "cap_container_no": "cap_container_no",
+        "consolidation.cap_containers": "cap_containers"
+      },
+      "output_mapping": {
+        "cap_sqid": "cap_sqid",
+        "container_no": "container_no"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_start",
+      "source_id": "start",
+      "target_id": "fetch"
+    },
+    {
+      "id": "e_fetch_select",
+      "source_id": "fetch",
+      "target_id": "select"
+    },
+    {
+      "id": "e_select_gw",
+      "source_id": "select",
+      "target_id": "selection_check"
+    },
+    {
+      "id": "e_chosen",
+      "source_id": "selection_check",
+      "target_id": "save",
+      "condition": "cap_container_no != ''"
+    },
+    {
+      "id": "e_nothing_chosen",
+      "source_id": "selection_check",
+      "target_id": "fetch"
+    },
+    {
+      "id": "e_save_gw",
+      "source_id": "save",
+      "target_id": "save_check"
+    },
+    {
+      "id": "e_saved",
+      "source_id": "save_check",
+      "target_id": "resolve",
+      "condition": "consolidation.saved == true"
+    },
+    {
+      "id": "e_not_saved",
+      "source_id": "save_check",
+      "target_id": "fetch"
+    },
+    {
+      "id": "e_resolved",
+      "source_id": "resolve",
+      "target_id": "end"
+    }
+  ]
+}

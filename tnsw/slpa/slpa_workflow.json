@@ -1,7 +1,7 @@
 {
   "id": "slpa-ecdn-submission",
   "name": "SLPA Electronic Cargo Declaration Note (ECDN)",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -74,9 +74,38 @@
       }
     },
     {
+      "id": "slpa_5_0_prepare_containers",
+      "name": "Prepare Container Branches",
+      "type": "TASK",
+      "task_template_id": "slpa-container-prepare-flow",
+      "input_mapping": {
+        "slpa.userform.containers?": "containers",
+        "slpa.cusdec_serial?": "cusdec_serial",
+        "slpa.service_order_slug?": "slug",
+        "_iter.input.company.data.slpacmsuser_key?": "client_key"
+      },
+      "output_mapping": {
+        "split_items": "slpa.container_items"
+      }
+    },
+    {
+      "id": "slpa_5_1_containers",
+      "name": "Consolidate Containers and Issue Gate Passes",
+      "type": "SPLIT_TASK",
+      "task_template_id": "slpa-container-branch",
+      "split_task": {
+        "mode": "SAME_TEMPLATE",
+        "items_variable": "slpa.container_items",
+        "results_variable": "slpa.container_results",
+        "failure_mode": "COLLECT_ALL"
+      },
+      "input_mapping": {},
+      "output_mapping": {}
+    },
+    {
       "id": "end",
       "type": "END",
-      "name": "SLPA Charges Settled"
+      "name": "SLPA Gate Passes Issued"
     }
   ],
   "edges": [
@@ -101,8 +130,18 @@
       "target_id": "slpa_4_0_invoice"
     },
     {
-      "id": "e_invoice_to_end",
+      "id": "e_invoice_prepare",
       "source_id": "slpa_4_0_invoice",
+      "target_id": "slpa_5_0_prepare_containers"
+    },
+    {
+      "id": "e_prepare_split",
+      "source_id": "slpa_5_0_prepare_containers",
+      "target_id": "slpa_5_1_containers"
+    },
+    {
+      "id": "e_split_end",
+      "source_id": "slpa_5_1_containers",
       "target_id": "end"
     }
   ]
