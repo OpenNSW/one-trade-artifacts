@@ -1,0 +1,4 @@
+{
+  "id": "slpa-gp--refusal",
+  "template": "{{if .error}}{{.error}}{{end}}"
+}

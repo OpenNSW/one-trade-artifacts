@@ -1,0 +1,6 @@
+{
+  "id": "slpa-gate-pass-prepare-flow",
+  "type": "SYSTEM",
+  "workflow_id": "slpa-gate-pass-prepare-flow",
+  "render_config_id": "slpa-gate-pass-prepare-flow:render"
+}
