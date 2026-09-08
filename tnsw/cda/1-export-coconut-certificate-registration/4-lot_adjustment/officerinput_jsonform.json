@@ -63,16 +63,7 @@
       },
       {
         "type": "Control",
-        "scope": "#/properties/new_certificate_file",
-        "rule": {
-          "effect": "SHOW",
-          "condition": {
-            "scope": "#/properties/adjustment_outcome",
-            "schema": {
-              "const": "approve"
-            }
-          }
-        }
+        "scope": "#/properties/new_certificate_file"
       },
       {
         "type": "Control",
