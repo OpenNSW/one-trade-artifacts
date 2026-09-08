@@ -43,6 +43,30 @@
         "title": "Lot Number",
         "example": "LOT-A321"
       },
+      "product_type_dc": {
+        "type": "boolean",
+        "title": "DC",
+        "default": false
+      },
+      "product_type_value_added_dc": {
+        "type": "boolean",
+        "title": "Value Added DC - Low Fat DC",
+        "default": false
+      },
+      "payment_category": {
+        "type": "string",
+        "title": "Payment Category",
+        "oneOf": [
+          {
+            "const": "general",
+            "title": "General"
+          },
+          {
+            "const": "value_added_dc_low_fat",
+            "title": "Value Added DC / Low Fat DC"
+          }
+        ]
+      },
       "dc_grades": {
         "type": "array",
         "title": "DC Grade & Packaging Details",
@@ -203,11 +227,36 @@
     "required": [
       "exporter_details",
       "cusdec_number",
+      "product_type_dc",
+      "product_type_value_added_dc",
+      "payment_category",
       "dc_grades",
       "port_of_discharge",
       "final_destination",
       "container_filling_status",
       "uploaded_dc_bags_details"
+    ],
+    "anyOf": [
+      {
+        "properties": {
+          "product_type_dc": {
+            "const": true
+          }
+        },
+        "required": [
+          "product_type_dc"
+        ]
+      },
+      {
+        "properties": {
+          "product_type_value_added_dc": {
+            "const": true
+          }
+        },
+        "required": [
+          "product_type_value_added_dc"
+        ]
+      }
     ]
   },
   "uiSchema": {
@@ -246,12 +295,37 @@
                 "scope": "#/properties/lot_number"
               }
             ]
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/payment_category",
+            "options": {
+              "format": "radio"
+            }
           }
         ]
       },
       {
         "type": "Group",
-        "label": "2. DC Grade & Packaging Details",
+        "label": "2. Product Type",
+        "elements": [
+          {
+            "type": "Label",
+            "text": "Select every product type included in this consignment. If DC is selected, the application follows quality check and certificate issuance. If only Value Added DC - Low Fat DC is selected, the application review officer can approve with an ASYCUDA green check and skip certificate issuance."
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/product_type_dc"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/product_type_value_added_dc"
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "label": "3. DC Grade & Packaging Details",
         "elements": [
           {
             "type": "Control",
@@ -261,7 +335,7 @@
       },
       {
         "type": "Group",
-        "label": "3. Shipping & Transport Logistics",
+        "label": "4. Shipping & Transport Logistics",
         "elements": [
           {
             "type": "HorizontalLayout",
@@ -310,7 +384,7 @@
       },
       {
         "type": "Group",
-        "label": "4. Container Filling Status",
+        "label": "5. Container Filling Status",
         "elements": [
           {
             "type": "Control",
@@ -336,7 +410,16 @@
       },
       {
         "type": "Group",
-        "label": "5. Required Certificates",
+        "label": "6. Required Certificates",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/product_type_dc",
+            "schema": {
+              "const": true
+            }
+          }
+        },
         "elements": [
           {
             "type": "HorizontalLayout",
@@ -355,7 +438,7 @@
       },
       {
         "type": "Group",
-        "label": "6. DC Bag Details",
+        "label": "7. DC Bag Details",
         "elements": [
           {
             "type": "Control",
