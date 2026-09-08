@@ -1,7 +1,7 @@
 {
   "id": "slpa-consolidation-flow",
   "name": "Consolidate One SLPA Container",
-  "version": 3,
+  "version": 4,
   "nodes": [
     {
       "id": "start",
@@ -74,7 +74,8 @@
       },
       "output_mapping": {
         "cap_sqid": "cap_sqid",
-        "container_no": "container_no"
+        "container_no": "container_no",
+        "deleted": "deleted"
       }
     },
     {
