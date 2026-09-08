@@ -193,6 +193,12 @@
       "path": "npqs/1-apply/importing_countries.data.json"
     },
     {
+      "id": "npqs-apply-phyto-cert--commodity-common-names",
+      "kind": "static_data",
+      "version": "1",
+      "path": "npqs/1-apply/commodity_common_names.data.json"
+    },
+    {
       "id": "npqs-draw-sample--officer-draw",
       "kind": "subtask_template",
       "version": "",
