@@ -21,6 +21,24 @@
             </SchemaInfo>
           </value>
         </entry>
+        <entry key="StaticData">
+          <value>
+            <SchemaInfo>
+              <option name="name" value="StaticData" />
+              <option name="relativePathToSchema" value="schemas/staticdata.schema.json" />
+              <option name="schemaVersion" value="JSON Schema 7" />
+              <option name="patterns">
+                <list>
+                  <Item>
+                    <option name="pattern" value="true" />
+                    <option name="path" value="*.data.json" />
+                    <option name="mappingKind" value="Pattern" />
+                  </Item>
+                </list>
+              </option>
+            </SchemaInfo>
+          </value>
+        </entry>
       </map>
     </state>
   </component>

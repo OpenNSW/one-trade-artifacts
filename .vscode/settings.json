@@ -5,6 +5,12 @@
         "**/*.taskconfig.json"
       ],
       "url": "./schemas/taskconfig.schema.json"
+    },
+    {
+      "fileMatch": [
+        "**/*.data.json"
+      ],
+      "url": "./schemas/staticdata.schema.json"
     }
   ]
 }
