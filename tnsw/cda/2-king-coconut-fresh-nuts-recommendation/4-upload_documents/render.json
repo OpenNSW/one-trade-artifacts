@@ -1,7 +1,7 @@
 {
   "id": "cda-kcfn-upload-docs-flow:render",
   "type": "APPLICATION",
-  "title": "[CDA] Upload Recommendation Letter & ASYCUDA Verification",
+  "title": "[CDA] Submit Necessary Documents & ASYCUDA Verification",
   "sections": {
     "outcome_message": {
       "templateId": "cda-kcfn-upload-docs--verified-message",
@@ -25,7 +25,7 @@
     },
     "user_form": {
       "templateId": "cda-kcfn-upload-docs--user-form",
-      "title": "Upload Recommendation Letter & Supporting Documents",
+      "title": "Upload Necessary Documents",
       "projector": "FORM",
       "dataKey": "uploadform",
       "visibleWhen": {

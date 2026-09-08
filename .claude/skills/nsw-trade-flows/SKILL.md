@@ -77,6 +77,28 @@ always split across both halves.
   prefix — but it does mean **don't assume every agency's steps live
   directly under `tnsw/<agency>/`**; check whether a `process-<n>/`
   directory exists first.
+- **A reused "view" form is allowed to diverge from its trader-facing twin
+  — on purpose.** When a `task_config`'s `forms.view` names the *same id*
+  as the trader/applicant's own input form (rather than a dedicated
+  view-only copy), and the officer needs to see one extra field the trader
+  doesn't (typically something an earlier step already produced, e.g. a
+  certificate/letter the officer must reference but the trader doesn't
+  re-submit), the fix is to add that field — marked `readOnly` in both the
+  schema property and its uiSchema `Control`'s `options` — to the
+  agency-side copy only, and wire its value into the officer's
+  `EXTERNAL_REVIEW` `TASK` node via `input_mapping` (see CLAUDE.md's
+  merge-idiom note under "Data flow between steps"), not by adding it to
+  the trader-facing copy or routing it through the producing task's own
+  output_mapping. Adding it to both copies "to keep them identical" is the
+  wrong move here — it puts an unpopulated field in front of the trader and
+  risks breaking their form (this is exactly what went wrong the first time
+  around for `cda-kcfn-upload-docs--user-form`: adding the field, plus a
+  round-trip through the *trader's* task input/output_mapping, broke the
+  trader's render; sourcing it directly into the officer's own
+  `input_mapping` and leaving the trader copy untouched fixed it). Expect
+  the validator to flag the resulting id as newly drifted between
+  `tnsw/manifest.json` and the agency's manifest — that's the correct
+  outcome, not a regression to chase; note it in the PR description instead.
 
 ## Step sub-workflows: 3 shapes cover 93% of them
 
@@ -151,6 +173,19 @@ the 3 above if it's actually one of these:**
   folder, and wire the new step into the macro `<agency>_workflow.json` with
   a `TASK` node and gateway
   edges as needed.
+- **Giving the officer one extra field the trader doesn't submit** (e.g. a
+  value an earlier step already pushed to the macro workflow, and the
+  current step already receives back via its own node's `input_mapping`):
+  don't route it through the trader's `USER_INPUT` task's schema/
+  output_mapping. Instead add it directly to the officer's
+  `EXTERNAL_REVIEW` `TASK` node's `input_mapping`, merged into whatever
+  destination the whole-namespace mapping already targets — e.g. next to
+  `"uploadform": "submission"`, add
+  `"recommendation_letter_file": "submission.recommendation_letter_file"`.
+  Then add the field, `readOnly`, only to the agency-side copy of the
+  `forms.view` template — leave the trader-facing copy alone. See the
+  bullet above and CLAUDE.md's "reused view form" exception for the full
+  rationale.
 - **Changing a gateway condition or officer outcome**: the condition string
   (`reviewerform.review_outcome == 'approve'`) and the agency
   `task_config.behavior.statusMap` key (`approve`) must use the same
@@ -197,6 +232,15 @@ whatever change you're making): `cda-apply-coconut-cert--user-form` and
 agency-side copies. If your PR doesn't touch CDA or Customs, this is not
 your bug to fix — just don't be alarmed that the validator isn't 100% clean
 on a fresh checkout.
+
+Some other errors on a fresh checkout are the *intentional* reused-view-form
+divergence described above, not accidental drift — e.g.
+`npqs-upload-docs--trader-form`, `npqs-treatment-request--trader-form`,
+`npqs-upload-treatment-certs--trader-form`,
+`npqs-visual-consignment--trader-schedule-form`, and (once this PR merges)
+`cda-kcfn-upload-docs--user-form`. Don't try to re-sync these — the point is
+that the agency-side copy carries extra `readOnly` fields the trader-facing
+copy correctly doesn't have.
 
 ## Opening the PR
 
