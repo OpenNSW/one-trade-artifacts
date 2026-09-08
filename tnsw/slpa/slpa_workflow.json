@@ -1,0 +1,109 @@
+{
+  "id": "slpa-ecdn-submission",
+  "name": "SLPA Electronic Cargo Declaration Note (ECDN)",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START",
+      "name": "Start"
+    },
+    {
+      "id": "slpa_1_0_ecdn",
+      "type": "TASK",
+      "name": "[SLPA 1.0] Submit ECDN",
+      "task_template_id": "slpa-ecdn-submission-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "_iter.input.company.data.slpacmsuser_key?": "client_key"
+      },
+      "output_mapping": {
+        "userform": "slpa.userform",
+        "userform.cdnNumber": "slpa.cdn_number",
+        "cms.cusdec_serial?": "slpa.cusdec_serial"
+      }
+    },
+    {
+      "id": "slpa_2_0_service_order",
+      "type": "TASK",
+      "name": "[SLPA 2.0] Raise Export Service Order",
+      "task_template_id": "slpa-service-order-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "_iter.input.company.data.slpacmsuser_key?": "client_key",
+        "slpa.cusdec_serial?": "serviceform.cusdecNo",
+        "slpa.userform.status?": "serviceform.cargoType",
+        "slpa.userform.containers?": "serviceform.containers",
+        "slpa.userform.volumeCBM?": "serviceform.declaredVolumeCBM"
+      },
+      "output_mapping": {
+        "so.service_order_no?": "slpa.service_order_no",
+        "so.slug?": "slpa.service_order_slug",
+        "so.invoice_no?": "slpa.invoice_no"
+      }
+    },
+    {
+      "id": "slpa_3_0_approval",
+      "type": "TASK",
+      "name": "[SLPA 3.0] Service Order Approval",
+      "task_template_id": "slpa-approval-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "slpa.service_order_slug?": "so.slug",
+        "slpa.service_order_no?": "so.service_order_no"
+      },
+      "output_mapping": {
+        "decision.decision?": "slpa.approval",
+        "decision.invoice_no?": "slpa.invoice_no"
+      }
+    },
+    {
+      "id": "slpa_4_0_invoice",
+      "type": "TASK",
+      "name": "[SLPA 4.0] Invoice & Payment",
+      "task_template_id": "slpa-invoice-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "slpa.service_order_slug?": "so.slug",
+        "slpa.service_order_no?": "so.service_order_no"
+      },
+      "output_mapping": {
+        "payment.invoice_no?": "slpa.invoice_no",
+        "payment.paid_at?": "slpa.invoice_paid_at",
+        "payment.receipt_url?": "slpa.invoice_receipt_url"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END",
+      "name": "SLPA Charges Settled"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_start_to_ecdn",
+      "source_id": "start",
+      "target_id": "slpa_1_0_ecdn"
+    },
+    {
+      "id": "e_ecdn_to_order",
+      "source_id": "slpa_1_0_ecdn",
+      "target_id": "slpa_2_0_service_order"
+    },
+    {
+      "id": "e_order_to_approval",
+      "source_id": "slpa_2_0_service_order",
+      "target_id": "slpa_3_0_approval"
+    },
+    {
+      "id": "e_approval_to_invoice",
+      "source_id": "slpa_3_0_approval",
+      "target_id": "slpa_4_0_invoice"
+    },
+    {
+      "id": "e_invoice_to_end",
+      "source_id": "slpa_4_0_invoice",
+      "target_id": "end"
+    }
+  ]
+}

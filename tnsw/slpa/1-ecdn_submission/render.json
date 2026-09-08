@@ -1,0 +1,32 @@
+{
+  "id": "slpa-ecdn-submission-flow:render",
+  "type": "APPLICATION",
+  "title": "[SLPA] Electronic Cargo Declaration Note (ECDN)",
+  "sections": {
+    "cms_rejection": {
+      "templateId": "slpa-ecdn--cms-rejection",
+      "title": "SLPA CMS Validation Errors",
+      "projector": "MARKDOWN",
+      "dataKey": "cms",
+      "visibleWhen": { "states": ["PENDING_USER"], "requireDataKey": "cms" }
+    },
+    "submitted_message": {
+      "templateId": "slpa-ecdn--submitted-message",
+      "title": "ECDN Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": { "states": ["COMPLETED"] }
+    },
+    "user_form": {
+      "templateId": "slpa-ecdn--user-form",
+      "title": "ECDN Details",
+      "projector": "FORM",
+      "dataKey": "userform",
+      "handles": [
+        { "command": "submit", "label": "Generate XML & Upload to SLPA", "element": "primary_action" }
+      ]
+    }
+  },
+  "states": {
+    "PENDING_USER": { "actions": [{ "command": "submit" }] }
+  }
+}

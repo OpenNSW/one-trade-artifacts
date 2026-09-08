@@ -1,0 +1,4 @@
+{
+  "id": "slpa-invoice--paid-message",
+  "template": "### ✅ Invoice Paid\n\nSLPA has confirmed the payment. This consignment's SLPA obligations are settled.\n\n{{with .payment}}* **Invoice No**: {{if .invoice_no}}`{{.invoice_no}}`{{else}}—{{end}}\n{{if .paid_amount}}* **Amount Paid**: {{.paid_amount}}\n{{end}}{{if .paid_at}}* **Paid At**: {{.paid_at}}\n{{end}}{{if .receipt_url}}\n[Download the paid invoice]({{.receipt_url}})\n{{end}}{{if .invoice_url}}{{if not .receipt_url}}\n[Download the invoice]({{.invoice_url}})\n{{end}}{{end}}{{end}}"
+}
