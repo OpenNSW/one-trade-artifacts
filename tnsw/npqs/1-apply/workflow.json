@@ -1,7 +1,7 @@
 {
   "id": "npqs-apply-phyto-cert",
   "name": "Apply for Phytosanitary Certificate",
-  "version": 2,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
@@ -17,18 +17,19 @@
         "exporter_address?": "userform.exporter_address"
       },
       "output_mapping": {
-        "certificate_type": "userform.certificate_type",
-        "shipment_value": "userform.shipment_value",
-        "applicant_name": "userform.applicant_name",
-        "nppo_office_location": "userform.nppo_office_location",
-        "importing_country": "userform.importing_country",
+        "__command": "command",
+        "certificate_type?": "userform.certificate_type",
+        "shipment_value?": "userform.shipment_value",
+        "applicant_name?": "userform.applicant_name",
+        "nppo_office_location?": "userform.nppo_office_location",
+        "importing_country?": "userform.importing_country",
         "transit_countries?": "userform.transit_countries",
-        "exporter_name": "userform.exporter_name",
-        "exporter_address": "userform.exporter_address",
+        "exporter_name?": "userform.exporter_name",
+        "exporter_address?": "userform.exporter_address",
         "exporter_country?": "userform.exporter_country",
-        "consignee_name": "userform.consignee_name",
-        "consignee_address": "userform.consignee_address",
-        "consignee_country": "userform.consignee_country",
+        "consignee_name?": "userform.consignee_name",
+        "consignee_address?": "userform.consignee_address",
+        "consignee_country?": "userform.consignee_country",
         "distinguishing_marks?": "userform.distinguishing_marks",
         "point_of_entry_country?": "userform.point_of_entry_country",
         "point_of_entry_port?": "userform.point_of_entry_port",

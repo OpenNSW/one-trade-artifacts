@@ -1,7 +1,7 @@
 {
   "id": "customs-cusdec-apply-flow",
   "name": "Submit & Review Customs Declaration",
-  "version": 3,
+  "version": 4,
   "nodes": [
     {
       "id": "start",
@@ -16,16 +16,17 @@
         "cig.error?": "cig.error"
       },
       "output_mapping": {
-        "shipmentType": "userform.shipmentType",
-        "containerCount": "userform.containerCount",
-        "identification": "userform.identification",
-        "traders": "userform.traders",
-        "generalInfo": "userform.generalInfo",
-        "transport": "userform.transport",
-        "financial": "userform.financial",
-        "valuation": "userform.valuation",
-        "packages": "userform.packages",
-        "items": "userform.items",
+        "__command": "command",
+        "shipmentType?": "userform.shipmentType",
+        "containerCount?": "userform.containerCount",
+        "identification?": "userform.identification",
+        "traders?": "userform.traders",
+        "generalInfo?": "userform.generalInfo",
+        "transport?": "userform.transport",
+        "financial?": "userform.financial",
+        "valuation?": "userform.valuation",
+        "packages?": "userform.packages",
+        "items?": "userform.items",
         "supportingDocuments?": "userform.supportingDocuments"
       }
     },

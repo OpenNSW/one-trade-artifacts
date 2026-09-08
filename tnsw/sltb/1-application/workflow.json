@@ -1,7 +1,7 @@
 {
   "id": "sltb-submit-blendsheet-flow",
   "name": "Submit and Review Blend Sheet",
-  "version": 3,
+  "version": 4,
   "nodes": [
     {
       "id": "start",
@@ -15,10 +15,11 @@
         "rejection_reason?": "rejection_reason"
       },
       "output_mapping": {
-        "exporter_registration_no": "userform.exporter_registration_no",
-        "cusdec_number": "userform.cusdec_number",
-        "warehouse_id": "userform.warehouse_id",
-        "blendsheet_file": "userform.blendsheet_file",
+        "__command": "command",
+        "exporter_registration_no?": "userform.exporter_registration_no",
+        "cusdec_number?": "userform.cusdec_number",
+        "warehouse_id?": "userform.warehouse_id",
+        "blendsheet_file?": "userform.blendsheet_file",
         "lion_logo_requested?": "userform.lion_logo_requested"
       }
     },

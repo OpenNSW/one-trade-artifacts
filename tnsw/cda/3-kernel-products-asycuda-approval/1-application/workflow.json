@@ -1,7 +1,7 @@
 {
   "id": "cda-kernel-asycuda-approval-flow",
   "name": "Submit ASYCUDA Approval Application for Kernel Products",
-  "version": 2,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
@@ -15,12 +15,13 @@
         "rejection_reason?": "rejection_reason"
       },
       "output_mapping": {
-        "exporter_name": "userform.exporter_name",
-        "exporter_email": "userform.exporter_email",
-        "cusdec_number": "userform.cusdec_number",
-        "destination": "userform.destination",
-        "expected_export_date": "userform.expected_export_date",
-        "kernel_products": "userform.kernel_products"
+        "__command": "command",
+        "exporter_name?": "userform.exporter_name",
+        "exporter_email?": "userform.exporter_email",
+        "cusdec_number?": "userform.cusdec_number",
+        "destination?": "userform.destination",
+        "expected_export_date?": "userform.expected_export_date",
+        "kernel_products?": "userform.kernel_products"
       }
     },
     {
