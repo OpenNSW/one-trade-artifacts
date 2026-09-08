@@ -12,7 +12,6 @@
       "type": "TASK",
       "task_template_id": "cda-kcfn-upload-docs--user-input",
       "input_mapping": {
-        "recommendation_letter_file": "recommendation_letter_file"
       },
       "output_mapping": {
         "commercial_invoice": "uploadform.commercial_invoice",
@@ -25,7 +24,8 @@
       "type": "TASK",
       "task_template_id": "cda-kcfn-asycuda-verification--officer-review",
       "input_mapping": {
-        "uploadform": "submission"
+        "uploadform": "submission",
+        "recommendation_letter_file": "submission.recommendation_letter_file"
       },
       "output_mapping": {
         "documents_verified": "reviewerform.documents_verified",
