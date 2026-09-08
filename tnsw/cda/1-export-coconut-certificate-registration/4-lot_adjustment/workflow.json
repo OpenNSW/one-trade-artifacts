@@ -32,6 +32,7 @@
       "task_template_id": "cda-lot-adjustment-officer--review",
       "input_mapping": {
         "reference_number": "reference_number",
+        "adjustment_choice": "adjustment_choice",
         "lots_to_remove": "lots_to_remove"
       },
       "output_mapping": {

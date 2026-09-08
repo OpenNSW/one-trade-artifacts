@@ -54,6 +54,16 @@
         }
       ]
     },
+    "bag_template": {
+      "templateId": "cda-apply-coconut-cert--bag-template",
+      "title": "DC Bag Details Template",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ]
+      }
+    },
     "completed_message": {
       "templateId": "cda-lot-adjustment-trader--completed",
       "title": "Lot Adjustment Complete",
