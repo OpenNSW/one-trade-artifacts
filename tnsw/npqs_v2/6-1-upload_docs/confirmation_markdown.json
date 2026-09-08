@@ -1,0 +1,4 @@
+{
+  "id": "npqs-v2-upload-docs--confirmation",
+  "template": "### ✅ Documents Submitted\n\nYour consignment documents have been submitted for review.\n\n* **Reference Number**: `{{.reference_number}}`\n\n**Submitted Documents:**\n* [Commercial Invoice]({{.traderinput.invoice_file_url}})\n* [Packing List]({{.traderinput.packing_list_file_url}})\n{{if .traderinput.additional_file_url}}* [Other Supporting Documents]({{.traderinput.additional_file_url}})\n{{end}}\nThe issuing PQS/NPQS officer will review these documents before your application proceeds to payment."
+}

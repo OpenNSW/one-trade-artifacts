@@ -1,4 +1,0 @@
-{
-  "id": "npqs-v2-pay-for-treatment--instructions-wrapper",
-  "template": "{{ .instructions }}"
-}

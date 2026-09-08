@@ -26,6 +26,14 @@
           "element": "primary_action"
         }
       ]
+    },
+    "submission_confirmation": {
+      "templateId": "npqs-v2-upload-docs--confirmation",
+      "title": "Documents Submitted",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": ["COMPLETED"]
+      }
     }
   },
   "states": {
