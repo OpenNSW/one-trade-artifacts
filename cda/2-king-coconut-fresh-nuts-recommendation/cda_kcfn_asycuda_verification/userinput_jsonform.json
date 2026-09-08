@@ -4,6 +4,12 @@
   "schema": {
     "type": "object",
     "properties": {
+      "recommendation_letter_file": {
+        "type": "string",
+        "format": "file",
+        "title": "Signed Recommendation Letter (PDF)",
+        "readOnly": true
+      },
       "commercial_invoice": {
         "type": "string",
         "format": "file",
@@ -42,6 +48,13 @@
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/recommendation_letter_file",
+        "options": {
+          "readonly": true
+        }
+      },
       {
         "type": "Control",
         "scope": "#/properties/commercial_invoice"
