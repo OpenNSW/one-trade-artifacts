@@ -1,0 +1,53 @@
+{
+  "id": "slpa-approval--decision-form",
+  "title": "SLPA Decision",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "decision": {
+        "type": "string",
+        "title": "Decision"
+      },
+      "stage": {
+        "type": "string",
+        "title": "Stage"
+      },
+      "cms_status": {
+        "type": "string",
+        "title": "SLPA Status"
+      },
+      "service_order_no": {
+        "type": "string",
+        "title": "Service Order No"
+      },
+      "invoice_no": {
+        "type": "string",
+        "title": "Invoice No"
+      },
+      "total_amount": {
+        "type": "number",
+        "title": "Total"
+      },
+      "decided_at": {
+        "type": "string",
+        "title": "Decided At"
+      }
+    },
+    "required": [
+      "decision"
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/decision"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/stage"
+      }
+    ]
+  }
+}

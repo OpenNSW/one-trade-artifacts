@@ -1,0 +1,10 @@
+{
+  "id": "slpa-ecdn--cms-upload",
+  "task_type": "SLPA_ECDN_UPLOAD",
+  "output_namespace": "cms",
+  "plugin_properties": {
+    "service_id": "slpa",
+    "path": "/api/nsw/v1/export/ecdn/upload",
+    "result_field": "accepted"
+  }
+}

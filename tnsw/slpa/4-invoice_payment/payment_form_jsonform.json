@@ -1,0 +1,45 @@
+{
+  "id": "slpa-invoice--payment-form",
+  "title": "SLPA Payment",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "invoice_no": {
+        "type": "string",
+        "title": "Invoice No"
+      },
+      "paid_at": {
+        "type": "string",
+        "title": "Paid At"
+      },
+      "paid_amount": {
+        "type": "number",
+        "title": "Paid Amount"
+      },
+      "receipt_url": {
+        "type": "string",
+        "title": "Receipt"
+      },
+      "invoice_url": {
+        "type": "string",
+        "title": "Invoice"
+      },
+      "cms_status": {
+        "type": "string",
+        "title": "SLPA Status"
+      }
+    },
+    "required": [
+      "invoice_no"
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/invoice_no"
+      }
+    ]
+  }
+}

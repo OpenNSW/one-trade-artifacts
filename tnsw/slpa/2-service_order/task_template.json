@@ -1,0 +1,6 @@
+{
+  "id": "slpa-service-order-flow",
+  "type": "APPLICATION",
+  "workflow_id": "slpa-service-order-flow",
+  "render_config_id": "slpa-service-order-flow:render"
+}
