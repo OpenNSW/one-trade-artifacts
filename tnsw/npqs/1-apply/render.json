@@ -31,13 +31,18 @@
           "command": "submit",
           "label": "Submit Application",
           "element": "primary_action"
+        },
+        {
+          "command": "save_draft",
+          "label": "Save as draft",
+          "element": "secondary_action"
         }
       ]
     }
   },
   "states": {
     "PENDING_USER": {
-      "actions": [{ "command": "submit" }]
+      "actions": [{ "command": "submit" }, { "command": "save_draft" }]
     }
   }
 }

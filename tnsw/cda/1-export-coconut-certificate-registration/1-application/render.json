@@ -44,6 +44,11 @@
           "command": "submit",
           "label": "Submit Application",
           "element": "primary_action"
+        },
+        {
+          "command": "save_draft",
+          "label": "Save as draft",
+          "element": "secondary_action"
         }
       ]
     },
@@ -59,6 +64,9 @@
       "actions": [
         {
           "command": "submit"
+        },
+        {
+          "command": "save_draft"
         }
       ]
     }

@@ -1,7 +1,7 @@
 {
   "id": "sltb-submit-blendsheet-flow",
   "name": "Submit and Review Blend Sheet",
-  "version": 2,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
@@ -21,6 +21,11 @@
         "blendsheet_file": "userform.blendsheet_file",
         "lion_logo_requested?": "userform.lion_logo_requested"
       }
+    },
+    {
+      "id": "draft_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
       "id": "officer_review",
@@ -56,7 +61,19 @@
     {
       "id": "e2",
       "source_id": "applicant_submission",
-      "target_id": "officer_review"
+      "target_id": "draft_gateway"
+    },
+    {
+      "id": "e_draft",
+      "source_id": "draft_gateway",
+      "target_id": "applicant_submission",
+      "condition": "command == 'save_draft'"
+    },
+    {
+      "id": "e_submit",
+      "source_id": "draft_gateway",
+      "target_id": "officer_review",
+      "condition": "command == 'submit'"
     },
     {
       "id": "e3",

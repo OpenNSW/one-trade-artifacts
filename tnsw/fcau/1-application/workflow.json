@@ -1,7 +1,7 @@
 {
   "id": "fcau-apply-health-cert-flow",
   "name": "Apply for Health Certificate",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -30,6 +30,11 @@
         "other_supporting_documents?": "userform.other_supporting_documents",
         "other_declarations": "userform.other_declarations"
       }
+    },
+    {
+      "id": "draft_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
       "id": "officer_review",
@@ -66,7 +71,19 @@
     {
       "id": "e2",
       "source_id": "applicant_submission",
-      "target_id": "officer_review"
+      "target_id": "draft_gateway"
+    },
+    {
+      "id": "e_draft",
+      "source_id": "draft_gateway",
+      "target_id": "applicant_submission",
+      "condition": "command == 'save_draft'"
+    },
+    {
+      "id": "e_submit",
+      "source_id": "draft_gateway",
+      "target_id": "officer_review",
+      "condition": "command == 'submit'"
     },
     {
       "id": "e3",
