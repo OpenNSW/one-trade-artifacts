@@ -23,7 +23,7 @@
         "type": "string",
         "format": "file",
         "title": "Upload Revised DC Bags Details File (Excel)",
-        "description": "Upload the completed Excel sheet (.xlsx or .xls) with the amended DC bag details for this consignment.",
+        "description": "Check below to download the template, then upload the completed Excel sheet (.xlsx or .xls) here.",
         "x-file": {
           "accept": ".xlsx,.xls"
         }
