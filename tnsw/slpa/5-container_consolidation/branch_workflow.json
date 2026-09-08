@@ -1,7 +1,7 @@
 {
   "id": "slpa-container-branch",
   "name": "Consolidate and Gate Pass (one container)",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -24,7 +24,8 @@
       "output_mapping": {
         "consolidation.saved?": "cc.saved",
         "cap_sqid?": "cc.cap_id",
-        "container_no?": "cc.container_no"
+        "container_no?": "cc.container_no",
+        "deleted?": "deleted"
       }
     },
     {
