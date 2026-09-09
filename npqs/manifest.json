@@ -22,13 +22,6 @@
       "path": "npqs_application_review/officer_view_jsonform.json"
     },
     {
-      "id": "npqs-apply-phyto-cert--user-form",
-      "kind": "generic_template",
-      "version": "",
-      "loader": "local",
-      "path": "npqs_application_review/userinput_jsonform.json"
-    },
-    {
       "id": "npqs_certificate_issue",
       "kind": "task_config",
       "version": "",
@@ -41,13 +34,6 @@
       "version": "",
       "loader": "local",
       "path": "npqs_certificate_issue/officerinput_jsonform.json"
-    },
-    {
-      "id": "npqs-apply-phyto-cert--user-form",
-      "kind": "generic_template",
-      "version": "",
-      "loader": "local",
-      "path": "npqs_certificate_issue/userinput_jsonform.json"
     },
     {
       "id": "npqs_consignment_inspection",
@@ -106,13 +92,6 @@
       "path": "npqs_lab_testing/officerinput_jsonform.json"
     },
     {
-      "id": "npqs-apply-phyto-cert--user-form",
-      "kind": "generic_template",
-      "version": "",
-      "loader": "local",
-      "path": "npqs_lab_testing/userinput_jsonform.json"
-    },
-    {
       "id": "npqs_sample_draw",
       "kind": "task_config",
       "version": "",
@@ -125,13 +104,6 @@
       "version": "",
       "loader": "local",
       "path": "npqs_sample_draw/officer_draw_jsonform.json"
-    },
-    {
-      "id": "npqs-apply-phyto-cert--user-form",
-      "kind": "generic_template",
-      "version": "",
-      "loader": "local",
-      "path": "npqs_sample_draw/userinput_jsonform.json"
     },
     {
       "id": "npqs_sample_receive",
@@ -148,13 +120,6 @@
       "path": "npqs_sample_receive/officer_receive_jsonform.json"
     },
     {
-      "id": "npqs-apply-phyto-cert--user-form",
-      "kind": "generic_template",
-      "version": "",
-      "loader": "local",
-      "path": "npqs_sample_receive/userinput_jsonform.json"
-    },
-    {
       "id": "npqs_treatment_cert_issue",
       "kind": "task_config",
       "version": "",
@@ -167,13 +132,6 @@
       "version": "",
       "loader": "local",
       "path": "npqs_treatment_cert_issue/officerinput_jsonform.json"
-    },
-    {
-      "id": "npqs-apply-phyto-cert--user-form",
-      "kind": "generic_template",
-      "version": "",
-      "loader": "local",
-      "path": "npqs_treatment_cert_issue/userinput_jsonform.json"
     },
     {
       "id": "npqs_treatment_request_review",
@@ -239,13 +197,6 @@
       "path": "npqs_treatment_supervision/officerinput_jsonform.json"
     },
     {
-      "id": "npqs-apply-phyto-cert--user-form",
-      "kind": "generic_template",
-      "version": "",
-      "loader": "local",
-      "path": "npqs_treatment_supervision/userinput_jsonform.json"
-    },
-    {
       "id": "npqs_visual_sample",
       "kind": "task_config",
       "version": "",
@@ -260,13 +211,6 @@
       "path": "npqs_visual_sample/officerinput_jsonform.json"
     },
     {
-      "id": "npqs-apply-phyto-cert--user-form",
-      "kind": "generic_template",
-      "version": "",
-      "loader": "local",
-      "path": "npqs_visual_sample/userinput_jsonform.json"
-    },
-    {
       "id": "npqs_visual_system",
       "kind": "task_config",
       "version": "",
@@ -279,13 +223,6 @@
       "version": "",
       "loader": "local",
       "path": "npqs_visual_system/officerinput_jsonform.json"
-    },
-    {
-      "id": "npqs-apply-phyto-cert--user-form",
-      "kind": "generic_template",
-      "version": "",
-      "loader": "local",
-      "path": "npqs_visual_system/userinput_jsonform.json"
     },
     {
       "id": "npqs_visual_sample_receive",

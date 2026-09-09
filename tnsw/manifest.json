@@ -151,12 +151,6 @@
       "path": "npqs/1-apply/reviewerinput.json"
     },
     {
-      "id": "npqs-apply-phyto-cert--reviewer-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs/1-apply/reviewerinput_jsonform.json"
-    },
-    {
       "id": "npqs-apply-phyto-cert--user-input",
       "kind": "subtask_template",
       "version": "",
@@ -205,22 +199,10 @@
       "path": "npqs/2-sample_collection/officer_draw.json"
     },
     {
-      "id": "npqs-draw-sample--officer-draw-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs/2-sample_collection/officer_draw_jsonform.json"
-    },
-    {
       "id": "npqs-draw-sample--officer-receive",
       "kind": "subtask_template",
       "version": "",
       "path": "npqs/2-sample_collection/officer_receive.json"
-    },
-    {
-      "id": "npqs-draw-sample--officer-receive-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs/2-sample_collection/officer_receive_jsonform.json"
     },
     {
       "id": "npqs-draw-sample:render",
@@ -271,12 +253,6 @@
       "path": "npqs/3-lab_testing/officerinput.json"
     },
     {
-      "id": "npqs-lab-testing--officer-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs/3-lab_testing/officerinput_jsonform.json"
-    },
-    {
       "id": "npqs-lab-testing:render",
       "kind": "generic_template",
       "version": "",
@@ -307,12 +283,6 @@
       "path": "npqs/4-1-visual_sample/officerinput.json"
     },
     {
-      "id": "npqs-visual-sample-inspection--officer-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs/4-1-visual_sample/officerinput_jsonform.json"
-    },
-    {
       "id": "npqs-visual-sample-inspection:render",
       "kind": "generic_template",
       "version": "",
@@ -341,12 +311,6 @@
       "kind": "subtask_template",
       "version": "",
       "path": "npqs/4-2-visual_consignment/inspection.json"
-    },
-    {
-      "id": "npqs-visual-consignment--officer-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs/4-2-visual_consignment/inspection_jsonform.json"
     },
     {
       "id": "npqs-visual-consignment-flow:render",
@@ -389,12 +353,6 @@
       "kind": "subtask_template",
       "version": "",
       "path": "npqs/4-3-visual_system/officerinput.json"
-    },
-    {
-      "id": "npqs-visual-system-inspection--officer-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs/4-3-visual_system/officerinput_jsonform.json"
     },
     {
       "id": "npqs-visual-system-inspection:render",
@@ -445,12 +403,6 @@
       "path": "npqs/5-1-treatment_request/review.json"
     },
     {
-      "id": "npqs-treatment-request--reviewer-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs/5-1-treatment_request/review_jsonform.json"
-    },
-    {
       "id": "npqs-treatment-request",
       "kind": "workflow",
       "version": "",
@@ -469,22 +421,10 @@
       "path": "npqs/5-1-treatment_request/status_markdown.json"
     },
     {
-      "id": "npqs-pay-for-treatment--instructions-wrapper",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs/5-2-treatment_payment/instructions_wrapper_jsonform.json"
-    },
-    {
       "id": "npqs-pay-for-treatment--payment",
       "kind": "subtask_template",
       "version": "",
       "path": "npqs/5-2-treatment_payment/payment.json"
-    },
-    {
-      "id": "npqs-pay-for-treatment--payment-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs/5-2-treatment_payment/payment_jsonform.json"
     },
     {
       "id": "npqs-pay-for-treatment:render",
@@ -527,12 +467,6 @@
       "kind": "subtask_template",
       "version": "",
       "path": "npqs/5-3-treatment_cert_issue/officerinput.json"
-    },
-    {
-      "id": "npqs-issue-treatment-cert--officer-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs/5-3-treatment_cert_issue/officerinput_jsonform.json"
     },
     {
       "id": "npqs-issue-treatment-cert:render",
@@ -601,12 +535,6 @@
       "path": "npqs/5-5-treatment_review_certs/officerinput.json"
     },
     {
-      "id": "npqs-review-treatment-certs--officer-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs/5-5-treatment_review_certs/officerinput_jsonform.json"
-    },
-    {
       "id": "npqs-review-treatment-certs:render",
       "kind": "generic_template",
       "version": "",
@@ -635,12 +563,6 @@
       "kind": "subtask_template",
       "version": "",
       "path": "npqs/5-6-treatment_supervisor_report/officerinput.json"
-    },
-    {
-      "id": "npqs-treatment-supervisor-report--officer-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs/5-6-treatment_supervisor_report/officerinput_jsonform.json"
     },
     {
       "id": "npqs-treatment-supervisor-report:render",
@@ -709,12 +631,6 @@
       "path": "npqs/6-2-review_docs/officerinput.json"
     },
     {
-      "id": "npqs-review-docs--officer-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs/6-2-review_docs/officerinput_jsonform.json"
-    },
-    {
       "id": "npqs-review-docs:render",
       "kind": "generic_template",
       "version": "",
@@ -739,22 +655,10 @@
       "path": "npqs/6-2-review_docs/status_markdown.json"
     },
     {
-      "id": "npqs-pay-certificate-fee--instructions-wrapper",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs/7-payment/instructions_wrapper_jsonform.json"
-    },
-    {
       "id": "npqs-pay-certificate-fee--payment",
       "kind": "subtask_template",
       "version": "",
       "path": "npqs/7-payment/payment.json"
-    },
-    {
-      "id": "npqs-pay-certificate-fee--payment-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs/7-payment/payment_jsonform.json"
     },
     {
       "id": "npqs-pay-certificate-fee:render",
@@ -797,12 +701,6 @@
       "kind": "subtask_template",
       "version": "",
       "path": "npqs/8-issue_certificate/officerinput.json"
-    },
-    {
-      "id": "npqs-issue-certificate--officer-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs/8-issue_certificate/officerinput_jsonform.json"
     },
     {
       "id": "npqs-issue-certificate:render",
@@ -911,768 +809,6 @@
       "kind": "workflow",
       "version": "",
       "path": "npqs/npqs_workflow.json"
-    },
-    {
-      "id": "npqs-v2-apply-phyto-cert:render",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/1-apply/render.json"
-    },
-    {
-      "id": "npqs-v2-apply-phyto-cert--external-review",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs_v2/1-apply/reviewerinput.json"
-    },
-    {
-      "id": "npqs-v2-apply-phyto-cert--reviewer-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/1-apply/reviewerinput_jsonform.json"
-    },
-    {
-      "id": "npqs-v2-apply-phyto-cert--user-input",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs_v2/1-apply/userinput.json"
-    },
-    {
-      "id": "npqs-v2-apply-phyto-cert--user-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/1-apply/userinput_jsonform.json"
-    },
-    {
-      "id": "npqs-v2-apply-phyto-cert",
-      "kind": "workflow",
-      "version": "",
-      "path": "npqs_v2/1-apply/workflow.json"
-    },
-    {
-      "id": "npqs-v2-apply-phyto-cert",
-      "kind": "task_template",
-      "version": "",
-      "path": "npqs_v2/1-apply/task_template.json"
-    },
-    {
-      "id": "npqs-v2-apply-phyto-cert--status",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/1-apply/status_markdown.json"
-    },
-    {
-      "id": "npqs-v2-draw-sample--officer-draw",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs_v2/2-sample_collection/officer_draw.json"
-    },
-    {
-      "id": "npqs-v2-draw-sample--officer-draw-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/2-sample_collection/officer_draw_jsonform.json"
-    },
-    {
-      "id": "npqs-v2-draw-sample--officer-receive",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs_v2/2-sample_collection/officer_receive.json"
-    },
-    {
-      "id": "npqs-v2-draw-sample--officer-receive-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/2-sample_collection/officer_receive_jsonform.json"
-    },
-    {
-      "id": "npqs-v2-draw-sample:render",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/2-sample_collection/render.json"
-    },
-    {
-      "id": "npqs-v2-draw-sample--trader-submit",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs_v2/2-sample_collection/trader_submit.json"
-    },
-    {
-      "id": "npqs-v2-draw-sample--trader-submit-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/2-sample_collection/trader_submit_jsonform.json"
-    },
-    {
-      "id": "npqs-v2-draw-sample",
-      "kind": "workflow",
-      "version": "",
-      "path": "npqs_v2/2-sample_collection/workflow.json"
-    },
-    {
-      "id": "npqs-v2-draw-sample",
-      "kind": "task_template",
-      "version": "",
-      "path": "npqs_v2/2-sample_collection/task_template.json"
-    },
-    {
-      "id": "npqs-v2-draw-sample--results",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/2-sample_collection/results_markdown.json"
-    },
-    {
-      "id": "npqs-v2-draw-sample--status",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/2-sample_collection/status_markdown.json"
-    },
-    {
-      "id": "npqs-v2-lab-testing--officer-review",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs_v2/3-lab_testing/officerinput.json"
-    },
-    {
-      "id": "npqs-v2-lab-testing--officer-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/3-lab_testing/officerinput_jsonform.json"
-    },
-    {
-      "id": "npqs-v2-lab-testing:render",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/3-lab_testing/render.json"
-    },
-    {
-      "id": "npqs-v2-lab-testing",
-      "kind": "workflow",
-      "version": "",
-      "path": "npqs_v2/3-lab_testing/workflow.json"
-    },
-    {
-      "id": "npqs-v2-lab-testing",
-      "kind": "task_template",
-      "version": "",
-      "path": "npqs_v2/3-lab_testing/task_template.json"
-    },
-    {
-      "id": "npqs-v2-lab-testing--status",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/3-lab_testing/status_markdown.json"
-    },
-    {
-      "id": "npqs-v2-visual-sample-inspection--officer-review",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs_v2/4-1-visual_sample/officerinput.json"
-    },
-    {
-      "id": "npqs-v2-visual-sample-inspection--officer-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/4-1-visual_sample/officerinput_jsonform.json"
-    },
-    {
-      "id": "npqs-v2-visual-sample-inspection:render",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/4-1-visual_sample/render.json"
-    },
-    {
-      "id": "npqs-v2-visual-sample-inspection",
-      "kind": "workflow",
-      "version": "",
-      "path": "npqs_v2/4-1-visual_sample/workflow.json"
-    },
-    {
-      "id": "npqs-v2-visual-sample-inspection",
-      "kind": "task_template",
-      "version": "",
-      "path": "npqs_v2/4-1-visual_sample/task_template.json"
-    },
-    {
-      "id": "npqs-v2-visual-sample--status",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/4-1-visual_sample/status_markdown.json"
-    },
-    {
-      "id": "npqs-v2-visual-consignment--officer-review",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs_v2/4-2-visual_consignment/inspection.json"
-    },
-    {
-      "id": "npqs-v2-visual-consignment--officer-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/4-2-visual_consignment/inspection_jsonform.json"
-    },
-    {
-      "id": "npqs-v2-visual-consignment-flow:render",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/4-2-visual_consignment/render.json"
-    },
-    {
-      "id": "npqs-v2-visual-consignment--trader-schedule",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs_v2/4-2-visual_consignment/scheduling.json"
-    },
-    {
-      "id": "npqs-v2-visual-consignment--trader-schedule-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/4-2-visual_consignment/scheduling_jsonform.json"
-    },
-    {
-      "id": "npqs-v2-visual-consignment-flow",
-      "kind": "workflow",
-      "version": "",
-      "path": "npqs_v2/4-2-visual_consignment/workflow.json"
-    },
-    {
-      "id": "npqs-v2-visual-consignment-flow",
-      "kind": "task_template",
-      "version": "",
-      "path": "npqs_v2/4-2-visual_consignment/task_template.json"
-    },
-    {
-      "id": "npqs-v2-visual-consignment--status",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/4-2-visual_consignment/status_markdown.json"
-    },
-    {
-      "id": "npqs-v2-visual-system-inspection--officer-review",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs_v2/4-3-visual_system/officerinput.json"
-    },
-    {
-      "id": "npqs-v2-visual-system-inspection--officer-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/4-3-visual_system/officerinput_jsonform.json"
-    },
-    {
-      "id": "npqs-v2-visual-system-inspection:render",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/4-3-visual_system/render.json"
-    },
-    {
-      "id": "npqs-v2-visual-system-inspection",
-      "kind": "workflow",
-      "version": "",
-      "path": "npqs_v2/4-3-visual_system/workflow.json"
-    },
-    {
-      "id": "npqs-v2-visual-system-inspection",
-      "kind": "task_template",
-      "version": "",
-      "path": "npqs_v2/4-3-visual_system/task_template.json"
-    },
-    {
-      "id": "npqs-v2-visual-system--status",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/4-3-visual_system/status_markdown.json"
-    },
-    {
-      "id": "npqs-v2-treatment-request:render",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/5-1-treatment_request/render.json"
-    },
-    {
-      "id": "npqs-v2-treatment-request--trader-request",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs_v2/5-1-treatment_request/request.json"
-    },
-    {
-      "id": "npqs-v2-treatment-request--trader-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/5-1-treatment_request/request_jsonform.json"
-    },
-    {
-      "id": "npqs-v2-treatment-request--officer-review",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs_v2/5-1-treatment_request/review.json"
-    },
-    {
-      "id": "npqs-v2-treatment-request--reviewer-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/5-1-treatment_request/review_jsonform.json"
-    },
-    {
-      "id": "npqs-v2-treatment-request",
-      "kind": "workflow",
-      "version": "",
-      "path": "npqs_v2/5-1-treatment_request/workflow.json"
-    },
-    {
-      "id": "npqs-v2-treatment-request",
-      "kind": "task_template",
-      "version": "",
-      "path": "npqs_v2/5-1-treatment_request/task_template.json"
-    },
-    {
-      "id": "npqs-v2-treatment-request--status",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/5-1-treatment_request/status_markdown.json"
-    },
-    {
-      "id": "npqs-v2-pay-for-treatment--instructions-wrapper",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/5-2-treatment_payment/instructions_wrapper_jsonform.json"
-    },
-    {
-      "id": "npqs-v2-pay-for-treatment--payment",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs_v2/5-2-treatment_payment/payment.json"
-    },
-    {
-      "id": "npqs-v2-pay-for-treatment--payment-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/5-2-treatment_payment/payment_jsonform.json"
-    },
-    {
-      "id": "npqs-v2-pay-for-treatment:render",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/5-2-treatment_payment/render.json"
-    },
-    {
-      "id": "npqs-v2-pay-for-treatment--select-method",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs_v2/5-2-treatment_payment/select_method.json"
-    },
-    {
-      "id": "npqs-v2-pay-for-treatment--select-method-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/5-2-treatment_payment/select_method_jsonform.json"
-    },
-    {
-      "id": "npqs-v2-pay-for-treatment--success-message",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/5-2-treatment_payment/success_message_jsonform.json"
-    },
-    {
-      "id": "npqs-v2-pay-for-treatment",
-      "kind": "workflow",
-      "version": "",
-      "path": "npqs_v2/5-2-treatment_payment/workflow.json"
-    },
-    {
-      "id": "npqs-v2-pay-for-treatment",
-      "kind": "task_template",
-      "version": "",
-      "path": "npqs_v2/5-2-treatment_payment/task_template.json"
-    },
-    {
-      "id": "npqs-v2-issue-treatment-cert--officer-review",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs_v2/5-3-treatment_cert_issue/officerinput.json"
-    },
-    {
-      "id": "npqs-v2-issue-treatment-cert--officer-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/5-3-treatment_cert_issue/officerinput_jsonform.json"
-    },
-    {
-      "id": "npqs-v2-issue-treatment-cert:render",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/5-3-treatment_cert_issue/render.json"
-    },
-    {
-      "id": "npqs-v2-issue-treatment-cert",
-      "kind": "workflow",
-      "version": "",
-      "path": "npqs_v2/5-3-treatment_cert_issue/workflow.json"
-    },
-    {
-      "id": "npqs-v2-issue-treatment-cert",
-      "kind": "task_template",
-      "version": "",
-      "path": "npqs_v2/5-3-treatment_cert_issue/task_template.json"
-    },
-    {
-      "id": "npqs-v2-treatment-cert-issue--status",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/5-3-treatment_cert_issue/status_markdown.json"
-    },
-    {
-      "id": "npqs-v2-upload-treatment-certs:render",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/5-4-treatment_upload_certs/render.json"
-    },
-    {
-      "id": "npqs-v2-upload-treatment-certs--user-input",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs_v2/5-4-treatment_upload_certs/traderinput.json"
-    },
-    {
-      "id": "npqs-v2-upload-treatment-certs--trader-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/5-4-treatment_upload_certs/traderinput_jsonform.json"
-    },
-    {
-      "id": "npqs-v2-upload-treatment-certs",
-      "kind": "workflow",
-      "version": "",
-      "path": "npqs_v2/5-4-treatment_upload_certs/workflow.json"
-    },
-    {
-      "id": "npqs-v2-upload-treatment-certs",
-      "kind": "task_template",
-      "version": "",
-      "path": "npqs_v2/5-4-treatment_upload_certs/task_template.json"
-    },
-    {
-      "id": "npqs-v2-treatment-upload-certs--status",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/5-4-treatment_upload_certs/status_markdown.json"
-    },
-    {
-      "id": "npqs-v2-review-treatment-certs--officer-review",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs_v2/5-5-treatment_review_certs/officerinput.json"
-    },
-    {
-      "id": "npqs-v2-review-treatment-certs--officer-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/5-5-treatment_review_certs/officerinput_jsonform.json"
-    },
-    {
-      "id": "npqs-v2-review-treatment-certs:render",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/5-5-treatment_review_certs/render.json"
-    },
-    {
-      "id": "npqs-v2-review-treatment-certs",
-      "kind": "workflow",
-      "version": "",
-      "path": "npqs_v2/5-5-treatment_review_certs/workflow.json"
-    },
-    {
-      "id": "npqs-v2-review-treatment-certs",
-      "kind": "task_template",
-      "version": "",
-      "path": "npqs_v2/5-5-treatment_review_certs/task_template.json"
-    },
-    {
-      "id": "npqs-v2-treatment-review-certs--status",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/5-5-treatment_review_certs/status_markdown.json"
-    },
-    {
-      "id": "npqs-v2-treatment-supervisor-report--officer-review",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs_v2/5-6-treatment_supervisor_report/officerinput.json"
-    },
-    {
-      "id": "npqs-v2-treatment-supervisor-report--officer-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/5-6-treatment_supervisor_report/officerinput_jsonform.json"
-    },
-    {
-      "id": "npqs-v2-treatment-supervisor-report:render",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/5-6-treatment_supervisor_report/render.json"
-    },
-    {
-      "id": "npqs-v2-treatment-supervisor-report",
-      "kind": "workflow",
-      "version": "",
-      "path": "npqs_v2/5-6-treatment_supervisor_report/workflow.json"
-    },
-    {
-      "id": "npqs-v2-treatment-supervisor-report",
-      "kind": "task_template",
-      "version": "",
-      "path": "npqs_v2/5-6-treatment_supervisor_report/task_template.json"
-    },
-    {
-      "id": "npqs-v2-supervision-report--status",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/5-6-treatment_supervisor_report/status_markdown.json"
-    },
-    {
-      "id": "npqs-v2-upload-docs:render",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/6-1-upload_docs/render.json"
-    },
-    {
-      "id": "npqs-v2-upload-docs--user-input",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs_v2/6-1-upload_docs/traderinput.json"
-    },
-    {
-      "id": "npqs-v2-upload-docs--trader-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/6-1-upload_docs/traderinput_jsonform.json"
-    },
-    {
-      "id": "npqs-v2-upload-docs",
-      "kind": "workflow",
-      "version": "",
-      "path": "npqs_v2/6-1-upload_docs/workflow.json"
-    },
-    {
-      "id": "npqs-v2-upload-docs",
-      "kind": "task_template",
-      "version": "",
-      "path": "npqs_v2/6-1-upload_docs/task_template.json"
-    },
-    {
-      "id": "npqs-v2-upload-docs--status",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/6-1-upload_docs/status_markdown.json"
-    },
-    {
-      "id": "npqs-v2-review-docs--officer-review",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs_v2/6-2-review_docs/officerinput.json"
-    },
-    {
-      "id": "npqs-v2-review-docs--officer-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/6-2-review_docs/officerinput_jsonform.json"
-    },
-    {
-      "id": "npqs-v2-review-docs:render",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/6-2-review_docs/render.json"
-    },
-    {
-      "id": "npqs-v2-review-docs",
-      "kind": "workflow",
-      "version": "",
-      "path": "npqs_v2/6-2-review_docs/workflow.json"
-    },
-    {
-      "id": "npqs-v2-review-docs",
-      "kind": "task_template",
-      "version": "",
-      "path": "npqs_v2/6-2-review_docs/task_template.json"
-    },
-    {
-      "id": "npqs-v2-review-docs--status",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/6-2-review_docs/status_markdown.json"
-    },
-    {
-      "id": "npqs-v2-pay-certificate-fee--instructions-wrapper",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/7-payment/instructions_wrapper_jsonform.json"
-    },
-    {
-      "id": "npqs-v2-pay-certificate-fee--payment",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs_v2/7-payment/payment.json"
-    },
-    {
-      "id": "npqs-v2-pay-certificate-fee--payment-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/7-payment/payment_jsonform.json"
-    },
-    {
-      "id": "npqs-v2-pay-certificate-fee:render",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/7-payment/render.json"
-    },
-    {
-      "id": "npqs-v2-pay-certificate-fee--select-method",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs_v2/7-payment/select_method.json"
-    },
-    {
-      "id": "npqs-v2-pay-certificate-fee--select-method-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/7-payment/select_method_jsonform.json"
-    },
-    {
-      "id": "npqs-v2-pay-certificate-fee--success-message",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/7-payment/success_message_jsonform.json"
-    },
-    {
-      "id": "npqs-v2-pay-certificate-fee",
-      "kind": "workflow",
-      "version": "",
-      "path": "npqs_v2/7-payment/workflow.json"
-    },
-    {
-      "id": "npqs-v2-pay-certificate-fee",
-      "kind": "task_template",
-      "version": "",
-      "path": "npqs_v2/7-payment/task_template.json"
-    },
-    {
-      "id": "npqs-v2-issue-certificate--officer-review",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs_v2/8-issue_certificate/officerinput.json"
-    },
-    {
-      "id": "npqs-v2-issue-certificate--officer-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/8-issue_certificate/officerinput_jsonform.json"
-    },
-    {
-      "id": "npqs-v2-issue-certificate:render",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/8-issue_certificate/render.json"
-    },
-    {
-      "id": "npqs-v2-issue-certificate",
-      "kind": "workflow",
-      "version": "",
-      "path": "npqs_v2/8-issue_certificate/workflow.json"
-    },
-    {
-      "id": "npqs-v2-issue-certificate",
-      "kind": "task_template",
-      "version": "",
-      "path": "npqs_v2/8-issue_certificate/task_template.json"
-    },
-    {
-      "id": "npqs-v2-issue-certificate--status",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/8-issue_certificate/status_markdown.json"
-    },
-    {
-      "id": "npqs-v2-ephyto-upload:render",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/9-ephyto/render.json"
-    },
-    {
-      "id": "npqs-v2-ephyto-upload--action-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/9-ephyto/action_form.json"
-    },
-    {
-      "id": "npqs-v2-ephyto-upload--submit-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/9-ephyto/submit_form.json"
-    },
-    {
-      "id": "npqs-v2-ephyto-upload--submission-msg",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/9-ephyto/submission_markdown.json"
-    },
-    {
-      "id": "npqs-v2-ephyto-upload--polling-msg",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/9-ephyto/polling_markdown.json"
-    },
-    {
-      "id": "npqs-v2-ephyto-upload--completed-msg",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/9-ephyto/completed_markdown.json"
-    },
-    {
-      "id": "npqs-v2-ephyto-upload--timeout-msg",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/9-ephyto/timeout_markdown.json"
-    },
-    {
-      "id": "npqs-v2-ephyto-upload--submission",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs_v2/9-ephyto/submission.json"
-    },
-    {
-      "id": "npqs-v2-ephyto-upload--submit",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs_v2/9-ephyto/submit.json"
-    },
-    {
-      "id": "npqs-v2-ephyto-upload--poll",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs_v2/9-ephyto/poll.json"
-    },
-    {
-      "id": "npqs-v2-ephyto-upload--poll-timeout",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs_v2/9-ephyto/poll_timeout.json"
-    },
-    {
-      "id": "npqs-v2-ephyto-upload",
-      "kind": "workflow",
-      "version": "",
-      "path": "npqs_v2/9-ephyto/workflow.json"
-    },
-    {
-      "id": "npqs-v2-ephyto-upload",
-      "kind": "task_template",
-      "version": "",
-      "path": "npqs_v2/9-ephyto/task_template.json"
-    },
-    {
-      "id": "npqs-v2-export-phytosanitary-reg",
-      "kind": "workflow",
-      "version": "",
-      "path": "npqs_v2/npqs_workflow.json"
     },
     {
       "id": "fcau-apply-health-cert-flow:render",
@@ -3949,46 +3085,58 @@
       "path": "slpa/5-container_consolidation/resolve.json"
     },
     {
-      "id": "npqs-v2-treatment-request--items-summary",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_v2/5-1-treatment_request/items_summary_markdown.json"
-    },
-    {
-      "id": "npqs-v2-visual-sample-collection",
+      "id": "npqs-visual-sample-collection",
       "kind": "task_template",
       "version": "",
-      "path": "npqs_v2/4-0-visual_sample_collection/task_template.json"
+      "path": "npqs/4-0-visual_sample_collection/task_template.json"
     },
     {
-      "id": "npqs-v2-visual-sample-collection",
+      "id": "npqs-visual-sample-collection",
       "kind": "workflow",
       "version": "",
-      "path": "npqs_v2/4-0-visual_sample_collection/workflow.json"
+      "path": "npqs/4-0-visual_sample_collection/workflow.json"
     },
     {
-      "id": "npqs-v2-visual-sample-collection--officer-receive",
+      "id": "npqs-visual-sample-collection--officer-receive",
       "kind": "subtask_template",
       "version": "",
-      "path": "npqs_v2/4-0-visual_sample_collection/officer_receive.json"
+      "path": "npqs/4-0-visual_sample_collection/officer_receive.json"
     },
     {
-      "id": "npqs-v2-visual-sample-collection--officer-receive-form",
+      "id": "npqs-visual-sample-collection:render",
       "kind": "generic_template",
       "version": "",
-      "path": "npqs_v2/4-0-visual_sample_collection/officer_receive_jsonform.json"
+      "path": "npqs/4-0-visual_sample_collection/render.json"
     },
     {
-      "id": "npqs-v2-visual-sample-collection:render",
+      "id": "npqs-visual-sample-collection--status",
       "kind": "generic_template",
       "version": "",
-      "path": "npqs_v2/4-0-visual_sample_collection/render.json"
+      "path": "npqs/4-0-visual_sample_collection/status_markdown.json"
     },
     {
-      "id": "npqs-v2-visual-sample-collection--status",
+      "id": "npqs-pay-for-treatment--payment-details-markdown",
       "kind": "generic_template",
       "version": "",
-      "path": "npqs_v2/4-0-visual_sample_collection/status_markdown.json"
+      "path": "npqs/5-2-treatment_payment/payment_details_markdown.json"
+    },
+    {
+      "id": "npqs-pay-certificate-fee--payment-details-markdown",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/7-payment/payment_details_markdown.json"
+    },
+    {
+      "id": "npqs-treatment-request--items-summary",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/5-1-treatment_request/items_summary_markdown.json"
+    },
+    {
+      "id": "npqs-upload-docs--confirmation",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/6-1-upload_docs/confirmation_markdown.json"
     }
   ]
 }
