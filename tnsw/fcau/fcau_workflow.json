@@ -259,7 +259,10 @@
       "id": "fcau_sub_parallel_test_join",
       "type": "GATEWAY",
       "gateway_type": "PARALLEL_JOIN",
-      "name": "Synchronize Inner Testing Paths"
+      "name": "Synchronize Inner Testing Paths",
+      "parallel_join": {
+        "gateway_node_id": "fcau_sub_parallel_test_fork"
+      }
     },
     {
       "id": "fcau_join_sample_flow_branch",
@@ -271,7 +274,10 @@
       "id": "fcau_main_parallel_join",
       "type": "GATEWAY",
       "gateway_type": "PARALLEL_JOIN",
-      "name": "Synchronize All Root Parallel Branches"
+      "name": "Synchronize All Root Parallel Branches",
+      "parallel_join": {
+        "gateway_node_id": "fcau_main_parallel_fork"
+      }
     },
     {
       "id": "fcau_result_assessment_gateway",
