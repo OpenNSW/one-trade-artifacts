@@ -1,0 +1,121 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://opennsw.dev/schemas/workflow-context.schema.json",
+  "title": "WorkflowSeedContext",
+  "description": "Reference definitions (not an artifact kind, no manifest entry, no single root object to validate) for context assumed to be available as independently-seeded workflow variables — never nested under one combined wrapper. 'company' (see definitions.company below) is seeded as tnsw/trade/trade_workflow.json's own top-level variable named 'traderCompany' (see trade_1_cha_selection's input_mapping); it crosses into tnsw/trade/3-prepare_split_items's build_split_items node as local var 'company', which HSCODE_SPLIT_BUILDER bakes into each split item; inside a SPLIT_TASK-spawned agency flow (e.g. tnsw/npqs/npqs_workflow.json's n1_apply) it's read back out at '_iter.input.company.<field>' — '_iter' being the current split-task iteration context and '.input' that item's own input payload. See .claude/skills/autofill-global-context/SKILL.md for how to wire a new field into a workflow.",
+  "definitions": {
+    "company": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "The registered trader company a workflow (or a spawned agency workflow) is running on behalf of. Shape confirmed directly from a real sample payload (2026-09-08) — see per-field notes below for anything inferred rather than directly confirmed.",
+      "required": ["id", "name", "data"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Company id in the trader-registry service, e.g. 'adam-pvt-ltd'. Note: this exact value also appears as the example for trade-cha-selection-flow's 'cha_company_id' x-search field (tnsw/trade/1-cha_selection/userinput_jsonform.json) — suggestive that CHAs and trader companies may share this same id space/registry, but that's an observation, not a confirmed fact."
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Company display name, e.g. 'ADAM PVT LTD'. There is only one name field — a form needing two differently-labeled name fields (e.g. an 'applicant name' and an 'exporter name') can only wire one of them from this source, since input_mapping source keys must be unique; wire the other manually or add a distinctly-named field here if a genuinely separate value is confirmed to exist."
+        },
+        "ouHandle": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Organizational-unit handle. Equal to 'id' in the one confirmed sample seen so far ('adam-pvt-ltd') — exact relationship to 'id' (always identical vs. coincidence) is not confirmed."
+        },
+        "hasCha": {
+          "type": "boolean",
+          "description": "Meaning not fully confirmed. Most likely: whether this company currently has a CHA associated with it (e.g. to decide whether tnsw/trade/1-cha_selection should default-select one). Verify the exact semantics before branching or autofilling logic on it."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When this company record was created, e.g. '2026-09-08T14:00:53.413612+05:30'."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When this company record was last updated."
+        },
+        "data": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Registry attributes about the company. Note there is no 'address' field anywhere in the confirmed payload — tnsw/npqs/npqs_workflow.json previously assumed one (company.address) for autofilling exporter_address; that wiring has been removed since there's no real source for it. If an address exists elsewhere, re-add it here once confirmed.",
+          "required": ["br_no"],
+          "properties": {
+            "br_no": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Sri Lanka business registration (BR) number, e.g. 'PV-00123456'."
+            },
+            "tin_no": {
+              "type": "string",
+              "description": "Tax Identification Number, e.g. '134256789'."
+            },
+            "vat_no": {
+              "type": "string",
+              "description": "VAT registration number, e.g. 'VAT-409123456-7000'."
+            },
+            "contact_email": {
+              "type": "string",
+              "format": "email",
+              "description": "Primary contact email on file for the company."
+            },
+            "agencies": {
+              "type": "object",
+              "additionalProperties": false,
+              "description": "Per-regulatory-agency data about this company, keyed by agency slug (cda/customs/fcau/npqs/sltb, per CLAUDE.md's agency list). Each agency's object shape is agency-specific — there's no shared sub-schema, since what one agency tracks about a registrant has nothing to do with what another does. Only 'npqs' is modeled so far; add a sibling property here (and wire it the same way, via that agency's own macro workflow) when another agency needs its own company-level data. Placement under 'data' (alongside br_no/tin_no/vat_no) is a best-fit guess for consistency with the rest of this object, not yet confirmed against the real payload — move it if the actual data lands elsewhere.",
+              "properties": {
+                "npqs": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "description": "NPQS-specific data about this company.",
+                  "properties": {
+                    "registration_number": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "This company's NPQS registration/exporter number."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "cha": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "The Customs House Agent (CHA) firm an acting session belongs to — a separately-seeded variable from 'company' above, not a field on it. Null/absent when the acting user is not a CHA (e.g. a trader submitting directly) — every consumer must treat it as optional. Not yet wired into any input_mapping: tnsw/trade/trade_workflow.json is trader-initiated, so its 1-cha_selection step (where the trader picks a CHA) has no CHA in its own session to prefill from. Modeled here for a future CHA-initiated flow or CHA-facing view that needs it.",
+      "required": ["cha_company_id", "cha_name"],
+      "properties": {
+        "cha_company_id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Same id space as trade-cha-selection-flow's 'cha_company_id' field (tnsw/trade/1-cha_selection/userinput_jsonform.json) — this is the value that field's x-search resolves to, e.g. 'adam-pvt-ltd'."
+        },
+        "cha_name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Display name of the CHA firm."
+        },
+        "cha_license_number": {
+          "type": "string",
+          "description": "Sri Lanka Customs CHA license number."
+        },
+        "contact_email": {
+          "type": "string",
+          "format": "email",
+          "description": "Primary contact email on file for the CHA firm."
+        },
+        "contact_phone": {
+          "type": "string",
+          "description": "Primary contact phone number on file for the CHA firm."
+        }
+      }
+    }
+  }
+}

@@ -14,7 +14,9 @@
       "name": "Select Customs House Agent (CHA)",
       "task_template_id": "trade-cha-selection-flow",
       "lane": "Trader/CHA",
-      "input_mapping": {},
+      "input_mapping": {
+        "traderCompany.data.contact_email?": "traderinput.notifyRecipient"
+      },
       "output_mapping": {
         "traderinput.cha_company_id": "trade.cha_company_id",
         "traderinput.consignment_name": "trade.consignment_name"
