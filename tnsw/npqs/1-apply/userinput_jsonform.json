@@ -504,7 +504,7 @@
         "example": [
           {
             "id": "item-1",
-            "commodity_common_name": "Cut Rose Flowers",
+            "commodity_common_name": { "value": "Cut Rose Flowers", "label": "Cut Rose Flowers" },
             "commodity_botanical_name": "Rosa hybrida",
             "commodity_language": "English",
             "commodity_description": "Fresh cut rose flowers for commercial export",
@@ -523,7 +523,7 @@
           },
           {
             "id": "item-2",
-            "commodity_common_name": "Fresh Cut Foliage",
+            "commodity_common_name": { "value": "Fresh Cut Foliage", "label": "Fresh Cut Foliage" },
             "commodity_botanical_name": "Monstera deliciosa",
             "commodity_language": "English",
             "commodity_description": "Cut foliage leaves for ornamental bouquets",
@@ -542,7 +542,7 @@
           },
           {
             "id": "item-3",
-            "commodity_common_name": "Sawn Timber",
+            "commodity_common_name": { "value": "Sawn Timber", "label": "Sawn Timber" },
             "commodity_botanical_name": "Hevea brasiliensis",
             "commodity_language": "English",
             "commodity_description": "Kiln-dried treated rubberwood sawn timber planks",
@@ -561,7 +561,7 @@
           },
           {
             "id": "item-4",
-            "commodity_common_name": "Coir Pith Block",
+            "commodity_common_name": { "value": "Coir Pith Block", "label": "Coir Pith Block" },
             "commodity_botanical_name": "Cocos nucifera",
             "commodity_language": "English",
             "commodity_description": "Compressed coco peat growing medium substrate blocks",
