@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "taskCode": "cda_asycuda_green_check_v1",
+  "meta": {
+    "title": "CDA ASYCUDA Green Check",
+    "description": "Officer puts the ASYCUDA green check on an exclusive Value Added DC or Low Fat DC consignment. Salmonella certificate and quality check are not required.",
+    "category": "CDA"
+  },
+  "forms": {
+    "view": "cda-apply-coconut-cert--user-form",
+    "review": "cda-asycuda-green-check--officer-form"
+  },
+  "behavior": {
+    "type": "statusMap",
+    "outcomeField": "review_outcome",
+    "statusMap": {
+      "approve": "APPROVED"
+    }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW"
+      ]
+    }
+  ]
+}

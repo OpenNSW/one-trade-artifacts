@@ -20,9 +20,6 @@
         "hs_code?": "userform.hs_code",
         "contract_number?": "userform.contract_number",
         "lot_number?": "userform.lot_number",
-        "product_type_dc": "userform.product_type_dc",
-        "product_type_value_added_dc": "userform.product_type_value_added_dc",
-        "payment_category": "userform.payment_category",
         "dc_grades": "userform.dc_grades",
         "date_of_containerization?": "userform.date_of_containerization",
         "vessel_name?": "userform.vessel_name",
@@ -47,6 +44,8 @@
       },
       "output_mapping": {
         "verification_outcome": "verificationform.verification_outcome",
+        "product_type_dc?": "verificationform.product_type_dc",
+        "product_type_value_added_dc?": "verificationform.product_type_value_added_dc",
         "rejection_reason?": "rejection_reason"
       }
     },

@@ -1,0 +1,69 @@
+{
+  "id": "cda-asycuda-green-check--officer-form",
+  "title": "CDA Officer ASYCUDA Green Check",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "review_outcome": {
+        "type": "string",
+        "title": "Review Outcome",
+        "oneOf": [
+          {
+            "const": "approve",
+            "title": "Approve (Green check on ASYCUDA)"
+          }
+        ],
+        "default": "approve",
+        "example": "approve"
+      },
+      "asycuda_approval_confirmed": {
+        "type": "boolean",
+        "title": "I have logged into the ASYCUDA System and pressed the green check (✓) button to approve this consignment",
+        "description": "Salmonella certificate is not required for exclusive Value Added DC or Low Fat DC. Login to ASYCUDA and press the green check button for this consignment before approving here.",
+        "default": false,
+        "example": true
+      }
+    },
+    "required": [
+      "review_outcome",
+      "asycuda_approval_confirmed"
+    ],
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "review_outcome": {
+              "const": "approve"
+            }
+          },
+          "required": [
+            "review_outcome"
+          ]
+        },
+        "then": {
+          "properties": {
+            "asycuda_approval_confirmed": {
+              "const": true
+            }
+          },
+          "required": [
+            "asycuda_approval_confirmed"
+          ]
+        }
+      }
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/review_outcome"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/asycuda_approval_confirmed"
+      }
+    ]
+  }
+}
