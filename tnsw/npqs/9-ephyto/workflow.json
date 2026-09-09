@@ -1,7 +1,7 @@
 {
   "id": "npqs-ephyto-upload",
   "name": "Upload to IPPC ePhyto Hub",
-  "version": 11,
+  "version": 9,
   "nodes": [
     {
       "id": "start",
@@ -66,9 +66,9 @@
         "ephyto.tracking_number": "tracking_number"
       },
       "output_mapping": {
-        "ephyto_poll.delivered": "ephyto_poll.delivered",
-        "ephyto_poll.tracking_info?": "ephyto_poll.tracking_info",
-        "ephyto_poll.error": "ephyto_poll.error"
+        "ephyto.delivered": "ephyto.delivered",
+        "ephyto.tracking_info?": "ephyto.tracking_info",
+        "ephyto.error": "ephyto.error"
       }
     },
     {
@@ -97,7 +97,7 @@
         "reference_number": "reference_number",
         "certificate_id": "certificate_id",
         "ephyto.tracking_number?": "ephyto.tracking_number",
-        "ephyto_poll.tracking_info?": "ephyto_poll.tracking_info"
+        "ephyto.tracking_info?": "ephyto.tracking_info"
       },
       "output_mapping": {}
     },
@@ -143,13 +143,13 @@
       "id": "e_delivered",
       "source_id": "gw_poll",
       "target_id": "end",
-      "condition": "ephyto_poll.delivered == true"
+      "condition": "ephyto.delivered == true"
     },
     {
       "id": "e_not_delivered",
       "source_id": "gw_poll",
       "target_id": "wait",
-      "condition": "ephyto_poll.delivered != true"
+      "condition": "ephyto.delivered != true"
     },
     {
       "id": "e_wait_cap",
