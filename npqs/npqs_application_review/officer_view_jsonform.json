@@ -98,10 +98,24 @@
         "type": "object",
         "title": "Name of Importing Country",
         "properties": {
-          "value": { "type": "string" },
-          "label": { "type": "string" }
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
         },
-        "required": ["value"]
+        "required": [
+          "value"
+        ],
+        "x-search": {
+          "service": "static-data",
+          "mode": "small-list",
+          "params": {
+            "id": "npqs-apply-phyto-cert--importing-countries",
+            "version": "1"
+          }
+        }
       },
       "transit_countries": {
         "type": "string",
@@ -238,10 +252,24 @@
               "type": "object",
               "title": "Commodity Common Name",
               "properties": {
-                "value": { "type": "string" },
-                "label": { "type": "string" }
+                "value": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
               },
-              "required": ["value"]
+              "required": [
+                "value"
+              ],
+              "x-search": {
+                "service": "static-data",
+                "mode": "small-list",
+                "params": {
+                  "id": "npqs-apply-phyto-cert--commodity-common-names",
+                  "version": "1"
+                }
+              }
             },
             "commodity_botanical_name": {
               "type": "string",
@@ -603,7 +631,7 @@
                 },
                 {
                   "const": "MTQ",
-                  "title": "cubic metre (m³)"
+                  "title": "cubic metre (m\u00b3)"
                 },
                 {
                   "const": "LTR",
@@ -615,7 +643,7 @@
                 },
                 {
                   "const": "CMQ",
-                  "title": "cubic centimetre (cm³)"
+                  "title": "cubic centimetre (cm\u00b3)"
                 },
                 {
                   "const": "MLT",
@@ -627,7 +655,7 @@
                 },
                 {
                   "const": "FTQ",
-                  "title": "cubic foot (ft³)"
+                  "title": "cubic foot (ft\u00b3)"
                 },
                 {
                   "const": "GLI",
@@ -666,12 +694,12 @@
                   "title": "week (wk)"
                 },
                 {
-                  "const": "g/cm²",
-                  "title": "gram per square centimetre (g/cm²)"
+                  "const": "g/cm\u00b2",
+                  "title": "gram per square centimetre (g/cm\u00b2)"
                 },
                 {
-                  "const": "g/cm³",
-                  "title": "gram per cubic centimetre (g/cm³)"
+                  "const": "g/cm\u00b3",
+                  "title": "gram per cubic centimetre (g/cm\u00b3)"
                 },
                 {
                   "const": "GL",
@@ -683,23 +711,23 @@
                 },
                 {
                   "const": "GM",
-                  "title": "gram per square metre (g/m²)"
+                  "title": "gram per square metre (g/m\u00b2)"
                 },
                 {
-                  "const": "g/m³",
-                  "title": "gram per cubic metre (g/m³)"
+                  "const": "g/m\u00b3",
+                  "title": "gram per cubic metre (g/m\u00b3)"
                 },
                 {
                   "const": "KMQ",
-                  "title": "kilogram per cubic metre (kg/m³)"
+                  "title": "kilogram per cubic metre (kg/m\u00b3)"
                 },
                 {
                   "const": "CEL",
-                  "title": "degree Celsius (°C)"
+                  "title": "degree Celsius (\u00b0C)"
                 },
                 {
                   "const": "FAH",
-                  "title": "degree Fahrenheit (°F)"
+                  "title": "degree Fahrenheit (\u00b0F)"
                 }
               ]
             },
@@ -747,7 +775,7 @@
                 },
                 {
                   "const": "MTQ",
-                  "title": "cubic metre (m³)"
+                  "title": "cubic metre (m\u00b3)"
                 },
                 {
                   "const": "LTR",
@@ -759,7 +787,7 @@
                 },
                 {
                   "const": "CMQ",
-                  "title": "cubic centimetre (cm³)"
+                  "title": "cubic centimetre (cm\u00b3)"
                 },
                 {
                   "const": "MLT",
@@ -771,7 +799,7 @@
                 },
                 {
                   "const": "FTQ",
-                  "title": "cubic foot (ft³)"
+                  "title": "cubic foot (ft\u00b3)"
                 },
                 {
                   "const": "GLI",
@@ -810,12 +838,12 @@
                   "title": "week (wk)"
                 },
                 {
-                  "const": "g/cm²",
-                  "title": "gram per square centimetre (g/cm²)"
+                  "const": "g/cm\u00b2",
+                  "title": "gram per square centimetre (g/cm\u00b2)"
                 },
                 {
-                  "const": "g/cm³",
-                  "title": "gram per cubic centimetre (g/cm³)"
+                  "const": "g/cm\u00b3",
+                  "title": "gram per cubic centimetre (g/cm\u00b3)"
                 },
                 {
                   "const": "GL",
@@ -827,23 +855,23 @@
                 },
                 {
                   "const": "GM",
-                  "title": "gram per square metre (g/m²)"
+                  "title": "gram per square metre (g/m\u00b2)"
                 },
                 {
-                  "const": "g/m³",
-                  "title": "gram per cubic metre (g/m³)"
+                  "const": "g/m\u00b3",
+                  "title": "gram per cubic metre (g/m\u00b3)"
                 },
                 {
                   "const": "KMQ",
-                  "title": "kilogram per cubic metre (kg/m³)"
+                  "title": "kilogram per cubic metre (kg/m\u00b3)"
                 },
                 {
                   "const": "CEL",
-                  "title": "degree Celsius (°C)"
+                  "title": "degree Celsius (\u00b0C)"
                 },
                 {
                   "const": "FAH",
-                  "title": "degree Fahrenheit (°F)"
+                  "title": "degree Fahrenheit (\u00b0F)"
                 }
               ]
             },
@@ -910,7 +938,7 @@
                 },
                 {
                   "const": "VY",
-                  "title": "Bulk, solid, fine particles (“powders”)"
+                  "title": "Bulk, solid, fine particles (\u201cpowders\u201d)"
                 },
                 {
                   "const": "VI",
@@ -918,7 +946,7 @@
                 },
                 {
                   "const": "VG",
-                  "title": "Bulk, gas (at 1031 mbar and 15°C)"
+                  "title": "Bulk, gas (at 1031 mbar and 15\u00b0C)"
                 },
                 {
                   "const": "UN",

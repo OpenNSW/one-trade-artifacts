@@ -148,7 +148,15 @@
                   },
                   "required": [
                     "value"
-                  ]
+                  ],
+                  "x-search": {
+                    "service": "static-data",
+                    "mode": "small-list",
+                    "params": {
+                      "id": "npqs-apply-phyto-cert--commodity-common-names",
+                      "version": "1"
+                    }
+                  }
                 },
                 "treatment_type": {
                   "type": "string",
@@ -217,7 +225,15 @@
             },
             "required": [
               "value"
-            ]
+            ],
+            "x-search": {
+              "service": "static-data",
+              "mode": "small-list",
+              "params": {
+                "id": "npqs-apply-phyto-cert--importing-countries",
+                "version": "1"
+              }
+            }
           },
           "exporter_name": {
             "type": "string",
@@ -254,7 +270,15 @@
                   },
                   "required": [
                     "value"
-                  ]
+                  ],
+                  "x-search": {
+                    "service": "static-data",
+                    "mode": "small-list",
+                    "params": {
+                      "id": "npqs-apply-phyto-cert--commodity-common-names",
+                      "version": "1"
+                    }
+                  }
                 },
                 "commodity_botanical_name": {
                   "type": "string",
