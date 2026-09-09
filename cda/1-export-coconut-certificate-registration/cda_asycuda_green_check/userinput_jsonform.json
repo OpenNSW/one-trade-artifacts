@@ -15,6 +15,28 @@
         "description": "Filled automatically from the Customs workflow",
         "example": "CUSDEC-2026-904821"
       },
+      "against_previous_certificate": {
+        "type": "boolean",
+        "title": "Lot adjustment / against previous certificate",
+        "description": "Tick if this is a new consignment for leftover quantity from a previously issued CDA certificate (the original CusDec was cancelled or amended).",
+        "default": false
+      },
+      "previous_cusdec_number": {
+        "type": "string",
+        "title": "Previous CusDec Number",
+        "example": "CUSDEC-2026-804100"
+      },
+      "previous_certificate_number": {
+        "type": "string",
+        "title": "Previous Certificate Number",
+        "example": "CERT-CDA-2026-08492"
+      },
+      "previous_certificate_file": {
+        "type": "string",
+        "format": "file",
+        "title": "Previously Issued Salmonella / Quality Certificate (PDF)",
+        "example": "https://cda.gov.lk/certs/CDA-EXP-2026-08492.pdf"
+      },
       "hs_code": {
         "type": "string",
         "title": "HS CODE",
@@ -190,12 +212,29 @@
     "required": [
       "exporter_details",
       "cusdec_number",
+      "against_previous_certificate",
       "dc_grades",
       "port_of_discharge",
       "final_destination",
       "container_filling_status",
       "uploaded_dc_bags_details"
-    ]
+    ],
+    "if": {
+      "properties": {
+        "against_previous_certificate": {
+          "const": true
+        }
+      },
+      "required": [
+        "against_previous_certificate"
+      ]
+    },
+    "then": {
+      "required": [
+        "previous_cusdec_number",
+        "previous_certificate_number"
+      ]
+    }
   },
   "uiSchema": {
     "type": "VerticalLayout",
@@ -239,6 +278,60 @@
                 "scope": "#/properties/lot_number"
               }
             ]
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "label": "Previously issued CDA certificate",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/against_previous_certificate"
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/previous_cusdec_number",
+                "rule": {
+                  "effect": "SHOW",
+                  "condition": {
+                    "scope": "#/properties/against_previous_certificate",
+                    "schema": {
+                      "const": true
+                    }
+                  }
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/previous_certificate_number",
+                "rule": {
+                  "effect": "SHOW",
+                  "condition": {
+                    "scope": "#/properties/against_previous_certificate",
+                    "schema": {
+                      "const": true
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/previous_certificate_file",
+            "rule": {
+              "effect": "SHOW",
+              "condition": {
+                "scope": "#/properties/against_previous_certificate",
+                "schema": {
+                  "const": true
+                }
+              }
+            }
           }
         ]
       },
