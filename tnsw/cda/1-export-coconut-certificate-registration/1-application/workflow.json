@@ -17,6 +17,10 @@
       "output_mapping": {
         "exporter_details": "userform.exporter_details",
         "cusdec_number": "userform.cusdec_number",
+        "against_previous_certificate?": "userform.against_previous_certificate",
+        "previous_cusdec_number?": "userform.previous_cusdec_number",
+        "previous_certificate_number?": "userform.previous_certificate_number",
+        "previous_certificate_file?": "userform.previous_certificate_file",
         "hs_code?": "userform.hs_code",
         "contract_number?": "userform.contract_number",
         "lot_number?": "userform.lot_number",
