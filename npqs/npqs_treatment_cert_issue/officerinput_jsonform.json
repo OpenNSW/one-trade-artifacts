@@ -27,7 +27,7 @@
       "issue_comments": {
         "type": "string",
         "title": "Treatment Observation Notes",
-        "example": "Fumigation executed using Methyl Bromide at 48 g/m³ for 24h at 21.2°C. Target concentration maintained. No leakage observed."
+        "example": "Fumigation executed using Methyl Bromide at 48 g/m\u00b3 for 24h at 21.2\u00b0C. Target concentration maintained. No leakage observed."
       },
       "commodities": {
         "type": "array",
@@ -40,8 +40,19 @@
               "title": "Item ID"
             },
             "commodity_common_name": {
-              "type": "string",
-              "title": "Commodity Name"
+              "type": "object",
+              "title": "Commodity Name",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "value"
+              ]
             }
           }
         }

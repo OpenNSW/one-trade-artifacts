@@ -26,8 +26,19 @@
               "title": "Item ID"
             },
             "commodity_common_name": {
-              "type": "string",
-              "title": "Commodity Name"
+              "type": "object",
+              "title": "Commodity Name",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "value"
+              ]
             }
           }
         }

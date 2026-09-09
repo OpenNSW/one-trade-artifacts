@@ -10,15 +10,15 @@
         "oneOf": [
           {
             "const": "pass",
-            "title": "Pass — All Items Clean"
+            "title": "Pass \u2014 All Items Clean"
           },
           {
             "const": "fail",
-            "title": "Fail — One or More Items Infested/Damaged"
+            "title": "Fail \u2014 One or More Items Infested/Damaged"
           },
           {
             "const": "escalate_consignment",
-            "title": "Escalate — One or More Items Need Consignment Inspection"
+            "title": "Escalate \u2014 One or More Items Need Consignment Inspection"
           }
         ],
         "default": "pass"
@@ -39,8 +39,19 @@
               "title": "Item ID"
             },
             "commodity_common_name": {
-              "type": "string",
-              "title": "Common Name"
+              "type": "object",
+              "title": "Common Name",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "value"
+              ]
             },
             "visual_result": {
               "type": "string",

@@ -115,7 +115,7 @@
           },
           "treatment_temperature": {
             "type": "string",
-            "title": "Target Temperature (°C)",
+            "title": "Target Temperature (\u00b0C)",
             "readOnly": true
           },
           "treatment_concentration": {
@@ -136,9 +136,19 @@
                   "readOnly": true
                 },
                 "commodity_common_name": {
-                  "type": "string",
+                  "type": "object",
                   "title": "Commodity Common Name",
-                  "readOnly": true
+                  "properties": {
+                    "value": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "value"
+                  ]
                 },
                 "treatment_type": {
                   "type": "string",
@@ -195,9 +205,19 @@
             "readOnly": true
           },
           "importing_country": {
-            "type": "string",
+            "type": "object",
             "title": "Name of Importing Country",
-            "readOnly": true
+            "properties": {
+              "value": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "value"
+            ]
           },
           "exporter_name": {
             "type": "string",
@@ -222,9 +242,19 @@
               "type": "object",
               "properties": {
                 "commodity_common_name": {
-                  "type": "string",
+                  "type": "object",
                   "title": "Commodity Common Name",
-                  "readOnly": true
+                  "properties": {
+                    "value": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "value"
+                  ]
                 },
                 "commodity_botanical_name": {
                   "type": "string",

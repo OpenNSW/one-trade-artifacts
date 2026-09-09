@@ -10,15 +10,15 @@
         "oneOf": [
           {
             "const": "pass",
-            "title": "Pass — All Items Clear"
+            "title": "Pass \u2014 All Items Clear"
           },
           {
             "const": "fail_resubmit",
-            "title": "Fail — One or More Items Allowed Resubmission"
+            "title": "Fail \u2014 One or More Items Allowed Resubmission"
           },
           {
             "const": "fail_final",
-            "title": "Fail Final — One or More Items Rejected"
+            "title": "Fail Final \u2014 One or More Items Rejected"
           }
         ],
         "default": "pass"
@@ -45,8 +45,19 @@
               "title": "Item ID"
             },
             "commodity_common_name": {
-              "type": "string",
-              "title": "Common Name"
+              "type": "object",
+              "title": "Common Name",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "value"
+              ]
             },
             "commodity_botanical_name": {
               "type": "string",
@@ -62,11 +73,11 @@
                 },
                 {
                   "const": "fail_resubmit",
-                  "title": "Fail — Allow Sample Resubmission (First Failure)"
+                  "title": "Fail \u2014 Allow Sample Resubmission (First Failure)"
                 },
                 {
                   "const": "fail_final",
-                  "title": "Fail Final — Reject Item (Second Failure)"
+                  "title": "Fail Final \u2014 Reject Item (Second Failure)"
                 }
               ],
               "default": "pass"

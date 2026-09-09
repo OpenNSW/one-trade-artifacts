@@ -15,8 +15,19 @@
               "title": "Item ID"
             },
             "commodity_common_name": {
-              "type": "string",
-              "title": "Commodity Name"
+              "type": "object",
+              "title": "Commodity Name",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "value"
+              ]
             },
             "treatment_type": {
               "type": "string",
@@ -121,13 +132,13 @@
             },
             "treatment_temperature": {
               "type": "string",
-              "title": "Target Temperature (°C)",
-              "example": "21°C"
+              "title": "Target Temperature (\u00b0C)",
+              "example": "21\u00b0C"
             },
             "treatment_concentration": {
               "type": "string",
               "title": "Chemical Concentration / Dosage",
-              "example": "48 g/m³"
+              "example": "48 g/m\u00b3"
             }
           },
           "required": [
@@ -143,7 +154,7 @@
             "treatment_type": "CD",
             "chemical_used": "N/A (Cold storage disinfestation)",
             "treatment_duration": "48 hours",
-            "treatment_temperature": "2°C",
+            "treatment_temperature": "2\u00b0C",
             "treatment_concentration": "N/A"
           },
           {
@@ -152,8 +163,8 @@
             "treatment_type": "FU",
             "chemical_used": "Methyl Bromide (CH3Br)",
             "treatment_duration": "24 hours",
-            "treatment_temperature": "21°C",
-            "treatment_concentration": "48 g/m³"
+            "treatment_temperature": "21\u00b0C",
+            "treatment_concentration": "48 g/m\u00b3"
           }
         ]
       },
