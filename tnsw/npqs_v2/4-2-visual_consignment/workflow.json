@@ -24,12 +24,8 @@
       "type": "TASK",
       "task_template_id": "npqs-v2-visual-consignment--officer-review",
       "input_mapping": {
-        "reference_number": "reference_number",
+        "reference_number": "submission.reference_number",
         "traderinput": "submission",
-        "traderinput.inspection_date?": "inspection_date",
-        "traderinput.inspection_time?": "inspection_time",
-        "contact_name?": "contact_name",
-        "contact_phone?": "contact_phone",
         "commodities?": "submission.items"
       },
       "output_mapping": {

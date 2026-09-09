@@ -24,9 +24,9 @@
       "type": "TASK",
       "task_template_id": "npqs-v2-treatment-request--officer-review",
       "input_mapping": {
-        "reference_number": "reference_number",
+        "reference_number": "submission.reference_number",
         "traderinput": "submission",
-        "userform?": "userform"
+        "userform?": "submission.userform"
       },
       "output_mapping": {
         "treatment_request_outcome": "reviewerform.treatment_request_outcome",

@@ -12,9 +12,8 @@
       "type": "TASK",
       "task_template_id": "npqs-v2-draw-sample--officer-receive",
       "input_mapping": {
-        "reference_number": "reference_number",
+        "reference_number": "submission.reference_number",
         "userform": "submission",
-        "userform.nppo_office_location?": "nppo_office_location",
         "commodities?": "submission.items"
       },
       "output_mapping": {

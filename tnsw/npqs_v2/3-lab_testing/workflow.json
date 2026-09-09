@@ -12,9 +12,9 @@
       "type": "TASK",
       "task_template_id": "npqs-v2-lab-testing--officer-review",
       "input_mapping": {
-        "reference_number": "reference_number",
+        "reference_number": "submission.reference_number",
         "userform": "submission",
-        "sample_number?": "sample_number",
+        "sample_number?": "submission.sample_number",
         "commodities?": "submission.items"
       },
       "output_mapping": {
