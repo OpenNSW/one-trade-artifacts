@@ -1,7 +1,7 @@
 {
   "id": "npqs-ephyto-upload",
   "name": "Upload to IPPC ePhyto Hub",
-  "version": 10,
+  "version": 11,
   "nodes": [
     {
       "id": "start",
@@ -34,17 +34,17 @@
         "userform": "userform",
         "certificate_id": "certificate_id",
         "traderinput.hub_destination": "hub_destination",
-        "treatment_certificate_url?": "treatment_certificate_url",
-        "supervision_report_url?": "supervision_report_url",
-        "invoice_file_url?": "invoice_file_url",
-        "packing_list_file_url?": "packing_list_file_url",
-        "additional_file_url?": "additional_file_url",
         "traderinput.send_application_documents?": "send_application_documents",
-        "traderinput.send_treatment_certificate?": "send_treatment_certificate",
-        "traderinput.send_supervision_report?": "send_supervision_report",
-        "traderinput.send_invoice?": "send_invoice",
-        "traderinput.send_packing_list?": "send_packing_list",
-        "traderinput.send_additional_document?": "send_additional_document"
+        "treatment_certificate_url?": "documents.treatment_certificate.url",
+        "traderinput.send_treatment_certificate?": "documents.treatment_certificate.send",
+        "supervision_report_url?": "documents.treatment_supervision_report.url",
+        "traderinput.send_supervision_report?": "documents.treatment_supervision_report.send",
+        "invoice_file_url?": "documents.commercial_invoice.url",
+        "traderinput.send_invoice?": "documents.commercial_invoice.send",
+        "packing_list_file_url?": "documents.packing_list.url",
+        "traderinput.send_packing_list?": "documents.packing_list.send",
+        "additional_file_url?": "documents.additional_supporting_document.url",
+        "traderinput.send_additional_document?": "documents.additional_supporting_document.send"
       },
       "output_mapping": {
         "ephyto.submitted": "ephyto.submitted",
