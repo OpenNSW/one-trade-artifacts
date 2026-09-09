@@ -4,6 +4,27 @@
   "schema": {
     "type": "object",
     "properties": {
+      "items": {
+        "type": "array",
+        "title": "Samples Expected for This Batch",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Item ID"
+            },
+            "commodity_common_name": {
+              "type": "string",
+              "title": "Commodity Name"
+            },
+            "commodity_botanical_name": {
+              "type": "string",
+              "title": "Botanical Name"
+            }
+          }
+        }
+      },
       "sample_number": {
         "type": "string",
         "title": "Assigned Sample Number",
@@ -22,6 +43,41 @@
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/items",
+        "options": {
+          "readonly": true,
+          "detail": {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/id",
+                "options": {
+                  "readOnly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/commodity_common_name",
+                "options": {
+                  "readOnly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/commodity_botanical_name",
+                "options": {
+                  "readOnly": true
+                }
+              }
+            ]
+          },
+          "addable": false,
+          "removable": false
+        }
+      },
       {
         "type": "Control",
         "scope": "#/properties/sample_number"

@@ -1,9 +1,0 @@
-{
-  "id": "npqs-v2-ephyto-upload--poll-timeout",
-  "task_type": "USER_INPUT",
-  "output_namespace": "traderinput",
-  "plugin_properties": {
-    "user_jsonforms_id": "npqs-v2-ephyto-upload--action-form",
-    "status_override": "EPHYTO_NOT_DELIVERED"
-  }
-}

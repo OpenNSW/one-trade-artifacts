@@ -52,13 +52,9 @@
       },
       "output_mapping": {
         "review_outcome": "reviewerform.review_outcome",
-        "treatment_required": "reviewerform.treatment_required",
-        "visual_required": "reviewerform.visual_required",
-        "visual_approach": "reviewerform.visual_approach",
-        "lab_required": "reviewerform.lab_required",
-        "lab_sample_method": "reviewerform.lab_sample_method",
-        "ephyto_required": "reviewerform.ephyto_required",
         "reference_number": "reviewerform.reference_number",
+        "commodities": "reviewerform.commodities",
+        "ephyto_required?": "reviewerform.ephyto_required",
         "clarification_reason?": "reviewerform.clarification_reason"
       }
     },

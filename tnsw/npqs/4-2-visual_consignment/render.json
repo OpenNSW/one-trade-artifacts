@@ -8,7 +8,7 @@
       "title": "Consignment Inspection Results",
       "projector": "MARKDOWN",
       "visibleWhen": {
-        "requireDataKey": "visual_result"
+        "requireDataKey": "reviewerform"
       }
     },
     "status_message": {
@@ -16,7 +16,10 @@
       "title": "Inspection Status",
       "projector": "MARKDOWN",
       "visibleWhen": {
-        "states": ["QUEUED_EXTERNALLY"]
+        "states": [
+          "PENDING_USER",
+          "QUEUED_EXTERNALLY"
+        ]
       }
     },
     "submission_form": {
@@ -35,7 +38,11 @@
   },
   "states": {
     "PENDING_USER": {
-      "actions": [{ "command": "submit" }]
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
     }
   }
 }

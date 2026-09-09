@@ -1,6 +1,0 @@
-{
-  "id": "npqs-v2-pay-certificate-fee",
-  "type": "PAYMENT",
-  "workflow_id": "npqs-v2-pay-certificate-fee",
-  "render_config_id": "npqs-v2-pay-certificate-fee:render"
-}

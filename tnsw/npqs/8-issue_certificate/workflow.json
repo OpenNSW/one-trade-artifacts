@@ -12,13 +12,15 @@
       "type": "TASK",
       "task_template_id": "npqs-issue-certificate--officer-review",
       "input_mapping": {
-        "reference_number": "reference_number",
-        "userform": "submission"
+        "reference_number": "submission.reference_number",
+        "userform": "submission",
+        "certificate_items?": "submission.certificate_items"
       },
       "output_mapping": {
         "certificate_id": "certificate_id",
         "certificate_url?": "certificate_url",
-        "comments?": "comments"
+        "comments?": "comments",
+        "certificate_items?": "certificate_items"
       }
     },
     {

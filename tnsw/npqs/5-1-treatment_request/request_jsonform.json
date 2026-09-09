@@ -4,69 +4,241 @@
   "schema": {
     "type": "object",
     "properties": {
-      "treatment_type": {
-        "type": "string",
-        "title": "Treatment Type Requested",
-        "oneOf": [
-          { "const": "TPT", "title": "Temperature Treatment" },
-          { "const": "CHT", "title": "Chemical Treatment" },
-          { "const": "RAT", "title": "Radiation Treatment" },
-          { "const": "OTT", "title": "Other Treatment" },
-          { "const": "CT", "title": "Cold Treatment" },
-          { "const": "HT", "title": "Heat Treatment" },
-          { "const": "DR", "title": "Dry Heat" },
-          { "const": "MH", "title": "Moist Heat" },
-          { "const": "VH", "title": "Vapour Heat" },
-          { "const": "KD", "title": "Kiln drying" },
-          { "const": "HW", "title": "Hot water treatment" },
-          { "const": "DH", "title": "Dielectric Heating" },
-          { "const": "FG", "title": "Fungicide" },
-          { "const": "IN", "title": "Insecticide" },
-          { "const": "NE", "title": "Nematicide" },
-          { "const": "OP", "title": "Other pesticide" },
-          { "const": "CPI", "title": "Chemical pressure impregnation" },
-          { "const": "FU", "title": "Fumigation" },
-          { "const": "SC", "title": "Seed coating" },
-          { "const": "DV", "title": "Devitalization" },
-          { "const": "DB", "title": "Debarking" },
-          { "const": "CD", "title": "Cold disinfestation" }
-        ],
-        "default": "FU"
+      "treatment_items": {
+        "type": "array",
+        "title": "Treatment Specifications (Per Item)",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Item ID"
+            },
+            "commodity_common_name": {
+              "type": "string",
+              "title": "Commodity Name"
+            },
+            "treatment_type": {
+              "type": "string",
+              "title": "Treatment Type Requested",
+              "oneOf": [
+                {
+                  "const": "FU",
+                  "title": "Fumigation (FU)"
+                },
+                {
+                  "const": "CD",
+                  "title": "Cold Disinfestation (CD)"
+                },
+                {
+                  "const": "HT",
+                  "title": "Heat Treatment (HT)"
+                },
+                {
+                  "const": "KD",
+                  "title": "Kiln Drying (KD)"
+                },
+                {
+                  "const": "HW",
+                  "title": "Hot Water Treatment (HW)"
+                },
+                {
+                  "const": "CHT",
+                  "title": "Chemical Treatment (CHT)"
+                },
+                {
+                  "const": "TPT",
+                  "title": "Temperature Treatment (TPT)"
+                },
+                {
+                  "const": "RAT",
+                  "title": "Radiation Treatment (RAT)"
+                },
+                {
+                  "const": "DR",
+                  "title": "Dry Heat (DR)"
+                },
+                {
+                  "const": "MH",
+                  "title": "Moist Heat (MH)"
+                },
+                {
+                  "const": "VH",
+                  "title": "Vapour Heat (VH)"
+                },
+                {
+                  "const": "DH",
+                  "title": "Dielectric Heating (DH)"
+                },
+                {
+                  "const": "FG",
+                  "title": "Fungicide (FG)"
+                },
+                {
+                  "const": "IN",
+                  "title": "Insecticide (IN)"
+                },
+                {
+                  "const": "NE",
+                  "title": "Nematicide (NE)"
+                },
+                {
+                  "const": "OP",
+                  "title": "Other Pesticide (OP)"
+                },
+                {
+                  "const": "CPI",
+                  "title": "Chemical Pressure Impregnation (CPI)"
+                },
+                {
+                  "const": "SC",
+                  "title": "Seed Coating (SC)"
+                },
+                {
+                  "const": "DV",
+                  "title": "Devitalization (DV)"
+                },
+                {
+                  "const": "DB",
+                  "title": "Debarking (DB)"
+                },
+                {
+                  "const": "OTT",
+                  "title": "Other Treatment (OTT)"
+                }
+              ],
+              "default": "FU"
+            },
+            "chemical_used": {
+              "type": "string",
+              "title": "Chemical / Medium Used",
+              "example": "Methyl Bromide (CH3Br)"
+            },
+            "treatment_duration": {
+              "type": "string",
+              "title": "Treatment Duration",
+              "example": "24 hours"
+            },
+            "treatment_temperature": {
+              "type": "string",
+              "title": "Target Temperature (°C)",
+              "example": "21°C"
+            },
+            "treatment_concentration": {
+              "type": "string",
+              "title": "Chemical Concentration / Dosage",
+              "example": "48 g/m³"
+            }
+          },
+          "required": [
+            "id",
+            "treatment_type",
+            "treatment_duration"
+          ]
+        },
+        "example": [
+          {
+            "id": "item-1",
+            "commodity_common_name": "Cut Rose Flowers",
+            "treatment_type": "CD",
+            "chemical_used": "N/A (Cold storage disinfestation)",
+            "treatment_duration": "48 hours",
+            "treatment_temperature": "2°C",
+            "treatment_concentration": "N/A"
+          },
+          {
+            "id": "item-4",
+            "commodity_common_name": "Coir Pith Block",
+            "treatment_type": "FU",
+            "chemical_used": "Methyl Bromide (CH3Br)",
+            "treatment_duration": "24 hours",
+            "treatment_temperature": "21°C",
+            "treatment_concentration": "48 g/m³"
+          }
+        ]
       },
-      "chemical_used": {
+      "general_remarks": {
         "type": "string",
-        "title": "Chemical / Medium Used (If fumigation)",
-        "example": "Methyl Bromide (CH3Br)"
-      },
-      "treatment_duration": {
-        "type": "string",
-        "title": "Treatment Duration",
-        "example": "24 hours"
-      },
-      "treatment_temperature": {
-        "type": "string",
-        "title": "Target Temperature (°C)",
-        "example": "21°C"
-      },
-      "treatment_concentration": {
-        "type": "string",
-        "title": "Chemical Concentration / Dosage",
-        "example": "48 g/m³"
+        "title": "General Treatment Remarks / Special Instructions",
+        "example": "Pre-shipment quarantine treatment to be conducted as per importing country requirements."
       }
     },
     "required": [
-      "treatment_type",
-      "treatment_duration"
+      "treatment_items"
     ]
   },
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
-      { "type": "Control", "scope": "#/properties/treatment_type" },
-      { "type": "Control", "scope": "#/properties/chemical_used" },
-      { "type": "Control", "scope": "#/properties/treatment_duration" },
-      { "type": "Control", "scope": "#/properties/treatment_temperature" },
-      { "type": "Control", "scope": "#/properties/treatment_concentration" }
+      {
+        "type": "Control",
+        "scope": "#/properties/treatment_items",
+        "options": {
+          "detail": {
+            "type": "VerticalLayout",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/id",
+                    "options": {
+                      "readOnly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/commodity_common_name",
+                    "options": {
+                      "readOnly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/treatment_type"
+                  }
+                ]
+              },
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/chemical_used"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/treatment_duration"
+                  }
+                ]
+              },
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/treatment_temperature"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/treatment_concentration"
+                  }
+                ]
+              }
+            ]
+          },
+          "addable": false,
+          "removable": false
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/general_remarks",
+        "options": {
+          "multiLine": true
+        }
+      }
     ]
   }
 }

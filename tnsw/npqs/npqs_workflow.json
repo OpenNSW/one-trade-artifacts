@@ -3,7 +3,10 @@
   "name": "NPQS Export Consignment & Phytosanitary Registration",
   "version": 4,
   "nodes": [
-    { "id": "start", "type": "START", "name": "Start" },
+    {
+      "id": "start",
+      "type": "START"
+    },
     {
       "id": "n1_apply",
       "name": "Apply, Review & Generate Reference Number",
@@ -14,20 +17,25 @@
         "reviewerform.reference_number": "npqs.reference_number",
         "userform": "npqs.userform",
         "reviewerform.review_outcome": "npqs.review_outcome",
-        "reviewerform.treatment_required?": "npqs.treatment_required",
-        "reviewerform.visual_required?": "npqs.visual_required",
-        "reviewerform.visual_approach?": "npqs.visual_approach",
-        "reviewerform.lab_required?": "npqs.lab_required",
-        "reviewerform.lab_sample_method?": "npqs.lab_sample_method",
+        "reviewerform.commodities": "commodities",
         "reviewerform.ephyto_required?": "npqs.ephyto_required"
       }
     },
-
     {
-      "id": "npqs_gw_check_sample_phase",
-      "name": "Sample Phase Required?",
+      "id": "gw_par_split",
+      "name": "Fork into Concurrent Inspection & Treatment Tracks",
       "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
+      "gateway_type": "PARALLEL_SPLIT"
+    },
+    {
+      "id": "gw_lab_split",
+      "name": "Partition Items for Lab Testing",
+      "type": "GATEWAY",
+      "gateway_type": "BATCH_SPLIT",
+      "batch_gateway": {
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
     },
     {
       "id": "n4_0_draw_sample",
@@ -37,17 +45,12 @@
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
-        "npqs.lab_sample_method": "lab_sample_method"
+        "npqs.lab_sample_method?": "lab_sample_method",
+        "commodities": "commodities"
       },
       "output_mapping": {
         "sample_number": "npqs.sample_number"
       }
-    },
-    {
-      "id": "npqs_gw_check_lab",
-      "name": "Is Lab Test Required?",
-      "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
       "id": "n2_1_lab_testing",
@@ -57,30 +60,98 @@
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
-        "npqs.sample_number": "sample_number"
+        "commodities": "commodities",
+        "npqs.sample_number?": "sample_number"
       },
       "output_mapping": {
-        "sample_test_result": "npqs.sample_test_result",
-        "post_lab_visual_required?": "npqs.post_lab_visual_required"
+        "commodities": "commodities"
       }
     },
     {
       "id": "lab_result_split",
-      "name": "Lab Test Result",
+      "name": "Lab Test Result (Per Item)",
       "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
+      "gateway_type": "BATCH_SPLIT",
+      "batch_gateway": {
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
     },
     {
-      "id": "npqs_join_lab_branch",
-      "name": "Merge Lab Branch",
+      "id": "lab_result_join",
+      "name": "Merge Per-Item Lab Test Results",
       "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_JOIN"
+      "gateway_type": "BATCH_JOIN",
+      "batch_join": {
+        "gateway_node_id": "lab_result_split",
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
     },
     {
-      "id": "npqs_gw_check_visual_sample",
-      "name": "Is Visual Sample Inspection Required?",
+      "id": "n4_0b_lab_resubmit_draw",
+      "name": "Draw/Collect Resubmitted Sample (Per Item)",
+      "type": "TASK",
+      "task_template_id": "npqs-draw-sample",
+      "input_mapping": {
+        "npqs.reference_number": "reference_number",
+        "npqs.userform": "userform",
+        "npqs.lab_sample_method?": "lab_sample_method",
+        "commodities": "commodities"
+      },
+      "output_mapping": {
+        "sample_number": "npqs.sample_number"
+      }
+    },
+    {
+      "id": "n2_1b_lab_resubmit_test",
+      "name": "Perform Resubmitted Lab Test (Per Item)",
+      "type": "TASK",
+      "task_template_id": "npqs-lab-testing",
+      "input_mapping": {
+        "npqs.reference_number": "reference_number",
+        "npqs.userform": "userform",
+        "commodities": "commodities",
+        "npqs.sample_number?": "sample_number"
+      },
+      "output_mapping": {
+        "commodities": "commodities"
+      }
+    },
+    {
+      "id": "gw_lab_join",
+      "name": "Merge Lab Testing Results",
       "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
+      "gateway_type": "BATCH_JOIN",
+      "batch_join": {
+        "gateway_node_id": "gw_lab_split",
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
+    },
+    {
+      "id": "gw_visual_split",
+      "name": "Partition Items for Visual Inspection",
+      "type": "GATEWAY",
+      "gateway_type": "BATCH_SPLIT",
+      "batch_gateway": {
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
+    },
+    {
+      "id": "n_visual_sample_collect",
+      "name": "Collect Sample for Visual Inspection",
+      "type": "TASK",
+      "task_template_id": "npqs-visual-sample-collection",
+      "input_mapping": {
+        "npqs.reference_number": "reference_number",
+        "npqs.userform": "userform",
+        "commodities": "commodities"
+      },
+      "output_mapping": {
+        "sample_number": "npqs.visual_sample_number"
+      }
     },
     {
       "id": "n_visual_sample_inspection",
@@ -90,17 +161,33 @@
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
-        "npqs.sample_number": "sample_number"
+        "commodities": "commodities",
+        "npqs.visual_sample_number?": "sample_number"
       },
       "output_mapping": {
-        "visual_result": "npqs.visual_sample_result"
+        "commodities": "commodities"
       }
     },
     {
       "id": "visual_sample_result_split",
       "name": "Sample Visual Result",
       "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
+      "gateway_type": "BATCH_SPLIT",
+      "batch_gateway": {
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
+    },
+    {
+      "id": "visual_sample_result_join",
+      "name": "Merge Sample Visual Results",
+      "type": "GATEWAY",
+      "gateway_type": "BATCH_JOIN",
+      "batch_join": {
+        "gateway_node_id": "visual_sample_result_split",
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
     },
     {
       "id": "n_visual_sample_escalated_consignment",
@@ -109,73 +196,33 @@
       "task_template_id": "npqs-visual-consignment-flow",
       "input_mapping": {
         "npqs.reference_number": "reference_number",
-        "npqs.userform": "userform"
+        "npqs.userform": "userform",
+        "commodities": "commodities"
       },
       "output_mapping": {
-        "visual_result": "npqs.visual_consignment_escalated_result"
+        "commodities": "commodities"
       }
     },
     {
       "id": "visual_sample_escalated_result_split",
       "name": "Escalated Consignment Result",
       "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
-    },
-    {
-      "id": "npqs_join_visual_sample_branch",
-      "name": "Merge Visual Sample Branch",
-      "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_JOIN"
-    },
-    {
-      "id": "npqs_gw_check_post_lab_visual",
-      "name": "Post-Lab Visual Inspection Requested?",
-      "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
-    },
-    {
-      "id": "n_lab_triggered_visual",
-      "name": "Conduct Post-Lab Visual Inspection",
-      "type": "TASK",
-      "task_template_id": "npqs-visual-consignment-flow",
-      "input_mapping": {
-        "npqs.reference_number": "reference_number",
-        "npqs.userform": "userform"
-      },
-      "output_mapping": {
-        "visual_result": "npqs.lab_triggered_visual_result"
+      "gateway_type": "BATCH_SPLIT",
+      "batch_gateway": {
+        "items_variable": "commodities",
+        "id_field": "id"
       }
     },
     {
-      "id": "lab_triggered_visual_result_split",
-      "name": "Post-Lab Visual Result",
+      "id": "visual_sample_escalated_result_join",
+      "name": "Merge Escalated Consignment Results",
       "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
-    },
-    {
-      "id": "npqs_join_lab_triggered_visual",
-      "name": "Merge Post-Lab Visual Branch",
-      "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_JOIN"
-    },
-    {
-      "id": "npqs_join_sample_phase",
-      "name": "Merge Sample Phase",
-      "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_JOIN"
-    },
-
-    {
-      "id": "npqs_gw_check_non_sample_visual",
-      "name": "Non-Sample Visual Inspection Required?",
-      "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
-    },
-    {
-      "id": "visual_type_split",
-      "name": "Visual Inspection Approach",
-      "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
+      "gateway_type": "BATCH_JOIN",
+      "batch_join": {
+        "gateway_node_id": "visual_sample_escalated_result_split",
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
     },
     {
       "id": "n_visual_consignment_flow",
@@ -184,17 +231,33 @@
       "task_template_id": "npqs-visual-consignment-flow",
       "input_mapping": {
         "npqs.reference_number": "reference_number",
-        "npqs.userform": "userform"
+        "npqs.userform": "userform",
+        "commodities": "commodities"
       },
       "output_mapping": {
-        "visual_result": "npqs.visual_consignment_result"
+        "commodities": "commodities"
       }
     },
     {
       "id": "visual_consignment_result_split",
       "name": "Consignment Inspection Result",
       "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
+      "gateway_type": "BATCH_SPLIT",
+      "batch_gateway": {
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
+    },
+    {
+      "id": "visual_consignment_result_join",
+      "name": "Merge Consignment Inspection Results",
+      "type": "GATEWAY",
+      "gateway_type": "BATCH_JOIN",
+      "batch_join": {
+        "gateway_node_id": "visual_consignment_result_split",
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
     },
     {
       "id": "n5_0_visual_inspection",
@@ -203,36 +266,54 @@
       "task_template_id": "npqs-visual-system-inspection",
       "input_mapping": {
         "npqs.reference_number": "reference_number",
-        "npqs.userform": "userform"
+        "npqs.userform": "userform",
+        "commodities": "commodities"
       },
       "output_mapping": {
-        "visual_result": "npqs.visual_system_result"
+        "commodities": "commodities"
       }
     },
     {
       "id": "visual_system_result_split",
       "name": "System Inspection Result",
       "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
+      "gateway_type": "BATCH_SPLIT",
+      "batch_gateway": {
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
     },
     {
-      "id": "npqs_join_consignment_system",
-      "name": "Merge Consignment & System Branches",
+      "id": "visual_system_result_join",
+      "name": "Merge System Inspection Results",
       "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_JOIN"
+      "gateway_type": "BATCH_JOIN",
+      "batch_join": {
+        "gateway_node_id": "visual_system_result_split",
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
     },
     {
-      "id": "npqs_join_non_sample_visual_branch",
-      "name": "Merge Non-Sample Visual Block",
+      "id": "gw_visual_join",
+      "name": "Merge Visual Inspection Results",
       "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_JOIN"
+      "gateway_type": "BATCH_JOIN",
+      "batch_join": {
+        "gateway_node_id": "gw_visual_split",
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
     },
-
     {
-      "id": "npqs_gw_check_treatment",
-      "name": "Treatment Required?",
+      "id": "gw_treatment_split",
+      "name": "Partition Items for Treatment",
       "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
+      "gateway_type": "BATCH_SPLIT",
+      "batch_gateway": {
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
     },
     {
       "id": "n3_treatment_request",
@@ -241,20 +322,34 @@
       "task_template_id": "npqs-treatment-request",
       "input_mapping": {
         "npqs.reference_number": "reference_number",
-        "npqs.userform": "userform"
+        "npqs.userform": "userform",
+        "commodities": "traderinput.treatment_items"
       },
       "output_mapping": {
         "reviewerform.treatment_request_outcome": "npqs.treatment_request_outcome",
-        "reviewerform.treatment_provider?": "npqs.treatment_provider",
-        "reviewerform.treatment_supervision?": "npqs.treatment_supervision",
-        "reviewerform.supervision_officer_type?": "npqs.supervision_officer_type"
+        "traderinput.treatment_items?": "npqs.treatment_items"
       }
     },
     {
       "id": "treatment_provider_split",
       "name": "Treatment Performed By?",
       "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
+      "gateway_type": "BATCH_SPLIT",
+      "batch_gateway": {
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
+    },
+    {
+      "id": "treatment_provider_join",
+      "name": "Merge Treatment Provider Sub-Paths",
+      "type": "GATEWAY",
+      "gateway_type": "BATCH_JOIN",
+      "batch_join": {
+        "gateway_node_id": "treatment_provider_split",
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
     },
     {
       "id": "n3_2_treatment_payment",
@@ -277,7 +372,7 @@
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
-        "npqs.treatment_supervision?": "treatment_supervision"
+        "commodities": "commodities"
       },
       "output_mapping": {
         "treatment_certificate_id": "npqs.treatment_certificate_id"
@@ -287,7 +382,22 @@
       "id": "n3_3_1_supervision_split",
       "name": "Supervision Required?",
       "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
+      "gateway_type": "BATCH_SPLIT",
+      "batch_gateway": {
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
+    },
+    {
+      "id": "n3_3_1_supervision_join",
+      "name": "Merge Supervision Sub-Path",
+      "type": "GATEWAY",
+      "gateway_type": "BATCH_JOIN",
+      "batch_join": {
+        "gateway_node_id": "n3_3_1_supervision_split",
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
     },
     {
       "id": "n3_3_2_treatment_supervisor_report",
@@ -296,7 +406,8 @@
       "task_template_id": "npqs-treatment-supervisor-report",
       "input_mapping": {
         "npqs.reference_number": "reference_number",
-        "npqs.userform": "userform"
+        "npqs.userform": "userform",
+        "commodities": "commodities"
       },
       "output_mapping": {
         "supervisor_notes": "npqs.treatment_supervisor_notes"
@@ -310,8 +421,10 @@
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
-        "npqs.treatment_provider": "treatment_provider",
-        "npqs.treatment_supervision": "treatment_supervision"
+        "commodities": "commodities",
+        "npqs.treatment_traderinput.treatment_certificate_url?": "prior_treatment_certificate_url",
+        "npqs.treatment_traderinput.supervision_report_url?": "prior_supervision_report_url",
+        "npqs.treatment_traderinput.upload_remarks?": "prior_upload_remarks"
       },
       "output_mapping": {
         "traderinput": "npqs.treatment_traderinput"
@@ -325,7 +438,8 @@
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
-        "npqs.treatment_traderinput": "traderinput"
+        "npqs.treatment_traderinput": "traderinput",
+        "commodities": "commodities"
       },
       "output_mapping": {
         "treatment_review_result": "npqs.treatment_review_result",
@@ -351,7 +465,8 @@
       "task_template_id": "npqs-visual-consignment-flow",
       "input_mapping": {
         "npqs.reference_number": "reference_number",
-        "npqs.userform": "userform"
+        "npqs.userform": "userform",
+        "commodities?": "commodities"
       },
       "output_mapping": {
         "visual_result": "npqs.treatment_triggered_visual_result"
@@ -364,18 +479,39 @@
       "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
-      "id": "npqs_join_treatment_triggered_visual",
-      "name": "Merge Post-Treatment Visual Branch",
+      "id": "gw_treatment_join",
+      "name": "Merge Treatment Results",
       "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_JOIN"
+      "gateway_type": "BATCH_JOIN",
+      "batch_join": {
+        "gateway_node_id": "gw_treatment_split",
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
     },
     {
-      "id": "npqs_join_treatment_branch",
-      "name": "Merge Treatment Path",
+      "id": "gw_par_join",
+      "name": "Join Concurrent Inspection & Treatment Tracks",
       "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_JOIN"
+      "gateway_type": "PARALLEL_JOIN",
+      "parallel_join": {
+        "gateway_node_id": "gw_par_split",
+        "merge_by_id": {
+          "commodities": "id"
+        }
+      }
     },
-
+    {
+      "id": "gw_consignment_clearance",
+      "name": "Consignment Clearance Outcome",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "end_consignment_rejected",
+      "name": "Consignment Rejected (All Items Failed)",
+      "type": "END"
+    },
     {
       "id": "n5_1_upload_docs",
       "name": "Upload Relevant Documents",
@@ -385,7 +521,10 @@
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
         "npqs.docs_review_outcome?": "docs_review_outcome",
-        "npqs.docs_review_comments?": "review_comments"
+        "npqs.docs_review_comments?": "review_comments",
+        "npqs.docs_traderinput.invoice_file_url?": "prior_invoice_file_url",
+        "npqs.docs_traderinput.packing_list_file_url?": "prior_packing_list_file_url",
+        "npqs.docs_traderinput.additional_file_url?": "prior_additional_file_url"
       },
       "output_mapping": {
         "traderinput": "npqs.docs_traderinput"
@@ -439,10 +578,12 @@
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
-        "npqs.ephyto_required?": "ephyto_required"
+        "npqs.ephyto_required?": "ephyto_required",
+        "commodities?": "certificate_items"
       },
       "output_mapping": {
-        "certificate_id": "npqs.certificate_id"
+        "certificate_id": "npqs.certificate_id",
+        "certificate_items?": "npqs.certificate_items"
       }
     },
     {
@@ -459,251 +600,304 @@
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
-        "npqs.certificate_id": "certificate_id"
+        "npqs.certificate_id": "certificate_id",
+        "npqs.certificate_items?": "certificate_items"
       },
       "output_mapping": {}
     },
-
-    { "id": "end_success", "name": "Phytosanitary Certificate Issued", "type": "END" },
-    { "id": "end_lab_failed", "name": "Consignment Rejected (Lab Test Failed)", "type": "END" },
-    { "id": "end_visual_sample_failed", "name": "Consignment Rejected (Visual Sample Inspection Failed)", "type": "END" },
-    { "id": "end_visual_consignment_failed", "name": "Consignment Rejected (Visual Consignment Inspection Failed)", "type": "END" },
-    { "id": "end_visual_system_failed", "name": "Consignment Rejected (Visual System Inspection Failed)", "type": "END" },
-    { "id": "end_lab_triggered_visual_failed", "name": "Consignment Rejected (Post-Lab Visual Inspection Failed)", "type": "END" },
-    { "id": "end_treatment_triggered_visual_failed", "name": "Consignment Rejected (Post-Treatment Visual Inspection Failed)", "type": "END" },
-    { "id": "end_payment_failed", "name": "Payment Failed", "type": "END" }
+    {
+      "id": "end_success",
+      "name": "Phytosanitary Certificate Issued",
+      "type": "END"
+    },
+    {
+      "id": "end_payment_failed",
+      "name": "Payment Failed",
+      "type": "END"
+    }
   ],
   "edges": [
-    { "id": "e_start", "source_id": "start", "target_id": "n1_apply" },
-    { "id": "e_apply_to_sample_check", "source_id": "n1_apply", "target_id": "npqs_gw_check_sample_phase" },
-
     {
-      "id": "e_sample_phase_true",
-      "source_id": "npqs_gw_check_sample_phase",
+      "id": "e_start",
+      "source_id": "start",
+      "target_id": "n1_apply"
+    },
+    {
+      "id": "e_apply_to_par_split",
+      "source_id": "n1_apply",
+      "target_id": "gw_par_split"
+    },
+    {
+      "id": "e_par_to_lab_track",
+      "source_id": "gw_par_split",
+      "target_id": "gw_lab_split"
+    },
+    {
+      "id": "e_par_to_visual_track",
+      "source_id": "gw_par_split",
+      "target_id": "gw_visual_split"
+    },
+    {
+      "id": "e_par_to_treatment_track",
+      "source_id": "gw_par_split",
+      "target_id": "gw_treatment_split"
+    },
+    {
+      "id": "e_lab_split_to_draw",
+      "source_id": "gw_lab_split",
       "target_id": "n4_0_draw_sample",
-      "condition": "npqs.lab_required == true || (npqs.visual_required == true && npqs.visual_approach == 'sample')"
+      "condition": "item.lab_required == true"
     },
     {
-      "id": "e_sample_phase_false",
-      "source_id": "npqs_gw_check_sample_phase",
-      "target_id": "npqs_join_sample_phase",
-      "condition": "npqs.lab_required != true && (npqs.visual_required != true || npqs.visual_approach != 'sample')"
-    },
-
-    { "id": "e_draw_to_lab_check", "source_id": "n4_0_draw_sample", "target_id": "npqs_gw_check_lab" },
-    {
-      "id": "e_lab_check_true",
-      "source_id": "npqs_gw_check_lab",
-      "target_id": "n2_1_lab_testing",
-      "condition": "npqs.lab_required == true"
+      "id": "e_lab_split_to_join_bypass",
+      "source_id": "gw_lab_split",
+      "target_id": "gw_lab_join",
+      "condition": "item.lab_required != true"
     },
     {
-      "id": "e_lab_check_false",
-      "source_id": "npqs_gw_check_lab",
-      "target_id": "npqs_join_lab_branch",
-      "condition": "npqs.lab_required != true"
+      "id": "e_draw_to_lab_check",
+      "source_id": "n4_0_draw_sample",
+      "target_id": "n2_1_lab_testing"
     },
-    { "id": "e_lab_testing_to_split", "source_id": "n2_1_lab_testing", "target_id": "lab_result_split" },
     {
-      "id": "e_lab_pass",
-      "source_id": "lab_result_split",
-      "target_id": "npqs_join_lab_branch",
-      "condition": "npqs.sample_test_result == 'pass'"
+      "id": "e_lab_testing_to_split",
+      "source_id": "n2_1_lab_testing",
+      "target_id": "lab_result_split"
     },
     {
       "id": "e_lab_fail_resubmit",
       "source_id": "lab_result_split",
-      "target_id": "n4_0_draw_sample",
-      "condition": "npqs.sample_test_result == 'fail_resubmit'"
+      "target_id": "n4_0b_lab_resubmit_draw",
+      "condition": "item.sample_test_result == 'fail_resubmit'"
+    },
+    {
+      "id": "e_lab_resubmit_draw_to_retest",
+      "source_id": "n4_0b_lab_resubmit_draw",
+      "target_id": "n2_1b_lab_resubmit_test"
+    },
+    {
+      "id": "e_lab_resubmit_retest_to_split",
+      "source_id": "n2_1b_lab_resubmit_test",
+      "target_id": "lab_result_split"
     },
     {
       "id": "e_lab_fail_final",
       "source_id": "lab_result_split",
-      "target_id": "end_lab_failed",
-      "condition": "npqs.sample_test_result == 'fail_final'"
-    },
-    { "id": "e_lab_branch_to_visual_sample_check", "source_id": "npqs_join_lab_branch", "target_id": "npqs_gw_check_visual_sample" },
-
-    {
-      "id": "e_visual_sample_check_true",
-      "source_id": "npqs_gw_check_visual_sample",
-      "target_id": "n_visual_sample_inspection",
-      "condition": "npqs.visual_required == true && npqs.visual_approach == 'sample'"
+      "target_id": "lab_result_join",
+      "condition": "item.sample_test_result == 'fail_final'"
     },
     {
-      "id": "e_visual_sample_check_false",
-      "source_id": "npqs_gw_check_visual_sample",
-      "target_id": "npqs_join_visual_sample_branch",
-      "condition": "npqs.visual_required != true || npqs.visual_approach != 'sample'"
+      "id": "e_lab_pass",
+      "source_id": "lab_result_split",
+      "target_id": "lab_result_join",
+      "condition": "item.sample_test_result == 'pass'"
     },
-    { "id": "e_visual_sample_to_split", "source_id": "n_visual_sample_inspection", "target_id": "visual_sample_result_split" },
     {
-      "id": "e_visual_sample_pass",
+      "id": "e_lab_result_join_to_lab_join",
+      "source_id": "lab_result_join",
+      "target_id": "gw_lab_join"
+    },
+    {
+      "id": "e_lab_join_to_par_join",
+      "source_id": "gw_lab_join",
+      "target_id": "gw_par_join"
+    },
+    {
+      "id": "e_vis_split_to_consign",
+      "source_id": "gw_visual_split",
+      "target_id": "n_visual_consignment_flow",
+      "condition": "item.visual_required == true && item.visual_approach == 'consignment'"
+    },
+    {
+      "id": "e_vis_split_to_sample",
+      "source_id": "gw_visual_split",
+      "target_id": "n_visual_sample_collect",
+      "condition": "item.visual_required == true && item.visual_approach == 'sample'"
+    },
+    {
+      "id": "e_vis_collect_to_sample",
+      "source_id": "n_visual_sample_collect",
+      "target_id": "n_visual_sample_inspection"
+    },
+    {
+      "id": "e_vis_split_to_system",
+      "source_id": "gw_visual_split",
+      "target_id": "n5_0_visual_inspection",
+      "condition": "item.visual_required == true && item.visual_approach == 'system'"
+    },
+    {
+      "id": "e_vis_split_to_join_bypass",
+      "source_id": "gw_visual_split",
+      "target_id": "gw_visual_join",
+      "condition": "item.visual_required != true || item.visual_approach == 'none'"
+    },
+    {
+      "id": "e_vis_consign_to_split",
+      "source_id": "n_visual_consignment_flow",
+      "target_id": "visual_consignment_result_split"
+    },
+    {
+      "id": "e_vis_consign_fail",
+      "source_id": "visual_consignment_result_split",
+      "target_id": "visual_consignment_result_join",
+      "condition": "item.visual_result == 'fail'"
+    },
+    {
+      "id": "e_vis_consign_pass",
+      "source_id": "visual_consignment_result_split",
+      "target_id": "visual_consignment_result_join",
+      "condition": "item.visual_result == 'pass'"
+    },
+    {
+      "id": "e_vis_sample_to_split",
+      "source_id": "n_visual_sample_inspection",
+      "target_id": "visual_sample_result_split"
+    },
+    {
+      "id": "e_vis_sample_fail",
       "source_id": "visual_sample_result_split",
-      "target_id": "npqs_join_visual_sample_branch",
-      "condition": "npqs.visual_sample_result == 'pass'"
+      "target_id": "visual_sample_result_join",
+      "condition": "item.visual_result == 'fail'"
     },
     {
-      "id": "e_visual_sample_fail",
-      "source_id": "visual_sample_result_split",
-      "target_id": "end_visual_sample_failed",
-      "condition": "npqs.visual_sample_result == 'fail'"
-    },
-    {
-      "id": "e_visual_sample_escalate",
+      "id": "e_vis_sample_escalate",
       "source_id": "visual_sample_result_split",
       "target_id": "n_visual_sample_escalated_consignment",
-      "condition": "npqs.visual_sample_result == 'escalate_consignment'"
+      "condition": "item.visual_result == 'escalate_consignment'"
     },
-    { "id": "e_escalated_consignment_to_split", "source_id": "n_visual_sample_escalated_consignment", "target_id": "visual_sample_escalated_result_split" },
     {
-      "id": "e_escalated_consignment_pass",
+      "id": "e_vis_sample_pass",
+      "source_id": "visual_sample_result_split",
+      "target_id": "visual_sample_result_join",
+      "condition": "item.visual_result == 'pass'"
+    },
+    {
+      "id": "e_escalated_to_split",
+      "source_id": "n_visual_sample_escalated_consignment",
+      "target_id": "visual_sample_escalated_result_split"
+    },
+    {
+      "id": "e_escalated_fail",
       "source_id": "visual_sample_escalated_result_split",
-      "target_id": "npqs_join_visual_sample_branch",
-      "condition": "npqs.visual_consignment_escalated_result == 'pass'"
+      "target_id": "visual_sample_escalated_result_join",
+      "condition": "item.visual_result == 'fail'"
     },
     {
-      "id": "e_escalated_consignment_fail",
+      "id": "e_escalated_pass",
       "source_id": "visual_sample_escalated_result_split",
-      "target_id": "end_visual_consignment_failed",
-      "condition": "npqs.visual_consignment_escalated_result == 'fail'"
-    },
-
-    { "id": "e_visual_sample_branch_to_post_lab_check", "source_id": "npqs_join_visual_sample_branch", "target_id": "npqs_gw_check_post_lab_visual" },
-    {
-      "id": "e_post_lab_visual_true",
-      "source_id": "npqs_gw_check_post_lab_visual",
-      "target_id": "n_lab_triggered_visual",
-      "condition": "npqs.post_lab_visual_required == true"
+      "target_id": "visual_sample_escalated_result_join",
+      "condition": "item.visual_result == 'pass'"
     },
     {
-      "id": "e_post_lab_visual_false",
-      "source_id": "npqs_gw_check_post_lab_visual",
-      "target_id": "npqs_join_lab_triggered_visual",
-      "condition": "npqs.post_lab_visual_required != true"
-    },
-    { "id": "e_lab_triggered_visual_to_split", "source_id": "n_lab_triggered_visual", "target_id": "lab_triggered_visual_result_split" },
-    {
-      "id": "e_lab_triggered_visual_pass",
-      "source_id": "lab_triggered_visual_result_split",
-      "target_id": "npqs_join_lab_triggered_visual",
-      "condition": "npqs.lab_triggered_visual_result == 'pass'"
+      "id": "e_vis_system_to_split",
+      "source_id": "n5_0_visual_inspection",
+      "target_id": "visual_system_result_split"
     },
     {
-      "id": "e_lab_triggered_visual_fail",
-      "source_id": "lab_triggered_visual_result_split",
-      "target_id": "end_lab_triggered_visual_failed",
-      "condition": "npqs.lab_triggered_visual_result == 'fail'"
-    },
-    { "id": "e_lab_triggered_visual_join_to_sample_join", "source_id": "npqs_join_lab_triggered_visual", "target_id": "npqs_join_sample_phase" },
-    { "id": "e_sample_join_to_non_sample_visual_check", "source_id": "npqs_join_sample_phase", "target_id": "npqs_gw_check_non_sample_visual" },
-
-    {
-      "id": "e_non_sample_visual_check_true",
-      "source_id": "npqs_gw_check_non_sample_visual",
-      "target_id": "visual_type_split",
-      "condition": "npqs.visual_required == true && npqs.visual_approach != 'sample'"
-    },
-    {
-      "id": "e_non_sample_visual_check_false",
-      "source_id": "npqs_gw_check_non_sample_visual",
-      "target_id": "npqs_join_non_sample_visual_branch",
-      "condition": "npqs.visual_required != true || npqs.visual_approach == 'sample'"
-    },
-    {
-      "id": "e_visual_consignment",
-      "source_id": "visual_type_split",
-      "target_id": "n_visual_consignment_flow",
-      "condition": "npqs.visual_approach == 'consignment'"
-    },
-    {
-      "id": "e_visual_system",
-      "source_id": "visual_type_split",
-      "target_id": "n5_0_visual_inspection",
-      "condition": "npqs.visual_approach == 'system'"
-    },
-    { "id": "e_visual_consignment_to_split", "source_id": "n_visual_consignment_flow", "target_id": "visual_consignment_result_split" },
-    {
-      "id": "e_visual_consignment_pass",
-      "source_id": "visual_consignment_result_split",
-      "target_id": "npqs_join_consignment_system",
-      "condition": "npqs.visual_consignment_result == 'pass'"
-    },
-    {
-      "id": "e_visual_consignment_fail",
-      "source_id": "visual_consignment_result_split",
-      "target_id": "end_visual_consignment_failed",
-      "condition": "npqs.visual_consignment_result == 'fail'"
-    },
-    { "id": "e_visual_system_to_split", "source_id": "n5_0_visual_inspection", "target_id": "visual_system_result_split" },
-    {
-      "id": "e_visual_system_pass",
+      "id": "e_vis_system_fail",
       "source_id": "visual_system_result_split",
-      "target_id": "npqs_join_consignment_system",
-      "condition": "npqs.visual_system_result == 'pass'"
+      "target_id": "visual_system_result_join",
+      "condition": "item.visual_result == 'fail'"
     },
     {
-      "id": "e_visual_system_fail",
+      "id": "e_vis_system_pass",
       "source_id": "visual_system_result_split",
-      "target_id": "end_visual_system_failed",
-      "condition": "npqs.visual_system_result == 'fail'"
+      "target_id": "visual_system_result_join",
+      "condition": "item.visual_result == 'pass'"
     },
-    { "id": "e_consignment_system_to_non_sample_join", "source_id": "npqs_join_consignment_system", "target_id": "npqs_join_non_sample_visual_branch" },
-    { "id": "e_non_sample_visual_to_treatment_check", "source_id": "npqs_join_non_sample_visual_branch", "target_id": "npqs_gw_check_treatment" },
-
     {
-      "id": "e_treatment_check_true",
-      "source_id": "npqs_gw_check_treatment",
+      "id": "e_vis_join_to_par_join",
+      "source_id": "gw_visual_join",
+      "target_id": "gw_par_join"
+    },
+    {
+      "id": "e_treat_split_to_req",
+      "source_id": "gw_treatment_split",
       "target_id": "n3_treatment_request",
-      "condition": "npqs.treatment_required == true"
+      "condition": "item.treatment_required == true"
     },
     {
-      "id": "e_treatment_check_false",
-      "source_id": "npqs_gw_check_treatment",
-      "target_id": "npqs_join_treatment_branch",
-      "condition": "npqs.treatment_required != true"
+      "id": "e_treat_split_to_join_bypass",
+      "source_id": "gw_treatment_split",
+      "target_id": "gw_treatment_join",
+      "condition": "item.treatment_required != true"
     },
-    { "id": "e_treatment_request_to_provider_split", "source_id": "n3_treatment_request", "target_id": "treatment_provider_split" },
+    {
+      "id": "e_treatment_request_to_provider_split",
+      "source_id": "n3_treatment_request",
+      "target_id": "treatment_provider_split"
+    },
     {
       "id": "e_treatment_by_npqs",
       "source_id": "treatment_provider_split",
       "target_id": "n3_2_treatment_payment",
-      "condition": "npqs.treatment_provider == 'npqs'"
+      "condition": "item.treatment_provider == 'npqs'"
     },
     {
       "id": "e_treatment_by_provider",
       "source_id": "treatment_provider_split",
       "target_id": "n3_4_treatment_upload_certs",
-      "condition": "npqs.treatment_provider == 'external'"
+      "condition": "item.treatment_provider == 'external'"
     },
-    { "id": "e_treatment_payment_to_cert", "source_id": "n3_2_treatment_payment", "target_id": "n3_3_treatment_cert_issue" },
-    { "id": "e_treatment_cert_to_supervision_split", "source_id": "n3_3_treatment_cert_issue", "target_id": "n3_3_1_supervision_split" },
+    {
+      "id": "e_treatment_payment_to_cert",
+      "source_id": "n3_2_treatment_payment",
+      "target_id": "n3_3_treatment_cert_issue"
+    },
+    {
+      "id": "e_treatment_cert_to_supervision_split",
+      "source_id": "n3_3_treatment_cert_issue",
+      "target_id": "n3_3_1_supervision_split"
+    },
     {
       "id": "e_supervision_split_true",
       "source_id": "n3_3_1_supervision_split",
       "target_id": "n3_3_2_treatment_supervisor_report",
-      "condition": "npqs.treatment_supervision == 'with_supervision'"
+      "condition": "item.treatment_supervision == 'with_supervision'"
     },
     {
       "id": "e_supervision_split_false",
       "source_id": "n3_3_1_supervision_split",
-      "target_id": "n3_4_treatment_upload_certs",
-      "condition": "npqs.treatment_supervision != 'with_supervision'"
+      "target_id": "n3_3_1_supervision_join",
+      "condition": "item.treatment_supervision != 'with_supervision'"
     },
-    { "id": "e_supervisor_report_to_upload", "source_id": "n3_3_2_treatment_supervisor_report", "target_id": "n3_4_treatment_upload_certs" },
-    { "id": "e_treatment_upload_to_review", "source_id": "n3_4_treatment_upload_certs", "target_id": "n3_5_treatment_review_certs" },
-    { "id": "e_treatment_review_to_split", "source_id": "n3_5_treatment_review_certs", "target_id": "treatment_review_split" },
     {
-      "id": "e_treatment_pass",
-      "source_id": "treatment_review_split",
-      "target_id": "npqs_gw_check_post_treatment_visual",
-      "condition": "npqs.treatment_review_result == 'pass'"
+      "id": "e_supervisor_report_to_upload",
+      "source_id": "n3_3_2_treatment_supervisor_report",
+      "target_id": "n3_3_1_supervision_join"
+    },
+    {
+      "id": "e_supervision_join_to_upload",
+      "source_id": "n3_3_1_supervision_join",
+      "target_id": "n3_4_treatment_upload_certs"
+    },
+    {
+      "id": "e_treatment_upload_to_review",
+      "source_id": "n3_4_treatment_upload_certs",
+      "target_id": "n3_5_treatment_review_certs"
+    },
+    {
+      "id": "e_treatment_review_to_split",
+      "source_id": "n3_5_treatment_review_certs",
+      "target_id": "treatment_review_split"
     },
     {
       "id": "e_treatment_needs_more_info",
       "source_id": "treatment_review_split",
       "target_id": "n3_4_treatment_upload_certs",
       "condition": "npqs.treatment_review_result == 'needs_more_info'"
+    },
+    {
+      "id": "e_treatment_fail",
+      "source_id": "treatment_review_split",
+      "target_id": "treatment_provider_join",
+      "condition": "npqs.treatment_review_result == 'fail'"
+    },
+    {
+      "id": "e_treatment_pass",
+      "source_id": "treatment_review_split",
+      "target_id": "npqs_gw_check_post_treatment_visual",
+      "condition": "npqs.treatment_review_result == 'pass'"
     },
     {
       "id": "e_post_treatment_visual_true",
@@ -714,27 +908,63 @@
     {
       "id": "e_post_treatment_visual_false",
       "source_id": "npqs_gw_check_post_treatment_visual",
-      "target_id": "npqs_join_treatment_triggered_visual",
+      "target_id": "treatment_provider_join",
       "condition": "npqs.post_treatment_visual_required != true"
     },
-    { "id": "e_treatment_triggered_visual_to_split", "source_id": "n_treatment_triggered_visual", "target_id": "treatment_triggered_visual_result_split" },
     {
-      "id": "e_treatment_triggered_visual_pass",
-      "source_id": "treatment_triggered_visual_result_split",
-      "target_id": "npqs_join_treatment_triggered_visual",
-      "condition": "npqs.treatment_triggered_visual_result == 'pass'"
+      "id": "e_treatment_triggered_visual_to_split",
+      "source_id": "n_treatment_triggered_visual",
+      "target_id": "treatment_triggered_visual_result_split"
     },
     {
       "id": "e_treatment_triggered_visual_fail",
       "source_id": "treatment_triggered_visual_result_split",
-      "target_id": "end_treatment_triggered_visual_failed",
+      "target_id": "treatment_provider_join",
       "condition": "npqs.treatment_triggered_visual_result == 'fail'"
     },
-    { "id": "e_treatment_triggered_visual_join_to_branch", "source_id": "npqs_join_treatment_triggered_visual", "target_id": "npqs_join_treatment_branch" },
-    { "id": "e_treatment_branch_to_upload_docs", "source_id": "npqs_join_treatment_branch", "target_id": "n5_1_upload_docs" },
-
-    { "id": "e_upload_docs_to_review", "source_id": "n5_1_upload_docs", "target_id": "n5_2_review_docs" },
-    { "id": "e_review_to_gw", "source_id": "n5_2_review_docs", "target_id": "docs_review_gateway" },
+    {
+      "id": "e_treatment_triggered_visual_pass",
+      "source_id": "treatment_triggered_visual_result_split",
+      "target_id": "treatment_provider_join",
+      "condition": "npqs.treatment_triggered_visual_result == 'pass'"
+    },
+    {
+      "id": "e_provider_join_to_treatment_join",
+      "source_id": "treatment_provider_join",
+      "target_id": "gw_treatment_join"
+    },
+    {
+      "id": "e_treat_join_to_par_join",
+      "source_id": "gw_treatment_join",
+      "target_id": "gw_par_join"
+    },
+    {
+      "id": "e_par_join_to_clearance",
+      "source_id": "gw_par_join",
+      "target_id": "gw_consignment_clearance"
+    },
+    {
+      "id": "e_clearance_all_failed",
+      "source_id": "gw_consignment_clearance",
+      "target_id": "end_consignment_rejected",
+      "condition": "npqs.all_items_failed == true"
+    },
+    {
+      "id": "e_clearance_approved",
+      "source_id": "gw_consignment_clearance",
+      "target_id": "n5_1_upload_docs",
+      "condition": "npqs.all_items_failed != true"
+    },
+    {
+      "id": "e_upload_docs_to_review",
+      "source_id": "n5_1_upload_docs",
+      "target_id": "n5_2_review_docs"
+    },
+    {
+      "id": "e_review_to_gw",
+      "source_id": "n5_2_review_docs",
+      "target_id": "docs_review_gateway"
+    },
     {
       "id": "e_docs_needs_info",
       "source_id": "docs_review_gateway",
@@ -747,7 +977,11 @@
       "target_id": "n6_0_payment",
       "condition": "npqs.docs_review_outcome == 'approve'"
     },
-    { "id": "e_payment_to_split", "source_id": "n6_0_payment", "target_id": "payment_split" },
+    {
+      "id": "e_payment_to_split",
+      "source_id": "n6_0_payment",
+      "target_id": "payment_split"
+    },
     {
       "id": "e_payment_fail",
       "source_id": "payment_split",
@@ -760,7 +994,11 @@
       "target_id": "n8_0_issue_certificate",
       "condition": "npqs.payment_status == 'success'"
     },
-    { "id": "e_issue_to_ephyto_split", "source_id": "n8_0_issue_certificate", "target_id": "ephyto_split" },
+    {
+      "id": "e_issue_to_ephyto_split",
+      "source_id": "n8_0_issue_certificate",
+      "target_id": "ephyto_split"
+    },
     {
       "id": "e_ephyto_true",
       "source_id": "ephyto_split",
@@ -773,6 +1011,30 @@
       "target_id": "end_success",
       "condition": "npqs.ephyto_required != true"
     },
-    { "id": "e_ephyto_upload_to_end", "source_id": "n9_0_ephyto_upload", "target_id": "end_success" }
+    {
+      "id": "e_ephyto_upload_to_end",
+      "source_id": "n9_0_ephyto_upload",
+      "target_id": "end_success"
+    },
+    {
+      "id": "e_vis_consign_join_to_visual_join",
+      "source_id": "visual_consignment_result_join",
+      "target_id": "gw_visual_join"
+    },
+    {
+      "id": "e_vis_sample_join_to_visual_join",
+      "source_id": "visual_sample_result_join",
+      "target_id": "gw_visual_join"
+    },
+    {
+      "id": "e_escalated_join_to_sample_join",
+      "source_id": "visual_sample_escalated_result_join",
+      "target_id": "visual_sample_result_join"
+    },
+    {
+      "id": "e_vis_system_join_to_visual_join",
+      "source_id": "visual_system_result_join",
+      "target_id": "gw_visual_join"
+    }
   ]
 }

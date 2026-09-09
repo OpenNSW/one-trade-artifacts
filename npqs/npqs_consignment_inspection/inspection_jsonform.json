@@ -53,7 +53,7 @@
               ],
               "default": "pass"
             },
-            "failure_reason": {
+            "visual_failure_reason": {
               "type": "string",
               "title": "Failure Reason",
               "example": "Rot and physical fungal damage observed on packaging."
@@ -113,7 +113,7 @@
               },
               {
                 "type": "Control",
-                "scope": "#/properties/failure_reason",
+                "scope": "#/properties/visual_failure_reason",
                 "rule": {
                   "effect": "SHOW",
                   "condition": {

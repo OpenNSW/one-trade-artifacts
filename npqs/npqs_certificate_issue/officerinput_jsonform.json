@@ -47,6 +47,7 @@
       }
     },
     "required": [
+      "certificate_items",
       "certificate_id"
     ]
   },

@@ -71,15 +71,15 @@
               ],
               "default": "pass"
             },
-            "failure_reason": {
-              "type": "string",
-              "title": "Failure Reason (If failed)",
-              "example": "Presence of quarantine pest: Bactrocera dorsalis"
-            },
             "post_lab_visual_required": {
               "type": "boolean",
               "title": "Post-Lab Visual Required",
               "default": false
+            },
+            "lab_failure_reason": {
+              "type": "string",
+              "title": "Failure Reason (If failed)",
+              "example": "Presence of quarantine pest: Bactrocera dorsalis"
             }
           },
           "required": [
@@ -141,7 +141,7 @@
               },
               {
                 "type": "Control",
-                "scope": "#/properties/failure_reason",
+                "scope": "#/properties/lab_failure_reason",
                 "rule": {
                   "effect": "SHOW",
                   "condition": {

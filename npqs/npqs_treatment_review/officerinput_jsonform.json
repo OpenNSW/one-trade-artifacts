@@ -4,27 +4,6 @@
   "schema": {
     "type": "object",
     "properties": {
-      "treatment_items": {
-        "type": "array",
-        "title": "Items Under Treatment (Context)",
-        "items": {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string",
-              "title": "Item ID"
-            },
-            "commodity_common_name": {
-              "type": "string",
-              "title": "Commodity Name"
-            },
-            "treatment_type": {
-              "type": "string",
-              "title": "Treatment Type Requested"
-            }
-          }
-        }
-      },
       "treatment_review_result": {
         "type": "string",
         "title": "Verification Result",
@@ -49,6 +28,23 @@
         "type": "boolean",
         "title": "Visual Inspection Required for Treated Consignment (Airport PQS Officer)",
         "default": false
+      },
+      "commodities": {
+        "type": "array",
+        "title": "Items Under Treatment (Context)",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Item ID"
+            },
+            "commodity_common_name": {
+              "type": "string",
+              "title": "Commodity Name"
+            }
+          }
+        }
       }
     },
     "required": [
@@ -60,7 +56,7 @@
     "elements": [
       {
         "type": "Control",
-        "scope": "#/properties/treatment_items",
+        "scope": "#/properties/commodities",
         "options": {
           "readonly": true,
           "detail": {
@@ -76,13 +72,6 @@
               {
                 "type": "Control",
                 "scope": "#/properties/commodity_common_name",
-                "options": {
-                  "readOnly": true
-                }
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/treatment_type",
                 "options": {
                   "readOnly": true
                 }

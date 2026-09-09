@@ -3,6 +3,16 @@
   "type": "APPLICATION",
   "title": "[NPQS] Treatment Request",
   "sections": {
+    "items_summary": {
+      "templateId": "npqs-treatment-request--items-summary",
+      "title": "Items Requiring Quarantine Treatment",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ]
+      }
+    },
     "assessment_outcome": {
       "templateId": "npqs-treatment-request--status",
       "title": "Treatment Request Assessment",
@@ -17,7 +27,9 @@
       "title": "Request Status",
       "projector": "MARKDOWN",
       "visibleWhen": {
-        "states": ["QUEUED_EXTERNALLY"]
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
       }
     },
     "submission_form": {
@@ -36,7 +48,11 @@
   },
   "states": {
     "PENDING_USER": {
-      "actions": [{ "command": "submit" }]
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
     }
   }
 }
