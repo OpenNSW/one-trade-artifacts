@@ -14,7 +14,7 @@
       "input_mapping": {
         "reference_number": "reference_number",
         "userform": "submission",
-        "certificate_items?": "certificate_items"
+        "certificate_items?": "submission.certificate_items"
       },
       "output_mapping": {
         "certificate_id": "certificate_id",

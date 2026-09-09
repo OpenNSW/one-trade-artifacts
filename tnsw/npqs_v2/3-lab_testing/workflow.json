@@ -15,7 +15,7 @@
         "reference_number": "reference_number",
         "userform": "submission",
         "sample_number?": "sample_number",
-        "commodities?": "items"
+        "commodities?": "submission.items"
       },
       "output_mapping": {
         "items": "commodities",

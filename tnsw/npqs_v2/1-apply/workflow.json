@@ -48,8 +48,7 @@
       "type": "TASK",
       "task_template_id": "npqs-v2-apply-phyto-cert--external-review",
       "input_mapping": {
-        "userform": "submission",
-        "userform.commodities?": "commodities"
+        "userform": "submission"
       },
       "output_mapping": {
         "review_outcome": "reviewerform.review_outcome",

@@ -30,7 +30,7 @@
         "traderinput.inspection_time?": "inspection_time",
         "contact_name?": "contact_name",
         "contact_phone?": "contact_phone",
-        "commodities?": "items"
+        "commodities?": "submission.items"
       },
       "output_mapping": {
         "visual_result": "visual_result",
