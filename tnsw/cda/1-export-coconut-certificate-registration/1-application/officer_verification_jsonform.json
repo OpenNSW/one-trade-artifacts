@@ -24,24 +24,76 @@
         "type": "string",
         "title": "Comments / Feedback / Deficiencies (Required if Needs More Info)",
         "example": "Please upload the correct certificate template."
+      },
+      "product_type_dc": {
+        "type": "boolean",
+        "title": "DC",
+        "default": false
+      },
+      "product_type_value_added_dc": {
+        "type": "boolean",
+        "title": "Value Added DC - Low Fat DC",
+        "default": false
       }
     },
     "required": [
       "verification_outcome"
     ],
-    "if": {
-      "properties": {
-        "verification_outcome": { "const": "needs_more_info" }
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "verification_outcome": {
+              "const": "needs_more_info"
+            }
+          },
+          "required": [
+            "verification_outcome"
+          ]
+        },
+        "then": {
+          "required": [
+            "rejection_reason"
+          ]
+        }
       },
-      "required": [
-        "verification_outcome"
-      ]
-    },
-    "then": {
-      "required": [
-        "rejection_reason"
-      ]
-    }
+      {
+        "if": {
+          "properties": {
+            "verification_outcome": {
+              "const": "approve"
+            }
+          },
+          "required": [
+            "verification_outcome"
+          ]
+        },
+        "then": {
+          "anyOf": [
+            {
+              "properties": {
+                "product_type_dc": {
+                  "const": true
+                }
+              },
+              "required": [
+                "product_type_dc"
+              ]
+            },
+            {
+              "properties": {
+                "product_type_value_added_dc": {
+                  "const": true
+                }
+              },
+              "required": [
+                "product_type_value_added_dc"
+              ]
+            }
+          ]
+        }
+      }
+    ]
   },
   "uiSchema": {
     "type": "VerticalLayout",
@@ -59,6 +111,32 @@
             "scope": "#/properties/verification_outcome",
             "schema": {
               "const": "needs_more_info"
+            }
+          }
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/product_type_dc",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/verification_outcome",
+            "schema": {
+              "const": "approve"
+            }
+          }
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/product_type_value_added_dc",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/verification_outcome",
+            "schema": {
+              "const": "approve"
             }
           }
         }

@@ -44,6 +44,8 @@
       },
       "output_mapping": {
         "verification_outcome": "verificationform.verification_outcome",
+        "product_type_dc?": "verificationform.product_type_dc",
+        "product_type_value_added_dc?": "verificationform.product_type_value_added_dc",
         "rejection_reason?": "rejection_reason"
       }
     },

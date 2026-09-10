@@ -17,7 +17,30 @@
       "input_mapping": {},
       "output_mapping": {
         "userform.cusdec_number": "cda.reference_number",
-        "userform": "cda.userform"
+        "userform": "cda.userform",
+        "verificationform.product_type_dc": "cda.product_type_dc",
+        "verificationform.product_type_value_added_dc": "cda.product_type_value_added_dc"
+      }
+    },
+    {
+      "id": "cda_check_product_type_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Does the consignment include DC?"
+    },
+    {
+      "id": "cda_2b_asycuda_green_check",
+      "type": "TASK",
+      "name": "[CDA 2.b] ASYCUDA Green Check",
+      "task_template_id": "cda-asycuda-green-check-flow",
+      "lane": "CDA Officer",
+      "input_mapping": {
+        "cda.reference_number": "reference_number",
+        "cda.userform": "userform"
+      },
+      "output_mapping": {
+        "reviewerform.review_outcome": "cda.green_check_outcome",
+        "reviewerform.asycuda_approval_confirmed?": "cda.asycuda_approval_confirmed"
       }
     },
     {
@@ -100,6 +123,11 @@
       "id": "end_success",
       "type": "END",
       "name": "Certificate Issued Successfully"
+    },
+    {
+      "id": "end_green_check",
+      "type": "END",
+      "name": "Approved via ASYCUDA Green Check"
     }
   ],
   "edges": [
@@ -109,9 +137,26 @@
       "target_id": "cda_1_0_apply"
     },
     {
-      "id": "e_apply_to_payment_gw",
+      "id": "e_apply_to_product_type_gw",
       "source_id": "cda_1_0_apply",
-      "target_id": "cda_check_payment_gateway"
+      "target_id": "cda_check_product_type_gateway"
+    },
+    {
+      "id": "e_value_added_green_check",
+      "source_id": "cda_check_product_type_gateway",
+      "target_id": "cda_2b_asycuda_green_check",
+      "condition": "cda.product_type_dc != true"
+    },
+    {
+      "id": "e_green_check_to_end",
+      "source_id": "cda_2b_asycuda_green_check",
+      "target_id": "end_green_check"
+    },
+    {
+      "id": "e_dc_certificate_path",
+      "source_id": "cda_check_product_type_gateway",
+      "target_id": "cda_check_payment_gateway",
+      "condition": "cda.product_type_dc == true"
     },
     {
       "id": "e_pay_required",
