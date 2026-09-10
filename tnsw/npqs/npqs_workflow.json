@@ -9,7 +9,11 @@
       "name": "Apply, Review & Generate Reference Number",
       "type": "TASK",
       "task_template_id": "npqs-apply-phyto-cert",
-      "input_mapping": {},
+      "input_mapping": {
+        "_iter.input.company.name?": "applicant_name",
+        "_iter.input.company.name": "exporter_name",
+        "_iter.input.company.address?": "exporter_address"
+      },
       "output_mapping": {
         "reviewerform.reference_number": "npqs.reference_number",
         "userform": "npqs.userform",
