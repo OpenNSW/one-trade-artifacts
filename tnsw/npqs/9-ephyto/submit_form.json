@@ -7,13 +7,85 @@
       "hub_destination": {
         "type": "string",
         "title": "Destination IPPC Hub Connection",
-        "oneOf": [{ "const": "LK2", "title": "Sri Lanka (LK2)" }]
+        "oneOf": [
+          {
+            "const": "LK2",
+            "title": "Sri Lanka (LK2)"
+          }
+        ]
+      },
+      "send_application_documents": {
+        "type": "boolean",
+        "title": "Send the documents attached to the application",
+        "description": "The files you attached when applying \u2014 permits, invoices, certificates. Listed on the certificate as accompanying the consignment.",
+        "default": true
+      },
+      "send_treatment_certificate": {
+        "type": "boolean",
+        "title": "Send the treatment certificate",
+        "description": "Uploaded at the treatment step. Listed on the certificate as accompanying the consignment.",
+        "default": true
+      },
+      "send_supervision_report": {
+        "type": "boolean",
+        "title": "Send the treatment supervision report",
+        "description": "Uploaded at the treatment step, where supervision was requested. Listed on the certificate as accompanying the consignment.",
+        "default": true
+      },
+      "send_invoice": {
+        "type": "boolean",
+        "title": "Send the commercial invoice",
+        "description": "Uploaded at the supporting documents step. Listed on the certificate as accompanying the consignment.",
+        "default": true
+      },
+      "send_packing_list": {
+        "type": "boolean",
+        "title": "Send the packing list",
+        "description": "Uploaded at the supporting documents step. Listed on the certificate as accompanying the consignment.",
+        "default": true
+      },
+      "send_additional_document": {
+        "type": "boolean",
+        "title": "Send the additional supporting document",
+        "description": "Uploaded at the supporting documents step. Listed on the certificate as accompanying the consignment.",
+        "default": true
       }
     },
-    "required": ["hub_destination"]
+    "required": [
+      "hub_destination"
+    ]
   },
   "uiSchema": {
     "type": "VerticalLayout",
-    "elements": [{ "type": "Control", "scope": "#/properties/hub_destination" }]
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/hub_destination"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/send_application_documents"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/send_treatment_certificate"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/send_supervision_report"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/send_invoice"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/send_packing_list"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/send_additional_document"
+      }
+    ]
   }
 }

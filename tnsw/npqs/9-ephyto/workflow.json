@@ -1,7 +1,7 @@
 {
   "id": "npqs-ephyto-upload",
   "name": "Upload to IPPC ePhyto Hub",
-  "version": 8,
+  "version": 9,
   "nodes": [
     {
       "id": "start",
@@ -17,7 +17,13 @@
         "ephyto.error?": "ephyto.error"
       },
       "output_mapping": {
-        "hub_destination": "traderinput.hub_destination"
+        "hub_destination": "traderinput.hub_destination",
+        "send_application_documents?": "traderinput.send_application_documents",
+        "send_treatment_certificate?": "traderinput.send_treatment_certificate",
+        "send_supervision_report?": "traderinput.send_supervision_report",
+        "send_invoice?": "traderinput.send_invoice",
+        "send_packing_list?": "traderinput.send_packing_list",
+        "send_additional_document?": "traderinput.send_additional_document"
       }
     },
     {
@@ -27,7 +33,18 @@
       "input_mapping": {
         "userform": "userform",
         "certificate_id": "certificate_id",
-        "traderinput.hub_destination": "hub_destination"
+        "traderinput.hub_destination": "hub_destination",
+        "traderinput.send_application_documents?": "send_application_documents",
+        "treatment_certificate_url?": "documents.treatment_certificate.url",
+        "traderinput.send_treatment_certificate?": "documents.treatment_certificate.send",
+        "supervision_report_url?": "documents.treatment_supervision_report.url",
+        "traderinput.send_supervision_report?": "documents.treatment_supervision_report.send",
+        "invoice_file_url?": "documents.commercial_invoice.url",
+        "traderinput.send_invoice?": "documents.commercial_invoice.send",
+        "packing_list_file_url?": "documents.packing_list.url",
+        "traderinput.send_packing_list?": "documents.packing_list.send",
+        "additional_file_url?": "documents.additional_supporting_document.url",
+        "traderinput.send_additional_document?": "documents.additional_supporting_document.send"
       },
       "output_mapping": {
         "ephyto.submitted": "ephyto.submitted",

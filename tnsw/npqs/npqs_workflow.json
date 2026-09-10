@@ -459,7 +459,12 @@
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
-        "npqs.certificate_id": "certificate_id"
+        "npqs.certificate_id": "certificate_id",
+        "npqs.treatment_traderinput.treatment_certificate_url?": "treatment_certificate_url",
+        "npqs.treatment_traderinput.supervision_report_url?": "supervision_report_url",
+        "npqs.docs_traderinput.invoice_file_url?": "invoice_file_url",
+        "npqs.docs_traderinput.packing_list_file_url?": "packing_list_file_url",
+        "npqs.docs_traderinput.additional_file_url?": "additional_file_url"
       },
       "output_mapping": {}
     },
