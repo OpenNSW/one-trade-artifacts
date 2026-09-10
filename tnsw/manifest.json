@@ -1561,6 +1561,48 @@
       "path": "cda/1-export-coconut-certificate-registration/2-payment_app_fee/task_template.json"
     },
     {
+      "id": "cda-asycuda-green-check-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/2b-asycuda_green_check/render.json"
+    },
+    {
+      "id": "cda-asycuda-green-check--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/2b-asycuda_green_check/officerinput_jsonform.json"
+    },
+    {
+      "id": "cda-asycuda-green-check--trader-instructions",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/2b-asycuda_green_check/trader_instructions_jsonform.json"
+    },
+    {
+      "id": "cda-asycuda-green-check--trader-results",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/2b-asycuda_green_check/trader_results_jsonform.json"
+    },
+    {
+      "id": "cda-asycuda-green-check--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/2b-asycuda_green_check/officerinput.json"
+    },
+    {
+      "id": "cda-asycuda-green-check-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/2b-asycuda_green_check/workflow.json"
+    },
+    {
+      "id": "cda-asycuda-green-check-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/2b-asycuda_green_check/task_template.json"
+    },
+    {
       "id": "cda-review-result-flow:render",
       "kind": "generic_template",
       "version": "",

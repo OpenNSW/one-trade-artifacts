@@ -1,0 +1,11 @@
+{
+  "id": "cda-asycuda-green-check--officer-review",
+  "task_type": "EXTERNAL_REVIEW",
+  "output_namespace": "reviewerform",
+  "plugin_properties": {
+    "officer_jsonforms_id": "cda-asycuda-green-check--officer-form",
+    "service_id": "cda",
+    "path": "/api/v1/inject",
+    "task_code": "cda_asycuda_green_check_v1"
+  }
+}

@@ -3,7 +3,7 @@
   "taskCode": "cda_officer_verification_v1",
   "meta": {
     "title": "CDA Application Verification",
-    "description": "Officer verifies the CDA application details before proceeding to payment.",
+    "description": "Officer verifies the CDA application details. Exclusive Value Added DC or Low Fat DC consignments can be approved for an ASYCUDA green check without quality check and certificate issuance.",
     "category": "CDA"
   },
   "forms": {

@@ -1,0 +1,27 @@
+{
+  "id": "cda-asycuda-green-check-flow:render",
+  "type": "REVIEW",
+  "title": "[CDA] ASYCUDA Green Check",
+  "sections": {
+    "status_message": {
+      "templateId": "cda-asycuda-green-check--trader-instructions",
+      "title": "Green Check Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER",
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    },
+    "workspace": {
+      "templateId": "cda-asycuda-green-check--trader-results",
+      "title": "Green Check Outcome",
+      "projector": "MARKDOWN",
+      "dataKey": "reviewerform",
+      "visibleWhen": {
+        "requireDataKey": "reviewerform"
+      }
+    }
+  }
+}
