@@ -12,15 +12,16 @@
       "type": "TASK",
       "task_template_id": "npqs-lab-testing--officer-review",
       "input_mapping": {
-        "reference_number": "reference_number",
+        "reference_number": "submission.reference_number",
         "userform": "submission",
-        "sample_number": "sample_number"
+        "sample_number?": "submission.sample_number",
+        "commodities?": "submission.items"
       },
       "output_mapping": {
+        "items": "commodities",
         "sample_test_result": "sample_test_result",
         "lab_comments?": "lab_comments",
-        "lab_report_attachment_url?": "lab_report_attachment_url",
-        "post_lab_visual_required?": "post_lab_visual_required"
+        "lab_report_attachment_url?": "lab_report_attachment_url"
       }
     },
     {

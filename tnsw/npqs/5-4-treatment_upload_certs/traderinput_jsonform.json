@@ -20,6 +20,42 @@
         "type": "string",
         "title": "Trader Comments / Remarks",
         "example": "Uploaded the fumigation certificate from private provider and supervisor check sheet."
+      },
+      "commodities": {
+        "type": "array",
+        "title": "Items Under Treatment (Context)",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Item ID"
+            },
+            "commodity_common_name": {
+              "type": "object",
+              "title": "Commodity Name",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "value"
+              ],
+              "x-search": {
+                "service": "static-data",
+                "mode": "small-list",
+                "params": {
+                  "id": "npqs-apply-phyto-cert--commodity-common-names",
+                  "version": "1"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "required": [
@@ -29,6 +65,34 @@
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/commodities",
+        "options": {
+          "readonly": true,
+          "detail": {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/id",
+                "options": {
+                  "readOnly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/commodity_common_name",
+                "options": {
+                  "readOnly": true
+                }
+              }
+            ]
+          },
+          "addable": false,
+          "removable": false
+        }
+      },
       {
         "type": "Control",
         "scope": "#/properties/treatment_certificate_url"

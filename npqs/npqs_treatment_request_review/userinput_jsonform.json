@@ -9,28 +9,94 @@
         "title": "Treatment Type Requested",
         "readOnly": true,
         "oneOf": [
-          { "const": "TPT", "title": "Temperature Treatment" },
-          { "const": "CHT", "title": "Chemical Treatment" },
-          { "const": "RAT", "title": "Radiation Treatment" },
-          { "const": "OTT", "title": "Other Treatment" },
-          { "const": "CT", "title": "Cold Treatment" },
-          { "const": "HT", "title": "Heat Treatment" },
-          { "const": "DR", "title": "Dry Heat" },
-          { "const": "MH", "title": "Moist Heat" },
-          { "const": "VH", "title": "Vapour Heat" },
-          { "const": "KD", "title": "Kiln drying" },
-          { "const": "HW", "title": "Hot water treatment" },
-          { "const": "DH", "title": "Dielectric Heating" },
-          { "const": "FG", "title": "Fungicide" },
-          { "const": "IN", "title": "Insecticide" },
-          { "const": "NE", "title": "Nematicide" },
-          { "const": "OP", "title": "Other pesticide" },
-          { "const": "CPI", "title": "Chemical pressure impregnation" },
-          { "const": "FU", "title": "Fumigation" },
-          { "const": "SC", "title": "Seed coating" },
-          { "const": "DV", "title": "Devitalization" },
-          { "const": "DB", "title": "Debarking" },
-          { "const": "CD", "title": "Cold disinfestation" }
+          {
+            "const": "TPT",
+            "title": "Temperature Treatment"
+          },
+          {
+            "const": "CHT",
+            "title": "Chemical Treatment"
+          },
+          {
+            "const": "RAT",
+            "title": "Radiation Treatment"
+          },
+          {
+            "const": "OTT",
+            "title": "Other Treatment"
+          },
+          {
+            "const": "CT",
+            "title": "Cold Treatment"
+          },
+          {
+            "const": "HT",
+            "title": "Heat Treatment"
+          },
+          {
+            "const": "DR",
+            "title": "Dry Heat"
+          },
+          {
+            "const": "MH",
+            "title": "Moist Heat"
+          },
+          {
+            "const": "VH",
+            "title": "Vapour Heat"
+          },
+          {
+            "const": "KD",
+            "title": "Kiln drying"
+          },
+          {
+            "const": "HW",
+            "title": "Hot water treatment"
+          },
+          {
+            "const": "DH",
+            "title": "Dielectric Heating"
+          },
+          {
+            "const": "FG",
+            "title": "Fungicide"
+          },
+          {
+            "const": "IN",
+            "title": "Insecticide"
+          },
+          {
+            "const": "NE",
+            "title": "Nematicide"
+          },
+          {
+            "const": "OP",
+            "title": "Other pesticide"
+          },
+          {
+            "const": "CPI",
+            "title": "Chemical pressure impregnation"
+          },
+          {
+            "const": "FU",
+            "title": "Fumigation"
+          },
+          {
+            "const": "SC",
+            "title": "Seed coating"
+          },
+          {
+            "const": "DV",
+            "title": "Devitalization"
+          },
+          {
+            "const": "DB",
+            "title": "Debarking"
+          },
+          {
+            "const": "CD",
+            "title": "Cold disinfestation"
+          }
         ]
       },
       "chemical_used": {

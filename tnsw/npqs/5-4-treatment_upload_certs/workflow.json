@@ -14,8 +14,10 @@
       "input_mapping": {
         "reference_number": "reference_number",
         "userform": "userform",
-        "treatment_provider": "treatment_provider",
-        "treatment_supervision": "treatment_supervision"
+        "commodities?": "traderinput.commodities",
+        "prior_treatment_certificate_url?": "traderinput.treatment_certificate_url",
+        "prior_supervision_report_url?": "traderinput.supervision_report_url",
+        "prior_upload_remarks?": "traderinput.upload_remarks"
       },
       "output_mapping": {
         "treatment_certificate_url": "traderinput.treatment_certificate_url",

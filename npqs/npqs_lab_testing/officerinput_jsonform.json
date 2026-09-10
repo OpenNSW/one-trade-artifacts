@@ -6,18 +6,22 @@
     "properties": {
       "sample_test_result": {
         "type": "string",
-        "title": "Laboratory Test Outcome",
+        "title": "Overall Batch Result (worst outcome across the items below)",
         "oneOf": [
-          { "const": "pass", "title": "Pass (No Quarantine Pests Found)" },
-          { "const": "fail_resubmit", "title": "Fail — Allow Sample Resubmission (First Failure)" },
-          { "const": "fail_final", "title": "Fail Final — Reject Consignment (Second Failure)" }
+          {
+            "const": "pass",
+            "title": "Pass \u2014 All Items Clear"
+          },
+          {
+            "const": "fail_resubmit",
+            "title": "Fail \u2014 One or More Items Allowed Resubmission"
+          },
+          {
+            "const": "fail_final",
+            "title": "Fail Final \u2014 One or More Items Rejected"
+          }
         ],
         "default": "pass"
-      },
-      "lab_comments": {
-        "type": "string",
-        "title": "Laboratory Analysis Details",
-        "example": "Entomology and pathology tests completed. Nil pests detected."
       },
       "lab_report_attachment_url": {
         "type": "string",
@@ -25,23 +29,169 @@
         "title": "Uploaded Lab Test Report",
         "example": "https://nsw.gov.lk/storage/reports/lab-report-2026.pdf"
       },
-      "post_lab_visual_required": {
-        "type": "boolean",
-        "title": "Visual Inspection Required for Lab Tested Consignment (Airport PQS Officer)",
-        "default": false
+      "lab_comments": {
+        "type": "string",
+        "title": "Laboratory Analysis Details",
+        "example": "Entomology and pathology tests completed. Nil pests detected."
+      },
+      "items": {
+        "type": "array",
+        "title": "Commodity Test Results (Per Item)",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Item ID"
+            },
+            "commodity_common_name": {
+              "type": "object",
+              "title": "Common Name",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "value"
+              ],
+              "x-search": {
+                "service": "static-data",
+                "mode": "small-list",
+                "params": {
+                  "id": "npqs-apply-phyto-cert--commodity-common-names",
+                  "version": "1"
+                }
+              }
+            },
+            "commodity_botanical_name": {
+              "type": "string",
+              "title": "Botanical Name"
+            },
+            "sample_test_result": {
+              "type": "string",
+              "title": "Test Outcome",
+              "oneOf": [
+                {
+                  "const": "pass",
+                  "title": "Pass (No Quarantine Pests Found)"
+                },
+                {
+                  "const": "fail_resubmit",
+                  "title": "Fail \u2014 Allow Sample Resubmission (First Failure)"
+                },
+                {
+                  "const": "fail_final",
+                  "title": "Fail Final \u2014 Reject Item (Second Failure)"
+                }
+              ],
+              "default": "pass"
+            },
+            "post_lab_visual_required": {
+              "type": "boolean",
+              "title": "Post-Lab Visual Required",
+              "default": false
+            },
+            "lab_failure_reason": {
+              "type": "string",
+              "title": "Failure Reason (If failed)",
+              "example": "Presence of quarantine pest: Bactrocera dorsalis"
+            }
+          },
+          "required": [
+            "id",
+            "sample_test_result"
+          ]
+        }
       }
     },
     "required": [
-      "sample_test_result"
+      "sample_test_result",
+      "lab_comments"
     ]
   },
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
-      { "type": "Control", "scope": "#/properties/sample_test_result" },
-      { "type": "Control", "scope": "#/properties/lab_comments" },
-      { "type": "Control", "scope": "#/properties/lab_report_attachment_url" },
-      { "type": "Control", "scope": "#/properties/post_lab_visual_required" }
+      {
+        "type": "Control",
+        "scope": "#/properties/sample_test_result"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/lab_report_attachment_url"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/lab_comments"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/items",
+        "options": {
+          "detail": {
+            "type": "VerticalLayout",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/id",
+                    "options": {
+                      "readOnly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/commodity_common_name",
+                    "options": {
+                      "readOnly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/sample_test_result"
+                  }
+                ]
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/lab_failure_reason",
+                "rule": {
+                  "effect": "SHOW",
+                  "condition": {
+                    "scope": "#/properties/sample_test_result",
+                    "schema": {
+                      "not": {
+                        "const": "pass"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/post_lab_visual_required",
+                "rule": {
+                  "effect": "SHOW",
+                  "condition": {
+                    "scope": "#/properties/sample_test_result",
+                    "schema": {
+                      "const": "pass"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "addable": false,
+          "removable": false
+        }
+      }
     ]
   }
 }

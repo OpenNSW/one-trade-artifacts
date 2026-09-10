@@ -5,11 +5,8 @@
   "sections": {
     "status_message": {
       "templateId": "npqs-draw-sample--status",
-      "title": "Sample Collection Status",
-      "projector": "MARKDOWN",
-      "visibleWhen": {
-        "states": ["QUEUED_EXTERNALLY"]
-      }
+      "title": "Sample Collection Details",
+      "projector": "MARKDOWN"
     },
     "results_summary": {
       "templateId": "npqs-draw-sample--results",

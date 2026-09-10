@@ -1,0 +1,39 @@
+{
+  "id": "npqs-visual-sample-collection",
+  "name": "Collect Sample for Visual Inspection",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "officer_receive",
+      "type": "TASK",
+      "task_template_id": "npqs-visual-sample-collection--officer-receive",
+      "input_mapping": {
+        "reference_number": "submission.reference_number",
+        "userform": "submission"
+      },
+      "output_mapping": {
+        "sample_number": "sample_number"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_start_to_receive",
+      "source_id": "start",
+      "target_id": "officer_receive"
+    },
+    {
+      "id": "e_receive_to_end",
+      "source_id": "officer_receive",
+      "target_id": "end"
+    }
+  ]
+}
