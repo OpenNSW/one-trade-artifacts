@@ -1,4 +1,4 @@
 {
   "id": "cda-asycuda-green-check--trader-results",
-  "template": "### ASYCUDA Green Check Complete\n\nThe CDA Officer has approved this consignment with a green check on ASYCUDA. Quality check and certificate issuance were not required.\n\n* **Review Outcome**: {{if eq .review_outcome \"approve\"}}Approved (ASYCUDA green check){{else}}{{.review_outcome}}{{end}}"
+  "template": "### ASYCUDA Green Check Complete\n\nThe CDA Officer has approved this consignment with a green check on ASYCUDA.\n\n* **Review Outcome**: {{if eq .review_outcome \"approve\"}}Approved (ASYCUDA green check){{else}}{{.review_outcome}}{{end}}"
 }
