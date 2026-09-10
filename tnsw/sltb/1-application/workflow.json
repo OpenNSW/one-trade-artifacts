@@ -1,7 +1,7 @@
 {
   "id": "sltb-submit-blendsheet-flow",
   "name": "Submit and Review Blend Sheet",
-  "version": 4,
+  "version": 5,
   "nodes": [
     {
       "id": "start",
@@ -12,7 +12,8 @@
       "type": "TASK",
       "task_template_id": "sltb-submit-blendsheet--user-input",
       "input_mapping": {
-        "rejection_reason?": "rejection_reason"
+        "rejection_reason?": "rejection_reason",
+        "userform?": "userform"
       },
       "output_mapping": {
         "__command": "command",
@@ -73,8 +74,7 @@
     {
       "id": "e_submit",
       "source_id": "draft_gateway",
-      "target_id": "officer_review",
-      "condition": "command == 'submit'"
+      "target_id": "officer_review"
     },
     {
       "id": "e3",

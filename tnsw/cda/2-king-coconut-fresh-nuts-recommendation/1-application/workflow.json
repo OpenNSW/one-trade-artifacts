@@ -1,7 +1,7 @@
 {
   "id": "cda-kcfn-apply-flow",
   "name": "Submit Application & Container Inspection",
-  "version": 3,
+  "version": 4,
   "nodes": [
     {
       "id": "start",
@@ -12,7 +12,8 @@
       "type": "TASK",
       "task_template_id": "cda-kcfn-apply--user-input",
       "input_mapping": {
-        "reviewerform.rejection_reason?": "rejection_reason"
+        "reviewerform.rejection_reason?": "rejection_reason",
+        "userform?": "userform"
       },
       "output_mapping": {
         "__command": "command",
@@ -100,8 +101,7 @@
     {
       "id": "e_submit",
       "source_id": "draft_gateway",
-      "target_id": "inspection_review",
-      "condition": "command == 'submit'"
+      "target_id": "inspection_review"
     },
     {
       "id": "e3",

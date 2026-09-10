@@ -1,7 +1,7 @@
 {
   "id": "customs-cusdec-apply-flow",
   "name": "Submit & Review Customs Declaration",
-  "version": 4,
+  "version": 5,
   "nodes": [
     {
       "id": "start",
@@ -13,7 +13,8 @@
       "task_template_id": "customs-cusdec--user-input",
       "input_mapping": {
         "reviewerform.rejection_reason?": "rejection_reason",
-        "cig.error?": "cig.error"
+        "cig.error?": "cig.error",
+        "userform?": "userform"
       },
       "output_mapping": {
         "__command": "command",
@@ -98,8 +99,7 @@
     {
       "id": "e_submit",
       "source_id": "draft_gateway",
-      "target_id": "cig_dispatch",
-      "condition": "command == 'submit'"
+      "target_id": "cig_dispatch"
     },
     {
       "id": "e_cig_check",

@@ -1,7 +1,7 @@
 {
   "id": "npqs-apply-phyto-cert",
   "name": "Apply for Phytosanitary Certificate",
-  "version": 3,
+  "version": 4,
   "nodes": [
     {
       "id": "start",
@@ -14,7 +14,8 @@
       "input_mapping": {
         "applicant_name?": "userform.applicant_name",
         "exporter_name?": "userform.exporter_name",
-        "exporter_address?": "userform.exporter_address"
+        "exporter_address?": "userform.exporter_address",
+        "userform?": "userform"
       },
       "output_mapping": {
         "__command": "command",
@@ -102,8 +103,7 @@
     {
       "id": "e_submit",
       "source_id": "draft_gateway",
-      "target_id": "officer_review",
-      "condition": "command == 'submit'"
+      "target_id": "officer_review"
     },
     {
       "id": "e3",

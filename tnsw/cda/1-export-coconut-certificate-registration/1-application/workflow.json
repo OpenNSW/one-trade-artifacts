@@ -1,7 +1,7 @@
 {
   "id": "cda-apply-coconut-cert-flow",
   "name": "Apply for Export Coconut Certificate",
-  "version": 3,
+  "version": 4,
   "nodes": [
     {
       "id": "start",
@@ -12,7 +12,8 @@
       "type": "TASK",
       "task_template_id": "cda-apply-coconut-cert--user-input",
       "input_mapping": {
-        "rejection_reason?": "rejection_reason"
+        "rejection_reason?": "rejection_reason",
+        "userform?": "userform"
       },
       "output_mapping": {
         "__command": "command",
@@ -85,8 +86,7 @@
     {
       "id": "e_submit",
       "source_id": "draft_gateway",
-      "target_id": "officer_verification",
-      "condition": "command == 'submit'"
+      "target_id": "officer_verification"
     },
     {
       "id": "e3",
