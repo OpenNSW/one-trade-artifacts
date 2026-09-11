@@ -1,7 +1,7 @@
 {
   "id": "customs-cusdec-apply-flow",
   "name": "Submit & Review Customs Declaration",
-  "version": 2,
+  "version": 5,
   "nodes": [
     {
       "id": "start",
@@ -13,21 +13,28 @@
       "task_template_id": "customs-cusdec--user-input",
       "input_mapping": {
         "reviewerform.rejection_reason?": "rejection_reason",
-        "cig.error?": "cig.error"
+        "cig.error?": "cig.error",
+        "userform?": "userform"
       },
       "output_mapping": {
-        "shipmentType": "userform.shipmentType",
-        "containerCount": "userform.containerCount",
-        "identification": "userform.identification",
-        "traders": "userform.traders",
-        "generalInfo": "userform.generalInfo",
-        "transport": "userform.transport",
-        "financial": "userform.financial",
-        "valuation": "userform.valuation",
-        "packages": "userform.packages",
-        "items": "userform.items",
+        "__command": "command",
+        "shipmentType?": "userform.shipmentType",
+        "containerCount?": "userform.containerCount",
+        "identification?": "userform.identification",
+        "traders?": "userform.traders",
+        "generalInfo?": "userform.generalInfo",
+        "transport?": "userform.transport",
+        "financial?": "userform.financial",
+        "valuation?": "userform.valuation",
+        "packages?": "userform.packages",
+        "items?": "userform.items",
         "supportingDocuments?": "userform.supportingDocuments"
       }
+    },
+    {
+      "id": "draft_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
       "id": "cig_dispatch",
@@ -81,6 +88,17 @@
     {
       "id": "e2",
       "source_id": "applicant_submission",
+      "target_id": "draft_gateway"
+    },
+    {
+      "id": "e_draft",
+      "source_id": "draft_gateway",
+      "target_id": "applicant_submission",
+      "condition": "command == 'SAVE_AS_DRAFT'"
+    },
+    {
+      "id": "e_submit",
+      "source_id": "draft_gateway",
       "target_id": "cig_dispatch"
     },
     {

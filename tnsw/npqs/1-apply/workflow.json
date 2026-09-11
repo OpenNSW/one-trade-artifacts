@@ -1,7 +1,7 @@
 {
   "id": "npqs-apply-phyto-cert",
   "name": "Apply for Phytosanitary Certificate",
-  "version": 1,
+  "version": 4,
   "nodes": [
     {
       "id": "start",
@@ -14,21 +14,23 @@
       "input_mapping": {
         "applicant_name?": "userform.applicant_name",
         "exporter_name?": "userform.exporter_name",
-        "exporter_address?": "userform.exporter_address"
+        "exporter_address?": "userform.exporter_address",
+        "userform?": "userform"
       },
       "output_mapping": {
-        "certificate_type": "userform.certificate_type",
-        "shipment_value": "userform.shipment_value",
-        "applicant_name": "userform.applicant_name",
-        "nppo_office_location": "userform.nppo_office_location",
-        "importing_country": "userform.importing_country",
+        "__command": "command",
+        "certificate_type?": "userform.certificate_type",
+        "shipment_value?": "userform.shipment_value",
+        "applicant_name?": "userform.applicant_name",
+        "nppo_office_location?": "userform.nppo_office_location",
+        "importing_country?": "userform.importing_country",
         "transit_countries?": "userform.transit_countries",
-        "exporter_name": "userform.exporter_name",
-        "exporter_address": "userform.exporter_address",
+        "exporter_name?": "userform.exporter_name",
+        "exporter_address?": "userform.exporter_address",
         "exporter_country?": "userform.exporter_country",
-        "consignee_name": "userform.consignee_name",
-        "consignee_address": "userform.consignee_address",
-        "consignee_country": "userform.consignee_country",
+        "consignee_name?": "userform.consignee_name",
+        "consignee_address?": "userform.consignee_address",
+        "consignee_country?": "userform.consignee_country",
         "distinguishing_marks?": "userform.distinguishing_marks",
         "point_of_entry_country?": "userform.point_of_entry_country",
         "point_of_entry_port?": "userform.point_of_entry_port",
@@ -46,6 +48,11 @@
         "disinfestation_treatment?": "userform.disinfestation_treatment",
         "attachments?": "userform.attachments"
       }
+    },
+    {
+      "id": "draft_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
       "id": "officer_review",
@@ -85,6 +92,17 @@
     {
       "id": "e2",
       "source_id": "applicant_submission",
+      "target_id": "draft_gateway"
+    },
+    {
+      "id": "e_draft",
+      "source_id": "draft_gateway",
+      "target_id": "applicant_submission",
+      "condition": "command == 'SAVE_AS_DRAFT'"
+    },
+    {
+      "id": "e_submit",
+      "source_id": "draft_gateway",
       "target_id": "officer_review"
     },
     {

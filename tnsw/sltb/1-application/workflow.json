@@ -1,7 +1,7 @@
 {
   "id": "sltb-submit-blendsheet-flow",
   "name": "Submit and Review Blend Sheet",
-  "version": 2,
+  "version": 5,
   "nodes": [
     {
       "id": "start",
@@ -12,15 +12,22 @@
       "type": "TASK",
       "task_template_id": "sltb-submit-blendsheet--user-input",
       "input_mapping": {
-        "rejection_reason?": "rejection_reason"
+        "rejection_reason?": "rejection_reason",
+        "userform?": "userform"
       },
       "output_mapping": {
-        "exporter_registration_no": "userform.exporter_registration_no",
-        "cusdec_number": "userform.cusdec_number",
-        "warehouse_id": "userform.warehouse_id",
-        "blendsheet_file": "userform.blendsheet_file",
+        "__command": "command",
+        "exporter_registration_no?": "userform.exporter_registration_no",
+        "cusdec_number?": "userform.cusdec_number",
+        "warehouse_id?": "userform.warehouse_id",
+        "blendsheet_file?": "userform.blendsheet_file",
         "lion_logo_requested?": "userform.lion_logo_requested"
       }
+    },
+    {
+      "id": "draft_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
       "id": "officer_review",
@@ -56,6 +63,17 @@
     {
       "id": "e2",
       "source_id": "applicant_submission",
+      "target_id": "draft_gateway"
+    },
+    {
+      "id": "e_draft",
+      "source_id": "draft_gateway",
+      "target_id": "applicant_submission",
+      "condition": "command == 'SAVE_AS_DRAFT'"
+    },
+    {
+      "id": "e_submit",
+      "source_id": "draft_gateway",
       "target_id": "officer_review"
     },
     {
