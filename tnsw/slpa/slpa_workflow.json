@@ -65,12 +65,15 @@
       "lane": "Trader/CHA",
       "input_mapping": {
         "slpa.service_order_slug?": "so.slug",
-        "slpa.service_order_no?": "so.service_order_no"
+        "slpa.service_order_no?": "so.service_order_no",
+        "_iter.input.company.data.slpacmsuser_key?": "client_key"
       },
       "output_mapping": {
         "payment.invoice_no?": "slpa.invoice_no",
         "payment.paid_at?": "slpa.invoice_paid_at",
-        "payment.receipt_url?": "slpa.invoice_receipt_url"
+        "payment.receipt_url?": "slpa.invoice_receipt_url",
+        "payment.invoice_serial?": "slpa.invoice_serial",
+        "payment.payment_slip_url?": "slpa.invoice_payment_slip_url"
       }
     },
     {

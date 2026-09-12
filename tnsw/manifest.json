@@ -3055,6 +3055,30 @@
       "path": "slpa/4-invoice_payment/render.json"
     },
     {
+      "id": "slpa-invoice--generate",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "slpa/4-invoice_payment/generate.json"
+    },
+    {
+      "id": "slpa-invoice--request",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "slpa/4-invoice_payment/request.json"
+    },
+    {
+      "id": "slpa-invoice--request-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/4-invoice_payment/request_form_jsonform.json"
+    },
+    {
+      "id": "slpa-invoice--request-message",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/4-invoice_payment/request_message_jsonform.json"
+    },
+    {
       "id": "slpa-invoice--wait",
       "kind": "subtask_template",
       "version": "",
