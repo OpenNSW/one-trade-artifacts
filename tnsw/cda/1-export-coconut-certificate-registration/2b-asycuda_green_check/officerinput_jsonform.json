@@ -19,7 +19,7 @@
       "asycuda_approval_confirmed": {
         "type": "boolean",
         "title": "I have logged into the ASYCUDA System and pressed the green check (✓) button to approve this consignment",
-        "description": "Salmonella certificate is not required for exclusive Value Added DC or Low Fat DC. Login to ASYCUDA and press the green check button for this consignment before approving here.",
+        "description": "Login to ASYCUDA and press the green check button for this consignment before approving here.",
         "default": false,
         "example": true
       }
