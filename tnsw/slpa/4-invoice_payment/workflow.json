@@ -1,11 +1,47 @@
 {
   "id": "slpa-invoice-flow",
   "name": "Settle the SLPA Invoice",
-  "version": 1,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
       "type": "START"
+    },
+    {
+      "id": "request_invoice",
+      "type": "TASK",
+      "task_template_id": "slpa-invoice--request",
+      "input_mapping": {
+        "payment.error?": "error"
+      },
+      "output_mapping": {}
+    },
+    {
+      "id": "generate_invoice",
+      "type": "TASK",
+      "task_template_id": "slpa-invoice--generate",
+      "input_mapping": {
+        "so.service_order_no?": "service_order_no",
+        "client_key?": "client_key"
+      },
+      "output_mapping": {
+        "payment.invoice_no?": "payment.invoice_no",
+        "payment.invoice_serial?": "payment.invoice_serial",
+        "payment.payable_lkr?": "payment.payable_lkr",
+        "payment.exchange_rate?": "payment.exchange_rate",
+        "payment.generated_at?": "payment.generated_at",
+        "payment.payment_slip_url?": "payment.payment_slip_url",
+        "payment.invoice_url?": "payment.invoice_url",
+        "payment.cms_status?": "payment.cms_status",
+        "payment.paid?": "payment.paid",
+        "payment.issued?": "payment.issued",
+        "payment.error?": "payment.error"
+      }
+    },
+    {
+      "id": "issued_check",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
       "id": "await_payment",
@@ -17,14 +53,16 @@
       },
       "output_mapping": {
         "invoice_no?": "payment.invoice_no",
+        "invoice_serial?": "payment.invoice_serial",
         "paid_at?": "payment.paid_at",
-        "paid_amount?": "payment.paid_amount",
+        "payable_lkr?": "payment.payable_lkr",
         "receipt_url?": "payment.receipt_url",
+        "payment_slip_url?": "payment.payment_slip_url",
         "invoice_url?": "payment.invoice_url",
         "cms_status?": "payment.cms_status",
         "paid?": "payment.paid",
-        "payable?": "payment.payable",
-        "invoice_serial?": "payment.invoice_serial",
+        "receipt_no?": "payment.receipt_no",
+        "exchange_rate?": "payment.exchange_rate",
         "generated_at?": "payment.generated_at"
       }
     },
@@ -40,9 +78,31 @@
   ],
   "edges": [
     {
-      "id": "e1",
+      "id": "e_start",
       "source_id": "start",
-      "target_id": "await_payment"
+      "target_id": "request_invoice"
+    },
+    {
+      "id": "e_requested",
+      "source_id": "request_invoice",
+      "target_id": "generate_invoice"
+    },
+    {
+      "id": "e_issued_check",
+      "source_id": "generate_invoice",
+      "target_id": "issued_check"
+    },
+    {
+      "id": "e_issued",
+      "source_id": "issued_check",
+      "target_id": "await_payment",
+      "condition": "payment.issued == true"
+    },
+    {
+      "id": "e_not_issued",
+      "source_id": "issued_check",
+      "target_id": "request_invoice",
+      "condition": "payment.issued != true"
     },
     {
       "id": "e_check",

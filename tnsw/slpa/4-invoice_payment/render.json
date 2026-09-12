@@ -3,6 +3,34 @@
   "type": "APPLICATION",
   "title": "[SLPA] Invoice & Payment",
   "sections": {
+    "request_prompt": {
+      "templateId": "slpa-invoice--request-message",
+      "title": "Invoice",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ]
+      }
+    },
+    "request_button": {
+      "templateId": "slpa-invoice--request-form",
+      "title": "Generate the Invoice",
+      "projector": "FORM",
+      "dataKey": "request",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ]
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Generate Invoice",
+          "element": "primary_action"
+        }
+      ]
+    },
     "awaiting_payment": {
       "templateId": "slpa-invoice--awaiting-message",
       "title": "Invoice Status",
@@ -23,6 +51,15 @@
           "COMPLETED"
         ]
       }
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
     }
   }
 }

@@ -1,0 +1,8 @@
+{
+  "id": "slpa-invoice--request",
+  "task_type": "USER_INPUT",
+  "output_namespace": "request",
+  "plugin_properties": {
+    "user_jsonforms_id": "slpa-invoice--request-form"
+  }
+}
