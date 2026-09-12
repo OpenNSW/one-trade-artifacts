@@ -1,0 +1,4 @@
+{
+  "id": "slpa-invoice--request-message",
+  "template": "{{with .payment}}{{if .error}}### \u26a0\ufe0f SLPA Has Not Issued the Invoice\n\n{{.error}}\n{{else}}### \ud83e\uddfe Ready to Generate the Invoice\n\nThe service order is approved. Generate the invoice to see what is owed and to get the payment slip; SLPA issues it as soon as you ask.\n{{end}}{{else}}### \ud83e\uddfe Ready to Generate the Invoice\n\nThe service order is approved. Generate the invoice to see what is owed and to get the payment slip; SLPA issues it as soon as you ask.\n{{end}}"
+}

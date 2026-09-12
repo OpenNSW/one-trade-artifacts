@@ -1,0 +1,10 @@
+{
+  "id": "slpa-invoice--generate",
+  "task_type": "SLPA_INVOICE_GENERATE",
+  "output_namespace": "payment",
+  "plugin_properties": {
+    "service_id": "slpa",
+    "path": "/api/nsw/v1/export/service-orders/{service_order_no}/generate-invoice",
+    "result_field": "issued"
+  }
+}

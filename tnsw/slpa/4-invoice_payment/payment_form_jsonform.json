@@ -8,17 +8,25 @@
         "type": "string",
         "title": "Invoice No"
       },
+      "invoice_serial": {
+        "type": "string",
+        "title": "Invoice Serial"
+      },
       "paid_at": {
         "type": "string",
         "title": "Paid At"
       },
-      "paid_amount": {
+      "payable_lkr": {
         "type": "number",
-        "title": "Paid Amount"
+        "title": "Amount Payable (LKR)"
       },
       "receipt_url": {
         "type": "string",
         "title": "Receipt"
+      },
+      "payment_slip_url": {
+        "type": "string",
+        "title": "Payment Slip"
       },
       "invoice_url": {
         "type": "string",
@@ -27,6 +35,18 @@
       "cms_status": {
         "type": "string",
         "title": "SLPA Status"
+      },
+      "receipt_no": {
+        "type": "string",
+        "title": "Payment Receipt"
+      },
+      "exchange_rate": {
+        "type": "number",
+        "title": "Exchange Rate"
+      },
+      "generated_at": {
+        "type": "string",
+        "title": "Issued At"
       }
     },
     "required": [
