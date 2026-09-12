@@ -52,6 +52,23 @@
           "element": "primary_action"
         }
       ]
+    },
+    "refresh_form": {
+      "templateId": "slpa-consolidation--refresh-form",
+      "title": "Pre-advised Containers",
+      "projector": "FORM",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ]
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Fetch Pre-advised Containers",
+          "element": "secondary_action"
+        }
+      ]
     }
   },
   "states": {

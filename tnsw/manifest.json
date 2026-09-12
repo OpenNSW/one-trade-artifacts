@@ -3211,6 +3211,12 @@
       "path": "slpa/5-container_consolidation/select_form_jsonform.json"
     },
     {
+      "id": "slpa-consolidation--refresh-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/5-container_consolidation/refresh_form_jsonform.json"
+    },
+    {
       "id": "slpa-consolidation--delete",
       "kind": "subtask_template",
       "version": "",
