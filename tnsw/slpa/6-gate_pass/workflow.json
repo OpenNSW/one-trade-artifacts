@@ -15,7 +15,8 @@
         "container_no?": "gpform.container_no",
         "gpform?": "gpform",
         "gp.error?": "gp.error",
-        "cap_id?": "cap_id"
+        "cap_id?": "cap_id",
+        "so_container_no?": "gpform.so_container_no"
       },
       "output_mapping": {
         "truck_no?": "gpform.truck_no",
@@ -50,7 +51,8 @@
         "gpform": "payload",
         "container_no?": "container_no",
         "slug?": "slug",
-        "client_key?": "client_key"
+        "client_key?": "client_key",
+        "so_container_no?": "so_container_no"
       },
       "output_mapping": {
         "gp.issued": "gp.issued",
