@@ -1,4 +1,4 @@
 {
   "id": "cda-asycuda-green-check--trader-instructions",
-  "template": "### Awaiting ASYCUDA Green Check\n\nThis consignment is exclusively Value Added DC or Low Fat DC, so a Salmonella certificate is not required. Please wait for the CDA Officer to put the green check on ASYCUDA.\n\n* **CUSDEC Reference**: `{{.reference_number}}`\n\nThis page will automatically update once the officer has completed the green check."
+  "template": "### Awaiting ASYCUDA Green Check\n\nPlease wait for the CDA Officer to put the green check on ASYCUDA.\n\n* **CUSDEC Reference**: `{{.reference_number}}`\n\nThis page will automatically update once the officer has completed the green check."
 }
