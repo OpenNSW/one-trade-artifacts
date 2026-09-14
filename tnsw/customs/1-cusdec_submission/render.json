@@ -21,6 +21,10 @@
       "projector": "MARKDOWN",
       "dataKey": "reviewerform",
       "visibleWhen": {
+        "states": [
+          "PENDING_USER",
+          "COMPLETED"
+        ],
         "requireDataKey": "reviewerform"
       }
     },
@@ -28,11 +32,21 @@
       "templateId": "customs-cusdec--submitted-message",
       "title": "Submission Status",
       "projector": "MARKDOWN",
-      "dataKey": "userform",
       "visibleWhen": {
         "states": [
           "QUEUED_EXTERNALLY"
         ]
+      }
+    },
+    "review_history": {
+      "templateId": "customs-cusdec--previous-feedback",
+      "title": "Review History",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ],
+        "requireDataKey": "reviewerform"
       }
     },
     "user_form": {
