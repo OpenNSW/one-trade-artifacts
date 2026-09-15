@@ -11,13 +11,12 @@
       "id": "trader_request",
       "type": "TASK",
       "task_template_id": "npqs-treatment-request--trader-request",
-      "input_mapping": {},
+      "input_mapping": {
+        "traderinput.treatment_items": "traderinput.treatment_items"
+      },
       "output_mapping": {
-        "treatment_type": "traderinput.treatment_type",
-        "chemical_used?": "traderinput.chemical_used",
-        "treatment_duration": "traderinput.treatment_duration",
-        "treatment_temperature?": "traderinput.treatment_temperature",
-        "treatment_concentration?": "traderinput.treatment_concentration"
+        "treatment_items": "traderinput.treatment_items",
+        "general_remarks?": "traderinput.general_remarks"
       }
     },
     {
@@ -25,19 +24,12 @@
       "type": "TASK",
       "task_template_id": "npqs-treatment-request--officer-review",
       "input_mapping": {
-        "reference_number": "reference_number",
-        "traderinput": "traderinput",
-        "traderinput.treatment_type": "treatment_type",
-        "traderinput.chemical_used?": "chemical_used",
-        "traderinput.treatment_duration": "treatment_duration",
-        "traderinput.treatment_temperature?": "treatment_temperature",
-        "traderinput.treatment_concentration?": "treatment_concentration"
+        "reference_number": "submission.reference_number",
+        "traderinput": "submission",
+        "userform?": "submission.userform"
       },
       "output_mapping": {
         "treatment_request_outcome": "reviewerform.treatment_request_outcome",
-        "treatment_provider": "reviewerform.treatment_provider",
-        "treatment_supervision": "reviewerform.treatment_supervision",
-        "supervision_officer_type?": "reviewerform.supervision_officer_type",
         "clarification_comments?": "reviewerform.clarification_comments"
       }
     },
@@ -71,13 +63,13 @@
       "id": "e_approve",
       "source_id": "review_gateway",
       "target_id": "end",
-      "condition": "reviewerform.treatment_request_outcome == 'approve'"
+      "condition": "reviewerform.treatment_request_outcome == \"approve\""
     },
     {
       "id": "e_needs_info",
       "source_id": "review_gateway",
       "target_id": "trader_request",
-      "condition": "reviewerform.treatment_request_outcome == 'needs_more_info'"
+      "condition": "reviewerform.treatment_request_outcome == \"needs_more_info\""
     }
   ]
 }

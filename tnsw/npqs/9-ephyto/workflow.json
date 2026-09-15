@@ -27,7 +27,8 @@
       "input_mapping": {
         "userform": "userform",
         "certificate_id": "certificate_id",
-        "traderinput.hub_destination": "hub_destination"
+        "traderinput.hub_destination": "hub_destination",
+        "certificate_items?": "certificate_items"
       },
       "output_mapping": {
         "ephyto.submitted": "ephyto.submitted",

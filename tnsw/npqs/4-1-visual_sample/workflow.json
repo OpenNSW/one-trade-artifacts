@@ -12,13 +12,15 @@
       "type": "TASK",
       "task_template_id": "npqs-visual-sample-inspection--officer-review",
       "input_mapping": {
-        "reference_number": "reference_number",
+        "reference_number": "submission.reference_number",
         "userform": "submission",
-        "sample_number": "sample_number"
+        "sample_number?": "submission.sample_number",
+        "commodities?": "submission.items"
       },
       "output_mapping": {
         "visual_result": "visual_result",
-        "visual_comments?": "visual_comments"
+        "visual_comments?": "visual_comments",
+        "items": "commodities"
       }
     },
     {

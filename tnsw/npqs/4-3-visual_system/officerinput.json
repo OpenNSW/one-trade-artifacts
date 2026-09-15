@@ -5,6 +5,6 @@
   "plugin_properties": {
     "service_id": "npqs",
     "path": "/api/v1/inject",
-    "task_code": "npqs_visual_system_v1"
+    "task_code": "npqs_visual_system"
   }
 }
