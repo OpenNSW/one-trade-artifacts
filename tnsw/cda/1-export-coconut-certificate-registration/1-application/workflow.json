@@ -1,7 +1,7 @@
 {
   "id": "cda-apply-coconut-cert-flow",
   "name": "Apply for Export Coconut Certificate",
-  "version": 1,
+  "version": 4,
   "nodes": [
     {
       "id": "start",
@@ -12,28 +12,35 @@
       "type": "TASK",
       "task_template_id": "cda-apply-coconut-cert--user-input",
       "input_mapping": {
-        "rejection_reason?": "rejection_reason"
+        "rejection_reason?": "rejection_reason",
+        "userform?": "userform"
       },
       "output_mapping": {
-        "exporter_details": "userform.exporter_details",
-        "cusdec_number": "userform.cusdec_number",
+        "__command": "command",
+        "exporter_details?": "userform.exporter_details",
+        "cusdec_number?": "userform.cusdec_number",
         "hs_code?": "userform.hs_code",
         "contract_number?": "userform.contract_number",
         "lot_number?": "userform.lot_number",
-        "dc_grades": "userform.dc_grades",
+        "dc_grades?": "userform.dc_grades",
         "date_of_containerization?": "userform.date_of_containerization",
         "vessel_name?": "userform.vessel_name",
         "container_number?": "userform.container_number",
         "date_of_sailing?": "userform.date_of_sailing",
-        "port_of_discharge": "userform.port_of_discharge",
-        "final_destination": "userform.final_destination",
+        "port_of_discharge?": "userform.port_of_discharge",
+        "final_destination?": "userform.final_destination",
         "buyer_name?": "userform.buyer_name",
-        "container_filling_status": "userform.container_filling_status",
+        "container_filling_status?": "userform.container_filling_status",
         "balance_material_nature?": "userform.balance_material_nature",
         "req_cert_salmonella?": "userform.req_cert_salmonella",
         "req_cert_physical?": "userform.req_cert_physical",
-        "uploaded_dc_bags_details": "userform.uploaded_dc_bags_details"
+        "uploaded_dc_bags_details?": "userform.uploaded_dc_bags_details"
       }
+    },
+    {
+      "id": "draft_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
       "id": "officer_verification",
@@ -68,6 +75,17 @@
     {
       "id": "e2",
       "source_id": "applicant_submission",
+      "target_id": "draft_gateway"
+    },
+    {
+      "id": "e_draft",
+      "source_id": "draft_gateway",
+      "target_id": "applicant_submission",
+      "condition": "command == 'SAVE_AS_DRAFT'"
+    },
+    {
+      "id": "e_submit",
+      "source_id": "draft_gateway",
       "target_id": "officer_verification"
     },
     {
