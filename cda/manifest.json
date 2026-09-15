@@ -43,6 +43,27 @@
       "path": "1-export-coconut-certificate-registration/cda_officer_verification/userinput_jsonform.json"
     },
     {
+      "id": "cda_asycuda_green_check_v1",
+      "kind": "task_config",
+      "version": "",
+      "loader": "local",
+      "path": "1-export-coconut-certificate-registration/cda_asycuda_green_check/cda_asycuda_green_check_v1.taskconfig.json"
+    },
+    {
+      "id": "cda-asycuda-green-check--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "1-export-coconut-certificate-registration/cda_asycuda_green_check/officerinput_jsonform.json"
+    },
+    {
+      "id": "cda-apply-coconut-cert--user-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "1-export-coconut-certificate-registration/cda_asycuda_green_check/userinput_jsonform.json"
+    },
+    {
       "id": "cda_review_result_v1",
       "kind": "task_config",
       "version": "",
