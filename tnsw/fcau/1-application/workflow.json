@@ -1,7 +1,7 @@
 {
   "id": "fcau-apply-health-cert-flow",
   "name": "Apply for Health Certificate",
-  "version": 1,
+  "version": 4,
   "nodes": [
     {
       "id": "start",
@@ -11,25 +11,33 @@
       "id": "applicant_submission",
       "type": "TASK",
       "task_template_id": "fcau-apply-health-cert--user-input",
-      "input_mapping": {},
+      "input_mapping": {
+        "userform?": "userform"
+      },
       "output_mapping": {
-        "exporter_name": "userform.exporter_name",
-        "exporter_address": "userform.exporter_address",
-        "consignee_name": "userform.consignee_name",
-        "consignee_address": "userform.consignee_address",
-        "description_of_food": "userform.description_of_food",
-        "intended_export_date": "userform.intended_export_date",
-        "lc_number": "userform.lc_number",
-        "container_numbers": "userform.container_numbers",
-        "vessel_name": "userform.vessel_name",
-        "consignment_storage_address": "userform.consignment_storage_address",
-        "package_batch_weight_details": "userform.package_batch_weight_details",
-        "ingredients_details": "userform.ingredients_details",
-        "in_house_quality_monitoring": "userform.in_house_quality_monitoring",
-        "analysis_certificates": "userform.analysis_certificates",
+        "__command": "command",
+        "exporter_name?": "userform.exporter_name",
+        "exporter_address?": "userform.exporter_address",
+        "consignee_name?": "userform.consignee_name",
+        "consignee_address?": "userform.consignee_address",
+        "description_of_food?": "userform.description_of_food",
+        "intended_export_date?": "userform.intended_export_date",
+        "lc_number?": "userform.lc_number",
+        "container_numbers?": "userform.container_numbers",
+        "vessel_name?": "userform.vessel_name",
+        "consignment_storage_address?": "userform.consignment_storage_address",
+        "package_batch_weight_details?": "userform.package_batch_weight_details",
+        "ingredients_details?": "userform.ingredients_details",
+        "in_house_quality_monitoring?": "userform.in_house_quality_monitoring",
+        "analysis_certificates?": "userform.analysis_certificates",
         "other_supporting_documents?": "userform.other_supporting_documents",
-        "other_declarations": "userform.other_declarations"
+        "other_declarations?": "userform.other_declarations"
       }
+    },
+    {
+      "id": "draft_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
       "id": "officer_review",
@@ -66,6 +74,17 @@
     {
       "id": "e2",
       "source_id": "applicant_submission",
+      "target_id": "draft_gateway"
+    },
+    {
+      "id": "e_draft",
+      "source_id": "draft_gateway",
+      "target_id": "applicant_submission",
+      "condition": "command == 'SAVE_AS_DRAFT'"
+    },
+    {
+      "id": "e_submit",
+      "source_id": "draft_gateway",
       "target_id": "officer_review"
     },
     {
