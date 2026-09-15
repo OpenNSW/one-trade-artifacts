@@ -39,7 +39,8 @@
         "_iter.input.slug?": "slug",
         "_iter.input.client_key?": "client_key",
         "cc.cap_id?": "cap_id",
-        "cc.container_no?": "container_no"
+        "cc.container_no?": "container_no",
+        "_iter.input.so_container_no?": "so_container_no"
       },
       "output_mapping": {
         "gp.gate_pass_no?": "gate_pass_no",
