@@ -8,8 +8,14 @@
         "type": "string",
         "title": "Review Outcome",
         "oneOf": [
-          { "const": "approve", "title": "Approve Documents (Proceed to Payment)" },
-          { "const": "needs_more_info", "title": "Needs More Info (Request corrections/re-upload)" }
+          {
+            "const": "approve",
+            "title": "Approve Documents (Proceed to Payment)"
+          },
+          {
+            "const": "needs_more_info",
+            "title": "Needs More Info (Request corrections/re-upload)"
+          }
         ],
         "default": "approve"
       },

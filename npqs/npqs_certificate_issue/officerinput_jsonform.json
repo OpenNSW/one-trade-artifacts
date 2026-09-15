@@ -4,6 +4,50 @@
   "schema": {
     "type": "object",
     "properties": {
+      "certificate_items": {
+        "type": "array",
+        "title": "Items To Include On This Certificate",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Item ID"
+            },
+            "commodity_common_name": {
+              "type": "object",
+              "title": "Commodity Name",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "value"
+              ],
+              "x-search": {
+                "service": "static-data",
+                "mode": "small-list",
+                "params": {
+                  "id": "npqs-apply-phyto-cert--commodity-common-names",
+                  "version": "1"
+                }
+              }
+            },
+            "include_in_certificate": {
+              "type": "boolean",
+              "title": "Include on Certificate",
+              "default": true
+            }
+          },
+          "required": [
+            "id"
+          ]
+        }
+      },
       "certificate_id": {
         "type": "string",
         "title": "Phytosanitary Certificate Number",
@@ -22,12 +66,44 @@
       }
     },
     "required": [
+      "certificate_items",
       "certificate_id"
     ]
   },
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/certificate_items",
+        "options": {
+          "detail": {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/id",
+                "options": {
+                  "readOnly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/commodity_common_name",
+                "options": {
+                  "readOnly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/include_in_certificate"
+              }
+            ]
+          },
+          "addable": false,
+          "removable": false
+        }
+      },
       {
         "type": "Control",
         "scope": "#/properties/certificate_id"

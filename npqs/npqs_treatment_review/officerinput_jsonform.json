@@ -8,8 +8,14 @@
         "type": "string",
         "title": "Verification Result",
         "oneOf": [
-          { "const": "pass", "title": "Pass (Certificates are valid and correct)" },
-          { "const": "needs_more_info", "title": "Needs More Info (Request re-upload with corrections)" }
+          {
+            "const": "pass",
+            "title": "Pass (Certificates are valid and correct)"
+          },
+          {
+            "const": "needs_more_info",
+            "title": "Needs More Info (Request re-upload with corrections)"
+          }
         ],
         "default": "pass"
       },
@@ -22,6 +28,42 @@
         "type": "boolean",
         "title": "Visual Inspection Required for Treated Consignment (Airport PQS Officer)",
         "default": false
+      },
+      "commodities": {
+        "type": "array",
+        "title": "Items Under Treatment (Context)",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Item ID"
+            },
+            "commodity_common_name": {
+              "type": "object",
+              "title": "Commodity Name",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "value"
+              ],
+              "x-search": {
+                "service": "static-data",
+                "mode": "small-list",
+                "params": {
+                  "id": "npqs-apply-phyto-cert--commodity-common-names",
+                  "version": "1"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "required": [
@@ -31,9 +73,46 @@
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
-      { "type": "Control", "scope": "#/properties/treatment_review_result" },
-      { "type": "Control", "scope": "#/properties/review_comments" },
-      { "type": "Control", "scope": "#/properties/post_treatment_visual_required" }
+      {
+        "type": "Control",
+        "scope": "#/properties/commodities",
+        "options": {
+          "readonly": true,
+          "detail": {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/id",
+                "options": {
+                  "readOnly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/commodity_common_name",
+                "options": {
+                  "readOnly": true
+                }
+              }
+            ]
+          },
+          "addable": false,
+          "removable": false
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/treatment_review_result"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/review_comments"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/post_treatment_visual_required"
+      }
     ]
   }
 }

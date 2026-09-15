@@ -12,13 +12,15 @@
       "type": "TASK",
       "task_template_id": "npqs-visual-system-inspection--officer-review",
       "input_mapping": {
-        "reference_number": "reference_number",
-        "userform": "submission"
+        "reference_number": "submission.reference_number",
+        "userform": "submission",
+        "commodities?": "submission.items"
       },
       "output_mapping": {
         "visual_result": "visual_result",
         "system_reference_id?": "system_reference_id",
-        "comments?": "comments"
+        "comments?": "comments",
+        "items": "commodities"
       }
     },
     {

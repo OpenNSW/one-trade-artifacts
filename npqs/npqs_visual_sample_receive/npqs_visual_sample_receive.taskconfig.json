@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "taskCode": "npqs_visual_sample_receive",
+  "meta": {
+    "title": "NPQS Receive Sample (Visual Inspection)",
+    "description": "Officer records receiving the sample drop-off for visual inspection."
+  },
+  "forms": {
+    "view": "npqs-apply-phyto-cert--officer-view-form",
+    "review": "npqs-visual-sample-collection--officer-receive-form"
+  },
+  "behavior": {
+    "type": "autoApprove"
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
+}

@@ -486,15 +486,99 @@
               "type": "string",
               "title": "Area of Origin",
               "example": "Gampaha District"
+            },
+            "id": {
+              "type": "string",
+              "title": "Item ID",
+              "example": "item-1"
             }
           },
           "required": [
+            "id",
             "commodity_common_name",
             "commodity_botanical_name",
             "quantity_net_weight",
             "packages_count"
           ]
-        }
+        },
+        "example": [
+          {
+            "id": "item-1",
+            "commodity_common_name": { "value": "Cut Rose Flowers", "label": "Cut Rose Flowers" },
+            "commodity_botanical_name": "Rosa hybrida",
+            "commodity_language": "English",
+            "commodity_description": "Fresh cut rose flowers for commercial export",
+            "commodity_plant_part": "6",
+            "commodity_condition": "1",
+            "commodity_intended_use": "1",
+            "quantity_net_weight": 250.0,
+            "quantity_net_weight_unit": "KGM",
+            "quantity_gross_weight": 280.0,
+            "quantity_gross_weight_unit": "KGM",
+            "packages_type": "CT",
+            "packages_count": 50,
+            "packages_in_bulk": false,
+            "origin_country": "LK",
+            "origin_area": "Nuwara Eliya"
+          },
+          {
+            "id": "item-2",
+            "commodity_common_name": { "value": "Fresh Cut Foliage", "label": "Fresh Cut Foliage" },
+            "commodity_botanical_name": "Monstera deliciosa",
+            "commodity_language": "English",
+            "commodity_description": "Cut foliage leaves for ornamental bouquets",
+            "commodity_plant_part": "11",
+            "commodity_condition": "1",
+            "commodity_intended_use": "1",
+            "quantity_net_weight": 500.0,
+            "quantity_net_weight_unit": "KGM",
+            "quantity_gross_weight": 540.0,
+            "quantity_gross_weight_unit": "KGM",
+            "packages_type": "BX",
+            "packages_count": 80,
+            "packages_in_bulk": false,
+            "origin_country": "LK",
+            "origin_area": "Gampaha District"
+          },
+          {
+            "id": "item-3",
+            "commodity_common_name": { "value": "Sawn Timber", "label": "Sawn Timber" },
+            "commodity_botanical_name": "Hevea brasiliensis",
+            "commodity_language": "English",
+            "commodity_description": "Kiln-dried treated rubberwood sawn timber planks",
+            "commodity_plant_part": "1",
+            "commodity_condition": "3",
+            "commodity_intended_use": "4",
+            "quantity_net_weight": 4200.0,
+            "quantity_net_weight_unit": "KGM",
+            "quantity_gross_weight": 4500.0,
+            "quantity_gross_weight_unit": "KGM",
+            "packages_type": "PK",
+            "packages_count": 12,
+            "packages_in_bulk": false,
+            "origin_country": "LK",
+            "origin_area": "Kalutara District"
+          },
+          {
+            "id": "item-4",
+            "commodity_common_name": { "value": "Coir Pith Block", "label": "Coir Pith Block" },
+            "commodity_botanical_name": "Cocos nucifera",
+            "commodity_language": "English",
+            "commodity_description": "Compressed coco peat growing medium substrate blocks",
+            "commodity_plant_part": "10",
+            "commodity_condition": "3",
+            "commodity_intended_use": "3",
+            "quantity_net_weight": 5000.0,
+            "quantity_net_weight_unit": "KGM",
+            "quantity_gross_weight": 5100.0,
+            "quantity_gross_weight_unit": "KGM",
+            "packages_type": "PL",
+            "packages_count": 200,
+            "packages_in_bulk": false,
+            "origin_country": "LK",
+            "origin_area": "Kurunegala District"
+          }
+        ]
       },
       "import_permit_number": {
         "type": "string",

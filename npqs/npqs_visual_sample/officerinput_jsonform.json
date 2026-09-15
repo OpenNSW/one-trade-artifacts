@@ -6,11 +6,20 @@
     "properties": {
       "visual_result": {
         "type": "string",
-        "title": "Inspection Outcome",
+        "title": "Overall Batch Result (worst outcome across the items below)",
         "oneOf": [
-          { "const": "pass", "title": "Pass (Sample is free of pests and damage)" },
-          { "const": "fail", "title": "Fail (Infestation or damage detected)" },
-          { "const": "escalate_consignment", "title": "Escalate to Consignment Inspection (Sample insufficient)" }
+          {
+            "const": "pass",
+            "title": "Pass \u2014 All Items Clean"
+          },
+          {
+            "const": "fail",
+            "title": "Fail \u2014 One or More Items Infested/Damaged"
+          },
+          {
+            "const": "escalate_consignment",
+            "title": "Escalate \u2014 One or More Items Need Consignment Inspection"
+          }
         ],
         "default": "pass"
       },
@@ -18,17 +27,139 @@
         "type": "string",
         "title": "Inspection Notes",
         "example": "Visual and microscopic inspection of sample leaves completed. No sign of scale insects or thrips."
+      },
+      "items": {
+        "type": "array",
+        "title": "Commodity Inspection Results (Per Item)",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Item ID"
+            },
+            "commodity_common_name": {
+              "type": "object",
+              "title": "Common Name",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "value"
+              ],
+              "x-search": {
+                "service": "static-data",
+                "mode": "small-list",
+                "params": {
+                  "id": "npqs-apply-phyto-cert--commodity-common-names",
+                  "version": "1"
+                }
+              }
+            },
+            "visual_result": {
+              "type": "string",
+              "title": "Inspection Outcome",
+              "oneOf": [
+                {
+                  "const": "pass",
+                  "title": "Pass (Sample is clean)"
+                },
+                {
+                  "const": "fail",
+                  "title": "Fail (Infestation or damage detected)"
+                },
+                {
+                  "const": "escalate_consignment",
+                  "title": "Escalate to Consignment Inspection"
+                }
+              ],
+              "default": "pass"
+            },
+            "visual_failure_reason": {
+              "type": "string",
+              "title": "Failure / Escalation Reason",
+              "example": "Signs of suspected scale insect infestation requiring site verification."
+            }
+          },
+          "required": [
+            "id",
+            "visual_result"
+          ]
+        }
       }
     },
     "required": [
-      "visual_result"
+      "visual_result",
+      "visual_comments"
     ]
   },
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
-      { "type": "Control", "scope": "#/properties/visual_result" },
-      { "type": "Control", "scope": "#/properties/visual_comments" }
+      {
+        "type": "Control",
+        "scope": "#/properties/visual_result"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/visual_comments"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/items",
+        "options": {
+          "detail": {
+            "type": "VerticalLayout",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/id",
+                    "options": {
+                      "readOnly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/commodity_common_name",
+                    "options": {
+                      "readOnly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/visual_result"
+                  }
+                ]
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/visual_failure_reason",
+                "rule": {
+                  "effect": "SHOW",
+                  "condition": {
+                    "scope": "#/properties/visual_result",
+                    "schema": {
+                      "not": {
+                        "const": "pass"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "addable": false,
+          "removable": false
+        }
+      }
     ]
   }
 }
