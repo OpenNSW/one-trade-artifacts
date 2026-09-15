@@ -27,7 +27,7 @@
         "type": "integer",
         "title": "Container Count",
         "minimum": 0,
-        "example": 3
+        "example": 2
       },
       "identification": {
         "type": "object",
@@ -62,6 +62,11 @@
             "type": "string",
             "title": "Transit Document Type",
             "example": "01"
+          },
+          "manifestRegNumber": {
+            "type": "string",
+            "title": "Manifest Registration Number",
+            "example": ""
           }
         },
         "required": [
@@ -81,56 +86,53 @@
               "code": {
                 "type": "string",
                 "title": "Exporter TIN / Code",
-                "example": "900000000001"
+                "example": "992000000001"
               },
               "name": {
                 "type": "string",
                 "title": "Exporter Name",
-                "example": "JOTHI COCONUT EXPORTERS"
+                "example": ""
               },
               "address": {
                 "type": "string",
                 "title": "Exporter Address",
-                "example": "45A, KANDY ROAD, PILIMATHALAWA"
+                "example": ""
               },
               "countryCode": {
                 "type": "string",
                 "title": "Country Code",
-                "example": "LK"
+                "example": ""
               }
             },
             "required": [
-              "code",
-              "name",
-              "address",
-              "countryCode"
+              "code"
             ]
           },
           "consignee": {
             "type": "object",
             "title": "Consignee",
             "properties": {
+              "code": {
+                "type": "string",
+                "title": "Consignee TIN / Code",
+                "example": ""
+              },
               "name": {
                 "type": "string",
                 "title": "Consignee Name",
-                "example": "COCO WORLD SDN BHD"
+                "example": "MERIDIAN IMPORT TRADING KK"
               },
               "address": {
                 "type": "string",
                 "title": "Consignee Address",
-                "example": "125, PUTRAJAYA, KUALA LUMPUR, MALAYSIA"
+                "example": "8-1 EXAMPLE DORI, MINATO-KU, TOKYO, JAPAN"
               },
               "countryCode": {
                 "type": "string",
                 "title": "Country Code",
-                "example": "MY"
+                "example": "JP"
               }
-            },
-            "required": [
-              "name",
-              "address",
-              "countryCode"
-            ]
+            }
           },
           "declarant": {
             "type": "object",
@@ -139,7 +141,7 @@
               "code": {
                 "type": "string",
                 "title": "Declarant Code",
-                "example": "900000000"
+                "example": "991000000002"
               },
               "referenceNo": {
                 "type": "string",
@@ -151,7 +153,11 @@
               "code"
             ]
           }
-        }
+        },
+        "required": [
+          "exporter",
+          "declarant"
+        ]
       },
       "generalInfo": {
         "type": "object",
@@ -160,7 +166,7 @@
           "countryOfFirstDestination": {
             "type": "string",
             "title": "Country of First Destination",
-            "example": "MY"
+            "example": "JP"
           },
           "exportCountryCode": {
             "type": "string",
@@ -170,14 +176,19 @@
           "destinationCountryCode": {
             "type": "string",
             "title": "Destination Country Code",
-            "example": "MY"
+            "example": "JP"
           },
           "commentsText": {
             "type": "string",
             "title": "Comments",
             "example": "Test export declaration"
           }
-        }
+        },
+        "required": [
+          "countryOfFirstDestination",
+          "exportCountryCode",
+          "destinationCountryCode"
+        ]
       },
       "transport": {
         "type": "object",
@@ -186,7 +197,7 @@
           "vesselName": {
             "type": "string",
             "title": "Vessel Name",
-            "example": "MSC SAVANNA"
+            "example": "MV EXAMPLE CARRIER"
           },
           "transportNationality": {
             "type": "string",
@@ -197,7 +208,7 @@
           "voyageNo": {
             "type": "string",
             "title": "Voyage No",
-            "example": "185 E DATED 20/04/2026"
+            "example": "V-2026-018"
           },
           "voyageNationality": {
             "type": "string",
@@ -231,12 +242,12 @@
           "deliveryTermsCode": {
             "type": "string",
             "title": "Delivery Terms Code",
-            "example": "CIF"
+            "example": "FOB"
           },
           "deliveryTermsPlace": {
             "type": "string",
             "title": "Delivery Terms Place",
-            "example": "TEST DELIVERY TERMS PLACE"
+            "example": "Tokyo"
           },
           "borderOfficeCode": {
             "type": "string",
@@ -258,14 +269,28 @@
             "title": "Place of Discharge Code",
             "description": "UN/LOCODE of the place where the goods are discharged.",
             "example": "LKADP"
+          },
+          "warehouseCode": {
+            "type": "string",
+            "title": "Warehouse Code",
+            "example": "WH01"
+          },
+          "warehouseDelay": {
+            "type": "integer",
+            "title": "Warehouse Delay (days)",
+            "minimum": 0,
+            "example": 0
           }
         },
         "required": [
           "vesselName",
-          "modeOfTransport",
-          "deliveryTermsCode",
           "transportNationality",
-          "placeOfDischargeCode"
+          "deliveryTermsCode",
+          "deliveryTermsPlace",
+          "modeOfTransport",
+          "placeOfDischargeCode",
+          "borderOfficeCode",
+          "containerized"
         ]
       },
       "financial": {
@@ -275,7 +300,7 @@
           "bankCode": {
             "type": "string",
             "title": "Bank Code",
-            "example": "7056"
+            "example": "6010"
           },
           "bankName": {
             "type": "string",
@@ -290,25 +315,36 @@
           "bankReference": {
             "type": "string",
             "title": "Bank Reference",
-            "example": "84004328"
+            "example": "REM-2026-000123"
           },
           "remittanceAmount": {
             "type": "number",
             "title": "Remittance Amount",
             "description": "Amount remitted through the bank against this declaration.",
-            "example": 500
+            "example": 1500
           },
           "paymentTermsCode": {
             "type": "string",
             "title": "Payment Terms Code",
-            "example": "31"
+            "example": "10"
           },
           "modeOfPayment": {
             "type": "string",
             "title": "Mode of Payment",
             "example": "CASH"
+          },
+          "deferredPayment": {
+            "type": "string",
+            "title": "Deferred Payment Reference",
+            "example": "DP-2026-0001"
           }
-        }
+        },
+        "required": [
+          "bankCode",
+          "bankReference",
+          "paymentTermsCode",
+          "remittanceAmount"
+        ]
       },
       "valuation": {
         "type": "object",
@@ -317,7 +353,7 @@
           "invoiceAmountForeign": {
             "type": "number",
             "title": "Invoice Amount (Foreign)",
-            "example": 2400
+            "example": 1500
           },
           "invoiceCurrencyCode": {
             "type": "string",
@@ -433,7 +469,7 @@
             "type": "integer",
             "title": "Total Packages",
             "minimum": 0,
-            "example": 25
+            "example": 10
           },
           "numberOfLoadingLists": {
             "type": "integer",
@@ -441,7 +477,10 @@
             "minimum": 0,
             "example": 0
           }
-        }
+        },
+        "required": [
+          "totalPackages"
+        ]
       },
       "items": {
         "type": "array",
@@ -458,19 +497,23 @@
                   "type": "integer",
                   "title": "Quantity",
                   "minimum": 0,
-                  "example": 25
+                  "example": 10
                 },
                 "kindCode": {
                   "type": "string",
                   "title": "Package Kind Code",
-                  "example": "PK"
+                  "example": "2C"
                 },
                 "kindName": {
                   "type": "string",
                   "title": "Package Kind Name",
                   "example": "Package"
                 }
-              }
+              },
+              "required": [
+                "quantity",
+                "kindCode"
+              ]
             },
             "tarification": {
               "type": "object",
@@ -479,7 +522,7 @@
                 "hsCode": {
                   "type": "string",
                   "title": "HS Code",
-                  "example": "11063010"
+                  "example": "0801119000"
                 },
                 "hsPrecision1": {
                   "type": "string",
@@ -489,12 +532,12 @@
                 "preferenceCode": {
                   "type": "string",
                   "title": "Preference Code",
-                  "example": "ISFTA"
+                  "example": ""
                 },
                 "extendedProcedureCode": {
                   "type": "string",
                   "title": "Extended Procedure Code",
-                  "example": "1100"
+                  "example": "1000"
                 },
                 "nationalProcedureCode": {
                   "type": "string",
@@ -513,9 +556,13 @@
                     "quantity": {
                       "type": "number",
                       "title": "Quantity",
-                      "example": 250
+                      "example": 125
                     }
-                  }
+                  },
+                  "required": [
+                    "quantity",
+                    "code"
+                  ]
                 },
                 "itemPrice": {
                   "type": "number",
@@ -534,7 +581,10 @@
                 }
               },
               "required": [
-                "hsCode"
+                "hsCode",
+                "extendedProcedureCode",
+                "nationalProcedureCode",
+                "supplementaryUnit"
               ]
             },
             "goodsDescription": {
@@ -549,22 +599,24 @@
                 "description": {
                   "type": "string",
                   "title": "Description",
-                  "example": "TEST DESCRIPTION"
+                  "example": "Desiccated coconut, fine grade, for food use"
                 },
                 "commercialDescription": {
                   "type": "string",
                   "title": "Commercial Description",
-                  "example": "COCONUT KERNEL POWDER"
+                  "example": "DESICCATED COCONUT GRADE A"
                 },
                 "commercialDescription1": {
                   "type": "string",
                   "title": "Commercial Description (line 2)",
                   "maxLength": 50,
-                  "example": "PACKED IN CARTONS"
+                  "example": "PACKED IN 25 KG PAPER SACKS"
                 }
               },
               "required": [
-                "description"
+                "commercialDescription",
+                "commercialDescription1",
+                "originCountryCode"
               ]
             },
             "valuation": {
@@ -579,7 +631,7 @@
                 "netWeight": {
                   "type": "number",
                   "title": "Net Weight",
-                  "example": 1000
+                  "example": 1300
                 },
                 "totalCIF": {
                   "type": "number",
@@ -594,7 +646,7 @@
                 "invoiceAmountForeign": {
                   "type": "number",
                   "title": "Invoice Amount (Foreign)",
-                  "example": 2400
+                  "example": 1500
                 },
                 "invoiceCurrencyCode": {
                   "type": "string",
@@ -605,8 +657,99 @@
                   "type": "number",
                   "title": "Invoice Amount (LKR)",
                   "example": 0
+                },
+                "externalFreight": {
+                  "type": "object",
+                  "title": "External Freight",
+                  "properties": {
+                    "amountForeign": {
+                      "type": "number",
+                      "title": "Amount (Foreign)",
+                      "example": 100
+                    },
+                    "amountLKR": {
+                      "type": "number",
+                      "title": "Amount (LKR)",
+                      "example": 0
+                    },
+                    "currencyCode": {
+                      "type": "string",
+                      "title": "Currency",
+                      "example": "USD"
+                    }
+                  }
+                },
+                "internalFreight": {
+                  "type": "object",
+                  "title": "Internal Freight",
+                  "properties": {
+                    "amountForeign": {
+                      "type": "number",
+                      "title": "Amount (Foreign)",
+                      "example": 0
+                    },
+                    "amountLKR": {
+                      "type": "number",
+                      "title": "Amount (LKR)",
+                      "example": 0
+                    }
+                  }
+                },
+                "insurance": {
+                  "type": "object",
+                  "title": "Insurance",
+                  "properties": {
+                    "amountForeign": {
+                      "type": "number",
+                      "title": "Amount (Foreign)",
+                      "example": 0
+                    },
+                    "amountLKR": {
+                      "type": "number",
+                      "title": "Amount (LKR)",
+                      "example": 0
+                    }
+                  }
+                },
+                "otherCost": {
+                  "type": "object",
+                  "title": "Other Cost",
+                  "properties": {
+                    "amountForeign": {
+                      "type": "number",
+                      "title": "Amount (Foreign)",
+                      "example": 0
+                    },
+                    "amountLKR": {
+                      "type": "number",
+                      "title": "Amount (LKR)",
+                      "example": 0
+                    }
+                  }
+                },
+                "deduction": {
+                  "type": "object",
+                  "title": "Deduction",
+                  "properties": {
+                    "amountForeign": {
+                      "type": "number",
+                      "title": "Amount (Foreign)",
+                      "example": 0
+                    },
+                    "amountLKR": {
+                      "type": "number",
+                      "title": "Amount (LKR)",
+                      "example": 0
+                    }
+                  }
                 }
-              }
+              },
+              "required": [
+                "grossWeight",
+                "netWeight",
+                "invoiceAmountForeign",
+                "invoiceCurrencyCode"
+              ]
             },
             "previousDocumentReference": {
               "type": "string",
@@ -617,11 +760,34 @@
               "type": "string",
               "title": "Summary Declaration (BL No.)",
               "example": "BL789398639"
+            },
+            "bol": {
+              "type": "string",
+              "title": "Bill of Lading",
+              "example": "BL-2026-0001"
+            },
+            "bolSplit": {
+              "type": "string",
+              "title": "Bill of Lading Split",
+              "example": "BL-2026-0001-A"
+            },
+            "marksAndNumbers": {
+              "type": "string",
+              "title": "Marks and Numbers",
+              "example": "EXP-2026-A/1-10"
+            },
+            "numberOfUnits": {
+              "type": "integer",
+              "title": "Number of Units",
+              "minimum": 0,
+              "example": 1
             }
           },
           "required": [
+            "packages",
             "tarification",
-            "goodsDescription"
+            "goodsDescription",
+            "valuation"
           ]
         }
       },
@@ -662,9 +828,35 @@
       "shipmentType",
       "identification",
       "traders",
+      "generalInfo",
       "transport",
+      "financial",
       "valuation",
+      "packages",
       "items"
+    ],
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "transport": {
+              "properties": {
+                "containerized": {
+                  "const": true
+                }
+              }
+            }
+          },
+          "required": [
+            "transport"
+          ]
+        },
+        "then": {
+          "required": [
+            "containerCount"
+          ]
+        }
+      }
     ]
   },
   "uiSchema": {
@@ -716,6 +908,10 @@
               {
                 "type": "Control",
                 "scope": "#/properties/identification/properties/transitDocumentType"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/identification/properties/manifestRegNumber"
               }
             ]
           }
@@ -760,6 +956,10 @@
           {
             "type": "HorizontalLayout",
             "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/traders/properties/consignee/properties/code"
+              },
               {
                 "type": "Control",
                 "scope": "#/properties/traders/properties/consignee/properties/name"
@@ -901,6 +1101,14 @@
               {
                 "type": "Control",
                 "scope": "#/properties/transport/properties/placeOfDischargeCode"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/transport/properties/warehouseCode"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/transport/properties/warehouseDelay"
               }
             ]
           }
@@ -950,6 +1158,10 @@
               {
                 "type": "Control",
                 "scope": "#/properties/financial/properties/remittanceAmount"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/financial/properties/deferredPayment"
               }
             ]
           }
@@ -990,6 +1202,32 @@
               {
                 "type": "Control",
                 "scope": "#/properties/valuation/properties/totalGrossWeight"
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/valuation/properties/internalFreight/properties/amountForeign"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/valuation/properties/insurance/properties/amountForeign"
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/valuation/properties/otherCost/properties/amountForeign"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/valuation/properties/deduction/properties/amountForeign"
               }
             ]
           }
