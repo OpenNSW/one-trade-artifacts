@@ -1,7 +1,7 @@
 {
   "id": "slpa-invoice-flow",
   "name": "Settle the SLPA Invoice",
-  "version": 3,
+  "version": 4,
   "nodes": [
     {
       "id": "start",
@@ -93,16 +93,22 @@
       "target_id": "issued_check"
     },
     {
-      "id": "e_issued",
-      "source_id": "issued_check",
-      "target_id": "await_payment",
-      "condition": "payment.issued == true"
-    },
-    {
       "id": "e_not_issued",
       "source_id": "issued_check",
       "target_id": "request_invoice",
       "condition": "payment.issued != true"
+    },
+    {
+      "id": "e_already_paid",
+      "source_id": "issued_check",
+      "target_id": "end",
+      "condition": "payment.paid == true"
+    },
+    {
+      "id": "e_issued",
+      "source_id": "issued_check",
+      "target_id": "await_payment",
+      "condition": "payment.issued == true"
     },
     {
       "id": "e_check",
