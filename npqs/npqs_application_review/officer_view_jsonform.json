@@ -158,10 +158,12 @@
         "title": "Country of Consignee",
         "properties": {
           "value": {
-            "type": "string"
+            "type": "string",
+            "example": "GB"
           },
           "label": {
-            "type": "string"
+            "type": "string",
+            "example": "United Kingdom"
           }
         },
         "required": [

@@ -108,8 +108,8 @@
           }
         },
         "properties": {
-          "value": { "type": "string", "minLength": 1 },
-          "label": { "type": "string" }
+          "value": { "type": "string", "minLength": 1, "example": "GB" },
+          "label": { "type": "string", "example": "United Kingdom" }
         },
         "required": ["value"]
       },
