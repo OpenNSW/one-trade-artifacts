@@ -1,6 +1,6 @@
 {
   "id": "cda-lot-adjustment-flow",
-  "name": "CDA Lot Adjustment Sub-Workflow",
+  "name": "Application for Alteration of Bag Details",
   "version": 1,
   "nodes": [
     {
@@ -14,11 +14,17 @@
       "input_mapping": {
         "certificate_id": "certificate_id",
         "certificate_file": "certificate_file",
-        "adjustment_feedback?": "adjustment_feedback"
+        "adjustment_feedback?": "adjustment_feedback",
+        "exporter_details?": "adjustmentform.exporter_details",
+        "reference_number?": "adjustmentform.cusdec_number"
       },
       "output_mapping": {
         "adjustment_choice": "adjustment_choice",
-        "lots_to_remove?": "lots_to_remove"
+        "lots_to_remove?": "lots_to_remove",
+        "exporter_details?": "exporter_details",
+        "cusdec_number?": "cusdec_number",
+        "number_of_bags_not_shipped?": "number_of_bags_not_shipped",
+        "cusdec_document?": "cusdec_document"
       }
     },
     {
@@ -33,6 +39,10 @@
       "input_mapping": {
         "reference_number": "reference_number",
         "adjustment_choice": "adjustment_choice",
+        "exporter_details": "exporter_details",
+        "cusdec_number": "cusdec_number",
+        "number_of_bags_not_shipped": "number_of_bags_not_shipped",
+        "cusdec_document": "cusdec_document",
         "lots_to_remove": "lots_to_remove"
       },
       "output_mapping": {
