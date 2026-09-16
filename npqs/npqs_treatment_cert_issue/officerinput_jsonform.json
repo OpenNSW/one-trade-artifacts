@@ -9,6 +9,12 @@
         "title": "Treatment Certificate Number",
         "example": "TC-NPQS-2026-9042"
       },
+      "treatment_certificate_url": {
+        "type": "string",
+        "format": "file",
+        "title": "Uploaded Treatment Certificate (PDF/Image)",
+        "example": "https://nsw.gov.lk/storage/certs/treatment-certificate-9042.pdf"
+      },
       "treatment_outcome": {
         "type": "string",
         "title": "Treatment Outcome Status",
@@ -105,6 +111,10 @@
       {
         "type": "Control",
         "scope": "#/properties/treatment_certificate_id"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/treatment_certificate_url"
       },
       {
         "type": "Control",
