@@ -97,12 +97,21 @@
         "example": "456 Main St, Andorra la Vella, Andorra"
       },
       "consignee_country": {
-        "type": "string",
+        "type": "object",
         "title": "Country of Consignee",
-        "oneOf": [
-          { "const": "LK", "title": "Sri Lanka" }
-        ],
-        "default": "LK"
+        "x-search": {
+          "service": "static-data",
+          "mode": "small-list",
+          "params": {
+            "id": "npqs-apply-phyto-cert--importing-countries",
+            "version": "1"
+          }
+        },
+        "properties": {
+          "value": { "type": "string", "minLength": 1, "example": "GB" },
+          "label": { "type": "string", "example": "United Kingdom" }
+        },
+        "required": ["value"]
       },
       "distinguishing_marks": {
         "type": "string",
