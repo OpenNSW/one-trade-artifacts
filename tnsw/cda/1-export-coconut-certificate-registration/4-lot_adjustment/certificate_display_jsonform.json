@@ -1,4 +1,4 @@
 {
   "id": "cda-lot-adjustment-trader--certificate-display",
-  "template": "### Active Coconut Export Certificate\n\nYour application has been approved and a certificate is active:\n\n* **Certificate ID**: `{{.certificate_id}}`\n* **Certificate File**: [📄 Download Certificate (PDF)]({{.certificate_file}})\n\nIf you need to adjust any lots because they cannot fit into the container, select **Request Lot Adjustment** below and upload the revised DC bag details Excel sheet. Otherwise, select **Complete Application & Finish** to conclude."
+  "template": "### Active Coconut Export Certificate\n\nYour application has been approved and a certificate is active:\n\n* **Certificate ID**: `{{.certificate_id}}`\n* **Certificate File**: [📄 Download Certificate (PDF)]({{.certificate_file}})\n\nIf only part of the bags covered by this certificate are being shipped, select **Application for Alteration of Bag Details** below, upload the existing CUSDEC, and upload the revised DC BAGS DETAILS - NZ270 Excel sheet. Otherwise, select **Complete Application & Finish** to conclude."
 }

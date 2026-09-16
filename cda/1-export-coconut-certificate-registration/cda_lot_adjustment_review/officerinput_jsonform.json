@@ -1,6 +1,6 @@
 {
   "id": "cda-lot-adjustment-officer--review-form",
-  "title": "CDA Officer Lot Adjustment Review",
+  "title": "CDA Officer Review — Application for Alteration of Bag Details",
   "schema": {
     "type": "object",
     "properties": {
@@ -10,7 +10,7 @@
         "oneOf": [
           {
             "const": "approve",
-            "title": "Approve Adjustment & Upload New Certificate"
+            "title": "Approve & Upload New Certificate"
           },
           {
             "const": "needs_more_info",

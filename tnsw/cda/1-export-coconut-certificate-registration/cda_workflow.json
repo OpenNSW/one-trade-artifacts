@@ -86,14 +86,15 @@
     {
       "id": "cda_4_0_lot_adjustment",
       "type": "TASK",
-      "name": "[CDA 4.0] Lot Adjustment",
+      "name": "[CDA 4.0] Application for Alteration of Bag Details",
       "task_template_id": "cda-lot-adjustment-flow",
       "lane": "Trader/CHA",
       "input_mapping": {
         "cda.reference_number": "reference_number",
         "cda.certificate_id": "certificate_id",
         "cda.certificate_file": "certificate_file",
-        "cda.adjustment_feedback?": "adjustment_feedback"
+        "cda.adjustment_feedback?": "adjustment_feedback",
+        "cda.userform.exporter_details?": "exporter_details"
       },
       "output_mapping": {
         "adjustment_choice": "cda.adjustment_choice",
