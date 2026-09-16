@@ -12,7 +12,6 @@
       "lane": "Trader/CHA & SLTB Officer",
       "input_mapping": {},
       "output_mapping": {
-        "userform.lion_logo_requested?": "sltb.lion_logo_requested",
         "reviewerform.review_outcome": "sltb.review_outcome",
         "reviewerform.levy_amount?": "sltb.levy_amount",
         "reviewerform.collection_method?": "sltb.collection_method",

@@ -30,7 +30,7 @@
       "draw_notes": {
         "type": "string",
         "title": "Draw Notes / Comments (Optional)",
-        "example": "Sample drawn from warehouse lot WH-COLOMBO-TEA-01, batch #4."
+        "example": "Sample drawn from warehouse lot B-12, batch #4."
       }
     }
   },
