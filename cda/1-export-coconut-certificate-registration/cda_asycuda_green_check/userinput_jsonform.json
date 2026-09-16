@@ -15,6 +15,27 @@
         "description": "Filled automatically from the Customs workflow",
         "example": "CUSDEC-2026-904821"
       },
+      "refers_to_cancelled_cusdec": {
+        "type": "boolean",
+        "title": "This consignment uses bag ranges from a cancelled CusDec / previously issued CDA certificate",
+        "description": "Tick if the original CusDec was cancelled and you are applying for a new Salmonella/Physical Quality certificate against a previously issued certificate. CDA will use the previous numbers to retrieve those records.",
+        "default": false
+      },
+      "previous_cusdec_number": {
+        "type": "string",
+        "title": "Previous CusDec Number",
+        "example": "CUSDEC-2026-804100"
+      },
+      "previous_certificate_number": {
+        "type": "string",
+        "title": "Previous Salmonella/Physical Quality Certificate Number",
+        "example": "CERT-CDA-2026-08492"
+      },
+      "cancellation_reason": {
+        "type": "string",
+        "title": "Reason for Cancellation",
+        "example": "Buyer cancelled the order; original CusDec was cancelled."
+      },
       "hs_code": {
         "type": "string",
         "title": "HS CODE",
@@ -190,12 +211,30 @@
     "required": [
       "exporter_details",
       "cusdec_number",
+      "refers_to_cancelled_cusdec",
       "dc_grades",
       "port_of_discharge",
       "final_destination",
       "container_filling_status",
       "uploaded_dc_bags_details"
-    ]
+    ],
+    "if": {
+      "properties": {
+        "refers_to_cancelled_cusdec": {
+          "const": true
+        }
+      },
+      "required": [
+        "refers_to_cancelled_cusdec"
+      ]
+    },
+    "then": {
+      "required": [
+        "previous_cusdec_number",
+        "previous_certificate_number",
+        "cancellation_reason"
+      ]
+    }
   },
   "uiSchema": {
     "type": "VerticalLayout",
@@ -239,6 +278,54 @@
                 "scope": "#/properties/lot_number"
               }
             ]
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/refers_to_cancelled_cusdec"
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/previous_cusdec_number",
+                "rule": {
+                  "effect": "SHOW",
+                  "condition": {
+                    "scope": "#/properties/refers_to_cancelled_cusdec",
+                    "schema": {
+                      "const": true
+                    }
+                  }
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/previous_certificate_number",
+                "rule": {
+                  "effect": "SHOW",
+                  "condition": {
+                    "scope": "#/properties/refers_to_cancelled_cusdec",
+                    "schema": {
+                      "const": true
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/cancellation_reason",
+            "rule": {
+              "effect": "SHOW",
+              "condition": {
+                "scope": "#/properties/refers_to_cancelled_cusdec",
+                "schema": {
+                  "const": true
+                }
+              }
+            }
           }
         ]
       },
