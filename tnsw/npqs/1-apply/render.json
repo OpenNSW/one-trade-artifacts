@@ -37,7 +37,7 @@
       "dataKey": "userform",
       "handles": [
         {
-          "command": "SAVE_AS_DRAFT",
+          "command": "save_as_draft",
           "label": "Save as Draft",
           "element": "secondary_action"
         },
@@ -51,7 +51,7 @@
   },
   "states": {
     "PENDING_USER": {
-      "actions": [{ "command": "submit" }, { "command": "SAVE_AS_DRAFT" }]
+      "actions": [{ "command": "submit" }, { "command": "save_as_draft" }]
     }
   }
 }
