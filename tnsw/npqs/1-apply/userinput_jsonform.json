@@ -701,7 +701,7 @@
           {
             "type": "HorizontalLayout",
             "elements": [
-              { "type": "Control", "scope": "#/properties/importing_country", "options": { "placeholder": "Type a country name…" } },
+              { "type": "Control", "scope": "#/properties/importing_country" },
               { "type": "Control", "scope": "#/properties/transit_countries" }
             ]
           }
@@ -741,7 +741,7 @@
             "type": "HorizontalLayout",
             "elements": [
               { "type": "Control", "scope": "#/properties/exporter_country" },
-              { "type": "Control", "scope": "#/properties/consignee_country", "options": { "placeholder": "Type a country name…" } }
+              { "type": "Control", "scope": "#/properties/consignee_country" }
             ]
           },
           {
