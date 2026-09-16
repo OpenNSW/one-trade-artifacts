@@ -46,7 +46,7 @@
             },
             "commodity_common_name": {
               "type": "object",
-              "title": "Common Name",
+              "title": "Commodity Name",
               "properties": {
                 "value": {
                   "type": "string"
@@ -60,7 +60,7 @@
               ],
               "x-search": {
                 "service": "static-data",
-                "mode": "small-list",
+                "mode": "large-searchable-list",
                 "params": {
                   "id": "npqs-apply-phyto-cert--commodity-common-names",
                   "version": "1"
@@ -69,7 +69,7 @@
             },
             "commodity_botanical_name": {
               "type": "string",
-              "title": "Botanical Name"
+              "title": "Scientific Name"
             },
             "quantity_net_weight": {
               "type": "number",
@@ -302,13 +302,6 @@
                 "elements": [
                   {
                     "type": "Control",
-                    "scope": "#/properties/id",
-                    "options": {
-                      "readOnly": true
-                    }
-                  },
-                  {
-                    "type": "Control",
                     "scope": "#/properties/commodity_common_name",
                     "options": {
                       "readOnly": true
@@ -317,6 +310,13 @@
                   {
                     "type": "Control",
                     "scope": "#/properties/commodity_botanical_name",
+                    "options": {
+                      "readOnly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/id",
                     "options": {
                       "readOnly": true
                     }
