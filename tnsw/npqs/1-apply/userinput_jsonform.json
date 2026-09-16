@@ -51,7 +51,7 @@
         "title": "Name of Importing Country",
         "x-search": {
           "service": "static-data",
-          "mode": "small-list",
+          "mode": "large-searchable-list",
           "params": {
             "id": "npqs-apply-phyto-cert--importing-countries",
             "version": "1"
@@ -101,7 +101,7 @@
         "title": "Country of Consignee",
         "x-search": {
           "service": "static-data",
-          "mode": "small-list",
+          "mode": "large-searchable-list",
           "params": {
             "id": "npqs-apply-phyto-cert--importing-countries",
             "version": "1"
@@ -166,10 +166,10 @@
           "properties": {
             "commodity_common_name": {
               "type": "object",
-              "title": "Commodity Common Name",
+              "title": "Commodity Name",
               "x-search": {
                 "service": "static-data",
-                "mode": "small-list",
+                "mode": "large-searchable-list",
                 "params": {
                   "id": "npqs-apply-phyto-cert--commodity-common-names",
                   "version": "1"
@@ -183,8 +183,16 @@
             },
             "commodity_botanical_name": {
               "type": "string",
-              "title": "Botanical Name",
-              "example": "Monstera deliciosa"
+              "title": "Scientific Name",
+              "x-search": {
+                "service": "static-data",
+                "mode": "small-list",
+                "dependsOn": "commodity_common_name",
+                "params": {
+                  "id": "npqs-apply-phyto-cert--scientific-names",
+                  "version": "1"
+                }
+              }
             },
             "commodity_language": {
               "type": "string",
@@ -693,7 +701,7 @@
           {
             "type": "HorizontalLayout",
             "elements": [
-              { "type": "Control", "scope": "#/properties/importing_country" },
+              { "type": "Control", "scope": "#/properties/importing_country", "options": { "placeholder": "Type a country name…" } },
               { "type": "Control", "scope": "#/properties/transit_countries" }
             ]
           }
@@ -733,7 +741,7 @@
             "type": "HorizontalLayout",
             "elements": [
               { "type": "Control", "scope": "#/properties/exporter_country" },
-              { "type": "Control", "scope": "#/properties/consignee_country" }
+              { "type": "Control", "scope": "#/properties/consignee_country", "options": { "placeholder": "Type a country name…" } }
             ]
           },
           {
