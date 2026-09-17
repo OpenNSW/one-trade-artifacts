@@ -55,7 +55,7 @@
       "dataKey": "userform",
       "handles": [
         {
-          "command": "SAVE_AS_DRAFT",
+          "command": "save_as_draft",
           "label": "Save as Draft",
           "element": "secondary_action"
         },
@@ -80,7 +80,7 @@
           "command": "submit"
         },
         {
-          "command": "SAVE_AS_DRAFT"
+          "command": "save_as_draft"
         }
       ]
     }
