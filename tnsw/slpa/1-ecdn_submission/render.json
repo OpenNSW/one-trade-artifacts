@@ -22,11 +22,12 @@
       "projector": "FORM",
       "dataKey": "userform",
       "handles": [
-        { "command": "submit", "label": "Generate XML & Upload to SLPA", "element": "primary_action" }
+        { "command": "submit", "label": "Generate XML & Upload to SLPA", "element": "primary_action" },
+        { "command": "SAVE_AS_DRAFT", "label": "Save as Draft", "element": "secondary_action" }
       ]
     }
   },
   "states": {
-    "PENDING_USER": { "actions": [{ "command": "submit" }] }
+    "PENDING_USER": { "actions": [{ "command": "submit" }, { "command": "SAVE_AS_DRAFT" }] }
   }
 }
