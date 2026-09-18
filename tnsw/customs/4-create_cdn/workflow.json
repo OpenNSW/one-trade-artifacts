@@ -23,7 +23,7 @@
         "transport": "userform.transport",
         "goods": "userform.goods",
         "container": "userform.container",
-        "noteDetails": "userform.noteDetails"
+        "cusdecRef": "userform.cusdecRef"
       }
     },
     {

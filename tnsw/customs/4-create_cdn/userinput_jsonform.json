@@ -254,101 +254,6 @@
           "mark"
         ],
         "description": "The single container this dispatch note covers. Annex B carries one container per CDN."
-      },
-      "noteDetails": {
-        "type": "object",
-        "title": "Dispatch Note Details",
-        "properties": {
-          "cdnNumber": {
-            "type": "string",
-            "title": "CDN No",
-            "example": "CDN-2026-00481"
-          },
-          "brslSelection": {
-            "type": "string",
-            "title": "2. B / R / S / L Selection",
-            "oneOf": [
-              {
-                "const": "B",
-                "title": "B"
-              },
-              {
-                "const": "R",
-                "title": "R"
-              },
-              {
-                "const": "S",
-                "title": "S"
-              },
-              {
-                "const": "L",
-                "title": "L"
-              }
-            ],
-            "default": "B"
-          },
-          "tareWeight": {
-            "type": "number",
-            "title": "9. Tare Wt. (Kg)",
-            "example": 2200
-          },
-          "placeOfReceipt": {
-            "type": "string",
-            "title": "26. Place of Receipt (CY / CFS / DOOR)",
-            "example": "CFS"
-          },
-          "placeOfDelivery": {
-            "type": "string",
-            "title": "25. Place of Delivery (CY / CFS / DOOR)",
-            "example": "CY"
-          },
-          "departureTime": {
-            "type": "string",
-            "title": "15. Time of Departure from Stores/CFS",
-            "example": "10:30 AM"
-          },
-          "otherAccompanyingDocs": {
-            "type": "string",
-            "title": "14. Any other Accompanying Document details"
-          },
-          "certifyingOfficer": {
-            "type": "string",
-            "title": "16. Certifying security officer / authorized signatory",
-            "example": "S. D. Bandara"
-          },
-          "signatureDesignationDate": {
-            "type": "string",
-            "title": "17. Signature, Designation and Date",
-            "example": "S.D. Bandara, Chief Security Officer - 2026-06-22"
-          },
-          "preparingCompanyName": {
-            "type": "string",
-            "title": "34. Name of Company preparing Note",
-            "example": "ADAM PVT LTD (CHA)"
-          },
-          "declarantName": {
-            "type": "string",
-            "title": "35. Name of the Declarant",
-            "example": "M. T. Fernando"
-          },
-          "telephoneNo": {
-            "type": "string",
-            "title": "36. Telephone No",
-            "example": "0112345678"
-          },
-          "declarantSignature": {
-            "type": "string",
-            "title": "37. Signature of Declarant",
-            "example": "M. T. Fernando"
-          }
-        },
-        "required": [
-          "cdnNumber",
-          "declarantName",
-          "preparingCompanyName",
-          "telephoneNo"
-        ],
-        "description": "Fields the printed Cargo Dispatch Note carries that Annex B does not define; they are kept on the record and are not sent to ASYCUDA."
       }
     },
     "required": [
@@ -357,8 +262,7 @@
       "consignee",
       "transport",
       "goods",
-      "container",
-      "noteDetails"
+      "container"
     ]
   },
   "uiSchema": {
@@ -615,99 +519,6 @@
               {
                 "type": "Control",
                 "scope": "#/properties/goods/properties/tempRequired"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "Group",
-        "label": "5. Dispatch Note Details",
-        "elements": [
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/noteDetails/properties/cdnNumber"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/noteDetails/properties/brslSelection"
-              }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/noteDetails/properties/tareWeight"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/noteDetails/properties/departureTime"
-              }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/noteDetails/properties/placeOfReceipt"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/noteDetails/properties/placeOfDelivery"
-              }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/noteDetails/properties/otherAccompanyingDocs"
-              }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/noteDetails/properties/certifyingOfficer"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/noteDetails/properties/signatureDesignationDate"
-              }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/noteDetails/properties/preparingCompanyName"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/noteDetails/properties/declarantName"
-              }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/noteDetails/properties/telephoneNo"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/noteDetails/properties/declarantSignature"
               }
             ]
           }
