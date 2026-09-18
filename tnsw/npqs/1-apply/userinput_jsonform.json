@@ -119,12 +119,21 @@
         "example": "EXP-NPQS-2026-A"
       },
       "point_of_entry_country": {
-        "type": "string",
+        "type": "object",
         "title": "Declared Point of Entry - Country",
-        "oneOf": [
-          { "const": "LK", "title": "Sri Lanka" }
-        ],
-        "default": "LK"
+        "x-search": {
+          "service": "static-data",
+          "mode": "small-list",
+          "params": {
+            "id": "npqs-apply-phyto-cert--point-of-entry-countries",
+            "version": "1"
+          }
+        },
+        "properties": {
+          "value": { "type": "string", "minLength": 1, "example": "GB" },
+          "label": { "type": "string", "example": "United Kingdom of Great Britain and Northern Ireland (the)" }
+        },
+        "required": ["value"]
       },
       "point_of_entry_port": {
         "type": "string",

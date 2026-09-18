@@ -187,6 +187,12 @@
       "path": "npqs/1-apply/importing_countries.data.json"
     },
     {
+      "id": "npqs-apply-phyto-cert--point-of-entry-countries",
+      "kind": "static_data",
+      "version": "1",
+      "path": "npqs/1-apply/point_of_entry_countries.data.json"
+    },
+    {
       "id": "npqs-apply-phyto-cert--commodity-common-names",
       "kind": "static_data",
       "version": "1",
