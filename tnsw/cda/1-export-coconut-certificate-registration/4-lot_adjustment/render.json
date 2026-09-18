@@ -1,7 +1,7 @@
 {
   "id": "cda-lot-adjustment-flow:render",
   "type": "APPLICATION",
-  "title": "[CDA] Lot Adjustment Request",
+  "title": "[CDA] Application for Alteration of Bag Details",
   "sections": {
     "status_message": {
       "templateId": "cda-lot-adjustment-officer--trader-instructions",
@@ -38,7 +38,7 @@
     },
     "workspace": {
       "templateId": "cda-lot-adjustment-trader--user-form",
-      "title": "CDA Export Certificate Lot Adjustment",
+      "title": "Application for Alteration of Bag Details",
       "projector": "FORM",
       "dataKey": "adjustmentform",
       "visibleWhen": {
@@ -56,7 +56,7 @@
     },
     "bag_template": {
       "templateId": "cda-apply-coconut-cert--bag-template",
-      "title": "DC Bag Details Template",
+      "title": "DC BAGS DETAILS - NZ270",
       "projector": "MARKDOWN",
       "visibleWhen": {
         "states": [
@@ -66,7 +66,7 @@
     },
     "completed_message": {
       "templateId": "cda-lot-adjustment-trader--completed",
-      "title": "Lot Adjustment Complete",
+      "title": "Alteration of Bag Details Complete",
       "projector": "MARKDOWN",
       "visibleWhen": {
         "states": [
