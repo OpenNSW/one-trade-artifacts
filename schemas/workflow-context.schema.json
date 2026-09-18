@@ -42,9 +42,14 @@
         "data": {
           "type": "object",
           "additionalProperties": false,
-          "description": "Registry attributes about the company. Note there is no 'address' field anywhere in the confirmed payload — tnsw/npqs/npqs_workflow.json still maps '_iter.input.company.address?' to exporter_address as an optional placeholder pending a real source; it resolves to nothing until an actual address field is confirmed and added here. Confirm and wire the real source once that data is available.",
+          "description": "Registry attributes about the company.",
           "required": ["br_no"],
           "properties": {
+            "address": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Company registered address. npqs_workflow.json's and cda_workflow.json's '_iter.input.company.data.address?' mappings read from here."
+            },
             "br_no": {
               "type": "string",
               "minLength": 1,
@@ -66,7 +71,7 @@
             "agencies": {
               "type": "object",
               "additionalProperties": false,
-              "description": "Per-regulatory-agency data about this company, keyed by agency slug (cda/customs/fcau/npqs/sltb, per CLAUDE.md's agency list). Each agency's object shape is agency-specific — there's no shared sub-schema, since what one agency tracks about a registrant has nothing to do with what another does. Only 'npqs' is modeled so far; add a sibling property here (and wire it the same way, via that agency's own macro workflow) when another agency needs its own company-level data. Placement under 'data' (alongside br_no/tin_no/vat_no) is a best-fit guess for consistency with the rest of this object, not yet confirmed against the real payload — move it if the actual data lands elsewhere.",
+              "description": "Per-regulatory-agency data about this company, keyed by agency slug (cda/customs/fcau/npqs/sltb, per CLAUDE.md's agency list). Each agency's object shape is agency-specific — there's no shared sub-schema, since what one agency tracks about a registrant has nothing to do with what another does. 'npqs' and 'cda' are modeled so far; add a sibling property here (and wire it the same way, via that agency's own macro workflow) when another agency needs its own company-level data. Placement under 'data' (alongside br_no/tin_no/vat_no) is a best-fit guess for consistency with the rest of this object, not yet confirmed against the real payload — move it if the actual data lands elsewhere.",
               "properties": {
                 "npqs": {
                   "type": "object",
@@ -77,6 +82,18 @@
                       "type": "string",
                       "minLength": 1,
                       "description": "This company's NPQS registration/exporter number."
+                    }
+                  }
+                },
+                "cda": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "description": "CDA-specific data about this company.",
+                  "properties": {
+                    "registration_number": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "This company's CDA registration/exporter number."
                     }
                   }
                 }
