@@ -162,12 +162,6 @@
         ],
         "description": "SLPA office code list."
       },
-      "cusdecSerial": {
-        "type": "string",
-        "title": "Cusdec Serial",
-        "example": "E",
-        "description": "Optional on the SLPA form."
-      },
       "cusdecSerLet": {
         "type": "string",
         "title": "CusDec SerLet",
@@ -565,10 +559,6 @@
               {
                 "type": "Control",
                 "scope": "#/properties/cusdecOffice"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/cusdecSerial"
               }
             ]
           },
