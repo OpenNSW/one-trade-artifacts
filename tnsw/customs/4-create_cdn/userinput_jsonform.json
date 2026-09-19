@@ -13,7 +13,7 @@
       "cusdecRef": {
         "type": "string",
         "title": "Customs Declaration Reference",
-        "example": "CBEX1/2026/E/1047",
+        "example": "CBEX1/2026/E/56932",
         "readOnly": true,
         "description": "The registered declaration this dispatch note carries cargo for. Filled in from the CusDec once Customs registers it."
       },
