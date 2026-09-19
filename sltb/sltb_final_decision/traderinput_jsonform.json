@@ -104,7 +104,19 @@
                 "accept": ".xlsx,.xls,.csv",
                 "maxSize": 10485760,
                 "persistSheet": true,
-                "columnHeader": true
+                "columnHeader": true,
+                "columns": [
+                  { "id": "Sale_date", "label": "DATE OF SALE" },
+                  { "id": "Sale_code", "label": "SALE CODE" },
+                  { "id": "BR_code", "label": "BR CODE" },
+                  { "id": "LOT_number", "label": "LOT NO" },
+                  { "id": "Invoice_no", "label": "INV NO" },
+                  { "id": "Garden_mark", "label": "GARDEN MARKET" },
+                  { "id": "Sale_grade", "label": "GRADE" },
+                  { "id": "Sale_rate", "label": "RATE PER KG" },
+                  { "id": "Sale_quantity", "label": "QUANTITY IN KG" },
+                  { "id": "Sale_value", "label": "TOTAL VALUE" }
+                ]
               },
               "x-evaluate": [
                 {
@@ -128,7 +140,17 @@
                 "accept": ".xlsx,.xls,.csv",
                 "maxSize": 10485760,
                 "persistSheet": true,
-                "columnHeader": true
+                "columnHeader": true,
+                "columns": [
+                  { "id": "permit_no", "label": "PERMIT NO" },
+                  { "id": "date", "label": "DATE OF IMPORTATION" },
+                  { "id": "identification_mark", "label": "IDENTIFICATION MARK" },
+                  { "id": "grade", "label": "GRADE" },
+                  { "id": "cif_price", "label": "CIF PRICE PER KG" },
+                  { "id": "import_quantity", "label": "QUANTITY USED IN KG" },
+                  { "id": "value", "label": "VALUE" }
+
+                ]
               },
               "x-evaluate": [
                 { "id": "total_import_quantity", "label": "Total Import Quantity (KG)", "expression": "=SUM(F2:F10000)" },
@@ -147,7 +169,14 @@
                 "accept": ".xlsx,.xls,.csv",
                 "maxSize": 10485760,
                 "persistSheet": true,
-                "columnHeader": true
+                "columnHeader": true,
+                "columns": [
+                  { "id": "date", "label": "DATE OF BLEND" },
+                  { "id": "blend_no", "label": "BLEND NO" },
+                  { "id": "blend_balance", "label": "BLEND BALANCE" },
+                  { "id": "blend_gain", "label": "BLEND GAIN" },
+                  { "id": "blend_avg_per_kg", "label": "BLEND AVG PER KG" }
+                ]
               },
               "x-evaluate": [
                 { "id": "total_blend_balances", "label": "Total Blend Balances (KG)", "expression": "=SUM(C2:C10000)" },
