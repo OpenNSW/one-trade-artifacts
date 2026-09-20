@@ -19,7 +19,6 @@
       "templateId": "customs-cdn--completed-message",
       "title": "CDN Submission Status",
       "projector": "MARKDOWN",
-      "dataKey": "userform",
       "visibleWhen": {
         "states": [
           "COMPLETED"
