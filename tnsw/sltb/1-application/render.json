@@ -51,12 +51,7 @@
           "label": "Submit Blend Sheet",
           "element": "primary_action"
         }
-      ],
-      "visibleWhen": {
-        "states": [
-          "PENDING_USER"
-        ]
-      }
+      ]
     }
   },
   "states": {
