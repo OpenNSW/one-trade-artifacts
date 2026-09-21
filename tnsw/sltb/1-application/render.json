@@ -42,7 +42,7 @@
       "dataKey": "userform",
       "handles": [
         {
-          "command": "SAVE_AS_DRAFT",
+          "command": "save_as_draft",
           "label": "Save as Draft",
           "element": "secondary_action"
         },
@@ -51,12 +51,7 @@
           "label": "Submit Blend Sheet",
           "element": "primary_action"
         }
-      ],
-      "visibleWhen": {
-        "states": [
-          "PENDING_USER"
-        ]
-      }
+      ]
     }
   },
   "states": {
@@ -66,7 +61,7 @@
           "command": "submit"
         },
         {
-          "command": "SAVE_AS_DRAFT"
+          "command": "save_as_draft"
         }
       ]
     }
