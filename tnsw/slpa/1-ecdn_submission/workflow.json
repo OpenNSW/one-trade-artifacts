@@ -1,7 +1,7 @@
 {
   "id": "slpa-ecdn-submission-flow",
   "name": "Submit ECDN to SLPA CMS",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -12,27 +12,29 @@
       "type": "TASK",
       "task_template_id": "slpa-ecdn--user-input",
       "input_mapping": {
-        "cms.error?": "cms.error"
+        "cms.error?": "cms.error",
+        "userform?": "userform"
       },
       "output_mapping": {
-        "cusdecNo": "userform.cusdecNo",
-        "cusdecDate": "userform.cusdecDate",
-        "cusdecOffice": "userform.cusdecOffice",
-        "cusdecSerLet": "userform.cusdecSerLet",
-        "cdnNumber": "userform.cdnNumber",
-        "terminal": "userform.terminal",
-        "status": "userform.status",
-        "shipperName": "userform.shipperName",
-        "shipperAddress": "userform.shipperAddress",
-        "consigneeName": "userform.consigneeName",
-        "consigneeAddress": "userform.consigneeAddress",
-        "packageNumber": "userform.packageNumber",
-        "packageType": "userform.packageType",
-        "volumeCBM": "userform.volumeCBM",
-        "weightKg": "userform.weightKg",
-        "goodsDescription": "userform.goodsDescription",
+        "__command": "command",
+        "cusdecNo?": "userform.cusdecNo",
+        "cusdecDate?": "userform.cusdecDate",
+        "cusdecOffice?": "userform.cusdecOffice",
+        "cusdecSerLet?": "userform.cusdecSerLet",
+        "cdnNumber?": "userform.cdnNumber",
+        "terminal?": "userform.terminal",
+        "status?": "userform.status",
+        "shipperName?": "userform.shipperName",
+        "shipperAddress?": "userform.shipperAddress",
+        "consigneeName?": "userform.consigneeName",
+        "consigneeAddress?": "userform.consigneeAddress",
+        "packageNumber?": "userform.packageNumber",
+        "packageType?": "userform.packageType",
+        "volumeCBM?": "userform.volumeCBM",
+        "weightKg?": "userform.weightKg",
+        "goodsDescription?": "userform.goodsDescription",
         "voyageNumber?": "userform.voyageNumber",
-        "voyageDate": "userform.voyageDate",
+        "voyageDate?": "userform.voyageDate",
         "portOfLoading?": "userform.portOfLoading",
         "portOfUnloading?": "userform.portOfUnloading",
         "vesselOPCode?": "userform.vesselOPCode",
@@ -41,8 +43,13 @@
         "email?": "userform.email",
         "contactNo?": "userform.contactNo",
         "remarks?": "userform.remarks",
-        "containers": "userform.containers"
+        "containers?": "userform.containers"
       }
+    },
+    {
+      "id": "draft_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
       "id": "cms_upload",
@@ -78,6 +85,17 @@
     {
       "id": "e2",
       "source_id": "applicant_submission",
+      "target_id": "draft_gateway"
+    },
+    {
+      "id": "e_draft",
+      "source_id": "draft_gateway",
+      "target_id": "applicant_submission",
+      "condition": "command == 'save_as_draft'"
+    },
+    {
+      "id": "e_submit",
+      "source_id": "draft_gateway",
       "target_id": "cms_upload"
     },
     {
