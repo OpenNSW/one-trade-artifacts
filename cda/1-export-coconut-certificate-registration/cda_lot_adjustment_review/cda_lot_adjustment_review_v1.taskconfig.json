@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "taskCode": "cda_lot_adjustment_review_v1",
   "meta": {
-    "title": "CDA Officer Lot Adjustment Review",
-    "description": "Officer reviews the trader's request to remove specific lots and uploads the revised certificate if approved.",
+    "title": "CDA Officer Review — Application for Alteration of Bag Details",
+    "description": "Officer reviews the trader's Application for Alteration of Bag Details, refers to the attached CUSDEC, and uploads the revised certificate if approved.",
     "category": "CDA"
   },
   "forms": {
