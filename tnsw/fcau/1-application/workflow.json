@@ -80,7 +80,7 @@
       "id": "e_draft",
       "source_id": "draft_gateway",
       "target_id": "applicant_submission",
-      "condition": "command == 'SAVE_AS_DRAFT'"
+      "condition": "command == 'save_as_draft'"
     },
     {
       "id": "e_submit",

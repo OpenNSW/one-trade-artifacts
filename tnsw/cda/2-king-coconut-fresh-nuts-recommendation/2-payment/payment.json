@@ -9,7 +9,7 @@
     "currency": "LKR",
     "gateway_metadata": {
       "govpay_subinst_id": "004",
-      "govpay_service_id": "001"
+      "govpay_service_id": "002"
     }
   }
 }
