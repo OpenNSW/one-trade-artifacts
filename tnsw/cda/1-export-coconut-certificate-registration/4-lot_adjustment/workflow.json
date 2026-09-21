@@ -15,13 +15,13 @@
         "certificate_id": "certificate_id",
         "certificate_file": "certificate_file",
         "adjustment_feedback?": "adjustment_feedback",
-        "exporter_details?": "adjustmentform.exporter_details",
+        "exporter_name?": "adjustmentform.exporter_name",
         "reference_number?": "adjustmentform.cusdec_number"
       },
       "output_mapping": {
         "adjustment_choice": "adjustment_choice",
         "lots_to_remove?": "lots_to_remove",
-        "exporter_details?": "exporter_details",
+        "exporter_name?": "exporter_name",
         "cusdec_number?": "cusdec_number",
         "number_of_bags_not_shipped?": "number_of_bags_not_shipped",
         "cusdec_document?": "cusdec_document"
@@ -39,7 +39,7 @@
       "input_mapping": {
         "reference_number": "reference_number",
         "adjustment_choice": "adjustment_choice",
-        "exporter_details": "exporter_details",
+        "exporter_name": "exporter_name",
         "cusdec_number": "cusdec_number",
         "number_of_bags_not_shipped": "number_of_bags_not_shipped",
         "cusdec_document": "cusdec_document",

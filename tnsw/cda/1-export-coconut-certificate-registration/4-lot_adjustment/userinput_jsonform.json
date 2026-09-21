@@ -19,7 +19,7 @@
         ],
         "default": "complete_application"
       },
-      "exporter_details": {
+      "exporter_name": {
         "type": "string",
         "title": "Name of Exporter",
         "readOnly": true
@@ -78,7 +78,7 @@
       },
       {
         "type": "Control",
-        "scope": "#/properties/exporter_details",
+        "scope": "#/properties/exporter_name",
         "options": {
           "readonly": true
         },

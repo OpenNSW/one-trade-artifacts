@@ -4,7 +4,7 @@
   "schema": {
     "type": "object",
     "properties": {
-      "exporter_details": {
+      "exporter_name": {
         "type": "string",
         "title": "Exporter Name, Address & Registration Number",
         "oneOf": [
@@ -201,7 +201,7 @@
       }
     },
     "required": [
-      "exporter_details",
+      "exporter_name",
       "cusdec_number",
       "dc_grades",
       "port_of_discharge",
@@ -219,7 +219,7 @@
         "elements": [
           {
             "type": "Control",
-            "scope": "#/properties/exporter_details"
+            "scope": "#/properties/exporter_name"
           },
           {
             "type": "HorizontalLayout",

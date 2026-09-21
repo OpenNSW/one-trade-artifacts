@@ -94,7 +94,7 @@
         "cda.certificate_id": "certificate_id",
         "cda.certificate_file": "certificate_file",
         "cda.adjustment_feedback?": "adjustment_feedback",
-        "cda.userform.exporter_details?": "exporter_details"
+        "cda.userform.exporter_name?": "exporter_name"
       },
       "output_mapping": {
         "adjustment_choice": "cda.adjustment_choice",
