@@ -75,13 +75,13 @@
       "id": "e_first_print",
       "source_id": "fee_gateway",
       "target_id": "pay_app_fee_task",
-      "condition": "userform.relates_to_previous_approval != true"
+      "condition": "relates_to_previous_approval != true"
     },
     {
       "id": "e_previous_cert",
       "source_id": "fee_gateway",
       "target_id": "pay_previous_cert_task",
-      "condition": "userform.relates_to_previous_approval == true"
+      "condition": "relates_to_previous_approval == true"
     },
     {
       "id": "e_first_join",

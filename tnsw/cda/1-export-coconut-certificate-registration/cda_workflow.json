@@ -57,7 +57,8 @@
       "lane": "Trader/CHA",
       "input_mapping": {
         "cda.reference_number": "reference_number",
-        "cda.userform": "userform"
+        "cda.userform": "userform",
+        "cda.userform.relates_to_previous_approval?": "relates_to_previous_approval"
       },
       "output_mapping": {
         "payment_status": "cda.payment_status",
