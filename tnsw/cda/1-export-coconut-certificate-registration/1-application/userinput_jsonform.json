@@ -28,10 +28,10 @@
         "title": "CUSDEC Number",
         "example": "CUSDEC-2026-904821"
       },
-      "refers_to_cancelled_cusdec": {
+      "relates_to_previous_approval": {
         "type": "boolean",
-        "title": "This consignment uses bag ranges from a cancelled CusDec / previously issued CDA certificate",
-        "description": "Tick if the original CusDec was cancelled and you are applying for a new Salmonella/Physical Quality certificate against a previously issued certificate. CDA will use the previous numbers to retrieve those records.",
+        "title": "This application relates to a previously approved consignment",
+        "description": "Tick if some or all lots were covered by a previous CDA certificate (for example the original CusDec was cancelled). CDA will use the previous CusDec and certificate numbers to reset master lot records. The new quantity may be less than, the same as, or more than the previous certificate; the officer decides whether testing is required or certificates can be reissued.",
         "default": false
       },
       "previous_cusdec_number": {
@@ -224,7 +224,7 @@
     "required": [
       "exporter_details",
       "cusdec_number",
-      "refers_to_cancelled_cusdec",
+      "relates_to_previous_approval",
       "dc_grades",
       "port_of_discharge",
       "final_destination",
@@ -233,12 +233,12 @@
     ],
     "if": {
       "properties": {
-        "refers_to_cancelled_cusdec": {
+        "relates_to_previous_approval": {
           "const": true
         }
       },
       "required": [
-        "refers_to_cancelled_cusdec"
+        "relates_to_previous_approval"
       ]
     },
     "then": {
@@ -288,7 +288,7 @@
           },
           {
             "type": "Control",
-            "scope": "#/properties/refers_to_cancelled_cusdec"
+            "scope": "#/properties/relates_to_previous_approval"
           },
           {
             "type": "HorizontalLayout",
@@ -299,7 +299,7 @@
                 "rule": {
                   "effect": "SHOW",
                   "condition": {
-                    "scope": "#/properties/refers_to_cancelled_cusdec",
+                    "scope": "#/properties/relates_to_previous_approval",
                     "schema": {
                       "const": true
                     }
@@ -312,7 +312,7 @@
                 "rule": {
                   "effect": "SHOW",
                   "condition": {
-                    "scope": "#/properties/refers_to_cancelled_cusdec",
+                    "scope": "#/properties/relates_to_previous_approval",
                     "schema": {
                       "const": true
                     }
@@ -327,7 +327,7 @@
             "rule": {
               "effect": "SHOW",
               "condition": {
-                "scope": "#/properties/refers_to_cancelled_cusdec",
+                "scope": "#/properties/relates_to_previous_approval",
                 "schema": {
                   "const": true
                 }

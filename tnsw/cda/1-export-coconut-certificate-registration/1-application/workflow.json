@@ -19,7 +19,7 @@
         "__command": "command",
         "exporter_details?": "userform.exporter_details",
         "cusdec_number?": "userform.cusdec_number",
-        "refers_to_cancelled_cusdec?": "userform.refers_to_cancelled_cusdec",
+        "relates_to_previous_approval?": "userform.relates_to_previous_approval",
         "previous_cusdec_number?": "userform.previous_cusdec_number",
         "previous_certificate_number?": "userform.previous_certificate_number",
         "cancellation_reason?": "userform.cancellation_reason",
