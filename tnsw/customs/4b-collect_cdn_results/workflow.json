@@ -17,7 +17,8 @@
       "output_mapping": {
         "cdn_userform": "cdn_userform",
         "cdn_number?": "cdn_number",
-        "cdn_numbers": "cdn_numbers"
+        "cdn_numbers": "cdn_numbers",
+        "containers": "containers"
       }
     },
     {

@@ -24,15 +24,36 @@
         "title": "Port of Discharge",
         "example": "Port of Hamburg (DEHAM)"
       },
-      "cdn_number": {
-        "type": "string",
-        "title": "Linked CDN Number",
-        "example": "CDN-2026-00481"
-      },
-      "container_number": {
-        "type": "string",
-        "title": "Container Marks & Number",
-        "example": "MSCU-849201-9"
+      "containers": {
+        "type": "array",
+        "title": "Containers",
+        "minItems": 1,
+        "description": "One entry per container, seeded from the dispatch notes already registered. Add and remove are locked so the list cannot disagree with those notes.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "cdn_number": {
+              "type": "string",
+              "title": "Linked CDN Number",
+              "example": "CBEX1/2026/C/28243"
+            },
+            "container_number": {
+              "type": "string",
+              "title": "Container Marks & Number",
+              "example": "MSCU-849201-9"
+            },
+            "customs_seal_no": {
+              "type": "string",
+              "title": "Customs Seal Number",
+              "example": "LK-CUS-894021"
+            }
+          },
+          "required": [
+            "cdn_number",
+            "container_number",
+            "customs_seal_no"
+          ]
+        }
       },
       "description_of_goods": {
         "type": "string",
@@ -59,11 +80,6 @@
         "title": "Net Mass (Kg)",
         "example": 15900.0
       },
-      "customs_seal_no": {
-        "type": "string",
-        "title": "Customs Seal Number",
-        "example": "LK-CUS-894021"
-      },
       "authorized_signatory": {
         "type": "string",
         "title": "Authorized Signatory Name",
@@ -81,14 +97,12 @@
       "voyage_no",
       "port_of_loading",
       "port_of_discharge",
-      "cdn_number",
-      "container_number",
+      "containers",
       "description_of_goods",
       "shipping_agent",
       "number_of_packages",
       "gross_mass",
       "net_mass",
-      "customs_seal_no",
       "authorized_signatory",
       "declaration_date"
     ]
@@ -127,17 +141,21 @@
         "label": "2. Container & Seal Details",
         "elements": [
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              { "type": "Control", "scope": "#/properties/cdn_number" },
-              { "type": "Control", "scope": "#/properties/container_number" }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              { "type": "Control", "scope": "#/properties/customs_seal_no" }
-            ]
+            "type": "Control",
+            "scope": "#/properties/containers",
+            "options": {
+              "itemLabel": "Container",
+              "addable": false,
+              "removable": false,
+              "detail": {
+                "type": "HorizontalLayout",
+                "elements": [
+                  { "type": "Control", "scope": "#/properties/cdn_number" },
+                  { "type": "Control", "scope": "#/properties/container_number" },
+                  { "type": "Control", "scope": "#/properties/customs_seal_no" }
+                ]
+              }
+            }
           }
         ]
       },

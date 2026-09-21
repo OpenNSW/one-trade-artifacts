@@ -1,7 +1,7 @@
 {
   "id": "customs-create-boat-note-flow",
   "name": "Create Boat Note",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -12,21 +12,19 @@
       "type": "TASK",
       "task_template_id": "customs-boat-note--user-input",
       "input_mapping": {
-        "cdn_number": "cdn_number"
+        "containers": "userform.containers"
       },
       "output_mapping": {
         "vessel_name": "userform.vessel_name",
         "voyage_no": "userform.voyage_no",
         "port_of_loading": "userform.port_of_loading",
         "port_of_discharge": "userform.port_of_discharge",
-        "cdn_number": "userform.cdn_number",
-        "container_number": "userform.container_number",
+        "containers": "userform.containers",
         "description_of_goods": "userform.description_of_goods",
         "shipping_agent": "userform.shipping_agent",
         "number_of_packages": "userform.number_of_packages",
         "gross_mass": "userform.gross_mass",
         "net_mass": "userform.net_mass",
-        "customs_seal_no": "userform.customs_seal_no",
         "authorized_signatory": "userform.authorized_signatory",
         "declaration_date": "userform.declaration_date"
       }
