@@ -13,6 +13,62 @@
         ],
         "default": "export"
       },
+      "re_export": {
+        "type": "object",
+        "title": "Re-Export Details",
+        "description": "Declared once for the consignment and repeated on every commodity. Each commodity's country of origin is taken from its own Country of Origin field.",
+        "properties": {
+          "original_certificate_number": {
+            "type": "string",
+            "title": "Original Phytosanitary Certificate Number",
+            "description": "The certificate the consignment was imported under. Separate multiple numbers with commas.",
+            "example": "IN-PC-2026-778812"
+          },
+          "original_certificate_form": {
+            "type": "string",
+            "title": "The Original Certificate Is",
+            "oneOf": [
+              { "const": "original", "title": "The original" },
+              { "const": "certified_true_copy", "title": "A certified true copy" }
+            ],
+            "default": "certified_true_copy"
+          },
+          "packing": {
+            "type": "string",
+            "title": "The Consignment Is",
+            "oneOf": [
+              { "const": "packed", "title": "Packed" },
+              { "const": "repacked", "title": "Repacked" }
+            ],
+            "default": "packed"
+          },
+          "containers": {
+            "type": "string",
+            "title": "Containers Are",
+            "oneOf": [
+              { "const": "original", "title": "The original containers" },
+              { "const": "new", "title": "New containers" }
+            ],
+            "default": "original"
+          },
+          "original_certificate_attached": {
+            "type": "boolean",
+            "title": "The original certificate (or certified true copy) is attached",
+            "default": true
+          },
+          "additional_inspection": {
+            "type": "boolean",
+            "title": "An additional inspection was carried out",
+            "default": false
+          },
+          "statement_code": {
+            "type": "string",
+            "title": "ISPM 12 Re-Export Statement Code",
+            "description": "Leave as the default unless the destination NPPO asks for a different statement.",
+            "default": "3"
+          }
+        }
+      },
       "shipment_value": {
         "type": "string",
         "title": "Shipment Value",
@@ -703,6 +759,46 @@
             "elements": [
               { "type": "Control", "scope": "#/properties/importing_country" },
               { "type": "Control", "scope": "#/properties/transit_countries" }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "label": "1a. Re-Export Details",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/certificate_type",
+            "schema": { "const": "re-export" }
+          }
+        },
+        "elements": [
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              { "type": "Control", "scope": "#/properties/re_export/properties/original_certificate_number" },
+              { "type": "Control", "scope": "#/properties/re_export/properties/original_certificate_form" }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              { "type": "Control", "scope": "#/properties/re_export/properties/packing" },
+              { "type": "Control", "scope": "#/properties/re_export/properties/containers" }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              { "type": "Control", "scope": "#/properties/re_export/properties/original_certificate_attached" },
+              { "type": "Control", "scope": "#/properties/re_export/properties/additional_inspection" }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              { "type": "Control", "scope": "#/properties/re_export/properties/statement_code" }
             ]
           }
         ]
