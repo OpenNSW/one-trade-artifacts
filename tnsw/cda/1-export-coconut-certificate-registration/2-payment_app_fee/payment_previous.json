@@ -1,11 +1,11 @@
 {
-  "id": "cda-pay-app-fee--payment",
+  "id": "cda-pay-app-fee--payment-previous",
   "task_type": "PAYMENT",
   "output_namespace": "payment",
   "plugin_properties": {
-    "task_code": "cda_app_fee_payment_v1",
-    "service_name": "CDA First-Time Print Fee",
-    "amount": "1814.25",
+    "task_code": "cda_app_fee_payment_previous_v1",
+    "service_name": "CDA Certificate Reissue Fee",
+    "amount": "604.75",
     "currency": "LKR",
     "gateway_metadata": {
       "govpay_subinst_id": "004",

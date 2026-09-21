@@ -1489,6 +1489,12 @@
       "path": "cda/1-export-coconut-certificate-registration/2-payment_app_fee/payment.json"
     },
     {
+      "id": "cda-pay-app-fee--payment-previous",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/2-payment_app_fee/payment_previous.json"
+    },
+    {
       "id": "cda-pay-app-fee-flow:render",
       "kind": "generic_template",
       "version": "",
