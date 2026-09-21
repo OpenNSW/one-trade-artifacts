@@ -22,21 +22,7 @@
       "exporter_details": {
         "type": "string",
         "title": "Name of Exporter",
-        "readOnly": true,
-        "oneOf": [
-          {
-            "const": "EXP-CDA-001",
-            "title": "Lanka Coconuts Ltd (CDA/REG/001) - 123 Galle Road, Colombo 03"
-          },
-          {
-            "const": "EXP-CDA-002",
-            "title": "Ceylon Organics Premium Exporters (CDA/REG/002) - 456 Kandy Road, Kurunegala"
-          },
-          {
-            "const": "EXP-CDA-003",
-            "title": "Coconut Development Authority Exports Mock (CDA/REG/003) - 789 Negombo Road, Katunayake"
-          }
-        ]
+        "readOnly": true
       },
       "cusdec_number": {
         "type": "string",
