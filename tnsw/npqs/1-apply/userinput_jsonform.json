@@ -21,8 +21,7 @@
           "original_certificate_number": {
             "type": "string",
             "title": "Original Phytosanitary Certificate Number",
-            "description": "The certificate the consignment was imported under. Separate multiple numbers with commas.",
-            "example": "IN-PC-2026-778812"
+            "description": "The certificate the consignment was imported under. Separate multiple numbers with commas."
           },
           "original_certificate_form": {
             "type": "string",
@@ -760,46 +759,41 @@
               { "type": "Control", "scope": "#/properties/importing_country" },
               { "type": "Control", "scope": "#/properties/transit_countries" }
             ]
-          }
-        ]
-      },
-      {
-        "type": "Group",
-        "label": "1a. Re-Export Details",
-        "rule": {
-          "effect": "SHOW",
-          "condition": {
-            "scope": "#/properties/certificate_type",
-            "schema": { "const": "re-export" }
-          }
-        },
-        "elements": [
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              { "type": "Control", "scope": "#/properties/re_export/properties/original_certificate_number" },
-              { "type": "Control", "scope": "#/properties/re_export/properties/original_certificate_form" }
-            ]
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              { "type": "Control", "scope": "#/properties/re_export/properties/packing" },
-              { "type": "Control", "scope": "#/properties/re_export/properties/containers" }
-            ]
+            "type": "Control",
+            "scope": "#/properties/re_export/properties/original_certificate_number",
+            "rule": { "effect": "SHOW", "condition": { "scope": "#/properties/certificate_type", "schema": { "const": "re-export" } } }
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              { "type": "Control", "scope": "#/properties/re_export/properties/original_certificate_attached" },
-              { "type": "Control", "scope": "#/properties/re_export/properties/additional_inspection" }
-            ]
+            "type": "Control",
+            "scope": "#/properties/re_export/properties/original_certificate_form",
+            "rule": { "effect": "SHOW", "condition": { "scope": "#/properties/certificate_type", "schema": { "const": "re-export" } } }
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              { "type": "Control", "scope": "#/properties/re_export/properties/statement_code" }
-            ]
+            "type": "Control",
+            "scope": "#/properties/re_export/properties/packing",
+            "rule": { "effect": "SHOW", "condition": { "scope": "#/properties/certificate_type", "schema": { "const": "re-export" } } }
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/re_export/properties/containers",
+            "rule": { "effect": "SHOW", "condition": { "scope": "#/properties/certificate_type", "schema": { "const": "re-export" } } }
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/re_export/properties/original_certificate_attached",
+            "rule": { "effect": "SHOW", "condition": { "scope": "#/properties/certificate_type", "schema": { "const": "re-export" } } }
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/re_export/properties/additional_inspection",
+            "rule": { "effect": "SHOW", "condition": { "scope": "#/properties/certificate_type", "schema": { "const": "re-export" } } }
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/re_export/properties/statement_code",
+            "rule": { "effect": "SHOW", "condition": { "scope": "#/properties/certificate_type", "schema": { "const": "re-export" } } }
           }
         ]
       },
