@@ -90,7 +90,8 @@
       "output_mapping": {
         "cdn_userform": "customs.cdn_userform",
         "cdn_number?": "customs.cdn_number",
-        "cdn_numbers": "customs.cdn_numbers"
+        "cdn_numbers": "customs.cdn_numbers",
+        "containers": "customs.containers"
       }
     },
     {
@@ -100,7 +101,7 @@
       "task_template_id": "customs-create-boat-note-flow",
       "lane": "Trader/CHA",
       "input_mapping": {
-        "customs.cdn_number": "cdn_number"
+        "customs.containers": "containers"
       },
       "output_mapping": {
         "userform": "customs.boat_note_userform"
