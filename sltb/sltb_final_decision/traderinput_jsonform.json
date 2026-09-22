@@ -110,7 +110,7 @@
                   { "id": "Sale_code", "label": "SALE CODE" },
                   { "id": "BR_code", "label": "BR CODE" },
                   { "id": "LOT_number", "label": "LOT NO" },
-                  { "id": "Invoice_no", "label": "INV NO" },
+                  { "id": "Invoice_number", "label": "INV NO" },
                   { "id": "Garden_mark", "label": "GARDEN MARKET" },
                   { "id": "Sale_grade", "label": "GRADE" },
                   { "id": "Sale_rate", "label": "RATE PER KG" },
