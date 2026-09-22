@@ -28,14 +28,16 @@
         "type": "array",
         "title": "Containers",
         "minItems": 1,
-        "description": "One entry per container, seeded from the dispatch notes already registered. Add and remove are locked so the list cannot disagree with those notes.",
+        "description": "One entry per container, seeded from the dispatch notes already registered. Add, remove, and the CDN number are locked so the list cannot disagree with those notes.",
         "items": {
           "type": "object",
           "properties": {
             "cdn_number": {
               "type": "string",
               "title": "Linked CDN Number",
-              "example": "CBEX1/2026/C/28243"
+              "example": "CBEX1/2026/C/28243",
+              "readOnly": true,
+              "description": "The registered dispatch note this row is tied to. Filled in from the CDN once Customs registers it."
             },
             "container_number": {
               "type": "string",
