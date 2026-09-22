@@ -1,7 +1,7 @@
 {
   "id": "cda-pay-app-fee-flow",
   "name": "Pay CDA Application Fee",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -15,6 +15,12 @@
       "output_mapping": {
         "selected_method": "selected_method"
       }
+    },
+    {
+      "id": "fee_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "First-time print or previous-certificate fee?"
     },
     {
       "id": "pay_app_fee_task",
@@ -31,6 +37,25 @@
       }
     },
     {
+      "id": "pay_previous_cert_task",
+      "type": "TASK",
+      "task_template_id": "cda-pay-app-fee--payment-previous",
+      "input_mapping": {
+        "reference_number": "reference_number",
+        "selected_method": "selected_method"
+      },
+      "output_mapping": {
+        "payment_status": "payment_status",
+        "payment_receipt_url?": "payment.payment_receipt_url",
+        "selected_method?": "payment.selected_method"
+      }
+    },
+    {
+      "id": "fee_join",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_JOIN"
+    },
+    {
       "id": "end",
       "type": "END"
     }
@@ -44,11 +69,33 @@
     {
       "id": "e2",
       "source_id": "select_method_task",
-      "target_id": "pay_app_fee_task"
+      "target_id": "fee_gateway"
     },
     {
-      "id": "e3",
+      "id": "e_first_print",
+      "source_id": "fee_gateway",
+      "target_id": "pay_app_fee_task",
+      "condition": "relates_to_previous_approval != true"
+    },
+    {
+      "id": "e_previous_cert",
+      "source_id": "fee_gateway",
+      "target_id": "pay_previous_cert_task",
+      "condition": "relates_to_previous_approval == true"
+    },
+    {
+      "id": "e_first_join",
       "source_id": "pay_app_fee_task",
+      "target_id": "fee_join"
+    },
+    {
+      "id": "e_previous_join",
+      "source_id": "pay_previous_cert_task",
+      "target_id": "fee_join"
+    },
+    {
+      "id": "e_end",
+      "source_id": "fee_join",
       "target_id": "end"
     }
   ]
