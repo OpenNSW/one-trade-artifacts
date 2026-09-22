@@ -182,9 +182,21 @@
         "default": "LK"
       },
       "point_of_entry_port": {
-        "type": "string",
+        "type": "object",
         "title": "Declared Point of Entry - Ports/Locations",
-        "example": "Andorra la Vella"
+        "x-search": {
+          "service": "static-data",
+          "mode": "large-paginated-list",
+          "params": {
+            "id": "npqs-apply-phyto-cert--port-of-entry",
+            "version": "1"
+          }
+        },
+        "properties": {
+          "value": { "type": "string", "minLength": 1 },
+          "label": { "type": "string" }
+        },
+        "required": ["value"]
       },
       "seal_number": {
         "type": "string",
