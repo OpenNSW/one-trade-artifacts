@@ -15,7 +15,8 @@
         "description": "Type to search for a Customs House Agent",
         "x-search": {
           "service": "cha",
-          "mode": "large-paginated-list"
+          "mode": "large-paginated-list",
+          "displayTemplate": "{name}"
         },
         "example": "adam-pvt-ltd"
       },
