@@ -111,7 +111,7 @@
         "x-search": {
           "service": "static-data",
           "mode": "large-searchable-list",
-          "displayTemplate": "{name}",
+          "display-template": "{name}",
           "params": {
             "id": "npqs-apply-phyto-cert--importing-countries",
             "version": "1"
@@ -173,7 +173,7 @@
         "x-search": {
           "service": "static-data",
           "mode": "large-searchable-list",
-          "displayTemplate": "{name}",
+          "display-template": "{name}",
           "params": {
             "id": "npqs-apply-phyto-cert--importing-countries",
             "version": "1"
@@ -213,7 +213,7 @@
         "x-search": {
           "service": "static-data",
           "mode": "large-paginated-list",
-          "displayTemplate": "{id}-{name}",
+          "display-template": "{id}-{name}",
           "params": {
             "id": "npqs-apply-phyto-cert--port-of-entry",
             "version": "1"
@@ -300,7 +300,7 @@
               "x-search": {
                 "service": "static-data",
                 "mode": "large-searchable-list",
-                "displayTemplate": "{name}",
+                "display-template": "{name}",
                 "params": {
                   "id": "npqs-apply-phyto-cert--commodity-common-names",
                   "version": "1"

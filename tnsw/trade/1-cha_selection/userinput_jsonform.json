@@ -16,7 +16,7 @@
         "x-search": {
           "service": "cha",
           "mode": "large-paginated-list",
-          "displayTemplate": "{name}"
+          "display-template": "{name}"
         },
         "example": "adam-pvt-ltd"
       },

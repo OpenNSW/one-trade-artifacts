@@ -56,7 +56,7 @@
               "x-search": {
                 "service": "static-data",
                 "mode": "large-searchable-list",
-                "displayTemplate": "{name}",
+                "display-template": "{name}",
                 "params": {
                   "id": "npqs-apply-phyto-cert--commodity-common-names",
                   "version": "1"
