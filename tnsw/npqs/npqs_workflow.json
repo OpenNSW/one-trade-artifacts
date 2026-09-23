@@ -331,7 +331,8 @@
       },
       "output_mapping": {
         "reviewerform.treatment_request_outcome": "npqs.treatment_request_outcome",
-        "traderinput.treatment_items?": "npqs.treatment_items"
+        "traderinput.treatment_items?": "npqs.treatment_items",
+        "reviewerform.treatment_items?": "commodities"
       }
     },
     {

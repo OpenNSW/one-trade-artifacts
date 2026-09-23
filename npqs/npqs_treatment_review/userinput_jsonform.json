@@ -4,7 +4,7 @@
   "schema": {
     "type": "object",
     "properties": {
-      "treatment_items": {
+      "commodities": {
         "type": "array",
         "title": "Items Under Treatment (Context)",
         "items": {
@@ -68,7 +68,7 @@
     "elements": [
       {
         "type": "Control",
-        "scope": "#/properties/treatment_items",
+        "scope": "#/properties/commodities",
         "options": {
           "readonly": true,
           "detail": {

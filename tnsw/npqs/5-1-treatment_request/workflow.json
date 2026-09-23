@@ -30,7 +30,8 @@
       },
       "output_mapping": {
         "treatment_request_outcome": "reviewerform.treatment_request_outcome",
-        "clarification_comments?": "reviewerform.clarification_comments"
+        "clarification_comments?": "reviewerform.clarification_comments",
+        "treatment_items?": "reviewerform.treatment_items"
       }
     },
     {

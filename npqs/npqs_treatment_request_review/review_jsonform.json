@@ -23,6 +23,81 @@
         "type": "string",
         "title": "Clarifications / Feedback / Comments",
         "example": "Dosage is approved. Please ensure treatment is conducted at a certified facility."
+      },
+      "treatment_items": {
+        "type": "array",
+        "title": "Treatment Provider & Supervision (Per Item)",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Item ID"
+            },
+            "commodity_common_name": {
+              "type": "object",
+              "title": "Commodity Name",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "value"
+              ],
+              "x-search": {
+                "service": "static-data",
+                "mode": "small-list",
+                "params": {
+                  "id": "npqs-apply-phyto-cert--commodity-common-names",
+                  "version": "1"
+                }
+              }
+            },
+            "treatment_type": {
+              "type": "string",
+              "title": "Treatment Type Requested"
+            },
+            "treatment_provider": {
+              "type": "string",
+              "title": "Treatment Provider",
+              "oneOf": [
+                {
+                  "const": "npqs",
+                  "title": "NPQS Treatment Station"
+                },
+                {
+                  "const": "external",
+                  "title": "Authorized External Provider"
+                }
+              ],
+              "default": "npqs"
+            },
+            "treatment_supervision": {
+              "type": "string",
+              "title": "Supervision Required",
+              "oneOf": [
+                {
+                  "const": "with_supervision",
+                  "title": "With NPQS Supervision"
+                },
+                {
+                  "const": "without_supervision",
+                  "title": "Without Supervision"
+                }
+              ],
+              "default": "without_supervision"
+            }
+          },
+          "required": [
+            "id",
+            "treatment_provider",
+            "treatment_supervision"
+          ]
+        }
       }
     },
     "required": [
@@ -35,6 +110,67 @@
       {
         "type": "Control",
         "scope": "#/properties/treatment_request_outcome"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/treatment_items",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/treatment_request_outcome",
+            "schema": {
+              "const": "approve"
+            }
+          }
+        },
+        "options": {
+          "detail": {
+            "type": "VerticalLayout",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/id",
+                    "options": {
+                      "readOnly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/commodity_common_name",
+                    "options": {
+                      "readOnly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/treatment_type",
+                    "options": {
+                      "readOnly": true
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/treatment_provider"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/treatment_supervision"
+                  }
+                ]
+              }
+            ]
+          },
+          "addable": false,
+          "removable": false
+        }
       },
       {
         "type": "Control",
