@@ -151,7 +151,12 @@
               "code"
             ]
           }
-        }
+        },
+        "required": [
+          "exporter",
+          "consignee",
+          "declarant"
+        ]
       },
       "generalInfo": {
         "type": "object",
@@ -177,7 +182,12 @@
             "title": "Comments",
             "example": "Test export declaration"
           }
-        }
+        },
+        "required": [
+          "countryOfFirstDestination",
+          "exportCountryCode",
+          "destinationCountryCode"
+        ]
       },
       "transport": {
         "type": "object",
@@ -226,7 +236,8 @@
           "containerized": {
             "type": "boolean",
             "title": "Containerized",
-            "example": true
+            "example": true,
+            "default": true
           },
           "deliveryTermsCode": {
             "type": "string",
@@ -262,9 +273,12 @@
         },
         "required": [
           "vesselName",
-          "modeOfTransport",
-          "deliveryTermsCode",
           "transportNationality",
+          "modeOfTransport",
+          "containerized",
+          "deliveryTermsCode",
+          "deliveryTermsPlace",
+          "borderOfficeCode",
           "placeOfDischargeCode"
         ]
       },
@@ -308,7 +322,13 @@
             "title": "Mode of Payment",
             "example": "CASH"
           }
-        }
+        },
+        "required": [
+          "bankCode",
+          "bankReference",
+          "remittanceAmount",
+          "paymentTermsCode"
+        ]
       },
       "valuation": {
         "type": "object",
@@ -441,7 +461,10 @@
             "minimum": 0,
             "example": 0
           }
-        }
+        },
+        "required": [
+          "totalPackages"
+        ]
       },
       "items": {
         "type": "array",
@@ -470,7 +493,11 @@
                   "title": "Package Kind Name",
                   "example": "Package"
                 }
-              }
+              },
+              "required": [
+                "quantity",
+                "kindCode"
+              ]
             },
             "tarification": {
               "type": "object",
@@ -515,7 +542,11 @@
                       "title": "Quantity",
                       "example": 250
                     }
-                  }
+                  },
+                  "required": [
+                    "code",
+                    "quantity"
+                  ]
                 },
                 "itemPrice": {
                   "type": "number",
@@ -534,7 +565,10 @@
                 }
               },
               "required": [
-                "hsCode"
+                "hsCode",
+                "extendedProcedureCode",
+                "nationalProcedureCode",
+                "supplementaryUnit"
               ]
             },
             "goodsDescription": {
@@ -564,7 +598,10 @@
                 }
               },
               "required": [
-                "description"
+                "originCountryCode",
+                "description",
+                "commercialDescription",
+                "commercialDescription1"
               ]
             },
             "valuation": {
@@ -606,7 +643,12 @@
                   "title": "Invoice Amount (LKR)",
                   "example": 0
                 }
-              }
+              },
+              "required": [
+                "grossWeight",
+                "netWeight",
+                "invoiceAmountForeign"
+              ]
             },
             "previousDocumentReference": {
               "type": "string",
@@ -620,8 +662,10 @@
             }
           },
           "required": [
+            "packages",
             "tarification",
-            "goodsDescription"
+            "goodsDescription",
+            "valuation"
           ]
         }
       },
@@ -645,7 +689,8 @@
               "x-file": {
                 "accept": ".pdf",
                 "maxSize": 307200
-              }
+              },
+              "example": "storage/customs/invoice-1092.pdf"
             }
           },
           "required": [
@@ -662,8 +707,11 @@
       "shipmentType",
       "identification",
       "traders",
+      "generalInfo",
       "transport",
+      "financial",
       "valuation",
+      "packages",
       "items"
     ]
   },
