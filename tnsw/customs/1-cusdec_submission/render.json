@@ -3,6 +3,18 @@
   "type": "APPLICATION",
   "title": "[Customs] Customs Declaration (CusDec) Submission & Review",
   "sections": {
+    "verify_result": {
+      "templateId": "customs-cusdec--verify-result",
+      "title": "Verification Result",
+      "projector": "MARKDOWN",
+      "dataKey": "verify",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "verify"
+      }
+    },
     "cig_rejection": {
       "templateId": "customs-cusdec--cig-rejection",
       "title": "Sri Lanka Customs Submission Errors",
@@ -47,18 +59,6 @@
           "QUEUED_EXTERNALLY"
         ],
         "requireDataKey": "reviewerform"
-      }
-    },
-    "verify_result": {
-      "templateId": "customs-cusdec--verify-result",
-      "title": "Verification Result",
-      "projector": "MARKDOWN",
-      "dataKey": "verify",
-      "visibleWhen": {
-        "states": [
-          "PENDING_USER"
-        ],
-        "requireDataKey": "verify"
       }
     },
     "user_form": {
