@@ -334,6 +334,15 @@
           "borderOfficeCode": {
             "type": "string",
             "title": "Border Office Code",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-searchable-list",
+              "displayTemplate": "{name}",
+              "params": {
+                "id": "customs-cusdec--office-codes",
+                "version": "1"
+              }
+            },
             "example": "CBEX1"
           },
           "placeOfLoadingCode": {
