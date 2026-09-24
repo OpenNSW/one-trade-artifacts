@@ -46,8 +46,17 @@
           "countryCode": {
             "type": "string",
             "title": "Country Code",
-            "example": "LK",
-            "description": "UNCTYTAB, 2 letters."
+            "description": "UNCTYTAB, 2 letters.",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-searchable-list",
+              "displayTemplate": "{name}",
+              "params": {
+                "id": "customs-cusdec--countries",
+                "version": "1"
+              }
+            },
+            "example": "LK"
           }
         },
         "required": [
@@ -79,8 +88,17 @@
           "countryCode": {
             "type": "string",
             "title": "Country Code",
-            "example": "MY",
-            "description": "UNCTYTAB, 2 letters."
+            "description": "UNCTYTAB, 2 letters.",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-searchable-list",
+              "displayTemplate": "{name}",
+              "params": {
+                "id": "customs-cusdec--countries",
+                "version": "1"
+              }
+            },
+            "example": "MY"
           }
         },
         "required": [

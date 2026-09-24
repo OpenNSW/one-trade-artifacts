@@ -193,6 +193,12 @@
       "path": "customs/static-data/customs_office_codes.data.json"
     },
     {
+      "id": "customs-cusdec--countries",
+      "kind": "static_data",
+      "version": "1",
+      "path": "customs/static-data/countries.data.json"
+    },
+    {
       "id": "npqs-apply-phyto-cert--importing-countries",
       "kind": "static_data",
       "version": "1",

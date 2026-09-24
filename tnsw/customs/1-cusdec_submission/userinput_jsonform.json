@@ -175,11 +175,20 @@
                 "title": "Exporter Address",
                 "example": "45A, KANDY ROAD, PILIMATHALAWA"
               },
-              "countryCode": {
-                "type": "string",
-                "title": "Country Code",
-                "example": "LK"
+          "countryCode": {
+            "type": "string",
+            "title": "Country Code",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-searchable-list",
+              "displayTemplate": "{name}",
+              "params": {
+                "id": "customs-cusdec--countries",
+                "version": "1"
               }
+            },
+            "example": "LK"
+          }
             },
             "required": [
               "code",
@@ -247,16 +256,43 @@
           "countryOfFirstDestination": {
             "type": "string",
             "title": "Country of First Destination",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-searchable-list",
+              "displayTemplate": "{name}",
+              "params": {
+                "id": "customs-cusdec--countries",
+                "version": "1"
+              }
+            },
             "example": "MY"
           },
           "exportCountryCode": {
             "type": "string",
             "title": "Export Country Code",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-searchable-list",
+              "displayTemplate": "{name}",
+              "params": {
+                "id": "customs-cusdec--countries",
+                "version": "1"
+              }
+            },
             "example": "LK"
           },
           "destinationCountryCode": {
             "type": "string",
             "title": "Destination Country Code",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-searchable-list",
+              "displayTemplate": "{name}",
+              "params": {
+                "id": "customs-cusdec--countries",
+                "version": "1"
+              }
+            },
             "example": "MY"
           },
           "commentsText": {
@@ -284,6 +320,15 @@
             "type": "string",
             "title": "Transport Nationality",
             "description": "Country code of the vessel/aircraft at departure.",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-searchable-list",
+              "displayTemplate": "{name}",
+              "params": {
+                "id": "customs-cusdec--countries",
+                "version": "1"
+              }
+            },
             "example": "LK"
           },
           "voyageNo": {
@@ -294,6 +339,15 @@
           "voyageNationality": {
             "type": "string",
             "title": "Voyage Nationality",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-searchable-list",
+              "displayTemplate": "{name}",
+              "params": {
+                "id": "customs-cusdec--countries",
+                "version": "1"
+              }
+            },
             "example": "LK"
           },
           "modeOfTransport": {
@@ -669,6 +723,15 @@
                 "originCountryCode": {
                   "type": "string",
                   "title": "Origin Country Code",
+                  "x-search": {
+                    "service": "static-data",
+                    "mode": "large-searchable-list",
+                    "displayTemplate": "{name}",
+                    "params": {
+                      "id": "customs-cusdec--countries",
+                      "version": "1"
+                    }
+                  },
                   "example": "LK"
                 },
                 "description": {
