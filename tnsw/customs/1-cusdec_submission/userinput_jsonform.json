@@ -378,6 +378,15 @@
           "deliveryTermsCode": {
             "type": "string",
             "title": "Delivery Terms Code",
+            "x-search": {
+              "service": "static-data",
+              "mode": "small-list",
+              "displayTemplate": "{name}",
+              "params": {
+                "id": "customs-cusdec--delivery-terms",
+                "version": "1"
+              }
+            },
             "example": "CIF"
           },
           "deliveryTermsPlace": {

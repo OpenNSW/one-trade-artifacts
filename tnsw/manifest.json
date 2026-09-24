@@ -199,6 +199,12 @@
       "path": "customs/static-data/countries.data.json"
     },
     {
+      "id": "customs-cusdec--delivery-terms",
+      "kind": "static_data",
+      "version": "1",
+      "path": "customs/static-data/delivery_terms.data.json"
+    },
+    {
       "id": "npqs-apply-phyto-cert--importing-countries",
       "kind": "static_data",
       "version": "1",
