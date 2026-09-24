@@ -64,7 +64,7 @@
       "path": "sltb_officer_review/reviewerinput_jsonform.json"
     },
     {
-      "id": "sltb-submit-blendsheet--user-form",
+      "id": "sltb-submit-blendsheet--officer-view-form",
       "kind": "generic_template",
       "version": "",
       "loader": "local",
