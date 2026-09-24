@@ -129,6 +129,15 @@
           "generalProcedureCode": {
             "type": "string",
             "title": "General Procedure Code",
+            "x-search": {
+              "service": "static-data",
+              "mode": "small-list",
+              "displayTemplate": "{name}",
+              "params": {
+                "id": "customs-cusdec--declaration-procedures",
+                "version": "1"
+              }
+            },
             "example": "1"
           },
           "transitDocumentType": {

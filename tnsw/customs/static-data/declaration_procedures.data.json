@@ -1,0 +1,48 @@
+{
+  "data": [
+    {
+      "const": "1",
+      "title": "Exportation"
+    },
+    {
+      "const": "2",
+      "title": "Temporary Export"
+    },
+    {
+      "const": "3",
+      "title": "Re-export"
+    },
+    {
+      "const": "8",
+      "title": "Transit to export"
+    },
+    {
+      "const": "9",
+      "title": "Other export procedures"
+    },
+    {
+      "const": "4",
+      "title": "Entry for home use"
+    },
+    {
+      "const": "5",
+      "title": "Temporary Importation"
+    },
+    {
+      "const": "6",
+      "title": "Reimportation"
+    },
+    {
+      "const": "7",
+      "title": "Entry for warehousing"
+    },
+    {
+      "const": "8",
+      "title": "Import Transit"
+    },
+    {
+      "const": "9",
+      "title": "Other import procedures"
+    }
+  ]
+}

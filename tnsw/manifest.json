@@ -181,6 +181,12 @@
       "path": "npqs/1-apply/status_markdown.json"
     },
     {
+      "id": "customs-cusdec--declaration-procedures",
+      "kind": "static_data",
+      "version": "1",
+      "path": "customs/static-data/declaration_procedures.data.json"
+    },
+    {
       "id": "npqs-apply-phyto-cert--importing-countries",
       "kind": "static_data",
       "version": "1",
