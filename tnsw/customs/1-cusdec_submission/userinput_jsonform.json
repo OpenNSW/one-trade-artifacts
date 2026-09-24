@@ -607,7 +607,6 @@
             "marksAndNumbers": {
               "type": "string",
               "title": "Marks and Numbers",
-              "description": "Box 31 of the CusDec: the marks and numbers stencilled on the packages, usually the consignee, the destination and the package range. Enter NO MARKS if the packages carry none.",
               "example": "COCO WORLD SDN BHD / KUALA LUMPUR / CTNS 1-25"
             },
             "valuation": {
