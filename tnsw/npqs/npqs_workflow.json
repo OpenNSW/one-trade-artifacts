@@ -331,8 +331,7 @@
       },
       "output_mapping": {
         "reviewerform.treatment_request_outcome": "npqs.treatment_request_outcome",
-        "traderinput.treatment_items?": "npqs.treatment_items",
-        "reviewerform.treatment_items?": "commodities"
+        "traderinput.treatment_items?": "npqs.treatment_items"
       }
     },
     {
@@ -341,7 +340,7 @@
       "type": "GATEWAY",
       "gateway_type": "BATCH_SPLIT",
       "batch_gateway": {
-        "items_variable": "commodities",
+        "items_variable": "npqs.treatment_items",
         "id_field": "id"
       }
     },
@@ -352,7 +351,7 @@
       "gateway_type": "BATCH_JOIN",
       "batch_join": {
         "gateway_node_id": "treatment_provider_split",
-        "items_variable": "commodities",
+        "items_variable": "npqs.treatment_items",
         "id_field": "id"
       }
     },
@@ -389,7 +388,7 @@
       "type": "GATEWAY",
       "gateway_type": "BATCH_SPLIT",
       "batch_gateway": {
-        "items_variable": "commodities",
+        "items_variable": "npqs.treatment_items",
         "id_field": "id"
       }
     },
@@ -400,7 +399,7 @@
       "gateway_type": "BATCH_JOIN",
       "batch_join": {
         "gateway_node_id": "n3_3_1_supervision_split",
-        "items_variable": "commodities",
+        "items_variable": "npqs.treatment_items",
         "id_field": "id"
       }
     },
