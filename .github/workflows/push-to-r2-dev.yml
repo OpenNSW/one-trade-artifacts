@@ -3,6 +3,16 @@ name: Push to R2 (dev)
 on:
   push:
     branches: [main]
+  # Dispatchable as well, so a branch can be put in front of nsw-dev before it
+  # is merged. The staging sync has carried this since it was written; without
+  # it the dev bucket can only ever hold main, and a change has to be merged to
+  # be tried.
+  workflow_dispatch:
+    inputs:
+      dryrun:
+        description: "Preview the sync without uploading (--dryrun)"
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -36,4 +46,5 @@ jobs:
             --include "npqs/*" \
             --include "sltb/*" \
             --include "tnsw/*" \
-            --delete
+            --delete \
+            ${{ inputs.dryrun && '--dryrun' || '' }}
