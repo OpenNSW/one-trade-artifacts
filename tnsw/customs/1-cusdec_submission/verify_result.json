@@ -1,0 +1,4 @@
+{
+  "id": "customs-cusdec--verify-result",
+  "template": "{{if .summary}}{{.summary}}{{end}}"
+}

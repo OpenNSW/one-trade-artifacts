@@ -2035,6 +2035,18 @@
       "path": "customs/1-cusdec_submission/dispatch.json"
     },
     {
+      "id": "customs-cusdec--cig-verify",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "customs/1-cusdec_submission/verify.json"
+    },
+    {
+      "id": "customs-cusdec--verify-result",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/1-cusdec_submission/verify_result.json"
+    },
+    {
       "id": "customs-cusdec--cig-rejection",
       "kind": "generic_template",
       "version": "",

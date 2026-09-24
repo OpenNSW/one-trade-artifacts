@@ -1,0 +1,10 @@
+{
+  "id": "customs-cusdec--cig-verify",
+  "task_type": "CUSTOMS_CUSDEC_VERIFY",
+  "output_namespace": "verify",
+  "plugin_properties": {
+    "service_id": "customs-asycuda",
+    "path": "/api/declaration/v1/verify",
+    "result_field": "verified"
+  }
+}
