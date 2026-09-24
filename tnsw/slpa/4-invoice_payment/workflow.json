@@ -31,11 +31,12 @@
         "payment.exchange_rate?": "payment.exchange_rate",
         "payment.generated_at?": "payment.generated_at",
         "payment.payment_slip_url?": "payment.payment_slip_url",
-        "payment.invoice_url?": "payment.invoice_url",
         "payment.cms_status?": "payment.cms_status",
         "payment.paid?": "payment.paid",
         "payment.issued?": "payment.issued",
-        "payment.error?": "payment.error"
+        "payment.error?": "payment.error",
+        "payment.items?": "payment.items",
+        "payment.payment_slip?": "payment.payment_slip"
       }
     },
     {
