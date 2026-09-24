@@ -5,6 +5,7 @@
   "plugin_properties": {
     "service_id": "customs-asycuda",
     "path": "/api/declaration/v1/verify",
-    "result_field": "verified"
+    "result_field": "verified",
+    "retain_state": true
   }
 }
