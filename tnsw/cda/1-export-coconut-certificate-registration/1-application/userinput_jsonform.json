@@ -4,24 +4,20 @@
   "schema": {
     "type": "object",
     "properties": {
-      "exporter_details": {
+      "exporter_name": {
         "type": "string",
-        "title": "Exporter Name, Address & Registration Number",
-        "oneOf": [
-          {
-            "const": "EXP-CDA-001",
-            "title": "Lanka Coconuts Ltd (CDA/REG/001) - 123 Galle Road, Colombo 03"
-          },
-          {
-            "const": "EXP-CDA-002",
-            "title": "Ceylon Organics Premium Exporters (CDA/REG/002) - 456 Kandy Road, Kurunegala"
-          },
-          {
-            "const": "EXP-CDA-003",
-            "title": "Coconut Development Authority Exports Mock (CDA/REG/003) - 789 Negombo Road, Katunayake"
-          }
-        ],
-        "default": "EXP-CDA-001"
+        "title": "Exporter Name",
+        "example": "Lanka Coconuts Ltd"
+      },
+      "exporter_registration_number": {
+        "type": "string",
+        "title": "Exporter Registration Number",
+        "example": "CDA/REG/001"
+      },
+      "exporter_address": {
+        "type": "string",
+        "title": "Exporter Address",
+        "example": "123 Galle Road, Colombo 03"
       },
       "cusdec_number": {
         "type": "string",
@@ -222,7 +218,9 @@
       }
     },
     "required": [
-      "exporter_details",
+      "exporter_name",
+      "exporter_registration_number",
+      "exporter_address",
       "cusdec_number",
       "relates_to_previous_approval",
       "dc_grades",
@@ -258,7 +256,20 @@
         "elements": [
           {
             "type": "Control",
-            "scope": "#/properties/exporter_details"
+            "scope": "#/properties/exporter_name"
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/exporter_registration_number"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/exporter_address"
+              }
+            ]
           },
           {
             "type": "HorizontalLayout",
