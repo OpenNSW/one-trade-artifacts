@@ -68,13 +68,8 @@
       "dataKey": "userform",
       "handles": [
         {
-          "command": "save_as_draft",
-          "label": "Save as Draft",
-          "element": "secondary_action"
-        },
-        {
           "command": "verify",
-          "label": "Verify with Customs",
+          "label": "Verify",
           "element": "secondary_action"
         },
         {
@@ -107,9 +102,6 @@
         },
         {
           "command": "submit"
-        },
-        {
-          "command": "save_as_draft"
         }
       ]
     }
