@@ -103,6 +103,9 @@
     "PENDING_USER": {
       "actions": [
         {
+          "command": "verify"
+        },
+        {
           "command": "submit"
         },
         {
