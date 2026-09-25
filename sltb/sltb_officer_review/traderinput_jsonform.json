@@ -1,5 +1,5 @@
 {
-  "id": "sltb-submit-blendsheet--user-form",
+  "id": "sltb-submit-blendsheet--officer-view-form",
   "title": "SLTB Blend Sheet Submission",
   "schema": {
     "type": "object",
@@ -13,6 +13,80 @@
         "items": {
           "type": "object",
           "properties": {
+            "export_blend_sheet": {
+              "type": "object",
+              "title": "Download Blend Sheet XML",
+              "x-xml-export": {
+                "rootElement": "BLEND_SHEET",
+                "fileName": "blend_sheet.xml",
+                "writeBase": "parent",
+                "writeTo": [
+                  { "to": "Blend_type", "formula": "\"\"" },
+                  { "from": "private_treaty_to_be_exported", "to": "Country", "default": null },
+                  { "from": "exporter_registration_no", "to": "Exporter.registration_number", "default": null },
+                  { "from": "exporter_tin", "to": "Exporter.TIN_number", "default": null },
+                  { "to": "Exporter.Details.null", "formula": "\"\"" },
+                  {
+                    "to": "CUSDEC_info.CUSDEC_office",
+                    "inputs": { "cusdec_ref": "cusdec_number" },
+                    "formula": "LEFT(cusdec_ref,FIND(\" \",cusdec_ref)-1)",
+                    "default": null
+                  },
+                  {
+                    "to": "CUSDEC_info.CUSDEC_serial",
+                    "inputs": { "cusdec_ref": "cusdec_number" },
+                    "formula": "MID(cusdec_ref,FIND(\"|\",SUBSTITUTE(cusdec_ref,\" \",\"|\",2))+1,FIND(\"|\",SUBSTITUTE(cusdec_ref,\" \",\"|\",3))-FIND(\"|\",SUBSTITUTE(cusdec_ref,\" \",\"|\",2))-1)",
+                    "default": null
+                  },
+                  {
+                    "to": "CUSDEC_info.CUSDEC_number",
+                    "inputs": { "cusdec_ref": "cusdec_number" },
+                    "formula": "MID(cusdec_ref,FIND(\"|\",SUBSTITUTE(cusdec_ref,\" \",\"|\",3))+1,LEN(cusdec_ref))",
+                    "default": null
+                  },
+                  { "to": "CUSDEC_info.CUSDEC_date", "formula": "\"\"" },
+                  {
+                    "to": "CUSDEC_info.CUSDEC_year",
+                    "inputs": { "cusdec_ref": "cusdec_number" },
+                    "formula": "MID(cusdec_ref,FIND(\" \",cusdec_ref)+1,FIND(\"|\",SUBSTITUTE(cusdec_ref,\" \",\"|\",2))-FIND(\" \",cusdec_ref)-1)",
+                    "default": null
+                  },
+                  { "from": "blend_no", "to": "Blend.Blend_number", "default": null },
+                  { "from": "avg_rate_per_kg", "to": "Blend.Average_rate", "default": null },
+                  { "from": "fob_avg", "to": "Blend.Average_FOB", "default": null },
+                  { "from": "lion_logo_requested", "to": "Blend.Lion_logo", "map": { "yes": "1", "no": "0" }, "default": "0" },
+                  { "from": "quality_to_be_exported", "to": "Blend.Quantity_export", "default": null },
+                  { "from": "grade_or_standard", "to": "Blend.Blend_grade", "default": null },
+                  {
+                    "to": "Blend.Blend_date",
+                    "inputs": { "blend_date": "date_of_blend" },
+                    "formula": "MONTH(blend_date)&\"/\"&DAY(blend_date)&\"/\"&RIGHT(YEAR(blend_date),2)",
+                    "default": null
+                  },
+                  { "from": "sales.sheet", "to": "Particulars_of_sale" },
+                  { "from": "sales.derivations.average_value_per_kg.value", "to": "Sale_Sum.Sale_total.SaleTotal_average", "default": null },
+                  { "from": "sales.derivations.total_sales_quantity.value", "to": "Sale_Sum.Sale_total.SaleTotal_quantity", "default": null },
+                  { "from": "sales.derivations.total_sales_value.value", "to": "Sale_Sum.Sale_total.SaleTotal_value", "default": null },
+                  { "to": "Import_total", "formula": "\"\"" },
+                  { "to": "balance_total.Previous_total.null", "formula": "\"\"" },
+                  {
+                    "to": "Sample.Sample_date",
+                    "inputs": { "sample_date": "sample_rediness_date" },
+                    "formula": "MONTH(sample_date)&\"/\"&DAY(sample_date)&\"/\"&RIGHT(YEAR(sample_date),2)",
+                    "default": null
+                  },
+                  { "from": "warehouse_address", "to": "Sample.Sample_Warehouse", "default": null },
+                  { "from": "remarks", "to": "Sample.Remarks", "default": { "null": null } },
+                  { "from": "blend_gain_determined", "to": "Total.Blend_gain", "default": { "null": null } },
+                  { "from": "flavors", "to": "Total.Flavor", "default": { "null": null } },
+                  { "from": "total", "to": "Total.Total", "default": null },
+                  { "from": "avg_value_per_kg", "to": "Total.Average_value", "default": null },
+                  { "from": "quantity_to_be_shipped_imported", "to": "Total.Ship_import", "default": { "null": null } },
+                  { "from": "quantity_to_be_shipped_local", "to": "Total.Ship_local", "default": { "null": null } },
+                  { "from": "blend_balance", "to": "Total.Blend_balance", "default": null }
+                ]
+              }
+            },
             "form": {
               "type": "string",
               "title": "Form",
@@ -280,6 +354,7 @@
           "detail": {
             "type": "VerticalLayout",
             "elements": [
+              { "type": "Control", "scope": "#/properties/export_blend_sheet" },
               {
                 "type": "Group",
                 "elements": [

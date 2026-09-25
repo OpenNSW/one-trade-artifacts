@@ -6,7 +6,7 @@
     "description": "Officer review of the submitted tea blend sheet and levy assessment."
   },
   "forms": {
-    "view": "sltb-submit-blendsheet--user-form",
+    "view": "sltb-submit-blendsheet--officer-view-form",
     "review": "sltb-submit-blendsheet--officer-review-form"
   },
   "behavior": {
