@@ -193,12 +193,6 @@
       "path": "npqs/1-apply/commodity_common_names.data.json"
     },
     {
-      "id": "npqs-apply-phyto-cert--port-of-entry",
-      "kind": "static_data",
-      "version": "1",
-      "path": "npqs/1-apply/port_of_entry.data.json"
-    },
-    {
       "id": "npqs-apply-phyto-cert--scientific-names",
       "kind": "static_data",
       "version": "1",
