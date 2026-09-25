@@ -135,36 +135,6 @@
               "type": "boolean",
               "title": "Treatment Required",
               "default": false
-            },
-            "treatment_provider": {
-              "type": "string",
-              "title": "Treatment Provider",
-              "oneOf": [
-                {
-                  "const": "npqs",
-                  "title": "NPQS Treatment Station"
-                },
-                {
-                  "const": "external",
-                  "title": "Authorized External Provider"
-                }
-              ],
-              "default": "npqs"
-            },
-            "treatment_supervision": {
-              "type": "string",
-              "title": "Supervision Required",
-              "oneOf": [
-                {
-                  "const": "with_supervision",
-                  "title": "With NPQS Supervision"
-                },
-                {
-                  "const": "without_supervision",
-                  "title": "Without Supervision"
-                }
-              ],
-              "default": "without_supervision"
             }
           },
           "required": [
@@ -187,9 +157,7 @@
             "lab_sample_method": "drop_off",
             "visual_required": false,
             "visual_approach": "none",
-            "treatment_required": false,
-            "treatment_provider": "npqs",
-            "treatment_supervision": "without_supervision"
+            "treatment_required": false
           },
           {
             "id": "item-2",
@@ -202,9 +170,7 @@
             "lab_sample_method": "drop_off",
             "visual_required": true,
             "visual_approach": "consignment",
-            "treatment_required": false,
-            "treatment_provider": "npqs",
-            "treatment_supervision": "without_supervision"
+            "treatment_required": false
           },
           {
             "id": "item-3",
@@ -217,9 +183,7 @@
             "lab_sample_method": "drop_off",
             "visual_required": false,
             "visual_approach": "none",
-            "treatment_required": true,
-            "treatment_provider": "npqs",
-            "treatment_supervision": "without_supervision"
+            "treatment_required": true
           },
           {
             "id": "item-4",
@@ -232,9 +196,7 @@
             "lab_sample_method": "drop_off",
             "visual_required": false,
             "visual_approach": "none",
-            "treatment_required": false,
-            "treatment_provider": "npqs",
-            "treatment_supervision": "without_supervision"
+            "treatment_required": false
           }
         ]
       }
@@ -380,32 +342,6 @@
                   {
                     "type": "Control",
                     "scope": "#/properties/treatment_required"
-                  },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/treatment_provider",
-                    "rule": {
-                      "effect": "ENABLE",
-                      "condition": {
-                        "scope": "#/properties/treatment_required",
-                        "schema": {
-                          "const": true
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/treatment_supervision",
-                    "rule": {
-                      "effect": "ENABLE",
-                      "condition": {
-                        "scope": "#/properties/treatment_required",
-                        "schema": {
-                          "const": true
-                        }
-                      }
-                    }
                   }
                 ]
               }
