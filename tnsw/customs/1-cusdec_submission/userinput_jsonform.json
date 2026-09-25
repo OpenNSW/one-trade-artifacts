@@ -353,20 +353,15 @@
           "modeOfTransport": {
             "type": "string",
             "title": "Mode of Transport",
-            "oneOf": [
-              {
-                "const": "1",
-                "title": "1 — Sea"
-              },
-              {
-                "const": "3",
-                "title": "3 — Road"
-              },
-              {
-                "const": "4",
-                "title": "4 — Air"
+            "x-search":{
+              "service": "static-data",
+              "mode": "small-list",
+              "displayTemplate": "{name}",
+              "params": {
+                "id": "customs-cusdec--mode-of-transport",
+                "version": "1"
               }
-            ],
+            },
             "example": "1"
           },
           "containerized": {

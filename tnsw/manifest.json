@@ -205,6 +205,12 @@
       "path": "customs/static-data/delivery_terms.data.json"
     },
     {
+      "id": "customs-cusdec--mode-of-transport",
+      "kind": "static_data",
+      "version": "1",
+      "path": "customs/static-data/mode_of_transport.data.json"
+    },
+    {
       "id": "npqs-apply-phyto-cert--importing-countries",
       "kind": "static_data",
       "version": "1",
