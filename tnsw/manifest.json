@@ -217,6 +217,12 @@
       "path": "customs/static-data/banks.data.json"
     },
     {
+      "id": "customs-cusdec--extended-procedures",
+      "kind": "static_data",
+      "version": "1",
+      "path": "customs/static-data/extended_procedure.data.json"
+    },
+    {
       "id": "npqs-apply-phyto-cert--importing-countries",
       "kind": "static_data",
       "version": "1",

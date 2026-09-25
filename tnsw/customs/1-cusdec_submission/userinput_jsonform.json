@@ -679,6 +679,15 @@
                 "extendedProcedureCode": {
                   "type": "string",
                   "title": "Extended Procedure Code",
+                  "x-search": {
+                    "service": "static-data",
+                    "mode": "large-searchable-list",
+                    "displayTemplate": "{name}",
+                    "params": {
+                      "id": "customs-cusdec--extended-procedures",
+                      "version": "1"
+                    }
+                  },
                   "example": "1100"
                 },
                 "nationalProcedureCode": {
