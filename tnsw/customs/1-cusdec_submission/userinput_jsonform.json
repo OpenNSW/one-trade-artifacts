@@ -4,6 +4,79 @@
   "schema": {
     "type": "object",
     "properties": {
+      "import_cusdec_xml": {
+        "type": "object",
+        "title": "Import CusDec XML",
+        "description": "Upload the ASYCUDA CusDec XML to fill this declaration automatically, including declaration items. Only fields present in the XML are populated — exporter/consignee address details, cost breakdowns, and per-item supplementary unit/incoterms still need manual entry. Values can be corrected afterwards.",
+        "x-xml": {
+          "accept": ".xml,text/xml,application/xml",
+          "maxSize": 5242880,
+          "arrayPaths": ["ASYCUDA.Item"],
+          "persistDocument": false,
+          "writeBase": "parent",
+          "writeTo": [
+            { "from": "ASYCUDA.Identification.Office_segment.Customs_clearance_office_code", "to": "identification.officeCode", "as": "string" },
+            { "from": "ASYCUDA.Identification.Type.Type_of_declaration", "to": "identification.declarationType", "as": "string" },
+            { "from": "ASYCUDA.Identification.Type.Declaration_gen_procedure_code", "to": "identification.generalProcedureCode", "as": "string" },
+            { "from": "ASYCUDA.Identification.Type.Type_of_transit_document", "to": "identification.transitDocumentType", "as": "string" },
+            { "from": "ASYCUDA.Declarant.Declarant_code", "to": "traders.declarant.code", "as": "string" },
+            { "from": "ASYCUDA.Declarant.Reference.Number", "to": "traders.declarant.referenceNo", "as": "string" },
+            { "from": "ASYCUDA.General_information.Country.Country_first_destination", "to": "generalInfo.countryOfFirstDestination", "as": "string" },
+            { "from": "ASYCUDA.General_information.Country.Export.Export_country_code", "to": "generalInfo.exportCountryCode", "as": "string" },
+            { "from": "ASYCUDA.General_information.Country.Destination.Destination_country_code", "to": "generalInfo.destinationCountryCode", "as": "string" },
+            { "from": "ASYCUDA.General_information.Comments_free_text", "to": "generalInfo.commentsText", "as": "string" },
+            { "from": "ASYCUDA.Transport.Means_of_transport.Departure_arrival_information.Identity", "to": "transport.vesselName", "as": "string" },
+            { "from": "ASYCUDA.Transport.Means_of_transport.Departure_arrival_information.Nationality", "to": "transport.transportNationality", "as": "string" },
+            { "from": "ASYCUDA.Transport.Means_of_transport.Border_information.Identity", "to": "transport.voyageNo", "as": "string" },
+            { "from": "ASYCUDA.Transport.Means_of_transport.Border_information.Nationality", "to": "transport.voyageNationality", "as": "string" },
+            { "from": "ASYCUDA.Transport.Means_of_transport.Border_information.Mode", "to": "transport.modeOfTransport", "as": "string" },
+            { "from": "ASYCUDA.Transport.Container_flag", "to": "transport.containerized", "as": "boolean" },
+            { "from": "ASYCUDA.Transport.Delivery_terms.Code", "to": "transport.deliveryTermsCode", "as": "string" },
+            { "from": "ASYCUDA.Transport.Delivery_terms.Place", "to": "transport.deliveryTermsPlace", "as": "string" },
+            { "from": "ASYCUDA.Transport.Border_office.Code", "to": "transport.borderOfficeCode", "as": "string" },
+            { "from": "ASYCUDA.Transport.Place_of_loading.Code", "to": "transport.placeOfLoadingCode", "as": "string" },
+            { "from": "ASYCUDA.Transport.Place_of_loading.Name", "to": "transport.placeOfLoadingName", "as": "string" },
+            { "from": "ASYCUDA.Financial.Bank.Code", "to": "financial.bankCode", "as": "string" },
+            { "from": "ASYCUDA.Financial.Bank.Name", "to": "financial.bankName", "as": "string" },
+            { "from": "ASYCUDA.Financial.Bank.Branch", "to": "financial.bankBranch", "as": "string" },
+            { "from": "ASYCUDA.Financial.Bank.Reference", "to": "financial.bankReference", "as": "string" },
+            { "from": "ASYCUDA.Financial.Terms.Code", "to": "financial.paymentTermsCode", "as": "string" },
+            { "from": "ASYCUDA.Financial.Mode_of_payment", "to": "financial.modeOfPayment", "as": "string" },
+            { "from": "ASYCUDA.Financial.Total_invoice", "to": "valuation.invoiceAmountForeign", "as": "number" },
+            { "from": "ASYCUDA.Valuation.Gs_Invoice.Currency_code", "to": "valuation.invoiceCurrencyCode", "as": "string" },
+            { "from": "ASYCUDA.Valuation.Gs_Invoice.Amount_national_currency", "to": "valuation.invoiceAmountLKR", "as": "number" },
+            { "from": "ASYCUDA.Valuation.Weight.Gross_weight", "to": "valuation.totalGrossWeight", "as": "number" },
+            { "from": "ASYCUDA.Property.Nbers.Total_number_of_packages", "to": "packages.totalPackages", "as": "number" },
+            { "from": "ASYCUDA.Property.Nbers.Number_of_loading_lists", "to": "packages.numberOfLoadingLists", "as": "number" },
+            {
+              "from": "ASYCUDA.Item",
+              "to": "items",
+              "writeTo": [
+                { "from": "Packages.Number_of_packages", "to": "packages.quantity", "as": "number" },
+                { "from": "Packages.Kind_of_packages_code", "to": "packages.kindCode", "as": "string" },
+                { "from": "Packages.Kind_of_packages_name", "to": "packages.kindName", "as": "string" },
+                { "from": "Tarification.HScode.Commodity_code", "to": "tarification.hsCode", "as": "string" },
+                { "from": "Tarification.HScode.Precision_1", "to": "tarification.hsPrecision1", "as": "string" },
+                { "from": "Tarification.Preference_code", "to": "tarification.preferenceCode", "as": "string" },
+                { "from": "Tarification.Extended_customs_procedure", "to": "tarification.extendedProcedureCode", "as": "string" },
+                { "from": "Tarification.National_customs_procedure", "to": "tarification.nationalProcedureCode", "as": "string" },
+                { "from": "Goods_description.Country_of_origin_code", "to": "goodsDescription.originCountryCode", "as": "string" },
+                { "from": "Goods_description.Description_of_goods", "to": "goodsDescription.description", "as": "string" },
+                { "from": "Goods_description.Commercial_Description", "to": "goodsDescription.commercialDescription", "as": "string" },
+                { "from": "Valuation_item.Weight_itm.Gross_weight_itm", "to": "valuation.grossWeight", "as": "number" },
+                { "from": "Valuation_item.Weight_itm.Net_weight_itm", "to": "valuation.netWeight", "as": "number" },
+                { "from": "Valuation_item.Total_CIF_itm", "to": "valuation.totalCIF", "as": "number" },
+                { "from": "Valuation_item.Statistical_value", "to": "valuation.statisticalValue", "as": "number" },
+                { "from": "Valuation_item.Item_Invoice.Amount_foreign_currency", "to": "valuation.invoiceAmountForeign", "as": "number" },
+                { "from": "Valuation_item.Item_Invoice.Currency_code", "to": "valuation.invoiceCurrencyCode", "as": "string" },
+                { "from": "Valuation_item.Item_Invoice.Amount_national_currency", "to": "valuation.invoiceAmountLKR", "as": "number" },
+                { "from": "Previous_doc.Previous_document_reference", "to": "previousDocumentReference", "as": "string" },
+                { "from": "Previous_doc.Summary_declaration", "to": "summaryDeclaration", "as": "string" }
+              ]
+            }
+          ]
+        }
+      },
       "shipmentType": {
         "type": "string",
         "title": "Shipment Type",
@@ -724,6 +797,10 @@
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/import_cusdec_xml"
+      },
       {
         "type": "Group",
         "label": "1. Shipment",
