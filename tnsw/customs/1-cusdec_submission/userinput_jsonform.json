@@ -438,6 +438,15 @@
           "bankCode": {
             "type": "string",
             "title": "Bank Code",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-searchable-list",
+              "displayTemplate": "{name}",
+              "params": {
+                "id": "customs-cusdec--banks",
+                "version": "1"
+              }
+            },
             "example": "7056"
           },
           "bankName": {

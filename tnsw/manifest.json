@@ -211,6 +211,12 @@
       "path": "customs/static-data/mode_of_transport.data.json"
     },
     {
+      "id": "customs-cusdec--banks",
+      "kind": "static_data",
+      "version": "1",
+      "path": "customs/static-data/banks.data.json"
+    },
+    {
       "id": "npqs-apply-phyto-cert--importing-countries",
       "kind": "static_data",
       "version": "1",
