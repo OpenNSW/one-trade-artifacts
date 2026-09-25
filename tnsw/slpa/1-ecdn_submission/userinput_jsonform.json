@@ -431,7 +431,11 @@
             "containerNo": {
               "type": "string",
               "title": "Container No",
-              "example": "MSCU8492019"
+              "description": "Generated for you as each container is added. SLPA reads this as the per-declaration key; the physical container number goes in Container Mark.",
+              "readOnly": true,
+              "x-template": {
+                "template": "{cusdecNo}-{cusdecDate}-{seq(2)}"
+              }
             },
             "containerType": {
               "type": "string",
