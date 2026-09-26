@@ -1,4 +1,4 @@
 {
   "id": "slpa-invoice--paid-message",
-  "template": "### ✅ Invoice Paid\n\nSLPA has confirmed the payment. This consignment's SLPA obligations are settled.\n\n{{with .payment}}* **Invoice No**: `{{.invoice_no}}`\n* **Invoice Serial**: `{{.invoice_serial}}`\n* **Amount Paid**: LKR {{printf \"%.2f\" .payable_lkr}}\n* **Paid At**: {{.paid_at}}\n* **Payment Receipt**: `{{.receipt_no}}`\n\n#### Paid against\n\n* **CusDec**: `{{.cusdec_no}}`\n* **Shipper**: {{.shipper}}\n* **Consignee**: {{.consignee}}\n* **Invoice Type**: {{.invoice_type}}\n\n[Download the receipt]({{.receipt_url}})\n{{end}}"
+  "template": "### ✅ Invoice Paid\n\nSLPA has confirmed the payment. This consignment's SLPA obligations are settled.\n\n{{with .payment}}* **Invoice No**: `{{.invoice_no}}`\n{{if .invoice_serial}}* **Invoice Serial**: `{{.invoice_serial}}`\n{{end}}{{if .payable_lkr}}* **Amount Paid**: LKR {{printf \"%.2f\" .payable_lkr}}\n{{end}}{{if .paid_at}}* **Paid At**: {{.paid_at}}\n{{end}}{{if .receipt_no}}* **Payment Receipt**: `{{.receipt_no}}`\n{{end}}{{if .receipt_url}}\n[Download the receipt]({{.receipt_url}})\n{{end}}{{end}}"
 }
