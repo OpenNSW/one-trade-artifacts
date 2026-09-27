@@ -229,6 +229,12 @@
       "path": "customs/static-data/port_of_entry_and_discharge.data.json"
     },
     {
+      "id": "customs-cusdec--sheds",
+      "kind": "static_data",
+      "version": "1",
+      "path": "customs/static-data/shed.data.json"
+    },
+    {
       "id": "npqs-apply-phyto-cert--importing-countries",
       "kind": "static_data",
       "version": "1",

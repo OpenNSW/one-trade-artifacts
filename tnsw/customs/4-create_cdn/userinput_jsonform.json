@@ -173,8 +173,17 @@
           "locationOfGoods": {
             "type": "string",
             "title": "13. Location of Goods",
-            "example": "CFS1",
-            "description": "UNSHDTAB shed / location code."
+            "description": "UNSHDTAB shed / location code.",
+            "x-search": {
+              "service": "static-data",
+              "mode": "small-list",
+              "displayTemplate": "{name}",
+              "params": {
+                "id": "customs-cusdec--sheds",
+                "version": "1"
+              }
+            },
+            "example": "CFS1"
           }
         },
         "required": [
