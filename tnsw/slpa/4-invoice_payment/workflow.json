@@ -59,12 +59,15 @@
         "payable_lkr?": "payment.payable_lkr",
         "receipt_url?": "payment.receipt_url",
         "payment_slip_url?": "payment.payment_slip_url",
-        "invoice_url?": "payment.invoice_url",
         "cms_status?": "payment.cms_status",
         "paid?": "payment.paid",
         "receipt_no?": "payment.receipt_no",
         "exchange_rate?": "payment.exchange_rate",
-        "generated_at?": "payment.generated_at"
+        "generated_at?": "payment.generated_at",
+        "cusdec_no?": "payment.cusdec_no",
+        "invoice_type?": "payment.invoice_type",
+        "shipper?": "payment.shipper",
+        "consignee?": "payment.consignee"
       }
     },
     {
