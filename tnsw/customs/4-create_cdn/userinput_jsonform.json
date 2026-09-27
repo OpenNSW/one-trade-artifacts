@@ -146,14 +146,32 @@
           "placeOfDischarge": {
             "type": "string",
             "title": "5. Port of Discharge",
-            "example": "DEHAM",
-            "description": "UNLOCTAB, 5 characters."
+            "description": "UNLOCTAB, 5 characters.",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-paginated-list",
+              "displayTemplate": "{name} ({id})",
+              "params": {
+                "id": "customs-cusdec--port-of-entry-and-discharge",
+                "version": "1"
+              }
+            },
+            "example": "DEHAM"
           },
           "placeOfLoading": {
             "type": "string",
             "title": "6. Port of Loading",
-            "example": "LKCMB",
-            "description": "UNLOCTAB, 5 characters."
+            "description": "UNLOCTAB, 5 characters.",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-paginated-list",
+              "displayTemplate": "{name} ({id})",
+              "params": {
+                "id": "customs-cusdec--port-of-entry-and-discharge",
+                "version": "1"
+              }
+            },
+            "example": "LKCMB"
           },
           "lorryRegNo": {
             "type": "string",
