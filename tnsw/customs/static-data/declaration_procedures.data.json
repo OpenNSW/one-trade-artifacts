@@ -35,14 +35,6 @@
     {
       "const": "7",
       "title": "Entry for warehousing"
-    },
-    {
-      "const": "8",
-      "title": "Import Transit"
-    },
-    {
-      "const": "9",
-      "title": "Other import procedures"
     }
   ]
 }
