@@ -395,7 +395,7 @@
             "x-search": {
               "service": "static-data",
               "mode": "large-searchable-list",
-              "displayTemplate": "{name}",
+              "displayTemplate": "{name} ({id})",
               "params": {
                 "id": "customs-cusdec--office-codes",
                 "version": "1"
@@ -450,7 +450,7 @@
             "x-search": {
               "service": "static-data",
               "mode": "large-searchable-list",
-              "displayTemplate": "{name}",
+              "displayTemplate": "{name} ({id})",
               "params": {
                 "id": "customs-cusdec--banks",
                 "version": "1"
@@ -691,7 +691,7 @@
                   "x-search": {
                     "service": "static-data",
                     "mode": "large-searchable-list",
-                    "displayTemplate": "{name}",
+                    "displayTemplate": "{name} ({id})",
                     "params": {
                       "id": "customs-cusdec--extended-procedures",
                       "version": "1"
