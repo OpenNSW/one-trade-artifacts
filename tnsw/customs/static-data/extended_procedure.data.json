@@ -1293,10 +1293,6 @@
       "title": "Return goods to Bonded WH (Rebonded from Bonded WH to TIEP1)"
     },
     {
-      "const": "1001",
-      "title": "testtesttest"
-    },
-    {
       "const": "7873",
       "title": "BOI to Entreport transfer"
     },
