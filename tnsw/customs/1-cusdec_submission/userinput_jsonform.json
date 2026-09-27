@@ -416,7 +416,16 @@
           "placeOfDischargeCode": {
             "type": "string",
             "title": "Place of Discharge Code",
-            "description": "UN/LOCODE of the place where the goods are discharged.",
+            "description": "UNLOCODE of the place where the goods are discharged.",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-paginated-list",
+              "displayTemplate": "{name} ({id})",
+              "params": {
+                "id": "customs-cusdec--port-of-entry-and-discharge",
+                "version": "1"
+              }
+            },
             "example": "LKADP"
           }
         },

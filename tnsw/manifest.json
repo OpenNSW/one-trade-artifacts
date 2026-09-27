@@ -223,6 +223,12 @@
       "path": "customs/static-data/extended_procedure.data.json"
     },
     {
+      "id": "customs-cusdec--port-of-entry-and-discharge",
+      "kind": "static_data",
+      "version": "1",
+      "path": "customs/static-data/port_of_entry_and_discharge.data.json"
+    },
+    {
       "id": "npqs-apply-phyto-cert--importing-countries",
       "kind": "static_data",
       "version": "1",
