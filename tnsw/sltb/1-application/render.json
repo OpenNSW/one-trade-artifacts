@@ -64,6 +64,15 @@
           "command": "save_as_draft"
         }
       ]
+    },
+    "QUEUED_EXTERNALLY":{
+      "order": { "$ref": "#/layouts/1" }
     }
+  }
+  ,
+  "layouts": {
+    "1": ["status_message", "status_awaiting", "review_history", "user_form"]
+     
+    
   }
 }
