@@ -1,0 +1,41 @@
+name: Validate static data
+
+on:
+  pull_request:
+    paths:
+      - "**/*.data.json"
+      - "schemas/staticdata.schema.json"
+      - ".github/workflows/validate-staticdata.yml"
+  push:
+    branches: [main]
+    paths:
+      - "**/*.data.json"
+      - "schemas/staticdata.schema.json"
+      - ".github/workflows/validate-staticdata.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install check-jsonschema
+        run: pip install check-jsonschema
+
+      - name: Validate *.data.json against schemas/staticdata.schema.json
+        run: |
+          mapfile -d '' -t files < <(find . -name '*.data.json' -print0)
+          if [ "${#files[@]}" -eq 0 ]; then
+            echo "No *.data.json files found."
+            exit 0
+          fi
+          check-jsonschema --schemafile schemas/staticdata.schema.json "${files[@]}"
