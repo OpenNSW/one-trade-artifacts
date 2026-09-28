@@ -118,10 +118,6 @@
               {
                 "const": "EX",
                 "title": "EX — Export"
-              },
-              {
-                "const": "IM",
-                "title": "IM — Import"
               }
             ],
             "example": "EX"
