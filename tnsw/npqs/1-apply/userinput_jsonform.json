@@ -866,7 +866,36 @@
         "type": "Group",
         "label": "3. Commodity Details",
         "elements": [
-          { "type": "Control", "scope": "#/properties/commodities" },
+          {
+            "type": "Control",
+            "scope": "#/properties/commodities",
+            "options": {
+              "detail": {
+                "type" : "VerticalLayout",
+                "elements": [
+                  { "type": "Control", "scope": "#/properties/commodity_common_name" },
+                  { "type": "Control", "scope": "#/properties/commodity_botanical_name" },
+                  { "type": "Control", "scope": "#/properties/commodity_language" },
+                  { "type": "Control", "scope": "#/properties/commodity_description" },
+                  { "type": "Control", "scope": "#/properties/commodity_plant_part" },
+                  { "type": "Control", "scope": "#/properties/commodity_condition" },
+                  { "type": "Control", "scope": "#/properties/commodity_intended_use" },
+                  { "type": "Control", "scope": "#/properties/quantity_net_weight" },
+                  { "type": "Control", "scope": "#/properties/quantity_net_weight_unit" },
+                  { "type": "Control", "scope": "#/properties/quantity_gross_weight" },
+                  { "type": "Control", "scope": "#/properties/quantity_gross_weight_unit" },
+                  { "type": "Control", "scope": "#/properties/packages_count" },
+                  { "type": "Control", "scope": "#/properties/packages_description" },
+                  { "type": "Control", "scope": "#/properties/packages_in_bulk" },
+                  { "type": "Control", "scope": "#/properties/packages_free_text_enabled" },
+                  { "type": "Control", "scope": "#/properties/packages_free_text" },
+                  { "type": "Control", "scope": "#/properties/origin_country" },
+                  { "type": "Control", "scope": "#/properties/origin_area" },
+                  { "type": "Control", "scope": "#/properties/id" }
+                ]
+              }
+            }
+          },
           { "type": "Control", "scope": "#/properties/import_permit_number" },
           {
             "type": "HorizontalLayout",
