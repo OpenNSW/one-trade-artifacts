@@ -184,19 +184,19 @@
       "id": "npqs-apply-phyto-cert--importing-countries",
       "kind": "static_data",
       "version": "1",
-      "path": "npqs/1-apply/importing_countries.data.json"
+      "path": "npqs/static-data/importing_countries.data.json"
     },
     {
       "id": "npqs-apply-phyto-cert--commodity-common-names",
       "kind": "static_data",
       "version": "1",
-      "path": "npqs/1-apply/commodity_common_names.data.json"
+      "path": "npqs/static-data/commodity_common_names.data.json"
     },
     {
       "id": "npqs-apply-phyto-cert--scientific-names",
       "kind": "static_data",
       "version": "1",
-      "path": "npqs/1-apply/scientific_names.data.json"
+      "path": "npqs/static-data/scientific_names.data.json"
     },
     {
       "id": "npqs-apply-phyto-cert--status-awaiting",
