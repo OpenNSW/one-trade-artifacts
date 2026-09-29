@@ -103,7 +103,31 @@
         {
           "command": "submit"
         }
-      ]
+      ],
+      "order": {
+        "$ref": "#/layouts/1"
+      }
+    },
+    "QUEUED_EXTERNALLY": {
+      "order": {
+        "$ref": "#/layouts/1"
+      }
+    },
+    "COMPLETED": {
+      "order": {
+        "$ref": "#/layouts/1"
+      }
     }
+  },
+  "layouts": {
+    "1": [
+      "assessment_outcome",
+      "verify_result",
+      "cig_rejection",
+      "status_message",
+      "review_history",
+      "user_form",
+      "testing_edge_id"
+    ]
   }
 }
