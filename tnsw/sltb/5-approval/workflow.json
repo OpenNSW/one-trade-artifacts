@@ -12,6 +12,7 @@
       "type": "TASK",
       "task_template_id": "sltb-final-decision--officer-review",
       "input_mapping": {
+        "userform": "submission",
         "sample_number?": "sample_number"
       },
       "output_mapping": {
