@@ -1,0 +1,56 @@
+{
+  "data": [
+    {
+      "const": "SLPA",
+      "title": "Sri Lanka Port Authority"
+    },
+    {
+      "const": "SAGT",
+      "title": "South Aisa Gateway Terminal"
+    },
+    {
+      "const": "SLAL",
+      "title": "Sri Lankan Air Lines"
+    },
+    {
+      "const": "OTHER",
+      "title": "Indirect Imports"
+    },
+    {
+      "const": "CICT",
+      "title": "Colombo International Container"
+    },
+    {
+      "const": "KTHDH",
+      "title": "HAYLEYS DISTRIBUTION HUB - KATUNAYA"
+    },
+    {
+      "const": "HIPG",
+      "title": "Hambantota International Port Group"
+    },
+    {
+      "const": "CFS1",
+      "title": "Container Freight Station 01"
+    },
+    {
+      "const": "BQ",
+      "title": "BQ Warehouse"
+    },
+    {
+      "const": "CFS2",
+      "title": "Container Freight Station 02"
+    },
+    {
+      "const": "CWIT",
+      "title": "COLOMBO WEST INTERNATIONAL TERMINAL"
+    },
+    {
+      "const": "NNR",
+      "title": "New Nuge Road"
+    },
+    {
+      "const": "JCT",
+      "title": "Jaya Container Terminal"
+    }
+  ]
+}

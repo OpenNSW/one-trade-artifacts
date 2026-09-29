@@ -1,0 +1,940 @@
+{
+  "data": [
+    {
+      "const": "VWEZ",
+      "title": "Wathupitiwela EPZ"
+    },
+    {
+      "const": "VMEZ",
+      "title": "Mirigama EPZ"
+    },
+    {
+      "const": "VPEZ",
+      "title": "Polgahawela EPZ"
+    },
+    {
+      "const": "VCMBC",
+      "title": "Colombo Cargo Verification"
+    },
+    {
+      "const": "VOCY",
+      "title": "Outside Consolidated Yard"
+    },
+    {
+      "const": "VSITE",
+      "title": "Verification at Factory Premises"
+    },
+    {
+      "const": "VSITG",
+      "title": "Exempted from VF- Green Channel"
+    },
+    {
+      "const": "VOTHR",
+      "title": "Not fallen under any categories"
+    },
+    {
+      "const": "KTBE2",
+      "title": "Katunayake Boi Export Office (Air)"
+    },
+    {
+      "const": "BIBE1",
+      "title": "Biyagama Boi Exports(Sea Cargo)"
+    },
+    {
+      "const": "BIBI1",
+      "title": "Biyagama Boi Imports(Sea Cargo)"
+    },
+    {
+      "const": "KTBI1",
+      "title": "Katunayake Boi Imports( Sea Cargo )"
+    },
+    {
+      "const": "PKBI2",
+      "title": "Pallekelle Boi Import (Air)"
+    },
+    {
+      "const": "BIBE2",
+      "title": "Biyagama Boi Exports(Air Cargo)"
+    },
+    {
+      "const": "BIBE3",
+      "title": "Biyagama Boi Export Office"
+    },
+    {
+      "const": "BIBI2",
+      "title": "Biyagma Boi Imports(Air Cargo)"
+    },
+    {
+      "const": "CBBE1",
+      "title": "Colombo Boi Exports(Sea Cargo)"
+    },
+    {
+      "const": "CBBE2",
+      "title": "Colombo Boi Export (Air Cargo)"
+    },
+    {
+      "const": "CBBE3",
+      "title": "Boi Office Local Transfers"
+    },
+    {
+      "const": "CBBI1",
+      "title": "Colombo Boi Imports(Sea Cargo)"
+    },
+    {
+      "const": "CBBI2",
+      "title": "Colombo Boi Imports(Air Cargo)"
+    },
+    {
+      "const": "KGBE1",
+      "title": "Koggala Boi Exports (Sea Cargo)"
+    },
+    {
+      "const": "KGBE2",
+      "title": "Koggala Boi Export Office (Air)"
+    },
+    {
+      "const": "KGBI1",
+      "title": "Koggale Boi Import (Sea)"
+    },
+    {
+      "const": "KGBI2",
+      "title": "Koggala Boi Import (Air)"
+    },
+    {
+      "const": "KTBE1",
+      "title": "Katunayaka Boi Exports(Sea Cargo)"
+    },
+    {
+      "const": "KTBE3",
+      "title": "Katunayake Boi Export Office"
+    },
+    {
+      "const": "KTBI2",
+      "title": "Katunayake Boi Imports(Air Cargo)"
+    },
+    {
+      "const": "PKBE1",
+      "title": "Pallekele Boi Exports (Sea Cargo)"
+    },
+    {
+      "const": "PKBE2",
+      "title": "Pallekele Boi Export Office (Air)"
+    },
+    {
+      "const": "PKBI1",
+      "title": "Pallekelle Boi Import (Sea)"
+    },
+    {
+      "const": "BIBO1",
+      "title": "Biyagama Boi Office (Sea Crago)"
+    },
+    {
+      "const": "BCVT1",
+      "title": "Boi Cargo Verification Unit"
+    },
+    {
+      "const": "BOICG",
+      "title": "Boi Cargo Green Channel"
+    },
+    {
+      "const": "BOICV",
+      "title": "Boi Cargo Verified"
+    },
+    {
+      "const": "KGEPZ",
+      "title": "Koggala Export Processing Zone"
+    },
+    {
+      "const": "KTACT",
+      "title": "Katunayake Air Cargo Terminal"
+    },
+    {
+      "const": "SEHBT",
+      "title": "Hambanthota Sea Cargo"
+    },
+    {
+      "const": "BIBI3",
+      "title": "Biyagama BOI Office - GRN"
+    },
+    {
+      "const": "CBIF3",
+      "title": "Colombo INFAC - GRN"
+    },
+    {
+      "const": "CBBD3",
+      "title": "Colombo Bonding Division - GRN"
+    },
+    {
+      "const": "KTBI3",
+      "title": "Ktunayake BOI Office -GRN"
+    },
+    {
+      "const": "SLEC1",
+      "title": "Sri Lanka Excise (Sp. Provision)"
+    },
+    {
+      "const": "KGBE3",
+      "title": "Koggala BOI Office -GRN"
+    },
+    {
+      "const": "PKBE3",
+      "title": "Pallekele BOI Local Transfers"
+    },
+    {
+      "const": "DBRA1",
+      "title": "Customs D Branch Sea Cargo"
+    },
+    {
+      "const": "VLPPL",
+      "title": "Verification at Logistics Park P L"
+    },
+    {
+      "const": "VKEZH",
+      "title": "Exempted From VF  for HUB Projects"
+    },
+    {
+      "const": "VKGZH",
+      "title": "Exempted From VF  for HUB Projects"
+    },
+    {
+      "const": "VMIZH",
+      "title": "Exempted From VF  for HUB Projects"
+    },
+    {
+      "const": "VCBPH",
+      "title": "Exempted From VF  for HUB Projects"
+    },
+    {
+      "const": "VHBPH",
+      "title": "Exempted From VF  for HUB Projects"
+    },
+    {
+      "const": "VMTAH",
+      "title": "Exempted From VF  for HUB Projects"
+    },
+    {
+      "const": "CEMPC",
+      "title": "Colombo Empty Containers"
+    },
+    {
+      "const": "VMEZG",
+      "title": "Mepz - Green Channel"
+    },
+    {
+      "const": "VMFPG",
+      "title": "Mfp - Green Channel"
+    },
+    {
+      "const": "VGPO",
+      "title": "By Post"
+    },
+    {
+      "const": "BACV2",
+      "title": "Boi Exports Verification Cargo Vill"
+    },
+    {
+      "const": "CBBI3",
+      "title": "Colombo BOI - GRN"
+    },
+    {
+      "const": "SECMB",
+      "title": "Colombo Sea Cargo"
+    },
+    {
+      "const": "CSLPA",
+      "title": "Sri Lanka Port Authority - Colombo"
+    },
+    {
+      "const": "CSAGT",
+      "title": "South Asia Geatway Ter- Colombo"
+    },
+    {
+      "const": "MRBG1",
+      "title": "Mattala Baggage Office"
+    },
+    {
+      "const": "MRIM1",
+      "title": "Mattala Imports Office"
+    },
+    {
+      "const": "MREX1",
+      "title": "Mattala Exports Office"
+    },
+    {
+      "const": "KTCC2",
+      "title": "Colombo Cargo Office-Katu.Aircargo"
+    },
+    {
+      "const": "KTIM2",
+      "title": "Katunayake Import Office - Air"
+    },
+    {
+      "const": "KTDH2",
+      "title": "Dhl Office - Katunayake Air Cargo"
+    },
+    {
+      "const": "VCVT",
+      "title": "Central Verification Terminal"
+    },
+    {
+      "const": "CBLR1",
+      "title": "Colombo Long Room"
+    },
+    {
+      "const": "KTEX1",
+      "title": "Katunayake Exports Office"
+    },
+    {
+      "const": "CBBD1",
+      "title": "Colombo Bonding Division"
+    },
+    {
+      "const": "CBEX1",
+      "title": "Colombo Exports Office"
+    },
+    {
+      "const": "KTIM1",
+      "title": "Katunayake Imports Office (1)"
+    },
+    {
+      "const": "CBHQ1",
+      "title": "Colombo Head Quaters"
+    },
+    {
+      "const": "CBGY1",
+      "title": "Colombo Grayline Yard 1"
+    },
+    {
+      "const": "CBIF1",
+      "title": "Colombo Investers'Facilitation Div."
+    },
+    {
+      "const": "CBLRE",
+      "title": "Colombo Long Room Edi Office"
+    },
+    {
+      "const": "CBJCT",
+      "title": "Jct Boat Note Office"
+    },
+    {
+      "const": "CBPNO",
+      "title": "Sagt Boat Note Office"
+    },
+    {
+      "const": "CBMV1",
+      "title": "Customs Motor Vehicle Unit-Colombo"
+    },
+    {
+      "const": "CBVAL",
+      "title": "Custom Valuation Division"
+    },
+    {
+      "const": "CBRTF",
+      "title": "Revenue Task Force"
+    },
+    {
+      "const": "KTBG1",
+      "title": "Katunayake Baggage Office"
+    },
+    {
+      "const": "CBBG1",
+      "title": "Colombo Baggage Office"
+    },
+    {
+      "const": "RMOUT",
+      "title": "Removal Out"
+    },
+    {
+      "const": "STVD1",
+      "title": "Special Tasks & Vigilance Division"
+    },
+    {
+      "const": "CBCS1",
+      "title": "Sri Lanka Customs Central Sale Div"
+    },
+    {
+      "const": "JFPP1",
+      "title": "Jaffna Parcel Post"
+    },
+    {
+      "const": "HBIM1",
+      "title": "Hambanthota Import Office - Sea"
+    },
+    {
+      "const": "CBCDU",
+      "title": "Colombo Central Disposal Unit"
+    },
+    {
+      "const": "VACT",
+      "title": "Air Cargo Terminal"
+    },
+    {
+      "const": "VHEZ",
+      "title": "Horana EPZ"
+    },
+    {
+      "const": "VKIP",
+      "title": "Kandy Industrial Park"
+    },
+    {
+      "const": "VSEZ",
+      "title": "Seethawaka Export Processing Zone"
+    },
+    {
+      "const": "VACGU",
+      "title": "Air Cargo Gem Unit"
+    },
+    {
+      "const": "VMPP",
+      "title": "Malwaththa Industrial Processing"
+    },
+    {
+      "const": "VMWZ",
+      "title": "Mawathagama Export Processing Zone"
+    },
+    {
+      "const": "VDHL",
+      "title": "DHL Courier Cargo"
+    },
+    {
+      "const": "VMIP",
+      "title": "Mirijjawela Industrial Park"
+    },
+    {
+      "const": "VMFP",
+      "title": "Mas Fabric Park"
+    },
+    {
+      "const": "VKGZ",
+      "title": "Koggala Export Processing Zone"
+    },
+    {
+      "const": "VCVTG",
+      "title": "Exempted From Vf - Green Channel"
+    },
+    {
+      "const": "VACTG",
+      "title": "Exempted From Vf - Green Channel"
+    },
+    {
+      "const": "VKEZG",
+      "title": "Kpez - Green Channel"
+    },
+    {
+      "const": "VBEZG",
+      "title": "Bepz - Green Channel"
+    },
+    {
+      "const": "VKGZG",
+      "title": "Kgepz - Green Channel"
+    },
+    {
+      "const": "VKIPG",
+      "title": "Kip - Green Channel"
+    },
+    {
+      "const": "VSEZG",
+      "title": "Sepz - Green Channel"
+    },
+    {
+      "const": "VWEZG",
+      "title": "Wepz - Green Channel"
+    },
+    {
+      "const": "VHEZG",
+      "title": "Hepz - Green Channel"
+    },
+    {
+      "const": "VMPPG",
+      "title": "Mepp - Green Channel"
+    },
+    {
+      "const": "VMWZG",
+      "title": "Mwepz - Green Channel"
+    },
+    {
+      "const": "VPEZG",
+      "title": "Pepz - Green Channel"
+    },
+    {
+      "const": "VMIPG",
+      "title": "Mip - Green Channel"
+    },
+    {
+      "const": "VBEZ",
+      "title": "Biyagama EPZ-Subject to Verificatio"
+    },
+    {
+      "const": "VKEZ",
+      "title": "Katunayake EPZ"
+    },
+    {
+      "const": "CBTRS",
+      "title": "Colombo Transhipment Office"
+    },
+    {
+      "const": "CBPOM",
+      "title": "Customs Preventive Office"
+    },
+    {
+      "const": "CBCIB",
+      "title": "Customs Investigation Office"
+    },
+    {
+      "const": "CCCO1",
+      "title": "Customs Container Colombo Office"
+    },
+    {
+      "const": "CBOND",
+      "title": "Customs Bonding Division"
+    },
+    {
+      "const": "CSHR1",
+      "title": "Customs Shroff - Colombo Headq."
+    },
+    {
+      "const": "GSHR1",
+      "title": "Customs Shroff - Galle"
+    },
+    {
+      "const": "VLCL",
+      "title": "LCL Cargo Verification at Port"
+    },
+    {
+      "const": "VBEZV",
+      "title": "Bepz-Subject to veri for Green Chan"
+    },
+    {
+      "const": "VHEZV",
+      "title": "Hepz-Subject to veri for Green Chan"
+    },
+    {
+      "const": "VKEZV",
+      "title": "Kepz-Subject to veri for Green Chan"
+    },
+    {
+      "const": "VKIPV",
+      "title": "Kip-Subject to veri for Green Chann"
+    },
+    {
+      "const": "VMEZV",
+      "title": "Mepz-Subject to veri for Green Chan"
+    },
+    {
+      "const": "VMFPV",
+      "title": "Mfp-Subject to veri for Green Chann"
+    },
+    {
+      "const": "VMWZV",
+      "title": "Mwepz-Subject to veri for Green Cha"
+    },
+    {
+      "const": "VPEZV",
+      "title": "Pepz-Subject to veri for Green Chan"
+    },
+    {
+      "const": "VSEZV",
+      "title": "Sepz-Subject to veri for Green Chan"
+    },
+    {
+      "const": "VWEZV",
+      "title": "Wepz-Subject to veri for Green Chan"
+    },
+    {
+      "const": "VUPS",
+      "title": "Verification at UPS (Courier Cargo)"
+    },
+    {
+      "const": "CBPS1",
+      "title": "UPB Container Processing Officer"
+    },
+    {
+      "const": "CBNNR",
+      "title": "Colombo New Nuge Road Office"
+    },
+    {
+      "const": "UOUTP",
+      "title": "UPB - OUTPANEL"
+    },
+    {
+      "const": "URELE",
+      "title": "UPB - RELEASED"
+    },
+    {
+      "const": "CBPP1",
+      "title": "Colombo Parcel Post"
+    },
+    {
+      "const": "CBHRC",
+      "title": "Colombo High Risc Cargo"
+    },
+    {
+      "const": "VLCLG",
+      "title": "LCL Cargo Verifi. Port GreenChannel"
+    },
+    {
+      "const": "CBGL2",
+      "title": "Colombo Grayline 2"
+    },
+    {
+      "const": "CBRCT",
+      "title": "Colombo Rank Container Terminal"
+    },
+    {
+      "const": "CBHQP",
+      "title": "Colombo Head Quaters - Perishable C"
+    },
+    {
+      "const": "CTS2A",
+      "title": "Colombo Transhipment Sea to Air Off"
+    },
+    {
+      "const": "ARMTM",
+      "title": "Mattala Air Cargo Manifest"
+    },
+    {
+      "const": "ARKTM",
+      "title": "Katunayake Air Cargo Manifest"
+    },
+    {
+      "const": "CBBCD",
+      "title": "Colombo BOI Coordination Directorat"
+    },
+    {
+      "const": "KDPP3",
+      "title": "Kandy Parcel Post"
+    },
+    {
+      "const": "JFBG1",
+      "title": "JAFFNA BAGGAGE OFFICE"
+    },
+    {
+      "const": "KTCC3",
+      "title": "Colombo Cargo Office-TRS"
+    },
+    {
+      "const": "KTDH3",
+      "title": "DHL Office-TRS"
+    },
+    {
+      "const": "VBLKG",
+      "title": "Bulk Cargo Verif. for Green Channel"
+    },
+    {
+      "const": "DBRA2",
+      "title": "Customs D Branch Air Cargo"
+    },
+    {
+      "const": "CBPCU",
+      "title": "Colombo Port Control Unit"
+    },
+    {
+      "const": "SEPS1",
+      "title": "UPB WH - Serendib Logistics Worldwi"
+    },
+    {
+      "const": "VLME",
+      "title": "Linehaul Mac Express Pvt Ltd"
+    },
+    {
+      "const": "KYPS1",
+      "title": "UPB WH - CSL Kandy"
+    },
+    {
+      "const": "GLPS1",
+      "title": "UPB WH - Trico Galle"
+    },
+    {
+      "const": "OUTZO",
+      "title": "Outer Zone BOI Companies"
+    },
+    {
+      "const": "VPP",
+      "title": "Parcel Post without Manifest"
+    },
+    {
+      "const": "GEME1",
+      "title": "Gem Exports - Sea"
+    },
+    {
+      "const": "ULAK2",
+      "title": "UPB WH Laksiri - Ninthavur"
+    },
+    {
+      "const": "BCNP",
+      "title": "BIODIVERSITY, CULTURAL AND NATIONAL"
+    },
+    {
+      "const": "CBPC2",
+      "title": "Colombo Port City - Air Cargo"
+    },
+    {
+      "const": "KKBG1",
+      "title": "Kankasanturai Passenger Baggage"
+    },
+    {
+      "const": "KTDH4",
+      "title": "DHL Declarations with Remittance"
+    },
+    {
+      "const": "KTEC2",
+      "title": "Katunayake E commerce Air Cargo"
+    },
+    {
+      "const": "UTRG1",
+      "title": "UPB WH TRIGO WORLDWIDE CARGO"
+    },
+    {
+      "const": "UCLW1",
+      "title": "UPB WH Ceylon Logistics W - Colombo"
+    },
+    {
+      "const": "KTPCU",
+      "title": "Katunayake Port Control Unit"
+    },
+    {
+      "const": "CBCIU",
+      "title": "Customs Intelligence Unit"
+    },
+    {
+      "const": "CPCAD",
+      "title": "Customs Post Clearance Audit Div"
+    },
+    {
+      "const": "SLDMO",
+      "title": "Sri Lanka Disaster Management Offic"
+    },
+    {
+      "const": "VGTL",
+      "title": "Subject to Veri at Global Transport"
+    },
+    {
+      "const": "VACTV",
+      "title": "ACT-Subject to Veri for Green Chann"
+    },
+    {
+      "const": "VCVTV",
+      "title": "CVT-Subject to veri for Green Chann"
+    },
+    {
+      "const": "VKGZV",
+      "title": "Kgepz-Subject to veri for Green Cha"
+    },
+    {
+      "const": "VMIPV",
+      "title": "Mip-Subject to veri for Green Chann"
+    },
+    {
+      "const": "VMPPV",
+      "title": "Mepp-Subject to veri for Green Chan"
+    },
+    {
+      "const": "UTRI1",
+      "title": "UPB WH Trico - Colombo"
+    },
+    {
+      "const": "UTRA1",
+      "title": "UPB WH Transco - Colombo"
+    },
+    {
+      "const": "ULAK1",
+      "title": "UPB WH Laksiri - Colombo"
+    },
+    {
+      "const": "UMID1",
+      "title": "UPB WH Midco - Colombo"
+    },
+    {
+      "const": "UCSL1",
+      "title": "UPB WH CSL - Colombo"
+    },
+    {
+      "const": "UNNR1",
+      "title": "UPB WH NNR - Colombo"
+    },
+    {
+      "const": "CCEMO",
+      "title": "Colombo Central Examination Main Of"
+    },
+    {
+      "const": "KTFT2",
+      "title": "Katunayake Fits Air Terminal"
+    },
+    {
+      "const": "CBPP3",
+      "title": "Colombo Parcel Post- Manual Process"
+    },
+    {
+      "const": "CBICT",
+      "title": "ICT Division"
+    },
+    {
+      "const": "KTTRS",
+      "title": "Katunayake Transhipment Office"
+    },
+    {
+      "const": "KTPS2",
+      "title": "Katunayake UPB Processing-AirCargo"
+    },
+    {
+      "const": "KTIM3",
+      "title": "Katunayake UPB  TRS GEM -AirCargo"
+    },
+    {
+      "const": "KTSLF",
+      "title": "Sri Lanka Freight Forward. Assoc."
+    },
+    {
+      "const": "KTGI2",
+      "title": "Katunayake Pax Gem Imports - Air"
+    },
+    {
+      "const": "KTGE2",
+      "title": "Katunayake Pax Gem Exports - Air"
+    },
+    {
+      "const": "KTHUB",
+      "title": "KATUNAYAKE HAYLEYS DISTRIBUTION HUB"
+    },
+    {
+      "const": "VBLK",
+      "title": "Bulk Cargo Verification"
+    },
+    {
+      "const": "HBHQ1",
+      "title": "Hambantota Customs Headquarters"
+    },
+    {
+      "const": "VSC",
+      "title": "SKY CARGO"
+    },
+    {
+      "const": "VSCS",
+      "title": "SCS EXPRESS"
+    },
+    {
+      "const": "VGELL",
+      "title": "GLOBAL EXPRESS & LOG. LANKA PVT LTD"
+    },
+    {
+      "const": "VFAE",
+      "title": "FARDAR EXPRESS"
+    },
+    {
+      "const": "VAE",
+      "title": "ANTRON EXPRESS"
+    },
+    {
+      "const": "VWTEL",
+      "title": "WIN TEAM EXPRESS LOGISTICS PVT LTD"
+    },
+    {
+      "const": "VDPEI",
+      "title": "DEE PEE EX INTERNATIONAL PVT LTD"
+    },
+    {
+      "const": "VGXI",
+      "title": "Globe Xpress International Pvt Ltd"
+    },
+    {
+      "const": "VDE",
+      "title": "Dreamco Express Pvt Ltd"
+    },
+    {
+      "const": "VFA",
+      "title": "FITS AIR"
+    },
+    {
+      "const": "VSWC",
+      "title": "Skynet WWE Courier Company"
+    },
+    {
+      "const": "VEXPG",
+      "title": "Export Green Channel"
+    },
+    {
+      "const": "ADPS1",
+      "title": "UPB WH - CSL Addalaichenai"
+    },
+    {
+      "const": "HBTRS",
+      "title": "Hambantota Transshipment Office"
+    },
+    {
+      "const": "CSEZ1",
+      "title": "Colombo Special Economic Zone - Sea"
+    },
+    {
+      "const": "CSEZ2",
+      "title": "Colombo Special Economic Zone - Air"
+    },
+    {
+      "const": "KTIM4",
+      "title": "Katunayake Imp. - Air (No manifest)"
+    },
+    {
+      "const": "KGPS1",
+      "title": "UPB WH - Trico Kurunegala"
+    },
+    {
+      "const": "CSEZ3",
+      "title": "Colombo Special Economic Zone - GRN"
+    },
+    {
+      "const": "KTFT4",
+      "title": "Katunayake Fits Air (Remittance)"
+    },
+    {
+      "const": "SETRI",
+      "title": "Sea Cargo  - Trincomalee"
+    },
+    {
+      "const": "GEME2",
+      "title": "Gem Exports"
+    },
+    {
+      "const": "KTCC4",
+      "title": "Colombo Cargo Office (Remittance)"
+    },
+    {
+      "const": "GEMI1",
+      "title": "Gem Imports - Sea"
+    },
+    {
+      "const": "GEMI2",
+      "title": "Gem Imports - Air"
+    },
+    {
+      "const": "CBPC1",
+      "title": "Colombo Port City - Sea Cargo"
+    },
+    {
+      "const": "URCT1",
+      "title": "UPB HW RCT - Colombo"
+    },
+    {
+      "const": "KECC2",
+      "title": "Colombo Cargo e-Commerce"
+    },
+    {
+      "const": "KEFT2",
+      "title": "Katunayaka Fits e-Commerce"
+    },
+    {
+      "const": "KEIM2",
+      "title": "Katunayake e-Commerce Air Cargo"
+    },
+    {
+      "const": "CBDM1",
+      "title": "Colombo Disaster Management"
+    },
+    {
+      "const": "KTDM2",
+      "title": "Katunayake Disaster Management"
+    },
+    {
+      "const": "CBPP4",
+      "title": "Colombo Parcel Post (Remittance)"
+    }
+  ]
+}

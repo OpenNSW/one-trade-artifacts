@@ -118,10 +118,6 @@
               {
                 "const": "EX",
                 "title": "EX — Export"
-              },
-              {
-                "const": "IM",
-                "title": "IM — Import"
               }
             ],
             "example": "EX"
@@ -129,6 +125,15 @@
           "generalProcedureCode": {
             "type": "string",
             "title": "General Procedure Code",
+            "x-search": {
+              "service": "static-data",
+              "mode": "small-list",
+              "displayTemplate": "{name}",
+              "params": {
+                "id": "customs-cusdec--declaration-procedures",
+                "version": "1"
+              }
+            },
             "example": "1"
           },
           "transitDocumentType": {
@@ -166,11 +171,20 @@
                 "title": "Exporter Address",
                 "example": "45A, KANDY ROAD, PILIMATHALAWA"
               },
-              "countryCode": {
-                "type": "string",
-                "title": "Country Code",
-                "example": "LK"
+          "countryCode": {
+            "type": "string",
+            "title": "Country Code",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-searchable-list",
+              "displayTemplate": "{name}",
+              "params": {
+                "id": "customs-cusdec--countries",
+                "version": "1"
               }
+            },
+            "example": "LK"
+          }
             },
             "required": [
               "code",
@@ -238,16 +252,43 @@
           "countryOfFirstDestination": {
             "type": "string",
             "title": "Country of First Destination",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-searchable-list",
+              "displayTemplate": "{name}",
+              "params": {
+                "id": "customs-cusdec--countries",
+                "version": "1"
+              }
+            },
             "example": "MY"
           },
           "exportCountryCode": {
             "type": "string",
             "title": "Export Country Code",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-searchable-list",
+              "displayTemplate": "{name}",
+              "params": {
+                "id": "customs-cusdec--countries",
+                "version": "1"
+              }
+            },
             "example": "LK"
           },
           "destinationCountryCode": {
             "type": "string",
             "title": "Destination Country Code",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-searchable-list",
+              "displayTemplate": "{name}",
+              "params": {
+                "id": "customs-cusdec--countries",
+                "version": "1"
+              }
+            },
             "example": "MY"
           },
           "commentsText": {
@@ -275,6 +316,15 @@
             "type": "string",
             "title": "Transport Nationality",
             "description": "Country code of the vessel/aircraft at departure.",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-searchable-list",
+              "displayTemplate": "{name}",
+              "params": {
+                "id": "customs-cusdec--countries",
+                "version": "1"
+              }
+            },
             "example": "LK"
           },
           "voyageNo": {
@@ -285,25 +335,29 @@
           "voyageNationality": {
             "type": "string",
             "title": "Voyage Nationality",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-searchable-list",
+              "displayTemplate": "{name}",
+              "params": {
+                "id": "customs-cusdec--countries",
+                "version": "1"
+              }
+            },
             "example": "LK"
           },
           "modeOfTransport": {
             "type": "string",
             "title": "Mode of Transport",
-            "oneOf": [
-              {
-                "const": "1",
-                "title": "1 — Sea"
-              },
-              {
-                "const": "3",
-                "title": "3 — Road"
-              },
-              {
-                "const": "4",
-                "title": "4 — Air"
+            "x-search":{
+              "service": "static-data",
+              "mode": "small-list",
+              "displayTemplate": "{name}",
+              "params": {
+                "id": "customs-cusdec--mode-of-transport",
+                "version": "1"
               }
-            ],
+            },
             "example": "1"
           },
           "containerized": {
@@ -315,6 +369,15 @@
           "deliveryTermsCode": {
             "type": "string",
             "title": "Delivery Terms Code",
+            "x-search": {
+              "service": "static-data",
+              "mode": "small-list",
+              "displayTemplate": "{name}",
+              "params": {
+                "id": "customs-cusdec--delivery-terms",
+                "version": "1"
+              }
+            },
             "example": "CIF"
           },
           "deliveryTermsPlace": {
@@ -325,6 +388,15 @@
           "borderOfficeCode": {
             "type": "string",
             "title": "Border Office Code",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-searchable-list",
+              "displayTemplate": "{name} ({id})",
+              "params": {
+                "id": "customs-cusdec--office-codes",
+                "version": "1"
+              }
+            },
             "example": "CBEX1"
           },
           "placeOfLoadingCode": {
@@ -340,7 +412,16 @@
           "placeOfDischargeCode": {
             "type": "string",
             "title": "Place of Discharge Code",
-            "description": "UN/LOCODE of the place where the goods are discharged.",
+            "description": "UNLOCODE of the place where the goods are discharged.",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-paginated-list",
+              "displayTemplate": "{name} ({id})",
+              "params": {
+                "id": "customs-cusdec--port-of-entry-and-discharge",
+                "version": "1"
+              }
+            },
             "example": "LKADP"
           }
         },
@@ -362,6 +443,15 @@
           "bankCode": {
             "type": "string",
             "title": "Bank Code",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-searchable-list",
+              "displayTemplate": "{name} ({id})",
+              "params": {
+                "id": "customs-cusdec--banks",
+                "version": "1"
+              }
+            },
             "example": "7056"
           },
           "bankName": {
@@ -594,6 +684,15 @@
                 "extendedProcedureCode": {
                   "type": "string",
                   "title": "Extended Procedure Code",
+                  "x-search": {
+                    "service": "static-data",
+                    "mode": "large-searchable-list",
+                    "displayTemplate": "{name} ({id})",
+                    "params": {
+                      "id": "customs-cusdec--extended-procedures",
+                      "version": "1"
+                    }
+                  },
                   "example": "1100"
                 },
                 "nationalProcedureCode": {
@@ -651,6 +750,15 @@
                 "originCountryCode": {
                   "type": "string",
                   "title": "Origin Country Code",
+                  "x-search": {
+                    "service": "static-data",
+                    "mode": "large-searchable-list",
+                    "displayTemplate": "{name}",
+                    "params": {
+                      "id": "customs-cusdec--countries",
+                      "version": "1"
+                    }
+                  },
                   "example": "LK"
                 },
                 "description": {

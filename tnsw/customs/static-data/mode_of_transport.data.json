@@ -1,0 +1,40 @@
+{
+  "data": [
+    {
+      "const": "5",
+      "title": "Postal Transport"
+    },
+    {
+      "const": "4",
+      "title": "Air Transport"
+    },
+    {
+      "const": "3",
+      "title": "Road Transport"
+    },
+    {
+      "const": "2",
+      "title": "Rail Transport"
+    },
+    {
+      "const": "1",
+      "title": "Sea Transport"
+    },
+    {
+      "const": "9",
+      "title": "Mode unknown"
+    },
+    {
+      "const": "8",
+      "title": "Inland waterways transport"
+    },
+    {
+      "const": "7",
+      "title": "Transport on fixed installations"
+    },
+    {
+      "const": "6",
+      "title": "Multimodal Transport"
+    }
+  ]
+}

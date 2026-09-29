@@ -1,0 +1,72 @@
+{
+  "data": [
+    {
+      "const": "CIF",
+      "title": "Cost, insurance and freight"
+    },
+    {
+      "const": "CFR",
+      "title": "Cost and freight"
+    },
+    {
+      "const": "FOB",
+      "title": "Free on board"
+    },
+    {
+      "const": "FCA",
+      "title": "Free carrier"
+    },
+    {
+      "const": "FAS",
+      "title": "Free alongside ship"
+    },
+    {
+      "const": "EXW",
+      "title": "Ex works"
+    },
+    {
+      "const": "DES",
+      "title": "Delivered ex ship"
+    },
+    {
+      "const": "DEQ",
+      "title": "Delivered ex quay (duty paid)"
+    },
+    {
+      "const": "DDU",
+      "title": "Delivered duty unpaid"
+    },
+    {
+      "const": "DDP",
+      "title": "Delivered duty paid"
+    },
+    {
+      "const": "DAF",
+      "title": "Delivered at frontier"
+    },
+    {
+      "const": "CPT",
+      "title": "Carriage paid to"
+    },
+    {
+      "const": "CIP",
+      "title": "Carriage and insurance paid to"
+    },
+    {
+      "const": "OTH",
+      "title": "Other"
+    },
+    {
+      "const": "C&I",
+      "title": "Cost and Insurence"
+    },
+    {
+      "const": "DAP",
+      "title": "Delivered at place"
+    },
+    {
+      "const": "DPU",
+      "title": "Delivered at place unloaded"
+    }
+  ]
+}

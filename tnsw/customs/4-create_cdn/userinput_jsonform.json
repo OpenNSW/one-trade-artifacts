@@ -46,8 +46,17 @@
           "countryCode": {
             "type": "string",
             "title": "Country Code",
-            "example": "LK",
-            "description": "UNCTYTAB, 2 letters."
+            "description": "UNCTYTAB, 2 letters.",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-searchable-list",
+              "displayTemplate": "{name}",
+              "params": {
+                "id": "customs-cusdec--countries",
+                "version": "1"
+              }
+            },
+            "example": "LK"
           }
         },
         "required": [
@@ -79,8 +88,17 @@
           "countryCode": {
             "type": "string",
             "title": "Country Code",
-            "example": "MY",
-            "description": "UNCTYTAB, 2 letters."
+            "description": "UNCTYTAB, 2 letters.",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-searchable-list",
+              "displayTemplate": "{name}",
+              "params": {
+                "id": "customs-cusdec--countries",
+                "version": "1"
+              }
+            },
+            "example": "MY"
           }
         },
         "required": [
@@ -128,14 +146,32 @@
           "placeOfDischarge": {
             "type": "string",
             "title": "5. Port of Discharge",
-            "example": "DEHAM",
-            "description": "UNLOCTAB, 5 characters."
+            "description": "UNLOCTAB, 5 characters.",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-paginated-list",
+              "displayTemplate": "{name} ({id})",
+              "params": {
+                "id": "customs-cusdec--port-of-entry-and-discharge",
+                "version": "1"
+              }
+            },
+            "example": "DEHAM"
           },
           "placeOfLoading": {
             "type": "string",
             "title": "6. Port of Loading",
-            "example": "LKCMB",
-            "description": "UNLOCTAB, 5 characters."
+            "description": "UNLOCTAB, 5 characters.",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-paginated-list",
+              "displayTemplate": "{name} ({id})",
+              "params": {
+                "id": "customs-cusdec--port-of-entry-and-discharge",
+                "version": "1"
+              }
+            },
+            "example": "LKCMB"
           },
           "lorryRegNo": {
             "type": "string",
@@ -155,8 +191,17 @@
           "locationOfGoods": {
             "type": "string",
             "title": "13. Location of Goods",
-            "example": "CFS1",
-            "description": "UNSHDTAB shed / location code."
+            "description": "UNSHDTAB shed / location code.",
+            "x-search": {
+              "service": "static-data",
+              "mode": "small-list",
+              "displayTemplate": "{name}",
+              "params": {
+                "id": "customs-cusdec--sheds",
+                "version": "1"
+              }
+            },
+            "example": "CFS1"
           }
         },
         "required": [

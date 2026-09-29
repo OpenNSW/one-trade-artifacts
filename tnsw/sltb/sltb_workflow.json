@@ -16,7 +16,8 @@
         "reviewerform.levy_amount?": "sltb.levy_amount",
         "reviewerform.collection_method?": "sltb.collection_method",
         "reviewerform.reference_number?": "sltb.reference_number",
-        "rejection_reason?": "sltb.rejection_reason"
+        "rejection_reason?": "sltb.rejection_reason",
+        "userform": "sltb.userform"
       }
     },
     {
@@ -157,7 +158,8 @@
       "task_template_id": "sltb-final-decision-flow",
       "lane": "SLTB Officer",
       "input_mapping": {
-        "sltb.sample_number?": "sample_number"
+        "sltb.sample_number?": "sample_number",
+        "sltb.userform": "userform"
       },
       "output_mapping": {
         "final_decision_outcome": "sltb.final_decision_outcome"
