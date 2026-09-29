@@ -1,0 +1,1308 @@
+{
+  "data": [
+    {
+      "const": "7257",
+      "title": "Transfer to General Bond from TIEP 1 scheme"
+    },
+    {
+      "const": "7274",
+      "title": "transfer to private bond from service bond"
+    },
+    {
+      "const": "6030",
+      "title": "Re imporation of rejected cargo and goods send for exhibition for BOI"
+    },
+    {
+      "const": "6020",
+      "title": "Re importation of temporary exported goods"
+    },
+    {
+      "const": "6022",
+      "title": "Reimport after TE for return of goods in unaltered state"
+    },
+    {
+      "const": "6021",
+      "title": "Reimport after TE for customs outward processing procedure"
+    },
+    {
+      "const": "5154",
+      "title": "Transfer to INFAC scheme from  BOI expt oriented projects Out-Zone"
+    },
+    {
+      "const": "3075",
+      "title": "Re-export from duty free feeder bonds"
+    },
+    {
+      "const": "5657",
+      "title": "Transfer to TIEP 4 scheme from TIEP 1 scheme"
+    },
+    {
+      "const": "7255",
+      "title": "Transfer to general bonds from BOI out zone non ex oriented"
+    },
+    {
+      "const": "4054",
+      "title": "Entry for Home use from BOI exports oriented projects Out-Zone"
+    },
+    {
+      "const": "5473",
+      "title": "Transfered from Entreport  to BOI out zone export oriented"
+    },
+    {
+      "const": "5273",
+      "title": "Transfer from Entreport to BOI out zone expt oriented"
+    },
+    {
+      "const": "5574",
+      "title": "Tranfer to BOI non Ex oriented out zone from service bonds"
+    },
+    {
+      "const": "4071",
+      "title": "Entry for home use from State bonds"
+    },
+    {
+      "const": "5600",
+      "title": "Direct import for Re-export under  TEIP 4 scheme"
+    },
+    {
+      "const": "5658",
+      "title": "Transfer to TIEP 4 scheme from IBG  scheme"
+    },
+    {
+      "const": "5575",
+      "title": "Removal from Duty Free shops to BOI"
+    },
+    {
+      "const": "5672",
+      "title": "Transfer to TEIP 4 scheme from private bonds"
+    },
+    {
+      "const": "5152",
+      "title": "Transfer to INFAC scheme from BOI  In-Zone exports oriented projects"
+    },
+    {
+      "const": "7555",
+      "title": "Transfer to Duty Free Feeder Bond from BOI  non EOP Out-Zone"
+    },
+    {
+      "const": "5854",
+      "title": "Transfer to IBG scheme to BOI Out-Zone export oriented projects"
+    },
+    {
+      "const": "6071",
+      "title": "RE IMPORT FROM GOVERNMENT BONDS"
+    },
+    {
+      "const": "5573",
+      "title": "Transfer to  BOI non GMT out zone Entreport system"
+    },
+    {
+      "const": "3000",
+      "title": "Export services"
+    },
+    {
+      "const": "5540",
+      "title": "Special trade"
+    },
+    {
+      "const": "3062",
+      "title": "Intention of reimporation of temporary exported goods"
+    },
+    {
+      "const": "1362",
+      "title": "Direct exporation of temporary exported and reimported goods"
+    },
+    {
+      "const": "6000",
+      "title": "Motor vehicles"
+    },
+    {
+      "const": "8000",
+      "title": "Transhipment Cargo"
+    },
+    {
+      "const": "5640",
+      "title": "Transfer from local goods to TEIP IV"
+    },
+    {
+      "const": "7254",
+      "title": "Transfer to Private Bonds From BOI Out zone Exp Oriented project to"
+    },
+    {
+      "const": "6221",
+      "title": "Reimporation of temp exported goods after processing"
+    },
+    {
+      "const": "7240",
+      "title": "Transfer to private bond, Special approval,goods imported for home use"
+    },
+    {
+      "const": "7273",
+      "title": "Transfer to private bonds from Entrepot"
+    },
+    {
+      "const": "2040",
+      "title": "Temporary exports of (Customs office ) imported goods"
+    },
+    {
+      "const": "2000",
+      "title": "Temporary exports of goods processed at Customs permises"
+    },
+    {
+      "const": "5462",
+      "title": "Transfer of outward processed goods into another BOI project"
+    },
+    {
+      "const": "4100",
+      "title": "Direct Import under drawback procedure"
+    },
+    {
+      "const": "1022",
+      "title": "Permanent Export after TE for return in unaltered state"
+    },
+    {
+      "const": "1021",
+      "title": "Permanent Export after TE for customs outward processing procedure"
+    },
+    {
+      "const": "4000",
+      "title": "Direct entry for home use"
+    },
+    {
+      "const": "7300",
+      "title": "Direct Import under Entreport Scheme"
+    },
+    {
+      "const": "4073",
+      "title": "Entry for home use from Entrpot scheme"
+    },
+    {
+      "const": "5151",
+      "title": "Transfer from one Garment Factory to another - INFAC"
+    },
+    {
+      "const": "7474",
+      "title": "Transfer to Duty Free Service bond from another"
+    },
+    {
+      "const": "7475",
+      "title": "Transfer to Duty Free Service Bond from Feeder Bond at BIA"
+    },
+    {
+      "const": "7574",
+      "title": "Transfer to Duty Free Feeder Bond from Service bond"
+    },
+    {
+      "const": "7575",
+      "title": "Transfer to Duty Free Feeder bond from another"
+    },
+    {
+      "const": "7676",
+      "title": "Transfer to MIB Scheme from another"
+    },
+    {
+      "const": "2200",
+      "title": "Temporary Export for return of goods in unaltered state"
+    },
+    {
+      "const": "2100",
+      "title": "Temporary Export under customs/BOI outward processing procedure"
+    },
+    {
+      "const": "9000",
+      "title": "Additional CusDecs"
+    },
+    {
+      "const": "4200",
+      "title": "Provisional CUSDECs Process at D branch"
+    },
+    {
+      "const": "4300",
+      "title": "Provisional CUSDECs - after finilising normal Proceduer."
+    },
+    {
+      "const": "4074",
+      "title": "Entry For home use from Duty Free service bonds"
+    },
+    {
+      "const": "1000",
+      "title": "Direct permanent export"
+    },
+    {
+      "const": "5100",
+      "title": "Direct Import under exemption scheme - INFAC"
+    },
+    {
+      "const": "5871",
+      "title": "Transfer to IBG/PG Scheme from state W/H"
+    },
+    {
+      "const": "5872",
+      "title": "Transfer to IBG/PG Scheme from General Bond"
+    },
+    {
+      "const": "7473",
+      "title": "Transfer to Duty Free Service Bond from Entrepot Scheme"
+    },
+    {
+      "const": "7476",
+      "title": "Transfer to Duty Free Service Bond from MIB Scheme"
+    },
+    {
+      "const": "7573",
+      "title": "Transfer to Duty Free Feeder Bond from Entrepot Scheme"
+    },
+    {
+      "const": "7576",
+      "title": "Transfer to Duty Free Feeder Bond from MIB Scheme"
+    },
+    {
+      "const": "2140",
+      "title": "Temp.Export of Imported goods for home use"
+    },
+    {
+      "const": "3051",
+      "title": "Re export from INFAC scheme (Garments, Fabric etc.)"
+    },
+    {
+      "const": "3056",
+      "title": "Re-Exports from TIEP 4 scheme"
+    },
+    {
+      "const": "3058",
+      "title": "Re-export from IBG guarantee scheme"
+    },
+    {
+      "const": "3071",
+      "title": "Re-export from State bonded warehouse in the port"
+    },
+    {
+      "const": "3074",
+      "title": "Re-Export from duty free service bonds"
+    },
+    {
+      "const": "3040",
+      "title": "Re-export of imported goods for home use"
+    },
+    {
+      "const": "1340",
+      "title": "Outright exportation of local procured goods"
+    },
+    {
+      "const": "2178",
+      "title": "Temporary exportation of local RM/Imported RM"
+    },
+    {
+      "const": "2278",
+      "title": "Temporary exportation of machinery &"
+    },
+    {
+      "const": "7800",
+      "title": "Direct Imports of goods"
+    },
+    {
+      "const": "7871",
+      "title": "Purchase from  General Bond"
+    },
+    {
+      "const": "3178",
+      "title": "Re-exportation of goods/materials(u"
+    },
+    {
+      "const": "3179",
+      "title": "Re-exportation of imported goods by"
+    },
+    {
+      "const": "3172",
+      "title": "Re-exportation of goods from privat"
+    },
+    {
+      "const": "3160",
+      "title": "Re-exportation of goods after"
+    },
+    {
+      "const": "2252",
+      "title": "Temp expt for return of finished goods in unaltd sate from BOI out zon"
+    },
+    {
+      "const": "2253",
+      "title": "Temp exp for repair and return of capital goods in unaltd state BOI In"
+    },
+    {
+      "const": "2254",
+      "title": "Temp expt for return of finished goods in unaltd state fm BOI Out zone"
+    },
+    {
+      "const": "2255",
+      "title": "Temp expt for return of capital goods in unaltd state from BOI Out Zon"
+    },
+    {
+      "const": "3076",
+      "title": "Re-export from MIB and other bonds"
+    },
+    {
+      "const": "4051",
+      "title": "Entry for home use from INFAC scheme"
+    },
+    {
+      "const": "4052",
+      "title": "Entry for home use from BOI exports oriented projects IN-Zone"
+    },
+    {
+      "const": "4053",
+      "title": "Entry for home use from BOI Non exports oriented projects IN-Zone"
+    },
+    {
+      "const": "4056",
+      "title": "Entry for Home use from TIEP 4 scheme"
+    },
+    {
+      "const": "4057",
+      "title": "Entry for Home use from TIEP 1 scheme"
+    },
+    {
+      "const": "4058",
+      "title": "Entry for Home use from IBG scheme"
+    },
+    {
+      "const": "4072",
+      "title": "Entry For Home use from private Bonds"
+    },
+    {
+      "const": "4075",
+      "title": "Entry for home use from duty free Feeder Bond"
+    },
+    {
+      "const": "4076",
+      "title": "Entry for Home use from Manufacture In Bond & other bonds"
+    },
+    {
+      "const": "5153",
+      "title": "Transfer to INFAC scheme from BOI IN-Zone non expts oriented projects"
+    },
+    {
+      "const": "5155",
+      "title": "Transfer to INFAC scheme from BOI non exp oriented projects Out-Zone"
+    },
+    {
+      "const": "5157",
+      "title": "Transfer to INFAC scheme from TIEP 1 scheme"
+    },
+    {
+      "const": "5158",
+      "title": "Transfer to INFAC scheme from IBG scheme"
+    },
+    {
+      "const": "5171",
+      "title": "Transfer to INFAC scheme from State bonds"
+    },
+    {
+      "const": "5172",
+      "title": "Transfer to INFAC scheme from private Bonds"
+    },
+    {
+      "const": "5176",
+      "title": "Transfer to INFAC scheme from MIB"
+    },
+    {
+      "const": "5200",
+      "title": "Direct Import by BOI expt oriented projects In-Zone"
+    },
+    {
+      "const": "5251",
+      "title": "Transfer to BOI exports oriented projects In-Zone from INFAC scheme"
+    },
+    {
+      "const": "5252",
+      "title": "Transfer to BOI exports oriented project In-Zone from another"
+    },
+    {
+      "const": "5253",
+      "title": "Transfer to BOI expt oriented project In-Zone from BOI Non EOP IN-Zone"
+    },
+    {
+      "const": "5254",
+      "title": "Transfer to BOI expt oriented project In-Zone from  BOI EOP  Out-Zone"
+    },
+    {
+      "const": "5255",
+      "title": "Transfer to BOI EOP In-Zone from BOI Non EOP Out-Zone"
+    },
+    {
+      "const": "5257",
+      "title": "Transfer to BOI export oriented projects In-Zone from TIEP 1 Scheme"
+    },
+    {
+      "const": "5258",
+      "title": "Transfer to BOI export oriented project In-Zone from IBG scheme"
+    },
+    {
+      "const": "5271",
+      "title": "Transfer to BOI export oriented project In-Zone from State bonds"
+    },
+    {
+      "const": "5272",
+      "title": "Transfer to BOI export oriented project In-Zone from private Bonds"
+    },
+    {
+      "const": "5300",
+      "title": "Direct Import by BOI non exports oriented project In-Zone"
+    },
+    {
+      "const": "5351",
+      "title": "Transfer to BOI non export oriented project In-Zone from INFAC scheme"
+    },
+    {
+      "const": "5352",
+      "title": "Transfer to BOI non exp oriented projet In-Zone from BOI EOP IN-Zone"
+    },
+    {
+      "const": "5353",
+      "title": "Transfer to BOI non export oriented poject IN-Zone from another"
+    },
+    {
+      "const": "5354",
+      "title": "Transfer to BOI non EOP IN-Zone from BOI EOP Out-zone"
+    },
+    {
+      "const": "5355",
+      "title": "Transfer to BOI non EOP IN-Zone from BOI non EOP Out-Zone"
+    },
+    {
+      "const": "5357",
+      "title": "Transfer to BOI non export oriented project In-Zone from TIEP 1 Scheme"
+    },
+    {
+      "const": "5358",
+      "title": "Transfer to BOI non export oriented project IN-Zone from IBG scheme"
+    },
+    {
+      "const": "5451",
+      "title": "Transfer to BOI export oriented project Out-Zone from INFAC scheme"
+    },
+    {
+      "const": "5454",
+      "title": "Transfer to BOI export oriented project Out-Zone from another"
+    },
+    {
+      "const": "5455",
+      "title": "Transfer to BOI EOP Out-Zone from BOI non EOP Out-Zone"
+    },
+    {
+      "const": "5457",
+      "title": "Transfer to BOI export oriented projects Out-Zone from TIEP 1 Scheme"
+    },
+    {
+      "const": "5551",
+      "title": "Transfer to BOI non export oriented project Out-Zone from INFAC scheme"
+    },
+    {
+      "const": "5554",
+      "title": "Transfer to BOI non EOP Out-Zone from BOI EOP Out-Zone"
+    },
+    {
+      "const": "5555",
+      "title": "Transfer to BOI non export oriented project Out-Zone from another"
+    },
+    {
+      "const": "5557",
+      "title": "Transfer to BOI non export oriented Out-Zone from TIEP 1 Scheme"
+    },
+    {
+      "const": "5651",
+      "title": "Transfer to TIEP 4 scheme from INFAC scheme"
+    },
+    {
+      "const": "5652",
+      "title": "Transfer to TIEP 4 scheme from BOI In zone export oriented project"
+    },
+    {
+      "const": "5656",
+      "title": "Transfer to TIEP 4 from another"
+    },
+    {
+      "const": "5654",
+      "title": "Transfer to TIEP 4 from BOI non export oriented project in zone"
+    },
+    {
+      "const": "5671",
+      "title": "Transfer to TIEP 4 scheme from state bonds"
+    },
+    {
+      "const": "5700",
+      "title": "Direct Import for re export under under TIEP 1  Scheme"
+    },
+    {
+      "const": "1300",
+      "title": "Outright exportation of goods manu"
+    },
+    {
+      "const": "1378",
+      "title": "Outright exportation of goods manuf"
+    },
+    {
+      "const": "7878",
+      "title": "Purchase / Transfer from BOI export oriented projects"
+    },
+    {
+      "const": "7879",
+      "title": "Purchase / Transfer from BOI non export oriented projects"
+    },
+    {
+      "const": "7851",
+      "title": "Purchase / Transfer from INFAC company"
+    },
+    {
+      "const": "7857",
+      "title": "Purchase / Transfer from TIEP scheme company"
+    },
+    {
+      "const": "7858",
+      "title": "Purchase / Transfer from Individual Bank Guarantee Scheme"
+    },
+    {
+      "const": "7813",
+      "title": "Reject Cargo Manufactured out of Import Raw Material in Sri Lanka"
+    },
+    {
+      "const": "7821",
+      "title": "Processing and Return"
+    },
+    {
+      "const": "7822",
+      "title": "Repair and Return / Exhibition and Return"
+    },
+    {
+      "const": "7900",
+      "title": "Direct Imports of  goods"
+    },
+    {
+      "const": "7971",
+      "title": "Purchase  from  General Bond"
+    },
+    {
+      "const": "7972",
+      "title": "Purchase  from  Private Bond"
+    },
+    {
+      "const": "7978",
+      "title": "Purchase / Transfer from BOI export oriented projects"
+    },
+    {
+      "const": "7979",
+      "title": "Purchase / Transfer from BOI non  export oriented projects"
+    },
+    {
+      "const": "7957",
+      "title": "Purchase from TIEP Scheme Company"
+    },
+    {
+      "const": "7958",
+      "title": "Purchase / Transfer from Individual Bank Guarantee Scheme"
+    },
+    {
+      "const": "7921",
+      "title": "Processing and Return"
+    },
+    {
+      "const": "4040",
+      "title": "Customs Sales Goods"
+    },
+    {
+      "const": "5178",
+      "title": "Transfer to INFAC scheme from BOI approved projects"
+    },
+    {
+      "const": "5778",
+      "title": "Transfer to TIEP 1 scheme from BOI approved projects"
+    },
+    {
+      "const": "4079",
+      "title": "Entry for home use from BOI"
+    },
+    {
+      "const": "4178",
+      "title": "Local sale for home use from BOI export oriented projects"
+    },
+    {
+      "const": "3277",
+      "title": "Re export from INFAC scheme"
+    },
+    {
+      "const": "7700",
+      "title": "Direct imports under INFAC excempti"
+    },
+    {
+      "const": "7772",
+      "title": "Transfer for INFAC scheme from"
+    },
+    {
+      "const": "4078",
+      "title": "Entry for home use from BOI"
+    },
+    {
+      "const": "4179",
+      "title": "Local sale for home use from BOI non export oriented projects"
+    },
+    {
+      "const": "7277",
+      "title": "Transfer to General Bond from TIEP1 scheme"
+    },
+    {
+      "const": "7279",
+      "title": "Transfer to Private bonds from BOI Export oriented"
+    },
+    {
+      "const": "7178",
+      "title": "Transfer to State Bonds from BOI export oriented projects"
+    },
+    {
+      "const": "7179",
+      "title": "Transfer to State Bonds from BOI export processing zone"
+    },
+    {
+      "const": "7771",
+      "title": "Transfer to IBG/PG Scheme from State W/H"
+    },
+    {
+      "const": "7777",
+      "title": "Transfer to TIEP1 Scheme from anoth"
+    },
+    {
+      "const": "7779",
+      "title": "Transfer to IBG Scheme to BOI export oriented projects"
+    },
+    {
+      "const": "4176",
+      "title": "Entry for home use from Manufacture in Bond & Other Bonds"
+    },
+    {
+      "const": "4174",
+      "title": "Entry for home use from duty free Feeder Bond"
+    },
+    {
+      "const": "4175",
+      "title": "Entry for home use from duty free Feeder Bond"
+    },
+    {
+      "const": "4173",
+      "title": "Entry for home use from Entrpot scheme"
+    },
+    {
+      "const": "4172",
+      "title": "Entry for home use from Private Bonds"
+    },
+    {
+      "const": "4177",
+      "title": "Entry for home use from IBG Scheme"
+    },
+    {
+      "const": "3271",
+      "title": "Re-export from State bonded warehouse in the port"
+    },
+    {
+      "const": "3272",
+      "title": "Re-export from private bond outside the port"
+    },
+    {
+      "const": "3273",
+      "title": "Re-export from the Entreport Scheme"
+    },
+    {
+      "const": "3275",
+      "title": "Re-export from Duty Free Feeder Bonds"
+    },
+    {
+      "const": "3276",
+      "title": "Re-export from MIB and other bonds"
+    },
+    {
+      "const": "7278",
+      "title": "Transfer to Private Bond from BOI export oriented projects"
+    },
+    {
+      "const": "7577",
+      "title": "Transfer to Duty Free Feeder Bond from INFAC Scheme"
+    },
+    {
+      "const": "7877",
+      "title": "Transfer to BOI export oriented projects from TIEP 1 & INFAC Scheme"
+    },
+    {
+      "const": "7977",
+      "title": "Transfer to BOI non export oriented project from INFAC Scheme"
+    },
+    {
+      "const": "7000",
+      "title": "Direct Imports of Goods"
+    },
+    {
+      "const": "7071",
+      "title": "Purchase from General Bond"
+    },
+    {
+      "const": "7072",
+      "title": "Purchase from Private Bond"
+    },
+    {
+      "const": "7078",
+      "title": "Purchase / Transfer from Export Oriented BOI projects"
+    },
+    {
+      "const": "7079",
+      "title": "Purchase / Transfer from Non Export Oriented BOI projects"
+    },
+    {
+      "const": "7076",
+      "title": "Purchase / Transfer from Manufacture in Bond"
+    },
+    {
+      "const": "7077",
+      "title": "Purchase / Transfer from TIEP / INFAC scheme company"
+    },
+    {
+      "const": "7040",
+      "title": "Purchase from Local Market"
+    },
+    {
+      "const": "7070",
+      "title": "Purchase from Hub Enterprise"
+    },
+    {
+      "const": "1370",
+      "title": "Outright exportation of Imported by Commercial Hub Projects"
+    },
+    {
+      "const": "3170",
+      "title": "Re-exportation of goods/materials (unprocessed)"
+    },
+    {
+      "const": "0140",
+      "title": "Assembling brandnew imported parts"
+    },
+    {
+      "const": "0141",
+      "title": "Assembling used parts"
+    },
+    {
+      "const": "5000",
+      "title": "Import CusDecs for empty containers"
+    },
+    {
+      "const": "1377",
+      "title": "Outright exportation of goods with TIEP1 importation"
+    },
+    {
+      "const": "6113",
+      "title": "Re-import of reject cargo (Local RM) by BOI Export Oriented Projects"
+    },
+    {
+      "const": "7870",
+      "title": "Purchase by BOI Export Oriented Project from Commercial Hub Company"
+    },
+    {
+      "const": "7970",
+      "title": "Purchase by BOI Non Export Oriented Project from Commecial Hub Company"
+    },
+    {
+      "const": "4170",
+      "title": "Local sale for home use from Commercial Hub Projects"
+    },
+    {
+      "const": "7770",
+      "title": "Transfer to INFAC / TIEP 1&4 / IBG from Commercial Hub Projects"
+    },
+    {
+      "const": "7570",
+      "title": "Transfer to Duty Free Shop from Commercial Hub Projects"
+    },
+    {
+      "const": "7470",
+      "title": "Transfer to Service Bond from Commercial Hub Projects"
+    },
+    {
+      "const": "7370",
+      "title": "Transfer to Entrapot schemes from Commercial Hub Projects"
+    },
+    {
+      "const": "7270",
+      "title": "Transfer to Private Bond from Commercial Hub Project"
+    },
+    {
+      "const": "7170",
+      "title": "Transfer to State/Public Warehouse form Commercial Hub Projects"
+    },
+    {
+      "const": "7670",
+      "title": "Transfer to MIB from Commercial Hub Projects"
+    },
+    {
+      "const": "7540",
+      "title": "Transfer to Duty Free Shops items locally manufactured/home use as"
+    },
+    {
+      "const": "5371",
+      "title": "Transfer to BOI non exoprt oriented project In-Zone from state bonds"
+    },
+    {
+      "const": "5471",
+      "title": "Transfer to BOI export oriented project Out-Zone from state bonds"
+    },
+    {
+      "const": "5572",
+      "title": "Transfer to BOI non export oriented projec Out-Zone from private Bond"
+    },
+    {
+      "const": "6013",
+      "title": "Reimportation of rejected cargo effected by BOI"
+    },
+    {
+      "const": "5558",
+      "title": "Transfer to BOI non export oriented project Out-Zone from IBG scheme"
+    },
+    {
+      "const": "3057",
+      "title": "Re-export from TIEP  1 scheme"
+    },
+    {
+      "const": "3073",
+      "title": "Re-Exportfrom the Entreport scheme"
+    },
+    {
+      "const": "2279",
+      "title": "Temporary exportation of machinery &"
+    },
+    {
+      "const": "7872",
+      "title": "Purchase from Private Bond"
+    },
+    {
+      "const": "4055",
+      "title": "Entry for Home use from BOI non exports oriented projects Out-Zone"
+    },
+    {
+      "const": "7951",
+      "title": "Purchase from INFAC Company"
+    },
+    {
+      "const": "7922",
+      "title": "Repair and Return / Exhibition and Return"
+    },
+    {
+      "const": "7778",
+      "title": "Transfer to INFAC scheme from BOI"
+    },
+    {
+      "const": "5751",
+      "title": "Transfer to TIEP 1 scheme from INFAC scheme"
+    },
+    {
+      "const": "5752",
+      "title": "Transfer to TIEP 1 Scheme from BOI export oriented project  In-Zone"
+    },
+    {
+      "const": "5753",
+      "title": "Transfer to TIEP 1 Scheme from BOI non export oriented proje  In-Zone"
+    },
+    {
+      "const": "4171",
+      "title": "Tranfer from state bonds to drawback procedures"
+    },
+    {
+      "const": "7151",
+      "title": "Tranfer from INFAC to Government bond"
+    },
+    {
+      "const": "7251",
+      "title": "Transfer to Private Bond from INFAC."
+    },
+    {
+      "const": "5754",
+      "title": "Transfer to TIEP1 Scheme from BOI export oriented project Out-Zone"
+    },
+    {
+      "const": "5755",
+      "title": "Transfer to TIEP 1 Scheme from BOI non export oriented proje Out-Zone"
+    },
+    {
+      "const": "5757",
+      "title": "Transfer to TIEP 1 Scheme from another"
+    },
+    {
+      "const": "5758",
+      "title": "Transfer to TIEP 1 Scheme from IBG scheme"
+    },
+    {
+      "const": "5771",
+      "title": "Transfer to TIEP 1 Scheme from State bonds"
+    },
+    {
+      "const": "5772",
+      "title": "Transfer to TIEP 1 Scheme from private Bond"
+    },
+    {
+      "const": "5776",
+      "title": "Transfer to TIEP 1 Scheme from MIB scheme"
+    },
+    {
+      "const": "5800",
+      "title": "Direct import under IBG scheme"
+    },
+    {
+      "const": "5851",
+      "title": "Transfer to IBG scheme to from INFAC scheme"
+    },
+    {
+      "const": "5852",
+      "title": "Transfer to IBG scheme from BOI In- Zone exoprt oriented project"
+    },
+    {
+      "const": "5858",
+      "title": "Tranfer to IBG scheme another"
+    },
+    {
+      "const": "5857",
+      "title": "Transfer to TIEP 1 scheme from another"
+    },
+    {
+      "const": "6010",
+      "title": "Re-Import (Bill of Stores) after Rejected / Returned exported goods"
+    },
+    {
+      "const": "7100",
+      "title": "Direct import to state bond (B1 Etc)"
+    },
+    {
+      "const": "7152",
+      "title": "Transfer to state bonds from BOI export oriented project In-Zone"
+    },
+    {
+      "const": "7153",
+      "title": "Transfer to State bonds from BOI non export oriented project In-Zone"
+    },
+    {
+      "const": "7154",
+      "title": "Transfer to State bonds from BOI export processing zone Out-Zone"
+    },
+    {
+      "const": "7155",
+      "title": "Transfer to State bonds from BOI Out-Zone non export oriented project"
+    },
+    {
+      "const": "7171",
+      "title": "Transfer to State bond from another"
+    },
+    {
+      "const": "7172",
+      "title": "Transfer to State bond from private Bond (Ship stores etc)"
+    },
+    {
+      "const": "7173",
+      "title": "Transfer to State bond from Entrepot Scheme"
+    },
+    {
+      "const": "7174",
+      "title": "Transfer to state bond from duty free service bond"
+    },
+    {
+      "const": "7176",
+      "title": "Transfer to State bond from MIB"
+    },
+    {
+      "const": "7200",
+      "title": "Direct import to private Bond"
+    },
+    {
+      "const": "7271",
+      "title": "Transfer to private  Bond from  state bond"
+    },
+    {
+      "const": "7272",
+      "title": "Transfer to private Bond from another"
+    },
+    {
+      "const": "7275",
+      "title": "Transfer to private bond from duty free feeder bond"
+    },
+    {
+      "const": "7276",
+      "title": "Transfer to private Bond from MIB"
+    },
+    {
+      "const": "7357",
+      "title": "Transfer to Entrepot scheme from TIEP 1 scheme"
+    },
+    {
+      "const": "7371",
+      "title": "Transfer to Entrepot Scheme from state bonds"
+    },
+    {
+      "const": "7372",
+      "title": "Transfer to entrepot Scheme from private bond"
+    },
+    {
+      "const": "7373",
+      "title": "to Entrepot Scheme from another"
+    },
+    {
+      "const": "7400",
+      "title": "Direct import to Duty Free Service Bonds"
+    },
+    {
+      "const": "7451",
+      "title": "Transfer to Duty Free Service Bond from INFAC scheme"
+    },
+    {
+      "const": "7452",
+      "title": "Transfer to Duty Free Service Bond from BOI export oriented pr IN-Zone"
+    },
+    {
+      "const": "7453",
+      "title": "Transfer to Duty Free Service Bond from BOI non EOP In-Zone"
+    },
+    {
+      "const": "7454",
+      "title": "Transfer to Duty Free Service Bond from BOI EOP Out-Zone"
+    },
+    {
+      "const": "7455",
+      "title": "Transfer to Duty Free service Bond from BOI non EOP Out-Zone"
+    },
+    {
+      "const": "7471",
+      "title": "Transfer to Duty Free Service Bond from State bonds"
+    },
+    {
+      "const": "7472",
+      "title": "Transfer to Duty Free service Bond from private Bond"
+    },
+    {
+      "const": "7500",
+      "title": "Direct import to Duty Free Feeder bond at BIA"
+    },
+    {
+      "const": "7551",
+      "title": "Transfer to Duty Free Feeder Bond from INFAC scheme"
+    },
+    {
+      "const": "7552",
+      "title": "Transfer to Duty Free Feeder Bond from BOI EOP In-Zone"
+    },
+    {
+      "const": "7553",
+      "title": "Transfer to Duty Free Feeder Bond from BOI non EOP In-Zone"
+    },
+    {
+      "const": "7554",
+      "title": "Transfer to Duty Free Feeder Bond from BOI EOP Out-Zone"
+    },
+    {
+      "const": "7571",
+      "title": "Transfer to Duty Free Feeder Bond from State bonds"
+    },
+    {
+      "const": "7572",
+      "title": "Transfer to Duty Free Feeder Bond  from private Bond"
+    },
+    {
+      "const": "7600",
+      "title": "Direct Import to MIB Scheme"
+    },
+    {
+      "const": "7657",
+      "title": "Transfer to MIB scheme from TIEP scheme"
+    },
+    {
+      "const": "7671",
+      "title": "Transfer to MIB Scheme from state bonds"
+    },
+    {
+      "const": "7672",
+      "title": "Transfer to MIB Scheme from  private bond"
+    },
+    {
+      "const": "5276",
+      "title": "Transfer to BOI export oriented project In-Zone from MIB"
+    },
+    {
+      "const": "5372",
+      "title": "Transfer to BOI non export oriented project In-Zone from private Bonds"
+    },
+    {
+      "const": "5376",
+      "title": "Transfer to BOI non export oriented project In-Zone from MIB"
+    },
+    {
+      "const": "5400",
+      "title": "Direct import for BOI export oriented project Out-Zone"
+    },
+    {
+      "const": "5452",
+      "title": "Transfer to BOI export oriented pro Out-Zone  from BOI EOP In -Zone"
+    },
+    {
+      "const": "5453",
+      "title": "Transfer to BOI EOP Out-Zone from BOI Non EOP IN-Zone"
+    },
+    {
+      "const": "5458",
+      "title": "Transfer to BOI export oriented project Out-Zone from IBG scheme"
+    },
+    {
+      "const": "5472",
+      "title": "Transfer to BOI export oriented project Out-Zone from private bonds"
+    },
+    {
+      "const": "5476",
+      "title": "Transfer to BOI export oriented projects Out-Zone from MIB"
+    },
+    {
+      "const": "5500",
+      "title": "Direct Import by BOI non export oriented project Out-Zone"
+    },
+    {
+      "const": "5552",
+      "title": "Transfer to BOI non EOP Out-Zone from BOI EOP In-Zone"
+    },
+    {
+      "const": "5553",
+      "title": "Transfer to BOI non EOP Out-Zone from BOI non EOP In-Zone"
+    },
+    {
+      "const": "5571",
+      "title": "Transfer to BOI non export oriented project Out-Zone from State bonds"
+    },
+    {
+      "const": "5576",
+      "title": "Transfer to BOI non export oriented  Out-Zone from MIB Scheme"
+    },
+    {
+      "const": "1100",
+      "title": "Direct Export Utilizing Partial Duty Free Goods Under TIEP Scheme."
+    },
+    {
+      "const": "1200",
+      "title": "Direct Export Under Duty Rebate Scheme."
+    },
+    {
+      "const": "1040",
+      "title": "Export of imported goods for home use"
+    },
+    {
+      "const": "5876",
+      "title": "Transfer to IBG scheme from manufacture in Bond"
+    },
+    {
+      "const": "3274",
+      "title": "Re-Export from duty free service bonds"
+    },
+    {
+      "const": "2077",
+      "title": "Temporary export of TIEP goods"
+    },
+    {
+      "const": "7010",
+      "title": "Purchase by Commercial Hub Company from"
+    },
+    {
+      "const": "7642",
+      "title": "Transfer to MIB from provisional"
+    },
+    {
+      "const": "7773",
+      "title": "Imp. through Entrepot Scheme, transfer to non BOI exp oriented proj."
+    },
+    {
+      "const": "7711",
+      "title": "Import, goods exported utililizing partial duty free under TIEP scheme"
+    },
+    {
+      "const": "7678",
+      "title": "Local transfers to Plant In Bonds from BOI Projects"
+    },
+    {
+      "const": "7776",
+      "title": "Transfer Liabilities from Manufacture Bond to TIEP"
+    },
+    {
+      "const": "7677",
+      "title": "Transfer to MIB Scheme from INFAC/TIEP 1&4/IBG"
+    },
+    {
+      "const": "7232",
+      "title": "Transfer Transit Returned goods to bond (Order cancelled at the transi"
+    },
+    {
+      "const": "8100",
+      "title": "Entry for Transshipment"
+    },
+    {
+      "const": "3881",
+      "title": "Discharge from Transshipment"
+    },
+    {
+      "const": "7781",
+      "title": "Admission for Value Addition / Ownership Transfer"
+    },
+    {
+      "const": "8177",
+      "title": "Discharge from Value Addition"
+    },
+    {
+      "const": "7632",
+      "title": "Bonding Re-imports"
+    },
+    {
+      "const": "7740",
+      "title": "Transfer of goods to TIEP scheme"
+    },
+    {
+      "const": "4077",
+      "title": "Entry for home use from IBG Scheme(for old cusdecs without W/H)"
+    },
+    {
+      "const": "7013",
+      "title": "Purchase by Commercial Hub Company from"
+    },
+    {
+      "const": "7732",
+      "title": "Temporary imports of re-exports by TIEP 1 Scheme"
+    },
+    {
+      "const": "7679",
+      "title": "Transfer to PIB Scheme from BOI Schemes"
+    },
+    {
+      "const": "4270",
+      "title": "BOI Local Sale from HUB - CUSDECs Provisional"
+    },
+    {
+      "const": "4370",
+      "title": "BOI Local Sale from HUB - CUSDECs Provisional Finalized"
+    },
+    {
+      "const": "7031",
+      "title": "Purchase of Reject Cargo by Hub Company from BOI Company"
+    },
+    {
+      "const": "7874",
+      "title": "BOI Transfer from Service Bond"
+    },
+    {
+      "const": "7177",
+      "title": "Return goods to Bonded WH (Rebonded from Bonded WH to TIEP1)"
+    },
+    {
+      "const": "7873",
+      "title": "BOI to Entreport transfer"
+    },
+    {
+      "const": "9100",
+      "title": "Recovery of OT from Vessels"
+    },
+    {
+      "const": "7175",
+      "title": "Transfer from State W/H to Private W/H"
+    }
+  ]
+}

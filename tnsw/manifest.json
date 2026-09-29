@@ -181,6 +181,60 @@
       "path": "npqs/1-apply/status_markdown.json"
     },
     {
+      "id": "customs-cusdec--declaration-procedures",
+      "kind": "static_data",
+      "version": "1",
+      "path": "customs/static-data/declaration_procedures.data.json"
+    },
+    {
+      "id": "customs-cusdec--office-codes",
+      "kind": "static_data",
+      "version": "1",
+      "path": "customs/static-data/customs_office_codes.data.json"
+    },
+    {
+      "id": "customs-cusdec--countries",
+      "kind": "static_data",
+      "version": "1",
+      "path": "customs/static-data/countries.data.json"
+    },
+    {
+      "id": "customs-cusdec--delivery-terms",
+      "kind": "static_data",
+      "version": "1",
+      "path": "customs/static-data/delivery_terms.data.json"
+    },
+    {
+      "id": "customs-cusdec--mode-of-transport",
+      "kind": "static_data",
+      "version": "1",
+      "path": "customs/static-data/mode_of_transport.data.json"
+    },
+    {
+      "id": "customs-cusdec--banks",
+      "kind": "static_data",
+      "version": "1",
+      "path": "customs/static-data/banks.data.json"
+    },
+    {
+      "id": "customs-cusdec--extended-procedures",
+      "kind": "static_data",
+      "version": "1",
+      "path": "customs/static-data/extended_procedure.data.json"
+    },
+    {
+      "id": "customs-cusdec--port-of-entry-and-discharge",
+      "kind": "static_data",
+      "version": "1",
+      "path": "customs/static-data/port_of_entry_and_discharge.data.json"
+    },
+    {
+      "id": "customs-cusdec--sheds",
+      "kind": "static_data",
+      "version": "1",
+      "path": "customs/static-data/shed.data.json"
+    },
+    {
       "id": "npqs-apply-phyto-cert--importing-countries",
       "kind": "static_data",
       "version": "1",

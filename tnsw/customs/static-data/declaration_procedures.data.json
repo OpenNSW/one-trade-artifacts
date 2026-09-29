@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "const": "1",
+      "title": "Exportation"
+    },
+    {
+      "const": "2",
+      "title": "Temporary Export"
+    },
+    {
+      "const": "3",
+      "title": "Re-export"
+    },
+    {
+      "const": "8",
+      "title": "Transit to export"
+    },
+    {
+      "const": "9",
+      "title": "Other export procedures"
+    }
+  ]
+}

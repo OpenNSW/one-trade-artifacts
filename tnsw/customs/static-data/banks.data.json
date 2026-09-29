@@ -1,0 +1,296 @@
+{
+  "data": [
+    {
+      "const": "7010",
+      "title": "Bank of Ceylon"
+    },
+    {
+      "const": "8004",
+      "title": "Central Bank of Sri Lanka"
+    },
+    {
+      "const": "7083",
+      "title": "Hatton National Bank"
+    },
+    {
+      "const": "7056",
+      "title": "Commercial Bank"
+    },
+    {
+      "const": "7278",
+      "title": "Sampath Bank"
+    },
+    {
+      "const": "7287",
+      "title": "Seylan Bank"
+    },
+    {
+      "const": "7171",
+      "title": "American Express Bank Ltd"
+    },
+    {
+      "const": "7029",
+      "title": "Bank of Credit & Commerce Int. Ltd"
+    },
+    {
+      "const": "7153",
+      "title": "Bank of Oman Ltd"
+    },
+    {
+      "const": "7126",
+      "title": "Banque Indosuez"
+    },
+    {
+      "const": "7047",
+      "title": "Citi Bank N.A."
+    },
+    {
+      "const": "7205",
+      "title": "Deutsche Bank (Asia)"
+    },
+    {
+      "const": "7241",
+      "title": "Emirates Bank"
+    },
+    {
+      "const": "7199",
+      "title": "Habib AG Zurich"
+    },
+    {
+      "const": "7074",
+      "title": "Habib Bank Ltd"
+    },
+    {
+      "const": "7108",
+      "title": "Indian Bank"
+    },
+    {
+      "const": "7117",
+      "title": "Indian Overseas Bank"
+    },
+    {
+      "const": "7144",
+      "title": "State Bank of India"
+    },
+    {
+      "const": "7065",
+      "title": "ANZ Grindlays Bank"
+    },
+    {
+      "const": "7621",
+      "title": "R.R.D.B., Polonnaruwa"
+    },
+    {
+      "const": "7630",
+      "title": "R.R.D.B., Matale"
+    },
+    {
+      "const": "7649",
+      "title": "R.R.D.B., Ratnapura"
+    },
+    {
+      "const": "7658",
+      "title": "R.R.D.B., Ampara"
+    },
+    {
+      "const": "7092",
+      "title": "Hongkong & Shanghai Bank"
+    },
+    {
+      "const": "7038",
+      "title": "Standard Chartered Bank"
+    },
+    {
+      "const": "7296",
+      "title": "Public Bank Berhad"
+    },
+    {
+      "const": "8101",
+      "title": "National Development Bank"
+    },
+    {
+      "const": "7533",
+      "title": "R.R.D.B., Anuradhapura"
+    },
+    {
+      "const": "7612",
+      "title": "R.R.D.B., Badulla"
+    },
+    {
+      "const": "7579",
+      "title": "R.R.D.B., Galle"
+    },
+    {
+      "const": "7542",
+      "title": "R.R.D.B., Hambantota"
+    },
+    {
+      "const": "7506",
+      "title": "R.R.D.B., Kalutara"
+    },
+    {
+      "const": "7588",
+      "title": "R.R.D.B., Kandy"
+    },
+    {
+      "const": "7551",
+      "title": "R.R.D.B., Kegalle"
+    },
+    {
+      "const": "7524",
+      "title": "R.R.D.B., Kurunegala"
+    },
+    {
+      "const": "7515",
+      "title": "R.R.D.B., Matara"
+    },
+    {
+      "const": "7603",
+      "title": "R.R.D.B., Monaragala"
+    },
+    {
+      "const": "7597",
+      "title": "R.R.D.B., Nuwara Eliya"
+    },
+    {
+      "const": "7560",
+      "title": "R.R.D.B., Puttalam"
+    },
+    {
+      "const": "9999",
+      "title": "Other banks (not registered)"
+    },
+    {
+      "const": "7339",
+      "title": "Societe Generale"
+    },
+    {
+      "const": "7445",
+      "title": "SCOTIABANK"
+    },
+    {
+      "const": "7162",
+      "title": "Nations Trust Bank"
+    },
+    {
+      "const": "7214",
+      "title": "National Development Bank Ltd"
+    },
+    {
+      "const": "7135",
+      "title": "People's Bank"
+    },
+    {
+      "const": "7269",
+      "title": "Muslim Commercial Bank"
+    },
+    {
+      "const": "7311",
+      "title": "Pan Asia Banking Corporation Ltd"
+    },
+    {
+      "const": "7384",
+      "title": "ICICI Bank"
+    },
+    {
+      "const": "7454",
+      "title": "DFCC Bank PLC"
+    },
+    {
+      "const": "7463",
+      "title": "AMANA BANK LIMITED"
+    },
+    {
+      "const": "7472",
+      "title": "Axis Bank Ltd."
+    },
+    {
+      "const": "7481",
+      "title": "Cargills Bank"
+    },
+    {
+      "const": "6463",
+      "title": "Amana Bank"
+    },
+    {
+      "const": "7719",
+      "title": "National Savings Bank"
+    },
+    {
+      "const": "6135",
+      "title": "Peoples Bank"
+    },
+    {
+      "const": "6162",
+      "title": "Nations Trust Bank"
+    },
+    {
+      "const": "6454",
+      "title": "DFCC Bank PLC"
+    },
+    {
+      "const": "6010",
+      "title": "Bank of Ceylon"
+    },
+    {
+      "const": "6056",
+      "title": "Commercial Bank PLC"
+    },
+    {
+      "const": "6083",
+      "title": "Hatton National Bank PLC"
+    },
+    {
+      "const": "6214",
+      "title": "NDB"
+    },
+    {
+      "const": "6481",
+      "title": "Cargills Bank"
+    },
+    {
+      "const": "6287",
+      "title": "Seylan Bank PLC"
+    },
+    {
+      "const": "6278",
+      "title": "Sampath Bank PLC"
+    },
+    {
+      "const": "6311",
+      "title": "Pan Asia Banking Corporation PLC"
+    },
+    {
+      "const": "6296",
+      "title": "Public Bank"
+    },
+    {
+      "const": "6728",
+      "title": "Sanasa Development Bank"
+    },
+    {
+      "const": "6719",
+      "title": "National Savings Bank"
+    },
+    {
+      "const": "7302",
+      "title": "Union Bank of Colombo PLC"
+    },
+    {
+      "const": "6302",
+      "title": "Union Bank of Colombo PLC"
+    },
+    {
+      "const": "7700",
+      "title": "Bank of China Ltd"
+    },
+    {
+      "const": "6269",
+      "title": "Muslim Commercial Bank"
+    },
+    {
+      "const": "6205",
+      "title": "Deutsche Bank"
+    }
+  ]
+}
