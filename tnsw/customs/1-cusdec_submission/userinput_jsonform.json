@@ -18,13 +18,10 @@
             { "from": "ASYCUDA.Identification.Office_segment.Customs_clearance_office_code", "to": "identification.officeCode", "as": "string" },
             { "from": "ASYCUDA.Identification.Type.Type_of_declaration", "to": "identification.declarationType", "as": "string" },
             { "from": "ASYCUDA.Identification.Type.Declaration_gen_procedure_code", "to": "identification.generalProcedureCode", "as": "string" },
-            { "from": "ASYCUDA.Identification.Type.Type_of_transit_document", "to": "identification.transitDocumentType", "as": "string" },
             { "from": "ASYCUDA.Declarant.Declarant_code", "to": "traders.declarant.code", "as": "string" },
-            { "from": "ASYCUDA.Declarant.Reference.Number", "to": "traders.declarant.referenceNo", "as": "string" },
             { "from": "ASYCUDA.General_information.Country.Country_first_destination", "to": "generalInfo.countryOfFirstDestination", "as": "string" },
             { "from": "ASYCUDA.General_information.Country.Export.Export_country_code", "to": "generalInfo.exportCountryCode", "as": "string" },
             { "from": "ASYCUDA.General_information.Country.Destination.Destination_country_code", "to": "generalInfo.destinationCountryCode", "as": "string" },
-            { "from": "ASYCUDA.General_information.Comments_free_text", "to": "generalInfo.commentsText", "as": "string" },
             { "from": "ASYCUDA.Transport.Means_of_transport.Departure_arrival_information.Identity", "to": "transport.vesselName", "as": "string" },
             { "from": "ASYCUDA.Transport.Means_of_transport.Departure_arrival_information.Nationality", "to": "transport.transportNationality", "as": "string" },
             { "from": "ASYCUDA.Transport.Means_of_transport.Border_information.Identity", "to": "transport.voyageNo", "as": "string" },
@@ -34,14 +31,9 @@
             { "from": "ASYCUDA.Transport.Delivery_terms.Code", "to": "transport.deliveryTermsCode", "as": "string" },
             { "from": "ASYCUDA.Transport.Delivery_terms.Place", "to": "transport.deliveryTermsPlace", "as": "string" },
             { "from": "ASYCUDA.Transport.Border_office.Code", "to": "transport.borderOfficeCode", "as": "string" },
-            { "from": "ASYCUDA.Transport.Place_of_loading.Code", "to": "transport.placeOfLoadingCode", "as": "string" },
-            { "from": "ASYCUDA.Transport.Place_of_loading.Name", "to": "transport.placeOfLoadingName", "as": "string" },
             { "from": "ASYCUDA.Financial.Bank.Code", "to": "financial.bankCode", "as": "string" },
-            { "from": "ASYCUDA.Financial.Bank.Name", "to": "financial.bankName", "as": "string" },
-            { "from": "ASYCUDA.Financial.Bank.Branch", "to": "financial.bankBranch", "as": "string" },
             { "from": "ASYCUDA.Financial.Bank.Reference", "to": "financial.bankReference", "as": "string" },
             { "from": "ASYCUDA.Financial.Terms.Code", "to": "financial.paymentTermsCode", "as": "string" },
-            { "from": "ASYCUDA.Financial.Mode_of_payment", "to": "financial.modeOfPayment", "as": "string" },
             { "from": "ASYCUDA.Financial.Total_invoice", "to": "valuation.invoiceAmountForeign", "as": "number" },
             { "from": "ASYCUDA.Valuation.Gs_Invoice.Currency_code", "to": "valuation.invoiceCurrencyCode", "as": "string" },
             { "from": "ASYCUDA.Valuation.Gs_Invoice.Amount_national_currency", "to": "valuation.invoiceAmountLKR", "as": "number" },
@@ -76,25 +68,6 @@
             }
           ]
         }
-      },
-      "shipmentType": {
-        "type": "string",
-        "title": "Shipment Type",
-        "oneOf": [
-          {
-            "const": "FCL",
-            "title": "FCL — Full Container Load"
-          },
-          {
-            "const": "LCL",
-            "title": "LCL — Less than Container Load"
-          },
-          {
-            "const": "BREAK_BULK",
-            "title": "Break Bulk"
-          }
-        ],
-        "example": "FCL"
       },
       "containerCount": {
         "type": "integer",
@@ -135,11 +108,6 @@
               }
             },
             "example": "1"
-          },
-          "transitDocumentType": {
-            "type": "string",
-            "title": "Transit Document Type",
-            "example": "01"
           }
         },
         "required": [
@@ -227,11 +195,6 @@
                 "type": "string",
                 "title": "Declarant Code",
                 "example": "900000000"
-              },
-              "referenceNo": {
-                "type": "string",
-                "title": "Reference No",
-                "example": "#1"
               }
             },
             "required": [
@@ -290,11 +253,6 @@
               }
             },
             "example": "MY"
-          },
-          "commentsText": {
-            "type": "string",
-            "title": "Comments",
-            "example": "Test export declaration"
           }
         },
         "required": [
@@ -399,16 +357,6 @@
             },
             "example": "CBEX1"
           },
-          "placeOfLoadingCode": {
-            "type": "string",
-            "title": "Place of Loading Code",
-            "example": "CNNBO"
-          },
-          "placeOfLoadingName": {
-            "type": "string",
-            "title": "Place of Loading Name",
-            "example": "CNNBO"
-          },
           "placeOfDischargeCode": {
             "type": "string",
             "title": "Place of Discharge Code",
@@ -454,16 +402,6 @@
             },
             "example": "7056"
           },
-          "bankName": {
-            "type": "string",
-            "title": "Bank Name",
-            "example": "Commercial Bank"
-          },
-          "bankBranch": {
-            "type": "string",
-            "title": "Bank Branch",
-            "example": "001"
-          },
           "bankReference": {
             "type": "string",
             "title": "Bank Reference",
@@ -479,11 +417,6 @@
             "type": "string",
             "title": "Payment Terms Code",
             "example": "31"
-          },
-          "modeOfPayment": {
-            "type": "string",
-            "title": "Mode of Payment",
-            "example": "CASH"
           }
         },
         "required": [
@@ -891,7 +824,6 @@
       }
     },
     "required": [
-      "shipmentType",
       "identification",
       "traders",
       "generalInfo",
@@ -914,17 +846,8 @@
         "label": "1. Shipment",
         "elements": [
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/shipmentType"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/containerCount"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/containerCount"
           }
         ]
       },
@@ -946,17 +869,8 @@
             ]
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/identification/properties/generalProcedureCode"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/identification/properties/transitDocumentType"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/identification/properties/generalProcedureCode"
           }
         ]
       },
@@ -1020,17 +934,8 @@
         "label": "5. Declarant",
         "elements": [
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/traders/properties/declarant/properties/code"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/traders/properties/declarant/properties/referenceNo"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/traders/properties/declarant/properties/code"
           }
         ]
       },
@@ -1054,10 +959,6 @@
                 "scope": "#/properties/generalInfo/properties/destinationCountryCode"
               }
             ]
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/generalInfo/properties/commentsText"
           }
         ]
       },
@@ -1105,21 +1006,8 @@
             ]
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/borderOfficeCode"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/placeOfLoadingCode"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/placeOfLoadingName"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/transport/properties/borderOfficeCode"
           },
           {
             "type": "HorizontalLayout",
@@ -1155,14 +1043,6 @@
               {
                 "type": "Control",
                 "scope": "#/properties/financial/properties/bankCode"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/financial/properties/bankName"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/financial/properties/bankBranch"
               }
             ]
           },
@@ -1176,10 +1056,6 @@
               {
                 "type": "Control",
                 "scope": "#/properties/financial/properties/paymentTermsCode"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/financial/properties/modeOfPayment"
               }
             ]
           },
