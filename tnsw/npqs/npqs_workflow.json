@@ -15,7 +15,7 @@
       "input_mapping": {
         "_iter.input.company.name?": "applicant_name",
         "_iter.input.company.name": "exporter_name",
-        "_iter.input.company.address?": "exporter_address"
+        "_iter.input.company.data.address?": "exporter_address"
       },
       "output_mapping": {
         "reviewerform.reference_number": "npqs.reference_number",

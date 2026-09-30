@@ -14,7 +14,11 @@
       "name": "[CDA 1.0] Submit Application",
       "task_template_id": "cda-apply-coconut-cert-flow",
       "lane": "Trader/CHA",
-      "input_mapping": {},
+      "input_mapping": {
+        "_iter.input.company.name?": "exporter_name",
+        "_iter.input.company.data.agencies.cda.registration_number?": "exporter_registration_number",
+        "_iter.input.company.data.address?": "exporter_address"
+      },
       "output_mapping": {
         "userform.cusdec_number": "cda.reference_number",
         "userform": "cda.userform",
