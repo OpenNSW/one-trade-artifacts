@@ -53,11 +53,8 @@
                 { "from": "Goods_description.Commercial_Description", "to": "goodsDescription.commercialDescription", "as": "string" },
                 { "from": "Valuation_item.Weight_itm.Gross_weight_itm", "to": "valuation.grossWeight", "as": "number" },
                 { "from": "Valuation_item.Weight_itm.Net_weight_itm", "to": "valuation.netWeight", "as": "number" },
-                { "from": "Valuation_item.Item_Invoice.Amount_foreign_currency", "to": "valuation.invoiceAmountForeign", "as": "number" },
-                { "from": "Valuation_item.Item_Invoice.Currency_code", "to": "valuation.invoiceCurrencyCode", "as": "string" },
-                { "from": "Valuation_item.Item_Invoice.Amount_national_currency", "to": "valuation.invoiceAmountLKR", "as": "number" },
-                { "from": "Previous_doc.Previous_document_reference", "to": "previousDocumentReference", "as": "string" },
-                { "from": "Previous_doc.Summary_declaration", "to": "summaryDeclaration", "as": "string" }
+                { "from": "Valuation_item.Item_Invoice.Amount_foreign_currency", "to": "valuation.invoiceAmount.amount", "as": "number" },
+                { "from": "Valuation_item.Item_Invoice.Currency_code", "to": "valuation.invoiceAmount.currencyCode", "as": "string" }
               ]
             }
           ]
@@ -724,37 +721,32 @@
                   "title": "Net Weight",
                   "example": 1000
                 },
-                "invoiceAmountForeign": {
-                  "type": "number",
-                  "title": "Invoice Amount (Foreign)",
-                  "example": 2400
-                },
-                "invoiceCurrencyCode": {
-                  "type": "string",
-                  "title": "Invoice Currency",
-                  "example": "USD"
-                },
-                "invoiceAmountLKR": {
-                  "type": "number",
-                  "title": "Invoice Amount (LKR)",
-                  "example": 0
+                "invoiceAmount": {
+                  "type": "object",
+                  "title": "Invoice Amount",
+                  "properties": {
+                    "amount": {
+                      "type": "number",
+                      "title": "Amount",
+                      "example": 2400
+                    },
+                    "currencyCode": {
+                      "type": "string",
+                      "title": "Currency",
+                      "example": "USD"
+                    }
+                  },
+                  "required": [
+                    "amount",
+                    "currencyCode"
+                  ]
                 }
               },
               "required": [
                 "grossWeight",
                 "netWeight",
-                "invoiceAmountForeign"
+                "invoiceAmount"
               ]
-            },
-            "previousDocumentReference": {
-              "type": "string",
-              "title": "Previous Document Reference",
-              "example": "PREV_DOC_REF"
-            },
-            "summaryDeclaration": {
-              "type": "string",
-              "title": "Summary Declaration (BL No.)",
-              "example": "BL789398639"
             }
           },
           "required": [
@@ -1287,32 +1279,21 @@
                     ]
                   },
                   {
-                    "type": "HorizontalLayout",
+                    "type": "Group",
+                    "label": "Invoice amount",
                     "elements": [
                       {
-                        "type": "Control",
-                        "scope": "#/properties/valuation/properties/invoiceAmountForeign"
-                      },
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/valuation/properties/invoiceCurrencyCode"
-                      },
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/valuation/properties/invoiceAmountLKR"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "HorizontalLayout",
-                    "elements": [
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/previousDocumentReference"
-                      },
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/summaryDeclaration"
+                        "type": "HorizontalLayout",
+                        "elements": [
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/valuation/properties/invoiceAmount/properties/amount"
+                          },
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/valuation/properties/invoiceAmount/properties/currencyCode"
+                          }
+                        ]
                       }
                     ]
                   }
