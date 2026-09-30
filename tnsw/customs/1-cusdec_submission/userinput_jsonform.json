@@ -73,6 +73,15 @@
           "officeCode": {
             "type": "string",
             "title": "Customs Office Code",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-searchable-list",
+              "displayTemplate": "{name} ({id})",
+              "params": {
+                "id": "customs-cusdec--office-codes",
+                "version": "1"
+              }
+            },
             "example": "CBEX1"
           },
           "declarationType": {
