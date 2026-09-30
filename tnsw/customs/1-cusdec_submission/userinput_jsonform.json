@@ -7,7 +7,7 @@
       "import_cusdec_xml": {
         "type": "object",
         "title": "Import CusDec XML",
-        "description": "Upload the ASYCUDA CusDec XML to fill this declaration automatically, including declaration items. Only fields present in the XML are populated — exporter/consignee address details, cost breakdowns, and per-item supplementary unit/incoterms still need manual entry. Values can be corrected afterwards.",
+        "description": "Upload the ASYCUDA CusDec XML to fill this declaration automatically, including declaration items. Only fields present in the XML are populated — exporter/consignee address details, cost breakdowns, and per-item supplementary unit still need manual entry. Values can be corrected afterwards.",
         "x-xml": {
           "accept": ".xml,text/xml,application/xml",
           "maxSize": 5242880,
@@ -34,21 +34,17 @@
             { "from": "ASYCUDA.Financial.Bank.Code", "to": "financial.bankCode", "as": "string" },
             { "from": "ASYCUDA.Financial.Bank.Reference", "to": "financial.bankReference", "as": "string" },
             { "from": "ASYCUDA.Financial.Terms.Code", "to": "financial.paymentTermsCode", "as": "string" },
-            { "from": "ASYCUDA.Financial.Total_invoice", "to": "valuation.invoiceAmountForeign", "as": "number" },
-            { "from": "ASYCUDA.Valuation.Gs_Invoice.Currency_code", "to": "valuation.invoiceCurrencyCode", "as": "string" },
-            { "from": "ASYCUDA.Valuation.Gs_Invoice.Amount_national_currency", "to": "valuation.invoiceAmountLKR", "as": "number" },
+            { "from": "ASYCUDA.Financial.Total_invoice", "to": "valuation.invoiceAmount.amount", "as": "number" },
+            { "from": "ASYCUDA.Valuation.Gs_Invoice.Currency_code", "to": "valuation.invoiceAmount.currencyCode", "as": "string" },
             { "from": "ASYCUDA.Valuation.Weight.Gross_weight", "to": "valuation.totalGrossWeight", "as": "number" },
             { "from": "ASYCUDA.Property.Nbers.Total_number_of_packages", "to": "packages.totalPackages", "as": "number" },
-            { "from": "ASYCUDA.Property.Nbers.Number_of_loading_lists", "to": "packages.numberOfLoadingLists", "as": "number" },
             {
               "from": "ASYCUDA.Item",
               "to": "items",
               "writeTo": [
                 { "from": "Packages.Number_of_packages", "to": "packages.quantity", "as": "number" },
                 { "from": "Packages.Kind_of_packages_code", "to": "packages.kindCode", "as": "string" },
-                { "from": "Packages.Kind_of_packages_name", "to": "packages.kindName", "as": "string" },
                 { "from": "Tarification.HScode.Commodity_code", "to": "tarification.hsCode", "as": "string" },
-                { "from": "Tarification.HScode.Precision_1", "to": "tarification.hsPrecision1", "as": "string" },
                 { "from": "Tarification.Preference_code", "to": "tarification.preferenceCode", "as": "string" },
                 { "from": "Tarification.Extended_customs_procedure", "to": "tarification.extendedProcedureCode", "as": "string" },
                 { "from": "Tarification.National_customs_procedure", "to": "tarification.nationalProcedureCode", "as": "string" },
@@ -57,8 +53,6 @@
                 { "from": "Goods_description.Commercial_Description", "to": "goodsDescription.commercialDescription", "as": "string" },
                 { "from": "Valuation_item.Weight_itm.Gross_weight_itm", "to": "valuation.grossWeight", "as": "number" },
                 { "from": "Valuation_item.Weight_itm.Net_weight_itm", "to": "valuation.netWeight", "as": "number" },
-                { "from": "Valuation_item.Total_CIF_itm", "to": "valuation.totalCIF", "as": "number" },
-                { "from": "Valuation_item.Statistical_value", "to": "valuation.statisticalValue", "as": "number" },
                 { "from": "Valuation_item.Item_Invoice.Amount_foreign_currency", "to": "valuation.invoiceAmountForeign", "as": "number" },
                 { "from": "Valuation_item.Item_Invoice.Currency_code", "to": "valuation.invoiceCurrencyCode", "as": "string" },
                 { "from": "Valuation_item.Item_Invoice.Amount_national_currency", "to": "valuation.invoiceAmountLKR", "as": "number" },
@@ -430,33 +424,53 @@
         "type": "object",
         "title": "Valuation",
         "properties": {
-          "invoiceAmountForeign": {
-            "type": "number",
-            "title": "Invoice Amount (Foreign)",
-            "example": 2400
-          },
-          "invoiceCurrencyCode": {
-            "type": "string",
-            "title": "Invoice Currency",
-            "example": "USD"
-          },
-          "invoiceAmountLKR": {
-            "type": "number",
-            "title": "Invoice Amount (LKR)",
-            "example": 0
+          "invoiceAmount": {
+            "type": "object",
+            "title": "Invoice Amount",
+            "properties": {
+              "amount": {
+                "type": "number",
+                "title": "Amount",
+                "example": 2400
+              },
+              "currencyCode": {
+                "type": "string",
+                "title": "Currency",
+                "example": "USD"
+              }
+            },
+            "required": [
+              "amount",
+              "currencyCode"
+            ]
           },
           "externalFreight": {
             "type": "object",
             "title": "External Freight",
             "properties": {
-              "amountForeign": {
+              "amount": {
                 "type": "number",
-                "title": "Amount (Foreign)",
+                "title": "Amount",
                 "example": 100
               },
-              "amountLKR": {
+              "currencyCode": {
+                "type": "string",
+                "title": "Currency",
+                "example": "USD"
+              }
+            },
+            "required": [
+              "amount",
+              "currencyCode"
+            ]
+          },
+          "internalFreight": {
+            "type": "object",
+            "title": "Internal Freight",
+            "properties": {
+              "amount": {
                 "type": "number",
-                "title": "Amount (LKR)",
+                "title": "Amount",
                 "example": 0
               },
               "currencyCode": {
@@ -464,71 +478,71 @@
                 "title": "Currency",
                 "example": "USD"
               }
-            }
-          },
-          "internalFreight": {
-            "type": "object",
-            "title": "Internal Freight",
-            "properties": {
-              "amountForeign": {
-                "type": "number",
-                "title": "Amount (Foreign)",
-                "example": 0
-              },
-              "amountLKR": {
-                "type": "number",
-                "title": "Amount (LKR)",
-                "example": 0
-              }
-            }
+            },
+            "required": [
+              "amount",
+              "currencyCode"
+            ]
           },
           "insurance": {
             "type": "object",
             "title": "Insurance",
             "properties": {
-              "amountForeign": {
+              "amount": {
                 "type": "number",
-                "title": "Amount (Foreign)",
+                "title": "Amount",
                 "example": 0
               },
-              "amountLKR": {
-                "type": "number",
-                "title": "Amount (LKR)",
-                "example": 0
+              "currencyCode": {
+                "type": "string",
+                "title": "Currency",
+                "example": "USD"
               }
-            }
+            },
+            "required": [
+              "amount",
+              "currencyCode"
+            ]
           },
-          "otherCost": {
+          "otherCosts": {
             "type": "object",
-            "title": "Other Cost",
+            "title": "Other Costs",
             "properties": {
-              "amountForeign": {
+              "amount": {
                 "type": "number",
-                "title": "Amount (Foreign)",
+                "title": "Amount",
                 "example": 0
               },
-              "amountLKR": {
-                "type": "number",
-                "title": "Amount (LKR)",
-                "example": 0
+              "currencyCode": {
+                "type": "string",
+                "title": "Currency",
+                "example": "USD"
               }
-            }
+            },
+            "required": [
+              "amount",
+              "currencyCode"
+            ]
           },
-          "deduction": {
+          "deductions": {
             "type": "object",
-            "title": "Deduction",
+            "title": "Deductions",
             "properties": {
-              "amountForeign": {
+              "amount": {
                 "type": "number",
-                "title": "Amount (Foreign)",
+                "title": "Amount",
                 "example": 0
               },
-              "amountLKR": {
-                "type": "number",
-                "title": "Amount (LKR)",
-                "example": 0
+              "currencyCode": {
+                "type": "string",
+                "title": "Currency",
+                "example": "USD"
               }
-            }
+            },
+            "required": [
+              "amount",
+              "currencyCode"
+            ]
           },
           "totalGrossWeight": {
             "type": "number",
@@ -537,8 +551,7 @@
           }
         },
         "required": [
-          "invoiceAmountForeign",
-          "invoiceCurrencyCode"
+          "invoiceAmount"
         ]
       },
       "packages": {
@@ -550,12 +563,6 @@
             "title": "Total Packages",
             "minimum": 0,
             "example": 25
-          },
-          "numberOfLoadingLists": {
-            "type": "integer",
-            "title": "Number of Loading Lists",
-            "minimum": 0,
-            "example": 0
           }
         },
         "required": [
@@ -583,11 +590,6 @@
                   "type": "string",
                   "title": "Package Kind Code",
                   "example": "PK"
-                },
-                "kindName": {
-                  "type": "string",
-                  "title": "Package Kind Name",
-                  "example": "Package"
                 }
               },
               "required": [
@@ -603,11 +605,6 @@
                   "type": "string",
                   "title": "HS Code",
                   "example": "11063010"
-                },
-                "hsPrecision1": {
-                  "type": "string",
-                  "title": "HS Precision 1",
-                  "example": "00"
                 },
                 "preferenceCode": {
                   "type": "string",
@@ -657,16 +654,6 @@
                   "type": "number",
                   "title": "Item Price",
                   "example": 2400
-                },
-                "incoTermsCode": {
-                  "type": "string",
-                  "title": "Incoterms Code",
-                  "example": "CIF"
-                },
-                "incoTermsPlace": {
-                  "type": "string",
-                  "title": "Incoterms Place",
-                  "example": "TEST INCO TERMS PLACE"
                 }
               },
               "required": [
@@ -736,16 +723,6 @@
                   "type": "number",
                   "title": "Net Weight",
                   "example": 1000
-                },
-                "totalCIF": {
-                  "type": "number",
-                  "title": "Total CIF",
-                  "example": 2400
-                },
-                "statisticalValue": {
-                  "type": "number",
-                  "title": "Statistical Value",
-                  "example": 2400
                 },
                 "invoiceAmountForeign": {
                   "type": "number",
@@ -1075,38 +1052,122 @@
         "label": "9. Valuation",
         "elements": [
           {
-            "type": "HorizontalLayout",
+            "type": "Group",
+            "label": "Invoice amount",
             "elements": [
               {
-                "type": "Control",
-                "scope": "#/properties/valuation/properties/invoiceAmountForeign"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/valuation/properties/invoiceCurrencyCode"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/valuation/properties/invoiceAmountLKR"
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/valuation/properties/invoiceAmount/properties/amount"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/valuation/properties/invoiceAmount/properties/currencyCode"
+                  }
+                ]
               }
             ]
           },
           {
-            "type": "HorizontalLayout",
+            "type": "Group",
+            "label": "External freight",
             "elements": [
               {
-                "type": "Control",
-                "scope": "#/properties/valuation/properties/externalFreight/properties/amountForeign"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/valuation/properties/externalFreight/properties/currencyCode"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/valuation/properties/totalGrossWeight"
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/valuation/properties/externalFreight/properties/amount"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/valuation/properties/externalFreight/properties/currencyCode"
+                  }
+                ]
               }
             ]
+          },
+          {
+            "type": "Group",
+            "label": "Internal freight",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/valuation/properties/internalFreight/properties/amount"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/valuation/properties/internalFreight/properties/currencyCode"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Group",
+            "label": "Insurance",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/valuation/properties/insurance/properties/amount"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/valuation/properties/insurance/properties/currencyCode"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Group",
+            "label": "Other costs",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/valuation/properties/otherCosts/properties/amount"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/valuation/properties/otherCosts/properties/currencyCode"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Group",
+            "label": "Deductions",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/valuation/properties/deductions/properties/amount"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/valuation/properties/deductions/properties/currencyCode"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/valuation/properties/totalGrossWeight"
           }
         ]
       },
@@ -1115,17 +1176,8 @@
         "label": "10. Packages",
         "elements": [
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/packages/properties/totalPackages"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/packages/properties/numberOfLoadingLists"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/packages/properties/totalPackages"
           }
         ]
       },
@@ -1150,10 +1202,6 @@
                       {
                         "type": "Control",
                         "scope": "#/properties/packages/properties/kindCode"
-                      },
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/packages/properties/kindName"
                       }
                     ]
                   },
@@ -1163,10 +1211,6 @@
                       {
                         "type": "Control",
                         "scope": "#/properties/tarification/properties/hsCode"
-                      },
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/tarification/properties/hsPrecision1"
                       },
                       {
                         "type": "Control",
@@ -1209,19 +1253,6 @@
                     "elements": [
                       {
                         "type": "Control",
-                        "scope": "#/properties/tarification/properties/incoTermsCode"
-                      },
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/tarification/properties/incoTermsPlace"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "HorizontalLayout",
-                    "elements": [
-                      {
-                        "type": "Control",
                         "scope": "#/properties/goodsDescription/properties/originCountryCode"
                       },
                       {
@@ -1252,20 +1283,12 @@
                       {
                         "type": "Control",
                         "scope": "#/properties/valuation/properties/netWeight"
-                      },
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/valuation/properties/totalCIF"
                       }
                     ]
                   },
                   {
                     "type": "HorizontalLayout",
                     "elements": [
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/valuation/properties/statisticalValue"
-                      },
                       {
                         "type": "Control",
                         "scope": "#/properties/valuation/properties/invoiceAmountForeign"
