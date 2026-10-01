@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "taskCode": "cda_kernel_asycuda_review_v1",
   "workflow": "cda_kernel_asycuda_review_v1",
   "meta": {
