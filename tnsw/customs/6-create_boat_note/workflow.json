@@ -45,7 +45,6 @@
         "name_of_company_preparing_this_note": "userform.name_of_company_preparing_this_note",
         "name_of_declarant": "userform.name_of_declarant",
         "telephone_no": "userform.telephone_no",
-        "signature_of_declarant": "userform.signature_of_declarant",
         "authorized_signatory": "userform.authorized_signatory",
         "declaration_date": "userform.declaration_date"
       }

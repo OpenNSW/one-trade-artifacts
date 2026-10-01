@@ -318,15 +318,6 @@
         "title": "Telephone No",
         "example": 94771234567
       },
-      "signature_of_declarant": {
-        "type": "string",
-        "format": "file",
-        "title": "Signature of Declarant",
-        "x-file": {
-          "accept": ".jpg,.jpeg,.png,.webp"
-        },
-        "example": "storage/customs/signature-declarant.png"
-      },
       "authorized_signatory": {
         "type": "string",
         "title": "Authorized Signatory Name",
@@ -368,7 +359,6 @@
       "name_of_company_preparing_this_note",
       "name_of_declarant",
       "telephone_no",
-      "signature_of_declarant",
       "authorized_signatory",
       "declaration_date"
     ]
@@ -749,7 +739,6 @@
         "type": "Group",
         "label": "33. Signature of Declarant",
         "elements": [
-          { "type": "Control", "scope": "#/properties/signature_of_declarant", "label": false },
           {
             "type": "HorizontalLayout",
             "elements": [
