@@ -1,0 +1,9 @@
+{
+  "id": "cda-kernel-asycuda-review--notify-decision",
+  "task_type": "AUTH_API_CALL",
+  "output_namespace": "notifyresult",
+  "plugin_properties": {
+    "service_id": "tnsw",
+    "path": "/api/v1/tasks/{taskId}"
+  }
+}

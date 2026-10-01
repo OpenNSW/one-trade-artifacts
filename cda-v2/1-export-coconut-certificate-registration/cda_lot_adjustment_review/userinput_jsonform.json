@@ -1,0 +1,73 @@
+{
+  "id": "cda-lot-adjustment-trader--user-form",
+  "title": "CDA Export Certificate Lot Adjustment",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "adjustment_choice": {
+        "type": "string",
+        "title": "Select Action",
+        "oneOf": [
+          {
+            "const": "complete_application",
+            "title": "Complete Application & Finish"
+          },
+          {
+            "const": "request_lot_adjustment",
+            "title": "Request Lot Adjustment (Remove specific lots)"
+          }
+        ],
+        "default": "complete_application"
+      },
+      "lots_to_remove": {
+        "type": "string",
+        "format": "file",
+        "title": "Upload Revised DC Bags Details File (Excel)",
+        "description": "Check below to download the template, then upload the completed Excel sheet (.xlsx or .xls) here.",
+        "x-file": {
+          "accept": ".xlsx,.xls"
+        }
+      }
+    },
+    "required": [
+      "adjustment_choice"
+    ],
+    "if": {
+      "properties": {
+        "adjustment_choice": {
+          "const": "request_lot_adjustment"
+        }
+      },
+      "required": [
+        "adjustment_choice"
+      ]
+    },
+    "then": {
+      "required": [
+        "lots_to_remove"
+      ]
+    }
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/adjustment_choice"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/lots_to_remove",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/adjustment_choice",
+            "schema": {
+              "const": "request_lot_adjustment"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

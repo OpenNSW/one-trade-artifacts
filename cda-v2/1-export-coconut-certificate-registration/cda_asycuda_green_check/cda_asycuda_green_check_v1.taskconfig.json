@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "taskCode": "cda_asycuda_green_check_v1",
+  "workflow": "cda_asycuda_green_check_v1",
+  "meta": {
+    "title": "CDA ASYCUDA Green Check",
+    "description": "Officer puts the ASYCUDA green check on this consignment.",
+    "category": "CDA"
+  }
+}

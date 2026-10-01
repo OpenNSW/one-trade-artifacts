@@ -1,0 +1,38 @@
+{
+  "id": "cda_review_result_v1",
+  "name": "CDA Application Review & Certification",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "review_application",
+      "type": "TASK",
+      "task_template_id": "cda-review-result--review",
+      "input_mapping": {
+        "notification?": "submission",
+        "taskId": "taskId",
+        "taskCode": "taskCode",
+        "consignmentId": "consignmentId"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "review_application"
+    },
+    {
+      "id": "e2",
+      "source_id": "review_application",
+      "target_id": "end"
+    }
+  ]
+}

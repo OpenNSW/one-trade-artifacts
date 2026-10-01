@@ -1,0 +1,6 @@
+{
+  "id": "cda-review-result--review",
+  "type": "APPLICATION",
+  "workflow_id": "cda-review-result--review-workflow",
+  "render_config_id": "cda-review-result--review:render"
+}
