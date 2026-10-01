@@ -4,15 +4,15 @@
   "schema": {
     "type": "object",
     "properties": {
-      "vessel_name": {
+      "vessel": {
         "type": "string",
-        "title": "Name of Vessel",
-        "example": "CMA CGM MARCO POLO"
+        "title": "Vessel",
+        "example": "AJL FARIS"
       },
-      "voyage_no": {
+      "voyage_no_date": {
         "type": "string",
-        "title": "Voyage Number",
-        "example": "V092"
+        "title": "Voyage No./Date",
+        "example": "NAQ1 10-Sep-26"
       },
       "port_of_loading": {
         "type": "string",
@@ -62,9 +62,9 @@
         "title": "Description of Cargo / Goods",
         "example": "Refined Organic Coconut Oil"
       },
-      "shipping_agent": {
+      "name_of_shipping_line": {
         "type": "string",
-        "title": "Shipping Agent / Shipping Line",
+        "title": "Name of Shipping Line",
         "example": "CMA CGM Lanka Pvt Ltd"
       },
       "number_of_packages": {
@@ -95,13 +95,13 @@
       }
     },
     "required": [
-      "vessel_name",
-      "voyage_no",
+      "vessel",
+      "voyage_no_date",
       "port_of_loading",
       "port_of_discharge",
       "containers",
       "description_of_goods",
-      "shipping_agent",
+      "name_of_shipping_line",
       "number_of_packages",
       "gross_mass",
       "net_mass",
@@ -119,8 +119,8 @@
           {
             "type": "HorizontalLayout",
             "elements": [
-              { "type": "Control", "scope": "#/properties/vessel_name" },
-              { "type": "Control", "scope": "#/properties/voyage_no" }
+              { "type": "Control", "scope": "#/properties/vessel" },
+              { "type": "Control", "scope": "#/properties/voyage_no_date" }
             ]
           },
           {
@@ -133,7 +133,7 @@
           {
             "type": "HorizontalLayout",
             "elements": [
-              { "type": "Control", "scope": "#/properties/shipping_agent" }
+              { "type": "Control", "scope": "#/properties/name_of_shipping_line" }
             ]
           }
         ]

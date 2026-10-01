@@ -30,9 +30,9 @@
         "example": 48291
       },
       "vessel": {
-        "type": "number",
+        "type": "string",
         "title": "Vessel",
-        "example": 9401234
+        "example": "AJL FARIS"
       },
       "port_of_loading": {
         "type": "string",
