@@ -16,6 +16,12 @@
         "readOnly": true,
         "description": "The container the service order was priced on. SLPA issues the pass against this number and prints it on the pass."
       },
+      "previous_gate_pass_no": {
+        "type": "string",
+        "title": "Current Gate Pass",
+        "readOnly": true,
+        "description": "The pass already issued for this container. Finish keeps it; generating again issues a new one to replace it."
+      },
       "action": {
         "type": "string",
         "title": "What would you like to do?",
@@ -25,11 +31,15 @@
             "title": "Generate the gate pass"
           },
           {
+            "const": "finish",
+            "title": "Finish \u2014 keep the gate pass already issued"
+          },
+          {
             "const": "delete_consolidation",
             "title": "Delete the consolidation and choose a different container"
           }
         ],
-        "description": "Deleting removes the pairing at SLPA and returns you to this container\u2019s consolidation step. It is only offered before a pass exists."
+        "description": "Once a pass is issued you can finish with it, or generate it again with corrected haulage details. Deleting removes the pairing at SLPA and returns you to this container\u2019s consolidation step; it is only offered before a pass exists."
       },
       "truck_no": {
         "type": "string",
@@ -72,6 +82,39 @@
             "seal_no"
           ]
         }
+      },
+      {
+        "if": {
+          "required": [
+            "previous_gate_pass_no"
+          ],
+          "properties": {
+            "previous_gate_pass_no": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "action": {
+              "enum": [
+                "generate_gate_pass",
+                "finish"
+              ]
+            }
+          }
+        },
+        "else": {
+          "properties": {
+            "action": {
+              "enum": [
+                "generate_gate_pass",
+                "delete_consolidation"
+              ]
+            }
+          }
+        }
       }
     ]
   },
@@ -85,6 +128,21 @@
       {
         "type": "Control",
         "scope": "#/properties/so_container_no"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/previous_gate_pass_no",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/previous_gate_pass_no",
+            "schema": {
+              "type": "string",
+              "minLength": 1
+            },
+            "failWhenUndefined": true
+          }
+        }
       },
       {
         "type": "Control",
