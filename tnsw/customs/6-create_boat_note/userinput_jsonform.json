@@ -98,9 +98,9 @@
         "example": "Refined Organic Coconut Oil"
       },
       "cccn_no": {
-        "type": "number",
+        "type": "string",
         "title": "CCCN No.",
-        "example": 15131910
+        "example": "6245.96.00"
       },
       "name_of_shipping_line": {
         "type": "string",
@@ -314,9 +314,9 @@
         "example": "M. T. Fernando"
       },
       "telephone_no": {
-        "type": "number",
+        "type": "string",
         "title": "Telephone No",
-        "example": 94771234567
+        "example": "2906775/5"
       },
       "authorized_signatory": {
         "type": "string",
