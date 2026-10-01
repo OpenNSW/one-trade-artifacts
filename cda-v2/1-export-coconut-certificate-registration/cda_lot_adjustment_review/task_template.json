@@ -1,0 +1,6 @@
+{
+  "id": "cda-lot-adjustment-review--review",
+  "type": "APPLICATION",
+  "workflow_id": "cda-lot-adjustment-review--review-workflow",
+  "render_config_id": "cda-lot-adjustment-review--review:render"
+}

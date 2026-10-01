@@ -1,0 +1,54 @@
+{
+  "id": "cda-asycuda-green-check--review-workflow",
+  "name": "CDA ASYCUDA Green Check \u2014 Officer Review",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "userform",
+      "type": "TASK",
+      "task_template_id": "cda-asycuda-green-check--officer-review",
+      "input_mapping": {
+        "submission?": "submission"
+      },
+      "output_mapping": {
+        "review_outcome": "reviewform.review_outcome",
+        "asycuda_approval_confirmed": "reviewform.asycuda_approval_confirmed"
+      }
+    },
+    {
+      "id": "api_call",
+      "type": "TASK",
+      "task_template_id": "cda-asycuda-green-check--notify-decision",
+      "input_mapping": {
+        "taskId": "taskId",
+        "reviewform.review_outcome": "payload.command",
+        "reviewform": "payload.payload"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "userform"
+    },
+    {
+      "id": "e2",
+      "source_id": "userform",
+      "target_id": "api_call"
+    },
+    {
+      "id": "e3",
+      "source_id": "api_call",
+      "target_id": "end"
+    }
+  ]
+}

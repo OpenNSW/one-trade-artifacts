@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "taskCode": "cda_review_result_v1",
+  "workflow": "cda_review_result_v1",
+  "meta": {
+    "title": "CDA Application Review & Certification",
+    "description": "Officer reviews the Coconut Development Authority application and issues the final export certificate."
+  }
+}
