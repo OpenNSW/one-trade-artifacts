@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "taskCode": "cda_kcfn_issue_letter_v1",
   "workflow": "cda_kcfn_issue_letter_v1",
   "meta": {
