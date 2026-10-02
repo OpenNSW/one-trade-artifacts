@@ -1,4 +1,4 @@
 {
   "id": "slpa-gp--refusal",
-  "template": "{{if .error}}{{.error}}{{end}}"
+  "template": "{{if .issued}}### \u2705 Gate Pass Issued\n\n* **Gate Pass No**: {{if .gate_pass_no}}`{{.gate_pass_no}}`{{else}}\u2014{{end}}\n{{if .issued_at}}* **Issued At**: {{.issued_at}}\n{{end}}{{if .barcode}}\n![Gate pass barcode]({{.barcode}})\n{{end}}{{if .gate_pass_url}}\n[Download the gate pass]({{.gate_pass_url}})\n{{end}}\nBelow, choose **Finish** to keep this pass, or **Generate the gate pass** to issue a new one with updated haulage details.{{else}}{{with .error}}{{.}}{{end}}{{if .gate_pass_no}}\n\nGate pass `{{.gate_pass_no}}` is still the one in force. Choose **Finish** below to keep it.{{end}}{{end}}"
 }
