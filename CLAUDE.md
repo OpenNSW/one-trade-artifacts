@@ -83,6 +83,39 @@ output_mapping. This is a known, repeated pattern (e.g. `npqs-upload-docs--trade
 tnsw/agency drift for that id as an error; that's expected here and worth a one-line
 mention in the PR description, not something to "fix" by re-syncing the copies.
 
+## Migration to the unified (v2) shape
+
+The top-level agency folders are being migrated, one agency at a time, to the same
+shape as `tnsw/`: workflows, task templates, subtask templates and generic templates,
+plus a `task_config` binding each officer task to its workflow. `tnsw/` itself is the
+target shape and is not migrated (there is no `tnsw-v2/`). A migrated agency appears
+**alongside** its original as `<agency>-v2/`, rather than replacing it in place.
+`cda-v2/` is the first one; expect more `<agency>-v2/` folders to appear.
+
+What the v2 shape looks like (as in `cda-v2/`):
+
+- Same per-process nesting as above (`<agency>-v2/<process-slug>/`), with one folder per
+  officer task under it.
+- Each task folder is self-contained, like a `tnsw/` step folder plus a taskconfig: its
+  `*.taskconfig.json` plus the `workflow.json`, `task_template`, `review_workflow`,
+  `subtask_template`s, JSONForms, `render.json`, markdown view and notification template
+  that drive that task. All are indexed in the folder's own `<agency>-v2/manifest.json`.
+- Taskconfigs are `schemaVersion: 2`: a `workflow` id binding plus `meta`, with no
+  inline `forms`/`behavior`/`permissions`. `schemas/taskconfig.schema.json` dispatches
+  on `schemaVersion` to `taskconfig.v1.schema.json` or `taskconfig.v2.schema.json`.
+- `cda-v2/manifest.json` entries intentionally omit `"loader": "local"`.
+
+An `<agency>-v2/` folder reuses ids from its v1 counterpart. They never coexist at
+runtime: a backend loads one of `<agency>/manifest.json` or `<agency>-v2/manifest.json`,
+and the cutover switches it from one to the other. Don't rename the reused ids to
+"avoid" the overlap.
+
+**Whenever a new top-level folder is introduced (an `<agency>-v2/` or anything else),
+add it to the `aws s3 sync --include` list in both `.github/workflows/push-to-r2-dev.yml`
+and `.github/workflows/push-to-r2-staging.yml`.** The sync excludes everything not
+listed, so a folder missing from these lists is silently never published to R2. Dev
+syncs on every push to `main`, so merging is enough to publish it there.
+
 ## Artifact kinds (see any `manifest.json`)
 
 - `workflow` — an FSM: `nodes` (`START`, `TASK`, `GATEWAY`, `END`) + `edges` (with
