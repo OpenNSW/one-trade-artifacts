@@ -17,7 +17,8 @@
       },
       "output_mapping": {
         "certificate_id": "certificate_id",
-        "certificate": "certificate"
+        "certificate": "certificate",
+        "supporting_documents?": "supporting_documents"
       }
     },
     {
