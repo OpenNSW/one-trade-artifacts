@@ -121,6 +121,16 @@
                 }
               ]
             },
+            "product_type_dc": {
+              "type": "boolean",
+              "title": "DC",
+              "default": false
+            },
+            "product_type_value_added_dc": {
+              "type": "boolean",
+              "title": "Value Added DC / Low Fat DC",
+              "default": false
+            },
             "number_of_bags": {
               "type": "integer",
               "title": "Number of Bags",
@@ -145,6 +155,26 @@
             "number_of_bags",
             "weight_of_bag",
             "total_weight"
+          ],
+          "allOf": [
+            {
+              "oneOf": [
+                {
+                  "properties": {
+                    "product_type_dc": { "const": true },
+                    "product_type_value_added_dc": { "const": false }
+                  },
+                  "required": ["product_type_dc", "product_type_value_added_dc"]
+                },
+                {
+                  "properties": {
+                    "product_type_dc": { "const": false },
+                    "product_type_value_added_dc": { "const": true }
+                  },
+                  "required": ["product_type_dc", "product_type_value_added_dc"]
+                }
+              ]
+            }
           ]
         }
       },
@@ -346,7 +376,49 @@
         "elements": [
           {
             "type": "Control",
-            "scope": "#/properties/dc_grades"
+            "scope": "#/properties/dc_grades",
+            "options": {
+              "detail": {
+                "type": "VerticalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/dc_grade"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/number_of_bags"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/weight_of_bag"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/total_weight"
+                  },
+                  {
+                    "type": "Group",
+                    "label": "Product Type",
+                    "elements": [
+                      {
+                        "type": "HorizontalLayout",
+                        "elements": [
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/product_type_dc"
+                          },
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/product_type_value_added_dc"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
           }
         ]
       },
