@@ -10,8 +10,7 @@
         "oneOf": [
           { "const": "export", "title": "Export" },
           { "const": "re-export", "title": "Re-Export" }
-        ],
-        "default": "export"
+        ]
       },
       "re_export": {
         "type": "object",
@@ -29,8 +28,7 @@
             "oneOf": [
               { "const": "original", "title": "The original" },
               { "const": "certified_true_copy", "title": "A certified true copy" }
-            ],
-            "default": "certified_true_copy"
+            ]
           },
           "packing": {
             "type": "string",
@@ -38,8 +36,7 @@
             "oneOf": [
               { "const": "packed", "title": "Packed" },
               { "const": "repacked", "title": "Repacked" }
-            ],
-            "default": "packed"
+            ]
           },
           "containers": {
             "type": "string",
@@ -47,8 +44,7 @@
             "oneOf": [
               { "const": "original", "title": "The original containers" },
               { "const": "new", "title": "New containers" }
-            ],
-            "default": "original"
+            ]
           },
           "original_certificate_attached": {
             "type": "boolean",
@@ -74,8 +70,7 @@
         "oneOf": [
           { "const": "commercial", "title": "Commercial" },
           { "const": "non-commercial", "title": "Non-Commercial" }
-        ],
-        "default": "commercial"
+        ]
       },
       "applicant_name": {
         "type": "string",
@@ -98,8 +93,7 @@
           { "const": "PO-GAL", "title": "Plant Quarantine Unit - Post Office, Galle" },
           { "const": "PO-KDY", "title": "Plant Quarantine Unit - Post Office, Kandy" },
           { "const": "PO-JAF", "title": "Plant Quarantine Unit - Post Office, Jaffna" }
-        ],
-        "default": "NPQS-KAT"
+        ]
       },
       "importing_country": {
         "type": "object",
@@ -212,8 +206,7 @@
           { "const": "8", "title": "Road transport" },
           { "const": "9", "title": "Transport mode not applicable" },
           { "const": "10", "title": "Transport mode not specified" }
-        ],
-        "default": "10"
+        ]
       },
       "commodities": {
         "type": "array",
@@ -304,8 +297,7 @@
                 { "const": "35", "title": "Vegetables" },
                 { "const": "36", "title": "Wood" },
                 { "const": "37", "title": "Wood packaging material" }
-              ],
-              "default": "18"
+              ]
             },
             "commodity_condition": {
               "type": "string",
@@ -335,8 +327,7 @@
                 { "const": "22", "title": "3p-oasis-rooted" },
                 { "const": "23", "title": "5p-oasis-rooted" },
                 { "const": "24", "title": "1cp-oasis-rooted" }
-              ],
-              "default": "13"
+              ]
             },
             "commodity_intended_use": {
               "type": "string",
@@ -351,8 +342,7 @@
                 { "const": "7", "title": "Research" },
                 { "const": "8", "title": "Soil protection" },
                 { "const": "9", "title": "Sprouting for consumption" }
-              ],
-              "default": "3"
+              ]
             },
             "quantity_net_weight": {
               "type": "number",
@@ -362,7 +352,6 @@
             "quantity_net_weight_unit": {
               "type": "string",
               "title": "Net Weight Unit",
-              "default": "KGM",
               "oneOf": [
                 { "const": "DG", "title": "decigram (dg)" },
                 { "const": "KGM", "title": "kilogram (kg)" },
@@ -407,7 +396,6 @@
             "quantity_gross_weight_unit": {
               "type": "string",
               "title": "Gross Weight Unit",
-              "default": "KGM",
               "oneOf": [
                 { "const": "DG", "title": "decigram (dg)" },
                 { "const": "KGM", "title": "kilogram (kg)" },
@@ -713,8 +701,7 @@
                 { "const": "Survey Report", "title": "Survey Report" },
                 { "const": "Treatment Report", "title": "Treatment Report" },
                 { "const": "Other", "title": "Other" }
-              ],
-              "default": "Other"
+              ]
             }
           },
           "required": [
