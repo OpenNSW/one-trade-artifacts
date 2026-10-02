@@ -5,6 +5,12 @@
     "type": "object",
     "required": ["blendsheet_data"],
     "properties": {
+      "submission_ref": {
+        "type": "string",
+        "title": "Submission Reference",
+        "description": "Generated on submit.",
+        "readOnly": true
+      },
       "blendsheet_data": {
         "type": "array",
         "title": "Blend Sheets",
@@ -75,7 +81,8 @@
             "blendsheet_no": {
               "type": "string",
               "title": "Blend Sheet No.",
-              "description": "Not carried by the XML — enter manually.",
+              "description": "Generated on submit.",
+              "readOnly": true,
               "example": "2026/34254"
             },
             "exporter_registration_no": {
@@ -367,6 +374,10 @@
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/submission_ref"
+      },
       {
         "type": "Control",
         "scope": "#/properties/blendsheet_data",

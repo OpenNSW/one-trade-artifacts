@@ -24,6 +24,16 @@
         ]
       }
     },
+    "reference_ids": {
+      "templateId": "sltb-submit-blendsheet--refids",
+      "title": "Reference IDs",
+      "projector": "MARKDOWN",
+      "dataKey": "refid",
+      "visibleWhen": {
+        "states": ["QUEUED_EXTERNALLY", "COMPLETED"],
+        "requireDataKey": "refid"
+      }
+    },
     "review_history": {
       "templateId": "sltb-submit-blendsheet--previous-feedback",
       "title": "Review History",
@@ -71,7 +81,7 @@
   }
   ,
   "layouts": {
-    "1": ["status_message", "status_awaiting", "review_history", "user_form"]
+    "1": ["status_message", "status_awaiting", "reference_ids", "review_history", "user_form"]
      
     
   }

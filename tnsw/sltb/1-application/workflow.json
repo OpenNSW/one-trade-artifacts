@@ -17,6 +17,7 @@
       },
       "output_mapping": {
         "__command": "command",
+        "submission_ref?": "userform.submission_ref",
         "blendsheet_data?": "userform.blendsheet_data"
       }
     },
@@ -24,6 +25,17 @@
       "id": "draft_gateway",
       "type": "GATEWAY",
       "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "assign_refs",
+      "type": "TASK",
+      "task_template_id": "sltb-submit-blendsheet--refid",
+      "input_mapping": {
+        "userform": "userform"
+      },
+      "output_mapping": {
+        "refid.userform": "userform"
+      }
     },
     {
       "id": "officer_review",
@@ -70,6 +82,11 @@
     {
       "id": "e_submit",
       "source_id": "draft_gateway",
+      "target_id": "assign_refs"
+    },
+    {
+      "id": "e_assign_refs",
+      "source_id": "assign_refs",
       "target_id": "officer_review"
     },
     {

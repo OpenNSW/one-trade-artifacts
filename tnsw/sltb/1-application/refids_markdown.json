@@ -1,0 +1,4 @@
+{
+  "id": "sltb-submit-blendsheet--refids",
+  "template": "{{with .userform}}* **Submission Reference**: `{{.submission_ref}}`\n{{range .blendsheet_data}}* **Blend Sheet No.**: `{{.blendsheet_no}}`{{if .blend_no}} (blend {{.blend_no}}){{end}}\n{{end}}{{end}}"
+}
