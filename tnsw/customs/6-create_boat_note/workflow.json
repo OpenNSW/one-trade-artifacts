@@ -1,7 +1,7 @@
 {
   "id": "customs-create-boat-note-flow",
   "name": "Create Boat Note",
-  "version": 2,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
@@ -15,16 +15,36 @@
         "containers": "userform.containers"
       },
       "output_mapping": {
-        "vessel_name": "userform.vessel_name",
-        "voyage_no": "userform.voyage_no",
+        "shipper": "userform.shipper",
+        "consignee": "userform.consignee",
+        "notifying_address": "userform.notifying_address",
+        "voyage_no_date": "userform.voyage_no_date",
+        "warehouse_number": "userform.warehouse_number",
+        "vessel": "userform.vessel",
         "port_of_loading": "userform.port_of_loading",
         "port_of_discharge": "userform.port_of_discharge",
+        "vessel_op_code": "userform.vessel_op_code",
+        "cont_op_code": "userform.cont_op_code",
         "containers": "userform.containers",
+        "exporters_registration_no": "userform.exporters_registration_no",
         "description_of_goods": "userform.description_of_goods",
-        "shipping_agent": "userform.shipping_agent",
+        "cccn_no": "userform.cccn_no",
+        "name_of_shipping_line": "userform.name_of_shipping_line",
+        "place_of_acceptance": "userform.place_of_acceptance",
+        "place_of_delivery": "userform.place_of_delivery",
+        "marks_nos_container_no": "userform.marks_nos_container_no",
         "number_of_packages": "userform.number_of_packages",
         "gross_mass": "userform.gross_mass",
         "net_mass": "userform.net_mass",
+        "cube_m3": "userform.cube_m3",
+        "section_22": "userform.section_22",
+        "status_of_container": "userform.status_of_container",
+        "freight_payable_at": "userform.freight_payable_at",
+        "number_of_original_bs_l": "userform.number_of_original_bs_l",
+        "debit_our_ca_no_with_charges_payable": "userform.debit_our_ca_no_with_charges_payable",
+        "name_of_company_preparing_this_note": "userform.name_of_company_preparing_this_note",
+        "name_of_declarant": "userform.name_of_declarant",
+        "telephone_no": "userform.telephone_no",
         "authorized_signatory": "userform.authorized_signatory",
         "declaration_date": "userform.declaration_date"
       }

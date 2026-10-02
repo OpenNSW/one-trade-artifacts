@@ -4,15 +4,35 @@
   "schema": {
     "type": "object",
     "properties": {
-      "vessel_name": {
+      "shipper": {
         "type": "string",
-        "title": "Name of Vessel",
-        "example": "CMA CGM MARCO POLO"
+        "title": "Shipper (Name and address)",
+        "example": "Ceylon Organics (Pvt) Ltd, 42 Galle Road, Colombo 03"
       },
-      "voyage_no": {
+      "consignee": {
         "type": "string",
-        "title": "Voyage Number",
-        "example": "V092"
+        "title": "Consignee (Name and Address)",
+        "example": "Hamburg Oils GmbH, Speicherstadt 12, 20457 Hamburg, Germany"
+      },
+      "notifying_address": {
+        "type": "string",
+        "title": "Notifying Address",
+        "example": "Nordic Freight AG, Hafenstrasse 8, 20457 Hamburg, Germany"
+      },
+      "voyage_no_date": {
+        "type": "string",
+        "title": "Voyage No./Date",
+        "example": "NAQ1 10-Sep-26"
+      },
+      "warehouse_number": {
+        "type": "number",
+        "title": "Warehouse Number",
+        "example": 48291
+      },
+      "vessel": {
+        "type": "string",
+        "title": "Vessel",
+        "example": "AJL FARIS"
       },
       "port_of_loading": {
         "type": "string",
@@ -23,6 +43,21 @@
         "type": "string",
         "title": "Port of Discharge",
         "example": "Port of Hamburg (DEHAM)"
+      },
+      "vessel_op_code": {
+        "type": "string",
+        "title": "Vessel Op Code",
+        "example": "VSL-204"
+      },
+      "cont_op_code": {
+        "type": "string",
+        "title": "Cont Op Code",
+        "example": "COP-118"
+      },
+      "exporters_registration_no": {
+        "type": "string",
+        "title": "Exporter's Registration No",
+        "example": "7381/92/02/2009"
       },
       "containers": {
         "type": "array",
@@ -59,28 +94,229 @@
       },
       "description_of_goods": {
         "type": "string",
-        "title": "Description of Cargo / Goods",
+        "title": "Description of Goods",
         "example": "Refined Organic Coconut Oil"
       },
-      "shipping_agent": {
+      "cccn_no": {
         "type": "string",
-        "title": "Shipping Agent / Shipping Line",
+        "title": "CCCN No.",
+        "example": "6245.96.00"
+      },
+      "name_of_shipping_line": {
+        "type": "string",
+        "title": "Name of Shipping Line",
         "example": "CMA CGM Lanka Pvt Ltd"
+      },
+      "place_of_acceptance": {
+        "type": "string",
+        "title": "Place of Acceptance",
+        "example": "Colombo International Container Terminal"
+      },
+      "place_of_delivery": {
+        "type": "string",
+        "title": "Place of Delivery",
+        "example": "HHLA Container Terminal Tollerort, Hamburg"
+      },
+      "marks_nos_container_no": {
+        "type": "string",
+        "title": "Marks & Nos /Container No",
+        "example": "MSCU-849201-9 / LK-CUS-894021"
       },
       "number_of_packages": {
         "type": "string",
-        "title": "Number & Kind of Packages",
+        "title": "Numbers & Kind of Pkgs",
         "example": "80 steel drums on 20 wooden pallets"
       },
       "gross_mass": {
         "type": "number",
-        "title": "Gross Mass (Kg)",
+        "title": "Gross Wt. (kg.)",
         "example": 16500.5
       },
       "net_mass": {
         "type": "number",
-        "title": "Net Mass (Kg)",
+        "title": "Net Wt. (kg.)",
         "example": 15900.0
+      },
+      "cube_m3": {
+        "type": "number",
+        "title": "Cube M3",
+        "example": 28.5
+      },
+      "section_22": {
+        "type": "object",
+        "title": "Estimated and final amounts",
+        "properties": {
+          "wharfage": {
+            "type": "object",
+            "title": "Wharfage",
+            "properties": {
+              "estimated_amount": {
+                "type": "number",
+                "title": "Estimated amount"
+              },
+              "final_amount": {
+                "type": "number",
+                "title": "Final amount"
+              }
+            },
+            "required": [
+              "estimated_amount",
+              "final_amount"
+            ]
+          },
+          "less_fcl_rebate": {
+            "type": "object",
+            "title": "Less FCL Rebate",
+            "properties": {
+              "estimated_amount": {
+                "type": "number",
+                "title": "Estimated amount"
+              },
+              "final_amount": {
+                "type": "number",
+                "title": "Final amount"
+              }
+            },
+            "required": [
+              "estimated_amount",
+              "final_amount"
+            ]
+          },
+          "wharfage_payable": {
+            "type": "object",
+            "title": "Wharfage payable",
+            "properties": {
+              "estimated_amount": {
+                "type": "number",
+                "title": "Estimated amount"
+              },
+              "final_amount": {
+                "type": "number",
+                "title": "Final amount"
+              }
+            },
+            "required": [
+              "estimated_amount",
+              "final_amount"
+            ]
+          },
+          "harbour_dues": {
+            "type": "object",
+            "title": "Harbour dues",
+            "properties": {
+              "estimated_amount": {
+                "type": "number",
+                "title": "Estimated amount"
+              },
+              "final_amount": {
+                "type": "number",
+                "title": "Final amount"
+              }
+            },
+            "required": [
+              "estimated_amount",
+              "final_amount"
+            ]
+          },
+          "pre_warehousing_charges": {
+            "type": "object",
+            "title": "Pre-Warehousing charges",
+            "properties": {
+              "estimated_amount": {
+                "type": "number",
+                "title": "Estimated amount"
+              },
+              "final_amount": {
+                "type": "number",
+                "title": "Final amount"
+              }
+            },
+            "required": [
+              "estimated_amount",
+              "final_amount"
+            ]
+          },
+          "fork_lift_charges": {
+            "type": "object",
+            "title": "Fork lift charges",
+            "properties": {
+              "estimated_amount": {
+                "type": "number",
+                "title": "Estimated amount"
+              },
+              "final_amount": {
+                "type": "number",
+                "title": "Final amount"
+              }
+            },
+            "required": [
+              "estimated_amount",
+              "final_amount"
+            ]
+          },
+          "total": {
+            "type": "object",
+            "title": "Total",
+            "properties": {
+              "estimated_amount": {
+                "type": "number",
+                "title": "Estimated amount"
+              },
+              "final_amount": {
+                "type": "number",
+                "title": "Final amount"
+              }
+            },
+            "required": [
+              "estimated_amount",
+              "final_amount"
+            ]
+          }
+        },
+        "required": [
+          "wharfage",
+          "less_fcl_rebate",
+          "wharfage_payable",
+          "harbour_dues",
+          "pre_warehousing_charges",
+          "fork_lift_charges",
+          "total"
+        ]
+      },
+      "status_of_container": {
+        "type": "string",
+        "title": "Status of Container (FCL / LCL)",
+        "example": "FCL"
+      },
+      "freight_payable_at": {
+        "type": "string",
+        "title": "Freight payable at",
+        "example": "Colombo"
+      },
+      "number_of_original_bs_l": {
+        "type": "string",
+        "title": "Number of Original Bs/L",
+        "example": "3"
+      },
+      "debit_our_ca_no_with_charges_payable": {
+        "type": "string",
+        "title": "Please debit our C/A No with charges payable",
+        "example": "CA-1029384756"
+      },
+      "name_of_company_preparing_this_note": {
+        "type": "string",
+        "title": "Name of the Company Preparing this note",
+        "example": "Ceylon Freight Forwarders (Pvt) Ltd"
+      },
+      "name_of_declarant": {
+        "type": "string",
+        "title": "Name of Declarant",
+        "example": "M. T. Fernando"
+      },
+      "telephone_no": {
+        "type": "string",
+        "title": "Telephone No",
+        "example": "2906775/5"
       },
       "authorized_signatory": {
         "type": "string",
@@ -95,16 +331,34 @@
       }
     },
     "required": [
-      "vessel_name",
-      "voyage_no",
+      "shipper",
+      "consignee",
+      "notifying_address",
+      "voyage_no_date",
+      "warehouse_number",
+      "vessel",
       "port_of_loading",
       "port_of_discharge",
       "containers",
+      "exporters_registration_no",
       "description_of_goods",
-      "shipping_agent",
+      "name_of_shipping_line",
+      "place_of_acceptance",
+      "place_of_delivery",
+      "marks_nos_container_no",
       "number_of_packages",
+      "cccn_no",
       "gross_mass",
       "net_mass",
+      "cube_m3",
+      "section_22",
+      "status_of_container",
+      "freight_payable_at",
+      "number_of_original_bs_l",
+      "debit_our_ca_no_with_charges_payable",
+      "name_of_company_preparing_this_note",
+      "name_of_declarant",
+      "telephone_no",
       "authorized_signatory",
       "declaration_date"
     ]
@@ -113,34 +367,91 @@
     "type": "VerticalLayout",
     "elements": [
       {
-        "type": "Group",
-        "label": "1. Shipment & Vessel Information",
+        "type": "HorizontalLayout",
         "elements": [
           {
-            "type": "HorizontalLayout",
+            "type": "Group",
+            "label": "1. Shipper (Name and address)",
             "elements": [
-              { "type": "Control", "scope": "#/properties/vessel_name" },
-              { "type": "Control", "scope": "#/properties/voyage_no" }
+              { "type": "Control", "scope": "#/properties/shipper", "label": false }
             ]
           },
           {
-            "type": "HorizontalLayout",
+            "type": "Group",
+            "label": "2. Consignee (Name and Address)",
             "elements": [
-              { "type": "Control", "scope": "#/properties/port_of_loading" },
-              { "type": "Control", "scope": "#/properties/port_of_discharge" }
+              { "type": "Control", "scope": "#/properties/consignee", "label": false }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "HorizontalLayout",
+        "elements": [
+          {
+            "type": "Group",
+            "label": "3. Notifying Address",
+            "elements": [
+              { "type": "Control", "scope": "#/properties/notifying_address", "label": false }
             ]
           },
           {
-            "type": "HorizontalLayout",
+            "type": "Group",
+            "label": "4. Voyage No./Date",
             "elements": [
-              { "type": "Control", "scope": "#/properties/shipping_agent" }
+              { "type": "Control", "scope": "#/properties/voyage_no_date", "label": false }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "HorizontalLayout",
+        "elements": [
+          {
+            "type": "Group",
+            "label": "5. Warehouse Number",
+            "elements": [
+              { "type": "Control", "scope": "#/properties/warehouse_number", "label": false }
+            ]
+          },
+          {
+            "type": "Group",
+            "label": "6. Vessel",
+            "elements": [
+              { "type": "Control", "scope": "#/properties/vessel", "label": false }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "HorizontalLayout",
+        "elements": [
+          {
+            "type": "Group",
+            "label": "7. Port of Loading",
+            "elements": [
+              { "type": "Control", "scope": "#/properties/port_of_loading", "label": false }
+            ]
+          },
+          {
+            "type": "Group",
+            "label": "8. Port of Discharge",
+            "elements": [
+              { "type": "Control", "scope": "#/properties/port_of_discharge", "label": false },
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  { "type": "Control", "scope": "#/properties/vessel_op_code" },
+                  { "type": "Control", "scope": "#/properties/cont_op_code" }
+                ]
+              }
             ]
           }
         ]
       },
       {
         "type": "Group",
-        "label": "2. Container & Seal Details",
+        "label": "Container & Seal Details",
         "elements": [
           {
             "type": "Control",
@@ -162,29 +473,271 @@
         ]
       },
       {
-        "type": "Group",
-        "label": "3. Goods Specifications",
+        "type": "HorizontalLayout",
         "elements": [
           {
-            "type": "Control",
-            "scope": "#/properties/description_of_goods"
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/number_of_packages"
-          },
-          {
-            "type": "HorizontalLayout",
+            "type": "Group",
+            "label": "11. Exporter's Registration No",
             "elements": [
-              { "type": "Control", "scope": "#/properties/gross_mass" },
-              { "type": "Control", "scope": "#/properties/net_mass" }
+              { "type": "Control", "scope": "#/properties/exporters_registration_no", "label": false }
+            ]
+          },
+          {
+            "type": "Group",
+            "label": "13. Name of Shipping Line",
+            "elements": [
+              { "type": "Control", "scope": "#/properties/name_of_shipping_line", "label": false }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "HorizontalLayout",
+        "elements": [
+          {
+            "type": "Group",
+            "label": "14.a Place of Acceptance",
+            "elements": [
+              { "type": "Control", "scope": "#/properties/place_of_acceptance", "label": false }
+            ]
+          },
+          {
+            "type": "Group",
+            "label": "14.b Place of Delivery",
+            "elements": [
+              { "type": "Control", "scope": "#/properties/place_of_delivery", "label": false }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "HorizontalLayout",
+        "elements": [
+          {
+            "type": "Group",
+            "label": "15. Marks & Nos /Container No",
+            "elements": [
+              { "type": "Control", "scope": "#/properties/marks_nos_container_no", "label": false }
+            ]
+          },
+          {
+            "type": "Group",
+            "label": "16. Numbers & Kind of Pkgs",
+            "elements": [
+              { "type": "Control", "scope": "#/properties/number_of_packages", "label": false }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "HorizontalLayout",
+        "elements": [
+          {
+            "type": "Group",
+            "label": "17. Description of Goods",
+            "elements": [
+              { "type": "Control", "scope": "#/properties/description_of_goods", "label": false }
+            ]
+          },
+          {
+            "type": "Group",
+            "label": "18. CCCN No.",
+            "elements": [
+              { "type": "Control", "scope": "#/properties/cccn_no", "label": false }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "HorizontalLayout",
+        "elements": [
+          {
+            "type": "Group",
+            "label": "19.a Gross Wt. (kg.)",
+            "elements": [
+              { "type": "Control", "scope": "#/properties/gross_mass", "label": false }
+            ]
+          },
+          {
+            "type": "Group",
+            "label": "19.b Net Wt. (kg.)",
+            "elements": [
+              { "type": "Control", "scope": "#/properties/net_mass", "label": false }
             ]
           }
         ]
       },
       {
         "type": "Group",
-        "label": "4. Signatory & Declaration",
+        "label": "20.a Cube M3",
+        "elements": [
+          { "type": "Control", "scope": "#/properties/cube_m3", "label": false }
+        ]
+      },
+      {
+        "type": "Group",
+        "label": "22. Estimated and final amounts",
+        "elements": [
+          {
+            "type": "Group",
+            "label": "a. Wharfage",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  { "type": "Control", "scope": "#/properties/section_22/properties/wharfage/properties/estimated_amount" },
+                  { "type": "Control", "scope": "#/properties/section_22/properties/wharfage/properties/final_amount" }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Group",
+            "label": "b. Less FCL Rebate",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  { "type": "Control", "scope": "#/properties/section_22/properties/less_fcl_rebate/properties/estimated_amount" },
+                  { "type": "Control", "scope": "#/properties/section_22/properties/less_fcl_rebate/properties/final_amount" }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Group",
+            "label": "c. Wharfage payable",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  { "type": "Control", "scope": "#/properties/section_22/properties/wharfage_payable/properties/estimated_amount" },
+                  { "type": "Control", "scope": "#/properties/section_22/properties/wharfage_payable/properties/final_amount" }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Group",
+            "label": "d. Harbour dues",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  { "type": "Control", "scope": "#/properties/section_22/properties/harbour_dues/properties/estimated_amount" },
+                  { "type": "Control", "scope": "#/properties/section_22/properties/harbour_dues/properties/final_amount" }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Group",
+            "label": "e. Pre-Warehousing charges",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  { "type": "Control", "scope": "#/properties/section_22/properties/pre_warehousing_charges/properties/estimated_amount" },
+                  { "type": "Control", "scope": "#/properties/section_22/properties/pre_warehousing_charges/properties/final_amount" }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Group",
+            "label": "f. Fork lift charges",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  { "type": "Control", "scope": "#/properties/section_22/properties/fork_lift_charges/properties/estimated_amount" },
+                  { "type": "Control", "scope": "#/properties/section_22/properties/fork_lift_charges/properties/final_amount" }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Group",
+            "label": "g. Total",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  { "type": "Control", "scope": "#/properties/section_22/properties/total/properties/estimated_amount" },
+                  { "type": "Control", "scope": "#/properties/section_22/properties/total/properties/final_amount" }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "HorizontalLayout",
+        "elements": [
+          {
+            "type": "Group",
+            "label": "25.a Status of Container (FCL / LCL)",
+            "elements": [
+              { "type": "Control", "scope": "#/properties/status_of_container", "label": false }
+            ]
+          },
+          {
+            "type": "Group",
+            "label": "25.b Freight payable at",
+            "elements": [
+              { "type": "Control", "scope": "#/properties/freight_payable_at", "label": false }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "HorizontalLayout",
+        "elements": [
+          {
+            "type": "Group",
+            "label": "26. Number of Original Bs/L",
+            "elements": [
+              { "type": "Control", "scope": "#/properties/number_of_original_bs_l", "label": false }
+            ]
+          },
+          {
+            "type": "Group",
+            "label": "27. Please debit our C/A No with charges payable",
+            "elements": [
+              { "type": "Control", "scope": "#/properties/debit_our_ca_no_with_charges_payable", "label": false }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "HorizontalLayout",
+        "elements": [
+          {
+            "type": "Group",
+            "label": "30. Name of the Company Preparing this note",
+            "elements": [
+              { "type": "Control", "scope": "#/properties/name_of_company_preparing_this_note", "label": false }
+            ]
+          },
+          {
+            "type": "Group",
+            "label": "31. Name of Declarant",
+            "elements": [
+              { "type": "Control", "scope": "#/properties/name_of_declarant", "label": false }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "label": "32. Telephone No",
+        "elements": [
+          { "type": "Control", "scope": "#/properties/telephone_no", "label": false }
+        ]
+      },
+      {
+        "type": "Group",
+        "label": "33. Signature of Declarant",
         "elements": [
           {
             "type": "HorizontalLayout",
