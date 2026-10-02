@@ -2503,6 +2503,18 @@
       "path": "sltb/1-application/traderinput.json"
     },
     {
+      "id": "sltb-submit-blendsheet--refid",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb/1-application/refid.json"
+    },
+    {
+      "id": "sltb-submit-blendsheet--refids",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/1-application/refids_markdown.json"
+    },
+    {
       "id": "sltb-submit-blendsheet--user-form",
       "kind": "generic_template",
       "version": "",

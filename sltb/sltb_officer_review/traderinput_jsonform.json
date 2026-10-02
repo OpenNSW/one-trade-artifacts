@@ -5,6 +5,11 @@
     "type": "object",
     "required": ["blendsheet_data"],
     "properties": {
+      "submission_ref": {
+        "type": "string",
+        "title": "Submission Reference",
+        "readOnly": true
+      },
       "blendsheet_data": {
         "type": "array",
         "title": "Blend Sheets",
@@ -347,6 +352,10 @@
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/submission_ref"
+      },
       {
         "type": "Control",
         "scope": "#/properties/blendsheet_data",
