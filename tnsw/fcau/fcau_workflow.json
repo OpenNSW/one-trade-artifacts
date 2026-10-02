@@ -297,7 +297,8 @@
       },
       "output_mapping": {
         "certificate_id": "fcau.certificate_id",
-        "certificate": "fcau.certificate"
+        "certificate": "fcau.certificate",
+        "supporting_documents?": "fcau.supporting_documents"
       }
     },
     {

@@ -14,6 +14,19 @@
         "title": "Certificate File Upload (PDF)",
         "format": "file"
       },
+      "supporting_documents": {
+        "type": "array",
+        "title": "Supporting Documents (e.g. Lab Report)",
+        "description": "Attach any supporting documents such as the lab report (up to 5 files).",
+        "items": {
+          "type": "string",
+          "format": "file"
+        },
+        "x-file": {
+          "maxFiles": 5,
+          "accept": ".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx"
+        }
+      },
       "authorized_signature": {
         "type": "string",
         "title": "Approving Officer",
@@ -36,6 +49,10 @@
       {
         "type": "Control",
         "scope": "#/properties/certificate"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/supporting_documents"
       },
       {
         "type": "Control",
