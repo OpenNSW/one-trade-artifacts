@@ -1,0 +1,6 @@
+{
+  "id": "cda-kcfn-issue-letter--review",
+  "type": "APPLICATION",
+  "workflow_id": "cda-kcfn-issue-letter--review-workflow",
+  "render_config_id": "cda-kcfn-issue-letter--review:render"
+}

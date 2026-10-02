@@ -1,0 +1,45 @@
+{
+  "id": "cda-review-result--review:render",
+  "type": "APPLICATION",
+  "title": "CDA Application Review & Certification",
+  "sections": {
+    "submission_view": {
+      "templateId": "cda-apply-coconut-cert--user-form",
+      "title": "Submitted Application",
+      "projector": "FORM",
+      "dataKey": "submission"
+    },
+    "review_form": {
+      "templateId": "cda-review-result--officer-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Issue Certificate",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "status_message": {
+      "templateId": "cda-review-result--submission-view",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}

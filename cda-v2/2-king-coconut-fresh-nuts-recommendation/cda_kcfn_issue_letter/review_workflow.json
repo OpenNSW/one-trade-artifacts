@@ -1,0 +1,56 @@
+{
+  "id": "cda-kcfn-issue-letter--review-workflow",
+  "name": "CDA Officer Recommendation Letter Issuance \u2014 Officer Review",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "userform",
+      "type": "TASK",
+      "task_template_id": "cda-kcfn-issue-letter--officer-review",
+      "input_mapping": {
+        "submission?": "submission"
+      },
+      "output_mapping": {
+        "__command": "command",
+        "recommendation_letter_id": "reviewform.recommendation_letter_id",
+        "recommendation_letter_file": "reviewform.recommendation_letter_file",
+        "remarks?": "reviewform.remarks"
+      }
+    },
+    {
+      "id": "api_call",
+      "type": "TASK",
+      "task_template_id": "cda-kcfn-issue-letter--notify-decision",
+      "input_mapping": {
+        "taskId": "taskId",
+        "command": "payload.command",
+        "reviewform": "payload.payload"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "userform"
+    },
+    {
+      "id": "e2",
+      "source_id": "userform",
+      "target_id": "api_call"
+    },
+    {
+      "id": "e3",
+      "source_id": "api_call",
+      "target_id": "end"
+    }
+  ]
+}

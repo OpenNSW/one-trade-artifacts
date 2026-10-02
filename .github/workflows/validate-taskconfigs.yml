@@ -4,13 +4,13 @@ on:
   pull_request:
     paths:
       - "**/*.taskconfig.json"
-      - "schemas/taskconfig.schema.json"
+      - "schemas/taskconfig*.schema.json"
       - ".github/workflows/validate-taskconfigs.yml"
   push:
     branches: [main]
     paths:
       - "**/*.taskconfig.json"
-      - "schemas/taskconfig.schema.json"
+      - "schemas/taskconfig*.schema.json"
       - ".github/workflows/validate-taskconfigs.yml"
 
 permissions:
