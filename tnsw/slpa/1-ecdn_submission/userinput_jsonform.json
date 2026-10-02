@@ -215,7 +215,6 @@
             "title": "LCL"
           }
         ],
-        "default": "FCL",
         "description": "FCL and LCL are validated differently by the CMS."
       },
       "shipperName": {
@@ -457,8 +456,7 @@
                   "const": "Reefer",
                   "title": "Reefer"
                 }
-              ],
-              "default": "General"
+              ]
             },
             "containerSize": {
               "type": "string",
@@ -476,8 +474,7 @@
                   "const": "45",
                   "title": "45"
                 }
-              ],
-              "default": "20"
+              ]
             },
             "sealNumber": {
               "type": "string",
@@ -501,8 +498,7 @@
                   "const": "Non DC",
                   "title": "Non DC"
                 }
-              ],
-              "default": "Non DC"
+              ]
             }
           },
           "required": [
