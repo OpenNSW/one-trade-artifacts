@@ -72,7 +72,7 @@
         "properties": {
           "officeCode": {
             "type": "string",
-            "title": "Customs Office Code",
+            "title": "29. Office of Entry/Exit",
             "x-search": {
               "service": "static-data",
               "mode": "large-searchable-list",
@@ -86,7 +86,7 @@
           },
           "declarationType": {
             "type": "string",
-            "title": "Declaration Type",
+            "title": "1. Declaration Type",
             "oneOf": [
               {
                 "const": "EX",
@@ -193,7 +193,7 @@
             "properties": {
               "code": {
                 "type": "string",
-                "title": "Declarant Code",
+                "title": "14. Declarant/Representative Code",
                 "example": "900000000"
               }
             },
@@ -214,7 +214,7 @@
         "properties": {
           "countryOfFirstDestination": {
             "type": "string",
-            "title": "Country of First Destination",
+            "title": "10. Country of First Destination",
             "x-search": {
               "service": "static-data",
               "mode": "large-searchable-list",
@@ -228,7 +228,7 @@
           },
           "exportCountryCode": {
             "type": "string",
-            "title": "Export Country Code",
+            "title": "15. Country of Export",
             "x-search": {
               "service": "static-data",
               "mode": "large-searchable-list",
@@ -242,7 +242,7 @@
           },
           "destinationCountryCode": {
             "type": "string",
-            "title": "Destination Country Code",
+            "title": "17. Country of Destination",
             "x-search": {
               "service": "static-data",
               "mode": "large-searchable-list",
@@ -267,7 +267,7 @@
         "properties": {
           "vesselName": {
             "type": "string",
-            "title": "Vessel Name",
+            "title": "18. Vessel/Flight",
             "example": "MSC SAVANNA"
           },
           "transportNationality": {
@@ -287,7 +287,7 @@
           },
           "voyageNo": {
             "type": "string",
-            "title": "Voyage No",
+            "title": "21. Voyage No./Date",
             "example": "185 E DATED 20/04/2026"
           },
           "voyageNationality": {
@@ -306,7 +306,7 @@
           },
           "modeOfTransport": {
             "type": "string",
-            "title": "Mode of Transport",
+            "title": "25. Mode of Transport at Border",
             "x-search":{
               "service": "static-data",
               "mode": "small-list",
@@ -326,7 +326,7 @@
           },
           "deliveryTermsCode": {
             "type": "string",
-            "title": "Delivery Terms Code",
+            "title": "20. Delivery Terms",
             "x-search": {
               "service": "static-data",
               "mode": "small-list",
@@ -359,7 +359,7 @@
           },
           "placeOfDischargeCode": {
             "type": "string",
-            "title": "Place of Discharge Code",
+            "title": "27. Place of Discharging",
             "description": "UNLOCODE of the place where the goods are discharged.",
             "x-search": {
               "service": "static-data",
@@ -404,7 +404,7 @@
           },
           "bankReference": {
             "type": "string",
-            "title": "Bank Reference",
+            "title": "Bank Reference No.",
             "example": "84004328"
           },
           "remittanceAmount": {
@@ -415,7 +415,7 @@
           },
           "paymentTermsCode": {
             "type": "string",
-            "title": "Payment Terms Code",
+            "title": "Terms of Payment",
             "example": "31"
           }
         },
@@ -594,7 +594,7 @@
                 },
                 "kindCode": {
                   "type": "string",
-                  "title": "Package Kind Code",
+                  "title": "Number & Kind",
                   "example": "PK"
                 }
               },
@@ -675,7 +675,7 @@
               "properties": {
                 "originCountryCode": {
                   "type": "string",
-                  "title": "Origin Country Code",
+                  "title": "16. Country of Origin",
                   "x-search": {
                     "service": "static-data",
                     "mode": "large-searchable-list",
@@ -713,7 +713,7 @@
             },
             "marksAndNumbers": {
               "type": "string",
-              "title": "Marks and Numbers",
+              "title": "Marks and Nos of Packages",
               "example": "COCO WORLD SDN BHD / KUALA LUMPUR / CTNS 1-25"
             },
             "valuation": {
@@ -821,8 +821,148 @@
       },
       {
         "type": "Group",
-        "label": "1. Shipment",
+        "label": "Header information",
         "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/identification/properties/declarationType"
+          },
+          {
+            "type": "Group",
+            "label": "2. Exporter",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/traders/properties/exporter/properties/code"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/traders/properties/exporter/properties/name"
+                  }
+                ]
+              },
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/traders/properties/exporter/properties/address"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/traders/properties/exporter/properties/countryCode"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Group",
+            "label": "8. Consignee",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/traders/properties/consignee/properties/name"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/traders/properties/consignee/properties/countryCode"
+                  }
+                ]
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/traders/properties/consignee/properties/address"
+              }
+            ]
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/generalInfo/properties/countryOfFirstDestination"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/traders/properties/declarant/properties/code"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/generalInfo/properties/exportCountryCode"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/items/items/properties/goodsDescription/properties/originCountryCode"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/generalInfo/properties/destinationCountryCode"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport/properties/vesselName"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport/properties/deliveryTermsCode"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport/properties/voyageNo"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport/properties/modeOfTransport"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport/properties/placeOfDischargeCode"
+          },
+          {
+            "type": "Group",
+            "label": "28. Financial and banking data",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/financial/properties/bankCode"
+                  }
+                ]
+              },
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/financial/properties/bankReference"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/financial/properties/paymentTermsCode"
+                  }
+                ]
+              },
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/financial/properties/remittanceAmount"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/identification/properties/officeCode"
+          },
           {
             "type": "Control",
             "scope": "#/properties/containerCount"
@@ -831,21 +971,13 @@
       },
       {
         "type": "Group",
+        "label": "31. Packages and Description of Goods",
+        "elements": []
+      },
+      {
+        "type": "Group",
         "label": "2. Identification",
         "elements": [
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/identification/properties/officeCode"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/identification/properties/declarationType"
-              }
-            ]
-          },
           {
             "type": "Control",
             "scope": "#/properties/identification/properties/generalProcedureCode"
@@ -854,134 +986,15 @@
       },
       {
         "type": "Group",
-        "label": "3. Exporter",
-        "elements": [
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/traders/properties/exporter/properties/code"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/traders/properties/exporter/properties/name"
-              }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/traders/properties/exporter/properties/address"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/traders/properties/exporter/properties/countryCode"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "Group",
-        "label": "4. Consignee",
-        "elements": [
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/traders/properties/consignee/properties/name"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/traders/properties/consignee/properties/countryCode"
-              }
-            ]
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/traders/properties/consignee/properties/address"
-          }
-        ]
-      },
-      {
-        "type": "Group",
-        "label": "5. Declarant",
-        "elements": [
-          {
-            "type": "Control",
-            "scope": "#/properties/traders/properties/declarant/properties/code"
-          }
-        ]
-      },
-      {
-        "type": "Group",
-        "label": "6. General Information",
-        "elements": [
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/generalInfo/properties/countryOfFirstDestination"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/generalInfo/properties/exportCountryCode"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/generalInfo/properties/destinationCountryCode"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "Group",
         "label": "7. Transport",
         "elements": [
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/vesselName"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/voyageNo"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/transport/properties/containerized"
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/modeOfTransport"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/containerized"
-              }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/deliveryTermsCode"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/deliveryTermsPlace"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/transport/properties/deliveryTermsPlace"
           },
           {
             "type": "Control",
@@ -997,52 +1010,6 @@
               {
                 "type": "Control",
                 "scope": "#/properties/transport/properties/voyageNationality"
-              }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/placeOfDischargeCode"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "Group",
-        "label": "8. Financial",
-        "elements": [
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/financial/properties/bankCode"
-              }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/financial/properties/bankReference"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/financial/properties/paymentTermsCode"
-              }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/financial/properties/remittanceAmount"
               }
             ]
           }
@@ -1250,17 +1217,8 @@
                     ]
                   },
                   {
-                    "type": "HorizontalLayout",
-                    "elements": [
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/goodsDescription/properties/originCountryCode"
-                      },
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/goodsDescription/properties/description"
-                      }
-                    ]
+                    "type": "Control",
+                    "scope": "#/properties/goodsDescription/properties/description"
                   },
                   {
                     "type": "Control",
