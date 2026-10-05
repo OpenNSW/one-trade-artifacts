@@ -609,12 +609,12 @@
               "properties": {
                 "hsCode": {
                   "type": "string",
-                  "title": "HS Code",
+                  "title": "33. Commodity (HS) Code",
                   "example": "11063010"
                 },
                 "preferenceCode": {
                   "type": "string",
-                  "title": "Preference Code",
+                  "title": "36. Preference Code",
                   "example": "ISFTA"
                 },
                 "extendedProcedureCode": {
@@ -658,7 +658,7 @@
                 },
                 "itemPrice": {
                   "type": "number",
-                  "title": "Item Price",
+                  "title": "42. Item Price",
                   "example": 2400
                 }
               },
@@ -722,17 +722,17 @@
               "properties": {
                 "grossWeight": {
                   "type": "number",
-                  "title": "Gross Weight",
+                  "title": "35. Gross Mass (kg)",
                   "example": 1500
                 },
                 "netWeight": {
                   "type": "number",
-                  "title": "Net Weight",
+                  "title": "38. Net Mass (kg)",
                   "example": 1000
                 },
                 "invoiceAmount": {
                   "type": "object",
-                  "title": "Invoice Amount",
+                  "title": "Invoice value",
                   "properties": {
                     "amount": {
                       "type": "number",
@@ -825,6 +825,10 @@
         "elements": [
           {
             "type": "Control",
+            "scope": "#/properties/identification/properties/generalProcedureCode"
+          },
+          {
+            "type": "Control",
             "scope": "#/properties/identification/properties/declarationType"
           },
           {
@@ -883,44 +887,69 @@
             ]
           },
           {
-            "type": "Control",
-            "scope": "#/properties/generalInfo/properties/countryOfFirstDestination"
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/generalInfo/properties/countryOfFirstDestination"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/traders/properties/declarant/properties/code"
+              }
+            ]
           },
           {
-            "type": "Control",
-            "scope": "#/properties/traders/properties/declarant/properties/code"
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/generalInfo/properties/exportCountryCode"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/items/items/properties/goodsDescription/properties/originCountryCode"
+              }
+            ]
           },
           {
-            "type": "Control",
-            "scope": "#/properties/generalInfo/properties/exportCountryCode"
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/generalInfo/properties/destinationCountryCode"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/transport/properties/vesselName"
+              }
+            ]
           },
           {
-            "type": "Control",
-            "scope": "#/properties/items/items/properties/goodsDescription/properties/originCountryCode"
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/transport/properties/deliveryTermsCode"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/transport/properties/voyageNo"
+              }
+            ]
           },
           {
-            "type": "Control",
-            "scope": "#/properties/generalInfo/properties/destinationCountryCode"
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/transport/properties/vesselName"
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/transport/properties/deliveryTermsCode"
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/transport/properties/voyageNo"
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/transport/properties/modeOfTransport"
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/transport/properties/placeOfDischargeCode"
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/transport/properties/modeOfTransport"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/transport/properties/placeOfDischargeCode"
+              }
+            ]
           },
           {
             "type": "Group",
@@ -932,12 +961,7 @@
                   {
                     "type": "Control",
                     "scope": "#/properties/financial/properties/bankCode"
-                  }
-                ]
-              },
-              {
-                "type": "HorizontalLayout",
-                "elements": [
+                  },
                   {
                     "type": "Control",
                     "scope": "#/properties/financial/properties/bankReference"
@@ -949,60 +973,178 @@
                 ]
               },
               {
-                "type": "HorizontalLayout",
-                "elements": [
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/financial/properties/remittanceAmount"
-                  }
-                ]
+                "type": "Control",
+                "scope": "#/properties/financial/properties/remittanceAmount"
               }
             ]
           },
           {
             "type": "Control",
             "scope": "#/properties/identification/properties/officeCode"
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/containerCount"
           }
         ]
       },
       {
         "type": "Group",
         "label": "31. Packages and Description of Goods",
-        "elements": []
-      },
-      {
-        "type": "Group",
-        "label": "2. Identification",
         "elements": [
           {
             "type": "Control",
-            "scope": "#/properties/identification/properties/generalProcedureCode"
+            "scope": "#/properties/containerCount"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/items",
+            "options": {
+              "detail": {
+                "type": "VerticalLayout",
+                "elements": [
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/packages/properties/quantity"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/packages/properties/kindCode"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/tarification/properties/hsCode"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/tarification/properties/preferenceCode"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Group",
+                    "label": "37. Procedure Code",
+                    "elements": [
+                      {
+                        "type": "HorizontalLayout",
+                        "elements": [
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/tarification/properties/extendedProcedureCode"
+                          },
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/tarification/properties/nationalProcedureCode"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Group",
+                    "label": "41. UOM and Qty",
+                    "elements": [
+                      {
+                        "type": "HorizontalLayout",
+                        "elements": [
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/tarification/properties/supplementaryUnit/properties/code"
+                          },
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/tarification/properties/supplementaryUnit/properties/quantity"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/tarification/properties/itemPrice"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/goodsDescription/properties/description"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/goodsDescription/properties/commercialDescription"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/goodsDescription/properties/commercialDescription1"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/marksAndNumbers"
+                  },
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/valuation/properties/grossWeight"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/valuation/properties/netWeight"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Group",
+                    "label": "Invoice amount",
+                    "elements": [
+                      {
+                        "type": "HorizontalLayout",
+                        "elements": [
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/valuation/properties/invoiceAmount/properties/amount"
+                          },
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/valuation/properties/invoiceAmount/properties/currencyCode"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
           }
         ]
       },
       {
         "type": "Group",
-        "label": "7. Transport",
+        "label": "Transportation",
         "elements": [
           {
-            "type": "Control",
-            "scope": "#/properties/transport/properties/containerized"
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/transport/properties/deliveryTermsPlace"
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/transport/properties/borderOfficeCode"
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/transport/properties/deliveryTermsPlace"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/transport/properties/containerized"
+              }
+            ]
           },
           {
             "type": "HorizontalLayout",
             "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/transport/properties/borderOfficeCode"
+              },
               {
                 "type": "Control",
                 "scope": "#/properties/transport/properties/transportNationality"
@@ -1017,7 +1159,7 @@
       },
       {
         "type": "Group",
-        "label": "9. Valuation",
+        "label": "Valuation",
         "elements": [
           {
             "type": "Group",
@@ -1141,7 +1283,7 @@
       },
       {
         "type": "Group",
-        "label": "10. Packages",
+        "label": "Packages",
         "elements": [
           {
             "type": "Control",
@@ -1150,135 +1292,8 @@
         ]
       },
       {
-        "type": "Group",
-        "label": "11. Declaration Items",
-        "elements": [
-          {
-            "type": "Control",
-            "scope": "#/properties/items",
-            "options": {
-              "detail": {
-                "type": "VerticalLayout",
-                "elements": [
-                  {
-                    "type": "HorizontalLayout",
-                    "elements": [
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/packages/properties/quantity"
-                      },
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/packages/properties/kindCode"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "HorizontalLayout",
-                    "elements": [
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/tarification/properties/hsCode"
-                      },
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/tarification/properties/preferenceCode"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "HorizontalLayout",
-                    "elements": [
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/tarification/properties/extendedProcedureCode"
-                      },
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/tarification/properties/nationalProcedureCode"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "HorizontalLayout",
-                    "elements": [
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/tarification/properties/supplementaryUnit/properties/code"
-                      },
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/tarification/properties/supplementaryUnit/properties/quantity"
-                      },
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/tarification/properties/itemPrice"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/goodsDescription/properties/description"
-                  },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/goodsDescription/properties/commercialDescription"
-                  },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/goodsDescription/properties/commercialDescription1"
-                  },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/marksAndNumbers"
-                  },
-                  {
-                    "type": "HorizontalLayout",
-                    "elements": [
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/valuation/properties/grossWeight"
-                      },
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/valuation/properties/netWeight"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "Group",
-                    "label": "Invoice amount",
-                    "elements": [
-                      {
-                        "type": "HorizontalLayout",
-                        "elements": [
-                          {
-                            "type": "Control",
-                            "scope": "#/properties/valuation/properties/invoiceAmount/properties/amount"
-                          },
-                          {
-                            "type": "Control",
-                            "scope": "#/properties/valuation/properties/invoiceAmount/properties/currencyCode"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              }
-            }
-          }
-        ]
-      },
-      {
-        "type": "Group",
-        "label": "12. Supporting Documents",
-        "elements": [
-          {
-            "type": "Control",
-            "scope": "#/properties/supportingDocuments"
-          }
-        ]
+        "type": "Control",
+        "scope": "#/properties/supportingDocuments"
       }
     ]
   }
