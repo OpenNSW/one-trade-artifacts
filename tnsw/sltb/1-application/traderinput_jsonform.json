@@ -65,7 +65,6 @@
               "type": "string",
               "title": "Form",
               "description": "Printed top-right of the blend sheet. Not carried by the XML — select manually.",
-              "default": "100_local",
               "oneOf": [
                 { "const": "100_local", "title": "100% LOCAL" },
                 { "const": "local_and_imported", "title": "LOCAL+IMPORTED" },
@@ -138,7 +137,6 @@
               "type": "string",
               "title": "Logo Lion",
               "description": "Select 'Yes' if this blend sheet requires SLTB Lion Logo certification.",
-              "default": "no",
               "oneOf": [
                 { "const": "no", "title": "No — Lion Logo not required" },
                 { "const": "yes", "title": "Yes — Apply for Lion Logo (USED)" }

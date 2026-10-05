@@ -126,8 +126,7 @@
                   "const": "OTT",
                   "title": "Other Treatment (OTT)"
                 }
-              ],
-              "default": "FU"
+              ]
             },
             "chemical_used": {
               "type": "string",

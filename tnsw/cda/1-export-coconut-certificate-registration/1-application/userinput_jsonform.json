@@ -20,8 +20,7 @@
             "const": "EXP-CDA-003",
             "title": "Coconut Development Authority Exports Mock (CDA/REG/003) - 789 Negombo Road, Katunayake"
           }
-        ],
-        "default": "EXP-CDA-001"
+        ]
       },
       "cusdec_number": {
         "type": "string",
@@ -193,8 +192,7 @@
             "const": "part",
             "title": "Part"
           }
-        ],
-        "default": "full"
+        ]
       },
       "balance_material_nature": {
         "type": "string",
