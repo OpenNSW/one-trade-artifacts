@@ -42,9 +42,11 @@
         "example": "08011200"
       },
       "contract_number": {
-        "type": "integer",
+        "type": "string",
         "title": "Contract Number",
-        "example": 987654
+        "pattern": "^[A-Za-z0-9]*$",
+        "description": "Letters and digits only.",
+        "example": "987654"
       },
       "lot_number": {
         "type": "string",
@@ -110,16 +112,19 @@
             "number_of_bags": {
               "type": "integer",
               "title": "Number of Bags",
+              "minimum": 1,
               "example": 500
             },
             "weight_of_bag": {
               "type": "number",
               "title": "Weight of a Bag (kg)",
+              "exclusiveMinimum": 0,
               "example": 25
             },
             "total_weight": {
               "type": "number",
               "title": "Total Weight (kg)",
+              "exclusiveMinimum": 0,
               "example": 12500
             }
           },
@@ -135,6 +140,7 @@
         "type": "string",
         "format": "date",
         "title": "Date of Containerization",
+        "x-notLaterThan": "date_of_sailing",
         "example": "2026-06-10"
       },
       "vessel_name": {
