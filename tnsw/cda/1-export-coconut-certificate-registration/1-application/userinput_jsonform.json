@@ -121,15 +121,19 @@
                 }
               ]
             },
-            "product_type_dc": {
-              "type": "boolean",
-              "title": "DC",
-              "default": false
-            },
-            "product_type_value_added_dc": {
-              "type": "boolean",
-              "title": "Value Added DC / Low Fat DC",
-              "default": false
+            "product_type": {
+              "type": "string",
+              "title": "Product Type",
+              "oneOf": [
+                {
+                  "const": "dc",
+                  "title": "DC"
+                },
+                {
+                  "const": "value_added_dc",
+                  "title": "Value Added DC / Low Fat DC"
+                }
+              ]
             },
             "number_of_bags": {
               "type": "integer",
@@ -152,29 +156,10 @@
           },
           "required": [
             "dc_grade",
+            "product_type",
             "number_of_bags",
             "weight_of_bag",
             "total_weight"
-          ],
-          "allOf": [
-            {
-              "oneOf": [
-                {
-                  "properties": {
-                    "product_type_dc": { "const": true },
-                    "product_type_value_added_dc": { "const": false }
-                  },
-                  "required": ["product_type_dc", "product_type_value_added_dc"]
-                },
-                {
-                  "properties": {
-                    "product_type_dc": { "const": false },
-                    "product_type_value_added_dc": { "const": true }
-                  },
-                  "required": ["product_type_dc", "product_type_value_added_dc"]
-                }
-              ]
-            }
           ]
         }
       },
@@ -398,23 +383,11 @@
                     "scope": "#/properties/total_weight"
                   },
                   {
-                    "type": "Group",
-                    "label": "Product Type",
-                    "elements": [
-                      {
-                        "type": "HorizontalLayout",
-                        "elements": [
-                          {
-                            "type": "Control",
-                            "scope": "#/properties/product_type_dc"
-                          },
-                          {
-                            "type": "Control",
-                            "scope": "#/properties/product_type_value_added_dc"
-                          }
-                        ]
-                      }
-                    ]
+                    "type": "Control",
+                    "scope": "#/properties/product_type",
+                    "options": {
+                      "format": "radio"
+                    }
                   }
                 ]
               }
