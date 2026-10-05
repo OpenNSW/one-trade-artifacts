@@ -900,17 +900,8 @@
             ]
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/generalInfo/properties/exportCountryCode"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/items/items/properties/goodsDescription/properties/originCountryCode"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/generalInfo/properties/exportCountryCode"
           },
           {
             "type": "HorizontalLayout",
@@ -1066,6 +1057,10 @@
                   {
                     "type": "Control",
                     "scope": "#/properties/tarification/properties/itemPrice"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/goodsDescription/properties/originCountryCode"
                   },
                   {
                     "type": "Control",
