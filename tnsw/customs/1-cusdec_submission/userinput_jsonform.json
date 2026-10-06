@@ -72,7 +72,7 @@
         "properties": {
           "officeCode": {
             "type": "string",
-            "title": "29. Office of Entry/Exit",
+            "title": "Office of Entry/Exit ( Cage 29 )",
             "x-search": {
               "service": "static-data",
               "mode": "large-searchable-list",
@@ -86,7 +86,7 @@
           },
           "declarationType": {
             "type": "string",
-            "title": "1. Declaration Type",
+            "title": "Declaration Type ( Cage 1 )",
             "oneOf": [
               {
                 "const": "EX",
@@ -193,7 +193,7 @@
             "properties": {
               "code": {
                 "type": "string",
-                "title": "14. Declarant/Representative Code",
+                "title": "Declarant/Representative Code ( Cage 14 )",
                 "example": "900000000"
               }
             },
@@ -214,7 +214,7 @@
         "properties": {
           "countryOfFirstDestination": {
             "type": "string",
-            "title": "10. Country of First Destination",
+            "title": "Country of First Destination ( Cage 10 )",
             "x-search": {
               "service": "static-data",
               "mode": "large-searchable-list",
@@ -228,7 +228,7 @@
           },
           "exportCountryCode": {
             "type": "string",
-            "title": "15. Country of Export",
+            "title": "Country of Export ( Cage 15 )",
             "x-search": {
               "service": "static-data",
               "mode": "large-searchable-list",
@@ -242,7 +242,7 @@
           },
           "destinationCountryCode": {
             "type": "string",
-            "title": "17. Country of Destination",
+            "title": "Country of Destination ( Cage 17 )",
             "x-search": {
               "service": "static-data",
               "mode": "large-searchable-list",
@@ -267,7 +267,7 @@
         "properties": {
           "vesselName": {
             "type": "string",
-            "title": "18. Vessel/Flight",
+            "title": "Vessel/Flight ( Cage 18 )",
             "example": "MSC SAVANNA"
           },
           "transportNationality": {
@@ -287,7 +287,7 @@
           },
           "voyageNo": {
             "type": "string",
-            "title": "21. Voyage No./Date",
+            "title": "Voyage No./Date ( Cage 21 )",
             "example": "185 E DATED 20/04/2026"
           },
           "voyageNationality": {
@@ -306,7 +306,7 @@
           },
           "modeOfTransport": {
             "type": "string",
-            "title": "25. Mode of Transport at Border",
+            "title": "Mode of Transport at Border ( Cage 25 )",
             "x-search":{
               "service": "static-data",
               "mode": "small-list",
@@ -326,7 +326,7 @@
           },
           "deliveryTermsCode": {
             "type": "string",
-            "title": "20. Delivery Terms",
+            "title": "Delivery Terms ( Cage 20 )",
             "x-search": {
               "service": "static-data",
               "mode": "small-list",
@@ -359,7 +359,7 @@
           },
           "placeOfDischargeCode": {
             "type": "string",
-            "title": "27. Place of Discharging",
+            "title": "Place of Discharging ( Cage 27 )",
             "description": "UNLOCODE of the place where the goods are discharged.",
             "x-search": {
               "service": "static-data",
@@ -609,12 +609,12 @@
               "properties": {
                 "hsCode": {
                   "type": "string",
-                  "title": "33. Commodity (HS) Code",
+                  "title": "Commodity (HS) Code ( Cage 33 )",
                   "example": "11063010"
                 },
                 "preferenceCode": {
                   "type": "string",
-                  "title": "36. Preference Code",
+                  "title": "Preference Code ( Cage 36 )",
                   "example": "ISFTA"
                 },
                 "extendedProcedureCode": {
@@ -658,7 +658,7 @@
                 },
                 "itemPrice": {
                   "type": "number",
-                  "title": "42. Item Price",
+                  "title": "Item Price ( Cage 42 )",
                   "example": 2400
                 }
               },
@@ -675,7 +675,7 @@
               "properties": {
                 "originCountryCode": {
                   "type": "string",
-                  "title": "16. Country of Origin",
+                  "title": "Country of Origin ( Cage 16 )",
                   "x-search": {
                     "service": "static-data",
                     "mode": "large-searchable-list",
@@ -722,12 +722,12 @@
               "properties": {
                 "grossWeight": {
                   "type": "number",
-                  "title": "35. Gross Mass (kg)",
+                  "title": "Gross Mass (kg) ( Cage 35 )",
                   "example": 1500
                 },
                 "netWeight": {
                   "type": "number",
-                  "title": "38. Net Mass (kg)",
+                  "title": "Net Mass (kg) ( Cage 38 )",
                   "example": 1000
                 },
                 "invoiceAmount": {
@@ -833,7 +833,7 @@
           },
           {
             "type": "Group",
-            "label": "2. Exporter",
+            "label": "Exporter ( Cage 2 )",
             "elements": [
               {
                 "type": "HorizontalLayout",
@@ -865,7 +865,7 @@
           },
           {
             "type": "Group",
-            "label": "8. Consignee",
+            "label": "Consignee ( Cage 8 )",
             "elements": [
               {
                 "type": "HorizontalLayout",
@@ -944,7 +944,7 @@
           },
           {
             "type": "Group",
-            "label": "28. Financial and banking data",
+            "label": "Financial and banking data ( Cage 28 )",
             "elements": [
               {
                 "type": "HorizontalLayout",
@@ -977,7 +977,7 @@
       },
       {
         "type": "Group",
-        "label": "31. Packages and Description of Goods",
+        "label": "Packages and Description of Goods ( Cage 31 )",
         "elements": [
           {
             "type": "Control",
@@ -1018,7 +1018,7 @@
                   },
                   {
                     "type": "Group",
-                    "label": "37. Procedure Code",
+                    "label": "Procedure Code ( Cage 37 )",
                     "elements": [
                       {
                         "type": "HorizontalLayout",
@@ -1037,7 +1037,7 @@
                   },
                   {
                     "type": "Group",
-                    "label": "41. UOM and Qty",
+                    "label": "UOM and Qty ( Cage 41 )",
                     "elements": [
                       {
                         "type": "HorizontalLayout",
