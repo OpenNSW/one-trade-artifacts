@@ -1,7 +1,7 @@
 {
   "id": "npqs-upload-treatment-certs",
   "name": "Upload Treatment Certificates",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -12,6 +12,7 @@
       "type": "TASK",
       "task_template_id": "npqs-upload-treatment-certs--user-input",
       "input_mapping": {
+        "commodities": "commodities",
         "reference_number": "reference_number",
         "userform": "userform",
         "commodities?": "traderinput.commodities",

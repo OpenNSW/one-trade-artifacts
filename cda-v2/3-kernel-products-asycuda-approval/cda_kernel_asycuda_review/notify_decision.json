@@ -4,6 +4,6 @@
   "output_namespace": "notifyresult",
   "plugin_properties": {
     "service_id": "tnsw",
-    "path": "/api/v1/tasks/{taskId}"
+    "path": "/api/v1/callbacks/{callbackToken}"
   }
 }

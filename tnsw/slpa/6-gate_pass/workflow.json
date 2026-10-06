@@ -1,7 +1,7 @@
 {
   "id": "slpa-gate-pass-flow",
   "name": "Issue SLPA Container Gate Pass",
-  "version": 5,
+  "version": 6,
   "nodes": [
     {
       "id": "start",
@@ -36,6 +36,7 @@
       "type": "TASK",
       "task_template_id": "slpa-consolidation--delete",
       "input_mapping": {
+        "gp?": "gp",
         "cap_id": "cap_id",
         "client_key?": "client_key"
       },

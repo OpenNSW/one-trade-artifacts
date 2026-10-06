@@ -1,7 +1,7 @@
 {
   "id": "npqs-issue-treatment-cert",
   "name": "Issue Treatment Certificate",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -12,6 +12,8 @@
       "type": "TASK",
       "task_template_id": "npqs-issue-treatment-cert--officer-review",
       "input_mapping": {
+        "commodities?": "commodities",
+        "reference_number?": "reference_number",
         "reference_number": "submission.reference_number",
         "userform": "submission"
       },

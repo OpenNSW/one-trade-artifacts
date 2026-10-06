@@ -1,7 +1,7 @@
 {
   "id": "fcau-issue-certificate-flow",
   "name": "Issue Health Certificate",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -12,6 +12,7 @@
       "type": "TASK",
       "task_template_id": "fcau-issue-certificate--officer-review",
       "input_mapping": {
+        "reference_number?": "reference_number",
         "reference_number": "submission.reference_number",
         "userform": "submission"
       },

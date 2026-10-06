@@ -1,7 +1,7 @@
 {
   "id": "cda_review_result_v1",
   "name": "CDA Application Review & Certification",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -12,6 +12,7 @@
       "type": "TASK",
       "task_template_id": "cda-review-result--review",
       "input_mapping": {
+        "callbackToken": "callbackToken",
         "notification?": "submission",
         "taskId": "taskId",
         "taskCode": "taskCode",

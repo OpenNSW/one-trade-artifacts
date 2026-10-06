@@ -1,7 +1,7 @@
 {
   "id": "slpa-service-order-flow",
   "name": "Raise SLPA Export Service Order",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -28,6 +28,7 @@
       "type": "TASK",
       "task_template_id": "slpa-so--create",
       "input_mapping": {
+        "serviceform?": "serviceform",
         "serviceform": "payload",
         "client_key?": "client_key"
       },

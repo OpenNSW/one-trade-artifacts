@@ -1,7 +1,7 @@
 {
   "id": "fcau-apply-health-cert-flow",
   "name": "Apply for Health Certificate",
-  "version": 4,
+  "version": 5,
   "nodes": [
     {
       "id": "start",
@@ -12,6 +12,7 @@
       "type": "TASK",
       "task_template_id": "fcau-apply-health-cert--user-input",
       "input_mapping": {
+        "reviewerform?": "reviewerform",
         "userform?": "userform"
       },
       "output_mapping": {
@@ -44,6 +45,7 @@
       "type": "TASK",
       "task_template_id": "fcau-apply-health-cert--external-review",
       "input_mapping": {
+        "userform?": "userform",
         "userform": "submission"
       },
       "output_mapping": {

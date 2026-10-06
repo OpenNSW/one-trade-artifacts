@@ -1,7 +1,7 @@
 {
   "id": "npqs-visual-consignment-flow",
   "name": "Consignment Visual Inspection Flow",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -11,7 +11,7 @@
       "id": "trader_schedule",
       "type": "TASK",
       "task_template_id": "npqs-visual-consignment--trader-schedule",
-      "input_mapping": {},
+      "input_mapping": {"commodities?": "commodities", "reference_number?": "reference_number"},
       "output_mapping": {
         "inspection_date": "traderinput.inspection_date",
         "inspection_time": "traderinput.inspection_time",
@@ -24,6 +24,8 @@
       "type": "TASK",
       "task_template_id": "npqs-visual-consignment--officer-review",
       "input_mapping": {
+        "reference_number?": "reference_number",
+        "traderinput?": "traderinput",
         "reference_number": "submission.reference_number",
         "traderinput": "submission",
         "commodities?": "submission.items"

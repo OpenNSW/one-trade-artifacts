@@ -1,7 +1,7 @@
 {
   "id": "cda-officer-verification--review-workflow",
   "name": "CDA Coconut Certificate Verification \u2014 Officer Review",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -26,6 +26,9 @@
       "type": "TASK",
       "task_template_id": "cda-officer-verification--notify-decision",
       "input_mapping": {
+        "callbackToken": "callbackToken",
+        "reviewform?": "reviewform",
+        "submission?": "submission",
         "taskId": "taskId",
         "reviewform.verification_outcome": "payload.command",
         "reviewform": "payload.payload"

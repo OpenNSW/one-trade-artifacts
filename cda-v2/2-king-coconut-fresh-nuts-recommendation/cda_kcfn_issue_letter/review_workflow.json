@@ -1,7 +1,7 @@
 {
   "id": "cda-kcfn-issue-letter--review-workflow",
   "name": "CDA Officer Recommendation Letter Issuance \u2014 Officer Review",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -26,6 +26,9 @@
       "type": "TASK",
       "task_template_id": "cda-kcfn-issue-letter--notify-decision",
       "input_mapping": {
+        "callbackToken": "callbackToken",
+        "reviewform?": "reviewform",
+        "submission?": "submission",
         "taskId": "taskId",
         "command": "payload.command",
         "reviewform": "payload.payload"

@@ -1,7 +1,7 @@
 {
   "id": "sltb-schedule-pickup-flow",
   "name": "Schedule Warehouse Pickup",
-  "version": 2,
+  "version": 3,
   "nodes": [
     { "id": "start", "type": "START" },
     {
@@ -10,6 +10,7 @@
       "name": "Suggest or Respond to Pickup Schedule",
       "task_template_id": "sltb-schedule-pickup--suggest",
       "input_mapping": {
+        "schedule?": "schedule",
         "schedule.schedule_outcome?": "suggest.officer_outcome"
       },
       "output_mapping": {
