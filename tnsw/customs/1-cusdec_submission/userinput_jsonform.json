@@ -768,36 +768,113 @@
         }
       },
       "supportingDocuments": {
-        "type": "array",
+        "type": "object",
         "title": "Supporting Documents",
-        "description": "Permits, licences and invoices supporting this declaration. PDF only, up to 300 KB each.",
-        "items": {
-          "type": "object",
-          "properties": {
-            "documentCode": {
-              "type": "string",
-              "title": "Document Code",
-              "description": "UNATDTAB document type code.",
-              "example": "N380"
-            },
-            "file": {
-              "type": "string",
-              "format": "file",
-              "title": "Document",
-              "x-file": {
-                "accept": ".pdf",
-                "maxSize": 307200
+        "properties": {
+          "scannedDocuments": {
+            "type": "array",
+            "title": "Scanned Documents",
+            "description": "Scanned PDFs for the SCAN DOC tab in the CusDec. Up to 300 KB each.",
+            "maxItems": 10,
+            "items": {
+              "type": "object",
+              "properties": {
+                "fileName": {
+                  "type": "string",
+                  "title": "File Name",
+                  "example": "invoice-1092.pdf"
+                },
+                "fileBase64": {
+                  "type": "string",
+                  "format": "file",
+                  "title": "File",
+                  "x-file": {
+                    "accept": ".pdf",
+                    "maxSize": 307200
+                  },
+                  "example": "storage/customs/invoice-1092.pdf"
+                },
+                "documentCode": {
+                  "type": "string",
+                  "title": "Document Code",
+                  "x-search": {
+                    "service": "static-data",
+                    "mode": "small-list",
+                    "displayTemplate": "{name} ({id})",
+                    "params": {
+                      "id": "customs-cusdec--supporting-document-codes",
+                      "version": "1"
+                    }
+                  },
+                  "example": "INV"
+                }
               },
-              "example": "storage/customs/invoice-1092.pdf"
+              "required": [
+                "fileName",
+                "fileBase64",
+                "documentCode"
+              ]
             }
           },
-          "required": [
-            "documentCode",
-            "file"
-          ]
-        },
-        "x-file": {
-          "maxFiles": 10
+          "metaDocuments": {
+            "type": "array",
+            "title": "Meta Documents",
+            "description": "Documents referenced by code and reference number (no scan).",
+            "maxItems": 10,
+            "items": {
+              "type": "object",
+              "properties": {
+                "itemSequence": {
+                  "type": "string",
+                  "title": "Item Number",
+                  "description": "Attached-document item number.",
+                  "x-search": {
+                    "service": "static-data",
+                    "mode": "small-list",
+                    "displayTemplate": "{name} ({id})",
+                    "params": {
+                      "id": "customs-cusdec--supporting-document-item-numbers",
+                      "version": "1"
+                    }
+                  },
+                  "example": "017"
+                },
+                "documentCode": {
+                  "type": "string",
+                  "title": "Document Code",
+                  "x-search": {
+                    "service": "static-data",
+                    "mode": "small-list",
+                    "displayTemplate": "{name} ({id})",
+                    "params": {
+                      "id": "customs-cusdec--supporting-document-codes",
+                      "version": "1"
+                    }
+                  },
+                  "example": "INV"
+                },
+                "documentId": {
+                  "type": "string",
+                  "title": "Document Reference Number",
+                  "description": "Reference of a document already held elsewhere.",
+                  "example": "INV-1092"
+                },
+                "dateAsString": {
+                  "type": "string",
+                  "format": "date",
+                  "title": "Document Date",
+                  "description": "Date of the referenced document.",
+                  "example": "2026-09-15"
+                }
+              },
+              "required": [
+                "documentCode",
+                "itemSequence",
+                "documentId",
+                "dateAsString"
+              ]
+            }
+          }
         }
       }
     },
@@ -1317,8 +1394,73 @@
         "label": "12. Supporting Documents",
         "elements": [
           {
-            "type": "Control",
-            "scope": "#/properties/supportingDocuments"
+            "type": "Group",
+            "label": "Scanned Documents",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/supportingDocuments/properties/scannedDocuments",
+                "options": {
+                  "itemLabel": "Scanned document",
+                  "detail": {
+                    "type": "VerticalLayout",
+                    "elements": [
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/documentCode"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/fileName"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/fileBase64"
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "Group",
+            "label": "Meta Documents",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/supportingDocuments/properties/metaDocuments",
+                "options": {
+                  "itemLabel": "Meta document",
+                  "detail": {
+                    "type": "VerticalLayout",
+                    "elements": [
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/documentCode"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/itemSequence"
+                      },
+                      {
+                        "type": "HorizontalLayout",
+                        "elements": [
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/documentId"
+                          },
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/dateAsString"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
           }
         ]
       }

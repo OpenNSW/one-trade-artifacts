@@ -1,0 +1,380 @@
+{
+  "data": [
+    {
+      "const": "AGRI",
+      "title": "Agriculture Department Certificate"
+    },
+    {
+      "const": "AGRM",
+      "title": "Agriculture Ministry"
+    },
+    {
+      "const": "APH",
+      "title": "DEPARTMENT OF ANIMAL PRODUCTION & HEALTH"
+    },
+    {
+      "const": "APHD",
+      "title": "Animal Production & Health Department"
+    },
+    {
+      "const": "AQC",
+      "title": "Animal Quarantine Certificate / Approval"
+    },
+    {
+      "const": "ARCH",
+      "title": "Archaeological Department Certificate"
+    },
+    {
+      "const": "ATOM",
+      "title": "Atomic Energy Authority Approval"
+    },
+    {
+      "const": "BEN",
+      "title": "BOI Engineering Approval"
+    },
+    {
+      "const": "BEV",
+      "title": "BOI Environmental Approval"
+    },
+    {
+      "const": "BIN",
+      "title": "BOI Investment Approval"
+    },
+    {
+      "const": "BISI",
+      "title": "Bill of Sight"
+    },
+    {
+      "const": "BL",
+      "title": "Bill of Lading (BL)"
+    },
+    {
+      "const": "BOEN",
+      "title": "BOI Environmental Approval"
+    },
+    {
+      "const": "BOIE",
+      "title": "BOI Engineering Approval"
+    },
+    {
+      "const": "BOII",
+      "title": "BOI Investment Approval"
+    },
+    {
+      "const": "BOIT",
+      "title": "BOI Approvals for payment of taxes"
+    },
+    {
+      "const": "BOS",
+      "title": "Bill of Store"
+    },
+    {
+      "const": "CAAR",
+      "title": "Consumer Affairs Authority Registration Form for MRP"
+    },
+    {
+      "const": "CARN",
+      "title": "Carnet Certificate"
+    },
+    {
+      "const": "CDA",
+      "title": "COCONUT DEVELOPMENT AUTHORITY"
+    },
+    {
+      "const": "CEA",
+      "title": "Central Environmental Authority Approval"
+    },
+    {
+      "const": "CO",
+      "title": "Country of of Origin certificate"
+    },
+    {
+      "const": "CONS",
+      "title": "Concessions approvals (As per the List of Concessions in Schedule A)"
+    },
+    {
+      "const": "CSI",
+      "title": "Container Scan Image ( RAPISCAN)"
+    },
+    {
+      "const": "CUSD",
+      "title": "Signed CusDec ( cage 53 & 54 )"
+    },
+    {
+      "const": "DFP",
+      "title": "DEPARTMENT OF FISCAL POLICY"
+    },
+    {
+      "const": "DO",
+      "title": "Delivery Order (DO)"
+    },
+    {
+      "const": "DOC",
+      "title": "Department of Commerce."
+    },
+    {
+      "const": "DPL",
+      "title": "Diplomatic Cargo Clearance Certificate"
+    },
+    {
+      "const": "DRUG",
+      "title": "Drug Control Board Certificate"
+    },
+    {
+      "const": "DWC",
+      "title": "DEPARTMENT OF WILDLIFE CONSERVATION"
+    },
+    {
+      "const": "FAR",
+      "title": "FISHERIES & AQUATIC RESOURCES"
+    },
+    {
+      "const": "FISA",
+      "title": "Fisheries & Aquatic Resources"
+    },
+    {
+      "const": "FISH",
+      "title": "Fisheries Ministry Approvals"
+    },
+    {
+      "const": "FORE",
+      "title": "Forest Department Certificate"
+    },
+    {
+      "const": "FRIC",
+      "title": "Free Re-Importation Certificate"
+    },
+    {
+      "const": "FRT",
+      "title": "Freight Receipt"
+    },
+    {
+      "const": "FUMI",
+      "title": "Fumigation Certificates"
+    },
+    {
+      "const": "GEO",
+      "title": "Geological Survey & Mines Bureau"
+    },
+    {
+      "const": "GSM",
+      "title": "GEOLOGICAL SURVEY & MINES BUREAU"
+    },
+    {
+      "const": "ICL",
+      "title": "Import Control License"
+    },
+    {
+      "const": "IEC",
+      "title": "CONTROLLER OF IMP & EXP"
+    },
+    {
+      "const": "INS",
+      "title": "Insurance Payment Receipt/Confirmation"
+    },
+    {
+      "const": "INSU",
+      "title": "Insurance Payment Receipt/Confirmation"
+    },
+    {
+      "const": "INV",
+      "title": "Commercial Invoice"
+    },
+    {
+      "const": "INVC",
+      "title": "Invoice Commercial"
+    },
+    {
+      "const": "INVP",
+      "title": "Pro forma Invoice"
+    },
+    {
+      "const": "LCD",
+      "title": "LC opened date"
+    },
+    {
+      "const": "LCR",
+      "title": "LC Reference No and Date for MV imp before budget 2016"
+    },
+    {
+      "const": "LEFC",
+      "title": "Letter from company authorizing the CHA"
+    },
+    {
+      "const": "LIT",
+      "title": "Product Literature / Catalogues"
+    },
+    {
+      "const": "LITE",
+      "title": "Product Literature/ Catalogues"
+    },
+    {
+      "const": "LPSR",
+      "title": "Load Port Survey Report"
+    },
+    {
+      "const": "LXT",
+      "title": "LXT - LC Opened date"
+    },
+    {
+      "const": "MOA",
+      "title": "MINISTRY OF AGRICULTURE"
+    },
+    {
+      "const": "MOD",
+      "title": "Ministry Of Defence Approval"
+    },
+    {
+      "const": "MVP",
+      "title": "Motor Vehicle Permits"
+    },
+    {
+      "const": "NFCA",
+      "title": "National Film Corporation Approval"
+    },
+    {
+      "const": "NM1",
+      "title": "Registration Certificate of the product/s"
+    },
+    {
+      "const": "NM2",
+      "title": "Import License of the product/s"
+    },
+    {
+      "const": "NM3",
+      "title": "Labels & Package Inserts"
+    },
+    {
+      "const": "NM4",
+      "title": "WOR or relevant approval/s issued by NMRA (consignments release approv"
+    },
+    {
+      "const": "NM5",
+      "title": "Sample Import License/s"
+    },
+    {
+      "const": "NM6",
+      "title": "Test reports of the product/s (COAs, Stability reports, MSDS/TDS, any"
+    },
+    {
+      "const": "NM9",
+      "title": "Any other relevant documents"
+    },
+    {
+      "const": "NMRA",
+      "title": "NMRA Approval"
+    },
+    {
+      "const": "NPQ",
+      "title": "NATIONAL PLANT QUARANTINE SERVICE"
+    },
+    {
+      "const": "OTHR",
+      "title": "Other"
+    },
+    {
+      "const": "PCON",
+      "title": "Payment Confirmation (LC/TT/DP/etc)"
+    },
+    {
+      "const": "PHY",
+      "title": "Phytosanitary Certificate"
+    },
+    {
+      "const": "PLIS",
+      "title": "Packing List"
+    },
+    {
+      "const": "PQC",
+      "title": "Plant Quarantine Certificate / Approval"
+    },
+    {
+      "const": "PRC",
+      "title": "Project Reference Code and Date"
+    },
+    {
+      "const": "PREF",
+      "title": "Preferential Rate Certificate"
+    },
+    {
+      "const": "PSIC",
+      "title": "Pre Shipment Inspection Certificate"
+    },
+    {
+      "const": "RUL",
+      "title": "Rulings Advanced"
+    },
+    {
+      "const": "RULA",
+      "title": "Rulings Advanced"
+    },
+    {
+      "const": "RULP",
+      "title": "Rulings Previous"
+    },
+    {
+      "const": "SLC",
+      "title": "Letter form Sri Lanka Customs"
+    },
+    {
+      "const": "SLS",
+      "title": "SRI LANKA STANDARDS INSTITUTE"
+    },
+    {
+      "const": "SLSI",
+      "title": "SLSI Certificate"
+    },
+    {
+      "const": "TEA",
+      "title": "TEA Board Blend Sheet"
+    },
+    {
+      "const": "TIP",
+      "title": "DEPARTMENT OF TRADE & INVESTMENT POLICY"
+    },
+    {
+      "const": "TRC",
+      "title": "TELECOMMUNICATIONS REGULATORY COMMISSION"
+    },
+    {
+      "const": "TRCA",
+      "title": "TRC Approval"
+    },
+    {
+      "const": "TTP",
+      "title": "DEPARTMENT OF TRADE TARIFF & INVESTMENT POLICIES"
+    },
+    {
+      "const": "VCFR",
+      "title": "Vehicle Cancellation of First Registration"
+    },
+    {
+      "const": "VDRC",
+      "title": "Vehicle De Registration Certificate"
+    },
+    {
+      "const": "VESS",
+      "title": "VEHICLE Emmission Standard and Safety Measures Certificate"
+    },
+    {
+      "const": "VPER",
+      "title": "Vehicle Permit"
+    },
+    {
+      "const": "WAIV",
+      "title": "Waiver Approval Letters under Section 19 of CO"
+    },
+    {
+      "const": "WAV",
+      "title": "Waiver Approval Letters under Section 19 of CO"
+    },
+    {
+      "const": "WORK",
+      "title": "Working Sheets"
+    },
+    {
+      "const": "WSH",
+      "title": "Working Sheets"
+    }
+  ]
+}
