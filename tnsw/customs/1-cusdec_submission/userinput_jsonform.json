@@ -779,11 +779,6 @@
             "items": {
               "type": "object",
               "properties": {
-                "fileName": {
-                  "type": "string",
-                  "title": "File Name",
-                  "example": "invoice-1092.pdf"
-                },
                 "fileBase64": {
                   "type": "string",
                   "format": "file",
@@ -810,7 +805,6 @@
                 }
               },
               "required": [
-                "fileName",
                 "fileBase64",
                 "documentCode"
               ]
@@ -1408,10 +1402,6 @@
                       {
                         "type": "Control",
                         "scope": "#/properties/documentCode"
-                      },
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/fileName"
                       },
                       {
                         "type": "Control",
