@@ -4,23 +4,37 @@
   "schema": {
     "type": "object",
     "properties": {
-      "exporter_name": {
+      "exporter_details": {
         "type": "string",
-        "title": "Exporter Name"
-      },
-      "exporter_registration_number": {
-        "type": "string",
-        "title": "Exporter Registration Number"
-      },
-      "exporter_address": {
-        "type": "string",
-        "title": "Exporter Address"
+        "title": "Exporter Name",
+        "description": "Filled automatically from the company profile"
       },
       "cusdec_number": {
         "type": "string",
         "title": "CUSDEC Number",
         "description": "Filled automatically from the Customs workflow",
         "example": "CUSDEC-2026-904821"
+      },
+      "relates_to_previous_approval": {
+        "type": "boolean",
+        "title": "This application relates to a previously approved consignment",
+        "description": "Tick if some or all lots were covered by a previous CDA certificate (for example the original CusDec was cancelled). CDA will use the previous CusDec and certificate numbers to reset master lot records. The new quantity may be less than, the same as, or more than the previous certificate; the officer decides whether testing is required or certificates can be reissued.",
+        "default": false
+      },
+      "previous_cusdec_number": {
+        "type": "string",
+        "title": "Previous CusDec Number",
+        "example": "CUSDEC-2026-804100"
+      },
+      "previous_certificate_number": {
+        "type": "string",
+        "title": "Previous Salmonella/Physical Quality Certificate Number",
+        "example": "CERT-CDA-2026-08492"
+      },
+      "cancellation_reason": {
+        "type": "string",
+        "title": "Reason for Cancellation",
+        "example": "Buyer cancelled the order; original CusDec was cancelled."
       },
       "hs_code": {
         "type": "string",
@@ -195,16 +209,32 @@
       }
     },
     "required": [
-      "exporter_name",
-      "exporter_registration_number",
-      "exporter_address",
+      "exporter_details",
       "cusdec_number",
+      "relates_to_previous_approval",
       "dc_grades",
       "port_of_discharge",
       "final_destination",
       "container_filling_status",
       "uploaded_dc_bags_details"
-    ]
+    ],
+    "if": {
+      "properties": {
+        "relates_to_previous_approval": {
+          "const": true
+        }
+      },
+      "required": [
+        "relates_to_previous_approval"
+      ]
+    },
+    "then": {
+      "required": [
+        "previous_cusdec_number",
+        "previous_certificate_number",
+        "cancellation_reason"
+      ]
+    }
   },
   "uiSchema": {
     "type": "VerticalLayout",
@@ -215,29 +245,10 @@
         "elements": [
           {
             "type": "Control",
-            "scope": "#/properties/exporter_name",
+            "scope": "#/properties/exporter_details",
             "options": {
               "readonly": true
             }
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/exporter_registration_number",
-                "options": {
-                  "readonly": true
-                }
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/exporter_address",
-                "options": {
-                  "readonly": true
-                }
-              }
-            ]
           },
           {
             "type": "HorizontalLayout",
@@ -267,6 +278,54 @@
                 "scope": "#/properties/lot_number"
               }
             ]
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/relates_to_previous_approval"
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/previous_cusdec_number",
+                "rule": {
+                  "effect": "SHOW",
+                  "condition": {
+                    "scope": "#/properties/relates_to_previous_approval",
+                    "schema": {
+                      "const": true
+                    }
+                  }
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/previous_certificate_number",
+                "rule": {
+                  "effect": "SHOW",
+                  "condition": {
+                    "scope": "#/properties/relates_to_previous_approval",
+                    "schema": {
+                      "const": true
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/cancellation_reason",
+            "rule": {
+              "effect": "SHOW",
+              "condition": {
+                "scope": "#/properties/relates_to_previous_approval",
+                "schema": {
+                  "const": true
+                }
+              }
+            }
           }
         ]
       },
