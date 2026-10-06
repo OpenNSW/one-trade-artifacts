@@ -41,6 +41,7 @@ jobs:
             --endpoint-url "https://${{ vars.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com" \
             --exclude "*" \
             --include "cda/*" \
+            --include "cda-v2/*" \
             --include "customs/*" \
             --include "fcau/*" \
             --include "npqs/*" \

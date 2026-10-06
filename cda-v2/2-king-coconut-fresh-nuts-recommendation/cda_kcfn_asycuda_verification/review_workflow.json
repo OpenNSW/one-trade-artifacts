@@ -1,0 +1,56 @@
+{
+  "id": "cda-kcfn-asycuda-verification--review-workflow",
+  "name": "CDA Officer ASYCUDA Green Check Verification \u2014 Officer Review",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "userform",
+      "type": "TASK",
+      "task_template_id": "cda-kcfn-asycuda-verification--officer-review",
+      "input_mapping": {
+        "submission?": "submission"
+      },
+      "output_mapping": {
+        "__command": "command",
+        "documents_verified": "reviewform.documents_verified",
+        "asycuda_approval_confirmed": "reviewform.asycuda_approval_confirmed",
+        "remarks?": "reviewform.remarks"
+      }
+    },
+    {
+      "id": "api_call",
+      "type": "TASK",
+      "task_template_id": "cda-kcfn-asycuda-verification--notify-decision",
+      "input_mapping": {
+        "taskId": "taskId",
+        "command": "payload.command",
+        "reviewform": "payload.payload"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "userform"
+    },
+    {
+      "id": "e2",
+      "source_id": "userform",
+      "target_id": "api_call"
+    },
+    {
+      "id": "e3",
+      "source_id": "api_call",
+      "target_id": "end"
+    }
+  ]
+}

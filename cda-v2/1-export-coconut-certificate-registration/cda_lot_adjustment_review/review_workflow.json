@@ -1,0 +1,55 @@
+{
+  "id": "cda-lot-adjustment-review--review-workflow",
+  "name": "CDA Officer Lot Adjustment Review \u2014 Officer Review",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "userform",
+      "type": "TASK",
+      "task_template_id": "cda-lot-adjustment-review--officer-review",
+      "input_mapping": {
+        "submission?": "submission"
+      },
+      "output_mapping": {
+        "adjustment_outcome": "reviewform.adjustment_outcome",
+        "new_certificate_file?": "reviewform.new_certificate_file",
+        "adjustment_feedback?": "reviewform.adjustment_feedback"
+      }
+    },
+    {
+      "id": "api_call",
+      "type": "TASK",
+      "task_template_id": "cda-lot-adjustment-review--notify-decision",
+      "input_mapping": {
+        "taskId": "taskId",
+        "reviewform.adjustment_outcome": "payload.command",
+        "reviewform": "payload.payload"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "userform"
+    },
+    {
+      "id": "e2",
+      "source_id": "userform",
+      "target_id": "api_call"
+    },
+    {
+      "id": "e3",
+      "source_id": "api_call",
+      "target_id": "end"
+    }
+  ]
+}

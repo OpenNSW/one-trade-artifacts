@@ -1,0 +1,230 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://opennsw.dev/schemas/taskconfig.v1.schema.json",
+  "title": "TaskConfig v1",
+  "description": "Schema for *.taskconfig.json artifacts (kind: task_config). Mirrors taskconfig.TaskConfig (internal/taskconfig/task_config.go) as documented in docs/task-config-reference.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "meta", "permissions"],
+  "properties": {
+    "schemaVersion": {
+      "const": 1,
+      "description": "Schema version of this task_config artifact. This schema covers version 1; see taskconfig.v2.schema.json for version 2."
+    },
+    "taskCode": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Logical task type this config applies to, e.g. 'moh:fcau:health_cert:v1'. If omitted, the artifact's manifest id is used as the effective task code instead."
+    },
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title"],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Shown in the task list and as the review screen header."
+        },
+        "description": {
+          "type": "string",
+          "description": "One-line subtitle shown under the title."
+        },
+        "icon": {
+          "type": "string",
+          "description": "Icon hint. The frontend currently only renders 'emoji:<char>'-prefixed values; anything else is ignored."
+        },
+        "category": {
+          "type": "string",
+          "description": "Grouping label shown in the task list, e.g. 'Food Control'."
+        }
+      }
+    },
+    "forms": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["review"],
+      "description": "review is required — every task is reviewable, enforced by TaskConfig.Validate.",
+      "properties": {
+        "view": {
+          "type": "string",
+          "minLength": 1,
+          "description": "generic_template id for the read-only rendering of the trader's submitted data. Omit if the task has nothing trader-submitted to show."
+        },
+        "review": {
+          "type": "string",
+          "minLength": 1,
+          "description": "generic_template id for the officer's review action form (approve/reject/etc). Required — every task is reviewable."
+        }
+      }
+    },
+    "behavior": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Wires the officer's review submission to a final application status. type is required whenever behavior is present at all.",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["statusMap", "autoApprove"],
+          "description": "'autoApprove': the status resolves unconditionally to APPROVED, no body field is read. 'statusMap': read body[outcomeField] and look it up in statusMap."
+        },
+        "outcomeField": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Required when type is 'statusMap'. Key read from the POST .../review request body."
+        },
+        "statusMap": {
+          "type": "object",
+          "description": "Required when type is 'statusMap', with at least one entry. Maps the outcome field's value (e.g. 'approve') to the status stored on the application. Every value must be one of the closed set below; PENDING and DONE are never valid statusMap values.",
+          "additionalProperties": {
+            "type": "string",
+            "enum": ["APPROVED", "REJECTED", "FEEDBACK_REQUESTED"],
+            "description": "Terminal statuses APPROVED/REJECTED, or FEEDBACK_REQUESTED to send the task back to the trader."
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "type": { "const": "autoApprove" } },
+            "required": ["type"]
+          },
+          "then": {
+            "not": {
+              "anyOf": [
+                { "required": ["outcomeField"] },
+                { "required": ["statusMap"] }
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": { "type": { "const": "statusMap" } },
+            "required": ["type"]
+          },
+          "then": {
+            "required": ["outcomeField", "statusMap"],
+            "properties": {
+              "statusMap": {
+                "minProperties": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "permissions": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Per-task, per-role access control. Required and non-empty — a config that omits this fails to load. VIEW and REVIEW must each be granted to at least one role, collectively across all entries; FEEDBACK is optional.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["role", "actions"],
+        "properties": {
+          "role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "actions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "enum": ["VIEW", "REVIEW", "FEEDBACK"]
+            },
+            "description": "Closed set of actions compared verbatim against route requirements: VIEW, REVIEW, FEEDBACK."
+          }
+        }
+      },
+      "allOf": [
+        {
+          "contains": {
+            "type": "object",
+            "properties": { "actions": { "contains": { "const": "VIEW" } } },
+            "required": ["actions"]
+          },
+          "description": "At least one permissions entry must grant VIEW."
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": { "actions": { "contains": { "const": "REVIEW" } } },
+            "required": ["actions"]
+          },
+          "description": "At least one permissions entry must grant REVIEW."
+        }
+      ]
+    },
+    "consignmentFields": {
+      "type": "array",
+      "description": "Values to copy from this task's injected application data onto the parent consignment's own custom_data (e.g. for location-based access control), accumulated across every task that touches the consignment. Optional — most tasks have nothing consignment-relevant to contribute. See docs/consignment-custom-data.md in the agency backend repo.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source", "target"],
+        "properties": {
+          "source": {
+            "type": "string",
+            "pattern": "^/",
+            "description": "JSON Pointer (RFC 6901) into this task's injected data, e.g. '/nppo_office_location'. Arrays are not supported — a source whose path passes through one is silently skipped at runtime, not an error."
+          },
+          "target": {
+            "type": "string",
+            "pattern": "^/",
+            "description": "JSON Pointer (RFC 6901) into the consignment's custom_data, e.g. '/officeLocation'."
+          }
+        }
+      }
+    },
+    "refid": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["issuer", "idType", "path"],
+      "description": "Declares that this task's applications get an agency-issued reference ID, generated once when the application is first injected and written into the officer's response document. Optional — omit it for tasks that need no reference number. Re-injecting an existing application never mints a second number.",
+      "properties": {
+        "issuer": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Issuing authority, e.g. 'NPQS'. Must match an issuer in the deployment's own refIDGen config (see backend/config.example.yaml in the agency backend repo) — a task declaring a format the deployment has not configured fails at inject."
+        },
+        "idType": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Which of that issuer's formats to generate, e.g. 'application_id'."
+        },
+        "path": {
+          "type": "string",
+          "pattern": "^/",
+          "description": "JSON Pointer (RFC 6901) into the officer response document where the generated ID is written, e.g. '/reference_number'. The task's forms.review should declare a control at this path, or the officer never sees the number."
+        },
+        "params": {
+          "type": "object",
+          "description": "Inputs the configured format needs, keyed by the format's own param name. Each value is a JSON Pointer (RFC 6901) into this task's injected data, e.g. {'officeCode': '/nppo_office_location'} — which is what lets one task config serve every office rather than needing one config per office. Params the format does not use are ignored, so these may be declared generously; a param the format does require but which does not resolve fails the inject.",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^/"
+          }
+        }
+      }
+    },
+    "certificate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["templateId"],
+      "properties": {
+        "templateId": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Id of the certificate template to render. Copied onto Application.CertificateTemplateID."
+        },
+        "dataSchema": {
+          "type": "object",
+          "description": "A JSON Schema (validated client-side) describing the shape of the generate-certificate request's data payload. Deliberately separate from forms.review's schema."
+        }
+      }
+    }
+  }
+}
