@@ -1,7 +1,7 @@
 {
   "id": "npqs-draw-sample",
   "name": "Draw or Collect Sample",
-  "version": 2,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
@@ -12,6 +12,8 @@
       "type": "TASK",
       "task_template_id": "npqs-draw-sample--officer-receive",
       "input_mapping": {
+        "reference_number?": "reference_number",
+        "userform?": "userform",
         "reference_number": "submission.reference_number",
         "userform": "submission",
         "commodities?": "submission.items"

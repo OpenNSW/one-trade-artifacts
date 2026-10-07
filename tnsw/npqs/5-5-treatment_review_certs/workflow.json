@@ -1,7 +1,7 @@
 {
   "id": "npqs-review-treatment-certs",
   "name": "Review Treatment Certificates",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -12,6 +12,8 @@
       "type": "TASK",
       "task_template_id": "npqs-review-treatment-certs--officer-review",
       "input_mapping": {
+        "commodities": "commodities",
+        "reference_number?": "reference_number",
         "reference_number": "submission.reference_number",
         "traderinput": "submission",
         "commodities?": "submission.commodities"

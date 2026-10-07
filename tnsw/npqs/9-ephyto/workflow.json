@@ -1,7 +1,7 @@
 {
   "id": "npqs-ephyto-upload",
   "name": "Upload to IPPC ePhyto Hub",
-  "version": 9,
+  "version": 10,
   "nodes": [
     {
       "id": "start",
@@ -64,6 +64,7 @@
       "type": "TASK",
       "task_template_id": "npqs-ephyto-upload--poll",
       "input_mapping": {
+        "reference_number?": "reference_number",
         "ephyto.tracking_number": "tracking_number"
       },
       "output_mapping": {

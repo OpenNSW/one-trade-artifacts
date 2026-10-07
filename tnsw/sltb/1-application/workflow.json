@@ -1,7 +1,7 @@
 {
   "id": "sltb-submit-blendsheet-flow",
   "name": "Submit and Review Blend Sheet",
-  "version": 5,
+  "version": 6,
   "nodes": [
     {
       "id": "start",
@@ -12,6 +12,7 @@
       "type": "TASK",
       "task_template_id": "sltb-submit-blendsheet--user-input",
       "input_mapping": {
+        "reviewerform?": "reviewerform",
         "rejection_reason?": "rejection_reason",
         "userform?": "userform"
       },
@@ -30,6 +31,8 @@
       "type": "TASK",
       "task_template_id": "sltb-submit-blendsheet--officer-review",
       "input_mapping": {
+        "rejection_reason?": "rejection_reason",
+        "userform?": "userform",
         "userform": "submission"
       },
       "output_mapping": {

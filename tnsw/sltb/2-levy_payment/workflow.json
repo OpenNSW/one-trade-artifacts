@@ -1,7 +1,7 @@
 {
   "id": "sltb-pay-levy-flow",
   "name": "Pay SLTB Levy",
-  "version": 2,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
@@ -30,6 +30,8 @@
       "type": "TASK",
       "task_template_id": "sltb-pay-levy--payment",
       "input_mapping": {
+        "levy_amount?": "levy_amount",
+        "payment_method?": "payment_method",
         "reference_number": "reference_number",
         "payment_method.selected_method": "selected_method",
         "levy_amount": "amount"
@@ -45,6 +47,7 @@
       "type": "TASK",
       "task_template_id": "sltb-pay-levy--upload-receipt",
       "input_mapping": {
+        "payment_review?": "payment_review",
         "reference_number": "reference_number",
         "levy_amount": "amount",
         "payment_review.payment_feedback?": "payment_feedback"

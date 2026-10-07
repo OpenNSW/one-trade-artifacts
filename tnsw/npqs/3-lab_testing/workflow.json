@@ -1,7 +1,7 @@
 {
   "id": "npqs-lab-testing",
   "name": "Laboratory Testing",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -12,6 +12,7 @@
       "type": "TASK",
       "task_template_id": "npqs-lab-testing--officer-review",
       "input_mapping": {
+        "reference_number?": "reference_number",
         "reference_number": "submission.reference_number",
         "userform": "submission",
         "sample_number?": "submission.sample_number",

@@ -1,7 +1,7 @@
 {
   "id": "npqs-visual-sample-collection",
   "name": "Collect Sample for Visual Inspection",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -12,6 +12,9 @@
       "type": "TASK",
       "task_template_id": "npqs-visual-sample-collection--officer-receive",
       "input_mapping": {
+        "commodities?": "commodities",
+        "reference_number?": "reference_number",
+        "userform?": "userform",
         "reference_number": "submission.reference_number",
         "userform": "submission"
       },
