@@ -12,6 +12,15 @@
         ],
         "default": "approved"
       },
+      "approved_boat_note_file": {
+        "type": "string",
+        "format": "file",
+        "title": "Approved Boat Note (PDF)",
+        "x-file": {
+          "accept": ".pdf",
+          "maxSize": 10485760
+        }
+      },
       "remarks": {
         "type": "string",
         "title": "Officer Remarks",
@@ -19,7 +28,8 @@
       }
     },
     "required": [
-      "approval_status"
+      "approval_status",
+      "approved_boat_note_file"
     ]
   },
   "uiSchema": {
@@ -28,6 +38,10 @@
       {
         "type": "Control",
         "scope": "#/properties/approval_status"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/approved_boat_note_file"
       },
       {
         "type": "Control",

@@ -16,7 +16,8 @@
         "boat_note_document_key": "submission.boat_note_document_key"
       },
       "output_mapping": {
-        "approval_status": "approval_status"
+        "approval_status": "approval_status",
+        "approved_boat_note_file": "approved_boat_note_file"
       }
     },
     {
