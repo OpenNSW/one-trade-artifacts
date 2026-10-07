@@ -122,7 +122,8 @@
         "customs.containers": "containers"
       },
       "output_mapping": {
-        "userform": "customs.boat_note_userform"
+        "userform": "customs.boat_note_userform",
+        "boat_note_document_key": "customs.boat_note_document_key"
       }
     },
     {
