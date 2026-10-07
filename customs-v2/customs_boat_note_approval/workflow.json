@@ -1,0 +1,38 @@
+{
+  "id": "customs_boat_note_approval_v1",
+  "name": "Customs Boat Note Approval",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "review_boat_note",
+      "type": "TASK",
+      "task_template_id": "customs-boat-note-approval--review",
+      "input_mapping": {
+        "notification?": "submission",
+        "taskId": "taskId",
+        "taskCode": "taskCode",
+        "consignmentId": "consignmentId"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "review_boat_note"
+    },
+    {
+      "id": "e2",
+      "source_id": "review_boat_note",
+      "target_id": "end"
+    }
+  ]
+}

@@ -37,6 +37,7 @@ jobs:
             --include "cda/*" \
             --include "cda-v2/*" \
             --include "customs/*" \
+            --include "customs-v2/*" \
             --include "fcau/*" \
             --include "npqs/*" \
             --include "sltb/*" \

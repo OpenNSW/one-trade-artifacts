@@ -1,7 +1,7 @@
 {
-  "id": "cda-officer-verification--review-workflow",
-  "name": "CDA Coconut Certificate Verification \u2014 Officer Review",
-  "version": 2,
+  "id": "customs-boat-note-approval--review-workflow",
+  "name": "Customs Boat Note Approval — Officer Review",
+  "version": 1,
   "nodes": [
     {
       "id": "start",
@@ -10,25 +10,22 @@
     {
       "id": "userform",
       "type": "TASK",
-      "task_template_id": "cda-officer-verification--officer-review",
+      "task_template_id": "customs-boat-note-approval--officer-review",
       "input_mapping": {
         "submission?": "submission"
       },
       "output_mapping": {
-        "verification_outcome": "reviewform.verification_outcome",
-        "rejection_reason?": "reviewform.rejection_reason"
+        "approval_status": "reviewform.approval_status",
+        "remarks?": "reviewform.remarks"
       }
     },
     {
       "id": "api_call",
       "type": "TASK",
-      "task_template_id": "cda-officer-verification--notify-decision",
+      "task_template_id": "customs-boat-note-approval--notify-decision",
       "input_mapping": {
-        "callbackToken": "callbackToken",
-        "reviewform?": "reviewform",
-        "submission?": "submission",
         "taskId": "taskId",
-        "reviewform.verification_outcome": "payload.command",
+        "reviewform.approval_status": "payload.command",
         "reviewform": "payload.payload"
       }
     },
