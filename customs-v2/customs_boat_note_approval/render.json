@@ -3,6 +3,12 @@
   "type": "APPLICATION",
   "title": "Customs Boat Note Approval",
   "sections": {
+    "boat_note_document": {
+      "templateId": "customs-boat-note-approval--boat-note-document",
+      "title": "Boat Note Document",
+      "projector": "MARKDOWN",
+      "dataKey": "submission"
+    },
     "submission_view": {
       "templateId": "customs-boat-note--user-form",
       "title": "Submitted Boat Note",
