@@ -1,4 +1,4 @@
 {
   "id": "customs-boat-note-approval--boat-note-document",
-  "template": "{{if .boat_note_document_key}}[Download Boat Note]({{.boat_note_document_key}})\n\nThe Boat Note opens in a new tab, ready to print. Print it, or save it as a PDF, and get it approved.{{end}}"
+  "template": "{{if .boat_note_document_key}}[Download Boat Note]({{.boat_note_document_key}}){{end}}"
 }
