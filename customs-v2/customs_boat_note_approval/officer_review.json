@@ -1,0 +1,8 @@
+{
+  "id": "customs-boat-note-approval--officer-review",
+  "task_type": "USER_INPUT",
+  "output_namespace": "reviewform",
+  "plugin_properties": {
+    "user_jsonforms_id": "customs-boat-note-approval--officer-form"
+  }
+}

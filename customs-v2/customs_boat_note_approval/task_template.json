@@ -1,0 +1,6 @@
+{
+  "id": "customs-boat-note-approval--review",
+  "type": "APPLICATION",
+  "workflow_id": "customs-boat-note-approval--review-workflow",
+  "render_config_id": "customs-boat-note-approval--review:render"
+}
