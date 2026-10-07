@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shipping Note / Boat Note - EXP.3a</title>
+<style>
+  @page { size: A4 portrait; margin: 10mm; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Arial, Helvetica, sans-serif; font-size: 8pt; color: #000; }
+  .page { width: 190mm; margin: 0 auto; }
+  h1 { margin: 0 0 2mm; font-size: 12pt; text-align: center; letter-spacing: 0.5pt; }
+  .note { display: grid; grid-template-columns: repeat(24, 1fr); border-top: 1px solid #000; border-left: 1px solid #000; }
+  .box { border-right: 1px solid #000; border-bottom: 1px solid #000; padding: 1mm 1.5mm; min-height: 9mm; }
+  .box .label { display: block; font-size: 6.5pt; margin-bottom: 0.5mm; }
+  .box .value { display: block; font-weight: bold; white-space: pre-line; }
+  .box.tall { min-height: 55mm; }
+  .box.official { outline: 2px solid #000; outline-offset: -2px; }
+  .box.text { font-size: 7pt; }
+  .num { text-align: right; }
+  .sign { margin-top: 6mm; border-top: 1px dotted #000; font-size: 6.5pt; }
+  .charges { width: 100%; border-collapse: collapse; font-size: 7pt; }
+  .charges th, .charges td { border: 1px solid #000; padding: 0.5mm 1mm; }
+  .charges th { font-weight: normal; font-size: 6.5pt; }
+  .charges td.num { font-weight: bold; }
+  .containers { margin: 2mm 0 0; padding: 0; list-style: none; font-weight: bold; }
+  .footer { margin-top: 1.5mm; font-size: 6.5pt; display: flex; justify-content: space-between; }
+  .hint { margin: 4mm auto; width: 190mm; padding: 2mm 3mm; border: 1px solid #999; background: #f4f4f4; font-size: 10pt; }
+  @media screen {
+    body { background: #e5e5e5; padding-bottom: 8mm; }
+    .page { background: #fff; padding: 10mm; width: 210mm; box-shadow: 0 0 3mm rgba(0, 0, 0, 0.25); }
+  }
+  @media print {
+    .hint { display: none; }
+  }
+</style>
+</head>
+<body>
+<p class="hint">To print this Boat Note or save it as a PDF, press Ctrl+P (&#8984;P on a Mac).</p>
+<div class="page">
+  <h1>SHIPPING NOTE / BOAT NOTE - EXP.3a</h1>
+  <div class="note">
+    <div class="box" style="grid-column: 1 / 13; grid-row: span 2;">
+      <span class="label">1. Shipper (Name and Address)</span>
+      <span class="value">{{ .boat_note.shipper }}</span>
+    </div>
+    <div class="box official" style="grid-column: 13 / 19;"><span class="label">9. Customs Entry No.</span></div>
+    <div class="box official" style="grid-column: 19 / 25;"><span class="label">10. SN / (B/L) No.</span></div>
+    <div class="box" style="grid-column: 13 / 19;">
+      <span class="label">11. Exporter's Registration No.</span>
+      <span class="value">{{ .boat_note.exporters_registration_no }}</span>
+    </div>
+    <div class="box official" style="grid-column: 19 / 25;"><span class="label">12. SLPA No.</span></div>
+
+    <div class="box" style="grid-column: 1 / 13;">
+      <span class="label">2. Consignee (Name and Address)</span>
+      <span class="value">{{ .boat_note.consignee }}</span>
+    </div>
+    <div class="box" style="grid-column: 13 / 25;">
+      <span class="label">13. Name of Shipping Line / MTO</span>
+      <span class="value">{{ .boat_note.name_of_shipping_line }}</span>
+    </div>
+
+    <div class="box" style="grid-column: 1 / 13;">
+      <span class="label">3. Notify Address</span>
+      <span class="value">{{ .boat_note.notifying_address }}</span>
+    </div>
+    <div class="box" style="grid-column: 13 / 25;">
+      <span class="label">14.(a) Place of Acceptance</span>
+      <span class="value">{{ .boat_note.place_of_acceptance }}</span>
+    </div>
+
+    <div class="box" style="grid-column: 1 / 7;">
+      <span class="label">4. Voyage No. / Date</span>
+      <span class="value">{{ .boat_note.voyage_no_date }}</span>
+    </div>
+    <div class="box" style="grid-column: 7 / 13;">
+      <span class="label">5. Warehouse No.</span>
+      <span class="value">{{ .boat_note.warehouse_number }}</span>
+    </div>
+    <div class="box" style="grid-column: 13 / 25;">
+      <span class="label">14.(b) Place of Delivery</span>
+      <span class="value">{{ .boat_note.place_of_delivery }}</span>
+    </div>
+
+    <div class="box" style="grid-column: 1 / 7;">
+      <span class="label">6. Vessel</span>
+      <span class="value">{{ .boat_note.vessel }}</span>
+    </div>
+    <div class="box" style="grid-column: 7 / 13;">
+      <span class="label">7. Port of Loading</span>
+      <span class="value">{{ .boat_note.port_of_loading }}</span>
+    </div>
+    <div class="box text" style="grid-column: 13 / 25; grid-row: span 2;">
+      The company preparing this note declares that to the best of their belief, the goods have been
+      accurately described, their quantities, weights and measurements are correct and at the time of
+      dispatch they were in good order and condition.
+    </div>
+    <div class="box" style="grid-column: 1 / 7;">
+      <span class="label">8. Port of Discharge</span>
+      <span class="value">{{ .boat_note.port_of_discharge }}</span>
+    </div>
+    <div class="box" style="grid-column: 7 / 10;">
+      <span class="label">Vessel Op. Code</span>
+      <span class="value">{{ .boat_note.vessel_op_code }}</span>
+    </div>
+    <div class="box" style="grid-column: 10 / 13;">
+      <span class="label">Cont. Op. Code</span>
+      <span class="value">{{ .boat_note.cont_op_code }}</span>
+    </div>
+
+    <div class="box tall" style="grid-column: 1 / 7; grid-row: span 2;">
+      <span class="label">15. Marks &amp; Nos. / Container Nos.</span>
+      <span class="value">{{ .boat_note.marks_nos_container_no }}</span>
+      <ul class="containers">
+        {{ range .boat_note.containers }}<li>{{ .container_number }} &middot; Seal {{ .customs_seal_no }} &middot; CDN {{ .cdn_number }}</li>{{ end }}
+      </ul>
+    </div>
+    <div class="box tall" style="grid-column: 7 / 11; grid-row: span 2;">
+      <span class="label">16. Number &amp; Kind of Pkgs.</span>
+      <span class="value">{{ .boat_note.number_of_packages }}</span>
+    </div>
+    <div class="box tall" style="grid-column: 11 / 16; grid-row: span 2;">
+      <span class="label">17. Description of Goods</span>
+      <span class="value">{{ .boat_note.description_of_goods }}</span>
+    </div>
+    <div class="box tall" style="grid-column: 16 / 19; grid-row: span 2;">
+      <span class="label">18. CCCN No.</span>
+      <span class="value">{{ .boat_note.cccn_no }}</span>
+    </div>
+    <div class="box" style="grid-column: 19 / 22;">
+      <span class="label">19.(a) Gross Wt. (kg.)</span>
+      <span class="value num">{{ decimal .boat_note.gross_mass 3 }}</span>
+    </div>
+    <div class="box" style="grid-column: 22 / 25; grid-row: span 2;">
+      <span class="label">20.(a) Cube M3</span>
+      <span class="value num">{{ decimal .boat_note.cube_m3 3 }}</span>
+    </div>
+    <div class="box" style="grid-column: 19 / 22;">
+      <span class="label">19.(b) Net Wt. (kg.)</span>
+      <span class="value num">{{ decimal .boat_note.net_mass 3 }}</span>
+    </div>
+
+    <div class="box" style="grid-column: 1 / 16; grid-row: span 2;"></div>
+    <div class="box official" style="grid-column: 16 / 19;"><span class="label">19.(c) Short Shipped</span></div>
+    <div class="box official" style="grid-column: 19 / 22;"><span class="label">19.(d) Gross Wt. (kg)</span></div>
+    <div class="box official" style="grid-column: 22 / 25;"><span class="label">20.(b) Cube m3</span></div>
+    <div class="box official" style="grid-column: 16 / 19;"><span class="label">19.(e) Shipped</span></div>
+    <div class="box official" style="grid-column: 19 / 22;"><span class="label">19.(f)</span></div>
+    <div class="box official" style="grid-column: 22 / 25;"><span class="label">20.(c)</span></div>
+
+    <div class="box official" style="grid-column: 1 / 9;">
+      <span class="label">21. For SLPA Use</span>
+      <div class="sign">Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Signature</div>
+    </div>
+    <div class="box" style="grid-column: 9 / 16;">
+      <span class="label">23. Shipping Agent</span>
+      <div class="sign">Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Signature</div>
+    </div>
+    <div class="box official text" style="grid-column: 16 / 25;">
+      Received on board ............ number of packages / containers trailer in apparent good order and condition.
+      <span class="label">28. SLPA Supervising Officer</span>
+      <div class="sign">Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Signature</div>
+    </div>
+
+    <div class="box" style="grid-column: 1 / 9; grid-row: span 5;">
+      <span class="label">22.</span>
+      <table class="charges">
+        <tr><th></th><th>Estimated Amount Rs.</th><th>Final Amount Rs.</th></tr>
+        {{ with .boat_note.section_22 }}
+        <tr><td>a. Wharfage</td><td class="num">{{ decimal .wharfage.estimated_amount 2 }}</td><td class="num">{{ decimal .wharfage.final_amount 2 }}</td></tr>
+        <tr><td>b. Less FCL Rebate</td><td class="num">{{ decimal .less_fcl_rebate.estimated_amount 2 }}</td><td class="num">{{ decimal .less_fcl_rebate.final_amount 2 }}</td></tr>
+        <tr><td>c. Wharfage payable</td><td class="num">{{ decimal .wharfage_payable.estimated_amount 2 }}</td><td class="num">{{ decimal .wharfage_payable.final_amount 2 }}</td></tr>
+        <tr><td>d. Harbour Dues</td><td class="num">{{ decimal .harbour_dues.estimated_amount 2 }}</td><td class="num">{{ decimal .harbour_dues.final_amount 2 }}</td></tr>
+        <tr><td>e. Palletising / pre-warehousing charges</td><td class="num">{{ decimal .pre_warehousing_charges.estimated_amount 2 }}</td><td class="num">{{ decimal .pre_warehousing_charges.final_amount 2 }}</td></tr>
+        <tr><td>f. Fork-lift charges</td><td class="num">{{ decimal .fork_lift_charges.estimated_amount 2 }}</td><td class="num">{{ decimal .fork_lift_charges.final_amount 2 }}</td></tr>
+        <tr><td>g. Total</td><td class="num">{{ decimal .total.estimated_amount 2 }}</td><td class="num">{{ decimal .total.final_amount 2 }}</td></tr>
+        {{ end }}
+      </table>
+    </div>
+    <div class="box official" style="grid-column: 9 / 16;">
+      <span class="label">24. For Customs Use</span>
+      <div class="sign">Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Signature</div>
+    </div>
+    <div class="box official" style="grid-column: 16 / 25;">
+      <span class="label">29. Chief Officer</span>
+      <div class="sign">Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Signature</div>
+    </div>
+
+    <div class="box" style="grid-column: 9 / 16;">
+      <span class="label">25.(a) Status of Container (FCL / LCL)</span>
+      <span class="value">{{ .boat_note.status_of_container }}</span>
+    </div>
+    <div class="box text" style="grid-column: 16 / 25;">
+      Please receive for shipment the goods described above subject to your published regulations &amp;
+      conditions (including those as to liability).
+      <span class="label">30. Name of Company Preparing the Note</span>
+      <span class="value">{{ .boat_note.name_of_company_preparing_this_note }}</span>
+    </div>
+
+    <div class="box" style="grid-column: 9 / 16;">
+      <span class="label">25.(b) Freight payable at</span>
+      <span class="value">{{ .boat_note.freight_payable_at }}</span>
+    </div>
+    <div class="box" style="grid-column: 16 / 25;">
+      <span class="label">31. Name of Declarant</span>
+      <span class="value">{{ .boat_note.name_of_declarant }}</span>
+    </div>
+
+    <div class="box" style="grid-column: 9 / 16;">
+      <span class="label">26. Number of Original Bs/L *</span>
+      <span class="value">{{ .boat_note.number_of_original_bs_l }}</span>
+    </div>
+    <div class="box" style="grid-column: 16 / 25;">
+      <span class="label">32. Telephone No.</span>
+      <span class="value">{{ .boat_note.telephone_no }}</span>
+    </div>
+
+    <div class="box" style="grid-column: 9 / 16;">
+      <span class="label">27. Please debit our C/A No. with charges payable</span>
+      <span class="value">{{ .boat_note.debit_our_ca_no_with_charges_payable }}</span>
+    </div>
+    <div class="box" style="grid-column: 16 / 25;">
+      <span class="label">33. Signature of Declarant</span>
+      <div class="sign">Authorized Signatory: <b>{{ .boat_note.authorized_signatory }}</b></div>
+      <span class="label">Date: <b>{{ date .boat_note.declaration_date "2006-01-02" "02/01/2006" }}</b></span>
+    </div>
+  </div>
+  <div class="footer">
+    <span>* Need to appear only on the first THREE copies submitted to shipping company.</span>
+    <span>DARK CAGES FOR OFFICIAL USE ONLY.</span>
+  </div>
+</div>
+</body>
+</html>
