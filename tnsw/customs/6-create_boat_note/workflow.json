@@ -1,7 +1,7 @@
 {
   "id": "customs-create-boat-note-flow",
   "name": "Create Boat Note",
-  "version": 3,
+  "version": 4,
   "nodes": [
     {
       "id": "start",
@@ -50,6 +50,17 @@
       }
     },
     {
+      "id": "generate_boat_note_document",
+      "type": "TASK",
+      "task_template_id": "customs-boat-note--generate-document",
+      "input_mapping": {
+        "userform": "boat_note"
+      },
+      "output_mapping": {
+        "boat_note_document.key": "boat_note_document_key"
+      }
+    },
+    {
       "id": "end",
       "type": "END"
     }
@@ -63,6 +74,11 @@
     {
       "id": "e2",
       "source_id": "applicant_submission",
+      "target_id": "generate_boat_note_document"
+    },
+    {
+      "id": "e3",
+      "source_id": "generate_boat_note_document",
       "target_id": "end"
     }
   ]
