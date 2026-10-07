@@ -137,7 +137,8 @@
         "customs.boat_note_document_key": "boat_note_document_key"
       },
       "output_mapping": {
-        "approval_status": "customs.boat_note_approval_status"
+        "approval_status": "customs.boat_note_approval_status",
+        "approved_boat_note_file": "customs.approved_boat_note_file"
       }
     },
     {
