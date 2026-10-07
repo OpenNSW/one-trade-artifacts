@@ -133,7 +133,8 @@
       "task_template_id": "customs-boat-note-approval-flow",
       "lane": "Trader/CHA",
       "input_mapping": {
-        "customs.boat_note_userform": "userform"
+        "customs.boat_note_userform": "userform",
+        "customs.boat_note_document_key": "boat_note_document_key"
       },
       "output_mapping": {
         "approval_status": "customs.boat_note_approval_status"
