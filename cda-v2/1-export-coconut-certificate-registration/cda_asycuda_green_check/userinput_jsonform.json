@@ -121,13 +121,28 @@
               "type": "number",
               "title": "Total Weight (kg)",
               "example": 12500
+            },
+            "product_type": {
+              "type": "string",
+              "title": "Product Type",
+              "oneOf": [
+                {
+                  "const": "dc",
+                  "title": "DC"
+                },
+                {
+                  "const": "value_added_dc",
+                  "title": "Value Added DC / Low Fat DC"
+                }
+              ]
             }
           },
           "required": [
             "dc_grade",
             "number_of_bags",
             "weight_of_bag",
-            "total_weight"
+            "total_weight",
+            "product_type"
           ]
         }
       },
@@ -335,7 +350,37 @@
         "elements": [
           {
             "type": "Control",
-            "scope": "#/properties/dc_grades"
+            "scope": "#/properties/dc_grades",
+            "options": {
+              "detail": {
+                "type": "VerticalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/dc_grade"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/number_of_bags"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/weight_of_bag"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/total_weight"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/product_type",
+                    "options": {
+                      "format": "radio"
+                    }
+                  }
+                ]
+              }
+            }
           }
         ]
       },

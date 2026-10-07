@@ -16,8 +16,6 @@
       },
       "output_mapping": {
         "verification_outcome": "reviewform.verification_outcome",
-        "product_type_dc?": "reviewform.product_type_dc",
-        "product_type_value_added_dc?": "reviewform.product_type_value_added_dc",
         "rejection_reason?": "reviewform.rejection_reason"
       }
     },
