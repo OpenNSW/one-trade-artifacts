@@ -3,6 +3,18 @@
   "type": "APPLICATION",
   "title": "CDA ASYCUDA Approval Review \u2014 Kernel Products",
   "sections": {
+    "previous_review": {
+      "templateId": "cda-kernel-asycuda-review--previous-review",
+      "title": "Previous Review",
+      "projector": "MARKDOWN",
+      "dataKey": "previous_rejection_reason",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "previous_rejection_reason"
+      }
+    },
     "submission_view": {
       "templateId": "cda-kernel-asycuda--user-form",
       "title": "Submitted Application",
@@ -29,7 +41,20 @@
       "visibleWhen": {
         "states": [
           "QUEUED_EXTERNALLY"
-        ]
+        ],
+        "requireDataKey": "payload"
+      }
+    },
+    "awaiting_resubmission": {
+      "templateId": "cda-kernel-asycuda-review--awaiting-resubmission",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "dataKey": "rejection_reason",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ],
+        "requireDataKey": "rejection_reason"
       }
     }
   },

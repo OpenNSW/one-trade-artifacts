@@ -40,20 +40,22 @@
       "type": "TASK",
       "task_template_id": "cda-lot-adjustment-officer--review",
       "input_mapping": {
-        "reference_number": "reference_number",
-        "adjustment_choice": "adjustment_choice",
-        "exporter_details": "exporter_details",
-        "cusdec_number": "cusdec_number",
-        "number_of_bags_not_shipped": "number_of_bags_not_shipped",
-        "cusdec_document": "cusdec_document",
-        "lots_to_remove": "lots_to_remove",
-        "cert_type?": "cert_type"
+        "reference_number": "submission.reference_number",
+        "adjustment_choice": "submission.adjustment_choice",
+        "exporter_details": "submission.exporter_details",
+        "cusdec_number": "submission.cusdec_number",
+        "number_of_bags_not_shipped": "submission.number_of_bags_not_shipped",
+        "cusdec_document": "submission.cusdec_document",
+        "lots_to_remove": "submission.lots_to_remove",
+        "cert_type?": "submission.cert_type",
+        "agency_token?": "replyToken"
       },
       "output_mapping": {
         "adjustment_outcome": "adjustment_outcome",
         "new_physical_certificate_file?": "physical_certificate_file",
         "new_salmonella_certificate_file?": "salmonella_certificate_file",
-        "adjustment_feedback?": "adjustment_feedback"
+        "adjustment_feedback?": "adjustment_feedback",
+        "callbackToken?": "agency_token"
       }
     },
     {

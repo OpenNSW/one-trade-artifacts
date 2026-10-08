@@ -3,6 +3,18 @@
   "type": "APPLICATION",
   "title": "CDA Officer Lot Adjustment Review",
   "sections": {
+    "previous_review": {
+      "templateId": "cda-lot-adjustment-review--previous-review",
+      "title": "Previous Review",
+      "projector": "MARKDOWN",
+      "dataKey": "previous_adjustment_feedback",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "previous_adjustment_feedback"
+      }
+    },
     "submission_view": {
       "templateId": "cda-lot-adjustment-trader--user-form",
       "title": "Submitted Application",
@@ -29,7 +41,20 @@
       "visibleWhen": {
         "states": [
           "QUEUED_EXTERNALLY"
-        ]
+        ],
+        "requireDataKey": "payload"
+      }
+    },
+    "awaiting_resubmission": {
+      "templateId": "cda-lot-adjustment-review--awaiting-resubmission",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "dataKey": "adjustment_feedback",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ],
+        "requireDataKey": "adjustment_feedback"
       }
     }
   },

@@ -133,6 +133,24 @@
       "path": "1-export-coconut-certificate-registration/cda_lot_adjustment_review/notify_decision.json"
     },
     {
+      "id": "cda-lot-adjustment-review--request-info",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "1-export-coconut-certificate-registration/cda_lot_adjustment_review/request_info.json"
+    },
+    {
+      "id": "cda-lot-adjustment-review--previous-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "1-export-coconut-certificate-registration/cda_lot_adjustment_review/previous_review_markdown.json"
+    },
+    {
+      "id": "cda-lot-adjustment-review--awaiting-resubmission",
+      "kind": "generic_template",
+      "version": "",
+      "path": "1-export-coconut-certificate-registration/cda_lot_adjustment_review/awaiting_resubmission_markdown.json"
+    },
+    {
       "id": "cda-lot-adjustment-review--submission-view",
       "kind": "generic_template",
       "version": "",
@@ -337,6 +355,24 @@
       "path": "2-king-coconut-fresh-nuts-recommendation/cda_kcfn_inspection_review/notify_decision.json"
     },
     {
+      "id": "cda-kcfn-inspection-review--request-info",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "2-king-coconut-fresh-nuts-recommendation/cda_kcfn_inspection_review/request_info.json"
+    },
+    {
+      "id": "cda-kcfn-inspection-review--previous-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "2-king-coconut-fresh-nuts-recommendation/cda_kcfn_inspection_review/previous_review_markdown.json"
+    },
+    {
+      "id": "cda-kcfn-inspection-review--awaiting-resubmission",
+      "kind": "generic_template",
+      "version": "",
+      "path": "2-king-coconut-fresh-nuts-recommendation/cda_kcfn_inspection_review/awaiting_resubmission_markdown.json"
+    },
+    {
       "id": "cda-kcfn-inspection-review--submission-view",
       "kind": "generic_template",
       "version": "",
@@ -515,6 +551,24 @@
       "kind": "subtask_template",
       "version": "",
       "path": "3-kernel-products-asycuda-approval/cda_kernel_asycuda_review/notify_decision.json"
+    },
+    {
+      "id": "cda-kernel-asycuda-review--request-info",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "3-kernel-products-asycuda-approval/cda_kernel_asycuda_review/request_info.json"
+    },
+    {
+      "id": "cda-kernel-asycuda-review--previous-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "3-kernel-products-asycuda-approval/cda_kernel_asycuda_review/previous_review_markdown.json"
+    },
+    {
+      "id": "cda-kernel-asycuda-review--awaiting-resubmission",
+      "kind": "generic_template",
+      "version": "",
+      "path": "3-kernel-products-asycuda-approval/cda_kernel_asycuda_review/awaiting_resubmission_markdown.json"
     },
     {
       "id": "cda-kernel-asycuda-review--submission-view",
