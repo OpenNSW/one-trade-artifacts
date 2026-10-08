@@ -40,33 +40,148 @@
             },
             "include_in_certificate": {
               "type": "boolean",
-              "title": "Include on Certificate",
-              "default": true
+              "title": "Include on Certificate"
             },
             "sample_test_result": {
               "type": "string",
-              "title": "Lab Result",
-              "readOnly": true
+              "title": "Lab Test Result",
+              "readOnly": true,
+              "oneOf": [
+                {
+                  "const": "pass",
+                  "title": "Pass"
+                },
+                {
+                  "const": "fail_resubmit",
+                  "title": "Fail (resubmission allowed)"
+                },
+                {
+                  "const": "fail_final",
+                  "title": "Fail"
+                }
+              ]
             },
             "visual_result": {
               "type": "string",
-              "title": "Visual 1 Result",
-              "readOnly": true
+              "title": "Visual Inspection 1 Result",
+              "readOnly": true,
+              "oneOf": [
+                {
+                  "const": "pass",
+                  "title": "Pass"
+                },
+                {
+                  "const": "fail",
+                  "title": "Fail"
+                }
+              ]
             },
             "treatment_result": {
               "type": "string",
               "title": "Treatment Result",
-              "readOnly": true
+              "readOnly": true,
+              "oneOf": [
+                {
+                  "const": "pass",
+                  "title": "Pass"
+                },
+                {
+                  "const": "fail",
+                  "title": "Fail"
+                }
+              ]
             },
             "visual2_result": {
               "type": "string",
-              "title": "Visual 2 Result",
+              "title": "Visual Inspection 2 Result",
+              "readOnly": true,
+              "oneOf": [
+                {
+                  "const": "pass",
+                  "title": "Pass"
+                },
+                {
+                  "const": "fail",
+                  "title": "Fail"
+                }
+              ]
+            },
+            "commodity_botanical_name": {
+              "type": "string",
+              "title": "Botanical Name",
               "readOnly": true
             }
           },
           "required": [
             "id"
-          ]
+          ],
+          "if": {
+            "anyOf": [
+              {
+                "properties": {
+                  "sample_test_result": {
+                    "enum": [
+                      "fail_final",
+                      "fail_resubmit"
+                    ]
+                  }
+                },
+                "required": [
+                  "sample_test_result"
+                ]
+              },
+              {
+                "properties": {
+                  "visual_result": {
+                    "enum": [
+                      "fail"
+                    ]
+                  }
+                },
+                "required": [
+                  "visual_result"
+                ]
+              },
+              {
+                "properties": {
+                  "treatment_result": {
+                    "enum": [
+                      "fail"
+                    ]
+                  }
+                },
+                "required": [
+                  "treatment_result"
+                ]
+              },
+              {
+                "properties": {
+                  "visual2_result": {
+                    "enum": [
+                      "fail"
+                    ]
+                  }
+                },
+                "required": [
+                  "visual2_result"
+                ]
+              }
+            ]
+          },
+          "then": {
+            "properties": {
+              "include_in_certificate": {
+                "default": false
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "include_in_certificate": {
+                "default": true
+              }
+            }
+          }
         }
       },
       "certificate_id": {
@@ -120,7 +235,10 @@
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/include_in_certificate"
+                    "scope": "#/properties/commodity_botanical_name",
+                    "options": {
+                      "readOnly": true
+                    }
                   }
                 ]
               },
@@ -132,6 +250,16 @@
                     "scope": "#/properties/sample_test_result",
                     "options": {
                       "readOnly": true
+                    },
+                    "rule": {
+                      "effect": "SHOW",
+                      "condition": {
+                        "scope": "#/properties/sample_test_result",
+                        "schema": {
+                          "type": "string"
+                        },
+                        "failWhenUndefined": true
+                      }
                     }
                   },
                   {
@@ -139,6 +267,16 @@
                     "scope": "#/properties/visual_result",
                     "options": {
                       "readOnly": true
+                    },
+                    "rule": {
+                      "effect": "SHOW",
+                      "condition": {
+                        "scope": "#/properties/visual_result",
+                        "schema": {
+                          "type": "string"
+                        },
+                        "failWhenUndefined": true
+                      }
                     }
                   },
                   {
@@ -146,6 +284,16 @@
                     "scope": "#/properties/treatment_result",
                     "options": {
                       "readOnly": true
+                    },
+                    "rule": {
+                      "effect": "SHOW",
+                      "condition": {
+                        "scope": "#/properties/treatment_result",
+                        "schema": {
+                          "type": "string"
+                        },
+                        "failWhenUndefined": true
+                      }
                     }
                   },
                   {
@@ -153,9 +301,23 @@
                     "scope": "#/properties/visual2_result",
                     "options": {
                       "readOnly": true
+                    },
+                    "rule": {
+                      "effect": "SHOW",
+                      "condition": {
+                        "scope": "#/properties/visual2_result",
+                        "schema": {
+                          "type": "string"
+                        },
+                        "failWhenUndefined": true
+                      }
                     }
                   }
                 ]
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/include_in_certificate"
               }
             ]
           },
