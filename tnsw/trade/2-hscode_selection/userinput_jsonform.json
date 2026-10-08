@@ -19,6 +19,10 @@
               "title": "NPQS Phyto Certificate (NPQS Flow)"
             },
             {
+              "const": "npqs-v3-export-phytosanitary-reg",
+              "title": "NPQS v3 Phyto Certificate (NPQS v3 Flow)"
+            },
+            {
               "const": "cda-certificate-reg",
               "title": "CDA Coconut Certificate (CDA Flow)"
             },
