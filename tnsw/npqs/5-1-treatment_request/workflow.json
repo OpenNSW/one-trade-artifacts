@@ -1,7 +1,7 @@
 {
   "id": "npqs-treatment-request",
   "name": "Submit & Approve Treatment Request",
-  "version": 2,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
@@ -33,7 +33,8 @@
       },
       "output_mapping": {
         "treatment_request_outcome": "reviewerform.treatment_request_outcome",
-        "clarification_comments?": "reviewerform.clarification_comments"
+        "clarification_comments?": "reviewerform.clarification_comments",
+        "treatment_items?": "reviewerform.treatment_items"
       }
     },
     {

@@ -1,7 +1,7 @@
 {
   "id": "npqs-v3-export-phytosanitary-reg",
   "name": "NPQS Export Consignment & Phytosanitary Registration (Linear Stages)",
-  "version": 2,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
@@ -898,19 +898,19 @@
       "id": "e_treatment_by_npqs",
       "source_id": "treatment_provider_split",
       "target_id": "n3_2_treatment_payment",
-      "condition": "any(npqs.treatment_items ?? [], .id == item.id && .treatment_provider == 'npqs')"
+      "condition": "any(npqs.treatment_items, .id == item.id && .treatment_provider == 'npqs')"
     },
     {
       "id": "e_treatment_by_provider",
       "source_id": "treatment_provider_split",
       "target_id": "n3_4_treatment_upload_certs",
-      "condition": "any(npqs.treatment_items ?? [], .id == item.id && .treatment_provider == 'external')"
+      "condition": "any(npqs.treatment_items, .id == item.id && .treatment_provider == 'external')"
     },
     {
       "id": "e_treatment_not_requested",
       "source_id": "treatment_provider_split",
       "target_id": "treatment_provider_join",
-      "condition": "none(npqs.treatment_items ?? [], .id == item.id)"
+      "condition": "none(npqs.treatment_items, .id == item.id)"
     },
     {
       "id": "e_treatment_payment_to_cert",
@@ -926,13 +926,13 @@
       "id": "e_supervision_split_true",
       "source_id": "n3_3_1_supervision_split",
       "target_id": "n3_3_2_treatment_supervisor_report",
-      "condition": "any(npqs.treatment_items ?? [], .id == item.id && .treatment_supervision == 'with_supervision')"
+      "condition": "any(npqs.treatment_items, .id == item.id && .treatment_supervision == 'with_supervision')"
     },
     {
       "id": "e_supervision_split_false",
       "source_id": "n3_3_1_supervision_split",
       "target_id": "n3_3_1_supervision_join",
-      "condition": "none(npqs.treatment_items ?? [], .id == item.id && .treatment_supervision == 'with_supervision')"
+      "condition": "none(npqs.treatment_items, .id == item.id && .treatment_supervision == 'with_supervision')"
     },
     {
       "id": "e_supervisor_report_to_upload",
