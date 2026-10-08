@@ -54,6 +54,7 @@
       "type": "TASK",
       "task_template_id": "customs-boat-note--generate-document",
       "input_mapping": {
+        "userform?": "userform",
         "userform": "boat_note"
       },
       "output_mapping": {
