@@ -2,6 +2,10 @@
   "id": "fcau-pay-lab-fee-flow:render",
   "type": "APPLICATION",
   "title": "[FCAU] Pay Lab Test Fee",
+  "files": [
+    "lab_receipt",
+    "traderinput.lab_receipt"
+  ],
   "sections": {
     "instructions": {
       "templateId": "fcau-pay-lab-fee--review-status",

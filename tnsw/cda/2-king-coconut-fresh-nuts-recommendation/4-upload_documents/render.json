@@ -2,6 +2,15 @@
   "id": "cda-kcfn-upload-docs-flow:render",
   "type": "APPLICATION",
   "title": "[CDA] Submit Necessary Documents & ASYCUDA Verification",
+  "files": [
+    "submission.additional_documents[*]",
+    "submission.commercial_invoice",
+    "submission.packing_list",
+    "submission.recommendation_letter_file",
+    "uploadform.additional_documents[*]",
+    "uploadform.commercial_invoice",
+    "uploadform.packing_list"
+  ],
   "sections": {
     "outcome_message": {
       "templateId": "cda-kcfn-upload-docs--verified-message",

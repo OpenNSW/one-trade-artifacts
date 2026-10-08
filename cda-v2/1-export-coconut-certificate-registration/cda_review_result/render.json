@@ -2,6 +2,11 @@
   "id": "cda-review-result--review:render",
   "type": "APPLICATION",
   "title": "CDA Application Review & Certification",
+  "files": [
+    "payload.payload.certificate_file",
+    "reviewform.certificate_file",
+    "submission.uploaded_dc_bags_details"
+  ],
   "sections": {
     "submission_view": {
       "templateId": "cda-apply-coconut-cert--user-form",

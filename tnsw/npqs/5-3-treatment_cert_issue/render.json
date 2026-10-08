@@ -2,6 +2,10 @@
   "id": "npqs-issue-treatment-cert:render",
   "type": "REVIEW",
   "title": "[NPQS] Issue Treatment Certificate",
+  "files": [
+    "reviewerform.treatment_certificate_url",
+    "submission.attachments[*].attachment_file_url"
+  ],
   "sections": {
     "assessment_outcome": {
       "templateId": "npqs-treatment-cert-issue--status",

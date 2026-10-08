@@ -2,6 +2,14 @@
   "id": "npqs-ephyto-upload:render",
   "type": "APPLICATION",
   "title": "[NPQS] IPPC ePhyto Hub Transfer",
+  "files": [
+    "documents.additional_supporting_document.url",
+    "documents.commercial_invoice.url",
+    "documents.packing_list.url",
+    "documents.treatment_certificate.url",
+    "documents.treatment_supervision_report.url",
+    "userform.attachments[*].attachment_file_url"
+  ],
   "sections": {
     "submission_msg": {
       "templateId": "npqs-ephyto-upload--submission-msg",

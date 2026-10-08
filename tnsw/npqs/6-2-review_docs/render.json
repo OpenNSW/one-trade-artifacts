@@ -2,6 +2,11 @@
   "id": "npqs-review-docs:render",
   "type": "REVIEW",
   "title": "[NPQS] Review Consignment Documents",
+  "files": [
+    "submission.additional_file_url",
+    "submission.invoice_file_url",
+    "submission.packing_list_file_url"
+  ],
   "sections": {
     "assessment_outcome": {
       "templateId": "npqs-review-docs--status",

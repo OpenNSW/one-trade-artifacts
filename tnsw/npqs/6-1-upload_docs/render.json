@@ -2,6 +2,12 @@
   "id": "npqs-upload-docs:render",
   "type": "APPLICATION",
   "title": "[NPQS] Upload Consignment Documents",
+  "files": [
+    "traderinput.additional_file_url",
+    "traderinput.invoice_file_url",
+    "traderinput.packing_list_file_url",
+    "userform.attachments[*].attachment_file_url"
+  ],
   "sections": {
     "status_message": {
       "templateId": "npqs-upload-docs--status",
