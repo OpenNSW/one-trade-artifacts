@@ -4,21 +4,6 @@
   "schema": {
     "type": "object",
     "properties": {
-      "visual2_result": {
-        "type": "string",
-        "title": "Inspection Result",
-        "oneOf": [
-          {
-            "const": "pass",
-            "title": "Pass (Consignment approved visually)"
-          },
-          {
-            "const": "fail",
-            "title": "Fail (Consignment has pests, rot, or damage)"
-          }
-        ],
-        "default": "pass"
-      },
       "inspection_comments": {
         "type": "string",
         "title": "Inspection Notes",
@@ -85,18 +70,11 @@
           ]
         }
       }
-    },
-    "required": [
-      "visual2_result"
-    ]
+    }
   },
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
-      {
-        "type": "Control",
-        "scope": "#/properties/visual2_result"
-      },
       {
         "type": "Control",
         "scope": "#/properties/inspection_comments"

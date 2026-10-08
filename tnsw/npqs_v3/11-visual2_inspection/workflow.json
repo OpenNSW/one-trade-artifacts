@@ -11,7 +11,10 @@
       "id": "trader_schedule",
       "type": "TASK",
       "task_template_id": "npqs-visual2-inspection--trader-schedule",
-      "input_mapping": {"commodities?": "commodities", "reference_number?": "reference_number"},
+      "input_mapping": {
+        "commodities?": "commodities",
+        "reference_number?": "reference_number"
+      },
       "output_mapping": {
         "inspection_date": "traderinput.inspection_date",
         "inspection_time": "traderinput.inspection_time",
@@ -31,7 +34,6 @@
         "commodities?": "submission.items"
       },
       "output_mapping": {
-        "visual2_result": "visual2_result",
         "items": "commodities"
       }
     },

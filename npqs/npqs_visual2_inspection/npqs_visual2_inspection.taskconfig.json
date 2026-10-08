@@ -10,12 +10,7 @@
     "review": "npqs-visual2-inspection--officer-form"
   },
   "behavior": {
-    "type": "statusMap",
-    "outcomeField": "visual2_result",
-    "statusMap": {
-      "pass": "APPROVED",
-      "fail": "REJECTED"
-    }
+    "type": "autoApprove"
   },
   "permissions": [
     {
