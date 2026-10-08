@@ -1,7 +1,7 @@
 {
   "id": "cda_kcfn_asycuda_verification_v1",
   "name": "CDA Officer ASYCUDA Green Check Verification",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -12,6 +12,7 @@
       "type": "TASK",
       "task_template_id": "cda-kcfn-asycuda-verification--review",
       "input_mapping": {
+        "callbackToken": "callbackToken",
         "notification?": "submission",
         "taskId": "taskId",
         "taskCode": "taskCode",

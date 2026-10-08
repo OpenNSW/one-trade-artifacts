@@ -1,7 +1,7 @@
 {
   "id": "npqs-visual-sample-inspection",
   "name": "Visual Sample Inspection",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -12,6 +12,8 @@
       "type": "TASK",
       "task_template_id": "npqs-visual-sample-inspection--officer-review",
       "input_mapping": {
+        "commodities": "commodities",
+        "reference_number?": "reference_number",
         "reference_number": "submission.reference_number",
         "userform": "submission",
         "sample_number?": "submission.sample_number",

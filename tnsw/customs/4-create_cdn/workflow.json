@@ -1,7 +1,7 @@
 {
   "id": "customs-create-cdn-flow",
   "name": "Create CDN",
-  "version": 3,
+  "version": 4,
   "nodes": [
     {
       "id": "start",
@@ -31,6 +31,7 @@
       "type": "TASK",
       "task_template_id": "customs-cdn--cig-dispatch",
       "input_mapping": {
+        "userform?": "userform",
         "userform": "payload",
         "cusdec_ref": "payload.cusdecRef",
         "cig_cdn.edgeId?": "previous_edge_id"
@@ -51,6 +52,8 @@
       "type": "TASK",
       "task_template_id": "customs-cdn--integration-wait",
       "input_mapping": {
+        "cig_cdn?": "cig_cdn",
+        "userform?": "userform",
         "userform": "submission"
       },
       "output_mapping": {

@@ -1,7 +1,7 @@
 {
   "id": "slpa-consolidation-flow",
   "name": "Consolidate One SLPA Container",
-  "version": 5,
+  "version": 6,
   "nodes": [
     {
       "id": "start",
@@ -70,6 +70,7 @@
       "type": "TASK",
       "task_template_id": "slpa-consolidation--resolve",
       "input_mapping": {
+        "consolidation?": "consolidation",
         "cap_container_no": "cap_container_no",
         "consolidation.cap_containers": "cap_containers"
       },

@@ -1,12 +1,14 @@
 name: Push to R2 (dev)
 
 on:
-  push:
-    branches: [main]
-  # Dispatchable as well, so a branch can be put in front of nsw-dev before it
-  # is merged. The staging sync has carried this since it was written; without
-  # it the dev bucket can only ever hold main, and a change has to be merged to
-  # be tried.
+  # Manual only for now. Syncing on every push to main breaks the nsw-srilanka
+  # dev environment until ArgoCD deployment is enabled for it, so the push
+  # trigger stays off until then. Restore it with:
+  #   push:
+  #     branches: [main]
+  #
+  # Dispatching also lets a branch be put in front of nsw-dev before it is
+  # merged.
   workflow_dispatch:
     inputs:
       dryrun:

@@ -1,7 +1,7 @@
 {
   "id": "customs-cusdec-apply-flow",
   "name": "Submit & Review Customs Declaration",
-  "version": 5,
+  "version": 6,
   "nodes": [
     {
       "id": "start",
@@ -12,6 +12,7 @@
       "type": "TASK",
       "task_template_id": "customs-cusdec--user-input",
       "input_mapping": {
+        "reviewerform?": "reviewerform",
         "reviewerform.rejection_reason?": "rejection_reason",
         "cig.error?": "cig.error",
         "verify?": "verify",
@@ -42,6 +43,9 @@
       "type": "TASK",
       "task_template_id": "customs-cusdec--cig-verify",
       "input_mapping": {
+        "cig?": "cig",
+        "reviewerform?": "reviewerform",
+        "userform?": "userform",
         "userform": "payload"
       },
       "output_mapping": {
@@ -55,6 +59,8 @@
       "type": "TASK",
       "task_template_id": "customs-cusdec--cig-dispatch",
       "input_mapping": {
+        "reviewerform?": "reviewerform",
+        "userform?": "userform",
         "userform": "payload",
         "cig.edgeId?": "previous_edge_id"
       },
@@ -74,6 +80,8 @@
       "type": "TASK",
       "task_template_id": "customs-cusdec--external-review",
       "input_mapping": {
+        "cig?": "cig",
+        "userform?": "userform",
         "userform": "submission"
       },
       "output_mapping": {

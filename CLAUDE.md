@@ -113,8 +113,10 @@ and the cutover switches it from one to the other. Don't rename the reused ids t
 **Whenever a new top-level folder is introduced (an `<agency>-v2/` or anything else),
 add it to the `aws s3 sync --include` list in both `.github/workflows/push-to-r2-dev.yml`
 and `.github/workflows/push-to-r2-staging.yml`.** The sync excludes everything not
-listed, so a folder missing from these lists is silently never published to R2. Dev
-syncs on every push to `main`, so merging is enough to publish it there.
+listed, so a folder missing from these lists is silently never published to R2. Both
+syncs are currently manual (`workflow_dispatch`) only: dev's push-to-`main` trigger is
+off until ArgoCD deployment is enabled for the nsw-srilanka dev environment, so merging
+alone does not publish anything.
 
 ## Artifact kinds (see any `manifest.json`)
 

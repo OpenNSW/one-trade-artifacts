@@ -1,7 +1,7 @@
 {
   "id": "cda-asycuda-green-check--review-workflow",
   "name": "CDA ASYCUDA Green Check \u2014 Officer Review",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -24,6 +24,9 @@
       "type": "TASK",
       "task_template_id": "cda-asycuda-green-check--notify-decision",
       "input_mapping": {
+        "callbackToken": "callbackToken",
+        "reviewform?": "reviewform",
+        "submission?": "submission",
         "taskId": "taskId",
         "reviewform.review_outcome": "payload.command",
         "reviewform": "payload.payload"

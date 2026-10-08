@@ -25,6 +25,9 @@
       "type": "TASK",
       "task_template_id": "customs-boat-note-approval--notify-decision",
       "input_mapping": {
+        "callbackToken": "callbackToken",
+        "reviewform?": "reviewform",
+        "submission?": "submission",
         "taskId": "taskId",
         "reviewform.approval_status": "payload.command",
         "reviewform": "payload.payload"

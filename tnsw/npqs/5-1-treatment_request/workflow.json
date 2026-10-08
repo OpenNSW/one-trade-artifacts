@@ -1,7 +1,7 @@
 {
   "id": "npqs-treatment-request",
   "name": "Submit & Approve Treatment Request",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -12,6 +12,7 @@
       "type": "TASK",
       "task_template_id": "npqs-treatment-request--trader-request",
       "input_mapping": {
+        "reviewerform?": "reviewerform",
         "traderinput.treatment_items": "traderinput.treatment_items"
       },
       "output_mapping": {
@@ -24,6 +25,8 @@
       "type": "TASK",
       "task_template_id": "npqs-treatment-request--officer-review",
       "input_mapping": {
+        "reference_number?": "reference_number",
+        "traderinput?": "traderinput",
         "reference_number": "submission.reference_number",
         "traderinput": "submission",
         "userform?": "submission.userform"

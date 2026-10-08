@@ -1,7 +1,7 @@
 {
   "id": "cda_kcfn_issue_letter_v1",
   "name": "CDA Officer Recommendation Letter Issuance",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -12,6 +12,7 @@
       "type": "TASK",
       "task_template_id": "cda-kcfn-issue-letter--review",
       "input_mapping": {
+        "callbackToken": "callbackToken",
         "notification?": "submission",
         "taskId": "taskId",
         "taskCode": "taskCode",

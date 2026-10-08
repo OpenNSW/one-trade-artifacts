@@ -1,7 +1,7 @@
 {
   "id": "cda-kernel-asycuda-approval-flow",
   "name": "Submit ASYCUDA Approval Application for Kernel Products",
-  "version": 4,
+  "version": 5,
   "nodes": [
     {
       "id": "start",
@@ -35,6 +35,8 @@
       "type": "TASK",
       "task_template_id": "cda-kernel-asycuda--officer-review",
       "input_mapping": {
+        "rejection_reason?": "rejection_reason",
+        "userform?": "userform",
         "userform": "submission"
       },
       "output_mapping": {
