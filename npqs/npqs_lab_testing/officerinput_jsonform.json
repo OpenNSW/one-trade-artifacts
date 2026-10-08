@@ -91,11 +91,6 @@
               ],
               "default": "pass"
             },
-            "post_lab_visual_required": {
-              "type": "boolean",
-              "title": "Post-Lab Visual Required",
-              "default": false
-            },
             "lab_failure_reason": {
               "type": "string",
               "title": "Failure Reason (If failed)",
@@ -170,19 +165,6 @@
                       "not": {
                         "const": "pass"
                       }
-                    }
-                  }
-                }
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/post_lab_visual_required",
-                "rule": {
-                  "effect": "SHOW",
-                  "condition": {
-                    "scope": "#/properties/sample_test_result",
-                    "schema": {
-                      "const": "pass"
                     }
                   }
                 }
