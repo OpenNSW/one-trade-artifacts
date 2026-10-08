@@ -2,6 +2,9 @@
   "id": "customs-wait-payment-flow:render",
   "type": "REVIEW",
   "title": "[Customs] Duty Payment Settlement",
+  "files": [
+    "submission.supportingDocuments[*].file"
+  ],
   "sections": {
     "status_message": {
       "templateId": "customs-wait-payment--instructions",

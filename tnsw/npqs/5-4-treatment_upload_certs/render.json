@@ -2,6 +2,11 @@
   "id": "npqs-upload-treatment-certs:render",
   "type": "APPLICATION",
   "title": "[NPQS] Upload Treatment Certificates",
+  "files": [
+    "traderinput.supervision_report_url",
+    "traderinput.treatment_certificate_url",
+    "userform.attachments[*].attachment_file_url"
+  ],
   "sections": {
     "status_message": {
       "templateId": "npqs-treatment-upload-certs--status",

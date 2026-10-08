@@ -2,6 +2,9 @@
   "id": "cda-view-new-certificate-flow:render",
   "type": "APPLICATION",
   "title": "[CDA] View Revised Certificate",
+  "files": [
+    "certificate_file"
+  ],
   "sections": {
     "certificate_display": {
       "templateId": "cda-view-new-certificate--display",

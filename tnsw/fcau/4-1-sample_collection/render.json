@@ -2,6 +2,10 @@
   "id": "fcau-sample-collection-flow:render",
   "type": "SAMPLE_COLLECTION",
   "title": "[FCAU] Submit, Receive and Number Sample",
+  "files": [
+    "submission.analysis_certificates",
+    "submission.other_supporting_documents[*]"
+  ],
   "sections": {
     "status_message": {
       "templateId": "fcau-sample-collection--handover-instructions",

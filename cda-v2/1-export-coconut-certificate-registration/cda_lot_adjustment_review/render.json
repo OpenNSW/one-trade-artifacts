@@ -7,6 +7,12 @@
       "officer"
     ]
   },
+  "files": [
+    "payload.payload.new_certificate_file",
+    "reviewform.new_certificate_file",
+    "submission.cusdec_document",
+    "submission.lots_to_remove"
+  ],
   "sections": {
     "previous_review": {
       "templateId": "cda-lot-adjustment-review--previous-review",

@@ -2,6 +2,14 @@
   "id": "cda-lot-adjustment-flow:render",
   "type": "APPLICATION",
   "title": "[CDA] Application for Alteration of Bag Details",
+  "files": [
+    "adjustmentform.cusdec_document",
+    "adjustmentform.lots_to_remove",
+    "adjustmentreviewerform.new_certificate_file",
+    "certificate_file",
+    "cusdec_document",
+    "lots_to_remove"
+  ],
   "sections": {
     "status_message": {
       "templateId": "cda-lot-adjustment-officer--trader-instructions",
