@@ -1,6 +1,6 @@
 {
   "id": "npqs-v3-sample-draw-at-site",
-  "type": "APPLICATION",
+  "type": "REVIEW",
   "workflow_id": "npqs-v3-sample-draw-at-site",
   "render_config_id": "npqs-v3-sample-draw-at-site:render"
 }

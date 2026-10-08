@@ -1,6 +1,6 @@
 {
   "id": "npqs-v3-treatment-issue:render",
-  "type": "APPLICATION",
+  "type": "REVIEW",
   "title": "[NPQS] NPQS Treatment Certificate",
   "sections": {
     "status_message": {

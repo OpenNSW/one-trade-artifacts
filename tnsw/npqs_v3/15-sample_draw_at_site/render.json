@@ -1,6 +1,6 @@
 {
   "id": "npqs-v3-sample-draw-at-site:render",
-  "type": "APPLICATION",
+  "type": "REVIEW",
   "title": "[NPQS] Sample Drawn at Your Site",
   "sections": {
     "status_message": {

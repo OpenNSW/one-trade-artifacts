@@ -1,6 +1,6 @@
 {
   "id": "npqs-v3-treatment-issue-supervised",
-  "type": "APPLICATION",
+  "type": "REVIEW",
   "workflow_id": "npqs-v3-treatment-issue-supervised",
   "render_config_id": "npqs-v3-treatment-issue-supervised:render"
 }

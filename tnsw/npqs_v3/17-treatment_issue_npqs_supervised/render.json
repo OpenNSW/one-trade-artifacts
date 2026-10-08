@@ -1,6 +1,6 @@
 {
   "id": "npqs-v3-treatment-issue-supervised:render",
-  "type": "APPLICATION",
+  "type": "REVIEW",
   "title": "[NPQS] NPQS Treatment Certificate and Supervision Report",
   "sections": {
     "status_message": {
