@@ -58,8 +58,13 @@
                 {
                   "const": "fail_final",
                   "title": "Fail"
+                },
+                {
+                  "const": "skipped",
+                  "title": "Skipped"
                 }
-              ]
+              ],
+              "default": "skipped"
             },
             "visual_result": {
               "type": "string",
@@ -73,8 +78,13 @@
                 {
                   "const": "fail",
                   "title": "Fail"
+                },
+                {
+                  "const": "skipped",
+                  "title": "Skipped"
                 }
-              ]
+              ],
+              "default": "skipped"
             },
             "treatment_result": {
               "type": "string",
@@ -88,8 +98,13 @@
                 {
                   "const": "fail",
                   "title": "Fail"
+                },
+                {
+                  "const": "skipped",
+                  "title": "Skipped"
                 }
-              ]
+              ],
+              "default": "skipped"
             },
             "visual2_result": {
               "type": "string",
@@ -103,8 +118,13 @@
                 {
                   "const": "fail",
                   "title": "Fail"
+                },
+                {
+                  "const": "skipped",
+                  "title": "Skipped"
                 }
-              ]
+              ],
+              "default": "skipped"
             },
             "commodity_botanical_name": {
               "type": "string",
@@ -251,16 +271,6 @@
                     "scope": "#/properties/sample_test_result",
                     "options": {
                       "readOnly": true
-                    },
-                    "rule": {
-                      "effect": "SHOW",
-                      "condition": {
-                        "scope": "#/properties/sample_test_result",
-                        "schema": {
-                          "type": "string"
-                        },
-                        "failWhenUndefined": true
-                      }
                     }
                   },
                   {
@@ -268,16 +278,6 @@
                     "scope": "#/properties/visual_result",
                     "options": {
                       "readOnly": true
-                    },
-                    "rule": {
-                      "effect": "SHOW",
-                      "condition": {
-                        "scope": "#/properties/visual_result",
-                        "schema": {
-                          "type": "string"
-                        },
-                        "failWhenUndefined": true
-                      }
                     }
                   },
                   {
@@ -285,16 +285,6 @@
                     "scope": "#/properties/treatment_result",
                     "options": {
                       "readOnly": true
-                    },
-                    "rule": {
-                      "effect": "SHOW",
-                      "condition": {
-                        "scope": "#/properties/treatment_result",
-                        "schema": {
-                          "type": "string"
-                        },
-                        "failWhenUndefined": true
-                      }
                     }
                   },
                   {
@@ -302,16 +292,6 @@
                     "scope": "#/properties/visual2_result",
                     "options": {
                       "readOnly": true
-                    },
-                    "rule": {
-                      "effect": "SHOW",
-                      "condition": {
-                        "scope": "#/properties/visual2_result",
-                        "schema": {
-                          "type": "string"
-                        },
-                        "failWhenUndefined": true
-                      }
                     }
                   }
                 ]
