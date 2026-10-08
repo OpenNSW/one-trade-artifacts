@@ -55,6 +55,24 @@
       "path": "1-export-coconut-certificate-registration/cda_officer_verification/notify_decision.json"
     },
     {
+      "id": "cda-officer-verification--request-info",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "1-export-coconut-certificate-registration/cda_officer_verification/request_info.json"
+    },
+    {
+      "id": "cda-officer-verification--previous-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "1-export-coconut-certificate-registration/cda_officer_verification/previous_review_markdown.json"
+    },
+    {
+      "id": "cda-officer-verification--awaiting-resubmission",
+      "kind": "generic_template",
+      "version": "",
+      "path": "1-export-coconut-certificate-registration/cda_officer_verification/awaiting_resubmission_markdown.json"
+    },
+    {
       "id": "cda-officer-verification--submission-view",
       "kind": "generic_template",
       "version": "",

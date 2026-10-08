@@ -25,11 +25,31 @@
       "task_template_id": "cda-officer-verification--officer-review",
       "input_mapping": {
         "submission?": "submission",
-        "reviewform.application_ref": "reviewform.application_ref"
+        "reviewform.application_ref": "reviewform.application_ref",
+        "reviewform.rejection_reason?": "previous_rejection_reason"
       },
       "output_mapping": {
         "verification_outcome": "reviewform.verification_outcome",
         "rejection_reason?": "reviewform.rejection_reason"
+      }
+    },
+    {
+      "id": "decision_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "request_info",
+      "type": "TASK",
+      "task_template_id": "cda-officer-verification--request-info",
+      "input_mapping": {
+        "callbackToken": "replyToken",
+        "reviewform.verification_outcome": "verification_outcome",
+        "reviewform.rejection_reason?": "rejection_reason"
+      },
+      "output_mapping": {
+        "submission": "submission",
+        "callbackToken": "callbackToken"
       }
     },
     {
@@ -64,7 +84,24 @@
     {
       "id": "e3",
       "source_id": "userform",
-      "target_id": "api_call"
+      "target_id": "decision_gateway"
+    },
+    {
+      "id": "e_needs_info",
+      "source_id": "decision_gateway",
+      "target_id": "request_info",
+      "condition": "reviewform.verification_outcome == 'needs_more_info'"
+    },
+    {
+      "id": "e_resubmitted",
+      "source_id": "request_info",
+      "target_id": "userform"
+    },
+    {
+      "id": "e_approve",
+      "source_id": "decision_gateway",
+      "target_id": "api_call",
+      "condition": "reviewform.verification_outcome == 'approve'"
     },
     {
       "id": "e4",
