@@ -1,4 +1,4 @@
 {
   "id": "cda-view-new-certificate--display",
-  "template": "### Revised Coconut Export Certificate Issued\n\nThe CDA Officer has approved your Application for Alteration of Bag Details and issued a revised certificate:\n\n* **Revised Certificate ID**: `{{.certificate_id}}`\n* **Certificate File**: [📄 Download Revised Certificate (PDF)]({{.certificate_file}})"
+  "template": "### Revised Coconut Export Certificate Issued\n\nThe CDA Officer has approved your Application for Alteration of Bag Details and issued revised certificates:\n\n{{with .physical_certificate_id}}* **Physical Quality Certificate No.**: `{{.}}`\n{{end}}{{with .physical_certificate_file}}* **Physical Quality Certificate**: [📄 Download Revised Certificate (PDF)]({{.}})\n{{end}}{{with .salmonella_certificate_id}}* **Salmonella Free Certificate No.**: `{{.}}`\n{{end}}{{with .salmonella_certificate_file}}* **Salmonella Free Certificate**: [📄 Download Revised Certificate (PDF)]({{.}})\n{{end}}"
 }

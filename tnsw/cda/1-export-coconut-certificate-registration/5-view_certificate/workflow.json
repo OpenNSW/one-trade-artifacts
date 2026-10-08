@@ -1,7 +1,7 @@
 {
   "id": "cda-view-new-certificate-flow",
   "name": "View New Certificate",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -12,8 +12,10 @@
       "type": "TASK",
       "task_template_id": "cda-view-new-certificate--user-input",
       "input_mapping": {
-        "certificate_id": "certificate_id",
-        "certificate_file": "certificate_file"
+        "physical_certificate_id?": "physical_certificate_id",
+        "physical_certificate_file?": "physical_certificate_file",
+        "salmonella_certificate_id?": "salmonella_certificate_id",
+        "salmonella_certificate_file?": "salmonella_certificate_file"
       },
       "output_mapping": {}
     },

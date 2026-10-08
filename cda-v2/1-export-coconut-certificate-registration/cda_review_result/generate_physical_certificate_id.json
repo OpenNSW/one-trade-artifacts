@@ -1,0 +1,17 @@
+{
+  "id": "cda-review-result--generate-physical-certificate-id",
+  "task_type": "REFID_GENERATOR",
+  "output_namespace": "refid",
+  "plugin_properties": {
+    "ids": [
+      {
+        "path": "/physical_certificate_id",
+        "issuer": "CDA",
+        "id_type": "pqc_physical_certificate",
+        "params": {
+          "serial": "/certificate_serial"
+        }
+      }
+    ]
+  }
+}

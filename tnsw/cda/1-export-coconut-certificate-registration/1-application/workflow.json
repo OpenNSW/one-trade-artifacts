@@ -1,7 +1,7 @@
 {
   "id": "cda-apply-coconut-cert-flow",
   "name": "Apply for Export Coconut Certificate",
-  "version": 5,
+  "version": 6,
   "nodes": [
     {
       "id": "start",
@@ -36,8 +36,7 @@
         "buyer_name?": "userform.buyer_name",
         "container_filling_status?": "userform.container_filling_status",
         "balance_material_nature?": "userform.balance_material_nature",
-        "req_cert_salmonella?": "userform.req_cert_salmonella",
-        "req_cert_physical?": "userform.req_cert_physical",
+        "cert_type?": "userform.cert_type",
         "uploaded_dc_bags_details?": "userform.uploaded_dc_bags_details"
       }
     },
@@ -57,7 +56,8 @@
       },
       "output_mapping": {
         "verification_outcome": "verificationform.verification_outcome",
-        "rejection_reason?": "rejection_reason"
+        "rejection_reason?": "rejection_reason",
+        "application_ref?": "userform.application_ref"
       }
     },
     {

@@ -1,7 +1,7 @@
 {
   "id": "cda-certificate-reg",
   "name": "CDA Export Coconut Certificate Registration",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -77,8 +77,10 @@
       },
       "output_mapping": {
         "reviewerform.review_outcome": "cda.review_outcome",
-        "reviewerform.certificate_id?": "cda.certificate_id",
-        "reviewerform.certificate_file?": "cda.certificate_file"
+        "reviewerform.physical_certificate_id?": "cda.physical_certificate_id",
+        "reviewerform.physical_certificate_file?": "cda.physical_certificate_file",
+        "reviewerform.salmonella_certificate_id?": "cda.salmonella_certificate_id",
+        "reviewerform.salmonella_certificate_file?": "cda.salmonella_certificate_file"
       }
     },
     {
@@ -89,14 +91,18 @@
       "lane": "Trader/CHA",
       "input_mapping": {
         "cda.reference_number": "reference_number",
-        "cda.certificate_id": "certificate_id",
-        "cda.certificate_file": "certificate_file",
+        "cda.physical_certificate_id?": "physical_certificate_id",
+        "cda.physical_certificate_file?": "physical_certificate_file",
+        "cda.salmonella_certificate_id?": "salmonella_certificate_id",
+        "cda.salmonella_certificate_file?": "salmonella_certificate_file",
+        "cda.userform.cert_type?": "cert_type",
         "cda.adjustment_feedback?": "adjustment_feedback",
         "cda.userform.exporter_details?": "exporter_details"
       },
       "output_mapping": {
         "adjustment_choice": "cda.adjustment_choice",
-        "certificate_file?": "cda.certificate_file"
+        "physical_certificate_file?": "cda.physical_certificate_file",
+        "salmonella_certificate_file?": "cda.salmonella_certificate_file"
       }
     },
     {
@@ -113,8 +119,10 @@
       "lane": "Trader/CHA",
       "input_mapping": {
         "cda.reference_number": "reference_number",
-        "cda.certificate_id": "certificate_id",
-        "cda.certificate_file": "certificate_file"
+        "cda.physical_certificate_id?": "physical_certificate_id",
+        "cda.physical_certificate_file?": "physical_certificate_file",
+        "cda.salmonella_certificate_id?": "salmonella_certificate_id",
+        "cda.salmonella_certificate_file?": "salmonella_certificate_file"
       },
       "output_mapping": {}
     },
