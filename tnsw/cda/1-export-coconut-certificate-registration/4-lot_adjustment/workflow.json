@@ -64,6 +64,15 @@
       "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
+      "id": "withdraw_review",
+      "type": "TASK",
+      "task_template_id": "cda-lot-adjustment-officer--withdraw",
+      "input_mapping": {
+        "agency_token": "agency_token",
+        "adjustment_choice": "payload.command"
+      }
+    },
+    {
       "id": "end",
       "type": "END"
     }
@@ -78,6 +87,12 @@
       "id": "e2",
       "source_id": "trader_request",
       "target_id": "choice_gateway"
+    },
+    {
+      "id": "e_withdraw",
+      "source_id": "choice_gateway",
+      "target_id": "withdraw_review",
+      "condition": "adjustment_choice == 'complete_application' && $env?.agency_token != nil"
     },
     {
       "id": "e_complete",
@@ -107,6 +122,11 @@
       "source_id": "review_gateway",
       "target_id": "end",
       "condition": "adjustment_outcome == 'approve'"
+    },
+    {
+      "id": "e_withdrawn",
+      "source_id": "withdraw_review",
+      "target_id": "end"
     }
   ]
 }

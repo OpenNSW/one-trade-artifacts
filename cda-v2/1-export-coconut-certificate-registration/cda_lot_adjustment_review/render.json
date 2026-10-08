@@ -56,6 +56,17 @@
         ],
         "requireDataKey": "adjustment_feedback"
       }
+    },
+    "withdrawn": {
+      "templateId": "cda-lot-adjustment-review--withdrawn",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "COMPLETED"
+        ],
+        "requireDataKey": "resubmission"
+      }
     }
   },
   "states": {

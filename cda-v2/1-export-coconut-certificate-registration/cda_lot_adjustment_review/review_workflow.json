@@ -38,9 +38,15 @@
         "reviewform.adjustment_feedback?": "adjustment_feedback"
       },
       "output_mapping": {
-        "submission": "submission",
-        "callbackToken": "callbackToken"
+        "__command": "trader_command",
+        "submission?": "submission",
+        "callbackToken?": "callbackToken"
       }
+    },
+    {
+      "id": "resubmission_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
       "id": "api_call",
@@ -78,9 +84,21 @@
       "condition": "reviewform.adjustment_outcome == 'needs_more_info'"
     },
     {
-      "id": "e_resubmitted",
+      "id": "e_reply",
       "source_id": "request_info",
-      "target_id": "userform"
+      "target_id": "resubmission_gateway"
+    },
+    {
+      "id": "e_resubmitted",
+      "source_id": "resubmission_gateway",
+      "target_id": "userform",
+      "condition": "trader_command == 'resubmit'"
+    },
+    {
+      "id": "e_withdrawn",
+      "source_id": "resubmission_gateway",
+      "target_id": "end",
+      "condition": "trader_command == 'complete_application'"
     },
     {
       "id": "e_approve",
