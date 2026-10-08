@@ -1,0 +1,44 @@
+{
+  "id": "npqs-v3-sample-draw-at-site",
+  "name": "Draw Sample at Site",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "officer_draw",
+      "type": "TASK",
+      "task_template_id": "npqs-draw-sample--officer-draw",
+      "input_mapping": {
+        "commodities": "commodities",
+        "reference_number?": "reference_number",
+        "userform?": "userform",
+        "reference_number": "submission.reference_number",
+        "userform": "submission",
+        "commodities?": "submission.items"
+      },
+      "output_mapping": {
+        "sample_number": "sample_number",
+        "draw_date?": "draw_date"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "officer_draw"
+    },
+    {
+      "id": "e2",
+      "source_id": "officer_draw",
+      "target_id": "end"
+    }
+  ]
+}

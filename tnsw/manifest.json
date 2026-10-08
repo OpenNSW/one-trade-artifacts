@@ -895,6 +895,294 @@
       "path": "npqs/npqs_workflow.json"
     },
     {
+      "id": "npqs-v3-export-phytosanitary-reg",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_v3/npqs_workflow.json"
+    },
+    {
+      "id": "npqs-v3-test-lab-reg",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_v3/test-stages/npqs_lab_workflow.json"
+    },
+    {
+      "id": "npqs-v3-test-visual1-reg",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_v3/test-stages/npqs_visual1_workflow.json"
+    },
+    {
+      "id": "npqs-v3-test-treatment-reg",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_v3/test-stages/npqs_treatment_workflow.json"
+    },
+    {
+      "id": "npqs-v3-test-visual2-reg",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_v3/test-stages/npqs_visual2_workflow.json"
+    },
+    {
+      "id": "npqs-visual2-decision--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_v3/10-visual2_decision/officerinput.json"
+    },
+    {
+      "id": "npqs-visual2-decision:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_v3/10-visual2_decision/render.json"
+    },
+    {
+      "id": "npqs-visual2-decision--status",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_v3/10-visual2_decision/status_markdown.json"
+    },
+    {
+      "id": "npqs-visual2-decision",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_v3/10-visual2_decision/workflow.json"
+    },
+    {
+      "id": "npqs-visual2-decision",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs_v3/10-visual2_decision/task_template.json"
+    },
+    {
+      "id": "npqs-visual2-inspection--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_v3/11-visual2_inspection/inspection.json"
+    },
+    {
+      "id": "npqs-visual2-inspection-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_v3/11-visual2_inspection/render.json"
+    },
+    {
+      "id": "npqs-visual2-inspection--trader-schedule",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_v3/11-visual2_inspection/scheduling.json"
+    },
+    {
+      "id": "npqs-visual2-inspection--trader-schedule-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_v3/11-visual2_inspection/scheduling_jsonform.json"
+    },
+    {
+      "id": "npqs-visual2-inspection-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_v3/11-visual2_inspection/workflow.json"
+    },
+    {
+      "id": "npqs-visual2-inspection-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs_v3/11-visual2_inspection/task_template.json"
+    },
+    {
+      "id": "npqs-visual2-inspection--status",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_v3/11-visual2_inspection/status_markdown.json"
+    },
+    {
+      "id": "npqs-v3-provider-cert-upload--user-input",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_v3/12-treatment_provider_upload/traderinput.json"
+    },
+    {
+      "id": "npqs-v3-provider-cert-upload--trader-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_v3/12-treatment_provider_upload/traderinput_jsonform.json"
+    },
+    {
+      "id": "npqs-v3-provider-cert-upload:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_v3/12-treatment_provider_upload/render.json"
+    },
+    {
+      "id": "npqs-v3-provider-cert-upload--status",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_v3/12-treatment_provider_upload/status_markdown.json"
+    },
+    {
+      "id": "npqs-v3-provider-cert-upload",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_v3/12-treatment_provider_upload/workflow.json"
+    },
+    {
+      "id": "npqs-v3-provider-cert-upload",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs_v3/12-treatment_provider_upload/task_template.json"
+    },
+    {
+      "id": "npqs-v3-provider-cert-upload-supervised--user-input",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_v3/13-treatment_provider_upload_supervised/traderinput.json"
+    },
+    {
+      "id": "npqs-v3-provider-cert-upload-supervised--trader-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_v3/13-treatment_provider_upload_supervised/traderinput_jsonform.json"
+    },
+    {
+      "id": "npqs-v3-provider-cert-upload-supervised:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_v3/13-treatment_provider_upload_supervised/render.json"
+    },
+    {
+      "id": "npqs-v3-provider-cert-upload-supervised--status",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_v3/13-treatment_provider_upload_supervised/status_markdown.json"
+    },
+    {
+      "id": "npqs-v3-provider-cert-upload-supervised",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_v3/13-treatment_provider_upload_supervised/workflow.json"
+    },
+    {
+      "id": "npqs-v3-provider-cert-upload-supervised",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs_v3/13-treatment_provider_upload_supervised/task_template.json"
+    },
+    {
+      "id": "npqs-v3-treatment-final-review--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_v3/14-treatment_final_review/officerinput.json"
+    },
+    {
+      "id": "npqs-v3-treatment-final-review:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_v3/14-treatment_final_review/render.json"
+    },
+    {
+      "id": "npqs-v3-treatment-final-review--status",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_v3/14-treatment_final_review/status_markdown.json"
+    },
+    {
+      "id": "npqs-v3-treatment-final-review",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_v3/14-treatment_final_review/workflow.json"
+    },
+    {
+      "id": "npqs-v3-treatment-final-review",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs_v3/14-treatment_final_review/task_template.json"
+    },
+    {
+      "id": "npqs-v3-sample-draw-at-site:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_v3/15-sample_draw_at_site/render.json"
+    },
+    {
+      "id": "npqs-v3-sample-draw-at-site--status",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_v3/15-sample_draw_at_site/status_markdown.json"
+    },
+    {
+      "id": "npqs-v3-sample-draw-at-site",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_v3/15-sample_draw_at_site/workflow.json"
+    },
+    {
+      "id": "npqs-v3-sample-draw-at-site",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs_v3/15-sample_draw_at_site/task_template.json"
+    },
+    {
+      "id": "npqs-v3-treatment-issue--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_v3/16-treatment_issue_npqs/officerinput.json"
+    },
+    {
+      "id": "npqs-v3-treatment-issue:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_v3/16-treatment_issue_npqs/render.json"
+    },
+    {
+      "id": "npqs-v3-treatment-issue--status",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_v3/16-treatment_issue_npqs/status_markdown.json"
+    },
+    {
+      "id": "npqs-v3-treatment-issue",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_v3/16-treatment_issue_npqs/workflow.json"
+    },
+    {
+      "id": "npqs-v3-treatment-issue",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs_v3/16-treatment_issue_npqs/task_template.json"
+    },
+    {
+      "id": "npqs-v3-treatment-issue-supervised--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_v3/17-treatment_issue_npqs_supervised/officerinput.json"
+    },
+    {
+      "id": "npqs-v3-treatment-issue-supervised:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_v3/17-treatment_issue_npqs_supervised/render.json"
+    },
+    {
+      "id": "npqs-v3-treatment-issue-supervised--status",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_v3/17-treatment_issue_npqs_supervised/status_markdown.json"
+    },
+    {
+      "id": "npqs-v3-treatment-issue-supervised",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_v3/17-treatment_issue_npqs_supervised/workflow.json"
+    },
+    {
+      "id": "npqs-v3-treatment-issue-supervised",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs_v3/17-treatment_issue_npqs_supervised/task_template.json"
+    },
+    {
       "id": "fcau-apply-health-cert-flow:render",
       "kind": "generic_template",
       "version": "",

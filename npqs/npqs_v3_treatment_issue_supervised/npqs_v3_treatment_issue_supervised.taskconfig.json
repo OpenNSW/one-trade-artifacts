@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "taskCode": "npqs_v3_treatment_issue_supervised",
+  "meta": {
+    "title": "NPQS NPQS Treatment Certificate and Supervision Report",
+    "description": "Officer issues the NPQS treatment certificate and the supervision report for the items treated by NPQS."
+  },
+  "forms": {
+    "view": "npqs-apply-phyto-cert--officer-view-form",
+    "review": "npqs-v3-treatment-issue-supervised--officer-form"
+  },
+  "behavior": {
+    "type": "autoApprove"
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW"
+      ]
+    }
+  ]
+}

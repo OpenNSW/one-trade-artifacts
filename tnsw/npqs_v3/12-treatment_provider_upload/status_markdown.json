@@ -1,0 +1,4 @@
+{
+  "id": "npqs-v3-provider-cert-upload--status",
+  "template": "### 📎 Upload Treatment Provider Certificate\n\n* **Reference Number**: `{{.reference_number}}`\n\n{{if .commodities}}\n**Items treated by the treatment provider:**\n{{range .commodities}}* 🏷️ **{{.commodity_common_name.label}}** (`{{.id}}`)\n{{end}}\n{{end}}\n\n**Upload:**\n* The treatment provider's certificate\n\nAn NPQS officer reviews every treatment document for the consignment once all treatments are done."
+}

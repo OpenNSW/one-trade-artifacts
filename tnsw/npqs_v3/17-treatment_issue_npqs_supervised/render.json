@@ -1,0 +1,12 @@
+{
+  "id": "npqs-v3-treatment-issue-supervised:render",
+  "type": "REVIEW",
+  "title": "[NPQS] NPQS Treatment Certificate and Supervision Report",
+  "sections": {
+    "status_message": {
+      "templateId": "npqs-v3-treatment-issue-supervised--status",
+      "title": "Treatment at NPQS",
+      "projector": "MARKDOWN"
+    }
+  }
+}

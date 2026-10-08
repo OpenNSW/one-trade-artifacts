@@ -1,0 +1,132 @@
+{
+  "id": "npqs-v3-treatment-issue-supervised--officer-form",
+  "title": "NPQS Treatment Certificate and Supervision Report",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "items": {
+        "type": "array",
+        "title": "Items Treated",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Item ID"
+            },
+            "commodity_common_name": {
+              "type": "object",
+              "title": "Commodity Name",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "value"
+              ],
+              "x-search": {
+                "service": "static-data",
+                "mode": "large-searchable-list",
+                "displayTemplate": "{name}",
+                "params": {
+                  "id": "npqs-apply-phyto-cert--commodity-common-names",
+                  "version": "1"
+                }
+              }
+            },
+            "commodity_botanical_name": {
+              "type": "string",
+              "title": "Botanical Name"
+            }
+          },
+          "required": [
+            "id"
+          ]
+        }
+      },
+      "treatment_certificate_id": {
+        "type": "string",
+        "title": "Treatment Certificate Number"
+      },
+      "treatment_certificate_url": {
+        "type": "string",
+        "format": "file",
+        "title": "Treatment Certificate (PDF/Image)"
+      },
+      "supervision_report_url": {
+        "type": "string",
+        "format": "file",
+        "title": "Supervision Report (PDF/Image)"
+      },
+      "issue_comments": {
+        "type": "string",
+        "title": "Treatment Notes"
+      }
+    },
+    "required": [
+      "treatment_certificate_id",
+      "treatment_certificate_url",
+      "supervision_report_url"
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/items",
+        "options": {
+          "detail": {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/id",
+                "options": {
+                  "readOnly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/commodity_common_name/properties/label",
+                "options": {
+                  "readOnly": true
+                },
+                "label": "Commodity Name"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/commodity_botanical_name",
+                "options": {
+                  "readOnly": true
+                }
+              }
+            ]
+          },
+          "addable": false,
+          "removable": false
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/treatment_certificate_id"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/treatment_certificate_url"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/supervision_report_url"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/issue_comments"
+      }
+    ]
+  }
+}

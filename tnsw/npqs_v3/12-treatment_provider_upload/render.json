@@ -1,0 +1,39 @@
+{
+  "id": "npqs-v3-provider-cert-upload:render",
+  "type": "APPLICATION",
+  "title": "[NPQS] Upload Treatment Provider Certificate",
+  "sections": {
+    "status_message": {
+      "templateId": "npqs-v3-provider-cert-upload--status",
+      "title": "Upload Instructions",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ]
+      }
+    },
+    "submission_form": {
+      "templateId": "npqs-v3-provider-cert-upload--trader-form",
+      "title": "Upload Treatment Provider Certificate",
+      "projector": "FORM",
+      "dataKey": "traderinput",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Certificates",
+          "element": "primary_action"
+        }
+      ]
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "npqs-v3-provider-cert-upload-supervised--user-input",
+  "task_type": "USER_INPUT",
+  "output_namespace": "traderinput",
+  "plugin_properties": {
+    "user_jsonforms_id": "npqs-v3-provider-cert-upload-supervised--trader-form"
+  }
+}

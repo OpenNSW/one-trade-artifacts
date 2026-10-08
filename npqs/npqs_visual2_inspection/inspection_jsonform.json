@@ -1,0 +1,134 @@
+{
+  "id": "npqs-visual2-inspection--officer-form",
+  "title": "Visual Inspection 2 Outcome",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "inspection_comments": {
+        "type": "string",
+        "title": "Inspection Notes",
+        "example": "Conducted visual inspection of packages at port. Storage conditions are acceptable, all seals intact."
+      },
+      "items": {
+        "type": "array",
+        "title": "Commodity Visual Inspection 2 Results (Per Item)",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Item ID"
+            },
+            "commodity_common_name": {
+              "type": "object",
+              "title": "Common Name",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "value"
+              ],
+              "x-search": {
+                "service": "static-data",
+                "mode": "large-searchable-list",
+                "displayTemplate": "{name}",
+                "params": {
+                  "id": "npqs-apply-phyto-cert--commodity-common-names",
+                  "version": "1"
+                }
+              }
+            },
+            "visual2_result": {
+              "type": "string",
+              "title": "Inspection Result",
+              "oneOf": [
+                {
+                  "const": "pass",
+                  "title": "Pass (Approved visually)"
+                },
+                {
+                  "const": "fail",
+                  "title": "Fail (Pests, rot, or damage detected)"
+                }
+              ],
+              "default": "pass"
+            },
+            "visual2_failure_reason": {
+              "type": "string",
+              "title": "Failure Reason",
+              "example": "Rot and physical fungal damage observed on packaging."
+            }
+          },
+          "required": [
+            "id",
+            "visual2_result"
+          ]
+        }
+      }
+    }
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/inspection_comments"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/items",
+        "options": {
+          "detail": {
+            "type": "VerticalLayout",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/id",
+                    "options": {
+                      "readOnly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/commodity_common_name/properties/label",
+                    "options": {
+                      "readOnly": true
+                    },
+                    "label": "Common Name"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/visual2_result"
+                  }
+                ]
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/visual2_failure_reason",
+                "rule": {
+                  "effect": "SHOW",
+                  "condition": {
+                    "scope": "#/properties/visual2_result",
+                    "schema": {
+                      "const": "fail"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "addable": false,
+          "removable": false
+        }
+      }
+    ]
+  }
+}

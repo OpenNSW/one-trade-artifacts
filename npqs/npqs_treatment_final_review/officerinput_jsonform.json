@@ -1,0 +1,159 @@
+{
+  "id": "npqs-v3-treatment-final-review--officer-form",
+  "title": "Treatment Review",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "treatment_certificate_urls": {
+        "type": "array",
+        "title": "Treatment Certificates",
+        "readOnly": true,
+        "items": {
+          "type": "string",
+          "format": "file"
+        },
+        "x-file": {
+          "maxFiles": 50
+        }
+      },
+      "supervision_report_urls": {
+        "type": "array",
+        "title": "Supervision Reports",
+        "readOnly": true,
+        "items": {
+          "type": "string",
+          "format": "file"
+        },
+        "x-file": {
+          "maxFiles": 50
+        }
+      },
+      "items": {
+        "type": "array",
+        "title": "Items Under Treatment",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Item ID"
+            },
+            "commodity_common_name": {
+              "type": "object",
+              "title": "Commodity Name",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "value"
+              ],
+              "x-search": {
+                "service": "static-data",
+                "mode": "large-searchable-list",
+                "displayTemplate": "{name}",
+                "params": {
+                  "id": "npqs-apply-phyto-cert--commodity-common-names",
+                  "version": "1"
+                }
+              }
+            },
+            "treatment_result": {
+              "type": "string",
+              "title": "Treatment Result",
+              "oneOf": [
+                {
+                  "const": "pass",
+                  "title": "Pass"
+                },
+                {
+                  "const": "fail",
+                  "title": "Fail (Reject Item)"
+                }
+              ],
+              "default": "pass"
+            },
+            "commodity_botanical_name": {
+              "type": "string",
+              "title": "Botanical Name"
+            }
+          },
+          "required": [
+            "id",
+            "treatment_result"
+          ]
+        }
+      },
+      "review_comments": {
+        "type": "string",
+        "title": "Review Notes"
+      }
+    }
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/treatment_certificate_urls",
+        "options": {
+          "readOnly": true
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/supervision_report_urls",
+        "options": {
+          "readOnly": true
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/items",
+        "options": {
+          "detail": {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/id",
+                "options": {
+                  "readOnly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/commodity_common_name/properties/label",
+                "options": {
+                  "readOnly": true
+                },
+                "label": "Commodity Name"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/commodity_botanical_name",
+                "options": {
+                  "readOnly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/treatment_result"
+              }
+            ]
+          },
+          "addable": false,
+          "removable": false
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/review_comments"
+      }
+    ]
+  }
+}

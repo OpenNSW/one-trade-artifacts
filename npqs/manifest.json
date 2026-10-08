@@ -225,6 +225,83 @@
       "path": "npqs_visual_system/officerinput_jsonform.json"
     },
     {
+      "id": "npqs_visual2_decision",
+      "kind": "task_config",
+      "version": "",
+      "loader": "local",
+      "path": "npqs_visual2_decision/npqs_visual2_decision.taskconfig.json"
+    },
+    {
+      "id": "npqs-visual2-decision--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "npqs_visual2_decision/officerinput_jsonform.json"
+    },
+    {
+      "id": "npqs_visual2_inspection",
+      "kind": "task_config",
+      "version": "",
+      "loader": "local",
+      "path": "npqs_visual2_inspection/npqs_visual2_inspection.taskconfig.json"
+    },
+    {
+      "id": "npqs-visual2-inspection--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "npqs_visual2_inspection/inspection_jsonform.json"
+    },
+    {
+      "id": "npqs-visual2-inspection--trader-schedule-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "npqs_visual2_inspection/userinput_jsonform.json"
+    },
+    {
+      "id": "npqs_treatment_final_review",
+      "kind": "task_config",
+      "version": "",
+      "loader": "local",
+      "path": "npqs_treatment_final_review/npqs_treatment_final_review.taskconfig.json"
+    },
+    {
+      "id": "npqs-v3-treatment-final-review--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "npqs_treatment_final_review/officerinput_jsonform.json"
+    },
+    {
+      "id": "npqs_v3_treatment_issue",
+      "kind": "task_config",
+      "version": "",
+      "loader": "local",
+      "path": "npqs_v3_treatment_issue/npqs_v3_treatment_issue.taskconfig.json"
+    },
+    {
+      "id": "npqs-v3-treatment-issue--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "npqs_v3_treatment_issue/officerinput_jsonform.json"
+    },
+    {
+      "id": "npqs_v3_treatment_issue_supervised",
+      "kind": "task_config",
+      "version": "",
+      "loader": "local",
+      "path": "npqs_v3_treatment_issue_supervised/npqs_v3_treatment_issue_supervised.taskconfig.json"
+    },
+    {
+      "id": "npqs-v3-treatment-issue-supervised--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "npqs_v3_treatment_issue_supervised/officerinput_jsonform.json"
+    },
+    {
       "id": "npqs_visual_sample_receive",
       "kind": "task_config",
       "version": "",

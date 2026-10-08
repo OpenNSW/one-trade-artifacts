@@ -1,7 +1,7 @@
 {
   "id": "npqs-review-treatment-certs",
   "name": "Review Treatment Certificates",
-  "version": 2,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
@@ -21,7 +21,7 @@
       "output_mapping": {
         "treatment_review_result": "treatment_review_result",
         "review_comments?": "review_comments",
-        "post_treatment_visual_required?": "post_treatment_visual_required"
+        "commodities?": "commodities"
       }
     },
     {
