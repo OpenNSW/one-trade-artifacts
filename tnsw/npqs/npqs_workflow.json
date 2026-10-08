@@ -1,7 +1,7 @@
 {
   "id": "npqs-export-phytosanitary-reg",
   "name": "NPQS Export Consignment & Phytosanitary Registration",
-  "version": 5,
+  "version": 6,
   "nodes": [
     {
       "id": "start",
@@ -725,9 +725,9 @@
       "target_id": "n2_1b_lab_resubmit_test"
     },
     {
-      "id": "e_lab_resubmit_retest_to_split",
+      "id": "e_lab_resubmit_retest_to_join",
       "source_id": "n2_1b_lab_resubmit_test",
-      "target_id": "lab_result_split"
+      "target_id": "lab_result_join"
     },
     {
       "id": "e_lab_fail_final",

@@ -1,7 +1,7 @@
 {
   "id": "npqs-v3-export-phytosanitary-reg",
   "name": "NPQS Export Consignment & Phytosanitary Registration (Linear Stages)",
-  "version": 3,
+  "version": 4,
   "nodes": [
     {
       "id": "start",
@@ -743,9 +743,9 @@
       "target_id": "n2_1b_lab_resubmit_test"
     },
     {
-      "id": "e_lab_resubmit_retest_to_split",
+      "id": "e_lab_resubmit_retest_to_join",
       "source_id": "n2_1b_lab_resubmit_test",
-      "target_id": "lab_result_split"
+      "target_id": "lab_result_join"
     },
     {
       "id": "e_lab_fail_final",
@@ -773,13 +773,13 @@
       "id": "e_vis_split_to_consign",
       "source_id": "gw_visual_split",
       "target_id": "n_visual_consignment_flow",
-      "condition": "item.visual_required == true && item.visual_approach == 'consignment' && item.sample_test_result != 'fail_final'"
+      "condition": "item.visual_required == true && item.visual_approach == 'consignment' && item.sample_test_result not in ['fail_final', 'fail_resubmit']"
     },
     {
       "id": "e_vis_split_to_sample",
       "source_id": "gw_visual_split",
       "target_id": "n_visual_sample_collect",
-      "condition": "item.visual_required == true && item.visual_approach == 'sample' && item.sample_test_result != 'fail_final'"
+      "condition": "item.visual_required == true && item.visual_approach == 'sample' && item.sample_test_result not in ['fail_final', 'fail_resubmit']"
     },
     {
       "id": "e_vis_collect_to_sample",
@@ -790,13 +790,13 @@
       "id": "e_vis_split_to_system",
       "source_id": "gw_visual_split",
       "target_id": "n5_0_visual_inspection",
-      "condition": "item.visual_required == true && item.visual_approach == 'system' && item.sample_test_result != 'fail_final'"
+      "condition": "item.visual_required == true && item.visual_approach == 'system' && item.sample_test_result not in ['fail_final', 'fail_resubmit']"
     },
     {
       "id": "e_vis_split_to_join_bypass",
       "source_id": "gw_visual_split",
       "target_id": "gw_visual_join",
-      "condition": "item.visual_required != true || item.visual_approach == 'none' || item.sample_test_result == 'fail_final'"
+      "condition": "item.visual_required != true || item.visual_approach == 'none' || item.sample_test_result in ['fail_final', 'fail_resubmit']"
     },
     {
       "id": "e_vis_consign_to_split",
@@ -881,13 +881,13 @@
       "id": "e_treat_split_to_req",
       "source_id": "gw_treatment_split",
       "target_id": "n3_treatment_request",
-      "condition": "item.treatment_required == true && item.sample_test_result != 'fail_final' && item.visual_result != 'fail'"
+      "condition": "item.treatment_required == true && item.sample_test_result not in ['fail_final', 'fail_resubmit'] && item.visual_result != 'fail'"
     },
     {
       "id": "e_treat_split_to_join_bypass",
       "source_id": "gw_treatment_split",
       "target_id": "gw_treatment_join",
-      "condition": "item.treatment_required != true || item.sample_test_result == 'fail_final' || item.visual_result == 'fail'"
+      "condition": "item.treatment_required != true || item.sample_test_result in ['fail_final', 'fail_resubmit'] || item.visual_result == 'fail'"
     },
     {
       "id": "e_treatment_request_to_provider_split",
@@ -961,12 +961,6 @@
       "condition": "npqs.treatment_review_result == 'needs_more_info'"
     },
     {
-      "id": "e_treatment_fail",
-      "source_id": "treatment_review_split",
-      "target_id": "treatment_provider_join",
-      "condition": "npqs.treatment_review_result == 'fail'"
-    },
-    {
       "id": "e_treatment_pass",
       "source_id": "treatment_review_split",
       "target_id": "treatment_provider_join",
@@ -986,13 +980,13 @@
       "id": "e_visual2_split_to_decision",
       "source_id": "gw_visual2_split",
       "target_id": "n_visual2_decision",
-      "condition": "item.sample_test_result != 'fail_final' && item.visual_result != 'fail' && item.treatment_result != 'fail'"
+      "condition": "item.sample_test_result not in ['fail_final', 'fail_resubmit'] && item.visual_result != 'fail' && item.treatment_result != 'fail'"
     },
     {
       "id": "e_visual2_split_to_join_bypass",
       "source_id": "gw_visual2_split",
       "target_id": "gw_visual2_join",
-      "condition": "item.sample_test_result == 'fail_final' || item.visual_result == 'fail' || item.treatment_result == 'fail'"
+      "condition": "item.sample_test_result in ['fail_final', 'fail_resubmit'] || item.visual_result == 'fail' || item.treatment_result == 'fail'"
     },
     {
       "id": "e_visual2_decision_to_required_split",
