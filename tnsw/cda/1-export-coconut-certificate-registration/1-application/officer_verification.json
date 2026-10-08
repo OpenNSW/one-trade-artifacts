@@ -6,6 +6,7 @@
     "officer_jsonforms_id": "cda-apply-coconut-cert--officer-verification-form",
     "service_id": "cda",
     "path": "/api/v1/inject",
-    "task_code": "cda_officer_verification_v1"
+    "task_code": "cda_officer_verification_v1",
+    "reply_command": "resubmit"
   }
 }

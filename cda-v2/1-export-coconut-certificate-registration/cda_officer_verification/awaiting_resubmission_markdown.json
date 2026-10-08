@@ -1,0 +1,4 @@
+{
+  "id": "cda-officer-verification--awaiting-resubmission",
+  "template": "Sent back to the applicant for more information. Waiting for their resubmission.\n\n> **Your comments**: {{.}}"
+}
