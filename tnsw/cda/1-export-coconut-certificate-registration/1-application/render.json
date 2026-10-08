@@ -2,6 +2,10 @@
   "id": "cda-apply-coconut-cert-flow:render",
   "type": "APPLICATION",
   "title": "[CDA] Submit Application",
+  "files": [
+    "submission.uploaded_dc_bags_details",
+    "userform.uploaded_dc_bags_details"
+  ],
   "sections": {
     "approval_message": {
       "templateId": "cda-apply-coconut-cert--verified-message",

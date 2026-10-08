@@ -2,6 +2,10 @@
   "id": "npqs-treatment-supervisor-report:render",
   "type": "REVIEW",
   "title": "[NPQS] Treatment Supervision Report",
+  "files": [
+    "reviewerform.supervision_report_url",
+    "submission.attachments[*].attachment_file_url"
+  ],
   "sections": {
     "assessment_outcome": {
       "templateId": "npqs-supervision-report--status",

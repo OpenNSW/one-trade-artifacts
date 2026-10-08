@@ -2,6 +2,9 @@
   "id": "cda-kcfn-issue-letter-flow:render",
   "type": "REVIEW",
   "title": "[CDA] Recommendation Letter Issuance",
+  "files": [
+    "reviewerform.recommendation_letter_file"
+  ],
   "sections": {
     "status_message": {
       "templateId": "cda-kcfn-issue-letter--trader-instructions",

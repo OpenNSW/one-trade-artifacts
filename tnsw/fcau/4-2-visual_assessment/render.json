@@ -2,6 +2,10 @@
   "id": "fcau-visual-assessment-flow:render",
   "type": "VISUAL_ASSESSMENT",
   "title": "[FCAU] Manual Sample Assessment",
+  "files": [
+    "submission.analysis_certificates",
+    "submission.other_supporting_documents[*]"
+  ],
   "sections": {
     "status_message": {
       "templateId": "fcau-visual-assessment--reviewer-instructions",

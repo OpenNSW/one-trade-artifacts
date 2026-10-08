@@ -1,4 +1,4 @@
 {
   "id": "fcau-issue-certificate--trader-results",
-  "template": "### Health Certificate Issued\n\nThe Health Certificate decision has been completed by the authorized officer.\n\n{{if .certificate_id}}\n* **Certificate ID**: `{{.certificate_id}}`\n{{end}}\n{{if .certificate}}\n[📄 Download Issued Certificate (PDF)]({{.certificate}})\n{{end}}\n{{if .supporting_documents}}\n**Supporting Documents:**\n{{range .supporting_documents}}* [📄 Download Document]({{.}})\n{{end}}{{end}}"
+  "template": "### Health Certificate Issued\n\nThe Health Certificate decision has been completed by the authorized officer.\n\n{{if .certificate_id}}\n* **Certificate ID**: `{{.certificate_id}}`\n{{end}}\n{{if .certificate}}\n[📄 Download Issued Certificate (PDF)](files:{{.certificate}})\n{{end}}\n{{if .supporting_documents}}\n**Supporting Documents:**\n{{range .supporting_documents}}* [📄 Download Document](files:{{.}})\n{{end}}{{end}}"
 }

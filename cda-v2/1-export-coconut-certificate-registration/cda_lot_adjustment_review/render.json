@@ -2,6 +2,12 @@
   "id": "cda-lot-adjustment-review--review:render",
   "type": "APPLICATION",
   "title": "CDA Officer Lot Adjustment Review",
+  "files": [
+    "payload.payload.new_certificate_file",
+    "reviewform.new_certificate_file",
+    "submission.cusdec_document",
+    "submission.lots_to_remove"
+  ],
   "sections": {
     "submission_view": {
       "templateId": "cda-lot-adjustment-trader--user-form",

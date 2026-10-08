@@ -134,6 +134,27 @@ alone does not publish anything.
 - `generic_template` — a JSONForms schema+uiSchema (`*_jsonform.json`), a markdown
   template, or a `render.json` UI layout (sections, `visibleWhen` states, action
   `handles`).
+
+### File fields (`render.json` `files`)
+
+A `render.json` lists under `files` every path in its task's data that holds an uploaded
+file: `"files": ["userform.invoice", "submission.documents[*].file"]`. Paths start at the
+task data's top-level key (a step's `output_namespace`, or an input's destination), and
+`[*]` steps into every element of an array. The backend only ever hands these values out
+as file references issued to the reader, takes them back the same way on submit, and
+sends OGAs references issued to them, so a file field left out of `files` can't be opened
+or submitted once raw storage keys stop working (see nsw-srilanka's
+`docs/WORKFLOW_GUIDE.md`, "File fields").
+
+- A task's data is its active step's mapped inputs plus that step's submission under its
+  namespace, so list the union over all of the task's steps: the form's own upload
+  fields under its namespace, files that arrive through `input_mapping` (including an
+  `EXTERNAL_REVIEW` step's `submission.*`), and the file fields of the OGA form whose
+  data an `EXTERNAL_REVIEW` step stores under its namespace.
+- Agency-side (`<agency>-v2/`) tasks list the pushed files they show, under the
+  destination of `notification` (usually `submission.*`), and their officer's uploads.
+- A markdown link to a file is written `[label](files:{{.path}})`, not
+  `[label]({{.path}})`, and `{{.path}}` must be one of the render config's `files`.
 - `task_config` — an agency-side officer task definition (top-level agency folders only):
   `taskCode`, `meta.title/description`, and a `forms` map to a `generic_template` id.
 

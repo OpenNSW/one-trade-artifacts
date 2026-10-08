@@ -2,6 +2,10 @@
   "id": "cda-review-result-flow:render",
   "type": "REVIEW",
   "title": "[CDA] Officer Review & Certificate Issuance",
+  "files": [
+    "reviewerform.certificate_file",
+    "submission.uploaded_dc_bags_details"
+  ],
   "sections": {
     "status_message": {
       "templateId": "cda-review-result--trader-instructions",

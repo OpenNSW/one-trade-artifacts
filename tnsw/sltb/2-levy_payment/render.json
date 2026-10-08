@@ -2,6 +2,10 @@
   "id": "sltb-pay-levy-flow:render",
   "type": "PAYMENT",
   "title": "[SLTB] Pay SLTB Levy",
+  "files": [
+    "payment.payment_slip",
+    "payment_slip"
+  ],
   "sections": {
     "select_method": {
       "templateId": "sltb-pay-levy--select-method-form",
