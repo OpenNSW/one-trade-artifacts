@@ -151,6 +151,12 @@
       "path": "1-export-coconut-certificate-registration/cda_lot_adjustment_review/awaiting_resubmission_markdown.json"
     },
     {
+      "id": "cda-lot-adjustment-review--withdrawn",
+      "kind": "generic_template",
+      "version": "",
+      "path": "1-export-coconut-certificate-registration/cda_lot_adjustment_review/withdrawn_markdown.json"
+    },
+    {
       "id": "cda-lot-adjustment-review--submission-view",
       "kind": "generic_template",
       "version": "",
