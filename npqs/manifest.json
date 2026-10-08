@@ -274,6 +274,34 @@
       "path": "npqs_treatment_final_review/officerinput_jsonform.json"
     },
     {
+      "id": "npqs_v3_treatment_issue",
+      "kind": "task_config",
+      "version": "",
+      "loader": "local",
+      "path": "npqs_v3_treatment_issue/npqs_v3_treatment_issue.taskconfig.json"
+    },
+    {
+      "id": "npqs-v3-treatment-issue--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "npqs_v3_treatment_issue/officerinput_jsonform.json"
+    },
+    {
+      "id": "npqs_v3_treatment_issue_supervised",
+      "kind": "task_config",
+      "version": "",
+      "loader": "local",
+      "path": "npqs_v3_treatment_issue_supervised/npqs_v3_treatment_issue_supervised.taskconfig.json"
+    },
+    {
+      "id": "npqs-v3-treatment-issue-supervised--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "npqs_v3_treatment_issue_supervised/officerinput_jsonform.json"
+    },
+    {
       "id": "npqs_visual_sample_receive",
       "kind": "task_config",
       "version": "",

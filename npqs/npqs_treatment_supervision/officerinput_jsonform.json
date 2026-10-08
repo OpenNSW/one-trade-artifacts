@@ -12,7 +12,7 @@
       "supervision_report_url": {
         "type": "string",
         "format": "file",
-        "title": "Supervision Report (PDF/Image)",
+        "title": "Supervision Report Document URL",
         "example": "https://nsw.gov.lk/storage/certs/supervision-report-doc-1092.pdf"
       },
       "commodities": {
@@ -54,8 +54,7 @@
       }
     },
     "required": [
-      "supervisor_notes",
-      "supervision_report_url"
+      "supervisor_notes"
     ]
   },
   "uiSchema": {
