@@ -152,7 +152,7 @@
         "type": "string",
         "format": "date",
         "title": "Date of Containerization",
-        "x-notLaterThan": "date_of_sailing",
+        "formatMaximum": { "$data": "1/date_of_sailing" },
         "example": "2026-06-10"
       },
       "vessel_name": {
