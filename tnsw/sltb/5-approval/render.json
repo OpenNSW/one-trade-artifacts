@@ -2,6 +2,9 @@
   "id": "sltb-final-decision-flow:render",
   "type": "APPLICATION",
   "title": "[SLTB] Final Application Decision",
+  "files": [
+    "decision.certificate_file"
+  ],
   "sections": {
     "trader_status": {
       "templateId": "sltb-final-decision--trader-view",

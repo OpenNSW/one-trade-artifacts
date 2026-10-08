@@ -2,6 +2,9 @@
   "id": "customs-wait-export-release-flow:render",
   "type": "REVIEW",
   "title": "[Customs] Export Release Status",
+  "files": [
+    "submission.supportingDocuments[*].file"
+  ],
   "sections": {
     "status_message": {
       "templateId": "customs-wait-export-release--instructions",
