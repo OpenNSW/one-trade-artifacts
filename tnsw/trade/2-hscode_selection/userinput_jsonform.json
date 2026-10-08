@@ -23,6 +23,22 @@
               "title": "NPQS v3 Phyto Certificate (NPQS v3 Flow)"
             },
             {
+              "const": "npqs-v3-test-lab-reg",
+              "title": "NPQS v3 Test: Lab Test Only"
+            },
+            {
+              "const": "npqs-v3-test-visual1-reg",
+              "title": "NPQS v3 Test: Visual Inspection 1 Only"
+            },
+            {
+              "const": "npqs-v3-test-treatment-reg",
+              "title": "NPQS v3 Test: Treatment Only"
+            },
+            {
+              "const": "npqs-v3-test-visual2-reg",
+              "title": "NPQS v3 Test: Visual Inspection 2 Only"
+            },
+            {
               "const": "cda-certificate-reg",
               "title": "CDA Coconut Certificate (CDA Flow)"
             },

@@ -901,6 +901,30 @@
       "path": "npqs_v3/npqs_workflow.json"
     },
     {
+      "id": "npqs-v3-test-lab-reg",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_v3/test-stages/npqs_lab_workflow.json"
+    },
+    {
+      "id": "npqs-v3-test-visual1-reg",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_v3/test-stages/npqs_visual1_workflow.json"
+    },
+    {
+      "id": "npqs-v3-test-treatment-reg",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_v3/test-stages/npqs_treatment_workflow.json"
+    },
+    {
+      "id": "npqs-v3-test-visual2-reg",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_v3/test-stages/npqs_visual2_workflow.json"
+    },
+    {
       "id": "npqs-visual2-decision--officer-review",
       "kind": "subtask_template",
       "version": "",

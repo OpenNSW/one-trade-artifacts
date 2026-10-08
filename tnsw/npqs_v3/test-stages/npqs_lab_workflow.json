@@ -1,0 +1,239 @@
+{
+  "id": "npqs-v3-test-lab-reg",
+  "name": "NPQS v3 Test: Lab Test Only",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "n1_apply",
+      "name": "Apply, Review & Generate Reference Number",
+      "type": "TASK",
+      "task_template_id": "npqs-apply-phyto-cert",
+      "input_mapping": {
+        "_iter.input.company.name?": "applicant_name",
+        "_iter.input.company.name": "exporter_name",
+        "_iter.input.company.address?": "exporter_address"
+      },
+      "output_mapping": {
+        "reviewerform.reference_number": "npqs.reference_number",
+        "userform": "npqs.userform",
+        "reviewerform.review_outcome": "npqs.review_outcome",
+        "reviewerform.commodities": "commodities",
+        "reviewerform.ephyto_required?": "npqs.ephyto_required"
+      }
+    },
+    {
+      "id": "gw_lab_split",
+      "name": "Stage 1: Lab Test (Partition Items)",
+      "type": "GATEWAY",
+      "gateway_type": "BATCH_SPLIT",
+      "batch_gateway": {
+        "items_variable": "commodities",
+        "id_field": "id"
+      },
+      "input_mapping": {
+        "npqs.lab_sample_method?": "npqs.lab_sample_method",
+        "npqs.reference_number?": "npqs.reference_number",
+        "npqs.userform?": "npqs.userform"
+      }
+    },
+    {
+      "id": "n4_0_draw_sample",
+      "name": "Draw/Collect the Sample",
+      "type": "TASK",
+      "task_template_id": "npqs-draw-sample",
+      "input_mapping": {
+        "npqs.reference_number": "reference_number",
+        "npqs.userform": "userform",
+        "npqs.lab_sample_method?": "lab_sample_method",
+        "commodities": "commodities"
+      },
+      "output_mapping": {
+        "sample_number": "npqs.sample_number"
+      }
+    },
+    {
+      "id": "n2_1_lab_testing",
+      "name": "Perform Lab Test",
+      "type": "TASK",
+      "task_template_id": "npqs-lab-testing",
+      "input_mapping": {
+        "npqs.reference_number": "reference_number",
+        "npqs.userform": "userform",
+        "commodities": "commodities",
+        "npqs.sample_number?": "sample_number"
+      },
+      "output_mapping": {
+        "commodities": "commodities"
+      }
+    },
+    {
+      "id": "lab_result_split",
+      "name": "Lab Test Result (Per Item)",
+      "type": "GATEWAY",
+      "gateway_type": "BATCH_SPLIT",
+      "batch_gateway": {
+        "items_variable": "commodities",
+        "id_field": "id"
+      },
+      "input_mapping": {
+        "npqs.lab_sample_method?": "npqs.lab_sample_method",
+        "npqs.reference_number?": "npqs.reference_number",
+        "npqs.userform?": "npqs.userform"
+      }
+    },
+    {
+      "id": "lab_result_join",
+      "name": "Merge Per-Item Lab Test Results",
+      "type": "GATEWAY",
+      "gateway_type": "BATCH_JOIN",
+      "batch_join": {
+        "gateway_node_id": "lab_result_split",
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
+    },
+    {
+      "id": "n4_0b_lab_resubmit_draw",
+      "name": "Draw/Collect Resubmitted Sample (Per Item)",
+      "type": "TASK",
+      "task_template_id": "npqs-draw-sample",
+      "input_mapping": {
+        "npqs.reference_number": "reference_number",
+        "npqs.userform": "userform",
+        "npqs.lab_sample_method?": "lab_sample_method",
+        "commodities": "commodities"
+      },
+      "output_mapping": {
+        "sample_number": "npqs.sample_number"
+      }
+    },
+    {
+      "id": "n2_1b_lab_resubmit_test",
+      "name": "Perform Resubmitted Lab Test (Per Item)",
+      "type": "TASK",
+      "task_template_id": "npqs-lab-testing",
+      "input_mapping": {
+        "npqs.reference_number": "reference_number",
+        "npqs.userform": "userform",
+        "commodities": "commodities",
+        "npqs.sample_number?": "sample_number"
+      },
+      "output_mapping": {
+        "commodities": "commodities"
+      }
+    },
+    {
+      "id": "gw_lab_join",
+      "name": "Stage 1: Lab Test (Merge Results)",
+      "type": "GATEWAY",
+      "gateway_type": "BATCH_JOIN",
+      "batch_join": {
+        "gateway_node_id": "gw_lab_split",
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
+    },
+    {
+      "id": "n8_0_issue_certificate",
+      "name": "Issue Phytosanitary Certificate",
+      "type": "TASK",
+      "task_template_id": "npqs-issue-certificate",
+      "input_mapping": {
+        "npqs.reference_number": "reference_number",
+        "npqs.userform": "userform",
+        "npqs.ephyto_required?": "ephyto_required",
+        "commodities?": "certificate_items"
+      },
+      "output_mapping": {
+        "certificate_id": "npqs.certificate_id",
+        "certificate_items?": "npqs.certificate_items"
+      }
+    },
+    {
+      "id": "end_success",
+      "name": "Phytosanitary Certificate Issued",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_start",
+      "source_id": "start",
+      "target_id": "n1_apply"
+    },
+    {
+      "id": "e_apply_to_stage",
+      "source_id": "n1_apply",
+      "target_id": "gw_lab_split"
+    },
+    {
+      "id": "e_lab_split_to_draw",
+      "source_id": "gw_lab_split",
+      "target_id": "n4_0_draw_sample",
+      "condition": "item.lab_required == true"
+    },
+    {
+      "id": "e_lab_split_to_join_bypass",
+      "source_id": "gw_lab_split",
+      "target_id": "gw_lab_join",
+      "condition": "item.lab_required != true"
+    },
+    {
+      "id": "e_draw_to_lab_check",
+      "source_id": "n4_0_draw_sample",
+      "target_id": "n2_1_lab_testing"
+    },
+    {
+      "id": "e_lab_testing_to_split",
+      "source_id": "n2_1_lab_testing",
+      "target_id": "lab_result_split"
+    },
+    {
+      "id": "e_lab_fail_resubmit",
+      "source_id": "lab_result_split",
+      "target_id": "n4_0b_lab_resubmit_draw",
+      "condition": "item.sample_test_result == 'fail_resubmit'"
+    },
+    {
+      "id": "e_lab_resubmit_draw_to_retest",
+      "source_id": "n4_0b_lab_resubmit_draw",
+      "target_id": "n2_1b_lab_resubmit_test"
+    },
+    {
+      "id": "e_lab_resubmit_retest_to_join",
+      "source_id": "n2_1b_lab_resubmit_test",
+      "target_id": "lab_result_join"
+    },
+    {
+      "id": "e_lab_fail_final",
+      "source_id": "lab_result_split",
+      "target_id": "lab_result_join",
+      "condition": "item.sample_test_result == 'fail_final'"
+    },
+    {
+      "id": "e_lab_pass",
+      "source_id": "lab_result_split",
+      "target_id": "lab_result_join",
+      "condition": "item.sample_test_result == 'pass'"
+    },
+    {
+      "id": "e_lab_result_join_to_lab_join",
+      "source_id": "lab_result_join",
+      "target_id": "gw_lab_join"
+    },
+    {
+      "id": "e_stage_to_certificate",
+      "source_id": "gw_lab_join",
+      "target_id": "n8_0_issue_certificate"
+    },
+    {
+      "id": "e_certificate_to_end",
+      "source_id": "n8_0_issue_certificate",
+      "target_id": "end_success"
+    }
+  ]
+}

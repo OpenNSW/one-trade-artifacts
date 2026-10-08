@@ -1,0 +1,189 @@
+{
+  "id": "npqs-v3-test-visual2-reg",
+  "name": "NPQS v3 Test: Visual Inspection 2 Only",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "n1_apply",
+      "name": "Apply, Review & Generate Reference Number",
+      "type": "TASK",
+      "task_template_id": "npqs-apply-phyto-cert",
+      "input_mapping": {
+        "_iter.input.company.name?": "applicant_name",
+        "_iter.input.company.name": "exporter_name",
+        "_iter.input.company.address?": "exporter_address"
+      },
+      "output_mapping": {
+        "reviewerform.reference_number": "npqs.reference_number",
+        "userform": "npqs.userform",
+        "reviewerform.review_outcome": "npqs.review_outcome",
+        "reviewerform.commodities": "commodities",
+        "reviewerform.ephyto_required?": "npqs.ephyto_required"
+      }
+    },
+    {
+      "id": "gw_visual2_split",
+      "name": "Stage 4: Visual Inspection 2 (Partition Items)",
+      "type": "GATEWAY",
+      "gateway_type": "BATCH_SPLIT",
+      "batch_gateway": {
+        "items_variable": "commodities",
+        "id_field": "id"
+      },
+      "input_mapping": {
+        "npqs.reference_number?": "npqs.reference_number",
+        "npqs.userform?": "npqs.userform"
+      }
+    },
+    {
+      "id": "n_visual2_decision",
+      "name": "Decide Visual Inspection 2 (Per Item)",
+      "type": "TASK",
+      "task_template_id": "npqs-visual2-decision",
+      "input_mapping": {
+        "npqs.reference_number": "reference_number",
+        "npqs.userform": "userform",
+        "commodities": "commodities"
+      },
+      "output_mapping": {
+        "commodities": "commodities"
+      }
+    },
+    {
+      "id": "visual2_required_split",
+      "name": "Visual Inspection 2 Required?",
+      "type": "GATEWAY",
+      "gateway_type": "BATCH_SPLIT",
+      "batch_gateway": {
+        "items_variable": "commodities",
+        "id_field": "id"
+      },
+      "input_mapping": {
+        "npqs.reference_number?": "npqs.reference_number",
+        "npqs.userform?": "npqs.userform"
+      }
+    },
+    {
+      "id": "n_visual2_inspection",
+      "name": "Conduct Visual Inspection 2",
+      "type": "TASK",
+      "task_template_id": "npqs-visual2-inspection-flow",
+      "input_mapping": {
+        "npqs.reference_number": "reference_number",
+        "npqs.userform": "userform",
+        "commodities": "commodities"
+      },
+      "output_mapping": {
+        "commodities": "commodities"
+      }
+    },
+    {
+      "id": "visual2_required_join",
+      "name": "Merge Visual Inspection 2 Results",
+      "type": "GATEWAY",
+      "gateway_type": "BATCH_JOIN",
+      "batch_join": {
+        "gateway_node_id": "visual2_required_split",
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
+    },
+    {
+      "id": "gw_visual2_join",
+      "name": "Stage 4: Visual Inspection 2 (Merge Results)",
+      "type": "GATEWAY",
+      "gateway_type": "BATCH_JOIN",
+      "batch_join": {
+        "gateway_node_id": "gw_visual2_split",
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
+    },
+    {
+      "id": "n8_0_issue_certificate",
+      "name": "Issue Phytosanitary Certificate",
+      "type": "TASK",
+      "task_template_id": "npqs-issue-certificate",
+      "input_mapping": {
+        "npqs.reference_number": "reference_number",
+        "npqs.userform": "userform",
+        "npqs.ephyto_required?": "ephyto_required",
+        "commodities?": "certificate_items"
+      },
+      "output_mapping": {
+        "certificate_id": "npqs.certificate_id",
+        "certificate_items?": "npqs.certificate_items"
+      }
+    },
+    {
+      "id": "end_success",
+      "name": "Phytosanitary Certificate Issued",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_start",
+      "source_id": "start",
+      "target_id": "n1_apply"
+    },
+    {
+      "id": "e_apply_to_stage",
+      "source_id": "n1_apply",
+      "target_id": "gw_visual2_split"
+    },
+    {
+      "id": "e_visual2_split_to_decision",
+      "source_id": "gw_visual2_split",
+      "target_id": "n_visual2_decision",
+      "condition": "item.sample_test_result not in ['fail_final', 'fail_resubmit'] && item.visual_result != 'fail' && item.treatment_result != 'fail'"
+    },
+    {
+      "id": "e_visual2_split_to_join_bypass",
+      "source_id": "gw_visual2_split",
+      "target_id": "gw_visual2_join",
+      "condition": "item.sample_test_result in ['fail_final', 'fail_resubmit'] || item.visual_result == 'fail' || item.treatment_result == 'fail'"
+    },
+    {
+      "id": "e_visual2_decision_to_required_split",
+      "source_id": "n_visual2_decision",
+      "target_id": "visual2_required_split"
+    },
+    {
+      "id": "e_visual2_required",
+      "source_id": "visual2_required_split",
+      "target_id": "n_visual2_inspection",
+      "condition": "item.visual2_required == true"
+    },
+    {
+      "id": "e_visual2_not_required",
+      "source_id": "visual2_required_split",
+      "target_id": "visual2_required_join",
+      "condition": "item.visual2_required != true"
+    },
+    {
+      "id": "e_visual2_inspection_to_join",
+      "source_id": "n_visual2_inspection",
+      "target_id": "visual2_required_join"
+    },
+    {
+      "id": "e_visual2_required_join_to_visual2_join",
+      "source_id": "visual2_required_join",
+      "target_id": "gw_visual2_join"
+    },
+    {
+      "id": "e_stage_to_certificate",
+      "source_id": "gw_visual2_join",
+      "target_id": "n8_0_issue_certificate"
+    },
+    {
+      "id": "e_certificate_to_end",
+      "source_id": "n8_0_issue_certificate",
+      "target_id": "end_success"
+    }
+  ]
+}
