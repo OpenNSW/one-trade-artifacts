@@ -1,7 +1,7 @@
 {
   "id": "npqs-v3-export-phytosanitary-reg",
   "name": "NPQS Export Consignment & Phytosanitary Registration (Linear Stages)",
-  "version": 5,
+  "version": 6,
   "nodes": [
     {
       "id": "start",
@@ -49,6 +49,20 @@
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
         "npqs.lab_sample_method?": "lab_sample_method",
+        "commodities": "commodities"
+      },
+      "output_mapping": {
+        "sample_number": "npqs.sample_number"
+      }
+    },
+    {
+      "id": "n4_0_officer_draw_at_site",
+      "name": "Draw the Sample at the Trader's Site",
+      "type": "TASK",
+      "task_template_id": "npqs-v3-sample-draw-at-site",
+      "input_mapping": {
+        "npqs.reference_number": "reference_number",
+        "npqs.userform": "userform",
         "commodities": "commodities"
       },
       "output_mapping": {
@@ -105,6 +119,20 @@
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
         "npqs.lab_sample_method?": "lab_sample_method",
+        "commodities": "commodities"
+      },
+      "output_mapping": {
+        "sample_number": "npqs.sample_number"
+      }
+    },
+    {
+      "id": "n4_0c_lab_resubmit_officer_draw",
+      "name": "Draw the Second Sample at the Trader's Site (Per Item)",
+      "type": "TASK",
+      "task_template_id": "npqs-v3-sample-draw-at-site",
+      "input_mapping": {
+        "npqs.reference_number": "reference_number",
+        "npqs.userform": "userform",
         "commodities": "commodities"
       },
       "output_mapping": {
@@ -754,7 +782,18 @@
       "id": "e_lab_split_to_draw",
       "source_id": "gw_lab_split",
       "target_id": "n4_0_draw_sample",
-      "condition": "item.lab_required == true"
+      "condition": "item.lab_required == true && item.lab_sample_method != 'drawn_at_site'"
+    },
+    {
+      "id": "e_lab_split_to_officer_draw",
+      "source_id": "gw_lab_split",
+      "target_id": "n4_0_officer_draw_at_site",
+      "condition": "item.lab_required == true && item.lab_sample_method == 'drawn_at_site'"
+    },
+    {
+      "id": "e_officer_draw_to_lab_testing",
+      "source_id": "n4_0_officer_draw_at_site",
+      "target_id": "n2_1_lab_testing"
     },
     {
       "id": "e_lab_split_to_join_bypass",
@@ -776,7 +815,18 @@
       "id": "e_lab_fail_resubmit",
       "source_id": "lab_result_split",
       "target_id": "n4_0b_lab_resubmit_draw",
-      "condition": "item.sample_test_result == 'fail_resubmit'"
+      "condition": "item.sample_test_result == 'fail_resubmit' && item.lab_sample_method != 'drawn_at_site'"
+    },
+    {
+      "id": "e_lab_fail_resubmit_drawn",
+      "source_id": "lab_result_split",
+      "target_id": "n4_0c_lab_resubmit_officer_draw",
+      "condition": "item.sample_test_result == 'fail_resubmit' && item.lab_sample_method == 'drawn_at_site'"
+    },
+    {
+      "id": "e_lab_resubmit_officer_draw_to_retest",
+      "source_id": "n4_0c_lab_resubmit_officer_draw",
+      "target_id": "n2_1b_lab_resubmit_test"
     },
     {
       "id": "e_lab_resubmit_draw_to_retest",

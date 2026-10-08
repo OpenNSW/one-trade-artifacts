@@ -1,0 +1,6 @@
+{
+  "id": "npqs-v3-sample-draw-at-site",
+  "type": "APPLICATION",
+  "workflow_id": "npqs-v3-sample-draw-at-site",
+  "render_config_id": "npqs-v3-sample-draw-at-site:render"
+}

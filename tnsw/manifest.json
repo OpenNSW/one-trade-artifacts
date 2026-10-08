@@ -1099,6 +1099,30 @@
       "path": "npqs_v3/14-treatment_final_review/task_template.json"
     },
     {
+      "id": "npqs-v3-sample-draw-at-site:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_v3/15-sample_draw_at_site/render.json"
+    },
+    {
+      "id": "npqs-v3-sample-draw-at-site--status",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_v3/15-sample_draw_at_site/status_markdown.json"
+    },
+    {
+      "id": "npqs-v3-sample-draw-at-site",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_v3/15-sample_draw_at_site/workflow.json"
+    },
+    {
+      "id": "npqs-v3-sample-draw-at-site",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs_v3/15-sample_draw_at_site/task_template.json"
+    },
+    {
       "id": "fcau-apply-health-cert-flow:render",
       "kind": "generic_template",
       "version": "",
