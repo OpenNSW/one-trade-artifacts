@@ -1,27 +1,26 @@
 {
-  "id": "npqs-review-treatment-certs",
-  "name": "Review Treatment Certificates",
-  "version": 3,
+  "id": "npqs-visual2-decision",
+  "name": "Visual Inspection 2 Decision",
+  "version": 1,
   "nodes": [
     {
       "id": "start",
       "type": "START"
     },
     {
-      "id": "officer_review",
+      "id": "officer_decide",
       "type": "TASK",
-      "task_template_id": "npqs-review-treatment-certs--officer-review",
+      "task_template_id": "npqs-visual2-decision--officer-review",
       "input_mapping": {
         "commodities": "commodities",
         "reference_number?": "reference_number",
         "reference_number": "submission.reference_number",
-        "traderinput": "submission",
-        "commodities?": "submission.commodities"
+        "userform": "submission",
+        "commodities?": "submission.items"
       },
       "output_mapping": {
-        "treatment_review_result": "treatment_review_result",
-        "review_comments?": "review_comments",
-        "commodities?": "commodities"
+        "items": "commodities",
+        "visual2_comments?": "visual2_comments"
       }
     },
     {
@@ -33,11 +32,11 @@
     {
       "id": "e1",
       "source_id": "start",
-      "target_id": "officer_review"
+      "target_id": "officer_decide"
     },
     {
       "id": "e2",
-      "source_id": "officer_review",
+      "source_id": "officer_decide",
       "target_id": "end"
     }
   ]

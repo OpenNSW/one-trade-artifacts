@@ -895,6 +895,84 @@
       "path": "npqs/npqs_workflow.json"
     },
     {
+      "id": "npqs-v3-export-phytosanitary-reg",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_v3/npqs_workflow.json"
+    },
+    {
+      "id": "npqs-visual2-decision--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_v3/10-visual2_decision/officerinput.json"
+    },
+    {
+      "id": "npqs-visual2-decision:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_v3/10-visual2_decision/render.json"
+    },
+    {
+      "id": "npqs-visual2-decision--status",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_v3/10-visual2_decision/status_markdown.json"
+    },
+    {
+      "id": "npqs-visual2-decision",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_v3/10-visual2_decision/workflow.json"
+    },
+    {
+      "id": "npqs-visual2-decision",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs_v3/10-visual2_decision/task_template.json"
+    },
+    {
+      "id": "npqs-visual2-inspection--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_v3/11-visual2_inspection/inspection.json"
+    },
+    {
+      "id": "npqs-visual2-inspection-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_v3/11-visual2_inspection/render.json"
+    },
+    {
+      "id": "npqs-visual2-inspection--trader-schedule",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_v3/11-visual2_inspection/scheduling.json"
+    },
+    {
+      "id": "npqs-visual2-inspection--trader-schedule-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_v3/11-visual2_inspection/scheduling_jsonform.json"
+    },
+    {
+      "id": "npqs-visual2-inspection-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_v3/11-visual2_inspection/workflow.json"
+    },
+    {
+      "id": "npqs-visual2-inspection-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs_v3/11-visual2_inspection/task_template.json"
+    },
+    {
+      "id": "npqs-visual2-inspection--status",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_v3/11-visual2_inspection/status_markdown.json"
+    },
+    {
       "id": "fcau-apply-health-cert-flow:render",
       "kind": "generic_template",
       "version": "",

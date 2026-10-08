@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "taskCode": "npqs_visual2_inspection",
+  "meta": {
+    "title": "NPQS Visual Inspection 2",
+    "description": "Officer records the outcome of Visual Inspection 2."
+  },
+  "forms": {
+    "view": "npqs-visual2-inspection--trader-schedule-form",
+    "review": "npqs-visual2-inspection--officer-form"
+  },
+  "behavior": {
+    "type": "statusMap",
+    "outcomeField": "visual2_result",
+    "statusMap": {
+      "pass": "APPROVED",
+      "fail": "REJECTED"
+    }
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW",
+        "FEEDBACK"
+      ]
+    }
+  ]
+}

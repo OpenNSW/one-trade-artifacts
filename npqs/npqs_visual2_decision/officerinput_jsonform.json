@@ -1,32 +1,16 @@
 {
-  "id": "npqs-review-treatment-certs--officer-form",
-  "title": "Review Treatment Certificate Documents",
+  "id": "npqs-visual2-decision--officer-form",
+  "title": "Visual Inspection 2",
   "schema": {
     "type": "object",
     "properties": {
-      "treatment_review_result": {
+      "visual2_comments": {
         "type": "string",
-        "title": "Verification Result",
-        "oneOf": [
-          {
-            "const": "pass",
-            "title": "Pass (Certificates are valid and correct)"
-          },
-          {
-            "const": "needs_more_info",
-            "title": "Needs More Info (Request re-upload with corrections)"
-          }
-        ],
-        "default": "pass"
+        "title": "Officer Notes"
       },
-      "review_comments": {
-        "type": "string",
-        "title": "Verification Notes / Feedback",
-        "example": "Reviewed the uploaded treatment certificate. The chemical, dosage, and duration match standard requirements."
-      },
-      "commodities": {
+      "items": {
         "type": "array",
-        "title": "Items Under Treatment",
+        "title": "Items (Per Item)",
         "items": {
           "type": "object",
           "properties": {
@@ -36,7 +20,7 @@
             },
             "commodity_common_name": {
               "type": "object",
-              "title": "Commodity Name",
+              "title": "Common Name",
               "properties": {
                 "value": {
                   "type": "string"
@@ -58,39 +42,29 @@
                 }
               }
             },
-            "treatment_result": {
+            "commodity_botanical_name": {
               "type": "string",
-              "title": "Treatment Result",
-              "oneOf": [
-                {
-                  "const": "pass",
-                  "title": "Pass"
-                },
-                {
-                  "const": "fail",
-                  "title": "Fail (Reject Item)"
-                }
-              ],
-              "default": "pass"
+              "title": "Botanical Name"
+            },
+            "visual2_required": {
+              "type": "boolean",
+              "title": "Visual Inspection Required",
+              "default": false
             }
           },
           "required": [
-            "id",
-            "treatment_result"
+            "id"
           ]
         }
       }
-    },
-    "required": [
-      "treatment_review_result"
-    ]
+    }
   },
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
       {
         "type": "Control",
-        "scope": "#/properties/commodities",
+        "scope": "#/properties/items",
         "options": {
           "detail": {
             "type": "HorizontalLayout",
@@ -111,7 +85,7 @@
               },
               {
                 "type": "Control",
-                "scope": "#/properties/treatment_result"
+                "scope": "#/properties/visual2_required"
               }
             ]
           },
@@ -121,11 +95,7 @@
       },
       {
         "type": "Control",
-        "scope": "#/properties/treatment_review_result"
-      },
-      {
-        "type": "Control",
-        "scope": "#/properties/review_comments"
+        "scope": "#/properties/visual2_comments"
       }
     ]
   }
