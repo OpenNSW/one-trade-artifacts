@@ -192,7 +192,7 @@
       "certificate_url": {
         "type": "string",
         "format": "file",
-        "title": "Uploaded Phytosanitary Certificate (PDF)",
+        "title": "Scanned Phytosanitary Certificate (PDF)",
         "example": "https://nsw.gov.lk/storage/certs/phytosanitary-certificate-1029.pdf"
       },
       "comments": {
@@ -203,7 +203,8 @@
     },
     "required": [
       "certificate_items",
-      "certificate_id"
+      "certificate_id",
+      "certificate_url"
     ]
   },
   "uiSchema": {
