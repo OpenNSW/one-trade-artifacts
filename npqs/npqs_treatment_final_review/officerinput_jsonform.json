@@ -28,7 +28,7 @@
           "maxFiles": 50
         }
       },
-      "commodities": {
+      "items": {
         "type": "array",
         "title": "Items Under Treatment",
         "items": {
@@ -113,7 +113,7 @@
       },
       {
         "type": "Control",
-        "scope": "#/properties/commodities",
+        "scope": "#/properties/items",
         "options": {
           "detail": {
             "type": "HorizontalLayout",

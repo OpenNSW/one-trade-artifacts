@@ -1,7 +1,7 @@
 {
   "id": "npqs-v3-treatment-final-review",
   "name": "Treatment Review",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -14,13 +14,15 @@
       "input_mapping": {
         "commodities": "commodities",
         "reference_number?": "reference_number",
+        "userform?": "userform",
         "reference_number": "submission.reference_number",
-        "commodities?": "submission.commodities",
+        "userform": "submission",
+        "commodities?": "submission.items",
         "treatment_certificate_urls?": "submission.treatment_certificate_urls",
         "supervision_report_urls?": "submission.supervision_report_urls"
       },
       "output_mapping": {
-        "commodities": "commodities",
+        "items": "commodities",
         "review_comments?": "review_comments"
       }
     },
