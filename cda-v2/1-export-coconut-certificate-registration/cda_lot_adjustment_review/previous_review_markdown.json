@@ -1,0 +1,4 @@
+{
+  "id": "cda-lot-adjustment-review--previous-review",
+  "template": "{{if .}}\n### Previous Review\n\nYou asked the applicant for more information. This is their resubmission.\n\n> **Your comments**: {{.}}\n{{end}}"
+}

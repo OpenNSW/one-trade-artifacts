@@ -3,6 +3,18 @@
   "type": "APPLICATION",
   "title": "CDA Container Inspection & Recommendation",
   "sections": {
+    "previous_review": {
+      "templateId": "cda-kcfn-inspection-review--previous-review",
+      "title": "Previous Review",
+      "projector": "MARKDOWN",
+      "dataKey": "previous_rejection_reason",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "previous_rejection_reason"
+      }
+    },
     "submission_view": {
       "templateId": "cda-kcfn-inspection--apply-view-form",
       "title": "Submitted Application",
@@ -29,7 +41,20 @@
       "visibleWhen": {
         "states": [
           "QUEUED_EXTERNALLY"
-        ]
+        ],
+        "requireDataKey": "payload"
+      }
+    },
+    "awaiting_resubmission": {
+      "templateId": "cda-kcfn-inspection-review--awaiting-resubmission",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "dataKey": "rejection_reason",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ],
+        "requireDataKey": "rejection_reason"
       }
     }
   },
