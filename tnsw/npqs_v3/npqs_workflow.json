@@ -1,7 +1,7 @@
 {
   "id": "npqs-v3-export-phytosanitary-reg",
   "name": "NPQS Export Consignment & Phytosanitary Registration (Linear Stages)",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -33,6 +33,11 @@
       "batch_gateway": {
         "items_variable": "commodities",
         "id_field": "id"
+      },
+      "input_mapping": {
+        "npqs.lab_sample_method?": "npqs.lab_sample_method",
+        "npqs.reference_number?": "npqs.reference_number",
+        "npqs.userform?": "npqs.userform"
       }
     },
     {
@@ -73,6 +78,11 @@
       "batch_gateway": {
         "items_variable": "commodities",
         "id_field": "id"
+      },
+      "input_mapping": {
+        "npqs.lab_sample_method?": "npqs.lab_sample_method",
+        "npqs.reference_number?": "npqs.reference_number",
+        "npqs.userform?": "npqs.userform"
       }
     },
     {
@@ -135,6 +145,10 @@
       "batch_gateway": {
         "items_variable": "commodities",
         "id_field": "id"
+      },
+      "input_mapping": {
+        "npqs.reference_number?": "npqs.reference_number",
+        "npqs.userform?": "npqs.userform"
       }
     },
     {
@@ -174,6 +188,10 @@
       "batch_gateway": {
         "items_variable": "commodities",
         "id_field": "id"
+      },
+      "input_mapping": {
+        "npqs.reference_number?": "npqs.reference_number",
+        "npqs.userform?": "npqs.userform"
       }
     },
     {
@@ -311,6 +329,14 @@
       "batch_gateway": {
         "items_variable": "commodities",
         "id_field": "id"
+      },
+      "input_mapping": {
+        "npqs.reference_number?": "npqs.reference_number",
+        "npqs.userform?": "npqs.userform"
+      },
+      "output_mapping": {
+        "npqs.treatment_certificate_urls": "npqs.treatment_certificate_urls",
+        "npqs.supervision_report_urls": "npqs.supervision_report_urls"
       }
     },
     {
@@ -336,6 +362,15 @@
       "batch_gateway": {
         "items_variable": "commodities",
         "id_field": "id"
+      },
+      "input_mapping": {
+        "npqs.reference_number?": "npqs.reference_number",
+        "npqs.treatment_items?": "npqs.treatment_items",
+        "npqs.userform?": "npqs.userform"
+      },
+      "output_mapping": {
+        "npqs.treatment_traderinput.treatment_certificate_url": "npqs.treatment_certificate_urls",
+        "npqs.treatment_traderinput.supervision_report_url": "npqs.supervision_report_urls"
       }
     },
     {
@@ -384,6 +419,10 @@
       "batch_gateway": {
         "items_variable": "commodities",
         "id_field": "id"
+      },
+      "input_mapping": {
+        "npqs.reference_number?": "npqs.reference_number",
+        "npqs.userform?": "npqs.userform"
       }
     },
     {
@@ -469,6 +508,10 @@
       "batch_gateway": {
         "items_variable": "commodities",
         "id_field": "id"
+      },
+      "input_mapping": {
+        "npqs.reference_number?": "npqs.reference_number",
+        "npqs.userform?": "npqs.userform"
       }
     },
     {
@@ -493,6 +536,10 @@
       "batch_gateway": {
         "items_variable": "commodities",
         "id_field": "id"
+      },
+      "input_mapping": {
+        "npqs.reference_number?": "npqs.reference_number",
+        "npqs.userform?": "npqs.userform"
       }
     },
     {
@@ -632,8 +679,8 @@
         "npqs.userform": "userform",
         "npqs.certificate_id": "certificate_id",
         "npqs.certificate_items?": "certificate_items",
-        "npqs.treatment_traderinput.treatment_certificate_url?": "treatment_certificate_url",
-        "npqs.treatment_traderinput.supervision_report_url?": "supervision_report_url",
+        "npqs.treatment_certificate_urls?": "treatment_certificate_url",
+        "npqs.supervision_report_urls?": "supervision_report_url",
         "npqs.docs_traderinput.invoice_file_url?": "invoice_file_url",
         "npqs.docs_traderinput.packing_list_file_url?": "packing_list_file_url",
         "npqs.docs_traderinput.additional_file_url?": "additional_file_url"
