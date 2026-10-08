@@ -1,19 +1,25 @@
 {
-  "id": "npqs-treatment-supervisor-report--officer-form",
-  "title": "Issue Supervision Report",
+  "id": "npqs-v3-provider-cert-upload-supervised--trader-form",
+  "title": "Upload Treatment Provider Certificate and Supervision Report",
   "schema": {
     "type": "object",
     "properties": {
-      "supervisor_notes": {
+      "treatment_certificate_url": {
         "type": "string",
-        "title": "Supervision Assessment & Notes",
-        "example": "Supervised the fumigation at the site. Verified dosage levels and container sealing."
+        "format": "file",
+        "title": "Treatment Provider's Certificate (PDF/Image)",
+        "example": "https://nsw.gov.lk/storage/certs/treatment-cert-1092.pdf"
       },
       "supervision_report_url": {
         "type": "string",
         "format": "file",
-        "title": "Supervision Report (PDF/Image)",
-        "example": "https://nsw.gov.lk/storage/certs/supervision-report-doc-1092.pdf"
+        "title": "Supervision Report from the NPQS Officer (PDF/Image)",
+        "example": "https://nsw.gov.lk/storage/certs/supervision-report-1092.pdf"
+      },
+      "upload_remarks": {
+        "type": "string",
+        "title": "Trader Comments / Remarks",
+        "example": "Uploaded the fumigation certificate from private provider and supervisor check sheet."
       },
       "commodities": {
         "type": "array",
@@ -54,7 +60,7 @@
       }
     },
     "required": [
-      "supervisor_notes",
+      "treatment_certificate_url",
       "supervision_report_url"
     ]
   },
@@ -78,11 +84,10 @@
               },
               {
                 "type": "Control",
-                "scope": "#/properties/commodity_common_name/properties/label",
+                "scope": "#/properties/commodity_common_name",
                 "options": {
                   "readOnly": true
-                },
-                "label": "Commodity Name"
+                }
               }
             ]
           },
@@ -92,11 +97,15 @@
       },
       {
         "type": "Control",
-        "scope": "#/properties/supervisor_notes"
+        "scope": "#/properties/treatment_certificate_url"
       },
       {
         "type": "Control",
         "scope": "#/properties/supervision_report_url"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/upload_remarks"
       }
     ]
   }

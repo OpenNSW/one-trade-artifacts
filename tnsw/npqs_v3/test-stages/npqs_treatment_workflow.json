@@ -1,7 +1,7 @@
 {
   "id": "npqs-v3-test-treatment-reg",
   "name": "NPQS v3 Test: Treatment Only",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -73,8 +73,8 @@
         "npqs.userform?": "npqs.userform"
       },
       "output_mapping": {
-        "npqs.treatment_traderinput.treatment_certificate_url": "npqs.treatment_certificate_urls",
-        "npqs.treatment_traderinput.supervision_report_url": "npqs.supervision_report_urls"
+        "npqs.treatment_certificate_urls": "npqs.treatment_certificate_urls",
+        "npqs.supervision_report_urls": "npqs.supervision_report_urls"
       }
     },
     {
@@ -86,6 +86,23 @@
         "gateway_node_id": "treatment_provider_split",
         "items_variable": "commodities",
         "id_field": "id"
+      }
+    },
+    {
+      "id": "n3_5_treatment_final_review",
+      "name": "Review Treatment Documents and Record Results (Per Item)",
+      "type": "TASK",
+      "task_template_id": "npqs-v3-treatment-final-review",
+      "input_mapping": {
+        "npqs.reference_number": "reference_number",
+        "npqs.userform": "userform",
+        "commodities": "commodities",
+        "npqs.treatment_certificate_urls?": "treatment_certificate_urls",
+        "npqs.supervision_report_urls?": "supervision_report_urls"
+      },
+      "output_mapping": {
+        "commodities": "commodities",
+        "review_comments?": "npqs.treatment_review_comments"
       }
     },
     {
@@ -112,7 +129,8 @@
         "commodities": "commodities"
       },
       "output_mapping": {
-        "treatment_certificate_id": "npqs.treatment_certificate_id"
+        "treatment_certificate_id": "npqs.treatment_certificate_id",
+        "treatment_certificate_url": "npqs.treatment_certificate_urls"
       }
     },
     {
@@ -127,6 +145,9 @@
       "input_mapping": {
         "npqs.reference_number?": "npqs.reference_number",
         "npqs.userform?": "npqs.userform"
+      },
+      "output_mapping": {
+        "npqs.supervision_report_url": "npqs.supervision_report_urls"
       }
     },
     {
@@ -151,47 +172,67 @@
         "commodities": "commodities"
       },
       "output_mapping": {
-        "supervisor_notes": "npqs.treatment_supervisor_notes"
+        "supervisor_notes": "npqs.treatment_supervisor_notes",
+        "supervision_report_url": "npqs.supervision_report_url"
+      }
+    },
+    {
+      "id": "n3_4_provider_supervision_split",
+      "name": "Treatment Provider: Supervision Required?",
+      "type": "GATEWAY",
+      "gateway_type": "BATCH_SPLIT",
+      "batch_gateway": {
+        "items_variable": "commodities",
+        "id_field": "id"
+      },
+      "input_mapping": {
+        "npqs.reference_number?": "npqs.reference_number",
+        "npqs.userform?": "npqs.userform"
+      },
+      "output_mapping": {
+        "npqs.treatment_certificate_url": "npqs.treatment_certificate_urls",
+        "npqs.supervision_report_url": "npqs.supervision_report_urls"
       }
     },
     {
       "id": "n3_4_treatment_upload_certs",
-      "name": "Upload Treatment Certificates",
+      "name": "Upload Treatment Provider Certificate",
       "type": "TASK",
-      "task_template_id": "npqs-upload-treatment-certs",
+      "task_template_id": "npqs-v3-provider-cert-upload",
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
-        "commodities": "commodities",
-        "npqs.treatment_traderinput.treatment_certificate_url?": "prior_treatment_certificate_url",
-        "npqs.treatment_traderinput.supervision_report_url?": "prior_supervision_report_url",
-        "npqs.treatment_traderinput.upload_remarks?": "prior_upload_remarks"
-      },
-      "output_mapping": {
-        "traderinput": "npqs.treatment_traderinput"
-      }
-    },
-    {
-      "id": "n3_5_treatment_review_certs",
-      "name": "Review Treatment Certificates",
-      "type": "TASK",
-      "task_template_id": "npqs-review-treatment-certs",
-      "input_mapping": {
-        "npqs.reference_number": "reference_number",
-        "npqs.userform": "userform",
-        "npqs.treatment_traderinput": "traderinput",
         "commodities": "commodities"
       },
       "output_mapping": {
-        "treatment_review_result": "npqs.treatment_review_result",
-        "commodities?": "commodities"
+        "traderinput.treatment_certificate_url": "npqs.treatment_certificate_url"
       }
     },
     {
-      "id": "treatment_review_split",
-      "name": "Treatment Certificate Review Result",
+      "id": "n3_4b_treatment_upload_supervised",
+      "name": "Upload Treatment Provider Certificate and Supervision Report",
+      "type": "TASK",
+      "task_template_id": "npqs-v3-provider-cert-upload-supervised",
+      "input_mapping": {
+        "npqs.reference_number": "reference_number",
+        "npqs.userform": "userform",
+        "commodities": "commodities"
+      },
+      "output_mapping": {
+        "traderinput.treatment_certificate_url": "npqs.treatment_certificate_url",
+        "traderinput.supervision_report_url": "npqs.supervision_report_url"
+      }
+    },
+    {
+      "id": "n3_4_provider_supervision_join",
+      "name": "Merge Treatment Provider Uploads",
       "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
+      "gateway_type": "BATCH_JOIN",
+      "batch_join": {
+        "gateway_node_id": "n3_4_provider_supervision_split",
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
     },
     {
       "id": "gw_treatment_join",
@@ -263,7 +304,7 @@
     {
       "id": "e_treatment_by_provider",
       "source_id": "treatment_provider_split",
-      "target_id": "n3_4_treatment_upload_certs",
+      "target_id": "n3_4_provider_supervision_split",
       "condition": "any(npqs.treatment_items, .id == item.id && .treatment_provider == 'external')"
     },
     {
@@ -300,36 +341,46 @@
       "target_id": "n3_3_1_supervision_join"
     },
     {
-      "id": "e_supervision_join_to_upload",
+      "id": "e_supervision_join_to_provider_join",
       "source_id": "n3_3_1_supervision_join",
-      "target_id": "n3_4_treatment_upload_certs"
+      "target_id": "treatment_provider_join"
     },
     {
-      "id": "e_treatment_upload_to_review",
-      "source_id": "n3_4_treatment_upload_certs",
-      "target_id": "n3_5_treatment_review_certs"
+      "id": "e_provider_supervised",
+      "source_id": "n3_4_provider_supervision_split",
+      "target_id": "n3_4b_treatment_upload_supervised",
+      "condition": "any(npqs.treatment_items, .id == item.id && .treatment_supervision == 'with_supervision')"
     },
     {
-      "id": "e_treatment_review_to_split",
-      "source_id": "n3_5_treatment_review_certs",
-      "target_id": "treatment_review_split"
-    },
-    {
-      "id": "e_treatment_needs_more_info",
-      "source_id": "treatment_review_split",
+      "id": "e_provider_unsupervised",
+      "source_id": "n3_4_provider_supervision_split",
       "target_id": "n3_4_treatment_upload_certs",
-      "condition": "npqs.treatment_review_result == 'needs_more_info'"
+      "condition": "none(npqs.treatment_items, .id == item.id && .treatment_supervision == 'with_supervision')"
     },
     {
-      "id": "e_treatment_pass",
-      "source_id": "treatment_review_split",
-      "target_id": "treatment_provider_join",
-      "condition": "npqs.treatment_review_result == 'pass'"
+      "id": "e_provider_supervised_upload_to_join",
+      "source_id": "n3_4b_treatment_upload_supervised",
+      "target_id": "n3_4_provider_supervision_join"
+    },
+    {
+      "id": "e_provider_upload_to_join",
+      "source_id": "n3_4_treatment_upload_certs",
+      "target_id": "n3_4_provider_supervision_join"
+    },
+    {
+      "id": "e_provider_supervision_join_to_provider_join",
+      "source_id": "n3_4_provider_supervision_join",
+      "target_id": "treatment_provider_join"
+    },
+    {
+      "id": "e_final_review_to_treatment_join",
+      "source_id": "n3_5_treatment_final_review",
+      "target_id": "gw_treatment_join"
     },
     {
       "id": "e_provider_join_to_treatment_join",
       "source_id": "treatment_provider_join",
-      "target_id": "gw_treatment_join"
+      "target_id": "n3_5_treatment_final_review"
     },
     {
       "id": "e_stage_to_certificate",

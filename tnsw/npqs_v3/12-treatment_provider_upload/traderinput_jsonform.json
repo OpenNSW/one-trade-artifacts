@@ -1,19 +1,19 @@
 {
-  "id": "npqs-treatment-supervisor-report--officer-form",
-  "title": "Issue Supervision Report",
+  "id": "npqs-v3-provider-cert-upload--trader-form",
+  "title": "Upload Treatment Provider Certificate",
   "schema": {
     "type": "object",
     "properties": {
-      "supervisor_notes": {
-        "type": "string",
-        "title": "Supervision Assessment & Notes",
-        "example": "Supervised the fumigation at the site. Verified dosage levels and container sealing."
-      },
-      "supervision_report_url": {
+      "treatment_certificate_url": {
         "type": "string",
         "format": "file",
-        "title": "Supervision Report (PDF/Image)",
-        "example": "https://nsw.gov.lk/storage/certs/supervision-report-doc-1092.pdf"
+        "title": "Treatment Provider's Certificate (PDF/Image)",
+        "example": "https://nsw.gov.lk/storage/certs/treatment-cert-1092.pdf"
+      },
+      "upload_remarks": {
+        "type": "string",
+        "title": "Trader Comments / Remarks",
+        "example": "Uploaded the fumigation certificate from private provider and supervisor check sheet."
       },
       "commodities": {
         "type": "array",
@@ -54,8 +54,7 @@
       }
     },
     "required": [
-      "supervisor_notes",
-      "supervision_report_url"
+      "treatment_certificate_url"
     ]
   },
   "uiSchema": {
@@ -78,11 +77,10 @@
               },
               {
                 "type": "Control",
-                "scope": "#/properties/commodity_common_name/properties/label",
+                "scope": "#/properties/commodity_common_name",
                 "options": {
                   "readOnly": true
-                },
-                "label": "Commodity Name"
+                }
               }
             ]
           },
@@ -92,11 +90,11 @@
       },
       {
         "type": "Control",
-        "scope": "#/properties/supervisor_notes"
+        "scope": "#/properties/treatment_certificate_url"
       },
       {
         "type": "Control",
-        "scope": "#/properties/supervision_report_url"
+        "scope": "#/properties/upload_remarks"
       }
     ]
   }

@@ -1,0 +1,6 @@
+{
+  "id": "npqs-v3-provider-cert-upload",
+  "type": "APPLICATION",
+  "workflow_id": "npqs-v3-provider-cert-upload",
+  "render_config_id": "npqs-v3-provider-cert-upload:render"
+}

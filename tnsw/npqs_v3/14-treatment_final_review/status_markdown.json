@@ -1,0 +1,4 @@
+{
+  "id": "npqs-v3-treatment-final-review--status",
+  "template": "### 🧪 Treatment Review\n\n{{if .reviewerform.commodities}}\n#### Results per item\n{{range .reviewerform.commodities}}* 🏷️ **{{.commodity_common_name.label}}** (`{{.id}}`) — {{if eq (print .treatment_result) \"fail\"}}🔴 Fail{{else}}🟢 Pass{{end}}\n{{end}}\n{{if .reviewerform.review_comments}}* **Officer Notes**: {{.reviewerform.review_comments}}{{end}}\n{{else}}\n#### ⏳ Awaiting Review\n\nAn NPQS officer is reviewing the treatment certificates and supervision reports for these items:\n{{range .commodities}}* 🏷️ **{{.commodity_common_name.label}}** (`{{.id}}`)\n{{end}}\n\n* **Reference Number**: `{{.reference_number}}`\n{{end}}"
+}

@@ -12,7 +12,7 @@
       "treatment_certificate_url": {
         "type": "string",
         "format": "file",
-        "title": "Uploaded Treatment Certificate (PDF/Image)",
+        "title": "Treatment Certificate (PDF/Image)",
         "example": "https://nsw.gov.lk/storage/certs/treatment-certificate-9042.pdf"
       },
       "treatment_outcome": {
@@ -75,7 +75,8 @@
     },
     "required": [
       "treatment_certificate_id",
-      "treatment_outcome"
+      "treatment_outcome",
+      "treatment_certificate_url"
     ]
   },
   "uiSchema": {
