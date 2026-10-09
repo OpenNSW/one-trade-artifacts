@@ -51,7 +51,8 @@
         "type": "string",
         "title": "Driver Name",
         "minLength": 1,
-        "description": "The driver presenting this pass at the gate."
+        "pattern": "^[A-Za-z][A-Za-z .]*$",
+        "description": "The driver presenting this pass at the gate. Letters, spaces and dots only."
       },
       "seal_no": {
         "type": "string",
