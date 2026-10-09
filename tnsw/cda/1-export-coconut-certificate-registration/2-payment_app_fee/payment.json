@@ -10,6 +10,17 @@
     "gateway_metadata": {
       "govpay_subinst_id": "004",
       "govpay_service_id": "001"
+    },
+    "reference": {
+      "issuer": "CDA",
+      "id_type": "fee_payment_ref",
+      "params": {
+        "exporterId": "/exporter_id"
+      },
+      "values": {
+        "mainCategory": "01",
+        "subCategory": "00002"
+      }
     }
   }
 }
