@@ -145,6 +145,21 @@
         ],
         "example": "40_gp"
       },
+      "nut_type": {
+        "type": "string",
+        "title": "Nut Type",
+        "description": "Selects the fee's CDA sub service category: 00002 King Coconut, 00001 Fresh Nut.",
+        "oneOf": [
+          {
+            "const": "00002",
+            "title": "King Coconut"
+          },
+          {
+            "const": "00001",
+            "title": "Fresh Nut"
+          }
+        ]
+      },
       "with_husk": {
         "type": "boolean",
         "title": "Nature of Coconuts \u2014 With Husk",
@@ -268,6 +283,7 @@
       "buyer_country",
       "buyer_city",
       "container_type",
+      "nut_type",
       "with_husk",
       "container_number",
       "inner_packing_type",
@@ -401,6 +417,10 @@
       {
         "type": "HorizontalLayout",
         "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/nut_type"
+          },
           {
             "type": "Control",
             "scope": "#/properties/with_husk"

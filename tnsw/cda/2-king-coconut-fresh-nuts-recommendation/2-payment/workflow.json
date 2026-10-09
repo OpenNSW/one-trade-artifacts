@@ -1,7 +1,7 @@
 {
   "id": "cda-kcfn-payment-flow",
   "name": "Pay Recommendation Report Fee",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -22,7 +22,9 @@
       "task_template_id": "cda-kcfn-payment--payment",
       "input_mapping": {
         "payment.reference_number": "reference_number",
-        "payment.selected_method": "selected_method"
+        "payment.selected_method": "selected_method",
+        "payment.exporter_id?": "exporter_id",
+        "payment.sub_category?": "sub_category"
       },
       "output_mapping": {
         "payment_status": "payment.payment_status",
