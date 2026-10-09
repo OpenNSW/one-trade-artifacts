@@ -1,23 +1,76 @@
 {
   "id": "cda-review-result--review-workflow",
   "name": "CDA Application Review & Certification \u2014 Officer Review",
-  "version": 2,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
       "type": "START"
     },
     {
+      "id": "generate_certificate_serial",
+      "type": "TASK",
+      "task_template_id": "cda-review-result--generate-certificate-serial",
+      "input_mapping": {
+        "submission.cert_type": "cert_type"
+      },
+      "output_mapping": {
+        "refid.certificate_serial": "certificate_serial"
+      }
+    },
+    {
+      "id": "cert_type_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "generate_physical_certificate_id",
+      "type": "TASK",
+      "task_template_id": "cda-review-result--generate-physical-certificate-id",
+      "input_mapping": {
+        "certificate_serial": "certificate_serial"
+      },
+      "output_mapping": {
+        "refid.physical_certificate_id": "reviewform.physical_certificate_id"
+      }
+    },
+    {
+      "id": "generate_salmonella_certificate_id",
+      "type": "TASK",
+      "task_template_id": "cda-review-result--generate-salmonella-certificate-id",
+      "input_mapping": {
+        "certificate_serial": "certificate_serial"
+      },
+      "output_mapping": {
+        "refid.salmonella_certificate_id": "reviewform.salmonella_certificate_id"
+      }
+    },
+    {
+      "id": "generate_both_certificate_ids",
+      "type": "TASK",
+      "task_template_id": "cda-review-result--generate-both-certificate-ids",
+      "input_mapping": {
+        "certificate_serial": "certificate_serial"
+      },
+      "output_mapping": {
+        "refid.physical_certificate_id": "reviewform.physical_certificate_id",
+        "refid.salmonella_certificate_id": "reviewform.salmonella_certificate_id"
+      }
+    },
+    {
       "id": "userform",
       "type": "TASK",
       "task_template_id": "cda-review-result--officer-review",
       "input_mapping": {
-        "submission?": "submission"
+        "submission?": "submission",
+        "submission.cert_type": "reviewform.cert_type",
+        "reviewform.physical_certificate_id?": "reviewform.physical_certificate_id",
+        "reviewform.salmonella_certificate_id?": "reviewform.salmonella_certificate_id"
       },
       "output_mapping": {
         "review_outcome": "reviewform.review_outcome",
-        "certificate_id?": "reviewform.certificate_id",
-        "certificate_file?": "reviewform.certificate_file"
+        "physical_certificate_file?": "reviewform.physical_certificate_file",
+        "salmonella_certificate_file?": "reviewform.salmonella_certificate_file"
       }
     },
     {
@@ -42,15 +95,53 @@
     {
       "id": "e1",
       "source_id": "start",
-      "target_id": "userform"
+      "target_id": "generate_certificate_serial"
     },
     {
       "id": "e2",
+      "source_id": "generate_certificate_serial",
+      "target_id": "cert_type_gateway"
+    },
+    {
+      "id": "e3",
+      "source_id": "cert_type_gateway",
+      "target_id": "generate_physical_certificate_id",
+      "condition": "submission.cert_type == 'P'"
+    },
+    {
+      "id": "e4",
+      "source_id": "cert_type_gateway",
+      "target_id": "generate_salmonella_certificate_id",
+      "condition": "submission.cert_type == 'S'"
+    },
+    {
+      "id": "e5",
+      "source_id": "cert_type_gateway",
+      "target_id": "generate_both_certificate_ids",
+      "condition": "submission.cert_type == 'PS'"
+    },
+    {
+      "id": "e6",
+      "source_id": "generate_physical_certificate_id",
+      "target_id": "userform"
+    },
+    {
+      "id": "e7",
+      "source_id": "generate_salmonella_certificate_id",
+      "target_id": "userform"
+    },
+    {
+      "id": "e8",
+      "source_id": "generate_both_certificate_ids",
+      "target_id": "userform"
+    },
+    {
+      "id": "e9",
       "source_id": "userform",
       "target_id": "api_call"
     },
     {
-      "id": "e3",
+      "id": "e10",
       "source_id": "api_call",
       "target_id": "end"
     }

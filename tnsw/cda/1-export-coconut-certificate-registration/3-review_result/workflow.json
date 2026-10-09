@@ -1,7 +1,7 @@
 {
   "id": "cda-review-result-flow",
   "name": "CDA Review and Result",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -18,8 +18,10 @@
       "output_mapping": {
         "review_outcome": "reviewerform.review_outcome",
         "rejection_reason?": "reviewerform.rejection_reason",
-        "certificate_id?": "reviewerform.certificate_id",
-        "certificate_file?": "reviewerform.certificate_file"
+        "physical_certificate_id?": "reviewerform.physical_certificate_id",
+        "physical_certificate_file?": "reviewerform.physical_certificate_file",
+        "salmonella_certificate_id?": "reviewerform.salmonella_certificate_id",
+        "salmonella_certificate_file?": "reviewerform.salmonella_certificate_file"
       }
     },
     {
