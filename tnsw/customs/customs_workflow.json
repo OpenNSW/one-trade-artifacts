@@ -1,7 +1,7 @@
 {
   "id": "customs-workflow",
   "name": "Customs Declaration & Clearance Process",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -95,6 +95,12 @@
       }
     },
     {
+      "id": "customs_post_cdn_fork",
+      "type": "GATEWAY",
+      "gateway_type": "PARALLEL_SPLIT",
+      "name": "Boat Note and Export Release in Parallel"
+    },
+    {
       "id": "customs_6_create_boat_note",
       "type": "TASK",
       "name": "[Customs 6.0] Create Boat Note",
@@ -135,6 +141,15 @@
       }
     },
     {
+      "id": "customs_post_cdn_join",
+      "type": "GATEWAY",
+      "gateway_type": "PARALLEL_JOIN",
+      "name": "Boat Note Approved and Export Released",
+      "parallel_join": {
+        "gateway_node_id": "customs_post_cdn_fork"
+      }
+    },
+    {
       "id": "end",
       "type": "END",
       "name": "End"
@@ -172,9 +187,19 @@
       "target_id": "customs_4b_collect_cdn_results"
     },
     {
-      "id": "e_4b_to_6",
+      "id": "e_4b_to_fork",
       "source_id": "customs_4b_collect_cdn_results",
+      "target_id": "customs_post_cdn_fork"
+    },
+    {
+      "id": "e_fork_to_6",
+      "source_id": "customs_post_cdn_fork",
       "target_id": "customs_6_create_boat_note"
+    },
+    {
+      "id": "e_fork_to_8",
+      "source_id": "customs_post_cdn_fork",
+      "target_id": "customs_8_wait_export_release"
     },
     {
       "id": "e_6_to_7",
@@ -182,13 +207,18 @@
       "target_id": "customs_7_boat_note_approval"
     },
     {
-      "id": "e_7_to_8",
+      "id": "e_7_to_join",
       "source_id": "customs_7_boat_note_approval",
-      "target_id": "customs_8_wait_export_release"
+      "target_id": "customs_post_cdn_join"
     },
     {
-      "id": "e_8_to_end",
+      "id": "e_8_to_join",
       "source_id": "customs_8_wait_export_release",
+      "target_id": "customs_post_cdn_join"
+    },
+    {
+      "id": "e_join_to_end",
+      "source_id": "customs_post_cdn_join",
       "target_id": "end"
     }
   ]
