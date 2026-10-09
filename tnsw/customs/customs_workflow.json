@@ -1,7 +1,7 @@
 {
   "id": "customs-workflow",
   "name": "Customs Declaration & Clearance Process",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -23,6 +23,12 @@
       }
     },
     {
+      "id": "customs_payment_check",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Anything Left to Pay?"
+    },
+    {
       "id": "customs_2_wait_payment",
       "type": "TASK",
       "name": "[Customs 2.0] Wait on Payment",
@@ -36,6 +42,12 @@
       "output_mapping": {
         "payment_status": "customs.payment_status"
       }
+    },
+    {
+      "id": "customs_payment_join",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_JOIN",
+      "name": "Paid or Nothing Due"
     },
     {
       "id": "customs_3_wait_warranting",
@@ -147,13 +159,30 @@
       "target_id": "customs_1_cusdec_submission"
     },
     {
-      "id": "e_1_to_2",
+      "id": "e_1_to_payment_check",
       "source_id": "customs_1_cusdec_submission",
-      "target_id": "customs_2_wait_payment"
+      "target_id": "customs_payment_check"
     },
     {
-      "id": "e_2_to_3",
+      "id": "e_payment_due",
+      "source_id": "customs_payment_check",
+      "target_id": "customs_2_wait_payment",
+      "condition": "customs.amount_to_pay > 0"
+    },
+    {
+      "id": "e_nothing_due",
+      "source_id": "customs_payment_check",
+      "target_id": "customs_payment_join",
+      "condition": "customs.amount_to_pay <= 0"
+    },
+    {
+      "id": "e_2_to_join",
       "source_id": "customs_2_wait_payment",
+      "target_id": "customs_payment_join"
+    },
+    {
+      "id": "e_join_to_3",
+      "source_id": "customs_payment_join",
       "target_id": "customs_3_wait_warranting"
     },
     {
