@@ -1,7 +1,7 @@
 {
   "id": "cda-apply-coconut-cert-flow",
   "name": "Apply for Export Coconut Certificate",
-  "version": 6,
+  "version": 7,
   "nodes": [
     {
       "id": "start",
@@ -52,12 +52,14 @@
       "input_mapping": {
         "rejection_reason?": "rejection_reason",
         "userform?": "userform",
-        "userform": "submission"
+        "userform": "submission",
+        "agency_token?": "replyToken"
       },
       "output_mapping": {
         "verification_outcome": "verificationform.verification_outcome",
         "rejection_reason?": "rejection_reason",
-        "application_ref?": "userform.application_ref"
+        "application_ref?": "userform.application_ref",
+        "callbackToken?": "agency_token"
       }
     },
     {

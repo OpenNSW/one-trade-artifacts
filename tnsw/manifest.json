@@ -2005,6 +2005,12 @@
       "path": "cda/1-export-coconut-certificate-registration/4-lot_adjustment/officerinput.json"
     },
     {
+      "id": "cda-lot-adjustment-officer--withdraw",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/4-lot_adjustment/withdraw_review.json"
+    },
+    {
       "id": "cda-lot-adjustment-flow",
       "kind": "workflow",
       "version": "",
