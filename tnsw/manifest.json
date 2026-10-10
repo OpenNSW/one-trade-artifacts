@@ -2677,6 +2677,18 @@
       "path": "customs/6-create_boat_note/completed_message_jsonform.json"
     },
     {
+      "id": "customs-boat-note--generate-document",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "customs/6-create_boat_note/boat_note_document.json"
+    },
+    {
+      "id": "customs-boat-note--html",
+      "kind": "html_template",
+      "version": "",
+      "path": "customs/6-create_boat_note/boat_note.gohtml"
+    },
+    {
       "id": "customs-create-boat-note-flow",
       "kind": "workflow",
       "version": "",
