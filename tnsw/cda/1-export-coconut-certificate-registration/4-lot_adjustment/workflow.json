@@ -1,7 +1,7 @@
 {
   "id": "cda-lot-adjustment-flow",
   "name": "Application for Alteration of Bag Details",
-  "version": 3,
+  "version": 4,
   "nodes": [
     {
       "id": "start",
