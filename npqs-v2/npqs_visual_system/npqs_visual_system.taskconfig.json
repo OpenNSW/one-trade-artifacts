@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "npqs_visual_system",
+  "workflow": "npqs_visual_system",
+  "meta": {
+    "title": "NPQS System Inspection",
+    "description": "Officer recording system approach inspection outcome."
+  }
+}

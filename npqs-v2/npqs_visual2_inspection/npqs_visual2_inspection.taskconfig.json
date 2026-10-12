@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "npqs_visual2_inspection",
+  "workflow": "npqs_visual2_inspection",
+  "meta": {
+    "title": "NPQS Visual Inspection 2",
+    "description": "Officer records the outcome of Visual Inspection 2."
+  }
+}

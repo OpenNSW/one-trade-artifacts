@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "npqs_consignment_inspection",
+  "workflow": "npqs_consignment_inspection",
+  "meta": {
+    "title": "NPQS Consignment Inspection",
+    "description": "Officer consignment visual inspection outcome recording."
+  }
+}
