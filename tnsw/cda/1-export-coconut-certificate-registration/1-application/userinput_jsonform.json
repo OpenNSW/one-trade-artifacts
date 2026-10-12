@@ -65,6 +65,16 @@
         "title": "Lot Number",
         "example": "LOT-A321"
       },
+      "product_type_dc": {
+        "type": "boolean",
+        "title": "DC",
+        "default": false
+      },
+      "product_type_value_added_dc": {
+        "type": "boolean",
+        "title": "Value Added DC / Low Fat DC",
+        "default": false
+      },
       "dc_grades": {
         "type": "array",
         "title": "DC Grade & Packaging Details",
@@ -121,20 +131,6 @@
                 }
               ]
             },
-            "product_type": {
-              "type": "string",
-              "title": "Product Type",
-              "oneOf": [
-                {
-                  "const": "dc",
-                  "title": "DC"
-                },
-                {
-                  "const": "value_added_dc",
-                  "title": "Value Added DC / Low Fat DC"
-                }
-              ]
-            },
             "number_of_bags": {
               "type": "integer",
               "title": "Number of Bags",
@@ -156,7 +152,6 @@
           },
           "required": [
             "dc_grade",
-            "product_type",
             "number_of_bags",
             "weight_of_bag",
             "total_weight"
@@ -276,7 +271,33 @@
         "previous_certificate_number",
         "cancellation_reason"
       ]
-    }
+    },
+    "allOf": [
+      {
+        "anyOf": [
+          {
+            "properties": {
+              "product_type_dc": {
+                "const": true
+              }
+            },
+            "required": [
+              "product_type_dc"
+            ]
+          },
+          {
+            "properties": {
+              "product_type_value_added_dc": {
+                "const": true
+              }
+            },
+            "required": [
+              "product_type_value_added_dc"
+            ]
+          }
+        ]
+      }
+    ]
   },
   "uiSchema": {
     "type": "VerticalLayout",
@@ -367,6 +388,25 @@
       },
       {
         "type": "Group",
+        "label": "Product Type",
+        "elements": [
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/product_type_dc"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/product_type_value_added_dc"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Group",
         "label": "2. DC Grade & Packaging Details",
         "elements": [
           {
@@ -391,13 +431,6 @@
                   {
                     "type": "Control",
                     "scope": "#/properties/total_weight"
-                  },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/product_type",
-                    "options": {
-                      "format": "radio"
-                    }
                   }
                 ]
               }
