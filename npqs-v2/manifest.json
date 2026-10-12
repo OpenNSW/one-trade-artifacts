@@ -11,6 +11,66 @@
       "kind": "static_data",
       "version": "1",
       "path": "static-data/commodity_common_names.data.json"
+    },
+    {
+      "id": "npqs_application_review",
+      "kind": "task_config",
+      "version": "",
+      "path": "npqs_application_review/npqs_application_review.taskconfig.json"
+    },
+    {
+      "id": "npqs_application_review",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_application_review/workflow.json"
+    },
+    {
+      "id": "npqs-application-review--review",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs_application_review/task_template.json"
+    },
+    {
+      "id": "npqs-application-review--review-workflow",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_application_review/review_workflow.json"
+    },
+    {
+      "id": "npqs-application-review--review:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_application_review/render.json"
+    },
+    {
+      "id": "npqs-application-review--notify-decision",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_application_review/notify_decision.json"
+    },
+    {
+      "id": "npqs-application-review--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_application_review/officer_review.json"
+    },
+    {
+      "id": "npqs-apply-phyto-cert--reviewer-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_application_review/officer_review_jsonform.json"
+    },
+    {
+      "id": "npqs-application-review--submission-view",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_application_review/submission_view_markdown.json"
+    },
+    {
+      "id": "npqs-apply-phyto-cert--officer-view-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_application_review/userinput_jsonform.json"
     }
   ]
 }
