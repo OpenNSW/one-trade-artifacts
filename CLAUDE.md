@@ -30,7 +30,7 @@ Each agency has artifacts in two places that must be read together, not independ
      numbered stage.
 2. **`<agency>/`** (top-level, e.g. `sltb/`) — owned by the agency's own backend service.
    Flat list of `task_config` artifacts only (no workflow logic), each with a
-   `manifest.json` indexing them. These are the officer-facing forms that the agency
+   manifests indexing them. These are the officer-facing forms that the agency
    service injects into a task at runtime.
 
 ### Agencies with more than one process
@@ -42,10 +42,10 @@ under one folder per process:
 
 - `tnsw/<agency>/<process-slug>/<agency>_workflow.json` + that process's numbered step
   folders — same internal structure as the single-process layout, just moved down a
-  level. `tnsw/manifest.json` stays put; only the `path` of that process's artifacts
+  level. `tnsw/`'s manifests stay put; only the `path` of that process's artifacts
   gains the `<process-slug>/` segment.
 - `<agency>/<process-slug>/<task_config_dir>/` for that process's agency-side
-  `task_config`s. `<agency>/manifest.json` stays at the agency's top level; only its
+  `task_config`s. `<agency>/`'s manifests stay at the agency's top level; only its
   artifact `path`s move under `<process-slug>/`.
 
 `<process-slug>` is an arbitrary folder name, not a numbering scheme — it's whatever
@@ -99,14 +99,14 @@ What the v2 shape looks like (as in `cda-v2/`):
 - Each task folder is self-contained, like a `tnsw/` step folder plus a taskconfig: its
   `*.taskconfig.json` plus the `workflow.json`, `task_template`, `review_workflow`,
   `subtask_template`s, JSONForms, `render.json`, markdown view and notification template
-  that drive that task. All are indexed in the folder's own `<agency>-v2/manifest.json`.
+  that drive that task. All are indexed in the folder's own `<agency>-v2/manifest_vN.json`.
 - Taskconfigs are `schemaVersion: 2`: a `workflow` id binding plus `meta`, with no
   inline `forms`/`behavior`/`permissions`. `schemas/taskconfig.schema.json` dispatches
   on `schemaVersion` to `taskconfig.v1.schema.json` or `taskconfig.v2.schema.json`.
-- `cda-v2/manifest.json` entries intentionally omit `"loader": "local"`.
+- `cda-v2` manifest entries intentionally omit `"loader": "local"`.
 
 An `<agency>-v2/` folder reuses ids from its v1 counterpart. They never coexist at
-runtime: a backend loads one of `<agency>/manifest.json` or `<agency>-v2/manifest.json`,
+runtime: a backend loads the manifests of one of `<agency>/` or `<agency>-v2/`,
 and the cutover switches it from one to the other. Don't rename the reused ids to
 "avoid" the overlap.
 
@@ -118,7 +118,7 @@ syncs are currently manual (`workflow_dispatch`) only: dev's push-to-`main` trig
 off until ArgoCD deployment is enabled for the nsw-srilanka dev environment, so merging
 alone does not publish anything.
 
-## Artifact kinds (see any `manifest.json`)
+## Artifact kinds (see any manifest)
 
 - `workflow` — an FSM: `nodes` (`START`, `TASK`, `GATEWAY`, `END`) + `edges` (with
   optional `condition` string on branches out of a gateway). `gateway_type` is one of
@@ -160,13 +160,42 @@ See `tnsw/fcau/3-2-warehouse_inspection/workflow.json` or
 
 - IDs are kebab-case and scoped by agency/flow, e.g. `sltb-schedule-pickup-flow`,
   `npqs-draw-sample--officer-draw`.
-- `manifest.json` files are flat arrays of `{id, kind, version, path}` (top-level agency
-  folders also add `"loader": "local"`) — adding a new artifact file means also adding an
-  entry to the relevant `manifest.json`. The two sides are asymmetric: each top-level
-  agency folder (`cda/`, `customs/`, `fcau/`, `npqs/`, `sltb/`) has its own manifest, but
-  the `tnsw/` side has a single shared `tnsw/manifest.json` covering every agency's step
-  artifacts — there is no per-agency manifest under `tnsw/<agency>/`.
+- Each bundle (`tnsw/`, `cda-v2/`, each top-level agency folder) has versioned manifests,
+  `manifest_v1.json`, `manifest_v2.json`, …: flat arrays of `{id, kind, version, path}`
+  (top-level agency folders also add `"loader": "local"`). The two sides are asymmetric:
+  each top-level agency folder (`cda/`, `customs/`, `fcau/`, `npqs/`, `sltb/`) has its own
+  manifests, but the `tnsw/` side has one shared set covering every agency's step
+  artifacts — there is no per-agency manifest under `tnsw/<agency>/`. See "Changing
+  artifacts" below before editing anything a manifest lists.
+- `manifest.json` in each bundle is the unversioned index that backends from before
+  versioned manifests read (the nsw-agency service, and TNSW and agency builds of
+  nsw-srilanka without OpenNSW/nsw-srilanka's manifest-version change). Keep it in step
+  with the highest `manifest_vN.json` until nothing reads it, then delete it.
 - Single repo owner: `@Aravinda-HWK` (`.github/CODEOWNERS`, wildcard rule).
+
+## Changing artifacts
+
+A published manifest (a `manifest_vN.json` on `main`) and every file it lists never
+change: a running flow resolves every template through the manifest version it started
+on, so editing a listed file in place would change templates under it. The *Validate
+manifests* CI job rejects a pull request that edits or deletes either.
+
+To change artifacts, run `python3 scripts/bump_manifest.py <bundle> <file>...` and edit
+the files it creates:
+
+1. Each file is copied to its next versioned name (`render.json` → `render_v2.json`) and
+   the branch's working manifest points the same ID at it. Artifacts refer to each other
+   by ID, so nothing that uses the changed artifact needs a new file too.
+2. The working manifest is a new `manifest_v(N+1).json` copied from the highest, created
+   once per branch: run the script again for more files and it adds them to the same
+   manifest. A file the branch already added is edited in place.
+3. A brand-new artifact is a new file plus a row in the working manifest (run the script
+   with no files to create it).
+
+Versions must be contiguous (`manifest_v3.json` needs `manifest_v2.json`). A row's
+`version` is only for artifacts fetched by explicit version outside any flow (static
+data); such a row must keep its path in every manifest. New flows start on the highest
+manifest after a backend restart; a backend can pin an older one to roll back.
 
 ## When asked to explain or change a flow
 
