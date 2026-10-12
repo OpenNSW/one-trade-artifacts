@@ -3,7 +3,8 @@
   "type": "APPLICATION",
   "title": "[CDA] View Revised Certificate",
   "files": [
-    "certificate_file"
+    "physical_certificate_file",
+    "salmonella_certificate_file"
   ],
   "sections": {
     "certificate_display": {

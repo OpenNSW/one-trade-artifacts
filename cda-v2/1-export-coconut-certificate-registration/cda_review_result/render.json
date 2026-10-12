@@ -8,8 +8,10 @@
     ]
   },
   "files": [
-    "payload.payload.certificate_file",
-    "reviewform.certificate_file",
+    "payload.payload.physical_certificate_file",
+    "payload.payload.salmonella_certificate_file",
+    "reviewform.physical_certificate_file",
+    "reviewform.salmonella_certificate_file",
     "submission.uploaded_dc_bags_details"
   ],
   "sections": {

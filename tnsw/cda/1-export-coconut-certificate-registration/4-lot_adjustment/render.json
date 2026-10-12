@@ -5,10 +5,12 @@
   "files": [
     "adjustmentform.cusdec_document",
     "adjustmentform.lots_to_remove",
-    "adjustmentreviewerform.new_certificate_file",
-    "certificate_file",
+    "adjustmentreviewerform.new_physical_certificate_file",
+    "adjustmentreviewerform.new_salmonella_certificate_file",
     "cusdec_document",
-    "lots_to_remove"
+    "lots_to_remove",
+    "physical_certificate_file",
+    "salmonella_certificate_file"
   ],
   "sections": {
     "status_message": {

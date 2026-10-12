@@ -3,7 +3,7 @@
   "type": "REVIEW",
   "title": "[Customs] Export Release Status",
   "files": [
-    "submission.supportingDocuments[*].file"
+    "submission.supportingDocuments.scannedDocuments[*].fileBase64"
   ],
   "sections": {
     "status_message": {
