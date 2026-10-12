@@ -1,0 +1,64 @@
+{
+  "artifacts": [
+    {
+      "id": "customs_boat_note_approval_v1",
+      "kind": "task_config",
+      "version": "",
+      "path": "customs_boat_note_approval/customs_boat_note_approval_v1.taskconfig.json"
+    },
+    {
+      "id": "customs_boat_note_approval_v1",
+      "kind": "workflow",
+      "version": "",
+      "path": "customs_boat_note_approval/workflow.json"
+    },
+    {
+      "id": "customs-boat-note-approval--review",
+      "kind": "task_template",
+      "version": "",
+      "path": "customs_boat_note_approval/task_template.json"
+    },
+    {
+      "id": "customs-boat-note-approval--review-workflow",
+      "kind": "workflow",
+      "version": "",
+      "path": "customs_boat_note_approval/review_workflow.json"
+    },
+    {
+      "id": "customs-boat-note-approval--review:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs_boat_note_approval/render.json"
+    },
+    {
+      "id": "customs-boat-note-approval--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "customs_boat_note_approval/officer_review.json"
+    },
+    {
+      "id": "customs-boat-note-approval--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs_boat_note_approval/officer_review_jsonform.json"
+    },
+    {
+      "id": "customs-boat-note-approval--notify-decision",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "customs_boat_note_approval/notify_decision.json"
+    },
+    {
+      "id": "customs-boat-note-approval--submission-view",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs_boat_note_approval/submission_view_markdown.json"
+    },
+    {
+      "id": "customs-boat-note--user-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs_boat_note_approval/userinput_jsonform.json"
+    }
+  ]
+}
