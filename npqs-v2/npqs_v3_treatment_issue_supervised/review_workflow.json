@@ -1,0 +1,61 @@
+{
+  "id": "npqs-v3-treatment-issue-supervised--review-workflow",
+  "name": "NPQS NPQS Treatment Certificate and Supervision Report — Officer Review",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "userform",
+      "type": "TASK",
+      "task_template_id": "npqs-v3-treatment-issue-supervised--officer-review",
+      "input_mapping": {
+        "submission?": "submission",
+        "submission.items?": "reviewform.items"
+      },
+      "output_mapping": {
+        "__command": "command",
+        "treatment_certificate_id": "reviewform.treatment_certificate_id",
+        "treatment_certificate_url": "reviewform.treatment_certificate_url",
+        "issue_comments?": "reviewform.issue_comments",
+        "supervision_report_url": "reviewform.supervision_report_url"
+      }
+    },
+    {
+      "id": "api_call",
+      "type": "TASK",
+      "task_template_id": "npqs-v3-treatment-issue-supervised--notify-decision",
+      "input_mapping": {
+        "callbackToken": "callbackToken",
+        "reviewform?": "reviewform",
+        "submission?": "submission",
+        "taskId": "taskId",
+        "command": "payload.command",
+        "reviewform": "payload.payload"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "userform"
+    },
+    {
+      "id": "e2",
+      "source_id": "userform",
+      "target_id": "api_call"
+    },
+    {
+      "id": "e3",
+      "source_id": "api_call",
+      "target_id": "end"
+    }
+  ]
+}

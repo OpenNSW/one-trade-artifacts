@@ -1,0 +1,45 @@
+{
+  "id": "npqs-treatment-supervision--review:render",
+  "type": "APPLICATION",
+  "title": "NPQS Treatment Supervision",
+  "sections": {
+    "submission_view": {
+      "templateId": "npqs-apply-phyto-cert--officer-view-form",
+      "title": "Submitted Application",
+      "projector": "FORM",
+      "dataKey": "submission"
+    },
+    "review_form": {
+      "templateId": "npqs-treatment-supervisor-report--officer-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Review",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "status_message": {
+      "templateId": "npqs-treatment-supervision--submission-view",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}

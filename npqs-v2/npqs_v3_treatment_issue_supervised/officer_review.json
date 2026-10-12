@@ -1,0 +1,8 @@
+{
+  "id": "npqs-v3-treatment-issue-supervised--officer-review",
+  "task_type": "USER_INPUT",
+  "output_namespace": "reviewform",
+  "plugin_properties": {
+    "user_jsonforms_id": "npqs-v3-treatment-issue-supervised--officer-form"
+  }
+}
