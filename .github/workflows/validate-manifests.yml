@@ -21,7 +21,7 @@ permissions:
 
 env:
   # The OpenNSW/core commit manifestcheck is built from.
-  MANIFESTCHECK_VERSION: 20e4aea1f1a885928960fb4582622fc40b5a1564
+  MANIFESTCHECK_VERSION: 09f462c7359bcf463591506c826aaca961b6ab94
 
 jobs:
   validate:
