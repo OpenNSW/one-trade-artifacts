@@ -1,0 +1,16 @@
+{
+  "artifacts": [
+    {
+      "id": "npqs-apply-phyto-cert--importing-countries",
+      "kind": "static_data",
+      "version": "1",
+      "path": "static-data/importing_countries.data.json"
+    },
+    {
+      "id": "npqs-apply-phyto-cert--commodity-common-names",
+      "kind": "static_data",
+      "version": "1",
+      "path": "static-data/commodity_common_names.data.json"
+    }
+  ]
+}
