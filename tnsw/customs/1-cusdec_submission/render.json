@@ -3,9 +3,9 @@
   "type": "APPLICATION",
   "title": "[Customs] Customs Declaration (CusDec) Submission & Review",
   "files": [
-    "payload.supportingDocuments[*].file",
-    "submission.supportingDocuments[*].file",
-    "userform.supportingDocuments[*].file"
+    "payload.supportingDocuments.scannedDocuments[*].fileBase64",
+    "submission.supportingDocuments.scannedDocuments[*].fileBase64",
+    "userform.supportingDocuments.scannedDocuments[*].fileBase64"
   ],
   "sections": {
     "verify_result": {
