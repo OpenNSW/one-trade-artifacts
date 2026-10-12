@@ -1,0 +1,17 @@
+{
+  "id": "cda-officer-verification--generate-application-ref",
+  "task_type": "REFID_GENERATOR",
+  "output_namespace": "refid",
+  "plugin_properties": {
+    "ids": [
+      {
+        "path": "/application_ref",
+        "issuer": "CDA",
+        "id_type": "pqc_application_ref",
+        "params": {
+          "certType": "/cert_type"
+        }
+      }
+    ]
+  }
+}

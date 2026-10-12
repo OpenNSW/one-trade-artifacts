@@ -203,15 +203,23 @@
         "title": "If Part, Declare Nature of Balance Material",
         "example": "Remaining capacity filled with standard pallet packaging materials."
       },
-      "req_cert_salmonella": {
-        "type": "boolean",
-        "title": "SALMONELLA FREE CERTIFICATE",
-        "default": false
-      },
-      "req_cert_physical": {
-        "type": "boolean",
-        "title": "PHYSICAL QUALITY CERTIFICATE",
-        "default": false
+      "cert_type": {
+        "type": "string",
+        "title": "Certificates Required",
+        "oneOf": [
+          {
+            "const": "P",
+            "title": "Physical Quality Certificate"
+          },
+          {
+            "const": "S",
+            "title": "Salmonella Free Certificate"
+          },
+          {
+            "const": "PS",
+            "title": "Both Physical Quality and Salmonella Free Certificates"
+          }
+        ]
       },
       "uploaded_dc_bags_details": {
         "type": "string",
@@ -231,6 +239,7 @@
       "port_of_discharge",
       "final_destination",
       "container_filling_status",
+      "cert_type",
       "uploaded_dc_bags_details"
     ],
     "if": {
@@ -464,17 +473,11 @@
         "label": "5. Required Certificates",
         "elements": [
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/req_cert_salmonella"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/req_cert_physical"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/cert_type",
+            "options": {
+              "format": "radio"
+            }
           }
         ]
       },

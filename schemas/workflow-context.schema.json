@@ -66,8 +66,20 @@
             "agencies": {
               "type": "object",
               "additionalProperties": false,
-              "description": "Per-regulatory-agency data about this company, keyed by agency slug (cda/customs/fcau/npqs/sltb, per CLAUDE.md's agency list). Each agency's object shape is agency-specific — there's no shared sub-schema, since what one agency tracks about a registrant has nothing to do with what another does. Only 'npqs' is modeled so far; add a sibling property here (and wire it the same way, via that agency's own macro workflow) when another agency needs its own company-level data. Placement under 'data' (alongside br_no/tin_no/vat_no) is a best-fit guess for consistency with the rest of this object, not yet confirmed against the real payload — move it if the actual data lands elsewhere.",
+              "description": "Per-regulatory-agency data about this company, keyed by agency slug (cda/customs/fcau/npqs/sltb, per CLAUDE.md's agency list). Each agency's object shape is agency-specific — there's no shared sub-schema, since what one agency tracks about a registrant has nothing to do with what another does. Only 'cda' and 'npqs' are modeled so far; add a sibling property here (and wire it the same way, via that agency's own macro workflow) when another agency needs its own company-level data. Placement under 'data' (alongside br_no/tin_no/vat_no) is a best-fit guess for consistency with the rest of this object, not yet confirmed against the real payload — move it if the actual data lands elsewhere.",
               "properties": {
+                "cda": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "description": "CDA-specific data about this company.",
+                  "properties": {
+                    "registration_number": {
+                      "type": "string",
+                      "pattern": "^[0-9]{4}$",
+                      "description": "This company's 4-digit CDA Exporter Identification Number. tnsw/cda/1-export-coconut-certificate-registration/cda_workflow.json's cda_2_0_pay_fee maps it to exporter_id, from which the PAYMENT step generates the CDA payment reference (refid format fee_payment_ref)."
+                    }
+                  }
+                },
                 "npqs": {
                   "type": "object",
                   "additionalProperties": false,

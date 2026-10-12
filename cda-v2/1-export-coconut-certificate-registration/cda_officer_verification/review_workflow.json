@@ -1,18 +1,31 @@
 {
   "id": "cda-officer-verification--review-workflow",
   "name": "CDA Coconut Certificate Verification \u2014 Officer Review",
-  "version": 2,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
       "type": "START"
     },
     {
+      "id": "generate_application_ref",
+      "type": "TASK",
+      "task_template_id": "cda-officer-verification--generate-application-ref",
+      "input_mapping": {
+        "submission.application_ref?": "application_ref",
+        "submission.cert_type": "cert_type"
+      },
+      "output_mapping": {
+        "refid.application_ref": "reviewform.application_ref"
+      }
+    },
+    {
       "id": "userform",
       "type": "TASK",
       "task_template_id": "cda-officer-verification--officer-review",
       "input_mapping": {
-        "submission?": "submission"
+        "submission?": "submission",
+        "reviewform.application_ref": "reviewform.application_ref"
       },
       "output_mapping": {
         "verification_outcome": "reviewform.verification_outcome",
@@ -41,15 +54,20 @@
     {
       "id": "e1",
       "source_id": "start",
-      "target_id": "userform"
+      "target_id": "generate_application_ref"
     },
     {
       "id": "e2",
+      "source_id": "generate_application_ref",
+      "target_id": "userform"
+    },
+    {
+      "id": "e3",
       "source_id": "userform",
       "target_id": "api_call"
     },
     {
-      "id": "e3",
+      "id": "e4",
       "source_id": "api_call",
       "target_id": "end"
     }

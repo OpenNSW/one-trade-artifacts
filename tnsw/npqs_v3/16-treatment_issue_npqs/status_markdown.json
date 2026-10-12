@@ -1,0 +1,4 @@
+{
+  "id": "npqs-v3-treatment-issue--status",
+  "template": "### 🧪 Treatment at NPQS\n\n{{if .reviewerform.treatment_certificate_id}}\n#### ✅ Treatment Done\n\n* **Treatment Certificate Number**: `{{.reviewerform.treatment_certificate_id}}`\n{{if .reviewerform.treatment_certificate_url}}\n#### [📄 Download Treatment Certificate]({{.reviewerform.treatment_certificate_url}})\n{{end}}\n{{if .reviewerform.issue_comments}}* **Officer Notes**: {{.reviewerform.issue_comments}}{{end}}\n\nAn NPQS officer will now review the treatment documents for the consignment.\n{{else}}\n#### ⏳ Treatment in Progress\n\nNPQS is carrying out the treatment for these items. The certificate will appear here once issued.\n\n{{range .commodities}}* 🏷️ **{{.commodity_common_name.label}}** (`{{.id}}`)\n{{end}}\n* **Reference Number**: `{{.reference_number}}`\n{{end}}"
+}

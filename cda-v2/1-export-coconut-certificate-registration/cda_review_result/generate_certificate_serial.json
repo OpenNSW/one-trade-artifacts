@@ -1,0 +1,14 @@
+{
+  "id": "cda-review-result--generate-certificate-serial",
+  "task_type": "REFID_GENERATOR",
+  "output_namespace": "refid",
+  "plugin_properties": {
+    "ids": [
+      {
+        "path": "/certificate_serial",
+        "issuer": "CDA",
+        "id_type": "pqc_certificate_serial"
+      }
+    ]
+  }
+}

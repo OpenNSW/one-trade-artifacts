@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "taskCode": "npqs_visual2_decision",
+  "meta": {
+    "title": "NPQS Visual Inspection 2 Decision",
+    "description": "Officer decides which items need a further visual inspection."
+  },
+  "forms": {
+    "view": "npqs-apply-phyto-cert--officer-view-form",
+    "review": "npqs-visual2-decision--officer-form"
+  },
+  "behavior": {
+    "type": "autoApprove"
+  },
+  "permissions": [
+    {
+      "role": "officer",
+      "actions": [
+        "VIEW",
+        "REVIEW"
+      ]
+    }
+  ]
+}

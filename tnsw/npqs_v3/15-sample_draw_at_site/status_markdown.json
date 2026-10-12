@@ -1,0 +1,4 @@
+{
+  "id": "npqs-v3-sample-draw-at-site--status",
+  "template": "### 🚚 Sample Drawn at Your Site\n\n{{if .officer_draw.sample_number}}\n#### ✅ Sample Drawn\n\nThe NPQS officer has drawn the sample.\n\n* **Sample Number**: `{{.officer_draw.sample_number}}`\n{{if .officer_draw.draw_date}}* **Drawn On**: {{.officer_draw.draw_date}}\n{{end}}{{else}}\n#### ⏳ Waiting for the NPQS Officer\n\nAn NPQS officer will visit your site to draw the sample for these items. The inspection continues once the sample has been drawn; no action is needed from you in the system.\n\n{{range .commodities}}* 🏷️ **{{.commodity_common_name.label}}** (`{{.id}}`)\n{{end}}{{end}}\n\n* **Reference Number**: `{{.reference_number}}`"
+}

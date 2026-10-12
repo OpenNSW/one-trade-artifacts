@@ -7,6 +7,8 @@
       "cusdecNo": {
         "type": "string",
         "title": "Cusdec No",
+        "pattern": "^[A-Za-z0-9-]+$",
+        "description": "Letters, digits and hyphens only. No spaces or other special characters.",
         "example": "CBEX1-2026-E-1050"
       },
       "cusdecDate": {
@@ -411,8 +413,9 @@
       "contactNo": {
         "type": "string",
         "title": "Contact No",
+        "pattern": "^([0-9]{10})?$",
         "example": "0112345678",
-        "description": "Optional on the SLPA form."
+        "description": "Optional on the SLPA form. Exactly 10 digits, with no letters, spaces or symbols."
       },
       "remarks": {
         "type": "string",

@@ -31,6 +31,12 @@
       "path": "1-export-coconut-certificate-registration/cda_officer_verification/render.json"
     },
     {
+      "id": "cda-officer-verification--generate-application-ref",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "1-export-coconut-certificate-registration/cda_officer_verification/generate_application_ref.json"
+    },
+    {
       "id": "cda-officer-verification--officer-review",
       "kind": "subtask_template",
       "version": "",
@@ -149,6 +155,30 @@
       "kind": "generic_template",
       "version": "",
       "path": "1-export-coconut-certificate-registration/cda_review_result/render.json"
+    },
+    {
+      "id": "cda-review-result--generate-certificate-serial",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "1-export-coconut-certificate-registration/cda_review_result/generate_certificate_serial.json"
+    },
+    {
+      "id": "cda-review-result--generate-physical-certificate-id",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "1-export-coconut-certificate-registration/cda_review_result/generate_physical_certificate_id.json"
+    },
+    {
+      "id": "cda-review-result--generate-salmonella-certificate-id",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "1-export-coconut-certificate-registration/cda_review_result/generate_salmonella_certificate_id.json"
+    },
+    {
+      "id": "cda-review-result--generate-both-certificate-ids",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "1-export-coconut-certificate-registration/cda_review_result/generate_both_certificate_ids.json"
     },
     {
       "id": "cda-review-result--officer-review",

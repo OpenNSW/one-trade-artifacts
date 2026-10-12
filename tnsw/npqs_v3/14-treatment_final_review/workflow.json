@@ -1,0 +1,46 @@
+{
+  "id": "npqs-v3-treatment-final-review",
+  "name": "Treatment Review",
+  "version": 2,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "officer_review",
+      "type": "TASK",
+      "task_template_id": "npqs-v3-treatment-final-review--officer-review",
+      "input_mapping": {
+        "commodities": "commodities",
+        "reference_number?": "reference_number",
+        "userform?": "userform",
+        "reference_number": "submission.reference_number",
+        "userform": "submission",
+        "commodities?": "submission.items",
+        "treatment_certificate_urls?": "submission.treatment_certificate_urls",
+        "supervision_report_urls?": "submission.supervision_report_urls"
+      },
+      "output_mapping": {
+        "items": "commodities",
+        "review_comments?": "review_comments"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "officer_review"
+    },
+    {
+      "id": "e2",
+      "source_id": "officer_review",
+      "target_id": "end"
+    }
+  ]
+}

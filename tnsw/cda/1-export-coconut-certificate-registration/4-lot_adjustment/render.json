@@ -32,8 +32,7 @@
       "visibleWhen": {
         "states": [
           "PENDING_USER"
-        ],
-        "requireDataKey": "certificate_file"
+        ]
       }
     },
     "workspace": {
