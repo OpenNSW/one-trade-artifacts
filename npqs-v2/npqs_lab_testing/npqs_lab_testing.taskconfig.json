@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "npqs_lab_testing",
+  "workflow": "npqs_lab_testing",
+  "meta": {
+    "title": "NPQS Lab Testing",
+    "description": "Officer records and reviews laboratory test results."
+  }
+}

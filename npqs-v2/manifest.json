@@ -71,6 +71,186 @@
       "kind": "generic_template",
       "version": "",
       "path": "npqs_application_review/userinput_jsonform.json"
+    },
+    {
+      "id": "npqs_sample_draw",
+      "kind": "task_config",
+      "version": "",
+      "path": "npqs_sample_draw/npqs_sample_draw.taskconfig.json"
+    },
+    {
+      "id": "npqs_sample_draw",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_sample_draw/workflow.json"
+    },
+    {
+      "id": "npqs-sample-draw--review",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs_sample_draw/task_template.json"
+    },
+    {
+      "id": "npqs-sample-draw--review-workflow",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_sample_draw/review_workflow.json"
+    },
+    {
+      "id": "npqs-sample-draw--review:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_sample_draw/render.json"
+    },
+    {
+      "id": "npqs-sample-draw--notify-decision",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_sample_draw/notify_decision.json"
+    },
+    {
+      "id": "npqs-sample-draw--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_sample_draw/officer_review.json"
+    },
+    {
+      "id": "npqs-draw-sample--officer-draw-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_sample_draw/officer_review_jsonform.json"
+    },
+    {
+      "id": "npqs-sample-draw--submission-view",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_sample_draw/submission_view_markdown.json"
+    },
+    {
+      "id": "npqs-apply-phyto-cert--officer-view-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_sample_draw/userinput_jsonform.json"
+    },
+    {
+      "id": "npqs_sample_receive",
+      "kind": "task_config",
+      "version": "",
+      "path": "npqs_sample_receive/npqs_sample_receive.taskconfig.json"
+    },
+    {
+      "id": "npqs_sample_receive",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_sample_receive/workflow.json"
+    },
+    {
+      "id": "npqs-sample-receive--review",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs_sample_receive/task_template.json"
+    },
+    {
+      "id": "npqs-sample-receive--review-workflow",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_sample_receive/review_workflow.json"
+    },
+    {
+      "id": "npqs-sample-receive--review:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_sample_receive/render.json"
+    },
+    {
+      "id": "npqs-sample-receive--notify-decision",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_sample_receive/notify_decision.json"
+    },
+    {
+      "id": "npqs-sample-receive--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_sample_receive/officer_review.json"
+    },
+    {
+      "id": "npqs-draw-sample--officer-receive-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_sample_receive/officer_review_jsonform.json"
+    },
+    {
+      "id": "npqs-sample-receive--submission-view",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_sample_receive/submission_view_markdown.json"
+    },
+    {
+      "id": "npqs-apply-phyto-cert--officer-view-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_sample_receive/userinput_jsonform.json"
+    },
+    {
+      "id": "npqs_lab_testing",
+      "kind": "task_config",
+      "version": "",
+      "path": "npqs_lab_testing/npqs_lab_testing.taskconfig.json"
+    },
+    {
+      "id": "npqs_lab_testing",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_lab_testing/workflow.json"
+    },
+    {
+      "id": "npqs-lab-testing--review",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs_lab_testing/task_template.json"
+    },
+    {
+      "id": "npqs-lab-testing--review-workflow",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_lab_testing/review_workflow.json"
+    },
+    {
+      "id": "npqs-lab-testing--review:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_lab_testing/render.json"
+    },
+    {
+      "id": "npqs-lab-testing--notify-decision",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_lab_testing/notify_decision.json"
+    },
+    {
+      "id": "npqs-lab-testing--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_lab_testing/officer_review.json"
+    },
+    {
+      "id": "npqs-lab-testing--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_lab_testing/officer_review_jsonform.json"
+    },
+    {
+      "id": "npqs-lab-testing--submission-view",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_lab_testing/submission_view_markdown.json"
+    },
+    {
+      "id": "npqs-apply-phyto-cert--officer-view-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_lab_testing/userinput_jsonform.json"
     }
   ]
 }
