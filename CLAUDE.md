@@ -135,17 +135,19 @@ alone does not publish anything.
 - `generic_template` — a JSONForms schema+uiSchema (`*_jsonform.json`), a markdown
   template, or a `render.json` UI layout (sections, `visibleWhen` states, action
   `handles`).
+- `task_config` — an agency-side officer task definition (top-level agency folders only):
+  `taskCode`, `meta.title/description`, and a `forms` map to a `generic_template` id.
 
 ### File fields (`render.json` `files`)
 
 A `render.json` lists under `files` every path in its task's data that holds an uploaded
 file: `"files": ["userform.invoice", "submission.documents[*].file"]`. Paths start at the
 task data's top-level key (a step's `output_namespace`, or an input's destination), and
-`[*]` steps into every element of an array. The backend only ever hands these values out
+`[*]` steps into every element of a list. The backend only ever hands these values out
 as file references issued to the reader, takes them back the same way on submit, and
-sends OGAs references issued to them, so a file field left out of `files` can't be opened
-or submitted once raw storage keys stop working (see nsw-srilanka's
-`docs/WORKFLOW_GUIDE.md`, "File fields").
+sends OGAs references issued to them. It protects nothing else, so a file field left out
+of `files` goes out as its raw storage key (see nsw-srilanka's `docs/WORKFLOW_GUIDE.md`,
+"File fields").
 
 - A task's data is its active step's mapped inputs plus that step's submission under its
   namespace, so list the union over all of the task's steps: the form's own upload
@@ -154,10 +156,18 @@ or submitted once raw storage keys stop working (see nsw-srilanka's
   data an `EXTERNAL_REVIEW` step stores under its namespace.
 - Agency-side (`<agency>-v2/`) tasks list the pushed files they show, under the
   destination of `notification` (usually `submission.*`), and their officer's uploads.
+- Declare each path once, in the shape of its data: a field that holds several files is
+  a list and needs `[*]`. A file upload allowing more than one file (`x-file.maxFiles` or
+  uiSchema `options.maxFiles` above 1) stores a list even when its schema says `string`.
+  The backend refuses a value of another shape.
 - A markdown link to a file is written `[label](files:{{.path}})`, not
-  `[label]({{.path}})`, and `{{.path}}` must be one of the render config's `files`.
-- `task_config` — an agency-side officer task definition (top-level agency folders only):
-  `taskCode`, `meta.title/description`, and a `forms` map to a `generic_template` id.
+  `[label]({{.path}})`, and the path must be one of the render config's `files`. Inside
+  `{{with .x}}` or `{{range .x}}`, `[label](files:{{.}})` links `x` or each element of it.
+- CI (`.github/workflows/validate-render-configs.yml`) checks both: every `files` entry is
+  well formed and listed once (`schemas/render.schema.json`), and
+  `scripts/check_file_fields.py` traces every `"format": "file"` field through the
+  workflows and fails on an undeclared file field, one declared in the wrong shape, or a
+  file link without `files:`. Run it locally with `python3 scripts/check_file_fields.py`.
 
 ## Data flow between steps
 
