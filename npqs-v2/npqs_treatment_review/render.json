@@ -7,6 +7,10 @@
       "officer"
     ]
   },
+  "files": [
+    "submission.supervision_report_url",
+    "submission.treatment_certificate_url"
+  ],
   "sections": {
     "submission_view": {
       "templateId": "npqs-upload-treatment-certs--trader-form",
