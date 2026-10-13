@@ -1365,15 +1365,24 @@
                 "value"
               ]
             },
-            "packages_in_bulk": {
-              "type": "boolean",
-              "title": "In Bulk",
-              "default": false
-            },
-            "packages_free_text_enabled": {
-              "type": "boolean",
-              "title": "Free Text Package Details",
-              "default": false
+            "package_arrangement": {
+              "type": "string",
+              "title": "Package Arrangement",
+              "oneOf": [
+                {
+                  "const": "package",
+                  "title": "Package"
+                },
+                {
+                  "const": "free_text",
+                  "title": "Free Text"
+                },
+                {
+                  "const": "bulk",
+                  "title": "Bulk"
+                }
+              ],
+              "default": "package"
             },
             "packages_free_text": {
               "type": "string",
