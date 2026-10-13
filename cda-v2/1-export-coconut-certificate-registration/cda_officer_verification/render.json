@@ -2,6 +2,11 @@
   "id": "cda-officer-verification--review:render",
   "type": "APPLICATION",
   "title": "CDA Coconut Certificate Verification",
+  "read": {
+    "roles": [
+      "reviewer"
+    ]
+  },
   "sections": {
     "submission_view": {
       "templateId": "cda-apply-coconut-cert--user-form",

@@ -2,6 +2,11 @@
   "id": "cda-asycuda-green-check--review:render",
   "type": "APPLICATION",
   "title": "CDA ASYCUDA Green Check",
+  "read": {
+    "roles": [
+      "reviewer"
+    ]
+  },
   "sections": {
     "submission_view": {
       "templateId": "cda-apply-coconut-cert--user-form",

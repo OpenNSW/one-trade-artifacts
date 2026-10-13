@@ -2,6 +2,11 @@
   "id": "cda-lot-adjustment-review--review:render",
   "type": "APPLICATION",
   "title": "CDA Officer Lot Adjustment Review",
+  "read": {
+    "roles": [
+      "reviewer"
+    ]
+  },
   "sections": {
     "submission_view": {
       "templateId": "cda-lot-adjustment-trader--user-form",
