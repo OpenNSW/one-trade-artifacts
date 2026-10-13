@@ -119,6 +119,9 @@
               "const": "approve"
             }
           }
+        },
+        "options": {
+          "required": true
         }
       },
       {
@@ -152,6 +155,9 @@
               "const": "approve"
             }
           }
+        },
+        "options": {
+          "required": true
         }
       }
     ]

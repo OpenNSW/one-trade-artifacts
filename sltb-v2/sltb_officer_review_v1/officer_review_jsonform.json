@@ -39,6 +39,7 @@
       "levy_amount": {
         "type": "number",
         "title": "Assessed SLTB Levy (LKR)",
+        "exclusiveMinimum": 0,
         "example": 12500,
         "description": "Enter the calculated levy fee for the blendsheet consignment."
       },
@@ -118,6 +119,9 @@
               "const": "approve"
             }
           }
+        },
+        "options": {
+          "required": true
         }
       },
       {
@@ -151,6 +155,9 @@
               "const": "approve"
             }
           }
+        },
+        "options": {
+          "required": true
         }
       }
     ]
