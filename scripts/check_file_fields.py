@@ -197,15 +197,20 @@ class Checker:
     def submission_files(self, scope, step, render):
         """The file paths in what a step stores under its namespace, and where they come from."""
         if step.get("task_type") == "EXTERNAL_REVIEW":
+            # Until an OGA's cutover, a deployment may run its legacy service or
+            # its agency (<agency>-v2): the step can get either one's callback.
             code = (step.get("plugin_properties") or {}).get("task_code")
+            out = {}
             for agency in self.agencies:
-                if code in agency.codes_of_task.values() or code in agency.inject_code.values():
-                    return dict(agency.callback.get(code, {}))
+                if code in agency.inject_code.values():
+                    for p, origin in agency.callback.get(code, {}).items():
+                        out.setdefault(p, origin)
             if code in self.legacy:
                 form_id, config = self.legacy[code]
                 form = self.forms.get(form_id)
-                return {p: f"the callback from {config}" for p in form_files(form)} if form else {}
-            return {}
+                for p in form_files(form) if form else ():
+                    out.setdefault(p, f"the callback from {config}")
+            return out
         form_ids = set()
         pp = step.get("plugin_properties") or {}
         if pp.get("user_jsonforms_id"):
