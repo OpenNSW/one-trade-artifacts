@@ -1,0 +1,64 @@
+{
+  "id": "sltb-sample-schedule--review-workflow",
+  "name": "Review Pickup Schedule — Officer Review",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "userform",
+      "type": "TASK",
+      "task_template_id": "sltb-sample-schedule--officer-review",
+      "input_mapping": {
+        "submission?": "submission",
+        "submission.suggested_date?": "reviewform.suggested_date",
+        "submission.suggested_time?": "reviewform.suggested_time",
+        "submission.trader_notes?": "reviewform.trader_notes"
+      },
+      "output_mapping": {
+        "schedule_outcome": "reviewform.schedule_outcome",
+        "visit_date?": "reviewform.visit_date",
+        "visit_time?": "reviewform.visit_time",
+        "inspector_name?": "reviewform.inspector_name",
+        "contact_number?": "reviewform.contact_number",
+        "feedback?": "reviewform.feedback"
+      }
+    },
+    {
+      "id": "api_call",
+      "type": "TASK",
+      "task_template_id": "sltb-sample-schedule--notify-decision",
+      "input_mapping": {
+        "callbackToken": "callbackToken",
+        "reviewform?": "reviewform",
+        "submission?": "submission",
+        "taskId": "taskId",
+        "reviewform.schedule_outcome": "payload.command",
+        "reviewform": "payload.payload"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "userform"
+    },
+    {
+      "id": "e2",
+      "source_id": "userform",
+      "target_id": "api_call"
+    },
+    {
+      "id": "e3",
+      "source_id": "api_call",
+      "target_id": "end"
+    }
+  ]
+}
