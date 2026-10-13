@@ -119,6 +119,126 @@
       "kind": "generic_template",
       "version": "",
       "path": "sltb_final_decision_v1/userinput_jsonform.json"
+    },
+    {
+      "id": "sltb_levy_payment_review_receipt_v1",
+      "kind": "task_config",
+      "version": "",
+      "path": "sltb_levy_payment_review_receipt_v1/sltb_levy_payment_review_receipt_v1.taskconfig.json"
+    },
+    {
+      "id": "sltb_levy_payment_review_receipt_v1",
+      "kind": "workflow",
+      "version": "",
+      "path": "sltb_levy_payment_review_receipt_v1/workflow.json"
+    },
+    {
+      "id": "sltb-levy-payment-review-receipt--review",
+      "kind": "task_template",
+      "version": "",
+      "path": "sltb_levy_payment_review_receipt_v1/task_template.json"
+    },
+    {
+      "id": "sltb-levy-payment-review-receipt--review-workflow",
+      "kind": "workflow",
+      "version": "",
+      "path": "sltb_levy_payment_review_receipt_v1/review_workflow.json"
+    },
+    {
+      "id": "sltb-levy-payment-review-receipt--review:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_levy_payment_review_receipt_v1/render.json"
+    },
+    {
+      "id": "sltb-levy-payment-review-receipt--notify-decision",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb_levy_payment_review_receipt_v1/notify_decision.json"
+    },
+    {
+      "id": "sltb-levy-payment-review-receipt--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb_levy_payment_review_receipt_v1/officer_review.json"
+    },
+    {
+      "id": "sltb-pay-levy--review-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_levy_payment_review_receipt_v1/officer_review_jsonform.json"
+    },
+    {
+      "id": "sltb-levy-payment-review-receipt--submission-view",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_levy_payment_review_receipt_v1/submission_view_markdown.json"
+    },
+    {
+      "id": "sltb-pay-levy--upload-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_levy_payment_review_receipt_v1/userinput_jsonform.json"
+    },
+    {
+      "id": "sltb_levy_payment_confirm_pinpack_v1",
+      "kind": "task_config",
+      "version": "",
+      "path": "sltb_levy_payment_confirm_pinpack_v1/sltb_levy_payment_confirm_pinpack_v1.taskconfig.json"
+    },
+    {
+      "id": "sltb_levy_payment_confirm_pinpack_v1",
+      "kind": "workflow",
+      "version": "",
+      "path": "sltb_levy_payment_confirm_pinpack_v1/workflow.json"
+    },
+    {
+      "id": "sltb-levy-payment-confirm-pinpack--review",
+      "kind": "task_template",
+      "version": "",
+      "path": "sltb_levy_payment_confirm_pinpack_v1/task_template.json"
+    },
+    {
+      "id": "sltb-levy-payment-confirm-pinpack--review-workflow",
+      "kind": "workflow",
+      "version": "",
+      "path": "sltb_levy_payment_confirm_pinpack_v1/review_workflow.json"
+    },
+    {
+      "id": "sltb-levy-payment-confirm-pinpack--review:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_levy_payment_confirm_pinpack_v1/render.json"
+    },
+    {
+      "id": "sltb-levy-payment-confirm-pinpack--notify-decision",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb_levy_payment_confirm_pinpack_v1/notify_decision.json"
+    },
+    {
+      "id": "sltb-levy-payment-confirm-pinpack--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb_levy_payment_confirm_pinpack_v1/officer_review.json"
+    },
+    {
+      "id": "sltb-pay-levy--confirm-pinpack-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_levy_payment_confirm_pinpack_v1/officer_review_jsonform.json"
+    },
+    {
+      "id": "sltb-levy-payment-confirm-pinpack--submission-view",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_levy_payment_confirm_pinpack_v1/submission_view_markdown.json"
+    },
+    {
+      "id": "sltb-levy-payment-confirm-pinpack--submitted-info",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_levy_payment_confirm_pinpack_v1/submitted_info_markdown.json"
     }
   ]
 }

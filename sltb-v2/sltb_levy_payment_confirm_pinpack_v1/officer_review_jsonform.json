@@ -1,0 +1,44 @@
+{
+  "id": "sltb-pay-levy--confirm-pinpack-form",
+  "title": "PinPack Account Levy Deduction Confirmation",
+  "schema": {
+    "type": "object",
+    "required": [
+      "deduction_status"
+    ],
+    "properties": {
+      "deduction_status": {
+        "type": "string",
+        "title": "PinPack Deduction Status",
+        "oneOf": [
+          {
+            "const": "deducted",
+            "title": "Confirm Levy Deducted from PinPack Account"
+          }
+        ],
+        "default": "deducted"
+      },
+      "remarks": {
+        "type": "string",
+        "title": "Officer Remarks (Optional)",
+        "example": "Levy auto-deducted upon CusDec & Blend Sheet upload integration."
+      }
+    }
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/deduction_status"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/remarks",
+        "options": {
+          "multiLine": true
+        }
+      }
+    ]
+  }
+}

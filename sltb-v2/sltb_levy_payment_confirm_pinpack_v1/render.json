@@ -1,0 +1,45 @@
+{
+  "id": "sltb-levy-payment-confirm-pinpack--review:render",
+  "type": "APPLICATION",
+  "title": "SLTB PinPack Levy Deduction Confirmation",
+  "sections": {
+    "submitted_info": {
+      "templateId": "sltb-levy-payment-confirm-pinpack--submitted-info",
+      "title": "Submitted Information",
+      "projector": "MARKDOWN",
+      "dataKey": "submission"
+    },
+    "review_form": {
+      "templateId": "sltb-pay-levy--confirm-pinpack-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Review",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "status_message": {
+      "templateId": "sltb-levy-payment-confirm-pinpack--submission-view",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}
