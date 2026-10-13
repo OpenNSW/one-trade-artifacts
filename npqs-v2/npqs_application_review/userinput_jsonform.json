@@ -133,26 +133,30 @@
         }
       },
       "transit_countries": {
-        "type": "object",
+        "type": "array",
         "title": "Transit Countries (if required)",
-        "properties": {
-          "value": {
-            "type": "string"
+        "items": {
+          "type": "object",
+          "title": "Transit Country",
+          "properties": {
+            "value": {
+              "type": "string"
+            },
+            "label": {
+              "type": "string"
+            }
           },
-          "label": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "value"
-        ],
-        "x-search": {
-          "service": "static-data",
-          "mode": "large-searchable-list",
-          "displayTemplate": "{name}",
-          "params": {
-            "id": "npqs-apply-phyto-cert--importing-countries",
-            "version": "1"
+          "required": [
+            "value"
+          ],
+          "x-search": {
+            "service": "static-data",
+            "mode": "large-searchable-list",
+            "displayTemplate": "{name}",
+            "params": {
+              "id": "npqs-apply-phyto-cert--importing-countries",
+              "version": "1"
+            }
           }
         }
       },
@@ -1559,16 +1563,29 @@
                   "readOnly": true
                 },
                 "label": "Name of Importing Country"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/transit_countries/properties/label",
-                "options": {
-                  "readOnly": true
-                },
-                "label": "Transit Countries (if required)"
               }
             ]
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transit_countries",
+            "options": {
+              "readonly": true,
+              "detail": {
+                "type": "VerticalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/label",
+                    "options": {
+                      "readOnly": true
+                    },
+                    "label": "Country"
+                  }
+                ]
+              }
+            },
+            "label": "Transit Countries (if required)"
           }
         ]
       },
