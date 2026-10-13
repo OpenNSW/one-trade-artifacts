@@ -1,0 +1,6 @@
+{
+  "id": "npqs-visual2-inspection--review",
+  "type": "APPLICATION",
+  "workflow_id": "npqs-visual2-inspection--review-workflow",
+  "render_config_id": "npqs-visual2-inspection--review:render"
+}

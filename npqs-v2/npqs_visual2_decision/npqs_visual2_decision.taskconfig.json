@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "npqs_visual2_decision",
+  "workflow": "npqs_visual2_decision",
+  "meta": {
+    "title": "NPQS Visual Inspection 2 Decision",
+    "description": "Officer decides which items need a further visual inspection."
+  }
+}

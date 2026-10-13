@@ -1,0 +1,6 @@
+{
+  "id": "npqs-treatment-review--review",
+  "type": "APPLICATION",
+  "workflow_id": "npqs-treatment-review--review-workflow",
+  "render_config_id": "npqs-treatment-review--review:render"
+}

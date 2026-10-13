@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "npqs_application_review",
+  "workflow": "npqs_application_review",
+  "meta": {
+    "title": "NPQS Application Review",
+    "description": "Officer review of the phytosanitary registration application."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "npqs_sample_draw",
+  "workflow": "npqs_sample_draw",
+  "meta": {
+    "title": "NPQS Draw Sample",
+    "description": "Officer records drawing/collecting the sample at site."
+  }
+}

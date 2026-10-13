@@ -1,0 +1,45 @@
+{
+  "id": "npqs-sample-draw--review:render",
+  "type": "APPLICATION",
+  "title": "NPQS Draw Sample",
+  "sections": {
+    "submission_view": {
+      "templateId": "npqs-apply-phyto-cert--officer-view-form",
+      "title": "Submitted Application",
+      "projector": "FORM",
+      "dataKey": "submission"
+    },
+    "review_form": {
+      "templateId": "npqs-draw-sample--officer-draw-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Review",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "status_message": {
+      "templateId": "npqs-sample-draw--submission-view",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}
