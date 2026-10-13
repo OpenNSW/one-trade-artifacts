@@ -208,6 +208,16 @@
           { "const": "10", "title": "Transport mode not specified" }
         ]
       },
+      "transport_name": {
+        "type": "string",
+        "title": "Transport Name",
+        "example": "Sri Lanka Railways"
+      },
+      "transport_number": {
+        "type": "string",
+        "title": "Transport Number",
+        "example": "TRAIN-4521"
+      },
       "commodities": {
         "type": "array",
         "title": "Commodities List",
@@ -846,7 +856,29 @@
               { "type": "Control", "scope": "#/properties/estimated_shipment_date" }
             ]
           },
-          { "type": "Control", "scope": "#/properties/transport_mode" }
+          { "type": "Control", "scope": "#/properties/transport_mode" },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport_name",
+            "rule": {
+              "effect": "SHOW",
+              "condition": {
+                "scope": "#/properties/transport_mode",
+                "schema": { "enum": ["1", "2", "3", "4", "5", "6", "7", "8"] }
+              }
+            }
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport_number",
+            "rule": {
+              "effect": "SHOW",
+              "condition": {
+                "scope": "#/properties/transport_mode",
+                "schema": { "enum": ["1", "2", "3", "4", "5", "6", "7", "8"] }
+              }
+            }
+          }
         ]
       },
       {
