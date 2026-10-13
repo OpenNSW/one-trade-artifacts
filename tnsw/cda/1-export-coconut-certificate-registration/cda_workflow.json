@@ -148,7 +148,7 @@
       "id": "e_value_added_green_check",
       "source_id": "cda_check_product_type_gateway",
       "target_id": "cda_2b_asycuda_green_check",
-      "condition": "none(cda.userform.dc_grades, .product_type == 'dc')"
+      "condition": "cda.userform.product_type_dc != true"
     },
     {
       "id": "e_green_check_to_end",
@@ -159,7 +159,7 @@
       "id": "e_dc_certificate_path",
       "source_id": "cda_check_product_type_gateway",
       "target_id": "cda_check_payment_gateway",
-      "condition": "any(cda.userform.dc_grades, .product_type == 'dc')"
+      "condition": "cda.userform.product_type_dc == true"
     },
     {
       "id": "e_pay_required",
