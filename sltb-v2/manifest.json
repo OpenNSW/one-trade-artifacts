@@ -1,0 +1,124 @@
+{
+  "artifacts": [
+    {
+      "id": "sltb_officer_review_v1",
+      "kind": "task_config",
+      "version": "",
+      "path": "sltb_officer_review_v1/sltb_officer_review_v1.taskconfig.json"
+    },
+    {
+      "id": "sltb_officer_review_v1",
+      "kind": "workflow",
+      "version": "",
+      "path": "sltb_officer_review_v1/workflow.json"
+    },
+    {
+      "id": "sltb-officer-review--review",
+      "kind": "task_template",
+      "version": "",
+      "path": "sltb_officer_review_v1/task_template.json"
+    },
+    {
+      "id": "sltb-officer-review--review-workflow",
+      "kind": "workflow",
+      "version": "",
+      "path": "sltb_officer_review_v1/review_workflow.json"
+    },
+    {
+      "id": "sltb-officer-review--review:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_officer_review_v1/render.json"
+    },
+    {
+      "id": "sltb-officer-review--notify-decision",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb_officer_review_v1/notify_decision.json"
+    },
+    {
+      "id": "sltb-officer-review--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb_officer_review_v1/officer_review.json"
+    },
+    {
+      "id": "sltb-submit-blendsheet--officer-review-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_officer_review_v1/officer_review_jsonform.json"
+    },
+    {
+      "id": "sltb-officer-review--submission-view",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_officer_review_v1/submission_view_markdown.json"
+    },
+    {
+      "id": "sltb-submit-blendsheet--officer-view-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_officer_review_v1/userinput_jsonform.json"
+    },
+    {
+      "id": "sltb_final_decision_v1",
+      "kind": "task_config",
+      "version": "",
+      "path": "sltb_final_decision_v1/sltb_final_decision_v1.taskconfig.json"
+    },
+    {
+      "id": "sltb_final_decision_v1",
+      "kind": "workflow",
+      "version": "",
+      "path": "sltb_final_decision_v1/workflow.json"
+    },
+    {
+      "id": "sltb-final-decision--review",
+      "kind": "task_template",
+      "version": "",
+      "path": "sltb_final_decision_v1/task_template.json"
+    },
+    {
+      "id": "sltb-final-decision--review-workflow",
+      "kind": "workflow",
+      "version": "",
+      "path": "sltb_final_decision_v1/review_workflow.json"
+    },
+    {
+      "id": "sltb-final-decision--review:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_final_decision_v1/render.json"
+    },
+    {
+      "id": "sltb-final-decision--notify-decision",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb_final_decision_v1/notify_decision.json"
+    },
+    {
+      "id": "sltb-final-decision--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb_final_decision_v1/officer_review.json"
+    },
+    {
+      "id": "sltb-final-decision--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_final_decision_v1/officer_review_jsonform.json"
+    },
+    {
+      "id": "sltb-final-decision--submission-view",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_final_decision_v1/submission_view_markdown.json"
+    },
+    {
+      "id": "sltb-submit-blendsheet--user-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_final_decision_v1/userinput_jsonform.json"
+    }
+  ]
+}
