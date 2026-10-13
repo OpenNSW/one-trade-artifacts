@@ -50,6 +50,7 @@ jobs:
             --include "npqs/*" \
             --include "npqs-v2/*" \
             --include "sltb/*" \
+            --include "sltb-v2/*" \
             --include "tnsw/*" \
             --delete \
             ${{ inputs.dryrun && '--dryrun' || '' }}

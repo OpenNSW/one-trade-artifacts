@@ -1,0 +1,4 @@
+{
+  "id": "sltb-levy-payment-confirm-pinpack--submitted-info",
+  "template": "{{with .}}{{with .reference_number}}**Reference number:** {{.}}{{end}}\n\n{{with .amount}}**Amount:** {{printf \"%.2f\" .}}{{end}}{{end}}"
+}
