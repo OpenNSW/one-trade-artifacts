@@ -258,6 +258,16 @@
         ],
         "default": "10"
       },
+      "transport_name": {
+        "type": "string",
+        "title": "Transport Name",
+        "example": "Sri Lanka Railways"
+      },
+      "transport_number": {
+        "type": "string",
+        "title": "Transport Number",
+        "example": "TRAIN-4521"
+      },
       "commodities": {
         "type": "array",
         "title": "Commodities List",
@@ -1497,6 +1507,20 @@
           {
             "type": "Control",
             "scope": "#/properties/transport_mode"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport_name",
+            "options": {
+              "readOnly": true
+            }
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport_number",
+            "options": {
+              "readOnly": true
+            }
           }
         ]
       },
