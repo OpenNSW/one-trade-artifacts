@@ -1,0 +1,89 @@
+{
+  "id": "slpa-sundry-payment",
+  "name": "SLPA Sundry Payment",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START",
+      "name": "Start"
+    },
+    {
+      "id": "slpa_sundry_1_order",
+      "type": "TASK",
+      "name": "[SLPA Sundry 1.0] Raise Sundry Order",
+      "task_template_id": "slpa-sundry-order-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "traderCompany.data.slpacmsuser_key?": "client_key"
+      },
+      "output_mapping": {
+        "sundryform?": "sundry.form",
+        "so.service_order_no?": "sundry.service_order_no",
+        "so.slug?": "sundry.service_order_slug",
+        "so.invoice_no?": "sundry.invoice_no"
+      }
+    },
+    {
+      "id": "slpa_sundry_2_approval",
+      "type": "TASK",
+      "name": "[SLPA Sundry 2.0] Sundry Order Approval",
+      "task_template_id": "slpa-approval-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "sundry.service_order_slug?": "so.slug",
+        "sundry.service_order_no?": "so.service_order_no"
+      },
+      "output_mapping": {
+        "decision.decision?": "sundry.approval",
+        "decision.invoice_no?": "sundry.invoice_no"
+      }
+    },
+    {
+      "id": "slpa_sundry_3_invoice",
+      "type": "TASK",
+      "name": "[SLPA Sundry 3.0] Sundry Invoice & Payment",
+      "task_template_id": "slpa-invoice-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "sundry.service_order_slug?": "so.slug",
+        "sundry.service_order_no?": "so.service_order_no",
+        "traderCompany.data.slpacmsuser_key?": "client_key"
+      },
+      "output_mapping": {
+        "payment.invoice_no?": "sundry.invoice_no",
+        "payment.paid_at?": "sundry.invoice_paid_at",
+        "payment.receipt_url?": "sundry.invoice_receipt_url",
+        "payment.invoice_serial?": "sundry.invoice_serial",
+        "payment.payment_slip_url?": "sundry.invoice_payment_slip_url"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END",
+      "name": "SLPA Sundry Invoice Paid"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_start_to_order",
+      "source_id": "start",
+      "target_id": "slpa_sundry_1_order"
+    },
+    {
+      "id": "e_order_to_approval",
+      "source_id": "slpa_sundry_1_order",
+      "target_id": "slpa_sundry_2_approval"
+    },
+    {
+      "id": "e_approval_to_invoice",
+      "source_id": "slpa_sundry_2_approval",
+      "target_id": "slpa_sundry_3_invoice"
+    },
+    {
+      "id": "e_invoice_to_end",
+      "source_id": "slpa_sundry_3_invoice",
+      "target_id": "end"
+    }
+  ]
+}

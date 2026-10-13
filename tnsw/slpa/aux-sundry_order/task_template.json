@@ -1,0 +1,6 @@
+{
+  "id": "slpa-sundry-order-flow",
+  "type": "APPLICATION",
+  "workflow_id": "slpa-sundry-order-flow",
+  "render_config_id": "slpa-sundry-order-flow:render"
+}

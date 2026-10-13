@@ -1,0 +1,85 @@
+{
+  "id": "slpa-sundry-order-flow:render",
+  "type": "APPLICATION",
+  "title": "[SLPA] Sundry Order",
+  "sections": {
+    "order_refusal": {
+      "templateId": "slpa-so--refusal",
+      "title": "SLPA Sundry Order Errors",
+      "projector": "MARKDOWN",
+      "dataKey": "so",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "so"
+      }
+    },
+    "services_problem": {
+      "templateId": "slpa-sundry--services-problem",
+      "title": "SLPA Sundry Services",
+      "projector": "MARKDOWN",
+      "dataKey": "services",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "services_error"
+      }
+    },
+    "raised_message": {
+      "templateId": "slpa-sundry--raised-message",
+      "title": "Sundry Order Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "COMPLETED"
+        ]
+      }
+    },
+    "user_form": {
+      "templateId": "slpa-sundry--user-form",
+      "title": "Sundry Services",
+      "projector": "SLPA_SUNDRY",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Raise Sundry Order",
+          "element": "primary_action"
+        }
+      ],
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ]
+      }
+    },
+    "services_refresh": {
+      "templateId": "slpa-sundry--services-refresh-form",
+      "title": "Sundry Services",
+      "projector": "FORM",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "services_error"
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Look Again",
+          "element": "secondary_action"
+        }
+      ]
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}
