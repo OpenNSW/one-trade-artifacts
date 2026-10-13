@@ -15,7 +15,8 @@
         "submission?": "submission"
       },
       "output_mapping": {
-        "deduction_status": "reviewform.deduction_status"
+        "deduction_status": "reviewform.deduction_status",
+        "remarks?": "reviewform.remarks"
       }
     },
     {
