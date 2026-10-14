@@ -1,7 +1,7 @@
 {
   "id": "npqs-certificate-issue--review-workflow",
   "name": "NPQS Certificate Issuance — Officer Review",
-  "version": 2,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
@@ -83,7 +83,9 @@
       "type": "TASK",
       "task_template_id": "npqs-certificate-issue--sign-certificate",
       "input_mapping": {
-        "reviewform.certificate_id": "reviewform.certificate_id"
+        "submission?": "submission",
+        "reviewform": "reviewform",
+        "signing_certificate_key": "signing_certificate_key"
       },
       "output_mapping": {
         "certificate_url": "signed_certificate.certificate_url"
@@ -158,7 +160,7 @@
       "target_id": "gw_ephyto"
     },
     {
-      "id": "e_ephyto",
+      "id": "e_sign_ephyto",
       "source_id": "gw_ephyto",
       "target_id": "generate_certificate",
       "condition": "submission.ephyto_required == true"

@@ -13,6 +13,7 @@
       "task_template_id": "npqs-apply-phyto-cert--user-input",
       "input_mapping": {
         "reviewerform?": "reviewerform",
+        "draft_certificate_key?": "draft_certificate_key",
         "applicant_name?": "userform.applicant_name",
         "exporter_name?": "userform.exporter_name",
         "exporter_address?": "userform.exporter_address",
@@ -76,6 +77,7 @@
         "userform?": "userform",
         "reviewerform.reference_number?": "submission.reference_number",
         "userform": "submission",
+        "draft_certificate_key?": "draft_certificate_key",
         "agency_token?": "replyToken"
       },
       "output_mapping": {
