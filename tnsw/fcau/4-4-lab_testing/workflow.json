@@ -13,10 +13,11 @@
       "task_template_id": "fcau-lab-testing--wait",
       "input_mapping": {
         "reference_number": "submission.reference_number",
-        "userform": "submission"
+        "userform": "submission",
+        "commodities?": "submission.items"
       },
       "output_mapping": {
-        "lab_result": "lab_outcome"
+        "items": "commodities"
       }
     },
     {

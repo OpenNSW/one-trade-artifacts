@@ -5,23 +5,44 @@
     "type": "object",
     "title": "SUBMIT TEST OUTCOME",
     "properties": {
-      "lab_result": {
-        "type": "string",
-        "title": "Microbiology & Pesticide Clearance",
-        "oneOf": [
-          {
-            "const": "pass",
-            "title": "Pass"
+      "items": {
+        "type": "array",
+        "title": "Laboratory Test Result (Per Item)",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Item ID"
+            },
+            "description_of_food": {
+              "type": "string",
+              "title": "Description of consignment and quantity"
+            },
+            "lab_result": {
+              "type": "string",
+              "title": "Microbiology & Pesticide Clearance",
+              "oneOf": [
+                {
+                  "const": "pass",
+                  "title": "Pass"
+                },
+                {
+                  "const": "fail",
+                  "title": "Fail"
+                }
+              ]
+            }
           },
-          {
-            "const": "fail",
-            "title": "Fail"
-          }
-        ]
+          "required": [
+            "id",
+            "lab_result"
+          ]
+        }
       }
     },
     "required": [
-      "lab_result"
+      "items"
     ]
   },
   "uiSchema": {
@@ -29,7 +50,39 @@
     "elements": [
       {
         "type": "Control",
-        "scope": "#/properties/lab_result"
+        "scope": "#/properties/items",
+        "options": {
+          "detail": {
+            "type": "VerticalLayout",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/id",
+                    "options": {
+                      "readOnly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/description_of_food",
+                    "options": {
+                      "readOnly": true
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/lab_result"
+              }
+            ]
+          },
+          "addable": false,
+          "removable": false
+        }
       }
     ]
   }
