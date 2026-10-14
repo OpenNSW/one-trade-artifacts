@@ -21,7 +21,7 @@
             },
             "warehouse_result": {
               "type": "string",
-              "title": "Visual Inspection Result",
+              "title": "Warehouse Inspection Result",
               "oneOf": [
                 {
                   "const": "pass",
