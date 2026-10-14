@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "fcau_post_wh_lab_test_v1",
+  "workflow": "fcau_post_wh_lab_test_v1",
+  "meta": {
+    "title": "FCAU Post-Warehouse Lab Test Results Submission",
+    "description": "Submit microbiology and pesticide results for the post-warehouse lab test."
+  }
+}
