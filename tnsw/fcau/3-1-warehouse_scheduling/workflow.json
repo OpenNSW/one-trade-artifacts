@@ -31,7 +31,8 @@
         "scheduling.proposed_inspection_date?": "submission.proposed_inspection_date",
         "scheduling.trader_comments?": "submission.trader_comments",
         "agency_token?": "replyToken",
-        "commodities?": "submission.items"
+        "commodities?": "submission.items",
+        "commodities": "commodities"
       },
       "output_mapping": {
         "review_outcome": "officer_review.review_outcome",
