@@ -7,6 +7,14 @@
       "officer"
     ]
   },
+  "files": [
+    "payload.payload.certificate",
+    "payload.payload.supporting_documents[*]",
+    "reviewform.certificate",
+    "reviewform.supporting_documents[*]",
+    "submission.analysis_certificates",
+    "submission.other_supporting_documents[*]"
+  ],
   "sections": {
     "submission_view": {
       "templateId": "fcau-apply-health-cert--user-form",

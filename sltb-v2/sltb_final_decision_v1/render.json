@@ -7,6 +7,10 @@
       "officer"
     ]
   },
+  "files": [
+    "payload.payload.certificate_file",
+    "reviewform.certificate_file"
+  ],
   "sections": {
     "submission_view": {
       "templateId": "sltb-submit-blendsheet--user-form",
