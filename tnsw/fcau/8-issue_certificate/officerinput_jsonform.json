@@ -4,6 +4,98 @@
   "schema": {
     "type": "object",
     "properties": {
+      "items": {
+        "type": "array",
+        "title": "Consignment Items and Results",
+        "readOnly": true,
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Item ID",
+              "readOnly": true
+            },
+            "description_of_food": {
+              "type": "string",
+              "title": "Description of consignment and quantity",
+              "readOnly": true
+            },
+            "visual_result": {
+              "type": "string",
+              "title": "Visual Result",
+              "readOnly": true,
+              "oneOf": [
+                {
+                  "const": "pass",
+                  "title": "Pass"
+                },
+                {
+                  "const": "fail",
+                  "title": "Fail"
+                },
+                {
+                  "const": "refer_lab",
+                  "title": "Referred to Lab"
+                },
+                {
+                  "const": "refer_warehouse",
+                  "title": "Referred to Warehouse"
+                }
+              ]
+            },
+            "lab_result": {
+              "type": "string",
+              "title": "Lab Result",
+              "readOnly": true,
+              "oneOf": [
+                {
+                  "const": "pass",
+                  "title": "Pass"
+                },
+                {
+                  "const": "fail",
+                  "title": "Fail"
+                }
+              ]
+            },
+            "warehouse_result": {
+              "type": "string",
+              "title": "Warehouse Result",
+              "readOnly": true,
+              "oneOf": [
+                {
+                  "const": "pass",
+                  "title": "Pass"
+                },
+                {
+                  "const": "fail",
+                  "title": "Fail"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "certificate_decision": {
+        "type": "string",
+        "title": "Decision",
+        "description": "Issue the certificate for the items that passed, or reject the consignment. If every item failed, choose Reject.",
+        "oneOf": [
+          {
+            "const": "issue",
+            "title": "Issue Health Certificate (passed items)"
+          },
+          {
+            "const": "reject",
+            "title": "Reject Consignment"
+          }
+        ]
+      },
+      "rejection_reason": {
+        "type": "string",
+        "title": "Reason for Rejection"
+      },
       "certificate_id": {
         "type": "string",
         "title": "Health Certificate ID",
@@ -34,9 +126,45 @@
       }
     },
     "required": [
-      "certificate_id",
-      "certificate",
-      "authorized_signature"
+      "certificate_decision"
+    ],
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "certificate_decision": {
+              "const": "issue"
+            }
+          },
+          "required": [
+            "certificate_decision"
+          ]
+        },
+        "then": {
+          "required": [
+            "certificate_id",
+            "certificate",
+            "authorized_signature"
+          ]
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "certificate_decision": {
+              "const": "reject"
+            }
+          },
+          "required": [
+            "certificate_decision"
+          ]
+        },
+        "then": {
+          "required": [
+            "rejection_reason"
+          ]
+        }
+      }
     ]
   },
   "uiSchema": {
@@ -44,19 +172,134 @@
     "elements": [
       {
         "type": "Control",
-        "scope": "#/properties/certificate_id"
+        "scope": "#/properties/items",
+        "options": {
+          "readonly": true,
+          "detail": {
+            "type": "VerticalLayout",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/id",
+                    "options": {
+                      "readonly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/description_of_food",
+                    "options": {
+                      "readonly": true
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/visual_result",
+                    "options": {
+                      "readonly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/lab_result",
+                    "options": {
+                      "readonly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/warehouse_result",
+                    "options": {
+                      "readonly": true
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "addable": false,
+          "removable": false
+        }
       },
       {
         "type": "Control",
-        "scope": "#/properties/certificate"
+        "scope": "#/properties/certificate_decision"
       },
       {
         "type": "Control",
-        "scope": "#/properties/supporting_documents"
+        "scope": "#/properties/rejection_reason",
+        "options": {
+          "multi": true
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/certificate_decision",
+            "schema": {
+              "const": "reject"
+            }
+          }
+        }
       },
       {
         "type": "Control",
-        "scope": "#/properties/authorized_signature"
+        "scope": "#/properties/certificate_id",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/certificate_decision",
+            "schema": {
+              "const": "issue"
+            }
+          }
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/certificate",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/certificate_decision",
+            "schema": {
+              "const": "issue"
+            }
+          }
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/supporting_documents",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/certificate_decision",
+            "schema": {
+              "const": "issue"
+            }
+          }
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/authorized_signature",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/certificate_decision",
+            "schema": {
+              "const": "issue"
+            }
+          }
+        }
       }
     ]
   }
