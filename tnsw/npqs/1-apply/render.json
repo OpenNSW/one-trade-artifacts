@@ -30,6 +30,15 @@
         "requireDataKey": "reviewerform"
       }
     },
+    "status_draft_certificate": {
+      "templateId": "npqs-apply-phyto-cert--draft-certificate-msg",
+      "title": "Draft Phytosanitary Certificate",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": ["QUEUED_EXTERNALLY", "PENDING_USER", "COMPLETED"],
+        "requireDataKey": "draft_certificate_key"
+      }
+    },
     "submission_form": {
       "templateId": "npqs-apply-phyto-cert--user-form",
       "title": "Phytosanitary Certificate Application",

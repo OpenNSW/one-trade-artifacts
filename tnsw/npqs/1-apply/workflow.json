@@ -58,6 +58,17 @@
       "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
+      "id": "generate_draft_certificate",
+      "type": "TASK",
+      "task_template_id": "npqs-apply-phyto-cert--draft-certificate",
+      "input_mapping": {
+        "userform": "application"
+      },
+      "output_mapping": {
+        "draft_certificate.key": "draft_certificate_key"
+      }
+    },
+    {
       "id": "officer_review",
       "type": "TASK",
       "task_template_id": "npqs-apply-phyto-cert--external-review",
@@ -106,6 +117,11 @@
     {
       "id": "e_submit",
       "source_id": "draft_gateway",
+      "target_id": "generate_draft_certificate"
+    },
+    {
+      "id": "e_draft_certificate",
+      "source_id": "generate_draft_certificate",
       "target_id": "officer_review"
     },
     {

@@ -1,0 +1,9 @@
+{
+  "id": "npqs-apply-phyto-cert--draft-certificate",
+  "task_type": "HTML_DOCUMENT_GENERATOR",
+  "output_namespace": "draft_certificate",
+  "plugin_properties": {
+    "template_id": "npqs-phyto-certificate--html",
+    "filename": "draft-phytosanitary-certificate.html"
+  }
+}

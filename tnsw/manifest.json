@@ -277,6 +277,18 @@
       "path": "npqs/1-apply/phyto_certificate.gohtml"
     },
     {
+      "id": "npqs-apply-phyto-cert--draft-certificate",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/1-apply/draft_certificate.json"
+    },
+    {
+      "id": "npqs-apply-phyto-cert--draft-certificate-msg",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/1-apply/draft_certificate_markdown.json"
+    },
+    {
       "id": "npqs-apply-phyto-cert--previous-feedback",
       "kind": "generic_template",
       "version": "",
