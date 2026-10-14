@@ -86,7 +86,7 @@
         "reviewform.certificate_id": "reviewform.certificate_id"
       },
       "output_mapping": {
-        "certificate_url": "reviewform.certificate_url"
+        "certificate_url": "signed_certificate.certificate_url"
       }
     },
     {
