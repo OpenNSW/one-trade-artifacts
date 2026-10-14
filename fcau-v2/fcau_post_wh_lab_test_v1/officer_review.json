@@ -1,0 +1,8 @@
+{
+  "id": "fcau-post-wh-lab-test--officer-review",
+  "task_type": "USER_INPUT",
+  "output_namespace": "reviewform",
+  "plugin_properties": {
+    "user_jsonforms_id": "fcau-post-wh-lab-testing--officer-form"
+  }
+}
