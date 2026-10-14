@@ -99,10 +99,12 @@
         "title": "Name of Importing Country",
         "properties": {
           "value": {
-            "type": "string"
+            "type": "string",
+            "example": "LK"
           },
           "label": {
-            "type": "string"
+            "type": "string",
+            "example": "Sri Lanka"
           }
         },
         "required": [
@@ -116,6 +118,10 @@
             "id": "npqs-apply-phyto-cert--importing-countries",
             "version": "1"
           }
+        },
+        "example": {
+          "value": "LK",
+          "label": "Sri Lanka"
         }
       },
       "transit_countries": {
@@ -144,7 +150,8 @@
               "version": "1"
             }
           }
-        }
+        },
+        "example": []
       },
       "exporter_name": {
         "type": "string",
@@ -924,7 +931,11 @@
             "packages_description": {
               "type": "string",
               "title": "Package Type",
+              "example": "PX",
               "oneOf": [
+                {
+                  "const": ""
+                },
                 {
                   "const": "1G",
                   "title": "Drum, fibre"
@@ -1268,8 +1279,7 @@
             },
             "packages_free_text": {
               "type": "string",
-              "title": "Free Text Package Description",
-              "example": "Packed in standard wooden crates"
+              "title": "Free Text Package Description"
             },
             "origin_country": {
               "type": "string",
@@ -1289,10 +1299,63 @@
             }
           },
           "required": [
+            "id",
             "commodity_common_name",
             "commodity_botanical_name",
-            "quantity_net_weight",
-            "packages_count"
+            "quantity_net_weight"
+          ],
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "package_arrangement": {
+                    "const": "package"
+                  }
+                },
+                "required": [
+                  "package_arrangement"
+                ]
+              },
+              "then": {
+                "required": [
+                  "packages_count",
+                  "packages_description"
+                ],
+                "properties": {
+                  "packages_description": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "packages_count": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "package_arrangement": {
+                    "const": "free_text"
+                  }
+                },
+                "required": [
+                  "package_arrangement"
+                ]
+              },
+              "then": {
+                "required": [
+                  "packages_free_text"
+                ],
+                "properties": {
+                  "packages_free_text": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            }
           ]
         }
       },

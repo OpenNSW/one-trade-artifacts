@@ -105,6 +105,7 @@
       "importing_country": {
         "type": "object",
         "title": "Name of Importing Country",
+        "example": { "value": "LK", "label": "Sri Lanka" },
         "x-search": {
           "service": "static-data",
           "mode": "large-searchable-list",
@@ -115,14 +116,15 @@
           }
         },
         "properties": {
-          "value": { "type": "string", "minLength": 1 },
-          "label": { "type": "string" }
+          "value": { "type": "string", "minLength": 1, "example": "LK" },
+          "label": { "type": "string", "example": "Sri Lanka" }
         },
         "required": ["value"]
       },
       "transit_countries": {
         "type": "array",
         "title": "Transit Countries",
+        "example": [],
         "items": {
           "type": "object",
           "title": "Transit Country",
@@ -623,8 +625,7 @@
             },
             "packages_free_text": {
               "type": "string",
-              "title": "Free Text Package Description",
-              "example": "Packed in standard wooden crates"
+              "title": "Free Text Package Description"
             },
             "origin_country": {
               "type": "object",
@@ -656,8 +657,38 @@
             "id",
             "commodity_common_name",
             "commodity_botanical_name",
-            "quantity_net_weight",
-            "packages_count"
+            "quantity_net_weight"
+          ],
+          "allOf": [
+            {
+              "if": {
+                "properties": { "package_arrangement": { "const": "package" } },
+                "required": ["package_arrangement"]
+              },
+              "then": {
+                "required": ["packages_count", "packages_description"],
+                "properties": {
+                  "packages_description": {
+                    "type": "object",
+                    "required": ["value"],
+                    "properties": { "value": { "type": "string", "minLength": 1 } }
+                  },
+                  "packages_count": { "type": "integer", "minimum": 0 }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": { "package_arrangement": { "const": "free_text" } },
+                "required": ["package_arrangement"]
+              },
+              "then": {
+                "required": ["packages_free_text"],
+                "properties": {
+                  "packages_free_text": { "type": "string", "minLength": 1 }
+                }
+              }
+            }
           ]
         },
         "example": [
@@ -674,7 +705,7 @@
             "quantity_net_weight_unit": { "value": "KGM", "label": "kilogram (kg)" },
             "quantity_gross_weight": 280.0,
             "quantity_gross_weight_unit": { "value": "KGM", "label": "kilogram (kg)" },
-            "packages_description": "CT",
+            "packages_description": { "value": "CT", "label": "CT" },
             "packages_count": 50,
             "package_arrangement": "package",
             "origin_country": { "value": "LK", "label": "Sri Lanka" },
@@ -693,7 +724,7 @@
             "quantity_net_weight_unit": { "value": "KGM", "label": "kilogram (kg)" },
             "quantity_gross_weight": 540.0,
             "quantity_gross_weight_unit": { "value": "KGM", "label": "kilogram (kg)" },
-            "packages_description": "BX",
+            "packages_description": { "value": "BX", "label": "BX" },
             "packages_count": 80,
             "package_arrangement": "package",
             "origin_country": { "value": "LK", "label": "Sri Lanka" },
@@ -712,7 +743,7 @@
             "quantity_net_weight_unit": { "value": "KGM", "label": "kilogram (kg)" },
             "quantity_gross_weight": 4500.0,
             "quantity_gross_weight_unit": { "value": "KGM", "label": "kilogram (kg)" },
-            "packages_description": "PK",
+            "packages_description": { "value": "PK", "label": "Package" },
             "packages_count": 12,
             "package_arrangement": "package",
             "origin_country": { "value": "LK", "label": "Sri Lanka" },
@@ -731,7 +762,7 @@
             "quantity_net_weight_unit": { "value": "KGM", "label": "kilogram (kg)" },
             "quantity_gross_weight": 5100.0,
             "quantity_gross_weight_unit": { "value": "KGM", "label": "kilogram (kg)" },
-            "packages_description": "PL",
+            "packages_description": { "value": "PX", "label": "Pallet" },
             "packages_count": 200,
             "package_arrangement": "package",
             "origin_country": { "value": "LK", "label": "Sri Lanka" },
