@@ -7,6 +7,10 @@
     "service_name": "SLTB Levy Payment",
     "amount": "12500.00",
     "currency": "LKR",
+    "reference": {
+      "issuer": "SLTB",
+      "id_type": "levy_payment_ref"
+    },
     "gateway_metadata": {
       "govpay_subinst_id": "003",
       "govpay_service_id": "001"

@@ -1,0 +1,14 @@
+{
+  "id": "sltb-pay-levy--generate-reference",
+  "task_type": "REFID_GENERATOR",
+  "output_namespace": "refid",
+  "plugin_properties": {
+    "ids": [
+      {
+        "path": "/reference_number",
+        "issuer": "SLTB",
+        "id_type": "levy_payment_ref"
+      }
+    ]
+  }
+}

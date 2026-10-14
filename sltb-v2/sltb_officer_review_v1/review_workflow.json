@@ -1,7 +1,7 @@
 {
   "id": "sltb-officer-review--review-workflow",
   "name": "SLTB Blend Sheet Review — Officer Review",
-  "version": 2,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
@@ -19,8 +19,7 @@
         "review_outcome": "reviewform.review_outcome",
         "feedback?": "reviewform.feedback",
         "levy_amount?": "reviewform.levy_amount",
-        "collection_method?": "reviewform.collection_method",
-        "reference_number?": "reviewform.reference_number"
+        "collection_method?": "reviewform.collection_method"
       }
     },
     {

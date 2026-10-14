@@ -1,0 +1,14 @@
+{
+  "id": "sltb-sample-draw--generate-sample-number",
+  "task_type": "REFID_GENERATOR",
+  "output_namespace": "refid",
+  "plugin_properties": {
+    "ids": [
+      {
+        "path": "/sample_number",
+        "issuer": "SLTB",
+        "id_type": "sample_ref"
+      }
+    ]
+  }
+}

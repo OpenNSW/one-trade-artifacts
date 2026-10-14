@@ -1,7 +1,7 @@
 {
   "id": "sltb-submit-blendsheet-flow",
   "name": "Submit and Review Blend Sheet",
-  "version": 7,
+  "version": 8,
   "nodes": [
     {
       "id": "start",
@@ -27,6 +27,17 @@
       "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
+      "id": "generate_blendsheet_nos",
+      "type": "TASK",
+      "task_template_id": "sltb-submit-blendsheet--generate-blendsheet-nos",
+      "input_mapping": {
+        "userform.blendsheet_data": "blendsheet_data"
+      },
+      "output_mapping": {
+        "refid.blendsheet_data": "userform.blendsheet_data"
+      }
+    },
+    {
       "id": "officer_review",
       "type": "TASK",
       "task_template_id": "sltb-submit-blendsheet--officer-review",
@@ -41,7 +52,6 @@
         "feedback?": "rejection_reason",
         "levy_amount?": "reviewerform.levy_amount",
         "collection_method?": "reviewerform.collection_method",
-        "reference_number?": "reviewerform.reference_number",
         "callbackToken?": "agency_token"
       }
     },
@@ -75,6 +85,11 @@
     {
       "id": "e_submit",
       "source_id": "draft_gateway",
+      "target_id": "generate_blendsheet_nos"
+    },
+    {
+      "id": "e_numbered",
+      "source_id": "generate_blendsheet_nos",
       "target_id": "officer_review"
     },
     {

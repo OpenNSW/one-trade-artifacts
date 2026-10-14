@@ -1,11 +1,20 @@
 {
   "id": "sltb-sample-draw--review-workflow",
   "name": "Record Warehouse Sample Draw — Officer Review",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
       "type": "START"
+    },
+    {
+      "id": "generate_sample_number",
+      "type": "TASK",
+      "task_template_id": "sltb-sample-draw--generate-sample-number",
+      "input_mapping": {},
+      "output_mapping": {
+        "refid.sample_number": "reviewform.sample_number"
+      }
     },
     {
       "id": "userform",
@@ -13,6 +22,7 @@
       "task_template_id": "sltb-sample-draw--officer-review",
       "input_mapping": {
         "submission?": "submission",
+        "reviewform.sample_number": "reviewform.sample_number",
         "submission.scheduled_visit_date?": "reviewform.scheduled_visit_date",
         "submission.inspector_name?": "reviewform.inspector_name"
       },
@@ -45,6 +55,11 @@
     {
       "id": "e1",
       "source_id": "start",
+      "target_id": "generate_sample_number"
+    },
+    {
+      "id": "e1b",
+      "source_id": "generate_sample_number",
       "target_id": "userform"
     },
     {

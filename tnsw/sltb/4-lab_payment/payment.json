@@ -7,6 +7,10 @@
     "service_name": "SLTB Lab Test Fee Payment",
     "amount": "5000.00",
     "currency": "LKR",
+    "reference": {
+      "issuer": "SLTB",
+      "id_type": "lab_payment_ref"
+    },
     "gateway_metadata": {
       "govpay_subinst_id": "003",
       "govpay_service_id": "002"
