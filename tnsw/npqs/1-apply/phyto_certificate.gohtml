@@ -47,11 +47,25 @@ Consignment re-inspected after treatment and found free from live pests.
 <meta charset="utf-8">
 <title>{{ if .certificate_number }}Phytosanitary Certificate {{ .certificate_number }}{{ else }}Draft Phytosanitary Certificate{{ end }}</title>
 <style>
-  @page { size: A4; margin: 14mm 12mm; }
+  /* Printed onto A4: fixed margins, a page count in the bottom margin, and
+     nothing split across a page break that can be kept whole. */
+  @page {
+    size: A4;
+    margin: 12mm 12mm 14mm;
+    /* Claiming the margin boxes keeps the browser's own date, title and URL lines off the sheet. */
+    @top-left { content: ""; }
+    @top-center { content: ""; }
+    @top-right { content: ""; }
+    @bottom-left { content: ""; }
+    @bottom-center { content: ""; }
+    @bottom-right { content: "Page " counter(page) " of " counter(pages); font: 8pt Arial, Helvetica, sans-serif; }
+  }
   * { box-sizing: border-box; }
   body { font-family: "DejaVu Sans", Arial, Helvetica, sans-serif; font-size: 10pt; color: #000; margin: 0; }
   .watermark { position: fixed; top: 40%; left: 0; right: 0; text-align: center; font-size: 110pt; font-weight: bold;
-    color: rgba(0, 0, 0, 0.08); transform: rotate(-35deg); z-index: -1; letter-spacing: 8pt; }
+    color: rgba(0, 0, 0, 0.08); transform: rotate(-35deg); z-index: 1; pointer-events: none; letter-spacing: 8pt; }
+  /* The whole certificate is one table so its head repeats on every printed page. */
+  table.doc, table.doc > * > tr > td.doc-cell { border: 0; padding: 0; }
   .head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4pt; }
   .head h1 { font-size: 13pt; margin: 0; }
   .head .number { font-weight: bold; }
@@ -62,6 +76,7 @@ Consignment re-inspected after treatment and found free from live pests.
   .country { font-weight: bold; text-align: center; display: block; }
   .items { counter-reset: item; }
   .item { counter-increment: item; break-inside: avoid; margin-top: -1px; }
+  tr, .closing { break-inside: avoid; }
   .item-no { width: 18pt; text-align: center; font-weight: normal; }
   .item-no::before { content: counter(item); }
   .small { font-size: 8.5pt; }
@@ -73,18 +88,33 @@ Consignment re-inspected after treatment and found free from live pests.
   .sign td { border: 0; padding: 8pt 4pt 2pt; }
   .sign td.blank { border-bottom: 1px solid #000; width: 32%; }
   .liability { font-size: 8.5pt; margin-top: 10pt; }
+  .hint { margin: 4mm auto; width: 210mm; padding: 2mm 3mm; border: 1px solid #999; background: #f4f4f4; font-size: 10pt; }
+  /* On screen the certificate reads as an A4 sheet; the hint is never printed. */
+  @media screen {
+    body { background: #e5e5e5; padding-bottom: 8mm; }
+    .page { background: #fff; width: 210mm; min-height: 297mm; margin: 0 auto; padding: 14mm 12mm; box-shadow: 0 0 3mm rgba(0, 0, 0, 0.25); }
+  }
+  @media print {
+    .hint { display: none; }
+  }
 </style>
 </head>
 <body>
+<p class="hint">To print this Phytosanitary Certificate or save it as a PDF, press Ctrl+P (&#8984;P on a Mac).</p>
+<div class="page">
 {{- $app := .application }}
 {{- if not .certificate_number }}
 <div class="watermark">DRAFT</div>
 {{- end }}
 
+<table class="doc">
+<thead><tr><td class="doc-cell">
 <div class="head">
   <h1>PHYTOSANITARY CERTIFICATE{{ if eq (print $app.certificate_type) "re-export" }} FOR RE-EXPORT{{ end }}</h1>
   <div class="number">No. {{ if .certificate_number }}{{ .certificate_number }}{{ else }}DRAFT{{ end }}</div>
 </div>
+</td></tr></thead>
+<tbody><tr><td class="doc-cell">
 
 <table>
   <tr>
@@ -162,6 +192,7 @@ Consignment re-inspected after treatment and found free from live pests.
 {{- end }}
 </div>
 
+<div class="closing">
 <div class="certify">
 {{- if eq (print $app.certificate_type) "re-export" }}
   {{- $re := $app.re_export }}
@@ -194,5 +225,9 @@ Consignment re-inspected after treatment and found free from live pests.
 
 <div class="liability">No financial liability with respect to this certificate shall attach to the National Plant Quarantine Service,
 Department of Agriculture, Sri Lanka or to any of its officers or representatives.</div>
+</div>
+</td></tr></tbody>
+</table>
+</div>
 </body>
 </html>
