@@ -3,6 +3,18 @@
   "type": "APPLICATION",
   "title": "SLTB Levy Payment Receipt Verification",
   "sections": {
+    "previous_review": {
+      "templateId": "sltb-levy-payment-review-receipt--previous-review",
+      "title": "Previous Review",
+      "projector": "MARKDOWN",
+      "dataKey": "previous_payment_feedback",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "previous_payment_feedback"
+      }
+    },
     "submission_view": {
       "templateId": "sltb-pay-levy--upload-form",
       "title": "Submitted Application",
@@ -29,7 +41,20 @@
       "visibleWhen": {
         "states": [
           "QUEUED_EXTERNALLY"
-        ]
+        ],
+        "requireDataKey": "payload"
+      }
+    },
+    "awaiting_resubmission": {
+      "templateId": "sltb-levy-payment-review-receipt--awaiting-resubmission",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "dataKey": "payment_feedback",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ],
+        "requireDataKey": "payment_feedback"
       }
     }
   },

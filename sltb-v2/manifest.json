@@ -181,6 +181,24 @@
       "path": "sltb_levy_payment_review_receipt_v1/officer_review.json"
     },
     {
+      "id": "sltb-levy-payment-review-receipt--request-info",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb_levy_payment_review_receipt_v1/request_info.json"
+    },
+    {
+      "id": "sltb-levy-payment-review-receipt--previous-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_levy_payment_review_receipt_v1/previous_review_markdown.json"
+    },
+    {
+      "id": "sltb-levy-payment-review-receipt--awaiting-resubmission",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_levy_payment_review_receipt_v1/awaiting_resubmission_markdown.json"
+    },
+    {
       "id": "sltb-pay-levy--review-form",
       "kind": "generic_template",
       "version": "",
