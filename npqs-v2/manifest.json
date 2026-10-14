@@ -1027,6 +1027,36 @@
       "path": "npqs_certificate_issue/submission_view_markdown.json"
     },
     {
+      "id": "npqs-phyto-certificate--html",
+      "kind": "html_template",
+      "version": "",
+      "path": "npqs_certificate_issue/phyto_certificate.gohtml"
+    },
+    {
+      "id": "npqs-certificate-issue--generate-certificate",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_certificate_issue/generate_certificate.json"
+    },
+    {
+      "id": "npqs-certificate-issue--sign-certificate",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_certificate_issue/sign_certificate.json"
+    },
+    {
+      "id": "npqs-issue-certificate--sign-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_certificate_issue/sign_certificate_jsonform.json"
+    },
+    {
+      "id": "npqs-certificate-issue--sign-msg",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_certificate_issue/sign_certificate_markdown.json"
+    },
+    {
       "id": "npqs-apply-phyto-cert--officer-view-form",
       "kind": "generic_template",
       "version": "",

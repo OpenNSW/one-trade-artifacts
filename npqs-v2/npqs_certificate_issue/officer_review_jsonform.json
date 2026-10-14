@@ -245,9 +245,23 @@
     },
     "required": [
       "certificate_items",
-      "certificate_id",
-      "certificate_url"
-    ]
+      "certificate_id"
+    ],
+    "if": {
+      "properties": {
+        "ephyto_required": {
+          "const": true
+        }
+      },
+      "required": [
+        "ephyto_required"
+      ]
+    },
+    "else": {
+      "required": [
+        "certificate_url"
+      ]
+    }
   },
   "uiSchema": {
     "type": "VerticalLayout",
@@ -381,7 +395,16 @@
       },
       {
         "type": "Control",
-        "scope": "#/properties/certificate_url"
+        "scope": "#/properties/certificate_url",
+        "rule": {
+          "effect": "HIDE",
+          "condition": {
+            "scope": "#/properties/ephyto_required",
+            "schema": {
+              "const": true
+            }
+          }
+        }
       },
       {
         "type": "Control",

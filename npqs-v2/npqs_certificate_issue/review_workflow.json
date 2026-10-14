@@ -61,6 +61,35 @@
       }
     },
     {
+      "id": "gw_ephyto",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "generate_certificate",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-issue--generate-certificate",
+      "input_mapping": {
+        "submission": "application",
+        "reviewform.certificate_id": "certificate_number",
+        "reviewform.certificate_items?": "items"
+      },
+      "output_mapping": {
+        "certificate_document.key": "signing_certificate_key"
+      }
+    },
+    {
+      "id": "sign_certificate",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-issue--sign-certificate",
+      "input_mapping": {
+        "reviewform.certificate_id": "reviewform.certificate_id"
+      },
+      "output_mapping": {
+        "certificate_url": "reviewform.certificate_url"
+      }
+    },
+    {
       "id": "api_call",
       "type": "TASK",
       "task_template_id": "npqs-certificate-issue--notify-decision",
@@ -126,6 +155,28 @@
     {
       "id": "e_form_to_api",
       "source_id": "userform",
+      "target_id": "gw_ephyto"
+    },
+    {
+      "id": "e_ephyto",
+      "source_id": "gw_ephyto",
+      "target_id": "generate_certificate",
+      "condition": "submission.ephyto_required == true"
+    },
+    {
+      "id": "e_not_ephyto",
+      "source_id": "gw_ephyto",
+      "target_id": "api_call",
+      "condition": "submission.ephyto_required != true"
+    },
+    {
+      "id": "e_generated",
+      "source_id": "generate_certificate",
+      "target_id": "sign_certificate"
+    },
+    {
+      "id": "e_signed",
+      "source_id": "sign_certificate",
       "target_id": "api_call"
     },
     {

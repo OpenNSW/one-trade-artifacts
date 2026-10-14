@@ -1,0 +1,198 @@
+{{- /*
+  NPQS phytosanitary certificate, laid out after the IPPC ePhyto certificate.
+
+  The same template prints the draft and the final certificate:
+    .application         the trader's application (userform)
+    .certificate_number  the number the officer gives at issuance; while it
+                         is absent the document is the draft
+    .items               the officer's issuance list (certificate_items): the
+                         items to leave off (include_in_certificate: false)
+                         and each item's inspection results. Absent on the
+                         draft, which lists every commodity.
+
+  Name, date and signature are left blank: the officer signs the printed
+  certificate by hand.
+*/ -}}
+
+{{- /*
+  Official statements. Printed under an item's "Additional Official
+  Phytosanitary Information" for each stage the item passed. Change the
+  wording here; leave a block empty to print nothing for that stage.
+*/ -}}
+{{- define "statement_lab" -}}
+Representative samples were tested at the National Plant Quarantine Service laboratory and found free from the quarantine pests specified by the importing country.
+{{- end -}}
+{{- define "statement_visual1" -}}
+Consignment inspected at the National Plant Quarantine Service and found free from quarantine pests.
+{{- end -}}
+{{- define "statement_treatment" -}}
+The consignment was treated under official supervision in accordance with the phytosanitary import requirements of the importing country.
+{{- end -}}
+{{- define "statement_visual2" -}}
+Consignment re-inspected after treatment and found free from live pests.
+{{- end -}}
+
+{{- /* Labels for the application form's coded answers, in step with tnsw/npqs/1-apply/userinput_jsonform.json. */ -}}
+{{- define "plant_part" }}{{ lookup . "1" "Bark" "2" "Barrel" "3" "Branches" "4" "Buds" "5" "Budwood" "6" "Bulbs" "7" "Cinnamon quill" "8" "Corms" "9" "Curry Sauce" "10" "Cuttings" "11" "Firewood" "12" "Flowers" "13" "Foliage" "14" "Fruits" "15" "Grain" "16" "Husk" "17" "Kernel" "18" "Leaves" "19" "Mid rib" "20" "Milk" "21" "Minitubers" "22" "Not Appilicable" "23" "Nut" "24" "Peat" "25" "Plantlets" "26" "Plants" "27" "Pod" "28" "Pollen" "29" "Rhizomes" "30" "Seeds" "31" "Shell" "32" "Stem" "33" "Stolons" "34" "Tubers" "35" "Vegetables" "36" "Wood" "37" "Wood packaging material" }}{{ end -}}
+{{- define "condition" }}{{ lookup . "1" "Rooted" "2" "Unrooted" "3" "Bare-rooted" "4" "Without leaves or flowers" "5" "Dormant" "6" "With bark" "7" "Debarked" "8" "Bark-free" "9" "Dried" "10" "Chopped" "11" "Peeled" "12" "Shelled" "13" "Fresh" "14" "Frozen" "15" "With growing medium" "16" "Potted" "17" "Desiccated" "18" "Processed" "19" "Organic" "20" "Organic-processed" "21" "1cpn-rooted" "22" "3p-oasis-rooted" "23" "5p-oasis-rooted" "24" "1cp-oasis-rooted" }}{{ end -}}
+{{- define "intended_use" }}{{ lookup . "1" "Breeding" "2" "Consumption" "3" "Decoration" "4" "Planting" "5" "Processing" "6" "Research" "7" "Research" "8" "Soil protection" "9" "Sprouting for consumption" }}{{ end -}}
+{{- define "package_type" }}{{ lookup . "1G" "Drum, fibre" "1D" "Drum, plywood" "1B" "Drum, aluminium" "ZB" "Bag, large" "XK" "Bag, paper, multi-wall, water resistant" "XJ" "Bag, paper, multi-wall" "XH" "Bag, textile, water resistant" "XG" "Bag, textile, sift proof" "XF" "Bag, textile, without inner coat/liner" "XD" "Bag, plastics film" "XC" "Bag, woven plastic, water resistant" "XB" "Bag, woven plastic, sift proof" "XA" "Bag, woven plastic, without inner coat/liner" "VY" "Bulk, solid, fine particles (“powders”)" "VI" "Vial" "VG" "Bulk, gas (at 1031 mbar and 15°C)" "UN" "Unit" "TT" "Bag, tote" "TC" "Tea-chest" "ST" "Sheet" "SS" "Case, steel" "SI" "Skid" "SH" "Sachet" "SA" "Sack" "RO" "Roll" "QR" "Box, plastic, expanded" "QQ" "Box, wooden, natural wood, with sift proof walls" "QP" "Box, wooden, natural wood, ordinary" "QJ" "Barrel, wooden, removable head" "QC" "Drum, aluminium, non-removable head" "PX" "Pallet" "PU" "Tray" "PT" "Pot" "PO" "Pouch" "PK" "Package" "PA" "Packet" "OK" "Block" "NT" "Net" "NA" "Not available" "MB" "Bag, multiply" "JT" "Jutebag" "JB" "Bag, jumbo" "GY" "Bag, gunny" "GB" "Bottle, gas" "FX" "Bag, flexible container" "FB" "Flexibag" "EF" "Case, with pallet base, cardboard" "EC" "Bag, plastic" "DR" "Drum" "CZ" "Canvas" "CW" "Cage, roll" "CV" "Cover" "CU" "Cup" "CT" "Carton" "CS" "Case" "CR" "Crate" "CN" "Container" "CL" "Coil" "CG" "Cage" "CF" "Coffer" "BX" "Box" "BS" "Bottle, non-protected, bulbous" "BQ" "Bottle, protected cylindrical" "BJ" "Bucket" "BI" "Bin" "BH" "Bunch" "BG" "Bag" "BE" "Bundle" "BA" "Barrel" "AJ" "Cone" "5M" "Bag, paper" "5L" "Bag, textile" "5H" "Bag, woven plastic" "4G" "Box, fibreboard" "4F" "Box, reconstituted wood" "4A" "Box, steel" "44" "Bag, polybag" "43" "Bag, super bulk" "2C" "Barrel, wooden" "1W" "Drum, wooden" }}{{ end -}}
+{{- define "unit" }}{{ lookup . "DG" "dg" "KGM" "kg" "GRM" "g" "TNE" "t" "MGM" "mg" "KTN" "kt" "LBR" "lb" "CWA" "cwt" "MTQ" "m³" "LTR" "l" "MAL" "Ml" "CMQ" "cm³" "MLT" "ml" "K6" "kl" "FTQ" "ft³" "GLI" "gal" "G24" "tablespoon" "BLL" "barrel" "HUR" "h" "DAY" "d" "SEC" "s" "MIN" "min" "MON" "mo" "WEE" "wk" "g/cm²" "g/cm²" "g/cm³" "g/cm³" "GL" "g/l" "GJ" "g/ml" "GM" "g/m²" "g/m³" "g/m³" "KMQ" "kg/m³" "CEL" "°C" "FAH" "°F" }}{{ end -}}
+{{- define "transport_mode" }}{{ lookup . "1" "Air transport" "2" "Mail" "3" "Maritime transport" "4" "Fixed transport installations" "5" "Inland water transport" "6" "Multimodal transport" "7" "Rail transport" "8" "Road transport" "9" "Transport mode not applicable" "10" "Transport mode not specified" }}{{ end -}}
+{{- define "office" }}{{ lookup . "NPQS-KAT" "National Plant Quarantine Service HQ - Katunayake" "SEA-CMB" "Plant Quarantine Station - Seaport, Colombo" "AIR-BIA" "Plant Quarantine Station - Bandaranayake International Airport, Katunayake" "AIR-JAF" "Plant Quarantine Station - Jaffna International Airport, Palaly" "AIR-CIAR" "Plant Quarantine Unit - Colombo International Airport, Ratmalana" "AIR-MRIA" "Plant Quarantine Station - Mattala Rajapaksa International Airport, Mattala" "SEA-HAM" "Plant Quarantine Station - Seaport, Hambanthota" "SEA-KKS" "Plant Quarantine Unit - Seaport, Kankesanturai" "PO-CME" "Plant Quarantine Unit - Central Mail Exchange, Colombo" "PO-GAL" "Plant Quarantine Unit - Post Office, Galle" "PO-KDY" "Plant Quarantine Unit - Post Office, Kandy" "PO-JAF" "Plant Quarantine Unit - Post Office, Jaffna" }}{{ end -}}
+{{- define "country" }}{{ lookup . "LK" "Sri Lanka" }}{{ end -}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{{ if .certificate_number }}Phytosanitary Certificate {{ .certificate_number }}{{ else }}Draft Phytosanitary Certificate{{ end }}</title>
+<style>
+  @page { size: A4; margin: 14mm 12mm; }
+  * { box-sizing: border-box; }
+  body { font-family: "DejaVu Sans", Arial, Helvetica, sans-serif; font-size: 10pt; color: #000; margin: 0; }
+  .watermark { position: fixed; top: 40%; left: 0; right: 0; text-align: center; font-size: 110pt; font-weight: bold;
+    color: rgba(0, 0, 0, 0.08); transform: rotate(-35deg); z-index: -1; letter-spacing: 8pt; }
+  .head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4pt; }
+  .head h1 { font-size: 13pt; margin: 0; }
+  .head .number { font-weight: bold; }
+  table { width: 100%; border-collapse: collapse; }
+  td, th { border: 1px solid #000; padding: 3pt 4pt; vertical-align: top; text-align: left; }
+  .section { background: #ddd; text-align: center; font-size: 11pt; }
+  .half { width: 50%; }
+  .country { font-weight: bold; text-align: center; display: block; }
+  .items { counter-reset: item; }
+  .item { counter-increment: item; break-inside: avoid; margin-top: -1px; }
+  .item-no { width: 18pt; text-align: center; font-weight: normal; }
+  .item-no::before { content: counter(item); }
+  .small { font-size: 8.5pt; }
+  .lines div { min-height: 1em; }
+  .pre { white-space: pre-line; }
+  .plain, .plain td { border: 0; padding: 0; }
+  .certify { margin-top: 8pt; }
+  .sign { margin-top: 18pt; }
+  .sign td { border: 0; padding: 8pt 4pt 2pt; }
+  .sign td.blank { border-bottom: 1px solid #000; width: 32%; }
+  .liability { font-size: 8.5pt; margin-top: 10pt; }
+</style>
+</head>
+<body>
+{{- $app := .application }}
+{{- if not .certificate_number }}
+<div class="watermark">DRAFT</div>
+{{- end }}
+
+<div class="head">
+  <h1>PHYTOSANITARY CERTIFICATE{{ if eq (print $app.certificate_type) "re-export" }} FOR RE-EXPORT{{ end }}</h1>
+  <div class="number">No. {{ if .certificate_number }}{{ .certificate_number }}{{ else }}DRAFT{{ end }}</div>
+</div>
+
+<table>
+  <tr>
+    <td class="half">FROM: Plant Protection Organization of<span class="country">Sri Lanka</span></td>
+    <td class="half">TO: Plant Protection Organization(s) of<span class="country">{{ $app.importing_country.label }}</span></td>
+  </tr>
+  <tr><th colspan="2" class="section">I. DESCRIPTION OF CONSIGNMENT</th></tr>
+  <tr><th>Name and Address of Exporter</th><th>Declared Name and Address of Consignee</th></tr>
+  <tr>
+    <td><div>{{ $app.exporter_name }}</div><div class="pre">{{ $app.exporter_address }}</div></td>
+    <td><div>{{ $app.consignee_name }}</div><div class="pre">{{ $app.consignee_address }}</div>{{ if $app.consignee_country.label }}<div>{{ $app.consignee_country.label }}</div>{{ end }}</td>
+  </tr>
+  <tr><th>Declared Means of Conveyance</th><th>Declared Point of Entry</th></tr>
+  <tr>
+    <td>{{ template "transport_mode" $app.transport_mode }}{{ if $app.vessel_name }} - {{ $app.vessel_name }}{{ end }}{{ if $app.voyage_number }} - Voyage {{ $app.voyage_number }}{{ end }}</td>
+    <td>{{ $app.point_of_entry_port }}</td>
+  </tr>
+  {{- if $app.transit_countries }}
+  <tr><th colspan="2">Transit Countries</th></tr>
+  <tr><td colspan="2">{{ $app.transit_countries }}</td></tr>
+  {{- end }}
+  <tr><th colspan="2">Distinguishing Marks</th></tr>
+  <tr><td colspan="2">{{ $app.distinguishing_marks }}</td></tr>
+  <tr><th colspan="2">Seal Number</th></tr>
+  <tr><td colspan="2">{{ $app.seal_number }}</td></tr>
+  <tr><th colspan="2" class="section">II. COMMODITIES</th></tr>
+</table>
+
+<div class="items">
+{{- range $c := $app.commodities }}
+{{- $included := true }}
+{{- range $.items }}{{ if and (eq (print .id) (print $c.id)) (eq (print .include_in_certificate) "false") }}{{ $included = false }}{{ end }}{{ end }}
+{{- if $included }}
+<table class="item">
+  <tr><th class="item-no"></th><th>Name of Produce and Quantity</th><th class="half">Place of Origin</th></tr>
+  <tr>
+    <td colspan="2" class="small">
+      Botanical Name/Common Name: <i>{{ $c.commodity_botanical_name }}</i>/{{ $c.commodity_common_name.label }}
+      {{- if $c.commodity_description }}, Description of the Commodity: {{ $c.commodity_description }}{{ end }}
+      {{- if $c.commodity_plant_part }}; Plant Part: {{ template "plant_part" $c.commodity_plant_part }}{{ end }}
+      {{- if $c.commodity_intended_use }}; Intended Use: {{ template "intended_use" $c.commodity_intended_use }}{{ end }}
+      {{- if $c.commodity_condition }}; Condition: {{ template "condition" $c.commodity_condition }}{{ end }};<br>
+      {{- if not (zero $c.quantity_gross_weight) }}Gross Weight: {{ $c.quantity_gross_weight }} {{ template "unit" $c.quantity_gross_weight_unit }}; {{ end }}
+      {{- if not (zero $c.quantity_net_weight) }}Net Weight: {{ $c.quantity_net_weight }} {{ template "unit" $c.quantity_net_weight_unit }};{{ end }}
+    </td>
+    <td>{{ template "country" $c.origin_country }}{{ if $c.origin_area }}, {{ $c.origin_area }}{{ end }}</td>
+  </tr>
+  <tr><th colspan="3">Number and Description of Packages</th></tr>
+  <tr><td colspan="3">
+    {{- if $c.packages_free_text_enabled }}{{ $c.packages_free_text }}
+    {{- else if $c.packages_in_bulk }}In bulk
+    {{- else }}{{ $c.packages_count }} {{ template "package_type" $c.packages_description }}{{ end -}}
+  </td></tr>
+  <tr><th colspan="3">ADDITIONAL DECLARATION</th></tr>
+  <tr><td colspan="3" class="pre">{{ $app.additional_declaration }}</td></tr>
+  <tr><th colspan="3">ADDITIONAL OFFICIAL PHYTOSANITARY INFORMATION</th></tr>
+  <tr><td colspan="3" class="lines">
+    {{- range $.items }}{{ if eq (print .id) (print $c.id) }}
+      {{- if eq (print .sample_test_result) "pass" }}<div>{{ template "statement_lab" }}</div>{{ end }}
+      {{- if eq (print .visual_result) "pass" }}<div>{{ template "statement_visual1" }}</div>{{ end }}
+      {{- if eq (print .treatment_result) "pass" }}<div>{{ template "statement_treatment" }}</div>{{ end }}
+      {{- if eq (print .visual2_result) "pass" }}<div>{{ template "statement_visual2" }}</div>{{ end }}
+    {{- end }}{{ end -}}
+  </td></tr>
+  <tr><th colspan="3">Additional Information</th></tr>
+  <tr><td colspan="3">
+    <table class="plain"><tr>
+      <td style="width:50%"><b>Import Permit Number:</b> {{ $app.import_permit_number }}</td>
+      <td><b>Date of Inspection:</b> {{ $app.proposed_inspection_date }}</td>
+    </tr></table>
+    {{- if $app.disinfestation_treatment }}<div class="pre">{{ $app.disinfestation_treatment }}</div>{{ end }}
+  </td></tr>
+</table>
+{{- end }}
+{{- end }}
+</div>
+
+<div class="certify">
+{{- if eq (print $app.certificate_type) "re-export" }}
+  {{- $re := $app.re_export }}
+  This is to certify that the plants, plant products or other regulated articles described herein were imported into Sri Lanka
+  covered by Phytosanitary Certificate No. {{ $re.original_certificate_number }},
+  {{ if eq (print $re.original_certificate_form) "certified_true_copy" }}a certified true copy{{ else }}the original{{ end }} of which is attached to this certificate;
+  that they are {{ if eq (print $re.packing) "repacked" }}repacked{{ else }}packed{{ end }}
+  in {{ if eq (print $re.containers) "new" }}new{{ else }}original{{ end }} containers;
+  that, based on the original phytosanitary certificate{{ if $re.additional_inspection }} and additional inspection{{ end }},
+  they are considered to conform with the current phytosanitary requirements of the importing contracting party;
+  and that during storage in Sri Lanka the consignment has not been subjected to the risk of infestation or infection.
+{{- else }}
+  This is to certify that the plants, plant products or other regulated articles described herein have been inspected and/or tested
+  according to appropriate official procedures and are considered to be free from the quarantine pests specified by the importing
+  contracting party and to conform with the current phytosanitary requirements of the importing contracting party, including those
+  for regulated non-quarantine pests. They are deemed to be practically free from other pests.
+{{- end }}
+</div>
+
+<table class="sign">
+  <tr>
+    <td style="width:18%">Place of Issue</td><td style="width:32%">{{ template "office" $app.nppo_office_location }}</td>
+    <td style="width:18%">Name of Authorized Officer</td><td class="blank"></td>
+  </tr>
+  <tr>
+    <td>Date</td><td class="blank"></td>
+    <td>Signature</td><td class="blank"></td>
+  </tr>
+</table>
+
+<div class="liability">No financial liability with respect to this certificate shall attach to the National Plant Quarantine Service,
+Department of Agriculture, Sri Lanka or to any of its officers or representatives.</div>
+</body>
+</html>
