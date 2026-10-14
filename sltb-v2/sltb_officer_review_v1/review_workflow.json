@@ -1,7 +1,7 @@
 {
   "id": "sltb-officer-review--review-workflow",
   "name": "SLTB Blend Sheet Review — Officer Review",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -12,7 +12,8 @@
       "type": "TASK",
       "task_template_id": "sltb-officer-review--officer-review",
       "input_mapping": {
-        "submission?": "submission"
+        "submission?": "submission",
+        "reviewform.feedback?": "previous_feedback"
       },
       "output_mapping": {
         "review_outcome": "reviewform.review_outcome",
@@ -20,6 +21,25 @@
         "levy_amount?": "reviewform.levy_amount",
         "collection_method?": "reviewform.collection_method",
         "reference_number?": "reviewform.reference_number"
+      }
+    },
+    {
+      "id": "decision_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "request_info",
+      "type": "TASK",
+      "task_template_id": "sltb-officer-review--request-info",
+      "input_mapping": {
+        "callbackToken": "replyToken",
+        "reviewform.review_outcome": "review_outcome",
+        "reviewform.feedback?": "feedback"
+      },
+      "output_mapping": {
+        "submission": "submission",
+        "callbackToken": "callbackToken"
       }
     },
     {
@@ -49,7 +69,24 @@
     {
       "id": "e2",
       "source_id": "userform",
-      "target_id": "api_call"
+      "target_id": "decision_gateway"
+    },
+    {
+      "id": "e_needs_info",
+      "source_id": "decision_gateway",
+      "target_id": "request_info",
+      "condition": "reviewform.review_outcome == 'needs_more_info'"
+    },
+    {
+      "id": "e_resubmitted",
+      "source_id": "request_info",
+      "target_id": "userform"
+    },
+    {
+      "id": "e_decided",
+      "source_id": "decision_gateway",
+      "target_id": "api_call",
+      "condition": "reviewform.review_outcome != 'needs_more_info'"
     },
     {
       "id": "e3",

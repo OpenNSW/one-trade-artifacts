@@ -3,6 +3,18 @@
   "type": "APPLICATION",
   "title": "SLTB Blend Sheet Review",
   "sections": {
+    "previous_review": {
+      "templateId": "sltb-officer-review--previous-review",
+      "title": "Previous Review",
+      "projector": "MARKDOWN",
+      "dataKey": "previous_feedback",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "previous_feedback"
+      }
+    },
     "submission_view": {
       "templateId": "sltb-submit-blendsheet--officer-view-form",
       "title": "Submitted Application",
@@ -29,7 +41,20 @@
       "visibleWhen": {
         "states": [
           "QUEUED_EXTERNALLY"
-        ]
+        ],
+        "requireDataKey": "payload"
+      }
+    },
+    "awaiting_resubmission": {
+      "templateId": "sltb-officer-review--awaiting-resubmission",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "dataKey": "feedback",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ],
+        "requireDataKey": "feedback"
       }
     }
   },

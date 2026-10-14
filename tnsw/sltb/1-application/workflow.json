@@ -1,7 +1,7 @@
 {
   "id": "sltb-submit-blendsheet-flow",
   "name": "Submit and Review Blend Sheet",
-  "version": 6,
+  "version": 7,
   "nodes": [
     {
       "id": "start",
@@ -33,14 +33,16 @@
       "input_mapping": {
         "rejection_reason?": "rejection_reason",
         "userform?": "userform",
-        "userform": "submission"
+        "userform": "submission",
+        "agency_token?": "replyToken"
       },
       "output_mapping": {
         "review_outcome": "reviewerform.review_outcome",
         "feedback?": "rejection_reason",
         "levy_amount?": "reviewerform.levy_amount",
         "collection_method?": "reviewerform.collection_method",
-        "reference_number?": "reviewerform.reference_number"
+        "reference_number?": "reviewerform.reference_number",
+        "callbackToken?": "agency_token"
       }
     },
     {

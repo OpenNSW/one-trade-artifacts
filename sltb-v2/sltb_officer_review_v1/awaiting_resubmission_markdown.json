@@ -1,0 +1,4 @@
+{
+  "id": "sltb-officer-review--awaiting-resubmission",
+  "template": "Sent back to the applicant to resubmit the blend sheet. Waiting for their resubmission.\n\n> **Your feedback**: {{.}}"
+}

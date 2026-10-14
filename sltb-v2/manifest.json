@@ -43,6 +43,24 @@
       "path": "sltb_officer_review_v1/officer_review.json"
     },
     {
+      "id": "sltb-officer-review--request-info",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb_officer_review_v1/request_info.json"
+    },
+    {
+      "id": "sltb-officer-review--previous-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_officer_review_v1/previous_review_markdown.json"
+    },
+    {
+      "id": "sltb-officer-review--awaiting-resubmission",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_officer_review_v1/awaiting_resubmission_markdown.json"
+    },
+    {
       "id": "sltb-submit-blendsheet--officer-review-form",
       "kind": "generic_template",
       "version": "",
