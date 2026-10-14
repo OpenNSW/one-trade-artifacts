@@ -1,0 +1,4 @@
+{
+  "id": "sltb-sample-schedule--awaiting-resubmission",
+  "template": "You proposed a different slot. Waiting for the applicant to accept it or suggest another.\n\n* **Date**: {{.visit_date}}\n* **Time**: {{.visit_time}}\n* **Inspector**: {{.inspector_name}}{{if .feedback}}\n\n> **Your notes**: {{.feedback}}{{end}}"
+}

@@ -1,7 +1,7 @@
 {
   "id": "fcau-warehouse-scheduling-flow",
   "name": "Warehouse Inspection Scheduling",
-  "version": 4,
+  "version": 5,
   "nodes": [
     {
       "id": "start",
@@ -27,12 +27,14 @@
         "traderinput.warehouse_location": "submission.warehouse_location",
         "traderinput.inspection_date": "submission.proposed_inspection_date",
         "scheduling.proposed_inspection_date?": "submission.proposed_inspection_date",
-        "scheduling.trader_comments?": "submission.trader_comments"
+        "scheduling.trader_comments?": "submission.trader_comments",
+        "agency_token?": "replyToken"
       },
       "output_mapping": {
         "review_outcome": "officer_review.review_outcome",
         "counter_inspection_date?": "scheduling.proposed_inspection_date",
-        "officer_comments?": "scheduling.officer_comments"
+        "officer_comments?": "scheduling.officer_comments",
+        "callbackToken?": "agency_token"
       }
     },
     {
@@ -60,6 +62,15 @@
       "id": "trader_review_gateway",
       "type": "GATEWAY",
       "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "close_review",
+      "type": "TASK",
+      "task_template_id": "fcau-warehouse-scheduling--close-review",
+      "input_mapping": {
+        "agency_token": "agency_token",
+        "trader_review.trader_decision": "payload.command"
+      }
     },
     {
       "id": "end",
@@ -102,8 +113,13 @@
     {
       "id": "e_trader_accept",
       "source_id": "trader_review_gateway",
-      "target_id": "end",
+      "target_id": "close_review",
       "condition": "trader_review.trader_decision == 'accept'"
+    },
+    {
+      "id": "e_closed",
+      "source_id": "close_review",
+      "target_id": "end"
     },
     {
       "id": "e_trader_reschedule",

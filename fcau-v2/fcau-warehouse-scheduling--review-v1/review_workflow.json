@@ -1,7 +1,7 @@
 {
   "id": "fcau-warehouse-scheduling--review-workflow",
   "name": "Warehouse Inspection Scheduling Review — Officer Review",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -12,13 +12,41 @@
       "type": "TASK",
       "task_template_id": "fcau-warehouse-scheduling--officer-review",
       "input_mapping": {
-        "submission?": "submission"
+        "submission?": "submission",
+        "reviewform?": "previous_proposal"
       },
       "output_mapping": {
         "review_outcome": "reviewform.review_outcome",
         "counter_inspection_date?": "reviewform.counter_inspection_date",
         "officer_comments?": "reviewform.officer_comments"
       }
+    },
+    {
+      "id": "decision_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "request_info",
+      "type": "TASK",
+      "task_template_id": "fcau-warehouse-scheduling--request-info",
+      "input_mapping": {
+        "callbackToken": "replyToken",
+        "reviewform.review_outcome": "review_outcome",
+        "reviewform.counter_inspection_date?": "counter_inspection_date",
+        "reviewform.officer_comments?": "officer_comments",
+        "reviewform": "proposal"
+      },
+      "output_mapping": {
+        "__command": "trader_command",
+        "submission?": "submission",
+        "callbackToken?": "callbackToken"
+      }
+    },
+    {
+      "id": "resubmission_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
       "id": "api_call",
@@ -47,7 +75,36 @@
     {
       "id": "e2",
       "source_id": "userform",
-      "target_id": "api_call"
+      "target_id": "decision_gateway"
+    },
+    {
+      "id": "e_reschedule",
+      "source_id": "decision_gateway",
+      "target_id": "request_info",
+      "condition": "reviewform.review_outcome == 'reschedule'"
+    },
+    {
+      "id": "e_reply",
+      "source_id": "request_info",
+      "target_id": "resubmission_gateway"
+    },
+    {
+      "id": "e_resubmitted",
+      "source_id": "resubmission_gateway",
+      "target_id": "userform",
+      "condition": "trader_command == 'resubmit'"
+    },
+    {
+      "id": "e_accepted",
+      "source_id": "resubmission_gateway",
+      "target_id": "end",
+      "condition": "trader_command == 'accept'"
+    },
+    {
+      "id": "e_accept",
+      "source_id": "decision_gateway",
+      "target_id": "api_call",
+      "condition": "reviewform.review_outcome == 'accept'"
     },
     {
       "id": "e3",

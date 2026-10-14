@@ -1,0 +1,9 @@
+{
+  "id": "cda-lot-adjustment-officer--withdraw",
+  "task_type": "AUTH_API_CALL",
+  "output_namespace": "withdrawresult",
+  "plugin_properties": {
+    "service_id": "cda",
+    "path": "/api/v1/callbacks/{agency_token}"
+  }
+}

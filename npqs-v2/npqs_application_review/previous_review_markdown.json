@@ -1,0 +1,4 @@
+{
+  "id": "npqs-application-review--previous-review",
+  "template": "{{if .}}\n### Previous Review\n\nYou asked the applicant for modifications. This is their resubmission.\n\n> **Your feedback**: {{.}}\n{{end}}"
+}

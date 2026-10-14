@@ -1,7 +1,7 @@
 {
   "id": "sltb-pay-levy-flow",
   "name": "Pay SLTB Levy",
-  "version": 3,
+  "version": 4,
   "nodes": [
     {
       "id": "start",
@@ -64,11 +64,15 @@
       "task_template_id": "sltb-pay-levy--review-receipt",
       "input_mapping": {
         "reference_number": "reference_number",
-        "payment.payment_slip": "payment_slip"
+        "payment.payment_slip": "payment_slip",
+        "reference_number?": "submission.reference_number",
+        "payment.payment_slip?": "submission.payment_slip",
+        "agency_token?": "replyToken"
       },
       "output_mapping": {
         "payment_review_outcome": "payment_review.payment_review_outcome",
-        "payment_feedback?": "payment_review.payment_feedback"
+        "payment_feedback?": "payment_review.payment_feedback",
+        "callbackToken?": "agency_token"
       }
     },
     {

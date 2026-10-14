@@ -1,7 +1,7 @@
 {
   "id": "cda-kernel-asycuda-approval-flow",
   "name": "Submit ASYCUDA Approval Application for Kernel Products",
-  "version": 5,
+  "version": 6,
   "nodes": [
     {
       "id": "start",
@@ -37,11 +37,13 @@
       "input_mapping": {
         "rejection_reason?": "rejection_reason",
         "userform?": "userform",
-        "userform": "submission"
+        "userform": "submission",
+        "agency_token?": "replyToken"
       },
       "output_mapping": {
         "review_outcome": "reviewerform.review_outcome",
-        "rejection_reason?": "rejection_reason"
+        "rejection_reason?": "rejection_reason",
+        "callbackToken?": "agency_token"
       }
     },
     {

@@ -1,0 +1,4 @@
+{
+  "id": "sltb-levy-payment-review-receipt--previous-review",
+  "template": "{{if .}}\n### Previous Review\n\nYou asked the applicant to re-upload the payment slip. This is their resubmission.\n\n> **Your comments**: {{.}}\n{{end}}"
+}

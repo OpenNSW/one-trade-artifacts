@@ -1,0 +1,9 @@
+{
+  "id": "cda-lot-adjustment-review--request-info",
+  "task_type": "EXTERNAL_REVIEW",
+  "output_namespace": "resubmission",
+  "plugin_properties": {
+    "service_id": "tnsw",
+    "reply_command": "needs_more_info"
+  }
+}

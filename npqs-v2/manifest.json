@@ -55,6 +55,24 @@
       "path": "npqs_application_review/officer_review.json"
     },
     {
+      "id": "npqs-application-review--request-info",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_application_review/request_info.json"
+    },
+    {
+      "id": "npqs-application-review--previous-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_application_review/previous_review_markdown.json"
+    },
+    {
+      "id": "npqs-application-review--awaiting-resubmission",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_application_review/awaiting_resubmission_markdown.json"
+    },
+    {
       "id": "npqs-apply-phyto-cert--reviewer-form",
       "kind": "generic_template",
       "version": "",
@@ -653,6 +671,24 @@
       "kind": "subtask_template",
       "version": "",
       "path": "npqs_treatment_request_review/officer_review.json"
+    },
+    {
+      "id": "npqs-treatment-request-review--request-info",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_treatment_request_review/request_info.json"
+    },
+    {
+      "id": "npqs-treatment-request-review--previous-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_treatment_request_review/previous_review_markdown.json"
+    },
+    {
+      "id": "npqs-treatment-request-review--awaiting-resubmission",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_treatment_request_review/awaiting_resubmission_markdown.json"
     },
     {
       "id": "npqs-treatment-request--reviewer-form",

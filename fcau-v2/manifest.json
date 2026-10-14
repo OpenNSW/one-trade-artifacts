@@ -43,6 +43,24 @@
       "path": "fcau_application_review_v1/officer_review.json"
     },
     {
+      "id": "fcau-application-review--request-info",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "fcau_application_review_v1/request_info.json"
+    },
+    {
+      "id": "fcau-application-review--previous-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau_application_review_v1/previous_review_markdown.json"
+    },
+    {
+      "id": "fcau-application-review--awaiting-resubmission",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau_application_review_v1/awaiting_resubmission_markdown.json"
+    },
+    {
       "id": "fcau-apply-health-cert--reviewer-form",
       "kind": "generic_template",
       "version": "",
@@ -163,6 +181,30 @@
       "path": "fcau-warehouse-scheduling--review-v1/officer_review.json"
     },
     {
+      "id": "fcau-warehouse-scheduling--request-info",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "fcau-warehouse-scheduling--review-v1/request_info.json"
+    },
+    {
+      "id": "fcau-warehouse-scheduling--previous-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau-warehouse-scheduling--review-v1/previous_review_markdown.json"
+    },
+    {
+      "id": "fcau-warehouse-scheduling--awaiting-resubmission",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau-warehouse-scheduling--review-v1/awaiting_resubmission_markdown.json"
+    },
+    {
+      "id": "fcau-warehouse-scheduling--accepted",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau-warehouse-scheduling--review-v1/accepted_markdown.json"
+    },
+    {
       "id": "fcau-warehouse-scheduling--officer-form",
       "kind": "generic_template",
       "version": "",
@@ -281,6 +323,24 @@
       "kind": "subtask_template",
       "version": "",
       "path": "fcau_post_wh_lab_fee_review_v1/officer_review.json"
+    },
+    {
+      "id": "fcau-post-wh-lab-fee-review--request-info",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "fcau_post_wh_lab_fee_review_v1/request_info.json"
+    },
+    {
+      "id": "fcau-post-wh-lab-fee-review--previous-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau_post_wh_lab_fee_review_v1/previous_review_markdown.json"
+    },
+    {
+      "id": "fcau-post-wh-lab-fee-review--awaiting-resubmission",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau_post_wh_lab_fee_review_v1/awaiting_resubmission_markdown.json"
     },
     {
       "id": "fcau-pay-post-wh-lab-fee--review-form",
@@ -521,6 +581,24 @@
       "kind": "subtask_template",
       "version": "",
       "path": "fcau_lab_fee_payment_review_v1/officer_review.json"
+    },
+    {
+      "id": "fcau-lab-fee-payment-review--request-info",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "fcau_lab_fee_payment_review_v1/request_info.json"
+    },
+    {
+      "id": "fcau-lab-fee-payment-review--previous-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau_lab_fee_payment_review_v1/previous_review_markdown.json"
+    },
+    {
+      "id": "fcau-lab-fee-payment-review--awaiting-resubmission",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau_lab_fee_payment_review_v1/awaiting_resubmission_markdown.json"
     },
     {
       "id": "fcau-pay-lab-fee--review-form",

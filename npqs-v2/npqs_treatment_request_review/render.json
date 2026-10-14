@@ -3,6 +3,18 @@
   "type": "APPLICATION",
   "title": "NPQS Treatment Request Review",
   "sections": {
+    "previous_review": {
+      "templateId": "npqs-treatment-request-review--previous-review",
+      "title": "Previous Review",
+      "projector": "MARKDOWN",
+      "dataKey": "previous_clarification_comments",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "previous_clarification_comments"
+      }
+    },
     "submission_view": {
       "templateId": "npqs-treatment-request--officer-view-form",
       "title": "Submitted Application",
@@ -29,7 +41,20 @@
       "visibleWhen": {
         "states": [
           "QUEUED_EXTERNALLY"
-        ]
+        ],
+        "requireDataKey": "payload"
+      }
+    },
+    "awaiting_resubmission": {
+      "templateId": "npqs-treatment-request-review--awaiting-resubmission",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "dataKey": "clarification_comments",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ],
+        "requireDataKey": "clarification_comments"
       }
     }
   },

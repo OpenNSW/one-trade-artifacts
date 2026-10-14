@@ -1,7 +1,7 @@
 {
   "id": "cda-lot-adjustment-review--review-workflow",
   "name": "CDA Officer Lot Adjustment Review \u2014 Officer Review",
-  "version": 3,
+  "version": 4,
   "nodes": [
     {
       "id": "start",
@@ -13,7 +13,8 @@
       "task_template_id": "cda-lot-adjustment-review--officer-review",
       "input_mapping": {
         "submission?": "submission",
-        "submission.cert_type?": "reviewform.cert_type"
+        "submission.cert_type?": "reviewform.cert_type",
+        "reviewform.adjustment_feedback?": "previous_adjustment_feedback"
       },
       "output_mapping": {
         "adjustment_outcome": "reviewform.adjustment_outcome",
@@ -21,6 +22,31 @@
         "new_salmonella_certificate_file?": "reviewform.new_salmonella_certificate_file",
         "adjustment_feedback?": "reviewform.adjustment_feedback"
       }
+    },
+    {
+      "id": "decision_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "request_info",
+      "type": "TASK",
+      "task_template_id": "cda-lot-adjustment-review--request-info",
+      "input_mapping": {
+        "callbackToken": "replyToken",
+        "reviewform.adjustment_outcome": "adjustment_outcome",
+        "reviewform.adjustment_feedback?": "adjustment_feedback"
+      },
+      "output_mapping": {
+        "__command": "trader_command",
+        "submission?": "submission",
+        "callbackToken?": "callbackToken"
+      }
+    },
+    {
+      "id": "resubmission_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
       "id": "api_call",
@@ -49,7 +75,36 @@
     {
       "id": "e2",
       "source_id": "userform",
-      "target_id": "api_call"
+      "target_id": "decision_gateway"
+    },
+    {
+      "id": "e_needs_info",
+      "source_id": "decision_gateway",
+      "target_id": "request_info",
+      "condition": "reviewform.adjustment_outcome == 'needs_more_info'"
+    },
+    {
+      "id": "e_reply",
+      "source_id": "request_info",
+      "target_id": "resubmission_gateway"
+    },
+    {
+      "id": "e_resubmitted",
+      "source_id": "resubmission_gateway",
+      "target_id": "userform",
+      "condition": "trader_command == 'resubmit'"
+    },
+    {
+      "id": "e_withdrawn",
+      "source_id": "resubmission_gateway",
+      "target_id": "end",
+      "condition": "trader_command == 'complete_application'"
+    },
+    {
+      "id": "e_approve",
+      "source_id": "decision_gateway",
+      "target_id": "api_call",
+      "condition": "reviewform.adjustment_outcome == 'approve'"
     },
     {
       "id": "e3",

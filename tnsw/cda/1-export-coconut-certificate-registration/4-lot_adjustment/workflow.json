@@ -1,7 +1,7 @@
 {
   "id": "cda-lot-adjustment-flow",
   "name": "Application for Alteration of Bag Details",
-  "version": 3,
+  "version": 4,
   "nodes": [
     {
       "id": "start",
@@ -40,26 +40,37 @@
       "type": "TASK",
       "task_template_id": "cda-lot-adjustment-officer--review",
       "input_mapping": {
-        "reference_number": "reference_number",
-        "adjustment_choice": "adjustment_choice",
-        "exporter_details": "exporter_details",
-        "cusdec_number": "cusdec_number",
-        "number_of_bags_not_shipped": "number_of_bags_not_shipped",
-        "cusdec_document": "cusdec_document",
-        "lots_to_remove": "lots_to_remove",
-        "cert_type?": "cert_type"
+        "reference_number": "submission.reference_number",
+        "adjustment_choice": "submission.adjustment_choice",
+        "exporter_details": "submission.exporter_details",
+        "cusdec_number": "submission.cusdec_number",
+        "number_of_bags_not_shipped": "submission.number_of_bags_not_shipped",
+        "cusdec_document": "submission.cusdec_document",
+        "lots_to_remove": "submission.lots_to_remove",
+        "cert_type?": "submission.cert_type",
+        "agency_token?": "replyToken"
       },
       "output_mapping": {
         "adjustment_outcome": "adjustment_outcome",
         "new_physical_certificate_file?": "physical_certificate_file",
         "new_salmonella_certificate_file?": "salmonella_certificate_file",
-        "adjustment_feedback?": "adjustment_feedback"
+        "adjustment_feedback?": "adjustment_feedback",
+        "callbackToken?": "agency_token"
       }
     },
     {
       "id": "review_gateway",
       "type": "GATEWAY",
       "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "withdraw_review",
+      "type": "TASK",
+      "task_template_id": "cda-lot-adjustment-officer--withdraw",
+      "input_mapping": {
+        "agency_token": "agency_token",
+        "adjustment_choice": "payload.command"
+      }
     },
     {
       "id": "end",
@@ -76,6 +87,12 @@
       "id": "e2",
       "source_id": "trader_request",
       "target_id": "choice_gateway"
+    },
+    {
+      "id": "e_withdraw",
+      "source_id": "choice_gateway",
+      "target_id": "withdraw_review",
+      "condition": "adjustment_choice == 'complete_application' && $env?.agency_token != nil"
     },
     {
       "id": "e_complete",
@@ -105,6 +122,11 @@
       "source_id": "review_gateway",
       "target_id": "end",
       "condition": "adjustment_outcome == 'approve'"
+    },
+    {
+      "id": "e_withdrawn",
+      "source_id": "withdraw_review",
+      "target_id": "end"
     }
   ]
 }

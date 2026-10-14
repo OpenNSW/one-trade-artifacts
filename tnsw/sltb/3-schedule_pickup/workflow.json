@@ -1,7 +1,7 @@
 {
   "id": "sltb-schedule-pickup-flow",
   "name": "Schedule Warehouse Pickup",
-  "version": 3,
+  "version": 4,
   "nodes": [
     { "id": "start", "type": "START" },
     {
@@ -32,9 +32,10 @@
       "name": "Review Suggested Pickup Schedule",
       "task_template_id": "sltb-schedule-pickup--officer-review",
       "input_mapping": {
-        "schedule.visit_date": "suggested_date",
-        "schedule.visit_time": "suggested_time",
-        "suggest.trader_notes?": "trader_notes"
+        "schedule.visit_date": "submission.suggested_date",
+        "schedule.visit_time": "submission.suggested_time",
+        "suggest.trader_notes?": "submission.trader_notes",
+        "agency_token?": "replyToken"
       },
       "output_mapping": {
         "schedule_outcome": "schedule.schedule_outcome",
@@ -42,7 +43,8 @@
         "visit_time?": "schedule.visit_time",
         "inspector_name?": "schedule.inspector_name",
         "contact_number?": "schedule.contact_number",
-        "feedback?": "schedule.reschedule_feedback"
+        "feedback?": "schedule.reschedule_feedback",
+        "callbackToken?": "agency_token"
       }
     },
     {
@@ -50,6 +52,18 @@
       "type": "GATEWAY",
       "gateway_type": "EXCLUSIVE_SPLIT",
       "name": "Officer Accepted the Suggested Slot?"
+    },
+    {
+      "id": "close_review",
+      "type": "TASK",
+      "name": "Close the SLTB Review",
+      "task_template_id": "sltb-schedule-pickup--close-review",
+      "input_mapping": {
+        "agency_token": "agency_token",
+        "suggest.response": "payload.command",
+        "schedule?": "schedule",
+        "suggest?": "suggest"
+      }
     },
     { "id": "end", "type": "END" }
   ],
@@ -65,9 +79,10 @@
     {
       "id": "e_trader_accepts",
       "source_id": "trader_response_gateway",
-      "target_id": "end",
+      "target_id": "close_review",
       "condition": "schedule.schedule_outcome == 'propose_alternative' && suggest.response == 'accept'"
     },
+    { "id": "e_closed", "source_id": "close_review", "target_id": "end" },
     { "id": "e_review_gateway", "source_id": "officer_review", "target_id": "schedule_gateway" },
     {
       "id": "e_officer_accepts",

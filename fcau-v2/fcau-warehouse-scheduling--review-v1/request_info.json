@@ -1,0 +1,9 @@
+{
+  "id": "fcau-warehouse-scheduling--request-info",
+  "task_type": "EXTERNAL_REVIEW",
+  "output_namespace": "resubmission",
+  "plugin_properties": {
+    "service_id": "tnsw",
+    "reply_command": "reschedule"
+  }
+}
