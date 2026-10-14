@@ -45,9 +45,7 @@
       },
       "output_mapping": {
         "application_review_outcome": "reviewerform.application_review_outcome",
-        "sample_inspection_required": "reviewerform.sample_inspection_required",
-        "lab_test_required": "reviewerform.lab_test_required",
-        "warehouse_inspection_required": "reviewerform.warehouse_inspection_required",
+        "commodities?": "reviewerform.commodities",
         "reference_number?": "reviewerform.reference_number",
         "rejection_reason?": "reviewerform.rejection_reason",
         "callbackToken?": "agency_token"
