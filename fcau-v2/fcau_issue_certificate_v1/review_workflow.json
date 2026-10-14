@@ -18,9 +18,11 @@
       "output_mapping": {
         "__command": "command",
         "certificate_decision": "reviewform.certificate_decision",
+        "items?": "reviewform.items",
         "certificate_id?": "reviewform.certificate_id",
         "certificate?": "reviewform.certificate",
         "supporting_documents?": "reviewform.supporting_documents",
+        "authorized_signature?": "reviewform.authorized_signature",
         "rejection_reason?": "reviewform.rejection_reason"
       }
     },
