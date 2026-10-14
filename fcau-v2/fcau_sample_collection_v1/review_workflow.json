@@ -12,11 +12,12 @@
       "type": "TASK",
       "task_template_id": "fcau-sample-collection--officer-review",
       "input_mapping": {
-        "submission?": "submission"
+        "submission?": "submission",
+        "submission.items?": "reviewform.items"
       },
       "output_mapping": {
         "__command": "command",
-        "initial_sample": "reviewform.initial_sample",
+        "items": "reviewform.items",
         "received_at?": "reviewform.received_at",
         "notes?": "reviewform.notes"
       }
