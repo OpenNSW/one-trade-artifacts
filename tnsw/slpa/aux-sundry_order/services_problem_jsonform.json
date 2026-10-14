@@ -1,4 +1,4 @@
 {
   "id": "slpa-sundry--services-problem",
-  "template": "{{if .error}}### ⚠️ No Sundry Services To Choose From\n\n{{.error}}\n{{end}}"
+  "template": "{{if .}}### ⚠️ No Sundry Services To Choose From\n\n{{.}}\n{{end}}"
 }

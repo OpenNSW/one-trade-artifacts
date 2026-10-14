@@ -19,7 +19,7 @@
       "templateId": "slpa-sundry--services-problem",
       "title": "SLPA Sundry Services",
       "projector": "MARKDOWN",
-      "dataKey": "services",
+      "dataKey": "services_error",
       "visibleWhen": {
         "states": [
           "PENDING_USER"
