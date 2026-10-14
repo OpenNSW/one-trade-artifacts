@@ -1,0 +1,14 @@
+{
+  "id": "npqs-certificate-issue--generate-ephyto-reference",
+  "task_type": "REFID_GENERATOR",
+  "output_namespace": "refid",
+  "plugin_properties": {
+    "ids": [
+      {
+        "path": "/ephyto_reference_number",
+        "issuer": "NPQS",
+        "id_type": "ephyto_certificate_ref"
+      }
+    ]
+  }
+}

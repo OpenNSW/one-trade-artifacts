@@ -1,0 +1,14 @@
+{
+  "id": "npqs-sample-receive--generate-sample-number",
+  "task_type": "REFID_GENERATOR",
+  "output_namespace": "refid",
+  "plugin_properties": {
+    "ids": [
+      {
+        "path": "/sample_number",
+        "issuer": "NPQS",
+        "id_type": "lab_sample_ref"
+      }
+    ]
+  }
+}

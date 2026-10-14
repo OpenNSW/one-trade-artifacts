@@ -1,7 +1,7 @@
 {
   "id": "npqs-issue-certificate",
   "name": "Issue Phytosanitary Certificate",
-  "version": 2,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
@@ -12,7 +12,7 @@
       "type": "TASK",
       "task_template_id": "npqs-issue-certificate--officer-review",
       "input_mapping": {
-        "ephyto_required?": "ephyto_required",
+        "ephyto_required?": "submission.ephyto_required",
         "reference_number?": "reference_number",
         "reference_number": "submission.reference_number",
         "userform": "submission",
@@ -22,7 +22,9 @@
         "certificate_id": "certificate_id",
         "certificate_url?": "certificate_url",
         "comments?": "comments",
-        "certificate_items?": "certificate_items"
+        "replacement_reference_number?": "reviewerform.replacement_reference_number",
+        "certificate_items?": "certificate_items",
+        "ephyto_reference_number?": "reviewerform.ephyto_reference_number"
       }
     },
     {

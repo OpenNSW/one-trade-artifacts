@@ -55,6 +55,12 @@
       "path": "npqs_application_review/officer_review.json"
     },
     {
+      "id": "npqs-application-review--generate-reference-number",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_application_review/generate_reference_number.json"
+    },
+    {
       "id": "npqs-application-review--request-info",
       "kind": "subtask_template",
       "version": "",
@@ -133,6 +139,12 @@
       "path": "npqs_sample_draw/officer_review.json"
     },
     {
+      "id": "npqs-sample-draw--generate-sample-number",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_sample_draw/generate_sample_number.json"
+    },
+    {
       "id": "npqs-draw-sample--officer-draw-form",
       "kind": "generic_template",
       "version": "",
@@ -191,6 +203,12 @@
       "kind": "subtask_template",
       "version": "",
       "path": "npqs_sample_receive/officer_review.json"
+    },
+    {
+      "id": "npqs-sample-receive--generate-sample-number",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_sample_receive/generate_sample_number.json"
     },
     {
       "id": "npqs-draw-sample--officer-receive-form",
@@ -1171,6 +1189,12 @@
       "path": "npqs_certificate_issue/officer_review.json"
     },
     {
+      "id": "npqs-certificate-issue--generate-replacement-reference",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_certificate_issue/generate_replacement_reference.json"
+    },
+    {
       "id": "npqs-issue-certificate--officer-form",
       "kind": "generic_template",
       "version": "",
@@ -1187,6 +1211,18 @@
       "kind": "generic_template",
       "version": "",
       "path": "npqs_certificate_issue/userinput_jsonform.json"
+    },
+    {
+      "id": "npqs-certificate-issue--generate-ephyto-reference",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_certificate_issue/generate_ephyto_reference.json"
+    },
+    {
+      "id": "npqs-certificate-issue--generate-both-references",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_certificate_issue/generate_both_references.json"
     }
   ]
 }

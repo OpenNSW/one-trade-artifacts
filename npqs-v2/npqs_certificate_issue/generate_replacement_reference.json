@@ -1,0 +1,14 @@
+{
+  "id": "npqs-certificate-issue--generate-replacement-reference",
+  "task_type": "REFID_GENERATOR",
+  "output_namespace": "refid",
+  "plugin_properties": {
+    "ids": [
+      {
+        "path": "/replacement_reference_number",
+        "issuer": "NPQS",
+        "id_type": "replacement_certificate_ref"
+      }
+    ]
+  }
+}

@@ -1,11 +1,44 @@
 {
   "id": "npqs-certificate-issue--review-workflow",
   "name": "NPQS Certificate Issuance — Officer Review",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
       "type": "START"
+    },
+    {
+      "id": "reference_type_split",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "generate_both_references",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-issue--generate-both-references",
+      "input_mapping": {},
+      "output_mapping": {
+        "refid.ephyto_reference_number": "reviewform.ephyto_reference_number",
+        "refid.replacement_reference_number": "reviewform.replacement_reference_number"
+      }
+    },
+    {
+      "id": "generate_ephyto_reference",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-issue--generate-ephyto-reference",
+      "input_mapping": {},
+      "output_mapping": {
+        "refid.ephyto_reference_number": "reviewform.ephyto_reference_number"
+      }
+    },
+    {
+      "id": "generate_replacement_reference",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-issue--generate-replacement-reference",
+      "input_mapping": {},
+      "output_mapping": {
+        "refid.replacement_reference_number": "reviewform.replacement_reference_number"
+      }
     },
     {
       "id": "userform",
@@ -13,7 +46,11 @@
       "task_template_id": "npqs-certificate-issue--officer-review",
       "input_mapping": {
         "submission?": "submission",
-        "submission.certificate_items?": "reviewform.certificate_items"
+        "submission.certificate_items?": "reviewform.certificate_items",
+        "submission.certificate_type?": "reviewform.certificate_type",
+        "reviewform.replacement_reference_number?": "reviewform.replacement_reference_number",
+        "submission.ephyto_required?": "reviewform.ephyto_required",
+        "reviewform.ephyto_reference_number?": "reviewform.ephyto_reference_number"
       },
       "output_mapping": {
         "__command": "command",
@@ -45,15 +82,54 @@
     {
       "id": "e1",
       "source_id": "start",
+      "target_id": "reference_type_split"
+    },
+    {
+      "id": "e_both",
+      "source_id": "reference_type_split",
+      "target_id": "generate_both_references",
+      "condition": "submission.ephyto_required == true && submission.certificate_type == 're-export'"
+    },
+    {
+      "id": "e_ephyto",
+      "source_id": "reference_type_split",
+      "target_id": "generate_ephyto_reference",
+      "condition": "submission.ephyto_required == true && submission.certificate_type != 're-export'"
+    },
+    {
+      "id": "e_replacement",
+      "source_id": "reference_type_split",
+      "target_id": "generate_replacement_reference",
+      "condition": "submission.ephyto_required != true && submission.certificate_type == 're-export'"
+    },
+    {
+      "id": "e_no_generated_reference",
+      "source_id": "reference_type_split",
+      "target_id": "userform",
+      "condition": "submission.ephyto_required != true && submission.certificate_type != 're-export'"
+    },
+    {
+      "id": "e_both_to_form",
+      "source_id": "generate_both_references",
       "target_id": "userform"
     },
     {
-      "id": "e2",
+      "id": "e_ephyto_to_form",
+      "source_id": "generate_ephyto_reference",
+      "target_id": "userform"
+    },
+    {
+      "id": "e_replacement_to_form",
+      "source_id": "generate_replacement_reference",
+      "target_id": "userform"
+    },
+    {
+      "id": "e_form_to_api",
       "source_id": "userform",
       "target_id": "api_call"
     },
     {
-      "id": "e3",
+      "id": "e_api_to_end",
       "source_id": "api_call",
       "target_id": "end"
     }

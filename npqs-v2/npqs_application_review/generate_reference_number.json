@@ -1,0 +1,17 @@
+{
+  "id": "npqs-application-review--generate-reference-number",
+  "task_type": "REFID_GENERATOR",
+  "output_namespace": "refid",
+  "plugin_properties": {
+    "ids": [
+      {
+        "path": "/reference_number",
+        "issuer": "NPQS",
+        "id_type": "phyto_request_ref",
+        "params": {
+          "officeLocation": "/officeLocation"
+        }
+      }
+    ]
+  }
+}

@@ -61,6 +61,7 @@
       "task_template_id": "npqs-apply-phyto-cert--external-review",
       "input_mapping": {
         "userform?": "userform",
+        "reviewerform.reference_number?": "submission.reference_number",
         "userform": "submission",
         "agency_token?": "replyToken"
       },
