@@ -5,25 +5,41 @@
     "type": "object",
     "additionalProperties": false,
     "properties": {
-      "inspection_outcome": {
-        "type": "string",
-        "title": "Visual Inspection Result",
-        "oneOf": [
-          {
-            "const": "pass",
-            "title": "Passed (Satisfactory)"
+      "items": {
+        "type": "array",
+        "title": "Warehouse Inspection Result (Per Item)",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Item ID"
+            },
+            "description_of_food": {
+              "type": "string",
+              "title": "Description of consignment and quantity"
+            },
+            "warehouse_result": {
+              "type": "string",
+              "title": "Visual Inspection Result",
+              "oneOf": [
+                {
+                  "const": "pass",
+                  "title": "Passed (Satisfactory)"
+                },
+                {
+                  "const": "fail",
+                  "title": "Failed (Deficiencies Found)"
+                }
+              ],
+              "default": "pass"
+            }
           },
-          {
-            "const": "fail",
-            "title": "Failed (Deficiencies Found)"
-          },
-          {
-            "const": "lab_test_required",
-            "title": "Requires Laboratory Testing"
-          }
-        ],
-        "default": "pass",
-        "example": "pass"
+          "required": [
+            "id",
+            "warehouse_result"
+          ]
+        }
       },
       "inspection_comments": {
         "type": "string",
@@ -39,7 +55,7 @@
       }
     },
     "required": [
-      "inspection_outcome"
+      "items"
     ]
   },
   "uiSchema": {
@@ -47,7 +63,39 @@
     "elements": [
       {
         "type": "Control",
-        "scope": "#/properties/inspection_outcome"
+        "scope": "#/properties/items",
+        "options": {
+          "detail": {
+            "type": "VerticalLayout",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/id",
+                    "options": {
+                      "readOnly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/description_of_food",
+                    "options": {
+                      "readOnly": true
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/warehouse_result"
+              }
+            ]
+          },
+          "addable": false,
+          "removable": false
+        }
       },
       {
         "type": "Control",

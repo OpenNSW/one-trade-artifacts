@@ -15,10 +15,11 @@
         "reference_number": "submission.reference_number",
         "userform": "submission",
         "warehouse_location": "submission.warehouse_location",
-        "inspection_date": "submission.inspection_date"
+        "inspection_date": "submission.inspection_date",
+        "commodities?": "submission.items"
       },
       "output_mapping": {
-        "inspection_outcome": "inspection_outcome",
+        "items": "commodities",
         "revised_inspection_date?": "revised_inspection_date"
       }
     },

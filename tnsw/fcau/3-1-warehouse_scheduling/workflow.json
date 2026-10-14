@@ -11,7 +11,9 @@
       "id": "trader_initial_scheduling",
       "type": "TASK",
       "task_template_id": "fcau-warehouse-scheduling--trader-input",
-      "input_mapping": {},
+      "input_mapping": {
+        "commodities?": "commodities"
+      },
       "output_mapping": {
         "warehouse_location": "traderinput.warehouse_location",
         "inspection_date": "traderinput.inspection_date"
@@ -28,7 +30,8 @@
         "traderinput.inspection_date": "submission.proposed_inspection_date",
         "scheduling.proposed_inspection_date?": "submission.proposed_inspection_date",
         "scheduling.trader_comments?": "submission.trader_comments",
-        "agency_token?": "replyToken"
+        "agency_token?": "replyToken",
+        "commodities?": "submission.items"
       },
       "output_mapping": {
         "review_outcome": "officer_review.review_outcome",
