@@ -1,16 +1,16 @@
 {
-  "id": "customs-boat-note-approval--review:render",
+  "id": "efc-boat-note-approval--review:render",
   "type": "APPLICATION",
-  "title": "Customs Boat Note Approval",
+  "title": "EFC Boat Note Approval",
   "sections": {
     "submission_view": {
-      "templateId": "customs-boat-note--user-form",
+      "templateId": "efc-boat-note--user-form",
       "title": "Submitted Boat Note",
       "projector": "FORM",
       "dataKey": "submission"
     },
     "review_form": {
-      "templateId": "customs-boat-note-approval--officer-form",
+      "templateId": "efc-boat-note-approval--officer-form",
       "title": "Officer Review",
       "projector": "FORM",
       "dataKey": "reviewform",
@@ -23,7 +23,7 @@
       ]
     },
     "status_message": {
-      "templateId": "customs-boat-note-approval--submission-view",
+      "templateId": "efc-boat-note-approval--submission-view",
       "title": "Review Status",
       "projector": "MARKDOWN",
       "visibleWhen": {

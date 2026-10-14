@@ -1,6 +1,6 @@
 {
-  "id": "customs_boat_note_approval_v1",
-  "name": "Customs Boat Note Approval",
+  "id": "efc_boat_note_approval_v1",
+  "name": "EFC Boat Note Approval",
   "version": 2,
   "nodes": [
     {
@@ -10,7 +10,7 @@
     {
       "id": "review_boat_note",
       "type": "TASK",
-      "task_template_id": "customs-boat-note-approval--review",
+      "task_template_id": "efc-boat-note-approval--review",
       "input_mapping": {
         "callbackToken": "callbackToken",
         "notification?": "submission",

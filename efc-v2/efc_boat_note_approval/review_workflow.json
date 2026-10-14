@@ -1,6 +1,6 @@
 {
-  "id": "customs-boat-note-approval--review-workflow",
-  "name": "Customs Boat Note Approval — Officer Review",
+  "id": "efc-boat-note-approval--review-workflow",
+  "name": "EFC Boat Note Approval — Officer Review",
   "version": 2,
   "nodes": [
     {
@@ -10,7 +10,7 @@
     {
       "id": "userform",
       "type": "TASK",
-      "task_template_id": "customs-boat-note-approval--officer-review",
+      "task_template_id": "efc-boat-note-approval--officer-review",
       "input_mapping": {
         "submission?": "submission"
       },
@@ -22,7 +22,7 @@
     {
       "id": "api_call",
       "type": "TASK",
-      "task_template_id": "customs-boat-note-approval--notify-decision",
+      "task_template_id": "efc-boat-note-approval--notify-decision",
       "input_mapping": {
         "callbackToken": "callbackToken",
         "reviewform?": "reviewform",

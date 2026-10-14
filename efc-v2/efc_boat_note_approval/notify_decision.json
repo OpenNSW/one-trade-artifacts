@@ -1,5 +1,5 @@
 {
-  "id": "customs-boat-note-approval--notify-decision",
+  "id": "efc-boat-note-approval--notify-decision",
   "task_type": "AUTH_API_CALL",
   "output_namespace": "notifyresult",
   "plugin_properties": {
