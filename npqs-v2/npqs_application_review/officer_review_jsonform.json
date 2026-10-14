@@ -112,7 +112,7 @@
             },
             "lab_sample_method": {
               "type": "string",
-              "title": "Sample Drop-off Method",
+              "title": "Sample Drop-off Method for Laboratory Testing",
               "oneOf": [
                 {
                   "const": "drop_off_npqs",
@@ -150,22 +150,18 @@
             },
             "visual_sample_method": {
               "type": "string",
-              "title": "Visual Sample Drop-off Method",
+              "title": "Visual Sample Collection",
               "oneOf": [
                 {
-                  "const": "drop_off_npqs",
-                  "title": "Sample Drop-off to NPQS"
-                },
-                {
-                  "const": "drop_off_pqs",
-                  "title": "Sample Drop-off to PQS"
+                  "const": "drop_off",
+                  "title": "Sample Drop Off"
                 },
                 {
                   "const": "drawn_at_site",
                   "title": "Sample Drawn by Officer at Site"
                 }
               ],
-              "default": "drop_off_pqs"
+              "default": "drop_off"
             },
             "treatment_required": {
               "type": "boolean",
