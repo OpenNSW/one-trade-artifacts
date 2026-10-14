@@ -13,13 +13,12 @@
       "task_template_id": "fcau-application-review--officer-review",
       "input_mapping": {
         "submission?": "submission",
-        "reviewform.rejection_reason?": "previous_rejection_reason"
+        "reviewform.rejection_reason?": "previous_rejection_reason",
+        "submission.commodities?": "reviewform.commodities"
       },
       "output_mapping": {
         "application_review_outcome": "reviewform.application_review_outcome",
-        "sample_inspection_required": "reviewform.sample_inspection_required",
-        "lab_test_required": "reviewform.lab_test_required",
-        "warehouse_inspection_required": "reviewform.warehouse_inspection_required",
+        "commodities?": "reviewform.commodities",
         "reference_number?": "reviewform.reference_number",
         "rejection_reason?": "reviewform.rejection_reason"
       }
@@ -36,9 +35,7 @@
       "input_mapping": {
         "callbackToken": "replyToken",
         "reviewform.application_review_outcome": "application_review_outcome",
-        "reviewform.sample_inspection_required": "sample_inspection_required",
-        "reviewform.lab_test_required": "lab_test_required",
-        "reviewform.warehouse_inspection_required": "warehouse_inspection_required",
+        "reviewform.commodities?": "commodities",
         "reviewform.reference_number?": "reference_number",
         "reviewform.rejection_reason?": "rejection_reason"
       },
