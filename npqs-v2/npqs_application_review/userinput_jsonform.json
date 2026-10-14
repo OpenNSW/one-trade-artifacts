@@ -134,7 +134,7 @@
       },
       "transit_countries": {
         "type": "array",
-        "title": "Transit Countries (if required)",
+        "title": "Transit Countries",
         "items": {
           "type": "object",
           "title": "Transit Country",
@@ -1017,6 +1017,7 @@
             },
             "packages_count": {
               "type": "integer",
+              "minimum": 0,
               "title": "Number of Packages",
               "example": 25
             },
@@ -1586,7 +1587,7 @@
                 ]
               }
             },
-            "label": "Transit Countries (if required)"
+            "label": "Transit Countries"
           }
         ]
       },
