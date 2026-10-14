@@ -1,0 +1,9 @@
+{
+  "id": "sltb-schedule-pickup--close-review",
+  "task_type": "AUTH_API_CALL",
+  "output_namespace": "closeresult",
+  "plugin_properties": {
+    "service_id": "sltb",
+    "path": "/api/v1/callbacks/{agency_token}"
+  }
+}

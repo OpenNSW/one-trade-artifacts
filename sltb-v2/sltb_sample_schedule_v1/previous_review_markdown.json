@@ -1,0 +1,4 @@
+{
+  "id": "sltb-sample-schedule--previous-review",
+  "template": "{{if .}}\n### Previous Review\n\nYou proposed {{.visit_date}}, {{.visit_time}}. The applicant suggested the slot below instead.\n{{if .feedback}}\n> **Your notes**: {{.feedback}}\n{{end}}{{end}}"
+}

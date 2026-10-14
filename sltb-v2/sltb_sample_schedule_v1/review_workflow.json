@@ -1,7 +1,7 @@
 {
   "id": "sltb-sample-schedule--review-workflow",
   "name": "Review Pickup Schedule — Officer Review",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -15,7 +15,8 @@
         "submission?": "submission",
         "submission.suggested_date?": "reviewform.suggested_date",
         "submission.suggested_time?": "reviewform.suggested_time",
-        "submission.trader_notes?": "reviewform.trader_notes"
+        "submission.trader_notes?": "reviewform.trader_notes",
+        "reviewform?": "previous_proposal"
       },
       "output_mapping": {
         "schedule_outcome": "reviewform.schedule_outcome",
@@ -25,6 +26,36 @@
         "contact_number?": "reviewform.contact_number",
         "feedback?": "reviewform.feedback"
       }
+    },
+    {
+      "id": "decision_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "request_info",
+      "type": "TASK",
+      "task_template_id": "sltb-sample-schedule--request-info",
+      "input_mapping": {
+        "callbackToken": "replyToken",
+        "reviewform.schedule_outcome": "schedule_outcome",
+        "reviewform.visit_date?": "visit_date",
+        "reviewform.visit_time?": "visit_time",
+        "reviewform.inspector_name?": "inspector_name",
+        "reviewform.contact_number?": "contact_number",
+        "reviewform.feedback?": "feedback",
+        "reviewform": "proposal"
+      },
+      "output_mapping": {
+        "__command": "trader_command",
+        "submission?": "submission",
+        "callbackToken?": "callbackToken"
+      }
+    },
+    {
+      "id": "resubmission_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
       "id": "api_call",
@@ -53,7 +84,36 @@
     {
       "id": "e2",
       "source_id": "userform",
-      "target_id": "api_call"
+      "target_id": "decision_gateway"
+    },
+    {
+      "id": "e_propose",
+      "source_id": "decision_gateway",
+      "target_id": "request_info",
+      "condition": "reviewform.schedule_outcome == 'propose_alternative'"
+    },
+    {
+      "id": "e_reply",
+      "source_id": "request_info",
+      "target_id": "resubmission_gateway"
+    },
+    {
+      "id": "e_resubmitted",
+      "source_id": "resubmission_gateway",
+      "target_id": "userform",
+      "condition": "trader_command == 'resubmit'"
+    },
+    {
+      "id": "e_accepted",
+      "source_id": "resubmission_gateway",
+      "target_id": "end",
+      "condition": "trader_command == 'accept'"
+    },
+    {
+      "id": "e_approve",
+      "source_id": "decision_gateway",
+      "target_id": "api_call",
+      "condition": "reviewform.schedule_outcome == 'approve'"
     },
     {
       "id": "e3",

@@ -319,6 +319,30 @@
       "path": "sltb_sample_schedule_v1/officer_review.json"
     },
     {
+      "id": "sltb-sample-schedule--request-info",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb_sample_schedule_v1/request_info.json"
+    },
+    {
+      "id": "sltb-sample-schedule--previous-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_sample_schedule_v1/previous_review_markdown.json"
+    },
+    {
+      "id": "sltb-sample-schedule--awaiting-resubmission",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_sample_schedule_v1/awaiting_resubmission_markdown.json"
+    },
+    {
+      "id": "sltb-sample-schedule--accepted",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_sample_schedule_v1/accepted_markdown.json"
+    },
+    {
       "id": "sltb-schedule-pickup--officer-review-form",
       "kind": "generic_template",
       "version": "",

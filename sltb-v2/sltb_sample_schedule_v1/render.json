@@ -3,6 +3,18 @@
   "type": "APPLICATION",
   "title": "Review Pickup Schedule",
   "sections": {
+    "previous_review": {
+      "templateId": "sltb-sample-schedule--previous-review",
+      "title": "Previous Review",
+      "projector": "MARKDOWN",
+      "dataKey": "previous_proposal",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "previous_proposal"
+      }
+    },
     "review_form": {
       "templateId": "sltb-schedule-pickup--officer-review-form",
       "title": "Officer Review",
@@ -23,7 +35,31 @@
       "visibleWhen": {
         "states": [
           "QUEUED_EXTERNALLY"
-        ]
+        ],
+        "requireDataKey": "payload"
+      }
+    },
+    "awaiting_resubmission": {
+      "templateId": "sltb-sample-schedule--awaiting-resubmission",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "dataKey": "proposal",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ],
+        "requireDataKey": "proposal"
+      }
+    },
+    "accepted": {
+      "templateId": "sltb-sample-schedule--accepted",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "COMPLETED"
+        ],
+        "requireDataKey": "resubmission"
       }
     }
   },

@@ -2995,6 +2995,12 @@
       "path": "sltb/3-schedule_pickup/officer_review.json"
     },
     {
+      "id": "sltb-schedule-pickup--close-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb/3-schedule_pickup/close_review.json"
+    },
+    {
       "id": "sltb-schedule-pickup--officer-review-form",
       "kind": "generic_template",
       "version": "",
