@@ -258,6 +258,16 @@
         ],
         "default": "10"
       },
+      "vessel_name": {
+        "type": "string",
+        "title": "Vessel / Carrier Name",
+        "example": "Indian Empress"
+      },
+      "voyage_number": {
+        "type": "string",
+        "title": "Voyage / Flight Number",
+        "example": "MV-2026-118"
+      },
       "commodities": {
         "type": "array",
         "title": "Commodities List",
@@ -1497,6 +1507,19 @@
           {
             "type": "Control",
             "scope": "#/properties/transport_mode"
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/vessel_name"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/voyage_number"
+              }
+            ]
           }
         ]
       },
