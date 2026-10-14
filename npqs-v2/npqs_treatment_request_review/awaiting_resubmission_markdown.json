@@ -1,0 +1,4 @@
+{
+  "id": "npqs-treatment-request-review--awaiting-resubmission",
+  "template": "Sent back to the applicant to revise the treatment request. Waiting for their resubmission.\n\n> **Your feedback**: {{.}}"
+}

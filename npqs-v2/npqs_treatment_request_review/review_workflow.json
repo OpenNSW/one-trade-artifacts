@@ -1,7 +1,7 @@
 {
   "id": "npqs-treatment-request-review--review-workflow",
   "name": "NPQS Treatment Request Review — Officer Review",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -13,12 +13,33 @@
       "task_template_id": "npqs-treatment-request-review--officer-review",
       "input_mapping": {
         "submission?": "submission",
-        "submission.treatment_items?": "reviewform.treatment_items"
+        "submission.treatment_items?": "reviewform.treatment_items",
+        "reviewform.clarification_comments?": "previous_clarification_comments"
       },
       "output_mapping": {
         "treatment_request_outcome": "reviewform.treatment_request_outcome",
         "clarification_comments?": "reviewform.clarification_comments",
         "treatment_items?": "reviewform.treatment_items"
+      }
+    },
+    {
+      "id": "decision_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "request_info",
+      "type": "TASK",
+      "task_template_id": "npqs-treatment-request-review--request-info",
+      "input_mapping": {
+        "callbackToken": "replyToken",
+        "reviewform.treatment_request_outcome": "treatment_request_outcome",
+        "reviewform.clarification_comments?": "clarification_comments",
+        "reviewform.treatment_items?": "treatment_items"
+      },
+      "output_mapping": {
+        "submission": "submission",
+        "callbackToken": "callbackToken"
       }
     },
     {
@@ -48,7 +69,24 @@
     {
       "id": "e2",
       "source_id": "userform",
-      "target_id": "api_call"
+      "target_id": "decision_gateway"
+    },
+    {
+      "id": "e_needs_info",
+      "source_id": "decision_gateway",
+      "target_id": "request_info",
+      "condition": "reviewform.treatment_request_outcome == 'needs_more_info'"
+    },
+    {
+      "id": "e_resubmitted",
+      "source_id": "request_info",
+      "target_id": "userform"
+    },
+    {
+      "id": "e_approve",
+      "source_id": "decision_gateway",
+      "target_id": "api_call",
+      "condition": "reviewform.treatment_request_outcome == 'approve'"
     },
     {
       "id": "e3",
