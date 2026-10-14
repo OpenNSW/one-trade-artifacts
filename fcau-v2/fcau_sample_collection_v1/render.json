@@ -2,6 +2,11 @@
   "id": "fcau-sample-collection--review:render",
   "type": "APPLICATION",
   "title": "FCAU Sample Handover & Receipt Registry",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
   "sections": {
     "submission_view": {
       "templateId": "fcau-apply-health-cert--user-form",

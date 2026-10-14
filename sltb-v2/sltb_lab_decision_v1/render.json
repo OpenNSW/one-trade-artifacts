@@ -2,6 +2,11 @@
   "id": "sltb-lab-decision--review:render",
   "type": "APPLICATION",
   "title": "Lab Testing Decision",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
   "sections": {
     "review_form": {
       "templateId": "sltb-lab-decision--officer-form",

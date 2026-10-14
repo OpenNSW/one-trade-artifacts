@@ -1,0 +1,30 @@
+name: Validate agency task roles
+
+on:
+  pull_request:
+    paths:
+      - "*-v2/**"
+      - ".github/scripts/check_agency_authz.py"
+      - ".github/workflows/validate-agency-authz.yml"
+  push:
+    branches: [main]
+    paths:
+      - "*-v2/**"
+      - ".github/scripts/check_agency_authz.py"
+      - ".github/workflows/validate-agency-authz.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Check every agency task declares who may act
+        run: python .github/scripts/check_agency_authz.py

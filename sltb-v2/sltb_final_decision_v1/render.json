@@ -2,6 +2,11 @@
   "id": "sltb-final-decision--review:render",
   "type": "APPLICATION",
   "title": "SLTB Final Decision",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
   "sections": {
     "submission_view": {
       "templateId": "sltb-submit-blendsheet--user-form",

@@ -2,6 +2,11 @@
   "id": "fcau-lab-fee-payment-review--review:render",
   "type": "APPLICATION",
   "title": "FCAU Lab Test Fee Payment Review",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
   "sections": {
     "previous_review": {
       "templateId": "fcau-lab-fee-payment-review--previous-review",

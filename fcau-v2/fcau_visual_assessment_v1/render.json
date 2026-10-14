@@ -2,6 +2,11 @@
   "id": "fcau-visual-assessment--review:render",
   "type": "APPLICATION",
   "title": "FCAU Visual Sample Assessment",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
   "sections": {
     "submission_view": {
       "templateId": "fcau-apply-health-cert--user-form",

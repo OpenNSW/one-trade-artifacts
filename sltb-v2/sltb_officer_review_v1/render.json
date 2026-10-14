@@ -2,6 +2,11 @@
   "id": "sltb-officer-review--review:render",
   "type": "APPLICATION",
   "title": "SLTB Blend Sheet Review",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
   "sections": {
     "previous_review": {
       "templateId": "sltb-officer-review--previous-review",

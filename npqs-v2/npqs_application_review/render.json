@@ -2,6 +2,11 @@
   "id": "npqs-application-review--review:render",
   "type": "APPLICATION",
   "title": "NPQS Application Review",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
   "sections": {
     "previous_review": {
       "templateId": "npqs-application-review--previous-review",

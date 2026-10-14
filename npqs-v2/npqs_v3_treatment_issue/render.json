@@ -2,6 +2,11 @@
   "id": "npqs-v3-treatment-issue--review:render",
   "type": "APPLICATION",
   "title": "NPQS NPQS Treatment Certificate",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
   "sections": {
     "submission_view": {
       "templateId": "npqs-apply-phyto-cert--officer-view-form",

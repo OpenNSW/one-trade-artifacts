@@ -4,5 +4,18 @@
   "output_namespace": "reviewform",
   "plugin_properties": {
     "user_jsonforms_id": "cda-kcfn-inspection--officer-review-form"
-  }
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "PENDING_USER": {
+          "submit": [
+            "officer"
+          ]
+        }
+      }
+    }
+  ]
 }

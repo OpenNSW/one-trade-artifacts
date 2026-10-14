@@ -2,6 +2,11 @@
   "id": "npqs-treatment-request-review--review:render",
   "type": "APPLICATION",
   "title": "NPQS Treatment Request Review",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
   "sections": {
     "previous_review": {
       "templateId": "npqs-treatment-request-review--previous-review",

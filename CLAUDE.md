@@ -167,6 +167,16 @@ See `tnsw/fcau/3-2-warehouse_inspection/workflow.json` or
   agency folder (`cda/`, `efc/`, `fcau/`, `npqs/`, `sltb/`) has its own manifest, but
   the `tnsw/` side has a single shared `tnsw/manifest.json` covering every agency's step
   artifacts — there is no per-agency manifest under `tnsw/<agency>/`.
+- Every task of an agency deployment (`cda-v2/`, `efc-v2/`, `fcau-v2/`, `npqs-v2/`,
+  `sltb-v2/`) declares who may act on it. An agency has no per-case owner, so any role
+  in its catalog owns every injected workflow, and only the task narrows that. Each
+  officer (`USER_INPUT`) step carries an `authz` extension, state → command → logical
+  roles (deny by default, so list every command the render config offers):
+  `"extensions": [{"id": "authz", "phase": "PRE_RESUME", "properties": {"PENDING_USER": {"submit": ["officer"]}}}]`.
+  Each task's render config carries `"read": {"roles": ["officer"]}`, an ordered
+  precedence list. The names are the agency catalog's (`configs/agency/<agency>/catalog.json`
+  in nsw-srilanka). `.github/scripts/check_agency_authz.py` fails CI on a task that omits
+  either.
 - Single repo owner: `@Aravinda-HWK` (`.github/CODEOWNERS`, wildcard rule).
 
 ## When asked to explain or change a flow

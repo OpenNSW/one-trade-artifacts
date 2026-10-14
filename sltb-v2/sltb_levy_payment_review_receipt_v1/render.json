@@ -2,6 +2,11 @@
   "id": "sltb-levy-payment-review-receipt--review:render",
   "type": "APPLICATION",
   "title": "SLTB Levy Payment Receipt Verification",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
   "sections": {
     "previous_review": {
       "templateId": "sltb-levy-payment-review-receipt--previous-review",

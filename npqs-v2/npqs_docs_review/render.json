@@ -2,6 +2,11 @@
   "id": "npqs-docs-review--review:render",
   "type": "APPLICATION",
   "title": "NPQS Documents Review",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
   "sections": {
     "submission_view": {
       "templateId": "npqs-upload-docs--trader-form",

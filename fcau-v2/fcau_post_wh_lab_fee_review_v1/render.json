@@ -2,6 +2,11 @@
   "id": "fcau-post-wh-lab-fee-review--review:render",
   "type": "APPLICATION",
   "title": "FCAU Post-Warehouse Lab Test Fee Payment Review",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
   "sections": {
     "previous_review": {
       "templateId": "fcau-post-wh-lab-fee-review--previous-review",

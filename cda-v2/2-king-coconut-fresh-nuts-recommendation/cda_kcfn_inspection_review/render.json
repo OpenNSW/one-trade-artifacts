@@ -2,6 +2,11 @@
   "id": "cda-kcfn-inspection-review--review:render",
   "type": "APPLICATION",
   "title": "CDA Container Inspection & Recommendation",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
   "sections": {
     "previous_review": {
       "templateId": "cda-kcfn-inspection-review--previous-review",
