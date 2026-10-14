@@ -559,6 +559,24 @@
       "path": "fcau_lab_fee_payment_review_v1/officer_review.json"
     },
     {
+      "id": "fcau-lab-fee-payment-review--request-info",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "fcau_lab_fee_payment_review_v1/request_info.json"
+    },
+    {
+      "id": "fcau-lab-fee-payment-review--previous-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau_lab_fee_payment_review_v1/previous_review_markdown.json"
+    },
+    {
+      "id": "fcau-lab-fee-payment-review--awaiting-resubmission",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau_lab_fee_payment_review_v1/awaiting_resubmission_markdown.json"
+    },
+    {
       "id": "fcau-pay-lab-fee--review-form",
       "kind": "generic_template",
       "version": "",
