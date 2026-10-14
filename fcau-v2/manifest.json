@@ -43,6 +43,24 @@
       "path": "fcau_application_review_v1/officer_review.json"
     },
     {
+      "id": "fcau-application-review--request-info",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "fcau_application_review_v1/request_info.json"
+    },
+    {
+      "id": "fcau-application-review--previous-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau_application_review_v1/previous_review_markdown.json"
+    },
+    {
+      "id": "fcau-application-review--awaiting-resubmission",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau_application_review_v1/awaiting_resubmission_markdown.json"
+    },
+    {
       "id": "fcau-apply-health-cert--reviewer-form",
       "kind": "generic_template",
       "version": "",

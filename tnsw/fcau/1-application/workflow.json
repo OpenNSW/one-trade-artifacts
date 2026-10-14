@@ -1,7 +1,7 @@
 {
   "id": "fcau-apply-health-cert-flow",
   "name": "Apply for Health Certificate",
-  "version": 5,
+  "version": 6,
   "nodes": [
     {
       "id": "start",
@@ -46,7 +46,8 @@
       "task_template_id": "fcau-apply-health-cert--external-review",
       "input_mapping": {
         "userform?": "userform",
-        "userform": "submission"
+        "userform": "submission",
+        "agency_token?": "replyToken"
       },
       "output_mapping": {
         "application_review_outcome": "reviewerform.application_review_outcome",
@@ -54,7 +55,8 @@
         "lab_test_required": "reviewerform.lab_test_required",
         "warehouse_inspection_required": "reviewerform.warehouse_inspection_required",
         "reference_number?": "reviewerform.reference_number",
-        "rejection_reason?": "reviewerform.rejection_reason"
+        "rejection_reason?": "reviewerform.rejection_reason",
+        "callbackToken?": "agency_token"
       }
     },
     {
