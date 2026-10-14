@@ -1,0 +1,95 @@
+{
+  "id": "slpa-sundry--user-form",
+  "title": "Raise SLPA Sundry Order",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "parentInvoiceNo": {
+        "type": "string",
+        "title": "Parent Invoice No",
+        "description": "The SLPA invoice of the service order these services add to. SLPA finds the declaration and its containers from it.",
+        "minLength": 1
+      },
+      "lines": {
+        "type": "array",
+        "title": "Sundry Services",
+        "description": "One line per service, against the container it is for.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "containerNo": {
+              "type": "string",
+              "title": "Container No",
+              "description": "A container on the parent service order.",
+              "minLength": 1
+            },
+            "serviceId": {
+              "type": "string",
+              "title": "Sundry Service",
+              "description": "The SLPA sundry service to order for this container, from the list SLPA offers."
+            },
+            "quantity": {
+              "type": "integer",
+              "title": "Quantity",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          "required": [
+            "containerNo",
+            "serviceId",
+            "quantity"
+          ]
+        },
+        "minItems": 1
+      },
+      "additionalNote": {
+        "type": "string",
+        "title": "Additional Note",
+        "description": "Optional. Reaches SLPA with the order."
+      }
+    },
+    "required": [
+      "parentInvoiceNo",
+      "lines"
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Group",
+        "label": "1. Parent Order",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/parentInvoiceNo"
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "label": "2. Sundry Services",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/lines"
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "label": "3. Notes",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/additionalNote",
+            "options": {
+              "multi": true
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
