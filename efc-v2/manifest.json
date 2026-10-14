@@ -55,6 +55,12 @@
       "path": "efc_boat_note_approval/submission_view_markdown.json"
     },
     {
+      "id": "efc-boat-note-approval--boat-note-document",
+      "kind": "generic_template",
+      "version": "",
+      "path": "efc_boat_note_approval/boat_note_document_markdown.json"
+    },
+    {
       "id": "efc-boat-note--user-form",
       "kind": "generic_template",
       "version": "",

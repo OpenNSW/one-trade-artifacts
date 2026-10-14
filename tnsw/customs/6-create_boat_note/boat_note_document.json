@@ -1,0 +1,9 @@
+{
+  "id": "customs-boat-note--generate-document",
+  "task_type": "HTML_DOCUMENT_GENERATOR",
+  "output_namespace": "boat_note_document",
+  "plugin_properties": {
+    "template_id": "customs-boat-note--html",
+    "filename": "boat-note.html"
+  }
+}

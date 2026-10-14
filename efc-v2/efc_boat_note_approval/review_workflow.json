@@ -16,6 +16,7 @@
       },
       "output_mapping": {
         "approval_status": "reviewform.approval_status",
+        "approved_boat_note_file": "reviewform.approved_boat_note_file",
         "remarks?": "reviewform.remarks"
       }
     },
