@@ -271,6 +271,12 @@
       "path": "npqs/1-apply/status_awaiting_jsonform.json"
     },
     {
+      "id": "npqs-phyto-certificate--html",
+      "kind": "html_template",
+      "version": "",
+      "path": "npqs/1-apply/phyto_certificate.gohtml"
+    },
+    {
       "id": "npqs-apply-phyto-cert--previous-feedback",
       "kind": "generic_template",
       "version": "",
