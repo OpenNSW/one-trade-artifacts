@@ -1,0 +1,6 @@
+{
+  "id": "npqs-consignment-inspection--review",
+  "type": "APPLICATION",
+  "workflow_id": "npqs-consignment-inspection--review-workflow",
+  "render_config_id": "npqs-consignment-inspection--review:render"
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "npqs_v3_treatment_issue_supervised",
+  "workflow": "npqs_v3_treatment_issue_supervised",
+  "meta": {
+    "title": "NPQS NPQS Treatment Certificate and Supervision Report",
+    "description": "Officer issues the NPQS treatment certificate and the supervision report for the items treated by NPQS."
+  }
+}

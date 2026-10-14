@@ -1,0 +1,59 @@
+{
+  "id": "sltb-sample-ack-dropoff--review-workflow",
+  "name": "Acknowledge Sample Drop-off — Officer Review",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "userform",
+      "type": "TASK",
+      "task_template_id": "sltb-sample-ack-dropoff--officer-review",
+      "input_mapping": {
+        "submission?": "submission"
+      },
+      "output_mapping": {
+        "__command": "command",
+        "sample_number": "reviewform.sample_number",
+        "officer_ack": "reviewform.officer_ack",
+        "receipt_notes?": "reviewform.receipt_notes"
+      }
+    },
+    {
+      "id": "api_call",
+      "type": "TASK",
+      "task_template_id": "sltb-sample-ack-dropoff--notify-decision",
+      "input_mapping": {
+        "callbackToken": "callbackToken",
+        "reviewform?": "reviewform",
+        "submission?": "submission",
+        "taskId": "taskId",
+        "command": "payload.command",
+        "reviewform": "payload.payload"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "userform"
+    },
+    {
+      "id": "e2",
+      "source_id": "userform",
+      "target_id": "api_call"
+    },
+    {
+      "id": "e3",
+      "source_id": "api_call",
+      "target_id": "end"
+    }
+  ]
+}

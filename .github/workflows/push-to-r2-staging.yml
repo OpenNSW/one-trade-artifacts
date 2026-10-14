@@ -36,11 +36,14 @@ jobs:
             --exclude "*" \
             --include "cda/*" \
             --include "cda-v2/*" \
-            --include "customs/*" \
-            --include "customs-v2/*" \
+            --include "efc/*" \
+            --include "efc-v2/*" \
             --include "fcau/*" \
+            --include "fcau-v2/*" \
             --include "npqs/*" \
+            --include "npqs-v2/*" \
             --include "sltb/*" \
+            --include "sltb-v2/*" \
             --include "tnsw/*" \
             --delete \
             ${{ inputs.dryrun && '--dryrun' || '' }}

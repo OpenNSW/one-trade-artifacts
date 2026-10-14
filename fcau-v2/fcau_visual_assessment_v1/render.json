@@ -1,0 +1,45 @@
+{
+  "id": "fcau-visual-assessment--review:render",
+  "type": "APPLICATION",
+  "title": "FCAU Visual Sample Assessment",
+  "sections": {
+    "submission_view": {
+      "templateId": "fcau-apply-health-cert--user-form",
+      "title": "Submitted Application",
+      "projector": "FORM",
+      "dataKey": "submission"
+    },
+    "review_form": {
+      "templateId": "fcau-visual-assessment--reviewer-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Review",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "status_message": {
+      "templateId": "fcau-visual-assessment--submission-view",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}

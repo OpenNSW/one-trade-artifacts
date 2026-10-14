@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "npqs_treatment_cert_issue",
+  "workflow": "npqs_treatment_cert_issue",
+  "meta": {
+    "title": "NPQS Issue Treatment Certificate",
+    "description": "Officer issues the treatment certificate."
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "id": "sltb-levy-payment-review-receipt--review-workflow",
+  "name": "SLTB Levy Payment Receipt Verification — Officer Review",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "userform",
+      "type": "TASK",
+      "task_template_id": "sltb-levy-payment-review-receipt--officer-review",
+      "input_mapping": {
+        "submission?": "submission"
+      },
+      "output_mapping": {
+        "payment_review_outcome": "reviewform.payment_review_outcome",
+        "payment_feedback?": "reviewform.payment_feedback"
+      }
+    },
+    {
+      "id": "api_call",
+      "type": "TASK",
+      "task_template_id": "sltb-levy-payment-review-receipt--notify-decision",
+      "input_mapping": {
+        "callbackToken": "callbackToken",
+        "reviewform?": "reviewform",
+        "submission?": "submission",
+        "taskId": "taskId",
+        "reviewform.payment_review_outcome": "payload.command",
+        "reviewform": "payload.payload"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "userform"
+    },
+    {
+      "id": "e2",
+      "source_id": "userform",
+      "target_id": "api_call"
+    },
+    {
+      "id": "e3",
+      "source_id": "api_call",
+      "target_id": "end"
+    }
+  ]
+}

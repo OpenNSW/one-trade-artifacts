@@ -376,7 +376,9 @@
                 ]
               }
             ]
-          }
+          },
+          "addable": false,
+          "removable": false
         }
       }
     ]

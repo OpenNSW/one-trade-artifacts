@@ -1,0 +1,39 @@
+{
+  "id": "sltb-sample-schedule--review:render",
+  "type": "APPLICATION",
+  "title": "Review Pickup Schedule",
+  "sections": {
+    "review_form": {
+      "templateId": "sltb-schedule-pickup--officer-review-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Review",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "status_message": {
+      "templateId": "sltb-sample-schedule--submission-view",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}

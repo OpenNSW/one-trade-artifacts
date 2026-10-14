@@ -1,0 +1,58 @@
+{
+  "id": "sltb-lab-decision--review-workflow",
+  "name": "Lab Testing Decision — Officer Review",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "userform",
+      "type": "TASK",
+      "task_template_id": "sltb-lab-decision--officer-review",
+      "input_mapping": {
+        "submission?": "submission",
+        "submission.sample_number?": "reviewform.sample_number"
+      },
+      "output_mapping": {
+        "lab_testing_required": "reviewform.lab_testing_required",
+        "decision_notes?": "reviewform.decision_notes"
+      }
+    },
+    {
+      "id": "api_call",
+      "type": "TASK",
+      "task_template_id": "sltb-lab-decision--notify-decision",
+      "input_mapping": {
+        "callbackToken": "callbackToken",
+        "reviewform?": "reviewform",
+        "submission?": "submission",
+        "taskId": "taskId",
+        "reviewform.lab_testing_required": "payload.command",
+        "reviewform": "payload.payload"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "userform"
+    },
+    {
+      "id": "e2",
+      "source_id": "userform",
+      "target_id": "api_call"
+    },
+    {
+      "id": "e3",
+      "source_id": "api_call",
+      "target_id": "end"
+    }
+  ]
+}

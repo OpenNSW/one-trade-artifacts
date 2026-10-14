@@ -1,0 +1,6 @@
+{
+  "id": "fcau-visual-assessment--review",
+  "type": "APPLICATION",
+  "workflow_id": "fcau-visual-assessment--review-workflow",
+  "render_config_id": "fcau-visual-assessment--review:render"
+}

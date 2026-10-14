@@ -1,0 +1,6 @@
+{
+  "id": "sltb-officer-review--review",
+  "type": "APPLICATION",
+  "workflow_id": "sltb-officer-review--review-workflow",
+  "render_config_id": "sltb-officer-review--review:render"
+}

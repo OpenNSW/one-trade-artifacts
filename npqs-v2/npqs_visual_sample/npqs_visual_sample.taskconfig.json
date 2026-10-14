@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "npqs_visual_sample",
+  "workflow": "npqs_visual_sample",
+  "meta": {
+    "title": "NPQS Visual Sample Inspection",
+    "description": "Officer physical sample inspection outcome recording."
+  }
+}

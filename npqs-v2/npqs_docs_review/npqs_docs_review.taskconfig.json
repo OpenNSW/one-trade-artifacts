@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "npqs_docs_review",
+  "workflow": "npqs_docs_review",
+  "meta": {
+    "title": "NPQS Documents Review",
+    "description": "Officer reviews additional uploaded documents."
+  }
+}

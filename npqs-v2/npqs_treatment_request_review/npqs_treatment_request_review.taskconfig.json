@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "npqs_treatment_request_review",
+  "workflow": "npqs_treatment_request_review",
+  "meta": {
+    "title": "NPQS Treatment Request Review",
+    "description": "Officer reviews the treatment request and specifies provider/supervision requirements."
+  }
+}

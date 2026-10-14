@@ -1,0 +1,52 @@
+{
+  "id": "efc-boat-note-approval--officer-form",
+  "title": "Approve Boat Note",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "approval_status": {
+        "type": "string",
+        "title": "Approval Outcome",
+        "oneOf": [
+          { "const": "approved", "title": "Approve Boat Note" }
+        ],
+        "default": "approved"
+      },
+      "approved_boat_note_file": {
+        "type": "string",
+        "format": "file",
+        "title": "Approved Boat Note (PDF)",
+        "x-file": {
+          "accept": ".pdf",
+          "maxSize": 10485760
+        }
+      },
+      "remarks": {
+        "type": "string",
+        "title": "Officer Remarks",
+        "example": "All container seals verified. Boat note approved."
+      }
+    },
+    "required": [
+      "approval_status",
+      "approved_boat_note_file"
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/approval_status"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/approved_boat_note_file"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/remarks"
+      }
+    ]
+  }
+}

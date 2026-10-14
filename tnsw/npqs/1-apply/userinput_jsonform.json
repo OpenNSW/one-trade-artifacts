@@ -347,6 +347,7 @@
             "quantity_net_weight": {
               "type": "number",
               "title": "Net Weight",
+              "exclusiveMinimum": 0,
               "example": 500
             },
             "quantity_net_weight_unit": {
@@ -391,6 +392,7 @@
             "quantity_gross_weight": {
               "type": "number",
               "title": "Gross Weight",
+              "exclusiveMinimum": 0,
               "example": 550
             },
             "quantity_gross_weight_unit": {
@@ -435,6 +437,7 @@
             "packages_count": {
               "type": "integer",
               "title": "Number of Packages",
+              "exclusiveMinimum": 0,
               "example": 25
             },
             "packages_description": {

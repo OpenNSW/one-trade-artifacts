@@ -1,0 +1,45 @@
+{
+  "id": "sltb-officer-review--review:render",
+  "type": "APPLICATION",
+  "title": "SLTB Blend Sheet Review",
+  "sections": {
+    "submission_view": {
+      "templateId": "sltb-submit-blendsheet--officer-view-form",
+      "title": "Submitted Application",
+      "projector": "FORM",
+      "dataKey": "submission"
+    },
+    "review_form": {
+      "templateId": "sltb-submit-blendsheet--officer-review-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Review",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "status_message": {
+      "templateId": "sltb-officer-review--submission-view",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}
