@@ -3,6 +3,18 @@
   "type": "APPLICATION",
   "title": "Warehouse Inspection Scheduling Review",
   "sections": {
+    "previous_review": {
+      "templateId": "fcau-warehouse-scheduling--previous-review",
+      "title": "Previous Review",
+      "projector": "MARKDOWN",
+      "dataKey": "previous_proposal",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "previous_proposal"
+      }
+    },
     "submission_view": {
       "templateId": "fcau-warehouse-scheduling--user-form",
       "title": "Submitted Application",
@@ -29,7 +41,31 @@
       "visibleWhen": {
         "states": [
           "QUEUED_EXTERNALLY"
-        ]
+        ],
+        "requireDataKey": "payload"
+      }
+    },
+    "awaiting_resubmission": {
+      "templateId": "fcau-warehouse-scheduling--awaiting-resubmission",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "dataKey": "proposal",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ],
+        "requireDataKey": "proposal"
+      }
+    },
+    "accepted": {
+      "templateId": "fcau-warehouse-scheduling--accepted",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "COMPLETED"
+        ],
+        "requireDataKey": "resubmission"
       }
     }
   },

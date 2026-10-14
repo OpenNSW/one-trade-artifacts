@@ -1,0 +1,4 @@
+{
+  "id": "fcau-warehouse-scheduling--awaiting-resubmission",
+  "template": "You proposed a new inspection date: **{{.counter_inspection_date}}**. Waiting for the applicant to accept it or suggest another.{{if .officer_comments}}\n\n> **Your comments**: {{.officer_comments}}{{end}}"
+}

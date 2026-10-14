@@ -181,6 +181,30 @@
       "path": "fcau-warehouse-scheduling--review-v1/officer_review.json"
     },
     {
+      "id": "fcau-warehouse-scheduling--request-info",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "fcau-warehouse-scheduling--review-v1/request_info.json"
+    },
+    {
+      "id": "fcau-warehouse-scheduling--previous-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau-warehouse-scheduling--review-v1/previous_review_markdown.json"
+    },
+    {
+      "id": "fcau-warehouse-scheduling--awaiting-resubmission",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau-warehouse-scheduling--review-v1/awaiting_resubmission_markdown.json"
+    },
+    {
+      "id": "fcau-warehouse-scheduling--accepted",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau-warehouse-scheduling--review-v1/accepted_markdown.json"
+    },
+    {
       "id": "fcau-warehouse-scheduling--officer-form",
       "kind": "generic_template",
       "version": "",

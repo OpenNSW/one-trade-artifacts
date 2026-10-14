@@ -1357,6 +1357,12 @@
       "path": "fcau/3-1-warehouse_scheduling/officerinput.json"
     },
     {
+      "id": "fcau-warehouse-scheduling--close-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "fcau/3-1-warehouse_scheduling/close_review.json"
+    },
+    {
       "id": "fcau-warehouse-scheduling--trader-review",
       "kind": "subtask_template",
       "version": "",

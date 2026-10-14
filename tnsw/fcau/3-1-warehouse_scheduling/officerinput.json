@@ -7,6 +7,7 @@
     "reviewer_jsonforms_id": "fcau-warehouse-scheduling--officer-form",
     "service_id": "fcau",
     "path": "/api/v1/inject",
-    "task_code": "fcau-warehouse-scheduling--review-v1"
+    "task_code": "fcau-warehouse-scheduling--review-v1",
+    "reply_command": "resubmit"
   }
 }
