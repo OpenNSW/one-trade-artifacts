@@ -1,7 +1,7 @@
 {
   "id": "cda-lot-adjustment-flow",
   "name": "Application for Alteration of Bag Details",
-  "version": 1,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
@@ -12,8 +12,11 @@
       "type": "TASK",
       "task_template_id": "cda-lot-adjustment-trader--user-input",
       "input_mapping": {
-        "certificate_id": "certificate_id",
-        "certificate_file": "certificate_file",
+        "reference_number": "reference_number",
+        "physical_certificate_id?": "physical_certificate_id",
+        "physical_certificate_file?": "physical_certificate_file",
+        "salmonella_certificate_id?": "salmonella_certificate_id",
+        "salmonella_certificate_file?": "salmonella_certificate_file",
         "adjustment_feedback?": "adjustment_feedback",
         "exporter_details?": "adjustmentform.exporter_details",
         "reference_number?": "adjustmentform.cusdec_number"
@@ -43,11 +46,13 @@
         "cusdec_number": "cusdec_number",
         "number_of_bags_not_shipped": "number_of_bags_not_shipped",
         "cusdec_document": "cusdec_document",
-        "lots_to_remove": "lots_to_remove"
+        "lots_to_remove": "lots_to_remove",
+        "cert_type?": "cert_type"
       },
       "output_mapping": {
         "adjustment_outcome": "adjustment_outcome",
-        "new_certificate_file?": "certificate_file",
+        "new_physical_certificate_file?": "physical_certificate_file",
+        "new_salmonella_certificate_file?": "salmonella_certificate_file",
         "adjustment_feedback?": "adjustment_feedback"
       }
     },

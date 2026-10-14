@@ -1,0 +1,48 @@
+{
+  "id": "npqs-visual2-inspection-flow:render",
+  "type": "APPLICATION",
+  "title": "[NPQS] Visual Inspection 2",
+  "sections": {
+    "assessment_outcome": {
+      "templateId": "npqs-visual2-inspection--status",
+      "title": "Visual Inspection 2 Results",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "requireDataKey": "reviewerform"
+      }
+    },
+    "status_message": {
+      "templateId": "npqs-visual2-inspection--status",
+      "title": "Inspection Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER",
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    },
+    "submission_form": {
+      "templateId": "npqs-visual2-inspection--trader-schedule-form",
+      "title": "Schedule Visual Inspection 2",
+      "projector": "FORM",
+      "dataKey": "traderinput",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Inspection Schedule",
+          "element": "primary_action"
+        }
+      ]
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}

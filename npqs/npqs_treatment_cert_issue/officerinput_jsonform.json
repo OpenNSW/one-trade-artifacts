@@ -98,10 +98,11 @@
               },
               {
                 "type": "Control",
-                "scope": "#/properties/commodity_common_name",
+                "scope": "#/properties/commodity_common_name/properties/label",
                 "options": {
                   "readOnly": true
-                }
+                },
+                "label": "Commodity Name"
               }
             ]
           },

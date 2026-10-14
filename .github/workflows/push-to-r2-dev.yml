@@ -1,12 +1,14 @@
 name: Push to R2 (dev)
 
 on:
-  push:
-    branches: [main]
-  # Dispatchable as well, so a branch can be put in front of nsw-dev before it
-  # is merged. The staging sync has carried this since it was written; without
-  # it the dev bucket can only ever hold main, and a change has to be merged to
-  # be tried.
+  # Manual only for now. Syncing on every push to main breaks the nsw-srilanka
+  # dev environment until ArgoCD deployment is enabled for it, so the push
+  # trigger stays off until then. Restore it with:
+  #   push:
+  #     branches: [main]
+  #
+  # Dispatching also lets a branch be put in front of nsw-dev before it is
+  # merged.
   workflow_dispatch:
     inputs:
       dryrun:
@@ -41,10 +43,15 @@ jobs:
             --endpoint-url "https://${{ vars.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com" \
             --exclude "*" \
             --include "cda/*" \
-            --include "customs/*" \
+            --include "cda-v2/*" \
+            --include "efc/*" \
+            --include "efc-v2/*" \
             --include "fcau/*" \
+            --include "fcau-v2/*" \
             --include "npqs/*" \
+            --include "npqs-v2/*" \
             --include "sltb/*" \
+            --include "sltb-v2/*" \
             --include "tnsw/*" \
             --delete \
             ${{ inputs.dryrun && '--dryrun' || '' }}

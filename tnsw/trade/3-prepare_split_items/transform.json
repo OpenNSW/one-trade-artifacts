@@ -9,6 +9,21 @@
       "npqs-export-phytosanitary-reg": [
         "npqs-export-phytosanitary-reg"
       ],
+      "npqs-v3-export-phytosanitary-reg": [
+        "npqs-v3-export-phytosanitary-reg"
+      ],
+      "npqs-v3-test-lab-reg": [
+        "npqs-v3-test-lab-reg"
+      ],
+      "npqs-v3-test-visual1-reg": [
+        "npqs-v3-test-visual1-reg"
+      ],
+      "npqs-v3-test-treatment-reg": [
+        "npqs-v3-test-treatment-reg"
+      ],
+      "npqs-v3-test-visual2-reg": [
+        "npqs-v3-test-visual2-reg"
+      ],
       "cda-certificate-reg": [
         "cda-certificate-reg"
       ],

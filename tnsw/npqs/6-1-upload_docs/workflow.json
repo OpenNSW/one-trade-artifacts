@@ -1,7 +1,7 @@
 {
   "id": "npqs-upload-docs",
   "name": "Upload Relevant Documents",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -12,6 +12,8 @@
       "type": "TASK",
       "task_template_id": "npqs-upload-docs--user-input",
       "input_mapping": {
+        "docs_review_outcome?": "docs_review_outcome",
+        "review_comments?": "review_comments",
         "reference_number": "reference_number",
         "userform": "userform",
         "prior_invoice_file_url?": "traderinput.invoice_file_url",

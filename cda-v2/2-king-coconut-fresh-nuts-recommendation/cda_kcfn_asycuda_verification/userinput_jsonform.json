@@ -1,0 +1,72 @@
+{
+  "id": "cda-kcfn-upload-docs--user-form",
+  "title": "Upload Necessary Documents",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "recommendation_letter_file": {
+        "type": "string",
+        "format": "file",
+        "title": "Signed Recommendation Letter (PDF)",
+        "readOnly": true
+      },
+      "commercial_invoice": {
+        "type": "string",
+        "format": "file",
+        "title": "Commercial Invoice",
+        "example": "https://trader-uploads.example.gov.lk/CDA-KCFN-2026-00123-commercial-invoice.pdf"
+      },
+      "packing_list": {
+        "type": "string",
+        "format": "file",
+        "title": "Packing List",
+        "example": "https://trader-uploads.example.gov.lk/CDA-KCFN-2026-00123-packing-list.pdf"
+      },
+      "additional_documents": {
+        "type": "array",
+        "title": "Additional Documents",
+        "description": "Upload any additional supporting documents, if applicable. Multiple files can be attached.",
+        "items": {
+          "type": "string",
+          "format": "file"
+        },
+        "minItems": 1,
+        "x-file": {
+          "maxFiles": 10
+        },
+        "example": [
+          "https://trader-uploads.example.gov.lk/CDA-KCFN-2026-00123-additional-document-1.pdf",
+          "https://trader-uploads.example.gov.lk/CDA-KCFN-2026-00123-additional-document-2.pdf"
+        ]
+      }
+    },
+    "required": [
+      "commercial_invoice",
+      "packing_list"
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/recommendation_letter_file",
+        "options": {
+          "readonly": true
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/commercial_invoice"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/packing_list"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/additional_documents"
+      }
+    ]
+  }
+}

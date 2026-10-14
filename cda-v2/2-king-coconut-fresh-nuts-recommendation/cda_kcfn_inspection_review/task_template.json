@@ -1,0 +1,6 @@
+{
+  "id": "cda-kcfn-inspection-review--review",
+  "type": "APPLICATION",
+  "workflow_id": "cda-kcfn-inspection-review--review-workflow",
+  "render_config_id": "cda-kcfn-inspection-review--review:render"
+}

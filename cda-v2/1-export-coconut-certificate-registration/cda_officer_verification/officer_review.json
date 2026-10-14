@@ -1,0 +1,8 @@
+{
+  "id": "cda-officer-verification--officer-review",
+  "task_type": "USER_INPUT",
+  "output_namespace": "reviewform",
+  "plugin_properties": {
+    "user_jsonforms_id": "cda-apply-coconut-cert--officer-verification-form"
+  }
+}

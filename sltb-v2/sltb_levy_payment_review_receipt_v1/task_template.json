@@ -1,0 +1,6 @@
+{
+  "id": "sltb-levy-payment-review-receipt--review",
+  "type": "APPLICATION",
+  "workflow_id": "sltb-levy-payment-review-receipt--review-workflow",
+  "render_config_id": "sltb-levy-payment-review-receipt--review:render"
+}

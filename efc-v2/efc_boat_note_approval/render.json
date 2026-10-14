@@ -1,0 +1,45 @@
+{
+  "id": "efc-boat-note-approval--review:render",
+  "type": "APPLICATION",
+  "title": "EFC Boat Note Approval",
+  "sections": {
+    "submission_view": {
+      "templateId": "efc-boat-note--user-form",
+      "title": "Submitted Boat Note",
+      "projector": "FORM",
+      "dataKey": "submission"
+    },
+    "review_form": {
+      "templateId": "efc-boat-note-approval--officer-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Review",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "status_message": {
+      "templateId": "efc-boat-note-approval--submission-view",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}

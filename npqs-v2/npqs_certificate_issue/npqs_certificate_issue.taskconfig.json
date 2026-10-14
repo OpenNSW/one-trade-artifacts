@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "npqs_certificate_issue",
+  "workflow": "npqs_certificate_issue",
+  "meta": {
+    "title": "NPQS Certificate Issuance",
+    "description": "Officer issues the final Phytosanitary Certificate."
+  }
+}

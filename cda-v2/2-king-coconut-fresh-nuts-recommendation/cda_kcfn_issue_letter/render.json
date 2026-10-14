@@ -1,0 +1,45 @@
+{
+  "id": "cda-kcfn-issue-letter--review:render",
+  "type": "APPLICATION",
+  "title": "CDA Officer Recommendation Letter Issuance",
+  "sections": {
+    "submission_view": {
+      "templateId": "cda-kcfn-issue-letter--apply-view-form",
+      "title": "Submitted Application",
+      "projector": "FORM",
+      "dataKey": "submission"
+    },
+    "review_form": {
+      "templateId": "cda-kcfn-issue-letter--officer-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Issue Recommendation Letter",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "status_message": {
+      "templateId": "cda-kcfn-issue-letter--submission-view",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "npqs-v3-treatment-final-review:render",
+  "type": "REVIEW",
+  "title": "[NPQS] Treatment Review",
+  "sections": {
+    "assessment_outcome": {
+      "templateId": "npqs-v3-treatment-final-review--status",
+      "title": "Treatment Results",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "requireDataKey": "reviewerform"
+      }
+    },
+    "status_message": {
+      "templateId": "npqs-v3-treatment-final-review--status",
+      "title": "Treatment Review Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    }
+  }
+}

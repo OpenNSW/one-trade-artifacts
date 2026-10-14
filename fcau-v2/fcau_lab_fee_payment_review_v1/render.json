@@ -1,0 +1,45 @@
+{
+  "id": "fcau-lab-fee-payment-review--review:render",
+  "type": "APPLICATION",
+  "title": "FCAU Lab Test Fee Payment Review",
+  "sections": {
+    "submission_view": {
+      "templateId": "fcau-pay-lab-fee--upload-form",
+      "title": "Submitted Application",
+      "projector": "FORM",
+      "dataKey": "submission"
+    },
+    "review_form": {
+      "templateId": "fcau-pay-lab-fee--review-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Review",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "status_message": {
+      "templateId": "fcau-lab-fee-payment-review--submission-view",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}

@@ -7,7 +7,6 @@
       "templateId": "cda-apply-coconut-cert--verified-message",
       "title": "Verification Status",
       "projector": "MARKDOWN",
-      "dataKey": "userform",
       "visibleWhen": {
         "states": [
           "COMPLETED"

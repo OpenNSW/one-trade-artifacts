@@ -1,0 +1,25 @@
+{
+  "id": "npqs-visual2-decision:render",
+  "type": "REVIEW",
+  "title": "[NPQS] Visual Inspection 2 Decision",
+  "sections": {
+    "assessment_outcome": {
+      "templateId": "npqs-visual2-decision--status",
+      "title": "Visual Inspection 2 Decision",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "requireDataKey": "reviewerform"
+      }
+    },
+    "status_message": {
+      "templateId": "npqs-visual2-decision--status",
+      "title": "Visual Inspection 2 Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    }
+  }
+}

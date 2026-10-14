@@ -13,7 +13,7 @@
     "outcomeField": "schedule_outcome",
     "statusMap": {
       "approve": "APPROVED",
-      "propose_alternative": "APPROVED"
+      "propose_alternative": "FEEDBACK_REQUESTED"
     }
   },
   "permissions": [

@@ -40,13 +40,168 @@
             },
             "include_in_certificate": {
               "type": "boolean",
-              "title": "Include on Certificate",
-              "default": true
+              "title": "Include on Certificate"
+            },
+            "sample_test_result": {
+              "type": "string",
+              "title": "Lab Test Result",
+              "readOnly": true,
+              "oneOf": [
+                {
+                  "const": "pass",
+                  "title": "Pass"
+                },
+                {
+                  "const": "fail_resubmit",
+                  "title": "Fail (resubmission allowed)"
+                },
+                {
+                  "const": "fail_final",
+                  "title": "Fail"
+                },
+                {
+                  "const": "skipped",
+                  "title": "Skipped"
+                }
+              ],
+              "default": "skipped"
+            },
+            "visual_result": {
+              "type": "string",
+              "title": "Visual Inspection 1 Result",
+              "readOnly": true,
+              "oneOf": [
+                {
+                  "const": "pass",
+                  "title": "Pass"
+                },
+                {
+                  "const": "fail",
+                  "title": "Fail"
+                },
+                {
+                  "const": "skipped",
+                  "title": "Skipped"
+                }
+              ],
+              "default": "skipped"
+            },
+            "treatment_result": {
+              "type": "string",
+              "title": "Treatment Result",
+              "readOnly": true,
+              "oneOf": [
+                {
+                  "const": "pass",
+                  "title": "Pass"
+                },
+                {
+                  "const": "fail",
+                  "title": "Fail"
+                },
+                {
+                  "const": "skipped",
+                  "title": "Skipped"
+                }
+              ],
+              "default": "skipped"
+            },
+            "visual2_result": {
+              "type": "string",
+              "title": "Visual Inspection 2 Result",
+              "readOnly": true,
+              "oneOf": [
+                {
+                  "const": "pass",
+                  "title": "Pass"
+                },
+                {
+                  "const": "fail",
+                  "title": "Fail"
+                },
+                {
+                  "const": "skipped",
+                  "title": "Skipped"
+                }
+              ],
+              "default": "skipped"
+            },
+            "commodity_botanical_name": {
+              "type": "string",
+              "title": "Botanical Name",
+              "readOnly": true
             }
           },
           "required": [
             "id"
-          ]
+          ],
+          "if": {
+            "anyOf": [
+              {
+                "properties": {
+                  "sample_test_result": {
+                    "enum": [
+                      "fail_final",
+                      "fail_resubmit"
+                    ]
+                  }
+                },
+                "required": [
+                  "sample_test_result"
+                ]
+              },
+              {
+                "properties": {
+                  "visual_result": {
+                    "enum": [
+                      "fail"
+                    ]
+                  }
+                },
+                "required": [
+                  "visual_result"
+                ]
+              },
+              {
+                "properties": {
+                  "treatment_result": {
+                    "enum": [
+                      "fail"
+                    ]
+                  }
+                },
+                "required": [
+                  "treatment_result"
+                ]
+              },
+              {
+                "properties": {
+                  "visual2_result": {
+                    "enum": [
+                      "fail"
+                    ]
+                  }
+                },
+                "required": [
+                  "visual2_result"
+                ]
+              }
+            ]
+          },
+          "then": {
+            "properties": {
+              "include_in_certificate": {
+                "default": false
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "include_in_certificate": {
+                "default": true
+              }
+            }
+          }
         }
       },
       "certificate_id": {
@@ -57,7 +212,7 @@
       "certificate_url": {
         "type": "string",
         "format": "file",
-        "title": "Uploaded Phytosanitary Certificate (PDF)",
+        "title": "Scanned Phytosanitary Certificate (PDF)",
         "example": "https://nsw.gov.lk/storage/certs/phytosanitary-certificate-1029.pdf"
       },
       "comments": {
@@ -68,7 +223,8 @@
     },
     "required": [
       "certificate_items",
-      "certificate_id"
+      "certificate_id",
+      "certificate_url"
     ]
   },
   "uiSchema": {
@@ -79,21 +235,67 @@
         "scope": "#/properties/certificate_items",
         "options": {
           "detail": {
-            "type": "HorizontalLayout",
+            "type": "VerticalLayout",
             "elements": [
               {
-                "type": "Control",
-                "scope": "#/properties/id",
-                "options": {
-                  "readOnly": true
-                }
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/id",
+                    "options": {
+                      "readOnly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/commodity_common_name/properties/label",
+                    "options": {
+                      "readOnly": true
+                    },
+                    "label": "Commodity Name"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/commodity_botanical_name",
+                    "options": {
+                      "readOnly": true
+                    }
+                  }
+                ]
               },
               {
-                "type": "Control",
-                "scope": "#/properties/commodity_common_name",
-                "options": {
-                  "readOnly": true
-                }
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/sample_test_result",
+                    "options": {
+                      "readOnly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/visual_result",
+                    "options": {
+                      "readOnly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/treatment_result",
+                    "options": {
+                      "readOnly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/visual2_result",
+                    "options": {
+                      "readOnly": true
+                    }
+                  }
+                ]
               },
               {
                 "type": "Control",

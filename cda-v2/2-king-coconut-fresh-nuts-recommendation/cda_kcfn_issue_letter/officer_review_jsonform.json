@@ -1,0 +1,49 @@
+{
+  "id": "cda-kcfn-issue-letter--officer-form",
+  "title": "CDA Officer Recommendation Letter Issuance",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "recommendation_letter_id": {
+        "type": "string",
+        "title": "Recommendation Letter Reference Number",
+        "example": "CDA-KCFN-REC-2026-00123"
+      },
+      "recommendation_letter_file": {
+        "type": "string",
+        "format": "file",
+        "title": "Recommendation Letter File (PDF)",
+        "example": "https://cda.gov.lk/kcfn/recommendations/CDA-KCFN-REC-2026-00123.pdf"
+      },
+      "remarks": {
+        "type": "string",
+        "title": "Officer Remarks",
+        "example": "Recommendation letter issued for the inspected and reviewed consignment."
+      }
+    },
+    "required": [
+      "recommendation_letter_id",
+      "recommendation_letter_file"
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/recommendation_letter_id"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/recommendation_letter_file"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/remarks",
+        "options": {
+          "multiLine": true
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,232 @@
+{
+  "data": [
+    {
+      "const": "001",
+      "title": "DEPARTMENT OF TRADE TARIFF & INVESTMENT POLICIES"
+    },
+    {
+      "const": "002",
+      "title": "DEPARTMENT OF FISCAL POLICY"
+    },
+    {
+      "const": "003",
+      "title": "Delivery Order (DO)"
+    },
+    {
+      "const": "004",
+      "title": "Letter of Credit (LC) or other documents relating to terms of payment"
+    },
+    {
+      "const": "005",
+      "title": "Insurance Certificate"
+    },
+    {
+      "const": "006",
+      "title": "Bill of Ladings"
+    },
+    {
+      "const": "007",
+      "title": "Export Certificate / Registration Certificate"
+    },
+    {
+      "const": "008",
+      "title": "English translation of Export Certificate"
+    },
+    {
+      "const": "009",
+      "title": "Pre Shipment Inspection Certificate"
+    },
+    {
+      "const": "010",
+      "title": "Emmission Certificate"
+    },
+    {
+      "const": "011",
+      "title": "Import Control License"
+    },
+    {
+      "const": "012",
+      "title": "Vehicle Permit"
+    },
+    {
+      "const": "013",
+      "title": "Payment Confirmation"
+    },
+    {
+      "const": "014",
+      "title": "Pro-forma Invoice"
+    },
+    {
+      "const": "015",
+      "title": "Freight Receipt"
+    },
+    {
+      "const": "016",
+      "title": "Insurance Payment Receipt"
+    },
+    {
+      "const": "017",
+      "title": "Packing List"
+    },
+    {
+      "const": "018",
+      "title": "Product Literature / Catalogues"
+    },
+    {
+      "const": "019",
+      "title": "Consumer Affairs Authority Registration Form for MRP"
+    },
+    {
+      "const": "020",
+      "title": "Working Sheets"
+    },
+    {
+      "const": "021",
+      "title": "Certificates of Origin"
+    },
+    {
+      "const": "022",
+      "title": "Quality Certificates"
+    },
+    {
+      "const": "023",
+      "title": "SLSI Notification Form"
+    },
+    {
+      "const": "024",
+      "title": "Fumigation Certificates"
+    },
+    {
+      "const": "025",
+      "title": "Cancellation of First Registration"
+    },
+    {
+      "const": "026",
+      "title": "Load Port Survey Report"
+    },
+    {
+      "const": "027",
+      "title": "Carnet Certificate"
+    },
+    {
+      "const": "028",
+      "title": "TRC Approval"
+    },
+    {
+      "const": "029",
+      "title": "NMRA Approval"
+    },
+    {
+      "const": "030",
+      "title": "Defence Ministry Approval"
+    },
+    {
+      "const": "031",
+      "title": "Atomic Energy Authority Approval"
+    },
+    {
+      "const": "032",
+      "title": "Central Environmental Authority Approval"
+    },
+    {
+      "const": "033",
+      "title": "National Film Corporation Approval"
+    },
+    {
+      "const": "034",
+      "title": "Phytosanitary Certificate"
+    },
+    {
+      "const": "035",
+      "title": "Plant Quarantine Certificate / Approval"
+    },
+    {
+      "const": "036",
+      "title": "Animal Quarantine Certificate / Approval"
+    },
+    {
+      "const": "037",
+      "title": "Waiver Approval Letters under Section 19 of CO"
+    },
+    {
+      "const": "038",
+      "title": "Waiver Approval Letters under Section 19A of CO"
+    },
+    {
+      "const": "039",
+      "title": "Certificates for Preferential Rates"
+    },
+    {
+      "const": "040",
+      "title": "Approval for Concessions(As per the List of Concessions in Schedule A)"
+    },
+    {
+      "const": "041",
+      "title": "Approval for Exemptions(As per the List of Exemptions in Schedule A)"
+    },
+    {
+      "const": "042",
+      "title": "BOI Approvals for payment of taxes"
+    },
+    {
+      "const": "043",
+      "title": "Free Re-Importation Certificate"
+    },
+    {
+      "const": "044",
+      "title": "Advance Rulings Obtained"
+    },
+    {
+      "const": "045",
+      "title": "Previous Classification Advices Obtained"
+    },
+    {
+      "const": "046",
+      "title": "Other Necessary Supporting Documents"
+    },
+    {
+      "const": "047",
+      "title": "Bill of Sight"
+    },
+    {
+      "const": "048",
+      "title": "BOI Engineering Approval"
+    },
+    {
+      "const": "049",
+      "title": "BOI Environmental Approval"
+    },
+    {
+      "const": "050",
+      "title": "BOI Investment Approval"
+    },
+    {
+      "const": "051",
+      "title": "COCONUT DEVELOPMENT AUTHORITY"
+    },
+    {
+      "const": "052",
+      "title": "DEPARTMENT OF WILDLIFE CONSERVATION"
+    },
+    {
+      "const": "053",
+      "title": "FISHERIES & AQUATIC RESOURCES"
+    },
+    {
+      "const": "054",
+      "title": "GEOLOGICAL SURVEY & MINES BUREAU"
+    },
+    {
+      "const": "055",
+      "title": "MINISTRY OF AGRICULTURE"
+    },
+    {
+      "const": "056",
+      "title": "Remittance Declaration Form"
+    },
+    {
+      "const": "999",
+      "title": "Other"
+    }
+  ]
+}

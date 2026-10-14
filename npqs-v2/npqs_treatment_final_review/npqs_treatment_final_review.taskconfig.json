@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "npqs_treatment_final_review",
+  "workflow": "npqs_treatment_final_review",
+  "meta": {
+    "title": "NPQS Treatment Review",
+    "description": "Officer reviews every treatment certificate and supervision report for the consignment and records a final result per item."
+  }
+}

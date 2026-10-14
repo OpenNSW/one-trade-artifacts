@@ -1,4 +1,4 @@
 {
   "id": "cda-view-new-certificate--completed",
-  "template": "### Application Complete\n\nYour CDA export certificate process is now complete.\n\n{{if .certificate_id}}* **Certificate ID**: `{{.certificate_id}}`\n{{end}}{{if .certificate_file}}* **Certificate File**: [📄 Download Certificate (PDF)]({{.certificate_file}})\n{{end}}* **Status**: Completed\n\nNo further action is required."
+  "template": "### Application Complete\n\nYour CDA export certificate process is now complete.\n\n{{with .physical_certificate_id}}* **Physical Quality Certificate No.**: `{{.}}`\n{{end}}{{with .physical_certificate_file}}* **Physical Quality Certificate**: [📄 Download Certificate (PDF)]({{.}})\n{{end}}{{with .salmonella_certificate_id}}* **Salmonella Free Certificate No.**: `{{.}}`\n{{end}}{{with .salmonella_certificate_file}}* **Salmonella Free Certificate**: [📄 Download Certificate (PDF)]({{.}})\n{{end}}* **Status**: Completed\n\nNo further action is required."
 }

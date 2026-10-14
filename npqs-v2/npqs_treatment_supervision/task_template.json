@@ -1,0 +1,6 @@
+{
+  "id": "npqs-treatment-supervision--review",
+  "type": "APPLICATION",
+  "workflow_id": "npqs-treatment-supervision--review-workflow",
+  "render_config_id": "npqs-treatment-supervision--review:render"
+}

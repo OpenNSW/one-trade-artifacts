@@ -1,0 +1,17 @@
+{
+  "id": "cda-review-result--generate-salmonella-certificate-id",
+  "task_type": "REFID_GENERATOR",
+  "output_namespace": "refid",
+  "plugin_properties": {
+    "ids": [
+      {
+        "path": "/salmonella_certificate_id",
+        "issuer": "CDA",
+        "id_type": "pqc_salmonella_certificate",
+        "params": {
+          "serial": "/certificate_serial"
+        }
+      }
+    ]
+  }
+}

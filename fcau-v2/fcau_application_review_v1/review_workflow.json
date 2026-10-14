@@ -1,0 +1,61 @@
+{
+  "id": "fcau-application-review--review-workflow",
+  "name": "FCAU Application Review — Officer Review",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "userform",
+      "type": "TASK",
+      "task_template_id": "fcau-application-review--officer-review",
+      "input_mapping": {
+        "submission?": "submission"
+      },
+      "output_mapping": {
+        "application_review_outcome": "reviewform.application_review_outcome",
+        "sample_inspection_required": "reviewform.sample_inspection_required",
+        "lab_test_required": "reviewform.lab_test_required",
+        "warehouse_inspection_required": "reviewform.warehouse_inspection_required",
+        "reference_number?": "reviewform.reference_number",
+        "rejection_reason?": "reviewform.rejection_reason"
+      }
+    },
+    {
+      "id": "api_call",
+      "type": "TASK",
+      "task_template_id": "fcau-application-review--notify-decision",
+      "input_mapping": {
+        "callbackToken": "callbackToken",
+        "reviewform?": "reviewform",
+        "submission?": "submission",
+        "taskId": "taskId",
+        "reviewform.application_review_outcome": "payload.command",
+        "reviewform": "payload.payload"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "userform"
+    },
+    {
+      "id": "e2",
+      "source_id": "userform",
+      "target_id": "api_call"
+    },
+    {
+      "id": "e3",
+      "source_id": "api_call",
+      "target_id": "end"
+    }
+  ]
+}

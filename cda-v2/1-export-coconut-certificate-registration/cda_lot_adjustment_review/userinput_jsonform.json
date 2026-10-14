@@ -1,0 +1,152 @@
+{
+  "id": "cda-lot-adjustment-trader--user-form",
+  "title": "Application for Alteration of Bag Details",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "adjustment_choice": {
+        "type": "string",
+        "title": "Select Action",
+        "oneOf": [
+          {
+            "const": "complete_application",
+            "title": "Complete Application & Finish"
+          },
+          {
+            "const": "request_lot_adjustment",
+            "title": "Application for Alteration of Bag Details"
+          }
+        ],
+        "default": "complete_application"
+      },
+      "exporter_details": {
+        "type": "string",
+        "title": "Name of Exporter",
+        "readOnly": true
+      },
+      "cusdec_number": {
+        "type": "string",
+        "title": "CUSDEC Number",
+        "readOnly": true
+      },
+      "number_of_bags_not_shipped": {
+        "type": "integer",
+        "title": "Number of Bags Not Shipped",
+        "example": 20
+      },
+      "cusdec_document": {
+        "type": "string",
+        "format": "file",
+        "title": "CUSDEC Document",
+        "description": "Upload the existing/active CUSDEC for this consignment. The CDA Officer will refer to it before re-issuing the certificate."
+      },
+      "lots_to_remove": {
+        "type": "string",
+        "format": "file",
+        "title": "Details of Bags",
+        "description": "Download the DC BAGS DETAILS - NZ270 template below, fill it in, and upload the completed Excel sheet (.xlsx or .xls) here.",
+        "x-file": {
+          "accept": ".xlsx,.xls"
+        }
+      }
+    },
+    "required": [
+      "adjustment_choice"
+    ],
+    "if": {
+      "properties": {
+        "adjustment_choice": { "const": "request_lot_adjustment" }
+      },
+      "required": [
+        "adjustment_choice"
+      ]
+    },
+    "then": {
+      "required": [
+        "number_of_bags_not_shipped",
+        "cusdec_document",
+        "lots_to_remove"
+      ]
+    }
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/adjustment_choice"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/exporter_details",
+        "options": {
+          "readonly": true
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/adjustment_choice",
+            "schema": {
+              "const": "request_lot_adjustment"
+            }
+          }
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/cusdec_number",
+        "options": {
+          "readonly": true
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/adjustment_choice",
+            "schema": {
+              "const": "request_lot_adjustment"
+            }
+          }
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/number_of_bags_not_shipped",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/adjustment_choice",
+            "schema": {
+              "const": "request_lot_adjustment"
+            }
+          }
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/cusdec_document",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/adjustment_choice",
+            "schema": {
+              "const": "request_lot_adjustment"
+            }
+          }
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/lots_to_remove",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/adjustment_choice",
+            "schema": {
+              "const": "request_lot_adjustment"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

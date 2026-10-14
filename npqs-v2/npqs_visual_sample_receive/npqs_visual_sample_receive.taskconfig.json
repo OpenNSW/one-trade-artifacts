@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "npqs_visual_sample_receive",
+  "workflow": "npqs_visual_sample_receive",
+  "meta": {
+    "title": "NPQS Receive Sample (Visual Inspection)",
+    "description": "Officer records receiving the sample drop-off for visual inspection."
+  }
+}

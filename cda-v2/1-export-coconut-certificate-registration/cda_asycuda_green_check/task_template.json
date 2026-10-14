@@ -1,0 +1,6 @@
+{
+  "id": "cda-asycuda-green-check--review",
+  "type": "APPLICATION",
+  "workflow_id": "cda-asycuda-green-check--review-workflow",
+  "render_config_id": "cda-asycuda-green-check--review:render"
+}

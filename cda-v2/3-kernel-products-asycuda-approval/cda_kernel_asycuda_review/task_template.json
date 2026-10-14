@@ -1,0 +1,6 @@
+{
+  "id": "cda-kernel-asycuda-review--review",
+  "type": "APPLICATION",
+  "workflow_id": "cda-kernel-asycuda-review--review-workflow",
+  "render_config_id": "cda-kernel-asycuda-review--review:render"
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "npqs_sample_receive",
+  "workflow": "npqs_sample_receive",
+  "meta": {
+    "title": "NPQS Receive Sample",
+    "description": "Officer records receiving the sample drop-off."
+  }
+}

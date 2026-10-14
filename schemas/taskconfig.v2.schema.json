@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://opennsw.dev/schemas/taskconfig.v2.schema.json",
+  "title": "TaskConfig v2",
+  "description": "Schema for schemaVersion 2 *.taskconfig.json artifacts (kind: task_config). A v2 config binds a task code to a workflow artifact id; the officer's forms and review behavior are defined by that workflow's own artifacts rather than inline in the task config.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "workflow", "meta"],
+  "properties": {
+    "schemaVersion": {
+      "const": 2,
+      "description": "Schema version of this task_config artifact. This schema covers version 2; see taskconfig.v1.schema.json for version 1."
+    },
+    "taskCode": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Logical task type this config applies to, e.g. 'cda_officer_verification_v1'. If omitted, the artifact's manifest id is used as the effective task code instead."
+    },
+    "workflow": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Id of the workflow artifact (kind: workflow) that drives this task, e.g. 'cda_officer_verification_v1'."
+    },
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title"],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Shown in the task list and as the review screen header."
+        },
+        "description": {
+          "type": "string",
+          "description": "One-line subtitle shown under the title."
+        },
+        "icon": {
+          "type": "string",
+          "description": "Icon hint. The frontend currently only renders 'emoji:<char>'-prefixed values; anything else is ignored."
+        },
+        "category": {
+          "type": "string",
+          "description": "Grouping label shown in the task list, e.g. 'Food Control'."
+        }
+      }
+    }
+  }
+}

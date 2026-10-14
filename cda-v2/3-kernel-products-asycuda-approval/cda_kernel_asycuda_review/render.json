@@ -1,0 +1,45 @@
+{
+  "id": "cda-kernel-asycuda-review--review:render",
+  "type": "APPLICATION",
+  "title": "CDA ASYCUDA Approval Review \u2014 Kernel Products",
+  "sections": {
+    "submission_view": {
+      "templateId": "cda-kernel-asycuda--user-form",
+      "title": "Submitted Application",
+      "projector": "FORM",
+      "dataKey": "submission"
+    },
+    "review_form": {
+      "templateId": "cda-kernel-asycuda--officer-review-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Review",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "status_message": {
+      "templateId": "cda-kernel-asycuda-review--submission-view",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}

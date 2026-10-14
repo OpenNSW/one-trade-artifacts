@@ -1,0 +1,45 @@
+{
+  "id": "cda-kcfn-inspection-review--review:render",
+  "type": "APPLICATION",
+  "title": "CDA Container Inspection & Recommendation",
+  "sections": {
+    "submission_view": {
+      "templateId": "cda-kcfn-inspection--apply-view-form",
+      "title": "Submitted Application",
+      "projector": "FORM",
+      "dataKey": "submission"
+    },
+    "review_form": {
+      "templateId": "cda-kcfn-inspection--officer-review-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Inspection Outcome",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "status_message": {
+      "templateId": "cda-kcfn-inspection-review--submission-view",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}

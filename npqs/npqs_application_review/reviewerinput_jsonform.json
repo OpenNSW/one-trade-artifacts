@@ -132,6 +132,21 @@
               ],
               "default": "consignment"
             },
+            "visual_sample_method": {
+              "type": "string",
+              "title": "Visual Sample Collection",
+              "oneOf": [
+                {
+                  "const": "drop_off",
+                  "title": "Sample Drop Off"
+                },
+                {
+                  "const": "drawn_at_site",
+                  "title": "Sample Drawn by Officer at Site"
+                }
+              ],
+              "default": "drop_off"
+            },
             "treatment_required": {
               "type": "boolean",
               "title": "Treatment Required",
@@ -265,10 +280,11 @@
                 "elements": [
                   {
                     "type": "Control",
-                    "scope": "#/properties/commodity_common_name",
+                    "scope": "#/properties/commodity_common_name/properties/label",
                     "options": {
                       "readOnly": true
-                    }
+                    },
+                    "label": "Commodity Name"
                   },
                   {
                     "type": "Control",
@@ -334,6 +350,19 @@
                         }
                       }
                     }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/visual_sample_method",
+                    "rule": {
+                      "effect": "ENABLE",
+                      "condition": {
+                        "scope": "#/properties/visual_approach",
+                        "schema": {
+                          "const": "sample"
+                        }
+                      }
+                    }
                   }
                 ]
               },
@@ -347,7 +376,9 @@
                 ]
               }
             ]
-          }
+          },
+          "addable": false,
+          "removable": false
         }
       }
     ]

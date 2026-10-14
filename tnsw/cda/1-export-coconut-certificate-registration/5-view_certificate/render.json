@@ -10,8 +10,7 @@
       "visibleWhen": {
         "states": [
           "PENDING_USER"
-        ],
-        "requireDataKey": "certificate_file"
+        ]
       }
     },
     "done_button": {

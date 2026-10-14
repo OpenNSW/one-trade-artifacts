@@ -1,7 +1,7 @@
 {
   "id": "cda-pay-app-fee-flow",
   "name": "Pay CDA Application Fee",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -22,7 +22,8 @@
       "task_template_id": "cda-pay-app-fee--payment",
       "input_mapping": {
         "reference_number": "reference_number",
-        "selected_method": "selected_method"
+        "selected_method": "selected_method",
+        "exporter_id?": "exporter_id"
       },
       "output_mapping": {
         "payment_status": "payment_status",

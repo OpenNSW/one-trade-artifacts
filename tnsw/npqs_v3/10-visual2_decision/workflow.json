@@ -1,0 +1,43 @@
+{
+  "id": "npqs-visual2-decision",
+  "name": "Visual Inspection 2 Decision",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "officer_decide",
+      "type": "TASK",
+      "task_template_id": "npqs-visual2-decision--officer-review",
+      "input_mapping": {
+        "commodities": "commodities",
+        "reference_number?": "reference_number",
+        "reference_number": "submission.reference_number",
+        "userform": "submission",
+        "commodities?": "submission.items"
+      },
+      "output_mapping": {
+        "items": "commodities",
+        "visual2_comments?": "visual2_comments"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "officer_decide"
+    },
+    {
+      "id": "e2",
+      "source_id": "officer_decide",
+      "target_id": "end"
+    }
+  ]
+}

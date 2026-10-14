@@ -1,7 +1,7 @@
 {
   "id": "cda-kcfn-recommendation-letter",
   "name": "CDA Recommendation Letter for King Coconut and Fresh Nuts Exports",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -27,7 +27,9 @@
       "task_template_id": "cda-kcfn-payment-flow",
       "lane": "Trader/CHA",
       "input_mapping": {
-        "cda_kcfn.reference_number": "payment.reference_number"
+        "cda_kcfn.reference_number": "payment.reference_number",
+        "_iter.input.company.data.agencies.cda.registration_number?": "payment.exporter_id",
+        "cda_kcfn.userform.nut_type?": "payment.sub_category"
       },
       "output_mapping": {
         "payment.payment_status": "cda_kcfn.payment_status",
