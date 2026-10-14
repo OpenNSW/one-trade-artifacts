@@ -1,0 +1,8 @@
+{
+  "id": "slpa-sundry--user-input",
+  "task_type": "USER_INPUT",
+  "output_namespace": "sundryform",
+  "plugin_properties": {
+    "user_jsonforms_id": "slpa-sundry--user-form"
+  }
+}

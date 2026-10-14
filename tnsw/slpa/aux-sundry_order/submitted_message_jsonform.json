@@ -1,0 +1,4 @@
+{
+  "id": "slpa-sundry--raised-message",
+  "template": "### ✅ Sundry Order Raised\n\nSLPA has raised the sundry order against the parent invoice.\n\n{{with .so}}* **Service Order No**: {{if .service_order_no}}`{{.service_order_no}}`{{else}}—{{end}}\n{{if .parent_invoice_no}}* **Parent Invoice No**: `{{.parent_invoice_no}}`\n{{end}}{{if .total_usd}}* **Total (USD)**: {{.total_usd}}\n{{end}}{{if .total_lkr}}* **Total (LKR)**: {{.total_lkr}}\n{{end}}{{if .created_at}}* **Raised At**: {{.created_at}}\n{{end}}{{if .status}}* **SLPA Status**: `{{.status}}`\n{{end}}{{end}}\nSLPA approves and prices the sundry order next; its invoice is issued for payment once approved."
+}

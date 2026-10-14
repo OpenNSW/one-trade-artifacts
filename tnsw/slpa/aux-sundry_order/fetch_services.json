@@ -1,0 +1,12 @@
+{
+  "id": "slpa-sundry--fetch-services",
+  "task_type": "SLPA_SUNDRY_SERVICES",
+  "output_namespace": "services",
+  "plugin_properties": {
+    "service_id": "slpa",
+    "path": "/api/nsw/v1/export/services/fcl/sundry",
+    "method": "GET",
+    "result_field": "fetched",
+    "retain_state": true
+  }
+}

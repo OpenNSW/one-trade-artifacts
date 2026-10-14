@@ -1,0 +1,122 @@
+{
+  "id": "slpa-sundry-order-flow",
+  "name": "Raise SLPA Sundry Order",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "fetch_services",
+      "type": "TASK",
+      "task_template_id": "slpa-sundry--fetch-services",
+      "input_mapping": {
+        "client_key?": "client_key"
+      },
+      "output_mapping": {
+        "services.fetched": "services.fetched",
+        "services.services?": "services.services",
+        "services.error?": "services_error"
+      }
+    },
+    {
+      "id": "sundry_selection",
+      "type": "TASK",
+      "task_template_id": "slpa-sundry--user-input",
+      "input_mapping": {
+        "sundryform?": "sundryform",
+        "so.error?": "so.error",
+        "services?": "services",
+        "services_error?": "services_error"
+      },
+      "output_mapping": {
+        "parentInvoiceNo?": "sundryform.parentInvoiceNo",
+        "lines?": "sundryform.lines",
+        "additionalNote?": "sundryform.additionalNote"
+      }
+    },
+    {
+      "id": "services_check",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "create_order",
+      "type": "TASK",
+      "task_template_id": "slpa-sundry--create",
+      "input_mapping": {
+        "sundryform?": "sundryform",
+        "sundryform": "payload",
+        "client_key?": "client_key"
+      },
+      "output_mapping": {
+        "so.raised": "so.raised",
+        "so.error?": "so.error",
+        "so.status?": "so.status",
+        "so.service_order_no?": "so.service_order_no",
+        "so.slug?": "so.slug",
+        "so.invoice_no?": "so.invoice_no",
+        "so.parent_invoice_no?": "so.parent_invoice_no",
+        "so.total_lkr?": "so.total_lkr",
+        "so.total_usd?": "so.total_usd",
+        "so.created_at?": "so.created_at"
+      }
+    },
+    {
+      "id": "order_check",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "fetch_services"
+    },
+    {
+      "id": "e_fetched",
+      "source_id": "fetch_services",
+      "target_id": "sundry_selection"
+    },
+    {
+      "id": "e2",
+      "source_id": "sundry_selection",
+      "target_id": "services_check"
+    },
+    {
+      "id": "e_services_listed",
+      "source_id": "services_check",
+      "target_id": "create_order",
+      "condition": "services.fetched == true"
+    },
+    {
+      "id": "e_look_again",
+      "source_id": "services_check",
+      "target_id": "fetch_services",
+      "condition": "services.fetched != true"
+    },
+    {
+      "id": "e_check",
+      "source_id": "create_order",
+      "target_id": "order_check"
+    },
+    {
+      "id": "e_raised",
+      "source_id": "order_check",
+      "target_id": "end",
+      "condition": "so.raised == true"
+    },
+    {
+      "id": "e_refused",
+      "source_id": "order_check",
+      "target_id": "sundry_selection",
+      "condition": "so.raised != true"
+    }
+  ]
+}
