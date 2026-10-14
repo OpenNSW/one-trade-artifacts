@@ -7,7 +7,7 @@
       {
         "path": "/replacement_reference_number",
         "issuer": "NPQS",
-        "id_type": "replacement_certificate_ref"
+        "id_type": "phytosanitary_certificate_ref"
       }
     ]
   }
