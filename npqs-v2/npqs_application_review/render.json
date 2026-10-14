@@ -3,6 +3,18 @@
   "type": "APPLICATION",
   "title": "NPQS Application Review",
   "sections": {
+    "previous_review": {
+      "templateId": "npqs-application-review--previous-review",
+      "title": "Previous Review",
+      "projector": "MARKDOWN",
+      "dataKey": "previous_clarification_reason",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "previous_clarification_reason"
+      }
+    },
     "submission_view": {
       "templateId": "npqs-apply-phyto-cert--officer-view-form",
       "title": "Submitted Application",
@@ -29,7 +41,20 @@
       "visibleWhen": {
         "states": [
           "QUEUED_EXTERNALLY"
-        ]
+        ],
+        "requireDataKey": "payload"
+      }
+    },
+    "awaiting_resubmission": {
+      "templateId": "npqs-application-review--awaiting-resubmission",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "dataKey": "clarification_reason",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ],
+        "requireDataKey": "clarification_reason"
       }
     }
   },

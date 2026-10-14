@@ -5,6 +5,7 @@
   "plugin_properties": {
     "service_id": "npqs",
     "path": "/api/v1/inject",
-    "task_code": "npqs_application_review"
+    "task_code": "npqs_application_review",
+    "reply_command": "resubmit"
   }
 }

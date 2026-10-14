@@ -1,7 +1,7 @@
 {
   "id": "npqs-apply-phyto-cert",
   "name": "Apply for Phytosanitary Certificate",
-  "version": 5,
+  "version": 6,
   "nodes": [
     {
       "id": "start",
@@ -61,14 +61,16 @@
       "task_template_id": "npqs-apply-phyto-cert--external-review",
       "input_mapping": {
         "userform?": "userform",
-        "userform": "submission"
+        "userform": "submission",
+        "agency_token?": "replyToken"
       },
       "output_mapping": {
         "review_outcome": "reviewerform.review_outcome",
         "reference_number": "reviewerform.reference_number",
         "commodities": "reviewerform.commodities",
         "ephyto_required?": "reviewerform.ephyto_required",
-        "clarification_reason?": "reviewerform.clarification_reason"
+        "clarification_reason?": "reviewerform.clarification_reason",
+        "callbackToken?": "agency_token"
       }
     },
     {
