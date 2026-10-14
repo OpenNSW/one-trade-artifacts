@@ -218,7 +218,7 @@
         "type": "string",
         "title": "Replacement Certificate Reference No.",
         "readOnly": true,
-        "example": "PC-SL-4FKU5794MV"
+        "example": "PCTSL-4FKU5794MV"
       },
       "certificate_url": {
         "type": "string",
