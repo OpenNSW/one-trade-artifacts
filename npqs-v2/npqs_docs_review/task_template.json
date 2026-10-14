@@ -1,0 +1,6 @@
+{
+  "id": "npqs-docs-review--review",
+  "type": "APPLICATION",
+  "workflow_id": "npqs-docs-review--review-workflow",
+  "render_config_id": "npqs-docs-review--review:render"
+}

@@ -48,6 +48,7 @@ jobs:
             --include "customs-v2/*" \
             --include "fcau/*" \
             --include "npqs/*" \
+            --include "npqs-v2/*" \
             --include "sltb/*" \
             --include "tnsw/*" \
             --delete \
