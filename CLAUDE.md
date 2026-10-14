@@ -8,7 +8,8 @@ by hand and reasoning about it as a workflow spec, not writing/running code.
 ## Agencies
 
 - `cda/` — Coconut Development Authority
-- `customs/` — Sri Lanka Customs
+- `efc/` — Export Facilitation Center (EFC), which reviews the boat note for the
+  `tnsw/customs/` workflow
 - `fcau/` — Food Control Administration Unit
 - `npqs/` — National Plant Quarantine Service
 - `sltb/` — Sri Lanka Tea Board
@@ -163,7 +164,7 @@ See `tnsw/fcau/3-2-warehouse_inspection/workflow.json` or
 - `manifest.json` files are flat arrays of `{id, kind, version, path}` (top-level agency
   folders also add `"loader": "local"`) — adding a new artifact file means also adding an
   entry to the relevant `manifest.json`. The two sides are asymmetric: each top-level
-  agency folder (`cda/`, `customs/`, `fcau/`, `npqs/`, `sltb/`) has its own manifest, but
+  agency folder (`cda/`, `efc/`, `fcau/`, `npqs/`, `sltb/`) has its own manifest, but
   the `tnsw/` side has a single shared `tnsw/manifest.json` covering every agency's step
   artifacts — there is no per-agency manifest under `tnsw/<agency>/`.
 - Single repo owner: `@Aravinda-HWK` (`.github/CODEOWNERS`, wildcard rule).

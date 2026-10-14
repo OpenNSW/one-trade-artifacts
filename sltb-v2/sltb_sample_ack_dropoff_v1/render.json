@@ -1,0 +1,39 @@
+{
+  "id": "sltb-sample-ack-dropoff--review:render",
+  "type": "APPLICATION",
+  "title": "Acknowledge Sample Drop-off",
+  "sections": {
+    "review_form": {
+      "templateId": "sltb-dropoff--officer-ack-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Review",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "status_message": {
+      "templateId": "sltb-sample-ack-dropoff--submission-view",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}

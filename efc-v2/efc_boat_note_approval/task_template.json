@@ -1,0 +1,6 @@
+{
+  "id": "efc-boat-note-approval--review",
+  "type": "APPLICATION",
+  "workflow_id": "efc-boat-note-approval--review-workflow",
+  "render_config_id": "efc-boat-note-approval--review:render"
+}

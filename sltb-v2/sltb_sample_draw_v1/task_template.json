@@ -1,0 +1,6 @@
+{
+  "id": "sltb-sample-draw--review",
+  "type": "APPLICATION",
+  "workflow_id": "sltb-sample-draw--review-workflow",
+  "render_config_id": "sltb-sample-draw--review:render"
+}

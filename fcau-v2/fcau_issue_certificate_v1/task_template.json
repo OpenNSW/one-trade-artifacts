@@ -1,0 +1,6 @@
+{
+  "id": "fcau-issue-certificate--review",
+  "type": "APPLICATION",
+  "workflow_id": "fcau-issue-certificate--review-workflow",
+  "render_config_id": "fcau-issue-certificate--review:render"
+}

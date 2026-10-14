@@ -1,0 +1,25 @@
+{
+  "artifacts": [
+    {
+      "id": "efc_boat_note_approval_v1",
+      "kind": "task_config",
+      "version": "",
+      "loader": "local",
+      "path": "efc_boat_note_approval/efc_boat_note_approval_v1.taskconfig.json"
+    },
+    {
+      "id": "efc-boat-note-approval--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "efc_boat_note_approval/officer_form_jsonform.json"
+    },
+    {
+      "id": "efc-boat-note--user-form",
+      "kind": "generic_template",
+      "version": "",
+      "loader": "local",
+      "path": "efc_boat_note_approval/userinput_jsonform.json"
+    }
+  ]
+}

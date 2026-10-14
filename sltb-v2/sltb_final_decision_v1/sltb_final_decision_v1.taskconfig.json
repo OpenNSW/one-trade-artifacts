@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "sltb_final_decision_v1",
+  "workflow": "sltb_final_decision_v1",
+  "meta": {
+    "title": "SLTB Final Decision",
+    "description": "Final review and certificate generation by SLTB officer."
+  }
+}
