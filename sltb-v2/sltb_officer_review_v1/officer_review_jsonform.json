@@ -9,7 +9,7 @@
     "properties": {
       "reference_number": {
         "type": "string",
-        "title": "SLTB Blendsheet Reference Number",
+        "title": "SLTB Blendsheet Reference Number *",
         "example": "REF-SLTB-2026-00001"
       },
       "review_outcome": {
@@ -38,7 +38,7 @@
       },
       "levy_amount": {
         "type": "number",
-        "title": "Assessed SLTB Levy (LKR)",
+        "title": "Assessed SLTB Levy (LKR) *",
         "exclusiveMinimum": 0,
         "example": 12500,
         "description": "Enter the calculated levy fee for the blendsheet consignment."
