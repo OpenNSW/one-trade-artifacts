@@ -1,7 +1,7 @@
 {
   "id": "sltb-record-sample-draw-flow",
   "name": "Officer Records Sample Draw",
-  "version": 1,
+  "version": 2,
   "nodes": [
     { "id": "start", "type": "START" },
     {
@@ -11,7 +11,7 @@
       "task_template_id": "sltb-record-sample-draw--officer",
       "input_mapping": {
         "schedule.visit_date": "scheduled_visit_date",
-        "schedule.inspector_name": "inspector_name"
+        "schedule.inspector_name?": "inspector_name"
       },
       "output_mapping": {
         "sample_number": "sample_number",
