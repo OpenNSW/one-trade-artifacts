@@ -388,7 +388,7 @@
       },
       {
         "type": "Group",
-        "label": "Product Type",
+        "label": "Product Type *",
         "elements": [
           {
             "type": "HorizontalLayout",
