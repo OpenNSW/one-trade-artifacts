@@ -78,8 +78,19 @@
               "title": "Net Weight"
             },
             "quantity_net_weight_unit": {
-              "type": "string",
-              "title": "Unit"
+              "type": "object",
+              "title": "Unit",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "value"
+              ]
             },
             "packages_count": {
               "type": "integer",
