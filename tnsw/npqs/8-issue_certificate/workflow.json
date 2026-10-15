@@ -22,9 +22,9 @@
         "certificate_id": "certificate_id",
         "certificate_url?": "certificate_url",
         "comments?": "comments",
-        "replacement_reference_number?": "reviewerform.replacement_reference_number",
+        "replacement_reference_number?": "replacement_reference_number",
         "certificate_items?": "certificate_items",
-        "ephyto_reference_number?": "reviewerform.ephyto_reference_number"
+        "ephyto_reference_number?": "ephyto_reference_number"
       }
     },
     {
