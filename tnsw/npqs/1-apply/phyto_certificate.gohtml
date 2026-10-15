@@ -31,16 +31,6 @@ The consignment was treated under official supervision in accordance with the ph
 {{- define "statement_visual2" -}}
 Consignment re-inspected after treatment and found free from live pests.
 {{- end -}}
-
-{{- /* Labels for the application form's coded answers, in step with tnsw/npqs/1-apply/userinput_jsonform.json. */ -}}
-{{- define "plant_part" }}{{ lookup . "1" "Bark" "2" "Barrel" "3" "Branches" "4" "Buds" "5" "Budwood" "6" "Bulbs" "7" "Cinnamon quill" "8" "Corms" "9" "Curry Sauce" "10" "Cuttings" "11" "Firewood" "12" "Flowers" "13" "Foliage" "14" "Fruits" "15" "Grain" "16" "Husk" "17" "Kernel" "18" "Leaves" "19" "Mid rib" "20" "Milk" "21" "Minitubers" "22" "Not Appilicable" "23" "Nut" "24" "Peat" "25" "Plantlets" "26" "Plants" "27" "Pod" "28" "Pollen" "29" "Rhizomes" "30" "Seeds" "31" "Shell" "32" "Stem" "33" "Stolons" "34" "Tubers" "35" "Vegetables" "36" "Wood" "37" "Wood packaging material" }}{{ end -}}
-{{- define "condition" }}{{ lookup . "1" "Rooted" "2" "Unrooted" "3" "Bare-rooted" "4" "Without leaves or flowers" "5" "Dormant" "6" "With bark" "7" "Debarked" "8" "Bark-free" "9" "Dried" "10" "Chopped" "11" "Peeled" "12" "Shelled" "13" "Fresh" "14" "Frozen" "15" "With growing medium" "16" "Potted" "17" "Desiccated" "18" "Processed" "19" "Organic" "20" "Organic-processed" "21" "1cpn-rooted" "22" "3p-oasis-rooted" "23" "5p-oasis-rooted" "24" "1cp-oasis-rooted" }}{{ end -}}
-{{- define "intended_use" }}{{ lookup . "1" "Breeding" "2" "Consumption" "3" "Decoration" "4" "Planting" "5" "Processing" "6" "Research" "7" "Research" "8" "Soil protection" "9" "Sprouting for consumption" }}{{ end -}}
-{{- define "package_type" }}{{ lookup . "1G" "Drum, fibre" "1D" "Drum, plywood" "1B" "Drum, aluminium" "ZB" "Bag, large" "XK" "Bag, paper, multi-wall, water resistant" "XJ" "Bag, paper, multi-wall" "XH" "Bag, textile, water resistant" "XG" "Bag, textile, sift proof" "XF" "Bag, textile, without inner coat/liner" "XD" "Bag, plastics film" "XC" "Bag, woven plastic, water resistant" "XB" "Bag, woven plastic, sift proof" "XA" "Bag, woven plastic, without inner coat/liner" "VY" "Bulk, solid, fine particles (“powders”)" "VI" "Vial" "VG" "Bulk, gas (at 1031 mbar and 15°C)" "UN" "Unit" "TT" "Bag, tote" "TC" "Tea-chest" "ST" "Sheet" "SS" "Case, steel" "SI" "Skid" "SH" "Sachet" "SA" "Sack" "RO" "Roll" "QR" "Box, plastic, expanded" "QQ" "Box, wooden, natural wood, with sift proof walls" "QP" "Box, wooden, natural wood, ordinary" "QJ" "Barrel, wooden, removable head" "QC" "Drum, aluminium, non-removable head" "PX" "Pallet" "PU" "Tray" "PT" "Pot" "PO" "Pouch" "PK" "Package" "PA" "Packet" "OK" "Block" "NT" "Net" "NA" "Not available" "MB" "Bag, multiply" "JT" "Jutebag" "JB" "Bag, jumbo" "GY" "Bag, gunny" "GB" "Bottle, gas" "FX" "Bag, flexible container" "FB" "Flexibag" "EF" "Case, with pallet base, cardboard" "EC" "Bag, plastic" "DR" "Drum" "CZ" "Canvas" "CW" "Cage, roll" "CV" "Cover" "CU" "Cup" "CT" "Carton" "CS" "Case" "CR" "Crate" "CN" "Container" "CL" "Coil" "CG" "Cage" "CF" "Coffer" "BX" "Box" "BS" "Bottle, non-protected, bulbous" "BQ" "Bottle, protected cylindrical" "BJ" "Bucket" "BI" "Bin" "BH" "Bunch" "BG" "Bag" "BE" "Bundle" "BA" "Barrel" "AJ" "Cone" "5M" "Bag, paper" "5L" "Bag, textile" "5H" "Bag, woven plastic" "4G" "Box, fibreboard" "4F" "Box, reconstituted wood" "4A" "Box, steel" "44" "Bag, polybag" "43" "Bag, super bulk" "2C" "Barrel, wooden" "1W" "Drum, wooden" }}{{ end -}}
-{{- define "unit" }}{{ lookup . "DG" "dg" "KGM" "kg" "GRM" "g" "TNE" "t" "MGM" "mg" "KTN" "kt" "LBR" "lb" "CWA" "cwt" "MTQ" "m³" "LTR" "l" "MAL" "Ml" "CMQ" "cm³" "MLT" "ml" "K6" "kl" "FTQ" "ft³" "GLI" "gal" "G24" "tablespoon" "BLL" "barrel" "HUR" "h" "DAY" "d" "SEC" "s" "MIN" "min" "MON" "mo" "WEE" "wk" "g/cm²" "g/cm²" "g/cm³" "g/cm³" "GL" "g/l" "GJ" "g/ml" "GM" "g/m²" "g/m³" "g/m³" "KMQ" "kg/m³" "CEL" "°C" "FAH" "°F" }}{{ end -}}
-{{- define "transport_mode" }}{{ lookup . "1" "Air transport" "2" "Mail" "3" "Maritime transport" "4" "Fixed transport installations" "5" "Inland water transport" "6" "Multimodal transport" "7" "Rail transport" "8" "Road transport" "9" "Transport mode not applicable" "10" "Transport mode not specified" }}{{ end -}}
-{{- define "office" }}{{ lookup . "NPQS-KAT" "National Plant Quarantine Service HQ - Katunayake" "SEA-CMB" "Plant Quarantine Station - Seaport, Colombo" "AIR-BIA" "Plant Quarantine Station - Bandaranayake International Airport, Katunayake" "AIR-JAF" "Plant Quarantine Station - Jaffna International Airport, Palaly" "AIR-CIAR" "Plant Quarantine Unit - Colombo International Airport, Ratmalana" "AIR-MRIA" "Plant Quarantine Station - Mattala Rajapaksa International Airport, Mattala" "SEA-HAM" "Plant Quarantine Station - Seaport, Hambanthota" "SEA-KKS" "Plant Quarantine Unit - Seaport, Kankesanturai" "PO-CME" "Plant Quarantine Unit - Central Mail Exchange, Colombo" "PO-GAL" "Plant Quarantine Unit - Post Office, Galle" "PO-KDY" "Plant Quarantine Unit - Post Office, Kandy" "PO-JAF" "Plant Quarantine Unit - Post Office, Jaffna" }}{{ end -}}
-{{- define "country" }}{{ lookup . "LK" "Sri Lanka" }}{{ end -}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -129,7 +119,7 @@ Consignment re-inspected after treatment and found free from live pests.
   </tr>
   <tr><th>Declared Means of Conveyance</th><th>Declared Point of Entry</th></tr>
   <tr>
-    <td>{{ template "transport_mode" $app.transport_mode }}{{ if $app.vessel_name }} - {{ $app.vessel_name }}{{ end }}{{ if $app.voyage_number }} - Voyage {{ $app.voyage_number }}{{ end }}</td>
+    <td>{{ $app.transport_mode }}{{ if $app.vessel_name }} - {{ $app.vessel_name }}{{ end }}{{ if $app.voyage_number }} - Voyage {{ $app.voyage_number }}{{ end }}</td>
     <td>{{ $app.point_of_entry_port }}</td>
   </tr>
   {{- if $app.transit_countries }}
@@ -154,19 +144,19 @@ Consignment re-inspected after treatment and found free from live pests.
     <td colspan="2" class="small">
       Botanical Name/Common Name: <i>{{ $c.commodity_botanical_name }}</i>/{{ $c.commodity_common_name.label }}
       {{- if $c.commodity_description }}, Description of the Commodity: {{ $c.commodity_description }}{{ end }}
-      {{- if $c.commodity_plant_part }}; Plant Part: {{ template "plant_part" $c.commodity_plant_part }}{{ end }}
-      {{- if $c.commodity_intended_use }}; Intended Use: {{ template "intended_use" $c.commodity_intended_use }}{{ end }}
-      {{- if $c.commodity_condition }}; Condition: {{ template "condition" $c.commodity_condition }}{{ end }};<br>
-      {{- if not (zero $c.quantity_gross_weight) }}Gross Weight: {{ $c.quantity_gross_weight }} {{ template "unit" $c.quantity_gross_weight_unit }}; {{ end }}
-      {{- if not (zero $c.quantity_net_weight) }}Net Weight: {{ $c.quantity_net_weight }} {{ template "unit" $c.quantity_net_weight_unit }};{{ end }}
+      {{- if $c.commodity_plant_part }}; Plant Part: {{ $c.commodity_plant_part }}{{ end }}
+      {{- if $c.commodity_intended_use }}; Intended Use: {{ $c.commodity_intended_use }}{{ end }}
+      {{- if $c.commodity_condition }}; Condition: {{ $c.commodity_condition }}{{ end }};<br>
+      {{- if not (zero $c.quantity_gross_weight) }}Gross Weight: {{ $c.quantity_gross_weight }} {{ $c.quantity_gross_weight_unit }}; {{ end }}
+      {{- if not (zero $c.quantity_net_weight) }}Net Weight: {{ $c.quantity_net_weight }} {{ $c.quantity_net_weight_unit }};{{ end }}
     </td>
-    <td>{{ template "country" $c.origin_country }}{{ if $c.origin_area }}, {{ $c.origin_area }}{{ end }}</td>
+    <td>{{ $c.origin_country }}{{ if $c.origin_area }}, {{ $c.origin_area }}{{ end }}</td>
   </tr>
   <tr><th colspan="3">Number and Description of Packages</th></tr>
   <tr><td colspan="3">
     {{- if $c.packages_free_text_enabled }}{{ $c.packages_free_text }}
     {{- else if $c.packages_in_bulk }}In bulk
-    {{- else }}{{ $c.packages_count }} {{ template "package_type" $c.packages_description }}{{ end -}}
+    {{- else }}{{ $c.packages_count }} {{ $c.packages_description }}{{ end -}}
   </td></tr>
   <tr><th colspan="3">ADDITIONAL DECLARATION</th></tr>
   <tr><td colspan="3" class="pre">{{ $app.additional_declaration }}</td></tr>
@@ -214,7 +204,7 @@ Consignment re-inspected after treatment and found free from live pests.
 
 <table class="sign">
   <tr>
-    <td style="width:18%">Place of Issue</td><td style="width:32%">{{ template "office" $app.nppo_office_location }}</td>
+    <td style="width:18%">Place of Issue</td><td style="width:32%">{{ $app.nppo_office_location }}</td>
     <td style="width:18%">Name of Authorized Officer</td><td class="blank"></td>
   </tr>
   <tr>
