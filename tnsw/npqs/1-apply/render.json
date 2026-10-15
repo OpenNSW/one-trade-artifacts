@@ -2,6 +2,10 @@
   "id": "npqs-apply-phyto-cert:render",
   "type": "APPLICATION",
   "title": "[NPQS] Phytosanitary Certificate Application",
+  "files": [
+    "submission.attachments[*].attachment_file_url",
+    "userform.attachments[*].attachment_file_url"
+  ],
   "sections": {
     "assessment_outcome": {
       "templateId": "npqs-apply-phyto-cert--status",

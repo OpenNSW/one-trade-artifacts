@@ -2,6 +2,9 @@
   "id": "customs-create-boat-note-flow:render",
   "type": "APPLICATION",
   "title": "[Customs] Boat Note Creation",
+  "files": [
+    "boat_note_document.key"
+  ],
   "sections": {
     "completed_message": {
       "templateId": "customs-boat-note--completed-message",

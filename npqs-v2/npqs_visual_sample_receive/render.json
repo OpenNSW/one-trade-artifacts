@@ -7,6 +7,9 @@
       "officer"
     ]
   },
+  "files": [
+    "submission.attachments[*].attachment_file_url"
+  ],
   "sections": {
     "submission_view": {
       "templateId": "npqs-apply-phyto-cert--officer-view-form",

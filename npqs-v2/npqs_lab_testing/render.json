@@ -7,6 +7,11 @@
       "officer"
     ]
   },
+  "files": [
+    "payload.payload.lab_report_attachment_url",
+    "reviewform.lab_report_attachment_url",
+    "submission.attachments[*].attachment_file_url"
+  ],
   "sections": {
     "submission_view": {
       "templateId": "npqs-apply-phyto-cert--officer-view-form",

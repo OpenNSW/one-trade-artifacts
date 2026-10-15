@@ -7,6 +7,11 @@
       "officer"
     ]
   },
+  "files": [
+    "submission.additional_file_url",
+    "submission.invoice_file_url",
+    "submission.packing_list_file_url"
+  ],
   "sections": {
     "submission_view": {
       "templateId": "npqs-upload-docs--trader-form",

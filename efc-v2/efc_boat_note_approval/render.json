@@ -7,6 +7,11 @@
       "officer"
     ]
   },
+  "files": [
+    "payload.payload.approved_boat_note_file",
+    "reviewform.approved_boat_note_file",
+    "submission.boat_note_document_key"
+  ],
   "sections": {
     "boat_note_document": {
       "templateId": "efc-boat-note-approval--boat-note-document",

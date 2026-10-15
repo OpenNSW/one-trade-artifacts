@@ -2,6 +2,10 @@
   "id": "fcau-warehouse-inspection-flow:render",
   "type": "REVIEW",
   "title": "[FCAU] Warehouse Visual Inspection",
+  "files": [
+    "submission.analysis_certificates",
+    "submission.other_supporting_documents[*]"
+  ],
   "sections": {
     "status_message": {
       "templateId": "fcau-warehouse-inspection--trader-instructions",

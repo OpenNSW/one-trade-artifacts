@@ -2,6 +2,10 @@
   "id": "npqs-review-treatment-certs:render",
   "type": "REVIEW",
   "title": "[NPQS] Review Treatment Certificates",
+  "files": [
+    "submission.supervision_report_url",
+    "submission.treatment_certificate_url"
+  ],
   "sections": {
     "assessment_outcome": {
       "templateId": "npqs-treatment-review-certs--status",

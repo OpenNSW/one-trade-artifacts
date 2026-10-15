@@ -7,6 +7,9 @@
       "officer"
     ]
   },
+  "files": [
+    "submission.lab_receipt"
+  ],
   "sections": {
     "previous_review": {
       "templateId": "fcau-post-wh-lab-fee-review--previous-review",
