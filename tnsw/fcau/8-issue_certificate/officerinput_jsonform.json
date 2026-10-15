@@ -80,7 +80,7 @@
       "certificate_decision": {
         "type": "string",
         "title": "Decision",
-        "description": "Issue the certificate for the items that passed, or reject the consignment. If every item failed, choose Reject.",
+        "description": "Issue the certificate for the items that passed, or reject the consignment. You can't issue it if every item failed.",
         "oneOf": [
           {
             "const": "issue",
@@ -145,7 +145,47 @@
             "certificate_id",
             "certificate",
             "authorized_signature"
-          ]
+          ],
+          "properties": {
+            "items": {
+              "contains": {
+                "not": {
+                  "anyOf": [
+                    {
+                      "properties": {
+                        "visual_result": {
+                          "const": "fail"
+                        }
+                      },
+                      "required": [
+                        "visual_result"
+                      ]
+                    },
+                    {
+                      "properties": {
+                        "lab_result": {
+                          "const": "fail"
+                        }
+                      },
+                      "required": [
+                        "lab_result"
+                      ]
+                    },
+                    {
+                      "properties": {
+                        "warehouse_result": {
+                          "const": "fail"
+                        }
+                      },
+                      "required": [
+                        "warehouse_result"
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
         }
       },
       {
@@ -227,6 +267,59 @@
           },
           "addable": false,
           "removable": false
+        }
+      },
+      {
+        "type": "Label",
+        "text": "Every item failed, so the health certificate can't be issued. Choose Reject Consignment.",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/items",
+            "schema": {
+              "type": "array",
+              "minItems": 1,
+              "not": {
+                "contains": {
+                  "not": {
+                    "anyOf": [
+                      {
+                        "properties": {
+                          "visual_result": {
+                            "const": "fail"
+                          }
+                        },
+                        "required": [
+                          "visual_result"
+                        ]
+                      },
+                      {
+                        "properties": {
+                          "lab_result": {
+                            "const": "fail"
+                          }
+                        },
+                        "required": [
+                          "lab_result"
+                        ]
+                      },
+                      {
+                        "properties": {
+                          "warehouse_result": {
+                            "const": "fail"
+                          }
+                        },
+                        "required": [
+                          "warehouse_result"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "failWhenUndefined": true
+          }
         }
       },
       {
