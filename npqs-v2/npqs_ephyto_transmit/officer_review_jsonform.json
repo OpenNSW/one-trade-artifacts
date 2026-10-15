@@ -1,0 +1,102 @@
+{
+  "id": "npqs-ephyto-transmit--officer-form",
+  "title": "Transmit to the IPPC ePhyto Hub",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "hub_destination": {
+        "type": "string",
+        "title": "Destination IPPC Hub Connection",
+        "oneOf": [
+          {
+            "const": "LK2",
+            "title": "Sri Lanka (LK2)"
+          }
+        ],
+        "default": "LK2"
+      },
+      "send_application_documents": {
+        "type": "boolean",
+        "title": "Documents attached to the application",
+        "description": "The files the trader attached when applying: permits, invoices, certificates. Sent with the certificate and listed on it as accompanying the consignment.",
+        "default": true
+      },
+      "send_treatment_certificate": {
+        "type": "boolean",
+        "title": "Treatment certificate",
+        "description": "Uploaded at the treatment step. Sent with the certificate and listed on it as accompanying the consignment.",
+        "default": true
+      },
+      "send_supervision_report": {
+        "type": "boolean",
+        "title": "Treatment supervision report",
+        "description": "Uploaded at the treatment step, where supervision was requested. Sent with the certificate and listed on it as accompanying the consignment.",
+        "default": true
+      },
+      "send_invoice": {
+        "type": "boolean",
+        "title": "Commercial invoice",
+        "description": "Uploaded at the supporting documents step. Sent with the certificate and listed on it as accompanying the consignment.",
+        "default": true
+      },
+      "send_packing_list": {
+        "type": "boolean",
+        "title": "Packing list",
+        "description": "Uploaded at the supporting documents step. Sent with the certificate and listed on it as accompanying the consignment.",
+        "default": true
+      },
+      "send_additional_document": {
+        "type": "boolean",
+        "title": "Additional supporting document",
+        "description": "Uploaded at the supporting documents step. Sent with the certificate and listed on it as accompanying the consignment.",
+        "default": true
+      }
+    },
+    "required": [
+      "hub_destination"
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/hub_destination"
+      },
+      {
+        "type": "Group",
+        "label": "Documents to Send with the Certificate",
+        "elements": [
+          {
+            "type": "Label",
+            "text": "A selected document the trader did not upload is skipped."
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/send_application_documents"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/send_treatment_certificate"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/send_supervision_report"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/send_invoice"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/send_packing_list"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/send_additional_document"
+          }
+        ]
+      }
+    ]
+  }
+}

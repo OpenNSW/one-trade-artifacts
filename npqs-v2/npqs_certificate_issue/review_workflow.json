@@ -1,7 +1,7 @@
 {
   "id": "npqs-certificate-issue--review-workflow",
   "name": "NPQS Certificate Issuance — Officer Review",
-  "version": 2,
+  "version": 1,
   "nodes": [
     {
       "id": "start",
@@ -20,13 +20,7 @@
         "certificate_id": "reviewform.certificate_id",
         "certificate_url?": "reviewform.certificate_url",
         "comments?": "reviewform.comments",
-        "certificate_items?": "reviewform.certificate_items",
-        "send_application_documents?": "reviewform.send_application_documents",
-        "send_treatment_certificate?": "reviewform.send_treatment_certificate",
-        "send_supervision_report?": "reviewform.send_supervision_report",
-        "send_invoice?": "reviewform.send_invoice",
-        "send_packing_list?": "reviewform.send_packing_list",
-        "send_additional_document?": "reviewform.send_additional_document"
+        "certificate_items?": "reviewform.certificate_items"
       }
     },
     {

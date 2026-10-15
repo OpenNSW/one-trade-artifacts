@@ -1,0 +1,4 @@
+{
+  "id": "npqs-ephyto-upload--with-officer-msg",
+  "template": "### With the NPQS Officer for the IPPC ePhyto Hub\n\nThe phytosanitary certificate is with the NPQS officer, who chooses the documents to send with it and transmits it to the destination country via the global **IPPC ePhyto Hub**. Nothing is needed from you.\n\n- **Reference Number**: `{{ .reference_number }}`\n- **Certificate Number**: `{{ .certificate_id }}`\n{{ with .ephyto }}{{ if .error }}\n> The last transmission was not accepted by the Hub, so the officer is sending it again: {{ .error }}\n{{ end }}{{ end }}"
+}

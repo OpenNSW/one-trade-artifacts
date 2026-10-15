@@ -3,71 +3,46 @@
   "type": "APPLICATION",
   "title": "[NPQS] IPPC ePhyto Hub Transfer",
   "sections": {
-    "submission_msg": {
-      "templateId": "npqs-ephyto-upload--submission-msg",
-      "title": "Transmit to IPPC ePhyto Hub",
+    "with_officer": {
+      "templateId": "npqs-ephyto-upload--with-officer-msg",
+      "title": "IPPC ePhyto Hub",
       "projector": "MARKDOWN",
-      "visibleWhen": { "states": ["PENDING_USER"] }
-    },
-    "submission_action": {
-      "templateId": "npqs-ephyto-upload--submit-form",
-      "title": "Submit",
-      "projector": "FORM",
-      "dataKey": "traderinput",
-      "visibleWhen": { "states": ["PENDING_USER"] },
-      "handles": [
-        {
-          "command": "submit",
-          "label": "Submit to IPPC Hub",
-          "element": "primary_action"
-        }
-      ]
+      "visibleWhen": {
+        "states": [
+          "STARTING",
+          "STARTING_STEP",
+          "QUEUED_EXTERNALLY"
+        ]
+      }
     },
     "polling_msg": {
       "templateId": "npqs-ephyto-upload--polling-msg",
       "title": "Delivery Status",
       "projector": "MARKDOWN",
-      "visibleWhen": { "states": ["EPHYTO_SUBMITTED", "EPHYTO_POLLING"] }
-    },
-    "timeout_msg": {
-      "templateId": "npqs-ephyto-upload--timeout-msg",
-      "title": "Delivery Not Confirmed",
-      "projector": "MARKDOWN",
-      "visibleWhen": { "states": ["EPHYTO_NOT_DELIVERED"] }
-    },
-    "timeout_action": {
-      "templateId": "npqs-ephyto-upload--action-form",
-      "title": "Acknowledge",
-      "projector": "FORM",
-      "dataKey": "traderinput",
-      "visibleWhen": { "states": ["EPHYTO_NOT_DELIVERED"] },
-      "handles": [
-        {
-          "command": "acknowledge",
-          "label": "Acknowledge",
-          "element": "primary_action"
-        }
-      ]
+      "visibleWhen": {
+        "states": [
+          "EPHYTO_SUBMITTED",
+          "EPHYTO_POLLING"
+        ]
+      }
     },
     "completed": {
       "templateId": "npqs-ephyto-upload--completed-msg",
-      "title": "ePhyto Transmission Complete",
+      "title": "IPPC ePhyto Hub Transmission",
       "projector": "MARKDOWN",
-      "visibleWhen": { "states": ["COMPLETED"] }
+      "visibleWhen": {
+        "states": [
+          "COMPLETED"
+        ]
+      }
     }
   },
   "states": {
-    "PENDING_USER": {
-      "actions": [{ "command": "submit" }]
-    },
     "EPHYTO_SUBMITTED": {
       "actions": []
     },
     "EPHYTO_POLLING": {
       "actions": []
-    },
-    "EPHYTO_NOT_DELIVERED": {
-      "actions": [{ "command": "acknowledge" }]
     }
   }
 }

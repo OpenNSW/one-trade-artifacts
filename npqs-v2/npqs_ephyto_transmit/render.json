@@ -1,0 +1,50 @@
+{
+  "id": "npqs-ephyto-transmit--review:render",
+  "type": "APPLICATION",
+  "title": "NPQS IPPC ePhyto Hub Transmission",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
+  "sections": {
+    "certificate_view": {
+      "templateId": "npqs-ephyto-transmit--certificate-view",
+      "title": "Certificate",
+      "projector": "MARKDOWN",
+      "dataKey": "submission"
+    },
+    "review_form": {
+      "templateId": "npqs-ephyto-transmit--officer-form",
+      "title": "Transmit",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Transmit to IPPC Hub",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "status_message": {
+      "templateId": "npqs-ephyto-transmit--submitted-view",
+      "title": "Transmission Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}

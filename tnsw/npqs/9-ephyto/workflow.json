@@ -8,17 +8,25 @@
       "type": "START"
     },
     {
-      "id": "submission",
+      "id": "officer_transmit",
       "type": "TASK",
-      "task_template_id": "npqs-ephyto-upload--submission",
+      "task_template_id": "npqs-ephyto-upload--officer-transmit",
       "input_mapping": {
         "reference_number": "reference_number",
         "certificate_id": "certificate_id",
-        "ephyto.error?": "ephyto.error",
-        "ephyto_documents?": "ephyto_documents"
+        "ephyto?": "ephyto",
+        "reference_number?": "submission.reference_number",
+        "certificate_id?": "submission.certificate_id",
+        "ephyto.error?": "submission.previous_error"
       },
       "output_mapping": {
-        "hub_destination": "traderinput.hub_destination"
+        "hub_destination": "officerinput.hub_destination",
+        "send_application_documents?": "officerinput.send_application_documents",
+        "send_treatment_certificate?": "officerinput.send_treatment_certificate",
+        "send_supervision_report?": "officerinput.send_supervision_report",
+        "send_invoice?": "officerinput.send_invoice",
+        "send_packing_list?": "officerinput.send_packing_list",
+        "send_additional_document?": "officerinput.send_additional_document"
       }
     },
     {
@@ -28,19 +36,19 @@
       "input_mapping": {
         "userform": "userform",
         "certificate_id": "certificate_id",
-        "traderinput.hub_destination": "hub_destination",
+        "officerinput.hub_destination": "hub_destination",
         "certificate_items?": "certificate_items",
-        "ephyto_documents.send_application_documents?": "send_application_documents",
+        "officerinput.send_application_documents?": "send_application_documents",
         "treatment_certificate_url?": "documents.treatment_certificate.url",
-        "ephyto_documents.send_treatment_certificate?": "documents.treatment_certificate.send",
+        "officerinput.send_treatment_certificate?": "documents.treatment_certificate.send",
         "supervision_report_url?": "documents.treatment_supervision_report.url",
-        "ephyto_documents.send_supervision_report?": "documents.treatment_supervision_report.send",
+        "officerinput.send_supervision_report?": "documents.treatment_supervision_report.send",
         "invoice_file_url?": "documents.commercial_invoice.url",
-        "ephyto_documents.send_invoice?": "documents.commercial_invoice.send",
+        "officerinput.send_invoice?": "documents.commercial_invoice.send",
         "packing_list_file_url?": "documents.packing_list.url",
-        "ephyto_documents.send_packing_list?": "documents.packing_list.send",
+        "officerinput.send_packing_list?": "documents.packing_list.send",
         "additional_file_url?": "documents.additional_supporting_document.url",
-        "ephyto_documents.send_additional_document?": "documents.additional_supporting_document.send"
+        "officerinput.send_additional_document?": "documents.additional_supporting_document.send"
       },
       "output_mapping": {
         "ephyto.submitted": "ephyto.submitted",
@@ -87,18 +95,6 @@
       "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
-      "id": "poll_timeout",
-      "type": "TASK",
-      "task_template_id": "npqs-ephyto-upload--poll-timeout",
-      "input_mapping": {
-        "reference_number": "reference_number",
-        "certificate_id": "certificate_id",
-        "ephyto.tracking_number?": "ephyto.tracking_number",
-        "ephyto.tracking_info?": "ephyto.tracking_info"
-      },
-      "output_mapping": {}
-    },
-    {
       "id": "end",
       "type": "END"
     }
@@ -107,11 +103,11 @@
     {
       "id": "e_start",
       "source_id": "start",
-      "target_id": "submission"
+      "target_id": "officer_transmit"
     },
     {
-      "id": "e_submission_submit",
-      "source_id": "submission",
+      "id": "e_officer_submit",
+      "source_id": "officer_transmit",
       "target_id": "submit"
     },
     {
@@ -128,7 +124,7 @@
     {
       "id": "e_submit_failed",
       "source_id": "gw_submit",
-      "target_id": "submission",
+      "target_id": "officer_transmit",
       "condition": "ephyto.submitted != true"
     },
     {
@@ -162,13 +158,8 @@
     {
       "id": "e_poll_exhausted",
       "source_id": "gw_poll_cap",
-      "target_id": "poll_timeout",
+      "target_id": "end",
       "condition": "poll_attempts >= 1440"
-    },
-    {
-      "id": "e_timeout_end",
-      "source_id": "poll_timeout",
-      "target_id": "end"
     }
   ]
 }

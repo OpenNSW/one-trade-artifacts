@@ -1187,6 +1187,66 @@
       "kind": "generic_template",
       "version": "",
       "path": "npqs_certificate_issue/userinput_jsonform.json"
+    },
+    {
+      "id": "npqs_ephyto_transmit",
+      "kind": "task_config",
+      "version": "",
+      "path": "npqs_ephyto_transmit/npqs_ephyto_transmit.taskconfig.json"
+    },
+    {
+      "id": "npqs_ephyto_transmit",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_ephyto_transmit/workflow.json"
+    },
+    {
+      "id": "npqs-ephyto-transmit--review",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs_ephyto_transmit/task_template.json"
+    },
+    {
+      "id": "npqs-ephyto-transmit--review-workflow",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_ephyto_transmit/review_workflow.json"
+    },
+    {
+      "id": "npqs-ephyto-transmit--review:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_ephyto_transmit/render.json"
+    },
+    {
+      "id": "npqs-ephyto-transmit--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_ephyto_transmit/officer_review.json"
+    },
+    {
+      "id": "npqs-ephyto-transmit--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_ephyto_transmit/officer_review_jsonform.json"
+    },
+    {
+      "id": "npqs-ephyto-transmit--notify-decision",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_ephyto_transmit/notify_decision.json"
+    },
+    {
+      "id": "npqs-ephyto-transmit--certificate-view",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_ephyto_transmit/certificate_view_markdown.json"
+    },
+    {
+      "id": "npqs-ephyto-transmit--submitted-view",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_ephyto_transmit/submitted_view_markdown.json"
     }
   ]
 }
