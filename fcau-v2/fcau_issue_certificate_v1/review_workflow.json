@@ -12,13 +12,18 @@
       "type": "TASK",
       "task_template_id": "fcau-issue-certificate--officer-review",
       "input_mapping": {
-        "submission?": "submission"
+        "submission?": "submission",
+        "submission.items?": "reviewform.items"
       },
       "output_mapping": {
         "__command": "command",
-        "certificate_id": "reviewform.certificate_id",
-        "certificate": "reviewform.certificate",
-        "supporting_documents?": "reviewform.supporting_documents"
+        "certificate_decision": "reviewform.certificate_decision",
+        "items?": "reviewform.items",
+        "certificate_id?": "reviewform.certificate_id",
+        "certificate?": "reviewform.certificate",
+        "supporting_documents?": "reviewform.supporting_documents",
+        "authorized_signature?": "reviewform.authorized_signature",
+        "rejection_reason?": "reviewform.rejection_reason"
       }
     },
     {

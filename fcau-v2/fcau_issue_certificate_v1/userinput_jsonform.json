@@ -24,10 +24,75 @@
         "title": "Address of Consignee",
         "example": "Industriestrasse 104, 20457 Hamburg, Germany"
       },
-      "description_of_food": {
-        "type": "string",
-        "title": "Description of consignment and quantity",
-        "example": "Premium Organic Coconut Cream, canned (400ml) - 500 Cartons, 5400 kg Total Net Weight"
+      "commodities": {
+        "type": "array",
+        "title": "Consignment Items",
+        "minItems": 1,
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Item ID",
+              "description": "A unique ID for this item (e.g. item-1). Do not reuse an ID within the same application.",
+              "example": "item-1"
+            },
+            "description_of_food": {
+              "type": "string",
+              "title": "Description of consignment and quantity",
+              "example": "Premium Organic Coconut Cream, canned (400ml) - 500 Cartons, 5400 kg Total Net Weight"
+            },
+            "consignment_storage_address": {
+              "type": "string",
+              "title": "Address where consignment is stored",
+              "example": "ACME Cold Storage, Sector 4, Export Zone, Biyagama"
+            },
+            "package_batch_weight_details": {
+              "type": "string",
+              "title": "Type of Package, Batch Codes and Total weight",
+              "example": "Cans in Corrugated Cartons, Batch CC-2026-94, Total Net Weight 5400 kg"
+            },
+            "ingredients_details": {
+              "type": "string",
+              "title": "Details of ingredients used in product",
+              "example": "Organic Coconut Extract (99.8%), Xanthan Gum (0.2%)"
+            },
+            "in_house_quality_monitoring": {
+              "type": "string",
+              "title": "Details of in-house quality monitoring",
+              "example": "Daily microbiological sampling, temperature control monitoring, and HACCP CCP verification logs."
+            },
+            "analysis_certificates": {
+              "type": "string",
+              "format": "file",
+              "title": "Raw Materials & Product Analysis Certificates"
+            },
+            "other_declarations": {
+              "type": "string",
+              "format": "file",
+              "title": "Any other Declarations"
+            }
+          },
+          "required": [
+            "id",
+            "description_of_food",
+            "consignment_storage_address",
+            "package_batch_weight_details",
+            "ingredients_details",
+            "in_house_quality_monitoring",
+            "analysis_certificates"
+          ]
+        },
+        "example": [
+          {
+            "id": "item-1",
+            "description_of_food": "Premium Organic Coconut Cream, canned (400ml) - 500 Cartons, 5400 kg Total Net Weight",
+            "consignment_storage_address": "ACME Cold Storage, Sector 4, Export Zone, Biyagama",
+            "package_batch_weight_details": "Cans in Corrugated Cartons, Batch CC-2026-94, Total Net Weight 5400 kg",
+            "ingredients_details": "Organic Coconut Extract (99.8%), Xanthan Gum (0.2%)",
+            "in_house_quality_monitoring": "Daily microbiological sampling, temperature control monitoring, and HACCP CCP verification logs."
+          }
+        ]
       },
       "intended_export_date": {
         "type": "string",
@@ -50,31 +115,6 @@
         "title": "Name of Vessel/ Number",
         "example": "CMA CGM MARCO POLO / V092"
       },
-      "consignment_storage_address": {
-        "type": "string",
-        "title": "Address where consignment is stored",
-        "example": "ACME Cold Storage, Sector 4, Export Zone, Biyagama"
-      },
-      "package_batch_weight_details": {
-        "type": "string",
-        "title": "Type of Package, Batch Codes and Total weight",
-        "example": "Cans in Corrugated Cartons, Batch CC-2026-94, Total Net Weight 5400 kg"
-      },
-      "ingredients_details": {
-        "type": "string",
-        "title": "Details of ingredients used in product",
-        "example": "Organic Coconut Extract (99.8%), Xanthan Gum (0.2%)"
-      },
-      "in_house_quality_monitoring": {
-        "type": "string",
-        "title": "Details of in-house quality monitoring",
-        "example": "Daily microbiological sampling, temperature control monitoring, and HACCP CCP verification logs."
-      },
-      "analysis_certificates": {
-        "type": "string",
-        "format": "file",
-        "title": "Raw Materials & Product Analysis Certificates"
-      },
       "other_supporting_documents": {
         "type": "array",
         "title": "Other Supporting Documents",
@@ -87,11 +127,6 @@
           "maxFiles": 10,
           "accept": ".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx"
         }
-      },
-      "other_declarations": {
-        "type": "string",
-        "title": "Any other Declarations",
-        "example": "Non-GMO certified, radiation-free consignment."
       }
     },
     "required": [
@@ -99,16 +134,11 @@
       "exporter_address",
       "consignee_name",
       "consignee_address",
-      "description_of_food",
+      "commodities",
       "intended_export_date",
       "lc_number",
       "container_numbers",
-      "vessel_name",
-      "consignment_storage_address",
-      "package_batch_weight_details",
-      "ingredients_details",
-      "in_house_quality_monitoring",
-      "analysis_certificates"
+      "vessel_name"
     ]
   },
   "uiSchema": {
@@ -184,52 +214,58 @@
         "elements": [
           {
             "type": "Control",
-            "scope": "#/properties/description_of_food"
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/consignment_storage_address"
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/package_batch_weight_details"
+            "scope": "#/properties/commodities",
+            "options": {
+              "detail": {
+                "type": "VerticalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/id"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/description_of_food"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/consignment_storage_address"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/package_batch_weight_details"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/ingredients_details",
+                    "options": {
+                      "multi": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/in_house_quality_monitoring",
+                    "options": {
+                      "multi": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/analysis_certificates"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/other_declarations"
+                  }
+                ]
+              }
+            }
           }
         ]
       },
       {
-        "type": "Group",
-        "label": "4. Quality & Declarations",
-        "elements": [
-          {
-            "type": "Control",
-            "scope": "#/properties/ingredients_details",
-            "options": {
-              "multi": true
-            }
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/in_house_quality_monitoring",
-            "options": {
-              "multi": true
-            }
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/analysis_certificates"
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/other_supporting_documents"
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/other_declarations",
-            "options": {
-              "multi": true
-            }
-          }
-        ]
+        "type": "Control",
+        "scope": "#/properties/other_supporting_documents"
       }
     ]
   }

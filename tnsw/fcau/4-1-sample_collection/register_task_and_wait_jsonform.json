@@ -4,10 +4,31 @@
   "schema": {
     "type": "object",
     "properties": {
-      "initial_sample": {
-        "type": "string",
-        "title": "Issued Sample Number",
-        "example": "SMP-FCAU-2026-948"
+      "items": {
+        "type": "array",
+        "title": "Samples Received (Per Item)",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Item ID"
+            },
+            "description_of_food": {
+              "type": "string",
+              "title": "Description of consignment and quantity"
+            },
+            "sample_number": {
+              "type": "string",
+              "title": "Issued Sample Number",
+              "example": "SMP-FCAU-2026-948"
+            }
+          },
+          "required": [
+            "id",
+            "sample_number"
+          ]
+        }
       },
       "received_at": {
         "type": "string",
@@ -22,7 +43,7 @@
       }
     },
     "required": [
-      "initial_sample",
+      "items",
       "received_at"
     ]
   },
@@ -31,7 +52,39 @@
     "elements": [
       {
         "type": "Control",
-        "scope": "#/properties/initial_sample"
+        "scope": "#/properties/items",
+        "options": {
+          "detail": {
+            "type": "VerticalLayout",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/id",
+                    "options": {
+                      "readOnly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/description_of_food",
+                    "options": {
+                      "readOnly": true
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/sample_number"
+              }
+            ]
+          },
+          "addable": false,
+          "removable": false
+        }
       },
       {
         "type": "Control",

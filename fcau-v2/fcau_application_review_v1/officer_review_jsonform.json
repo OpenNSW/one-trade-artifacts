@@ -20,20 +20,44 @@
         "default": "approve",
         "example": "approve"
       },
-      "sample_inspection_required": {
-        "type": "boolean",
-        "title": "Initial Sample Inspection Required",
-        "default": false
-      },
-      "lab_test_required": {
-        "type": "boolean",
-        "title": "Upfront Laboratory Test Required",
-        "default": false
-      },
-      "warehouse_inspection_required": {
-        "type": "boolean",
-        "title": "Warehouse Visual Inspection Required",
-        "default": false
+      "commodities": {
+        "type": "array",
+        "title": "Consignment Items: Required Inspections (Per Item)",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Item ID"
+            },
+            "description_of_food": {
+              "type": "string",
+              "title": "Description of consignment and quantity"
+            },
+            "visual_required": {
+              "type": "boolean",
+              "title": "Visual Inspection Required",
+              "default": false
+            },
+            "lab_required": {
+              "type": "boolean",
+              "title": "Lab Test Required",
+              "description": "If an item needs both Visual and Lab, tick Lab only (a lab test covers the visual check).",
+              "default": false
+            },
+            "warehouse_required": {
+              "type": "boolean",
+              "title": "Warehouse Inspection Required",
+              "default": false
+            }
+          },
+          "required": [
+            "id",
+            "visual_required",
+            "lab_required",
+            "warehouse_required"
+          ]
+        }
       },
       "reference_number": {
         "type": "string",
@@ -64,7 +88,8 @@
         },
         "then": {
           "required": [
-            "reference_number"
+            "reference_number",
+            "commodities"
           ]
         }
       },
@@ -96,15 +121,61 @@
       },
       {
         "type": "Control",
-        "scope": "#/properties/sample_inspection_required"
-      },
-      {
-        "type": "Control",
-        "scope": "#/properties/lab_test_required"
-      },
-      {
-        "type": "Control",
-        "scope": "#/properties/warehouse_inspection_required"
+        "scope": "#/properties/commodities",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/application_review_outcome",
+            "schema": {
+              "const": "approve"
+            }
+          }
+        },
+        "options": {
+          "detail": {
+            "type": "VerticalLayout",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/id",
+                    "options": {
+                      "readOnly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/description_of_food",
+                    "options": {
+                      "readOnly": true
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/visual_required"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/lab_required"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/warehouse_required"
+                  }
+                ]
+              }
+            ]
+          },
+          "addable": false,
+          "removable": false
+        }
       },
       {
         "type": "Control",
