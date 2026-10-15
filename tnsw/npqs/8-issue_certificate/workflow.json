@@ -1,7 +1,7 @@
 {
   "id": "npqs-issue-certificate",
   "name": "Issue Phytosanitary Certificate",
-  "version": 2,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
@@ -22,7 +22,13 @@
         "certificate_id": "certificate_id",
         "certificate_url?": "certificate_url",
         "comments?": "comments",
-        "certificate_items?": "certificate_items"
+        "certificate_items?": "certificate_items",
+        "send_application_documents?": "ephyto_documents.send_application_documents",
+        "send_treatment_certificate?": "ephyto_documents.send_treatment_certificate",
+        "send_supervision_report?": "ephyto_documents.send_supervision_report",
+        "send_invoice?": "ephyto_documents.send_invoice",
+        "send_packing_list?": "ephyto_documents.send_packing_list",
+        "send_additional_document?": "ephyto_documents.send_additional_document"
       }
     },
     {
