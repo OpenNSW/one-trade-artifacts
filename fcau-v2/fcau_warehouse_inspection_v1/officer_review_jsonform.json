@@ -3,7 +3,6 @@
   "title": "Warehouse Visual Inspection Outcome",
   "schema": {
     "type": "object",
-    "additionalProperties": false,
     "properties": {
       "items": {
         "type": "array",
