@@ -4,7 +4,8 @@
   "title": "[SLTB] Pay SLTB Levy",
   "files": [
     "payment.payment_slip",
-    "payment_slip"
+    "payment_slip",
+    "submission.payment_slip"
   ],
   "sections": {
     "select_method": {

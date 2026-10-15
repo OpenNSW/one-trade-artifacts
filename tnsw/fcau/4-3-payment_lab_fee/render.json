@@ -4,6 +4,7 @@
   "title": "[FCAU] Pay Lab Test Fee",
   "files": [
     "lab_receipt",
+    "submission.lab_receipt",
     "traderinput.lab_receipt"
   ],
   "sections": {

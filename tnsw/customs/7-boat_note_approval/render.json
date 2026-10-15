@@ -2,6 +2,10 @@
   "id": "customs-boat-note-approval-flow:render",
   "type": "REVIEW",
   "title": "[Customs] Boat Note Approval Status",
+  "files": [
+    "boat_note_approval.approved_boat_note_file",
+    "submission.boat_note_document_key"
+  ],
   "sections": {
     "status_message": {
       "templateId": "customs-boat-note-approval--instructions",
