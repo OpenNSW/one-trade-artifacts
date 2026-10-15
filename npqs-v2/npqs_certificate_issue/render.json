@@ -2,6 +2,11 @@
   "id": "npqs-certificate-issue--review:render",
   "type": "APPLICATION",
   "title": "NPQS Certificate Issuance",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
   "sections": {
     "submission_view": {
       "templateId": "npqs-apply-phyto-cert--officer-view-form",

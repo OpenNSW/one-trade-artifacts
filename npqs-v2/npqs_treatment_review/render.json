@@ -2,6 +2,11 @@
   "id": "npqs-treatment-review--review:render",
   "type": "APPLICATION",
   "title": "NPQS Review Treatment Certificates",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
   "sections": {
     "submission_view": {
       "templateId": "npqs-upload-treatment-certs--trader-form",

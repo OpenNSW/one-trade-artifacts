@@ -2,6 +2,11 @@
   "id": "cda-kcfn-asycuda-verification--review:render",
   "type": "APPLICATION",
   "title": "CDA Officer ASYCUDA Green Check Verification",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
   "sections": {
     "submission_view": {
       "templateId": "cda-kcfn-upload-docs--user-form",

@@ -2,6 +2,11 @@
   "id": "fcau-warehouse-scheduling--review:render",
   "type": "APPLICATION",
   "title": "Warehouse Inspection Scheduling Review",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
   "sections": {
     "previous_review": {
       "templateId": "fcau-warehouse-scheduling--previous-review",

@@ -2,6 +2,11 @@
   "id": "fcau-application-review--review:render",
   "type": "APPLICATION",
   "title": "FCAU Application Review",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
   "sections": {
     "previous_review": {
       "templateId": "fcau-application-review--previous-review",

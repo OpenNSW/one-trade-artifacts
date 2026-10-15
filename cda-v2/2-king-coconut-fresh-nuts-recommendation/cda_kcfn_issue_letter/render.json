@@ -2,6 +2,11 @@
   "id": "cda-kcfn-issue-letter--review:render",
   "type": "APPLICATION",
   "title": "CDA Officer Recommendation Letter Issuance",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
   "sections": {
     "submission_view": {
       "templateId": "cda-kcfn-issue-letter--apply-view-form",

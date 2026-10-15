@@ -2,6 +2,11 @@
   "id": "efc-boat-note-approval--review:render",
   "type": "APPLICATION",
   "title": "EFC Boat Note Approval",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
   "sections": {
     "boat_note_document": {
       "templateId": "efc-boat-note-approval--boat-note-document",

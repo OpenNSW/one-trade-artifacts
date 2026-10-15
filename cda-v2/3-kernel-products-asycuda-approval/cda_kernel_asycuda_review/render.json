@@ -2,6 +2,11 @@
   "id": "cda-kernel-asycuda-review--review:render",
   "type": "APPLICATION",
   "title": "CDA ASYCUDA Approval Review \u2014 Kernel Products",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
   "sections": {
     "previous_review": {
       "templateId": "cda-kernel-asycuda-review--previous-review",

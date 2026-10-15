@@ -2,6 +2,11 @@
   "id": "npqs-visual-system--review:render",
   "type": "APPLICATION",
   "title": "NPQS System Inspection",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
   "sections": {
     "submission_view": {
       "templateId": "npqs-apply-phyto-cert--officer-view-form",

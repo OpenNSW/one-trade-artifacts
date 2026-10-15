@@ -2,6 +2,11 @@
   "id": "cda-review-result--review:render",
   "type": "APPLICATION",
   "title": "CDA Application Review & Certification",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
   "sections": {
     "submission_view": {
       "templateId": "cda-apply-coconut-cert--user-form",

@@ -2,6 +2,11 @@
   "id": "npqs-lab-testing--review:render",
   "type": "APPLICATION",
   "title": "NPQS Lab Testing",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
   "sections": {
     "submission_view": {
       "templateId": "npqs-apply-phyto-cert--officer-view-form",

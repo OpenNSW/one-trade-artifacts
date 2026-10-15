@@ -2,6 +2,11 @@
   "id": "cda-lot-adjustment-review--review:render",
   "type": "APPLICATION",
   "title": "CDA Officer Lot Adjustment Review",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
   "sections": {
     "previous_review": {
       "templateId": "cda-lot-adjustment-review--previous-review",

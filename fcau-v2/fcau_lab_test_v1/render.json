@@ -2,6 +2,11 @@
   "id": "fcau-lab-test--review:render",
   "type": "APPLICATION",
   "title": "FCAU Lab Testing",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
   "sections": {
     "submission_view": {
       "templateId": "fcau-apply-health-cert--user-form",

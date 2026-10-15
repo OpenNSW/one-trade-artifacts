@@ -2,6 +2,11 @@
   "id": "sltb-lab-testing--review:render",
   "type": "APPLICATION",
   "title": "Lab Testing & Results",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
   "sections": {
     "review_form": {
       "templateId": "sltb-lab-testing--officer-form",
