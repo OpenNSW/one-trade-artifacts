@@ -1,7 +1,7 @@
 {
   "id": "sltb-pay-lab-fee-flow",
   "name": "Pay Lab Test Fee",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -21,7 +21,6 @@
       "type": "TASK",
       "task_template_id": "sltb-pay-lab-fee--payment",
       "input_mapping": {
-        "reference_number": "reference_number",
         "selected_method": "selected_method"
       },
       "output_mapping": {

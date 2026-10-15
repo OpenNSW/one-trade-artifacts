@@ -1,7 +1,7 @@
 {
   "id": "sltb-blendsheet-approval",
   "name": "SLTB Tea Blendsheet Approval & Sample Collection Flow",
-  "version": 2,
+  "version": 3,
   "nodes": [
     { "id": "start", "type": "START", "name": "Start" },
     {
@@ -15,7 +15,6 @@
         "reviewerform.review_outcome": "sltb.review_outcome",
         "reviewerform.levy_amount?": "sltb.levy_amount",
         "reviewerform.collection_method?": "sltb.collection_method",
-        "reviewerform.reference_number?": "sltb.reference_number",
         "rejection_reason?": "sltb.rejection_reason",
         "userform": "sltb.userform"
       }
@@ -33,8 +32,7 @@
       "task_template_id": "sltb-pay-levy-flow",
       "lane": "Trader/CHA & SLTB Officer",
       "input_mapping": {
-        "sltb.levy_amount": "levy_amount",
-        "sltb.reference_number": "reference_number"
+        "sltb.levy_amount": "levy_amount"
       },
       "output_mapping": {
         "payment.payment_status?": "sltb.levy_payment_outcome",
@@ -125,9 +123,7 @@
       "name": "[SLTB 5] Pay Lab Test Fee via GovPay",
       "task_template_id": "sltb-pay-lab-fee-flow",
       "lane": "Trader/CHA & SLTB Officer",
-      "input_mapping": {
-        "sltb.reference_number": "reference_number"
-      },
+      "input_mapping": {},
       "output_mapping": {
         "payment_status": "sltb.lab_payment_outcome"
       }

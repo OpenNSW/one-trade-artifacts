@@ -74,8 +74,9 @@
             "blendsheet_no": {
               "type": "string",
               "title": "Blend Sheet No.",
-              "description": "Not carried by the XML — enter manually.",
-              "example": "2026/34254"
+              "description": "Assigned when the application is submitted.",
+              "readOnly": true,
+              "example": "2026/00001"
             },
             "exporter_registration_no": {
               "type": "string",
@@ -392,7 +393,17 @@
                       {
                         "type": "VerticalLayout",
                         "elements": [
-                          { "type": "Control", "scope": "#/properties/blendsheet_no" },
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/blendsheet_no",
+                            "rule": {
+                              "effect": "SHOW",
+                              "condition": {
+                                "scope": "#/properties/blendsheet_no",
+                                "schema": { "type": "string", "minLength": 1 }
+                              }
+                            }
+                          },
                           { "type": "Control", "scope": "#/properties/exporter_registration_no" },
                           { "type": "Control", "scope": "#/properties/exporter_tin" }
                         ]

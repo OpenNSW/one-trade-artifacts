@@ -27,8 +27,9 @@
             "blendsheet_no": {
               "type": "string",
               "title": "Blend Sheet No.",
-              "description": "Not carried by the XML — enter manually.",
-              "example": "2026/34254"
+              "description": "Assigned when the application is submitted.",
+              "readOnly": true,
+              "example": "2026/00001"
             },
             "exporter_registration_no": {
               "type": "string",

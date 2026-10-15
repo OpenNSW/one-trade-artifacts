@@ -1,0 +1,15 @@
+{
+  "id": "sltb-submit-blendsheet--generate-blendsheet-nos",
+  "task_type": "REFID_GENERATOR",
+  "output_namespace": "refid",
+  "plugin_properties": {
+    "ids": [
+      {
+        "each": "/blendsheet_data",
+        "path": "0/blendsheet_no",
+        "issuer": "SLTB",
+        "id_type": "blend_sheet_no"
+      }
+    ]
+  }
+}

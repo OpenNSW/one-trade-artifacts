@@ -18,8 +18,9 @@
       "sample_number": {
         "type": "string",
         "title": "Assigned Sample Number",
-        "description": "Enter the SLTB sample number assigned to this consignment.",
-        "example": "SLTB-SMP-2026-904812"
+        "description": "Assigned when the task opens.",
+        "readOnly": true,
+        "example": "2026/09/0001"
       },
       "draw_date": {
         "type": "string",

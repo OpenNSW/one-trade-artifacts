@@ -385,6 +385,12 @@
       "path": "sltb_sample_ack_dropoff_v1/render.json"
     },
     {
+      "id": "sltb-sample-ack-dropoff--generate-sample-number",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb_sample_ack_dropoff_v1/generate_sample_number.json"
+    },
+    {
       "id": "sltb-sample-ack-dropoff--notify-decision",
       "kind": "subtask_template",
       "version": "",
@@ -437,6 +443,12 @@
       "kind": "generic_template",
       "version": "",
       "path": "sltb_sample_draw_v1/render.json"
+    },
+    {
+      "id": "sltb-sample-draw--generate-sample-number",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb_sample_draw_v1/generate_sample_number.json"
     },
     {
       "id": "sltb-sample-draw--notify-decision",

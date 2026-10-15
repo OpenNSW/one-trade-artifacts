@@ -2839,6 +2839,12 @@
       "path": "sltb/1-application/previous_feedback_jsonform.json"
     },
     {
+      "id": "sltb-submit-blendsheet--generate-blendsheet-nos",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb/1-application/generate_blendsheet_nos.json"
+    },
+    {
       "id": "sltb-submit-blendsheet--officer-review",
       "kind": "subtask_template",
       "version": "",
@@ -2867,6 +2873,12 @@
       "kind": "generic_template",
       "version": "",
       "path": "sltb/2-levy_payment/render.json"
+    },
+    {
+      "id": "sltb-pay-levy--generate-reference",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb/2-levy_payment/generate_reference.json"
     },
     {
       "id": "sltb-pay-levy--select-method",
