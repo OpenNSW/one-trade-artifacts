@@ -8,21 +8,10 @@
       "type": "START"
     },
     {
-      "id": "generate-reference-task",
-      "type": "TASK",
-      "task_template_id": "sltb-pay-levy--generate-reference",
-      "input_mapping": {},
-      "output_mapping": {
-        "refid.reference_number": "reference_number"
-      }
-    },
-    {
       "id": "select-method-task",
       "type": "TASK",
       "task_template_id": "sltb-pay-levy--select-method",
-      "input_mapping": {
-        "reference_number": "reference_number"
-      },
+      "input_mapping": {},
       "output_mapping": {
         "selected_method": "payment_method.selected_method",
         "reference_number?": "payment_method.reference_number"
@@ -41,7 +30,6 @@
       "input_mapping": {
         "levy_amount?": "levy_amount",
         "payment_method?": "payment_method",
-        "reference_number": "reference_number",
         "payment_method.selected_method": "selected_method",
         "levy_amount": "amount"
       },
@@ -49,6 +37,15 @@
         "payment_status": "payment.payment_status",
         "payment_receipt_url?": "payment.payment_receipt_url",
         "selected_method?": "payment.selected_method"
+      }
+    },
+    {
+      "id": "generate-slip-reference-task",
+      "type": "TASK",
+      "task_template_id": "sltb-pay-levy--generate-reference",
+      "input_mapping": {},
+      "output_mapping": {
+        "refid.reference_number": "reference_number"
       }
     },
     {
@@ -91,6 +88,15 @@
       "name": "Slip Verified?"
     },
     {
+      "id": "generate-pinpack-reference-task",
+      "type": "TASK",
+      "task_template_id": "sltb-pay-levy--generate-reference",
+      "input_mapping": {},
+      "output_mapping": {
+        "refid.reference_number": "reference_number"
+      }
+    },
+    {
       "id": "confirm-pinpack-task",
       "type": "TASK",
       "task_template_id": "sltb-pay-levy--confirm-pinpack",
@@ -117,11 +123,6 @@
     {
       "id": "e-start",
       "source_id": "start",
-      "target_id": "generate-reference-task"
-    },
-    {
-      "id": "e-reference",
-      "source_id": "generate-reference-task",
       "target_id": "select-method-task"
     },
     {
@@ -141,10 +142,15 @@
       "target_id": "join-gateway"
     },
     {
-      "id": "e-slip-upload",
+      "id": "e-slip-reference",
       "source_id": "method-split",
-      "target_id": "upload-receipt-task",
+      "target_id": "generate-slip-reference-task",
       "condition": "payment_method.selected_method == 'payment_slip'"
+    },
+    {
+      "id": "e-slip-upload",
+      "source_id": "generate-slip-reference-task",
+      "target_id": "upload-receipt-task"
     },
     {
       "id": "e-to-review",
@@ -169,10 +175,15 @@
       "condition": "payment_review.payment_review_outcome == 'approve'"
     },
     {
-      "id": "e-pinpack",
+      "id": "e-pinpack-reference",
       "source_id": "method-split",
-      "target_id": "confirm-pinpack-task",
+      "target_id": "generate-pinpack-reference-task",
       "condition": "payment_method.selected_method == 'pinpack'"
+    },
+    {
+      "id": "e-pinpack",
+      "source_id": "generate-pinpack-reference-task",
+      "target_id": "confirm-pinpack-task"
     },
     {
       "id": "e-pinpack-join",
