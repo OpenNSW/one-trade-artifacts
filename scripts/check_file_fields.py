@@ -9,7 +9,8 @@ out as it is stored. This check finds every such value.
 A task's data is its active step's mapped inputs plus that step's submission
 under its output namespace, so a render config must list the union, over its
 task's steps, of the paths that can hold a file. Files start at form fields
-with "format": "file" (a step's submission) or at an OGA's callback payload,
+with "format": "file" (a step's submission), at an OGA's callback payload, or
+at a step that generates a file (HTML_DOCUMENT_GENERATOR, at its .key),
 and move through input_mapping and output_mapping ({source: destination}) at
 both workflow levels, and across TNSW and the agencies.
 
@@ -34,6 +35,9 @@ import sys
 from collections import defaultdict
 
 TNSW = "tnsw"
+
+# Step types that store a file they generate, under {output_namespace}.key.
+GENERATED_FILE_STEPS = {"HTML_DOCUMENT_GENERATOR"}
 
 
 def load(root, path):
@@ -122,6 +126,8 @@ class Scope:
         base = name
         for a in load(root, f"{name}/manifest.json")["artifacts"]:
             path = os.path.join(base, a["path"])
+            if not path.endswith(".json"):
+                continue  # an HTML or other text template: it declares nothing
             self.by_kind[a["kind"]][a["id"]] = load(root, path)
             self.path_of[(a["kind"], a["id"])] = path
         generic = self.by_kind["generic_template"]
@@ -196,6 +202,9 @@ class Checker:
 
     def submission_files(self, scope, step, render):
         """The file paths in what a step stores under its namespace, and where they come from."""
+        if step.get("task_type") in GENERATED_FILE_STEPS:
+            # It stores a file it generates: {"key": <storage key>, ...}.
+            return {"key": f"the file {step.get('task_type')} {step.get('id')} generates"}
         if step.get("task_type") == "EXTERNAL_REVIEW":
             # Until an OGA's cutover, a deployment may run its legacy service or
             # its agency (<agency>-v2): the step can get either one's callback.
@@ -243,7 +252,13 @@ class Checker:
             inputs = transfer(scope.vars[wf_id], node.get("input_mapping"))
             submission = self.submission_files(scope, step, render)
             before = len(scope.vars[wf_id])
-            for p, origin in transfer(submission, node.get("output_mapping")).items():
+            produced = dict(submission)
+            if step.get("task_type") in GENERATED_FILE_STEPS and step.get("output_namespace"):
+                # A generator writes into the task data under its namespace,
+                # so its output_mapping reads "<namespace>.key".
+                ns = step["output_namespace"]
+                produced.update({f"{ns}.{p}": origin for p, origin in submission.items()})
+            for p, origin in transfer(produced, node.get("output_mapping")).items():
                 scope.vars[wf_id].setdefault(p, origin)
             changed |= len(scope.vars[wf_id]) != before
             ns = step.get("output_namespace")
@@ -257,7 +272,13 @@ class Checker:
             props = step.get("plugin_properties") or {}
             if step.get("task_type") == "EXTERNAL_REVIEW":
                 code = props.get("task_code")
-                sends_submission = any(clean(d) == "submission" for d in (node.get("input_mapping") or {}).values())
+                # The engine nests mapped inputs, so a mapping to "submission"
+                # or to "submission.<field>" gives the step a "submission"
+                # input, and the push then sends only that.
+                sends_submission = any(
+                    clean(d) == "submission" or clean(d).startswith("submission.")
+                    for d in (node.get("input_mapping") or {}).values()
+                )
                 if sends_submission:
                     sent = {p[len("submission."):]: o for p, o in inputs.items() if p.startswith("submission.")}
                 else:
