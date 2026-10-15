@@ -119,7 +119,7 @@ Consignment re-inspected after treatment and found free from live pests.
   </tr>
   <tr><th>Declared Means of Conveyance</th><th>Declared Point of Entry</th></tr>
   <tr>
-    <td>{{ $app.transport_mode }}{{ if $app.vessel_name }} - {{ $app.vessel_name }}{{ end }}{{ if $app.voyage_number }} - Voyage {{ $app.voyage_number }}{{ end }}</td>
+    <td>{{ $app.transport_mode.label }}{{ if $app.vessel_name }} - {{ $app.vessel_name }}{{ end }}{{ if $app.voyage_number }} - Voyage {{ $app.voyage_number }}{{ end }}</td>
     <td>{{ $app.point_of_entry_port }}</td>
   </tr>
   {{- if $app.transit_countries }}
@@ -144,19 +144,19 @@ Consignment re-inspected after treatment and found free from live pests.
     <td colspan="2" class="small">
       Botanical Name/Common Name: <i>{{ $c.commodity_botanical_name }}</i>/{{ $c.commodity_common_name.label }}
       {{- if $c.commodity_description }}, Description of the Commodity: {{ $c.commodity_description }}{{ end }}
-      {{- if $c.commodity_plant_part }}; Plant Part: {{ $c.commodity_plant_part }}{{ end }}
-      {{- if $c.commodity_intended_use }}; Intended Use: {{ $c.commodity_intended_use }}{{ end }}
-      {{- if $c.commodity_condition }}; Condition: {{ $c.commodity_condition }}{{ end }};<br>
-      {{- if not (zero $c.quantity_gross_weight) }}Gross Weight: {{ $c.quantity_gross_weight }} {{ $c.quantity_gross_weight_unit }}; {{ end }}
-      {{- if not (zero $c.quantity_net_weight) }}Net Weight: {{ $c.quantity_net_weight }} {{ $c.quantity_net_weight_unit }};{{ end }}
+      {{- if $c.commodity_plant_part }}; Plant Part: {{ $c.commodity_plant_part.label }}{{ end }}
+      {{- if $c.commodity_intended_use }}; Intended Use: {{ $c.commodity_intended_use.label }}{{ end }}
+      {{- if $c.commodity_condition }}; Condition: {{ $c.commodity_condition.label }}{{ end }};<br>
+      {{- if not (zero $c.quantity_gross_weight) }}Gross Weight: {{ $c.quantity_gross_weight }} {{ $c.quantity_gross_weight_unit.label }}; {{ end }}
+      {{- if not (zero $c.quantity_net_weight) }}Net Weight: {{ $c.quantity_net_weight }} {{ $c.quantity_net_weight_unit.label }};{{ end }}
     </td>
-    <td>{{ $c.origin_country }}{{ if $c.origin_area }}, {{ $c.origin_area }}{{ end }}</td>
+    <td>{{ $c.origin_country.label }}{{ if $c.origin_area }}, {{ $c.origin_area }}{{ end }}</td>
   </tr>
   <tr><th colspan="3">Number and Description of Packages</th></tr>
   <tr><td colspan="3">
     {{- if $c.packages_free_text_enabled }}{{ $c.packages_free_text }}
     {{- else if $c.packages_in_bulk }}In bulk
-    {{- else }}{{ $c.packages_count }} {{ $c.packages_description }}{{ end -}}
+    {{- else }}{{ $c.packages_count }} {{ $c.packages_description.label }}{{ end -}}
   </td></tr>
   <tr><th colspan="3">ADDITIONAL DECLARATION</th></tr>
   <tr><td colspan="3" class="pre">{{ $app.additional_declaration }}</td></tr>
@@ -204,7 +204,7 @@ Consignment re-inspected after treatment and found free from live pests.
 
 <table class="sign">
   <tr>
-    <td style="width:18%">Place of Issue</td><td style="width:32%">{{ $app.nppo_office_location }}</td>
+    <td style="width:18%">Place of Issue</td><td style="width:32%">{{ $app.nppo_office_location.label }}</td>
     <td style="width:18%">Name of Authorized Officer</td><td class="blank"></td>
   </tr>
   <tr>
