@@ -7,7 +7,8 @@
       "reference_number": {
         "type": "string",
         "title": "NPQS Reference Number",
-        "example": "NPQS-2026-EXP-1092"
+        "readOnly": true,
+        "example": "TNSW/NPQS/SEA-CMB/PC/2026/000001"
       },
       "review_outcome": {
         "type": "string",
@@ -227,7 +228,10 @@
     "elements": [
       {
         "type": "Control",
-        "scope": "#/properties/reference_number"
+        "scope": "#/properties/reference_number",
+        "options": {
+          "readonly": true
+        }
       },
       {
         "type": "Control",

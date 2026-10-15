@@ -209,6 +209,17 @@
         "title": "Phytosanitary Certificate Number",
         "example": "PC-NPQS-2026-8092"
       },
+      "certificate_type": {
+        "type": "string",
+        "title": "Application Certificate Type",
+        "readOnly": true
+      },
+      "replacement_reference_number": {
+        "type": "string",
+        "title": "Replacement Certificate Reference No.",
+        "readOnly": true,
+        "example": "PCTSL-4FKU5794MV"
+      },
       "certificate_url": {
         "type": "string",
         "format": "file",
@@ -219,6 +230,17 @@
         "type": "string",
         "title": "Officer Remarks",
         "example": "Issued phytosanitary certificate after validating treatment and visual inspection records."
+      },
+      "ephyto_required": {
+        "type": "boolean",
+        "title": "ePhyto Required",
+        "readOnly": true
+      },
+      "ephyto_reference_number": {
+        "type": "string",
+        "title": "ePhyto Certificate Reference Number",
+        "readOnly": true,
+        "example": "PCTSL-4FKU5794MV"
       }
     },
     "required": [
@@ -305,6 +327,52 @@
           },
           "addable": false,
           "removable": false
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/certificate_type",
+        "options": {
+          "readOnly": true
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/ephyto_required",
+        "options": {
+          "readOnly": true
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/ephyto_reference_number",
+        "options": {
+          "readOnly": true
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/ephyto_required",
+            "schema": {
+              "const": true
+            }
+          }
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/replacement_reference_number",
+        "options": {
+          "readOnly": true
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/certificate_type",
+            "schema": {
+              "const": "re-export"
+            }
+          }
         }
       },
       {

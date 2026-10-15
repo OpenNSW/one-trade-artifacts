@@ -10,6 +10,10 @@
     "gateway_metadata": {
       "govpay_subinst_id": "002",
       "govpay_service_id": "003"
+    },
+    "reference": {
+      "issuer": "NPQS",
+      "id_type": "npqs_payment_ref"
     }
   }
 }
