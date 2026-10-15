@@ -1,7 +1,7 @@
 {
   "id": "slpa-invoice-flow",
   "name": "Settle the SLPA Invoice",
-  "version": 5,
+  "version": 6,
   "nodes": [
     {
       "id": "start",
@@ -50,6 +50,7 @@
       "type": "TASK",
       "task_template_id": "slpa-invoice--wait",
       "input_mapping": {
+        "payment?": "payment",
         "so.slug?": "so.slug",
         "so.service_order_no?": "so.service_order_no"
       },
