@@ -13,7 +13,7 @@
       "task_template_id": "npqs-application-review--generate-reference-number",
       "input_mapping": {
         "submission.reference_number?": "reference_number",
-        "submission.nppo_office_location": "officeLocation"
+        "submission.nppo_office_location.value": "officeLocation"
       },
       "output_mapping": {
         "refid.reference_number": "reviewform.reference_number"
