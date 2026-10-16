@@ -56,6 +56,10 @@
                 {
                   "const": "fail",
                   "title": "Fail"
+                },
+                {
+                  "const": "refer_warehouse",
+                  "title": "Referred to Warehouse"
                 }
               ]
             },
