@@ -8,6 +8,18 @@
     ]
   },
   "sections": {
+    "previous_review": {
+      "templateId": "efc-boat-note-approval--previous-review",
+      "title": "Previous Review",
+      "projector": "MARKDOWN",
+      "dataKey": "previous_remarks",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "previous_remarks"
+      }
+    },
     "boat_note_document": {
       "templateId": "efc-boat-note-approval--boat-note-document",
       "title": "Boat Note Document",
@@ -40,7 +52,20 @@
       "visibleWhen": {
         "states": [
           "QUEUED_EXTERNALLY"
-        ]
+        ],
+        "requireDataKey": "payload"
+      }
+    },
+    "awaiting_resubmission": {
+      "templateId": "efc-boat-note-approval--awaiting-resubmission",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "dataKey": "remarks",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ],
+        "requireDataKey": "remarks"
       }
     }
   },
