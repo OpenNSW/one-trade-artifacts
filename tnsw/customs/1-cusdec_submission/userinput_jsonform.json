@@ -155,10 +155,7 @@
           }
             },
             "required": [
-              "code",
-              "name",
-              "address",
-              "countryCode"
+              "code"
             ]
           },
           "consignee": {
@@ -180,12 +177,7 @@
                 "title": "10. Consignee Country Code",
                 "example": "MY"
               }
-            },
-            "required": [
-              "name",
-              "address",
-              "countryCode"
-            ]
+            }
           },
           "declarant": {
             "type": "object",
@@ -204,7 +196,6 @@
         },
         "required": [
           "exporter",
-          "consignee",
           "declarant"
         ]
       },
