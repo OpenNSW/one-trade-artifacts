@@ -34,9 +34,8 @@
             { "from": "ASYCUDA.Financial.Bank.Code", "to": "financial.bankCode", "as": "string" },
             { "from": "ASYCUDA.Financial.Bank.Reference", "to": "financial.bankReference", "as": "string" },
             { "from": "ASYCUDA.Financial.Terms.Code", "to": "financial.paymentTermsCode", "as": "string" },
-            { "from": "ASYCUDA.Financial.Total_invoice", "to": "valuation.invoiceAmount.amount", "as": "number" },
-            { "from": "ASYCUDA.Valuation.Gs_Invoice.Currency_code", "to": "valuation.invoiceAmount.currencyCode", "as": "string" },
-            { "from": "ASYCUDA.Valuation.Weight.Gross_weight", "to": "valuation.totalGrossWeight", "as": "number" },
+            { "from": "ASYCUDA.Financial.Total_invoice", "to": "valuation.totalAmountInvoiced.amount", "as": "number" },
+            { "from": "ASYCUDA.Valuation.Gs_Invoice.Currency_code", "to": "valuation.totalAmountInvoiced.currencyCode", "as": "string" },
             { "from": "ASYCUDA.Property.Nbers.Total_number_of_packages", "to": "packages.totalPackages", "as": "number" },
             {
               "from": "ASYCUDA.Item",
@@ -62,7 +61,8 @@
       },
       "containerCount": {
         "type": "integer",
-        "title": "Container Count",
+        "title": "19. C.A.P ( Box 13 )",
+        "description": "Number of containers",
         "minimum": 0,
         "example": 3
       },
@@ -72,7 +72,7 @@
         "properties": {
           "officeCode": {
             "type": "string",
-            "title": "Office of Entry/Exit ( Cage 29 )",
+            "title": "3. Customs Office ( Box A )",
             "x-search": {
               "service": "static-data",
               "mode": "large-searchable-list",
@@ -86,7 +86,7 @@
           },
           "declarationType": {
             "type": "string",
-            "title": "Declaration Type ( Cage 1 )",
+            "title": "1. Declaration Type ( Box 1 )",
             "oneOf": [
               {
                 "const": "EX",
@@ -97,7 +97,7 @@
           },
           "generalProcedureCode": {
             "type": "string",
-            "title": "General Procedure Code",
+            "title": "2. General Procedure Code ( Box 1 )",
             "x-search": {
               "service": "static-data",
               "mode": "small-list",
@@ -126,22 +126,22 @@
             "properties": {
               "code": {
                 "type": "string",
-                "title": "Exporter TIN / Code",
+                "title": "4. Exporter TIN ( Box 2 )",
                 "example": "900000000001"
               },
               "name": {
                 "type": "string",
-                "title": "Exporter Name",
+                "title": "5. Exporter Name ( Box 2 )",
                 "example": "JOTHI COCONUT EXPORTERS"
               },
               "address": {
                 "type": "string",
-                "title": "Exporter Address",
+                "title": "6. Exporter Address ( Box 2 )",
                 "example": "45A, KANDY ROAD, PILIMATHALAWA"
               },
           "countryCode": {
             "type": "string",
-            "title": "Country Code",
+            "title": "7. Exporter Country Code",
             "x-search": {
               "service": "static-data",
               "mode": "large-searchable-list",
@@ -155,10 +155,7 @@
           }
             },
             "required": [
-              "code",
-              "name",
-              "address",
-              "countryCode"
+              "code"
             ]
           },
           "consignee": {
@@ -167,25 +164,20 @@
             "properties": {
               "name": {
                 "type": "string",
-                "title": "Consignee Name",
+                "title": "8. Consignee Name ( Box 8 )",
                 "example": "COCO WORLD SDN BHD"
               },
               "address": {
                 "type": "string",
-                "title": "Consignee Address",
+                "title": "9. Consignee Address ( Box 8 )",
                 "example": "125, PUTRAJAYA, KUALA LUMPUR, MALAYSIA"
               },
               "countryCode": {
                 "type": "string",
-                "title": "Country Code",
+                "title": "10. Consignee Country Code",
                 "example": "MY"
               }
-            },
-            "required": [
-              "name",
-              "address",
-              "countryCode"
-            ]
+            }
           },
           "declarant": {
             "type": "object",
@@ -193,7 +185,7 @@
             "properties": {
               "code": {
                 "type": "string",
-                "title": "Declarant/Representative Code ( Cage 14 )",
+                "title": "11. Declarant/Representative Code ( Box 14 )",
                 "example": "900000000"
               }
             },
@@ -204,7 +196,6 @@
         },
         "required": [
           "exporter",
-          "consignee",
           "declarant"
         ]
       },
@@ -214,7 +205,7 @@
         "properties": {
           "countryOfFirstDestination": {
             "type": "string",
-            "title": "Country of First Destination ( Cage 10 )",
+            "title": "13. Country of First Destination ( Box 10 )",
             "x-search": {
               "service": "static-data",
               "mode": "large-searchable-list",
@@ -224,11 +215,11 @@
                 "version": "1"
               }
             },
-            "example": "MY"
+            "example": "PL"
           },
           "exportCountryCode": {
             "type": "string",
-            "title": "Country of Export ( Cage 15 )",
+            "title": "14. Country of Export ( Box 15.a )",
             "x-search": {
               "service": "static-data",
               "mode": "large-searchable-list",
@@ -242,7 +233,7 @@
           },
           "destinationCountryCode": {
             "type": "string",
-            "title": "Country of Destination ( Cage 17 )",
+            "title": "15. Country of Destination ( Box 17.A )",
             "x-search": {
               "service": "static-data",
               "mode": "large-searchable-list",
@@ -265,14 +256,23 @@
         "type": "object",
         "title": "Transport",
         "properties": {
+          "warehouseCode": {
+            "type": "string",
+            "title": "34. Identification of Warehouse ( Box 49 )"
+          },
+          "warehouseDelay": {
+            "type": "integer",
+            "title": "35. Warehouse Delay ( Box 49 period )",
+            "minimum": 0
+          },
           "vesselName": {
             "type": "string",
-            "title": "Vessel/Flight ( Cage 18 )",
+            "title": "16. Vessel/Flight ( Box 18 )",
             "example": "MSC SAVANNA"
           },
           "transportNationality": {
             "type": "string",
-            "title": "Transport Nationality",
+            "title": "17. Vessel/Flight Nationality ( Box 18 )",
             "description": "Country code of the vessel/aircraft at departure.",
             "x-search": {
               "service": "static-data",
@@ -283,16 +283,16 @@
                 "version": "1"
               }
             },
-            "example": "LK"
+            "example": "SG"
           },
           "voyageNo": {
             "type": "string",
-            "title": "Voyage No./Date ( Cage 21 )",
-            "example": "185 E DATED 20/04/2026"
+            "title": "22. Voyage No./Date ( Box 21 )",
+            "example": "220W"
           },
           "voyageNationality": {
             "type": "string",
-            "title": "Voyage Nationality",
+            "title": "23. Voyage No./Date Nationality ( Box 21 )",
             "x-search": {
               "service": "static-data",
               "mode": "large-searchable-list",
@@ -302,11 +302,11 @@
                 "version": "1"
               }
             },
-            "example": "LK"
+            "example": "SG"
           },
           "modeOfTransport": {
             "type": "string",
-            "title": "Mode of Transport at Border ( Cage 25 )",
+            "title": "30. Mode of Transport at Border ( Box 25 )",
             "x-search":{
               "service": "static-data",
               "mode": "small-list",
@@ -320,13 +320,13 @@
           },
           "containerized": {
             "type": "boolean",
-            "title": "Containerized",
+            "title": "18. Containerized ( Box 19 )",
             "example": true,
             "default": true
           },
           "deliveryTermsCode": {
             "type": "string",
-            "title": "Delivery Terms ( Cage 20 )",
+            "title": "20. Delivery Terms Code ( Box 20 )",
             "x-search": {
               "service": "static-data",
               "mode": "small-list",
@@ -340,12 +340,12 @@
           },
           "deliveryTermsPlace": {
             "type": "string",
-            "title": "Delivery Terms Place",
-            "example": "TEST DELIVERY TERMS PLACE"
+            "title": "21. Delivery Terms Place ( Box 20 )",
+            "example": "COLOMBO"
           },
           "borderOfficeCode": {
             "type": "string",
-            "title": "Border Office Code",
+            "title": "32. Office of Entry/Exit ( Box 29 )",
             "x-search": {
               "service": "static-data",
               "mode": "large-searchable-list",
@@ -359,7 +359,7 @@
           },
           "placeOfDischargeCode": {
             "type": "string",
-            "title": "Place of Discharging ( Cage 27 )",
+            "title": "31. Place of Discharging ( Box 27 )",
             "description": "UNLOCODE of the place where the goods are discharged.",
             "x-search": {
               "service": "static-data",
@@ -370,7 +370,7 @@
                 "version": "1"
               }
             },
-            "example": "LKADP"
+            "example": "PLGDY"
           }
         },
         "required": [
@@ -388,9 +388,15 @@
         "type": "object",
         "title": "Financial",
         "properties": {
+          "deferredPayment": {
+            "type": "string",
+            "title": "33. A.C. Number ( Box 48 )",
+            "description": "Prepayment account number",
+            "example": "CAP/XXXXX"
+          },
           "bankCode": {
             "type": "string",
-            "title": "Bank Code",
+            "title": "51. Bank Code ( Box 28 )",
             "x-search": {
               "service": "static-data",
               "mode": "large-searchable-list",
@@ -404,25 +410,32 @@
           },
           "bankReference": {
             "type": "string",
-            "title": "Bank Reference No.",
+            "title": "52. Bank Reference No. ( Box 28 )",
             "example": "84004328"
           },
           "remittanceAmount": {
             "type": "number",
-            "title": "Remittance Amount",
+            "title": "54. Remittance Amount",
             "description": "Amount remitted through the bank against this declaration.",
             "example": 500
           },
+          "remittanceCurrencyCode": {
+            "type": "string",
+            "title": "55. Remittance Currency",
+            "description": "Currency of the remittance amount.",
+            "example": "USD"
+          },
           "paymentTermsCode": {
             "type": "string",
-            "title": "Terms of Payment",
-            "example": "31"
+            "title": "53. Terms of Payment ( Box 28 )",
+            "example": "70"
           }
         },
         "required": [
           "bankCode",
           "bankReference",
           "remittanceAmount",
+          "remittanceCurrencyCode",
           "paymentTermsCode"
         ]
       },
@@ -430,14 +443,14 @@
         "type": "object",
         "title": "Valuation",
         "properties": {
-          "invoiceAmount": {
+          "totalAmountInvoiced": {
             "type": "object",
-            "title": "Invoice Amount",
+            "title": "24. Currency & Total Amount Invoiced ( Box 22 )",
             "properties": {
               "amount": {
                 "type": "number",
                 "title": "Amount",
-                "example": 2400
+                "example": 47232
               },
               "currencyCode": {
                 "type": "string",
@@ -452,7 +465,7 @@
           },
           "externalFreight": {
             "type": "object",
-            "title": "External Freight",
+            "title": "25. Val Note Ext Freight ( Box 22 )",
             "properties": {
               "amount": {
                 "type": "number",
@@ -472,7 +485,7 @@
           },
           "internalFreight": {
             "type": "object",
-            "title": "Internal Freight",
+            "title": "28. Val Note Int Freight ( Box 22 )",
             "properties": {
               "amount": {
                 "type": "number",
@@ -492,7 +505,7 @@
           },
           "insurance": {
             "type": "object",
-            "title": "Insurance",
+            "title": "26. Val Note Insurance ( Box 22 )",
             "properties": {
               "amount": {
                 "type": "number",
@@ -512,7 +525,7 @@
           },
           "otherCosts": {
             "type": "object",
-            "title": "Other Costs",
+            "title": "27. Val Note Other ( Box 22 )",
             "properties": {
               "amount": {
                 "type": "number",
@@ -532,7 +545,7 @@
           },
           "deductions": {
             "type": "object",
-            "title": "Deductions",
+            "title": "29. Val Note Deductions ( Box 22 )",
             "properties": {
               "amount": {
                 "type": "number",
@@ -549,15 +562,10 @@
               "amount",
               "currencyCode"
             ]
-          },
-          "totalGrossWeight": {
-            "type": "number",
-            "title": "Total Gross Weight (Kg)",
-            "example": 1500
           }
         },
         "required": [
-          "invoiceAmount"
+          "totalAmountInvoiced"
         ]
       },
       "packages": {
@@ -566,7 +574,7 @@
         "properties": {
           "totalPackages": {
             "type": "integer",
-            "title": "Total Packages",
+            "title": "12. Total Packages ( Box 6 )",
             "minimum": 0,
             "example": 25
           }
@@ -588,14 +596,14 @@
               "properties": {
                 "quantity": {
                   "type": "integer",
-                  "title": "Quantity",
+                  "title": "38. Number & Kind, number ( Box 31 )",
                   "minimum": 0,
-                  "example": 25
+                  "example": 12000
                 },
                 "kindCode": {
                   "type": "string",
-                  "title": "Number & Kind",
-                  "example": "PK"
+                  "title": "39. Number & Kind, kind ( Box 31 )",
+                  "example": "CT"
                 }
               },
               "required": [
@@ -609,17 +617,17 @@
               "properties": {
                 "hsCode": {
                   "type": "string",
-                  "title": "Commodity (HS) Code ( Cage 33 )",
-                  "example": "11063010"
+                  "title": "43. Commodity (HS) Code ( Box 33 )",
+                  "example": "0902301100"
                 },
                 "preferenceCode": {
                   "type": "string",
-                  "title": "Preference Code ( Cage 36 )",
-                  "example": "ISFTA"
+                  "title": "47. Preference ( Box 36 )",
+                  "example": "GSP"
                 },
                 "extendedProcedureCode": {
                   "type": "string",
-                  "title": "Extended Procedure Code",
+                  "title": "49. Extended Procedure ( Box 37 )",
                   "x-search": {
                     "service": "static-data",
                     "mode": "large-searchable-list",
@@ -633,12 +641,12 @@
                 },
                 "nationalProcedureCode": {
                   "type": "string",
-                  "title": "National Procedure Code",
+                  "title": "50. National Procedure ( Box 37 )",
                   "example": "000"
                 },
                 "supplementaryUnit": {
                   "type": "object",
-                  "title": "Supplementary Unit",
+                  "title": "46. UOM & Qty. 1 ( Box 41 )",
                   "properties": {
                     "code": {
                       "type": "string",
@@ -655,11 +663,6 @@
                     "code",
                     "quantity"
                   ]
-                },
-                "itemPrice": {
-                  "type": "number",
-                  "title": "Item Price ( Cage 42 )",
-                  "example": 2400
                 }
               },
               "required": [
@@ -675,7 +678,7 @@
               "properties": {
                 "originCountryCode": {
                   "type": "string",
-                  "title": "Country of Origin ( Cage 16 )",
+                  "title": "48. Cty. Orig. Code ( Box 34.a )",
                   "x-search": {
                     "service": "static-data",
                     "mode": "large-searchable-list",
@@ -689,17 +692,17 @@
                 },
                 "description": {
                   "type": "string",
-                  "title": "Description",
+                  "title": "40. Description ( Box 31 )",
                   "example": "TEST DESCRIPTION"
                 },
                 "commercialDescription": {
                   "type": "string",
-                  "title": "Commercial Description",
+                  "title": "41. Commercial Description ( Box 31 )",
                   "example": "COCONUT KERNEL POWDER"
                 },
                 "commercialDescription1": {
                   "type": "string",
-                  "title": "Commercial Description (line 2)",
+                  "title": "42. Commercial Description line 2 ( Box 31 )",
                   "maxLength": 50,
                   "example": "PACKED IN CARTONS"
                 }
@@ -713,8 +716,8 @@
             },
             "marksAndNumbers": {
               "type": "string",
-              "title": "Marks and Nos of Packages",
-              "example": "COCO WORLD SDN BHD / KUALA LUMPUR / CTNS 1-25"
+              "title": "37. Marks & Nos of Packages ( Box 31 )",
+              "example": "LL-00-Sir Williams Brand | 1 X 40' HC FCL"
             },
             "valuation": {
               "type": "object",
@@ -722,17 +725,19 @@
               "properties": {
                 "grossWeight": {
                   "type": "number",
-                  "title": "Gross Mass (kg) ( Cage 35 )",
-                  "example": 1500
+                  "title": "44. Gross Mass (Kg) ( Box 35 )",
+                  "description": "Unit: KG (kilogram)",
+                  "example": 10320
                 },
                 "netWeight": {
                   "type": "number",
-                  "title": "Net Mass (kg) ( Cage 38 )",
-                  "example": 1000
+                  "title": "45. Net Mass (Kg) ( Box 38 )",
+                  "description": "Unit: KG (kilogram)",
+                  "example": 5184
                 },
                 "invoiceAmount": {
                   "type": "object",
-                  "title": "Invoice value",
+                  "title": "36. Item Price & Val Note ( Box 42 )",
                   "properties": {
                     "amount": {
                       "type": "number",
@@ -892,19 +897,23 @@
       },
       {
         "type": "Group",
-        "label": "Header information",
+        "label": "General information",
         "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/identification/properties/declarationType"
+          },
           {
             "type": "Control",
             "scope": "#/properties/identification/properties/generalProcedureCode"
           },
           {
             "type": "Control",
-            "scope": "#/properties/identification/properties/declarationType"
+            "scope": "#/properties/identification/properties/officeCode"
           },
           {
             "type": "Group",
-            "label": "Exporter ( Cage 2 )",
+            "label": "Exporter",
             "elements": [
               {
                 "type": "HorizontalLayout",
@@ -936,7 +945,7 @@
           },
           {
             "type": "Group",
-            "label": "Consignee ( Cage 8 )",
+            "label": "Consignee",
             "elements": [
               {
                 "type": "HorizontalLayout",
@@ -947,28 +956,27 @@
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/traders/properties/consignee/properties/countryCode"
+                    "scope": "#/properties/traders/properties/consignee/properties/address"
                   }
                 ]
               },
               {
                 "type": "Control",
-                "scope": "#/properties/traders/properties/consignee/properties/address"
+                "scope": "#/properties/traders/properties/consignee/properties/countryCode"
               }
             ]
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/generalInfo/properties/countryOfFirstDestination"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/traders/properties/declarant/properties/code"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/traders/properties/declarant/properties/code"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/packages/properties/totalPackages"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/generalInfo/properties/countryOfFirstDestination"
           },
           {
             "type": "Control",
@@ -988,259 +996,47 @@
             ]
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/deliveryTermsCode"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/voyageNo"
-              }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/modeOfTransport"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/placeOfDischargeCode"
-              }
-            ]
-          },
-          {
-            "type": "Group",
-            "label": "Financial and banking data ( Cage 28 )",
-            "elements": [
-              {
-                "type": "HorizontalLayout",
-                "elements": [
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/financial/properties/bankCode"
-                  },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/financial/properties/bankReference"
-                  },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/financial/properties/paymentTermsCode"
-                  }
-                ]
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/financial/properties/remittanceAmount"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/transport/properties/transportNationality"
           },
           {
             "type": "Control",
-            "scope": "#/properties/identification/properties/officeCode"
-          }
-        ]
-      },
-      {
-        "type": "Group",
-        "label": "Packages and Description of Goods ( Cage 31 )",
-        "elements": [
+            "scope": "#/properties/transport/properties/containerized"
+          },
           {
             "type": "Control",
             "scope": "#/properties/containerCount"
           },
           {
             "type": "Control",
-            "scope": "#/properties/items",
-            "options": {
-              "detail": {
-                "type": "VerticalLayout",
-                "elements": [
-                  {
-                    "type": "HorizontalLayout",
-                    "elements": [
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/packages/properties/quantity"
-                      },
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/packages/properties/kindCode"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "HorizontalLayout",
-                    "elements": [
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/tarification/properties/hsCode"
-                      },
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/tarification/properties/preferenceCode"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "Group",
-                    "label": "Procedure Code ( Cage 37 )",
-                    "elements": [
-                      {
-                        "type": "HorizontalLayout",
-                        "elements": [
-                          {
-                            "type": "Control",
-                            "scope": "#/properties/tarification/properties/extendedProcedureCode"
-                          },
-                          {
-                            "type": "Control",
-                            "scope": "#/properties/tarification/properties/nationalProcedureCode"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "Group",
-                    "label": "UOM and Qty ( Cage 41 )",
-                    "elements": [
-                      {
-                        "type": "HorizontalLayout",
-                        "elements": [
-                          {
-                            "type": "Control",
-                            "scope": "#/properties/tarification/properties/supplementaryUnit/properties/code"
-                          },
-                          {
-                            "type": "Control",
-                            "scope": "#/properties/tarification/properties/supplementaryUnit/properties/quantity"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/tarification/properties/itemPrice"
-                  },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/goodsDescription/properties/originCountryCode"
-                  },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/goodsDescription/properties/description"
-                  },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/goodsDescription/properties/commercialDescription"
-                  },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/goodsDescription/properties/commercialDescription1"
-                  },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/marksAndNumbers"
-                  },
-                  {
-                    "type": "HorizontalLayout",
-                    "elements": [
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/valuation/properties/grossWeight"
-                      },
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/valuation/properties/netWeight"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "Group",
-                    "label": "Invoice amount",
-                    "elements": [
-                      {
-                        "type": "HorizontalLayout",
-                        "elements": [
-                          {
-                            "type": "Control",
-                            "scope": "#/properties/valuation/properties/invoiceAmount/properties/amount"
-                          },
-                          {
-                            "type": "Control",
-                            "scope": "#/properties/valuation/properties/invoiceAmount/properties/currencyCode"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              }
-            }
-          }
-        ]
-      },
-      {
-        "type": "Group",
-        "label": "Transportation",
-        "elements": [
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/deliveryTermsPlace"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/containerized"
-              }
-            ]
+            "scope": "#/properties/transport/properties/deliveryTermsCode"
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/borderOfficeCode"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/transportNationality"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/voyageNationality"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "Group",
-        "label": "Valuation",
-        "elements": [
+            "type": "Control",
+            "scope": "#/properties/transport/properties/deliveryTermsPlace"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport/properties/voyageNo"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport/properties/voyageNationality"
+          },
           {
             "type": "Group",
-            "label": "Invoice amount",
+            "label": "24. Currency & Total Amount Invoiced ( Box 22 )",
             "elements": [
               {
                 "type": "HorizontalLayout",
                 "elements": [
                   {
                     "type": "Control",
-                    "scope": "#/properties/valuation/properties/invoiceAmount/properties/amount"
+                    "scope": "#/properties/valuation/properties/totalAmountInvoiced/properties/amount"
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/valuation/properties/invoiceAmount/properties/currencyCode"
+                    "scope": "#/properties/valuation/properties/totalAmountInvoiced/properties/currencyCode"
                   }
                 ]
               }
@@ -1248,7 +1044,7 @@
           },
           {
             "type": "Group",
-            "label": "External freight",
+            "label": "25. Val Note Ext Freight ( Box 22 )",
             "elements": [
               {
                 "type": "HorizontalLayout",
@@ -1267,26 +1063,7 @@
           },
           {
             "type": "Group",
-            "label": "Internal freight",
-            "elements": [
-              {
-                "type": "HorizontalLayout",
-                "elements": [
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/valuation/properties/internalFreight/properties/amount"
-                  },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/valuation/properties/internalFreight/properties/currencyCode"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "type": "Group",
-            "label": "Insurance",
+            "label": "26. Val Note Insurance ( Box 22 )",
             "elements": [
               {
                 "type": "HorizontalLayout",
@@ -1305,7 +1082,7 @@
           },
           {
             "type": "Group",
-            "label": "Other costs",
+            "label": "27. Val Note Other ( Box 22 )",
             "elements": [
               {
                 "type": "HorizontalLayout",
@@ -1324,7 +1101,26 @@
           },
           {
             "type": "Group",
-            "label": "Deductions",
+            "label": "28. Val Note Int Freight ( Box 22 )",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/valuation/properties/internalFreight/properties/amount"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/valuation/properties/internalFreight/properties/currencyCode"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Group",
+            "label": "29. Val Note Deductions ( Box 22 )",
             "elements": [
               {
                 "type": "HorizontalLayout",
@@ -1343,17 +1139,180 @@
           },
           {
             "type": "Control",
-            "scope": "#/properties/valuation/properties/totalGrossWeight"
+            "scope": "#/properties/transport/properties/modeOfTransport"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport/properties/placeOfDischargeCode"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport/properties/borderOfficeCode"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/financial/properties/deferredPayment"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport/properties/warehouseCode"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport/properties/warehouseDelay"
           }
         ]
       },
       {
         "type": "Group",
-        "label": "Packages",
+        "label": "Packages and Description of Goods",
         "elements": [
           {
             "type": "Control",
-            "scope": "#/properties/packages/properties/totalPackages"
+            "scope": "#/properties/items",
+            "options": {
+              "detail": {
+                "type": "VerticalLayout",
+                "elements": [
+                  {
+                    "type": "Group",
+                    "label": "36. Item Price & Val Note ( Box 42 )",
+                    "elements": [
+                      {
+                        "type": "HorizontalLayout",
+                        "elements": [
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/valuation/properties/invoiceAmount/properties/amount"
+                          },
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/valuation/properties/invoiceAmount/properties/currencyCode"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/marksAndNumbers"
+                  },
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/packages/properties/quantity"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/packages/properties/kindCode"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/goodsDescription/properties/description"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/goodsDescription/properties/commercialDescription"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/goodsDescription/properties/commercialDescription1"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/tarification/properties/hsCode"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/valuation/properties/grossWeight"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/valuation/properties/netWeight"
+                  },
+                  {
+                    "type": "Group",
+                    "label": "46. UOM & Qty. 1 ( Box 41 )",
+                    "elements": [
+                      {
+                        "type": "HorizontalLayout",
+                        "elements": [
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/tarification/properties/supplementaryUnit/properties/code"
+                          },
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/tarification/properties/supplementaryUnit/properties/quantity"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/tarification/properties/preferenceCode"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/goodsDescription/properties/originCountryCode"
+                  },
+                  {
+                    "type": "Group",
+                    "label": "Procedure Code ( Box 37 )",
+                    "elements": [
+                      {
+                        "type": "HorizontalLayout",
+                        "elements": [
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/tarification/properties/extendedProcedureCode"
+                          },
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/tarification/properties/nationalProcedureCode"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/financial/properties/bankCode"
+      },
+      {
+        "type": "HorizontalLayout",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/financial/properties/bankReference"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/financial/properties/paymentTermsCode"
+          }
+        ]
+      },
+      {
+        "type": "HorizontalLayout",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/financial/properties/remittanceAmount"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/financial/properties/remittanceCurrencyCode"
           }
         ]
       },
@@ -1362,69 +1321,57 @@
         "label": "Supporting Documents",
         "elements": [
           {
-            "type": "Group",
-            "label": "Scanned Documents",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/supportingDocuments/properties/scannedDocuments",
-                "options": {
-                  "itemLabel": "Scanned document",
-                  "detail": {
-                    "type": "VerticalLayout",
-                    "elements": [
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/documentCode"
-                      },
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/fileBase64"
-                      }
-                    ]
+            "type": "Control",
+            "scope": "#/properties/supportingDocuments/properties/scannedDocuments",
+            "options": {
+              "itemLabel": "Scanned document",
+              "detail": {
+                "type": "VerticalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/documentCode"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/fileBase64"
                   }
-                }
+                ]
               }
-            ]
+            }
           },
           {
-            "type": "Group",
-            "label": "Meta Documents",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/supportingDocuments/properties/metaDocuments",
-                "options": {
-                  "itemLabel": "Meta document",
-                  "detail": {
-                    "type": "VerticalLayout",
+            "type": "Control",
+            "scope": "#/properties/supportingDocuments/properties/metaDocuments",
+            "options": {
+              "itemLabel": "Meta document",
+              "detail": {
+                "type": "VerticalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/documentCode"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/itemSequence"
+                  },
+                  {
+                    "type": "HorizontalLayout",
                     "elements": [
                       {
                         "type": "Control",
-                        "scope": "#/properties/documentCode"
+                        "scope": "#/properties/documentId"
                       },
                       {
                         "type": "Control",
-                        "scope": "#/properties/itemSequence"
-                      },
-                      {
-                        "type": "HorizontalLayout",
-                        "elements": [
-                          {
-                            "type": "Control",
-                            "scope": "#/properties/documentId"
-                          },
-                          {
-                            "type": "Control",
-                            "scope": "#/properties/dateAsString"
-                          }
-                        ]
+                        "scope": "#/properties/dateAsString"
                       }
                     ]
                   }
-                }
+                ]
               }
-            ]
+            }
           }
         ]
       }
