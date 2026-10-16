@@ -1,0 +1,19 @@
+{
+  "id": "npqs-certificate-issue--generate-both-references",
+  "task_type": "REFID_GENERATOR",
+  "output_namespace": "refid",
+  "plugin_properties": {
+    "ids": [
+      {
+        "path": "/ephyto_reference_number",
+        "issuer": "NPQS",
+        "id_type": "phytosanitary_certificate_ref"
+      },
+      {
+        "path": "/replacement_reference_number",
+        "issuer": "NPQS",
+        "id_type": "phytosanitary_certificate_ref"
+      }
+    ]
+  }
+}

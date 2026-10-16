@@ -1,11 +1,20 @@
 {
   "id": "npqs-sample-receive--review-workflow",
   "name": "NPQS Receive Sample — Officer Review",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
       "type": "START"
+    },
+    {
+      "id": "generate_sample_number",
+      "type": "TASK",
+      "task_template_id": "npqs-sample-receive--generate-sample-number",
+      "input_mapping": {},
+      "output_mapping": {
+        "refid.sample_number": "reviewform.sample_number"
+      }
     },
     {
       "id": "userform",
@@ -13,11 +22,11 @@
       "task_template_id": "npqs-sample-receive--officer-review",
       "input_mapping": {
         "submission?": "submission",
-        "submission.items?": "reviewform.items"
+        "submission.items?": "reviewform.items",
+        "reviewform.sample_number": "reviewform.sample_number"
       },
       "output_mapping": {
-        "__command": "command",
-        "sample_number": "reviewform.sample_number"
+        "__command": "command"
       }
     },
     {
@@ -42,15 +51,20 @@
     {
       "id": "e1",
       "source_id": "start",
-      "target_id": "userform"
+      "target_id": "generate_sample_number"
     },
     {
       "id": "e2",
+      "source_id": "generate_sample_number",
+      "target_id": "userform"
+    },
+    {
+      "id": "e3",
       "source_id": "userform",
       "target_id": "api_call"
     },
     {
-      "id": "e3",
+      "id": "e4",
       "source_id": "api_call",
       "target_id": "end"
     }

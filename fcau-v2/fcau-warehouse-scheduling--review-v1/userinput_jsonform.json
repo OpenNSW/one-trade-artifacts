@@ -4,6 +4,26 @@
   "schema": {
     "type": "object",
     "properties": {
+      "items": {
+        "type": "array",
+        "title": "Items for Warehouse Inspection",
+        "readOnly": true,
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Item ID",
+              "readOnly": true
+            },
+            "description_of_food": {
+              "type": "string",
+              "title": "Description of consignment and quantity",
+              "readOnly": true
+            }
+          }
+        }
+      },
       "warehouse_location": {
         "type": "string",
         "title": "Warehouse Location",
@@ -25,6 +45,34 @@
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/items",
+        "options": {
+          "readonly": true,
+          "detail": {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/id",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/description_of_food",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          },
+          "addable": false,
+          "removable": false
+        }
+      },
       {
         "type": "Control",
         "scope": "#/properties/warehouse_location",

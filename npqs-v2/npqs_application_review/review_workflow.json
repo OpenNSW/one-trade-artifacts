@@ -1,11 +1,23 @@
 {
   "id": "npqs-application-review--review-workflow",
   "name": "NPQS Application Review — Officer Review",
-  "version": 2,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
       "type": "START"
+    },
+    {
+      "id": "generate_reference_number",
+      "type": "TASK",
+      "task_template_id": "npqs-application-review--generate-reference-number",
+      "input_mapping": {
+        "submission.reference_number?": "reference_number",
+        "submission.nppo_office_location": "officeLocation"
+      },
+      "output_mapping": {
+        "refid.reference_number": "reviewform.reference_number"
+      }
     },
     {
       "id": "userform",
@@ -14,11 +26,11 @@
       "input_mapping": {
         "submission?": "submission",
         "submission.commodities?": "reviewform.commodities",
+        "reviewform.reference_number": "reviewform.reference_number",
         "reviewform.clarification_reason?": "previous_clarification_reason"
       },
       "output_mapping": {
         "review_outcome": "reviewform.review_outcome",
-        "reference_number": "reviewform.reference_number",
         "commodities": "reviewform.commodities",
         "ephyto_required?": "reviewform.ephyto_required",
         "clarification_reason?": "reviewform.clarification_reason"
@@ -68,6 +80,11 @@
     {
       "id": "e1",
       "source_id": "start",
+      "target_id": "generate_reference_number"
+    },
+    {
+      "id": "e_generated",
+      "source_id": "generate_reference_number",
       "target_id": "userform"
     },
     {

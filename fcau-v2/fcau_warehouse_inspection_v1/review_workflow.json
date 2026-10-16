@@ -12,10 +12,12 @@
       "type": "TASK",
       "task_template_id": "fcau-warehouse-inspection--officer-review",
       "input_mapping": {
-        "submission?": "submission"
+        "submission?": "submission",
+        "submission.items?": "reviewform.items"
       },
       "output_mapping": {
-        "inspection_outcome": "reviewform.inspection_outcome",
+        "__command": "command",
+        "items": "reviewform.items",
         "inspection_comments?": "reviewform.inspection_comments",
         "revised_inspection_date?": "reviewform.revised_inspection_date"
       }
@@ -29,7 +31,7 @@
         "reviewform?": "reviewform",
         "submission?": "submission",
         "taskId": "taskId",
-        "reviewform.inspection_outcome": "payload.command",
+        "command": "payload.command",
         "reviewform": "payload.payload"
       }
     },

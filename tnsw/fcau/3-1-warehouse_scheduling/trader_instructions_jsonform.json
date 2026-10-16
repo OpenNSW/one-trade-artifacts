@@ -1,4 +1,4 @@
 {
   "id": "fcau-warehouse-scheduling--instructions",
-  "template": "Propose a date and warehouse location for the FCAU visual inspection.\n\nThe officer may accept your date or suggest a different one. If they propose another date, you can accept it or suggest a new date. This continues until one of you accepts the other's proposal.\n\nEnsure the warehouse is accessible and representative samples are available on the agreed date."
+  "template": "Propose a date and warehouse location for the FCAU visual inspection.\n\n**Items for warehouse inspection:**\n{{range .commodities}}* **{{.id}}**: {{.description_of_food}}\n{{end}}\nThe officer may accept your date or suggest a different one. If they propose another date, you can accept it or suggest a new date. This continues until one of you accepts the other's proposal.\n\nEnsure the warehouse is accessible and representative samples are available on the agreed date."
 }

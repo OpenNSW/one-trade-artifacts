@@ -1,7 +1,7 @@
 {
   "id": "npqs-export-phytosanitary-reg",
   "name": "NPQS Export Consignment & Phytosanitary Registration",
-  "version": 6,
+  "version": 7,
   "nodes": [
     {
       "id": "start",
@@ -627,7 +627,9 @@
       },
       "output_mapping": {
         "certificate_id": "npqs.certificate_id",
-        "certificate_items?": "npqs.certificate_items"
+        "replacement_reference_number?": "npqs.replacement_reference_number",
+        "certificate_items?": "npqs.certificate_items",
+        "ephyto_reference_number?": "npqs.ephyto_reference_number"
       }
     },
     {
@@ -644,13 +646,14 @@
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
-        "npqs.certificate_id": "certificate_id",
+        "npqs.replacement_reference_number?": "replacement_reference_number",
         "npqs.certificate_items?": "certificate_items",
         "npqs.treatment_certificate_urls?": "treatment_certificate_url",
         "npqs.supervision_report_urls?": "supervision_report_url",
         "npqs.docs_traderinput.invoice_file_url?": "invoice_file_url",
         "npqs.docs_traderinput.packing_list_file_url?": "packing_list_file_url",
-        "npqs.docs_traderinput.additional_file_url?": "additional_file_url"
+        "npqs.docs_traderinput.additional_file_url?": "additional_file_url",
+        "npqs.ephyto_reference_number": "certificate_id"
       },
       "output_mapping": {}
     },

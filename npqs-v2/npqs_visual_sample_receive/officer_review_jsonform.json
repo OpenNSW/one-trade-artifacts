@@ -7,7 +7,8 @@
       "sample_number": {
         "type": "string",
         "title": "Assigned Sample Number",
-        "example": "VSMP-NPQS-2026-1092"
+        "readOnly": true,
+        "example": "TNSW/NPQS/SEA-CMB/PC/2026/000001"
       },
       "receive_comments": {
         "type": "string",
@@ -24,7 +25,10 @@
     "elements": [
       {
         "type": "Control",
-        "scope": "#/properties/sample_number"
+        "scope": "#/properties/sample_number",
+        "options": {
+          "readonly": true
+        }
       },
       {
         "type": "Control",

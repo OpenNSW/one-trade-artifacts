@@ -48,7 +48,8 @@
       "sample_number": {
         "type": "string",
         "title": "Assigned Sample Number",
-        "example": "SMP-NPQS-2026-1092"
+        "readOnly": true,
+        "example": "PQS/2026/0001"
       },
       "receive_comments": {
         "type": "string",
@@ -101,7 +102,10 @@
       },
       {
         "type": "Control",
-        "scope": "#/properties/sample_number"
+        "scope": "#/properties/sample_number",
+        "options": {
+          "readonly": true
+        }
       },
       {
         "type": "Control",

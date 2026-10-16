@@ -14,10 +14,12 @@
       "input_mapping": {
         "reference_number?": "reference_number",
         "reference_number": "submission.reference_number",
-        "userform": "submission"
+        "userform": "submission",
+        "commodities?": "submission.items",
+        "commodities": "commodities"
       },
       "output_mapping": {
-        "visual_outcome": "visual_outcome"
+        "items": "commodities"
       }
     },
     {

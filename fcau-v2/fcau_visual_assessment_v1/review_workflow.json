@@ -12,10 +12,12 @@
       "type": "TASK",
       "task_template_id": "fcau-visual-assessment--officer-review",
       "input_mapping": {
-        "submission?": "submission"
+        "submission?": "submission",
+        "submission.items?": "reviewform.items"
       },
       "output_mapping": {
-        "visual_outcome": "reviewform.visual_outcome",
+        "__command": "command",
+        "items": "reviewform.items",
         "comments?": "reviewform.comments"
       }
     },
@@ -28,7 +30,7 @@
         "reviewform?": "reviewform",
         "submission?": "submission",
         "taskId": "taskId",
-        "reviewform.visual_outcome": "payload.command",
+        "command": "payload.command",
         "reviewform": "payload.payload"
       }
     },
