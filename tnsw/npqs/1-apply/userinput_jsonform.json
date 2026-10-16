@@ -211,6 +211,7 @@
       "commodities": {
         "type": "array",
         "title": "Commodities List",
+        "minItems": 1,
         "items": {
           "type": "object",
           "properties": {
@@ -723,7 +724,8 @@
       "exporter_address",
       "consignee_name",
       "consignee_address",
-      "consignee_country"
+      "consignee_country",
+      "commodities"
     ]
   },
   "uiSchema": {
@@ -860,6 +862,7 @@
             "type": "Control",
             "scope": "#/properties/commodities",
             "options": {
+              "errorMessage": "At least one commodity must be added before submitting the Phytosanitary Certificate application",
               "detail": {
                 "type" : "VerticalLayout",
                 "elements": [
