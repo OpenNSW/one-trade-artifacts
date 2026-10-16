@@ -1,7 +1,7 @@
 {
   "id": "npqs-v3-export-phytosanitary-reg",
   "name": "NPQS Export Consignment & Phytosanitary Registration (Linear Stages)",
-  "version": 8,
+  "version": 9,
   "nodes": [
     {
       "id": "start",
@@ -26,8 +26,8 @@
       }
     },
     {
-      "id": "gw_lab_split",
-      "name": "Stage 1: Lab Test (Partition Items)",
+      "id": "route_split",
+      "name": "Route Each Item to Lab Test or Visual Inspection",
       "type": "GATEWAY",
       "gateway_type": "BATCH_SPLIT",
       "batch_gateway": {
@@ -38,6 +38,10 @@
         "npqs.lab_sample_method?": "npqs.lab_sample_method",
         "npqs.reference_number?": "npqs.reference_number",
         "npqs.userform?": "npqs.userform"
+      },
+      "output_mapping": {
+        "npqs.treatment_certificate_urls": "npqs.treatment_certificate_urls",
+        "npqs.supervision_report_urls": "npqs.supervision_report_urls"
       }
     },
     {
@@ -152,31 +156,6 @@
       },
       "output_mapping": {
         "commodities": "commodities"
-      }
-    },
-    {
-      "id": "gw_lab_join",
-      "name": "Stage 1: Lab Test (Merge Results)",
-      "type": "GATEWAY",
-      "gateway_type": "BATCH_JOIN",
-      "batch_join": {
-        "gateway_node_id": "gw_lab_split",
-        "items_variable": "commodities",
-        "id_field": "id"
-      }
-    },
-    {
-      "id": "gw_visual_split",
-      "name": "Stage 2: Visual Inspection 1 (Partition Items)",
-      "type": "GATEWAY",
-      "gateway_type": "BATCH_SPLIT",
-      "batch_gateway": {
-        "items_variable": "commodities",
-        "id_field": "id"
-      },
-      "input_mapping": {
-        "npqs.reference_number?": "npqs.reference_number",
-        "npqs.userform?": "npqs.userform"
       }
     },
     {
@@ -353,19 +332,8 @@
       }
     },
     {
-      "id": "gw_visual_join",
-      "name": "Stage 2: Visual Inspection 1 (Merge Results)",
-      "type": "GATEWAY",
-      "gateway_type": "BATCH_JOIN",
-      "batch_join": {
-        "gateway_node_id": "gw_visual_split",
-        "items_variable": "commodities",
-        "id_field": "id"
-      }
-    },
-    {
       "id": "gw_treatment_split",
-      "name": "Stage 3: Treatment (Partition Items)",
+      "name": "Treatment Required? (Partition Items)",
       "type": "GATEWAY",
       "gateway_type": "BATCH_SPLIT",
       "batch_gateway": {
@@ -576,11 +544,22 @@
     },
     {
       "id": "gw_treatment_join",
-      "name": "Stage 3: Treatment (Merge Results)",
+      "name": "Merge Treatment Results",
       "type": "GATEWAY",
       "gateway_type": "BATCH_JOIN",
       "batch_join": {
         "gateway_node_id": "gw_treatment_split",
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
+    },
+    {
+      "id": "route_join",
+      "name": "Merge Lab, Visual and Treatment Results",
+      "type": "GATEWAY",
+      "gateway_type": "BATCH_JOIN",
+      "batch_join": {
+        "gateway_node_id": "route_split",
         "items_variable": "commodities",
         "id_field": "id"
       }
@@ -745,7 +724,9 @@
       },
       "output_mapping": {
         "certificate_id": "npqs.certificate_id",
-        "certificate_items?": "npqs.certificate_items"
+        "certificate_items?": "npqs.certificate_items",
+        "replacement_reference_number?": "npqs.replacement_reference_number",
+        "ephyto_reference_number?": "npqs.ephyto_reference_number"
       }
     },
     {
@@ -762,13 +743,14 @@
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
-        "npqs.certificate_id": "certificate_id",
         "npqs.certificate_items?": "certificate_items",
         "npqs.treatment_certificate_urls?": "treatment_certificate_url",
         "npqs.supervision_report_urls?": "supervision_report_url",
         "npqs.docs_traderinput.invoice_file_url?": "invoice_file_url",
         "npqs.docs_traderinput.packing_list_file_url?": "packing_list_file_url",
-        "npqs.docs_traderinput.additional_file_url?": "additional_file_url"
+        "npqs.docs_traderinput.additional_file_url?": "additional_file_url",
+        "npqs.replacement_reference_number?": "replacement_reference_number",
+        "npqs.ephyto_reference_number": "certificate_id"
       },
       "output_mapping": {}
     },
@@ -790,32 +772,50 @@
       "target_id": "n1_apply"
     },
     {
-      "id": "e_apply_to_lab_split",
+      "id": "e_apply_to_route_split",
       "source_id": "n1_apply",
-      "target_id": "gw_lab_split"
+      "target_id": "route_split"
     },
     {
-      "id": "e_lab_split_to_draw",
-      "source_id": "gw_lab_split",
+      "id": "e_route_to_draw",
+      "source_id": "route_split",
       "target_id": "n4_0_draw_sample",
-      "condition": "item.lab_required == true && item.lab_sample_method != 'drawn_at_site'"
+      "condition": "item.inspection_type == 'lab' && item.lab_sample_method != 'drawn_at_site'"
     },
     {
-      "id": "e_lab_split_to_officer_draw",
-      "source_id": "gw_lab_split",
+      "id": "e_route_to_officer_draw",
+      "source_id": "route_split",
       "target_id": "n4_0_officer_draw_at_site",
-      "condition": "item.lab_required == true && item.lab_sample_method == 'drawn_at_site'"
+      "condition": "item.inspection_type == 'lab' && item.lab_sample_method == 'drawn_at_site'"
+    },
+    {
+      "id": "e_route_to_consign",
+      "source_id": "route_split",
+      "target_id": "n_visual_consignment_flow",
+      "condition": "item.inspection_type == 'visual' && item.visual_approach == 'consignment'"
+    },
+    {
+      "id": "e_route_to_sample",
+      "source_id": "route_split",
+      "target_id": "n_visual_sample_collect",
+      "condition": "item.inspection_type == 'visual' && item.visual_approach == 'sample' && item.visual_sample_method != 'drawn_at_site'"
+    },
+    {
+      "id": "e_route_to_sample_drawn",
+      "source_id": "route_split",
+      "target_id": "n_visual_sample_officer_draw",
+      "condition": "item.inspection_type == 'visual' && item.visual_approach == 'sample' && item.visual_sample_method == 'drawn_at_site'"
+    },
+    {
+      "id": "e_route_to_system",
+      "source_id": "route_split",
+      "target_id": "n5_0_visual_inspection",
+      "condition": "item.inspection_type == 'visual' && item.visual_approach == 'system'"
     },
     {
       "id": "e_officer_draw_to_lab_testing",
       "source_id": "n4_0_officer_draw_at_site",
       "target_id": "n2_1_lab_testing"
-    },
-    {
-      "id": "e_lab_split_to_join_bypass",
-      "source_id": "gw_lab_split",
-      "target_id": "gw_lab_join",
-      "condition": "item.lab_required != true"
     },
     {
       "id": "e_draw_to_lab_check",
@@ -867,32 +867,9 @@
       "condition": "item.sample_test_result == 'pass'"
     },
     {
-      "id": "e_lab_result_join_to_lab_join",
+      "id": "e_lab_result_join_to_treatment_split",
       "source_id": "lab_result_join",
-      "target_id": "gw_lab_join"
-    },
-    {
-      "id": "e_lab_join_to_visual_split",
-      "source_id": "gw_lab_join",
-      "target_id": "gw_visual_split"
-    },
-    {
-      "id": "e_vis_split_to_consign",
-      "source_id": "gw_visual_split",
-      "target_id": "n_visual_consignment_flow",
-      "condition": "item.visual_required == true && item.visual_approach == 'consignment' && item.sample_test_result not in ['fail_final', 'fail_resubmit']"
-    },
-    {
-      "id": "e_vis_split_to_sample",
-      "source_id": "gw_visual_split",
-      "target_id": "n_visual_sample_collect",
-      "condition": "item.visual_required == true && item.visual_approach == 'sample' && item.visual_sample_method != 'drawn_at_site' && item.sample_test_result not in ['fail_final', 'fail_resubmit']"
-    },
-    {
-      "id": "e_vis_split_to_sample_drawn",
-      "source_id": "gw_visual_split",
-      "target_id": "n_visual_sample_officer_draw",
-      "condition": "item.visual_required == true && item.visual_approach == 'sample' && item.visual_sample_method == 'drawn_at_site' && item.sample_test_result not in ['fail_final', 'fail_resubmit']"
+      "target_id": "gw_treatment_split"
     },
     {
       "id": "e_vis_sample_drawn_to_inspection",
@@ -903,18 +880,6 @@
       "id": "e_vis_collect_to_sample",
       "source_id": "n_visual_sample_collect",
       "target_id": "n_visual_sample_inspection"
-    },
-    {
-      "id": "e_vis_split_to_system",
-      "source_id": "gw_visual_split",
-      "target_id": "n5_0_visual_inspection",
-      "condition": "item.visual_required == true && item.visual_approach == 'system' && item.sample_test_result not in ['fail_final', 'fail_resubmit']"
-    },
-    {
-      "id": "e_vis_split_to_join_bypass",
-      "source_id": "gw_visual_split",
-      "target_id": "gw_visual_join",
-      "condition": "item.visual_required != true || item.visual_approach == 'none' || item.sample_test_result in ['fail_final', 'fail_resubmit']"
     },
     {
       "id": "e_vis_consign_to_split",
@@ -989,11 +954,6 @@
       "source_id": "visual_system_result_split",
       "target_id": "visual_system_result_join",
       "condition": "item.visual_result == 'pass'"
-    },
-    {
-      "id": "e_visual_join_to_treatment_split",
-      "source_id": "gw_visual_join",
-      "target_id": "gw_treatment_split"
     },
     {
       "id": "e_treat_split_to_req",
@@ -1100,8 +1060,13 @@
       "target_id": "n3_5_treatment_final_review"
     },
     {
-      "id": "e_treatment_join_to_visual2_split",
+      "id": "e_treatment_join_to_route_join",
       "source_id": "gw_treatment_join",
+      "target_id": "route_join"
+    },
+    {
+      "id": "e_route_join_to_visual2_split",
+      "source_id": "route_join",
       "target_id": "gw_visual2_split"
     },
     {
@@ -1152,13 +1117,13 @@
       "id": "e_clearance_all_failed",
       "source_id": "gw_consignment_clearance",
       "target_id": "end_consignment_rejected",
-      "condition": "npqs.all_items_failed == true"
+      "condition": "all(commodities, .sample_test_result in ['fail_final', 'fail_resubmit'] || .visual_result == 'fail' || .treatment_result == 'fail' || .visual2_result == 'fail')"
     },
     {
       "id": "e_clearance_approved",
       "source_id": "gw_consignment_clearance",
       "target_id": "n5_1_upload_docs",
-      "condition": "npqs.all_items_failed != true"
+      "condition": "!(all(commodities, .sample_test_result in ['fail_final', 'fail_resubmit'] || .visual_result == 'fail' || .treatment_result == 'fail' || .visual2_result == 'fail'))"
     },
     {
       "id": "e_upload_docs_to_review",
@@ -1222,14 +1187,14 @@
       "target_id": "end_success"
     },
     {
-      "id": "e_vis_consign_join_to_visual_join",
+      "id": "e_vis_consign_join_to_treatment_split",
       "source_id": "visual_consignment_result_join",
-      "target_id": "gw_visual_join"
+      "target_id": "gw_treatment_split"
     },
     {
-      "id": "e_vis_sample_join_to_visual_join",
+      "id": "e_vis_sample_join_to_treatment_split",
       "source_id": "visual_sample_result_join",
-      "target_id": "gw_visual_join"
+      "target_id": "gw_treatment_split"
     },
     {
       "id": "e_escalated_join_to_sample_join",
@@ -1237,9 +1202,9 @@
       "target_id": "visual_sample_result_join"
     },
     {
-      "id": "e_vis_system_join_to_visual_join",
+      "id": "e_vis_system_join_to_treatment_split",
       "source_id": "visual_system_result_join",
-      "target_id": "gw_visual_join"
+      "target_id": "gw_treatment_split"
     }
   ]
 }

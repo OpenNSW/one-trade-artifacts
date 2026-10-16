@@ -1,7 +1,7 @@
 {
   "id": "npqs-v3-test-visual1-reg",
   "name": "NPQS v3 Test: Visual Inspection 1 Only",
-  "version": 2,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
@@ -260,19 +260,19 @@
       "id": "e_vis_split_to_consign",
       "source_id": "gw_visual_split",
       "target_id": "n_visual_consignment_flow",
-      "condition": "item.visual_required == true && item.visual_approach == 'consignment' && item.sample_test_result not in ['fail_final', 'fail_resubmit']"
+      "condition": "item.inspection_type == 'visual' && item.visual_approach == 'consignment' && item.sample_test_result not in ['fail_final', 'fail_resubmit']"
     },
     {
       "id": "e_vis_split_to_sample",
       "source_id": "gw_visual_split",
       "target_id": "n_visual_sample_collect",
-      "condition": "item.visual_required == true && item.visual_approach == 'sample' && item.visual_sample_method != 'drawn_at_site' && item.sample_test_result not in ['fail_final', 'fail_resubmit']"
+      "condition": "item.inspection_type == 'visual' && item.visual_approach == 'sample' && item.visual_sample_method != 'drawn_at_site' && item.sample_test_result not in ['fail_final', 'fail_resubmit']"
     },
     {
       "id": "e_vis_split_to_sample_drawn",
       "source_id": "gw_visual_split",
       "target_id": "n_visual_sample_officer_draw",
-      "condition": "item.visual_required == true && item.visual_approach == 'sample' && item.visual_sample_method == 'drawn_at_site' && item.sample_test_result not in ['fail_final', 'fail_resubmit']"
+      "condition": "item.inspection_type == 'visual' && item.visual_approach == 'sample' && item.visual_sample_method == 'drawn_at_site' && item.sample_test_result not in ['fail_final', 'fail_resubmit']"
     },
     {
       "id": "e_vis_sample_drawn_to_inspection",
@@ -288,13 +288,13 @@
       "id": "e_vis_split_to_system",
       "source_id": "gw_visual_split",
       "target_id": "n5_0_visual_inspection",
-      "condition": "item.visual_required == true && item.visual_approach == 'system' && item.sample_test_result not in ['fail_final', 'fail_resubmit']"
+      "condition": "item.inspection_type == 'visual' && item.visual_approach == 'system' && item.sample_test_result not in ['fail_final', 'fail_resubmit']"
     },
     {
       "id": "e_vis_split_to_join_bypass",
       "source_id": "gw_visual_split",
       "target_id": "gw_visual_join",
-      "condition": "item.visual_required != true || item.visual_approach == 'none' || item.sample_test_result in ['fail_final', 'fail_resubmit']"
+      "condition": "item.inspection_type != 'visual' || item.sample_test_result in ['fail_final', 'fail_resubmit']"
     },
     {
       "id": "e_vis_consign_to_split",

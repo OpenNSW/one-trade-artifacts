@@ -15,10 +15,6 @@
               "title": "FCAU Health Certificate (FCAU Flow)"
             },
             {
-              "const": "npqs-export-phytosanitary-reg",
-              "title": "NPQS Phyto Certificate (NPQS Flow)"
-            },
-            {
               "const": "npqs-v3-export-phytosanitary-reg",
               "title": "NPQS v3 Phyto Certificate (NPQS v3 Flow)"
             },

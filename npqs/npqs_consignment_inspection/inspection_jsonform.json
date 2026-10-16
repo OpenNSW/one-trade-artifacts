@@ -77,6 +77,11 @@
               "type": "string",
               "title": "Failure Reason",
               "example": "Rot and physical fungal damage observed on packaging."
+            },
+            "treatment_required": {
+              "type": "boolean",
+              "title": "Treatment Required",
+              "description": "Send this item for treatment once it passes."
             }
           },
           "required": [
@@ -141,6 +146,19 @@
                     "scope": "#/properties/visual_result",
                     "schema": {
                       "const": "fail"
+                    }
+                  }
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/treatment_required",
+                "rule": {
+                  "effect": "SHOW",
+                  "condition": {
+                    "scope": "#/properties/visual_result",
+                    "schema": {
+                      "const": "pass"
                     }
                   }
                 }

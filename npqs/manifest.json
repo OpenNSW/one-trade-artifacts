@@ -120,20 +120,6 @@
       "path": "npqs_sample_receive/officer_receive_jsonform.json"
     },
     {
-      "id": "npqs_treatment_cert_issue",
-      "kind": "task_config",
-      "version": "",
-      "loader": "local",
-      "path": "npqs_treatment_cert_issue/npqs_treatment_cert_issue.taskconfig.json"
-    },
-    {
-      "id": "npqs-issue-treatment-cert--officer-form",
-      "kind": "generic_template",
-      "version": "",
-      "loader": "local",
-      "path": "npqs_treatment_cert_issue/officerinput_jsonform.json"
-    },
-    {
       "id": "npqs_treatment_request_review",
       "kind": "task_config",
       "version": "",
@@ -160,41 +146,6 @@
       "version": "",
       "loader": "local",
       "path": "npqs_treatment_request_review/userinput_jsonform.json"
-    },
-    {
-      "id": "npqs_treatment_review",
-      "kind": "task_config",
-      "version": "",
-      "loader": "local",
-      "path": "npqs_treatment_review/npqs_treatment_review.taskconfig.json"
-    },
-    {
-      "id": "npqs-review-treatment-certs--officer-form",
-      "kind": "generic_template",
-      "version": "",
-      "loader": "local",
-      "path": "npqs_treatment_review/officerinput_jsonform.json"
-    },
-    {
-      "id": "npqs-upload-treatment-certs--trader-form",
-      "kind": "generic_template",
-      "version": "",
-      "loader": "local",
-      "path": "npqs_treatment_review/userinput_jsonform.json"
-    },
-    {
-      "id": "npqs_treatment_supervision",
-      "kind": "task_config",
-      "version": "",
-      "loader": "local",
-      "path": "npqs_treatment_supervision/npqs_treatment_supervision.taskconfig.json"
-    },
-    {
-      "id": "npqs-treatment-supervisor-report--officer-form",
-      "kind": "generic_template",
-      "version": "",
-      "loader": "local",
-      "path": "npqs_treatment_supervision/officerinput_jsonform.json"
     },
     {
       "id": "npqs_visual_sample",

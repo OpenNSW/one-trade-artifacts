@@ -1,6 +1,0 @@
-{
-  "id": "npqs-treatment-cert-issue--review",
-  "type": "APPLICATION",
-  "workflow_id": "npqs-treatment-cert-issue--review-workflow",
-  "render_config_id": "npqs-treatment-cert-issue--review:render"
-}
