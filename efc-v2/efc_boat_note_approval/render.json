@@ -24,13 +24,19 @@
       "templateId": "efc-boat-note-approval--boat-note-document",
       "title": "Boat Note Document",
       "projector": "MARKDOWN",
-      "dataKey": "submission"
+      "dataKey": "submission",
+      "visibleWhen": {
+        "requireDataKey": "submission"
+      }
     },
     "submission_view": {
       "templateId": "efc-boat-note--user-form",
       "title": "Submitted Boat Note",
       "projector": "FORM",
-      "dataKey": "submission"
+      "dataKey": "submission",
+      "visibleWhen": {
+        "requireDataKey": "submission"
+      }
     },
     "review_form": {
       "templateId": "efc-boat-note-approval--officer-form",
