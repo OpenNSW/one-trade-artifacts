@@ -1,7 +1,7 @@
 {
   "id": "fcau-health-certificate-reg",
   "name": "FCAU Export Consignment & Health Certificate Registration",
-  "version": 20,
+  "version": 21,
   "nodes": [
     {
       "id": "start",
@@ -404,13 +404,13 @@
       "id": "e_warehouse_split_to_schedule",
       "source_id": "fcau_gw_warehouse_split",
       "target_id": "fcau_3_1_schedule_warehouse",
-      "condition": "(item.warehouse_required == true || item.visual_result == 'refer_warehouse') && item.visual_result != 'fail' && item.lab_result != 'fail'"
+      "condition": "(item.warehouse_required == true || item.visual_result == 'refer_warehouse' || item.lab_result == 'refer_warehouse') && item.visual_result != 'fail' && item.lab_result != 'fail'"
     },
     {
       "id": "e_warehouse_split_bypass",
       "source_id": "fcau_gw_warehouse_split",
       "target_id": "fcau_gw_warehouse_join",
-      "condition": "(item.warehouse_required != true && item.visual_result != 'refer_warehouse') || item.visual_result == 'fail' || item.lab_result == 'fail'"
+      "condition": "(item.warehouse_required != true && item.visual_result != 'refer_warehouse' && item.lab_result != 'refer_warehouse') || item.visual_result == 'fail' || item.lab_result == 'fail'"
     },
     {
       "id": "e_schedule_to_inspect",
