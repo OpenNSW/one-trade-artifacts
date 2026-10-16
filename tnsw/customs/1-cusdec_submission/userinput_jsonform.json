@@ -705,6 +705,15 @@
                 "nationalProcedureCode": {
                   "type": "string",
                   "title": "50. National Procedure ( Box 37 )",
+                  "x-search": {
+                    "service": "static-data",
+                    "mode": "large-searchable-list",
+                    "displayTemplate": "{id} - {name}",
+                    "params": {
+                      "id": "customs-cusdec--national-procedures",
+                      "version": "1"
+                    }
+                  },
                   "example": "000"
                 },
                 "supplementaryUnit": {
