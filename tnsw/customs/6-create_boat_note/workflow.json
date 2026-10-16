@@ -1,7 +1,7 @@
 {
   "id": "customs-create-boat-note-flow",
   "name": "Create Boat Note",
-  "version": 4,
+  "version": 5,
   "nodes": [
     {
       "id": "start",
@@ -12,7 +12,9 @@
       "type": "TASK",
       "task_template_id": "customs-boat-note--user-input",
       "input_mapping": {
-        "containers": "userform.containers"
+        "boat_note_approval?": "boat_note_approval",
+        "containers": "userform.containers",
+        "userform?": "userform"
       },
       "output_mapping": {
         "shipper": "userform.shipper",
@@ -62,6 +64,29 @@
       }
     },
     {
+      "id": "approval_task",
+      "type": "TASK",
+      "task_template_id": "customs-boat-note-approval",
+      "input_mapping": {
+        "userform?": "userform",
+        "userform": "submission",
+        "boat_note_document_key": "submission.boat_note_document_key",
+        "agency_token?": "replyToken"
+      },
+      "output_mapping": {
+        "approval_status": "boat_note_approval.approval_status",
+        "approved_boat_note_file?": "boat_note_approval.approved_boat_note_file",
+        "remarks?": "boat_note_approval.remarks",
+        "callbackToken?": "agency_token"
+      }
+    },
+    {
+      "id": "approval_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Boat Note Approved?"
+    },
+    {
       "id": "end",
       "type": "END"
     }
@@ -80,7 +105,24 @@
     {
       "id": "e3",
       "source_id": "generate_boat_note_document",
-      "target_id": "end"
+      "target_id": "approval_task"
+    },
+    {
+      "id": "e4",
+      "source_id": "approval_task",
+      "target_id": "approval_gateway"
+    },
+    {
+      "id": "e_needs_info",
+      "source_id": "approval_gateway",
+      "target_id": "applicant_submission",
+      "condition": "boat_note_approval.approval_status == 'needs_more_info'"
+    },
+    {
+      "id": "e_approved",
+      "source_id": "approval_gateway",
+      "target_id": "end",
+      "condition": "boat_note_approval.approval_status == 'approved'"
     }
   ]
 }

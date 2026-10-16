@@ -3,6 +3,28 @@
   "type": "APPLICATION",
   "title": "[Customs] Boat Note Creation",
   "sections": {
+    "changes_requested": {
+      "templateId": "customs-boat-note--changes-requested",
+      "title": "Officer Requested Changes",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "boat_note_approval"
+      }
+    },
+    "status_message": {
+      "templateId": "customs-boat-note-approval--instructions",
+      "title": "Approval Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY",
+          "COMPLETED"
+        ]
+      }
+    },
     "completed_message": {
       "templateId": "customs-boat-note--completed-message",
       "title": "Boat Note Submission Status",
