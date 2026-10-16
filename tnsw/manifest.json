@@ -739,6 +739,18 @@
       "path": "npqs/9-ephyto/task_template.json"
     },
     {
+      "id": "npqs-ephyto-upload--polling-msg",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/9-ephyto/polling_markdown.json"
+    },
+    {
+      "id": "npqs-ephyto-upload--poll",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/9-ephyto/poll.json"
+    },
+    {
       "id": "npqs-certificate-status",
       "kind": "task_template",
       "version": "",
