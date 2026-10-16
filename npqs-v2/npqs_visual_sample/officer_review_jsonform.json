@@ -85,6 +85,11 @@
               "type": "string",
               "title": "Failure / Escalation Reason",
               "example": "Signs of suspected scale insect infestation requiring site verification."
+            },
+            "treatment_required": {
+              "type": "boolean",
+              "title": "Treatment Required",
+              "description": "Send this item for treatment once it passes."
             }
           },
           "required": [
@@ -152,6 +157,19 @@
                       "not": {
                         "const": "pass"
                       }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/treatment_required",
+                "rule": {
+                  "effect": "SHOW",
+                  "condition": {
+                    "scope": "#/properties/visual_result",
+                    "schema": {
+                      "const": "pass"
                     }
                   }
                 }

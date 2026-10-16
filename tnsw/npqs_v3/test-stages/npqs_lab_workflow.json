@@ -1,7 +1,7 @@
 {
   "id": "npqs-v3-test-lab-reg",
   "name": "NPQS v3 Test: Lab Test Only",
-  "version": 2,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
@@ -202,13 +202,13 @@
       "id": "e_lab_split_to_draw",
       "source_id": "gw_lab_split",
       "target_id": "n4_0_draw_sample",
-      "condition": "item.lab_required == true && item.lab_sample_method != 'drawn_at_site'"
+      "condition": "item.inspection_type == 'lab' && item.lab_sample_method != 'drawn_at_site'"
     },
     {
       "id": "e_lab_split_to_officer_draw",
       "source_id": "gw_lab_split",
       "target_id": "n4_0_officer_draw_at_site",
-      "condition": "item.lab_required == true && item.lab_sample_method == 'drawn_at_site'"
+      "condition": "item.inspection_type == 'lab' && item.lab_sample_method == 'drawn_at_site'"
     },
     {
       "id": "e_officer_draw_to_lab_testing",
@@ -219,7 +219,7 @@
       "id": "e_lab_split_to_join_bypass",
       "source_id": "gw_lab_split",
       "target_id": "gw_lab_join",
-      "condition": "item.lab_required != true"
+      "condition": "item.inspection_type != 'lab'"
     },
     {
       "id": "e_draw_to_lab_check",
