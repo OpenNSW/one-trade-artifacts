@@ -4,6 +4,7 @@
   "output_namespace": "hubstatus",
   "plugin_properties": {
     "service_id": "ippc-hub",
+    "path": "DeliveryService",
     "operation": "poll"
   }
 }

@@ -4,6 +4,7 @@
   "output_namespace": "hubwithdraw",
   "plugin_properties": {
     "service_id": "ippc-hub",
+    "path": "DeliveryService",
     "operation": "withdraw"
   }
 }
