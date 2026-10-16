@@ -247,6 +247,12 @@
       "path": "customs/static-data/supporting_document_item_numbers.data.json"
     },
     {
+      "id": "customs-cusdec--currencies",
+      "kind": "static_data",
+      "version": "1",
+      "path": "customs/static-data/currencies.data.json"
+    },
+    {
       "id": "npqs-apply-phyto-cert--importing-countries",
       "kind": "static_data",
       "version": "1",

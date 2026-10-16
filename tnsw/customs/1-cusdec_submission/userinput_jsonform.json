@@ -423,6 +423,15 @@
             "type": "string",
             "title": "55. Remittance Currency",
             "description": "Currency of the remittance amount.",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-searchable-list",
+              "displayTemplate": "{name} ({id})",
+              "params": {
+                "id": "customs-cusdec--currencies",
+                "version": "1"
+              }
+            },
             "example": "USD"
           },
           "paymentTermsCode": {
@@ -455,6 +464,15 @@
               "currencyCode": {
                 "type": "string",
                 "title": "Currency",
+                "x-search": {
+                  "service": "static-data",
+                  "mode": "large-searchable-list",
+                  "displayTemplate": "{name} ({id})",
+                  "params": {
+                    "id": "customs-cusdec--currencies",
+                    "version": "1"
+                  }
+                },
                 "example": "USD"
               }
             },
@@ -475,6 +493,15 @@
               "currencyCode": {
                 "type": "string",
                 "title": "Currency",
+                "x-search": {
+                  "service": "static-data",
+                  "mode": "large-searchable-list",
+                  "displayTemplate": "{name} ({id})",
+                  "params": {
+                    "id": "customs-cusdec--currencies",
+                    "version": "1"
+                  }
+                },
                 "example": "USD"
               }
             },
@@ -495,6 +522,15 @@
               "currencyCode": {
                 "type": "string",
                 "title": "Currency",
+                "x-search": {
+                  "service": "static-data",
+                  "mode": "large-searchable-list",
+                  "displayTemplate": "{name} ({id})",
+                  "params": {
+                    "id": "customs-cusdec--currencies",
+                    "version": "1"
+                  }
+                },
                 "example": "USD"
               }
             },
@@ -515,6 +551,15 @@
               "currencyCode": {
                 "type": "string",
                 "title": "Currency",
+                "x-search": {
+                  "service": "static-data",
+                  "mode": "large-searchable-list",
+                  "displayTemplate": "{name} ({id})",
+                  "params": {
+                    "id": "customs-cusdec--currencies",
+                    "version": "1"
+                  }
+                },
                 "example": "USD"
               }
             },
@@ -535,6 +580,15 @@
               "currencyCode": {
                 "type": "string",
                 "title": "Currency",
+                "x-search": {
+                  "service": "static-data",
+                  "mode": "large-searchable-list",
+                  "displayTemplate": "{name} ({id})",
+                  "params": {
+                    "id": "customs-cusdec--currencies",
+                    "version": "1"
+                  }
+                },
                 "example": "USD"
               }
             },
@@ -555,6 +609,15 @@
               "currencyCode": {
                 "type": "string",
                 "title": "Currency",
+                "x-search": {
+                  "service": "static-data",
+                  "mode": "large-searchable-list",
+                  "displayTemplate": "{name} ({id})",
+                  "params": {
+                    "id": "customs-cusdec--currencies",
+                    "version": "1"
+                  }
+                },
                 "example": "USD"
               }
             },
@@ -747,6 +810,15 @@
                     "currencyCode": {
                       "type": "string",
                       "title": "Currency",
+                      "x-search": {
+                        "service": "static-data",
+                        "mode": "large-searchable-list",
+                        "displayTemplate": "{name} ({id})",
+                        "params": {
+                          "id": "customs-cusdec--currencies",
+                          "version": "1"
+                        }
+                      },
                       "example": "USD"
                     }
                   },
