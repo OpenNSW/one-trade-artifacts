@@ -1,9 +1,0 @@
-{
-  "schemaVersion": 2,
-  "taskCode": "npqs_treatment_supervision",
-  "workflow": "npqs_treatment_supervision",
-  "meta": {
-    "title": "NPQS Treatment Supervision",
-    "description": "Officer records the treatment supervision report."
-  }
-}
