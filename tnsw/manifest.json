@@ -223,6 +223,12 @@
       "path": "customs/static-data/extended_procedure.data.json"
     },
     {
+      "id": "customs-cusdec--national-procedures",
+      "kind": "static_data",
+      "version": "1",
+      "path": "customs/static-data/national_procedures.data.json"
+    },
+    {
       "id": "customs-cusdec--port-of-entry-and-discharge",
       "kind": "static_data",
       "version": "1",
