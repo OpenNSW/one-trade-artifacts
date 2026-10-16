@@ -2560,7 +2560,7 @@
       "id": "customs-boat-note--changes-requested",
       "kind": "generic_template",
       "version": "",
-      "path": "customs/6-create_boat_note/changes_requested_markdown.json"
+      "path": "customs/6-create_boat_note/changes_requested_jsonform.json"
     },
     {
       "id": "customs-boat-note-approval",

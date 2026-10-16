@@ -24,38 +24,49 @@
       },
       "remarks": {
         "type": "string",
-        "title": "Officer Remarks",
+        "title": "Officer Remarks (Required if Requesting Changes)",
         "example": "All container seals verified. Boat note approved."
       }
     },
     "required": [
       "approval_status"
     ],
-    "if": {
-      "properties": {
-        "approval_status": {
-          "const": "needs_more_info"
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "approval_status": {
+              "const": "approved"
+            }
+          },
+          "required": [
+            "approval_status"
+          ]
+        },
+        "then": {
+          "required": [
+            "approved_boat_note_file"
+          ]
         }
       },
-      "required": [
-        "approval_status"
-      ]
-    },
-    "then": {
-      "properties": {
-        "remarks": {
-          "minLength": 1
+      {
+        "if": {
+          "properties": {
+            "approval_status": {
+              "const": "needs_more_info"
+            }
+          },
+          "required": [
+            "approval_status"
+          ]
+        },
+        "then": {
+          "required": [
+            "remarks"
+          ]
         }
-      },
-      "required": [
-        "remarks"
-      ]
-    },
-    "else": {
-      "required": [
-        "approved_boat_note_file"
-      ]
-    }
+      }
+    ]
   },
   "uiSchema": {
     "type": "VerticalLayout",
