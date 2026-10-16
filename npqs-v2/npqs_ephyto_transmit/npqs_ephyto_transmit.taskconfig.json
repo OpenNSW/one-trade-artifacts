@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "npqs_ephyto_transmit",
+  "workflow": "npqs_ephyto_transmit",
+  "meta": {
+    "title": "NPQS IPPC ePhyto Hub Transmission",
+    "description": "Officer chooses the documents to send and transmits the phytosanitary certificate to the IPPC ePhyto Hub."
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "id": "npqs-ephyto-transmit--review-workflow",
+  "name": "NPQS IPPC ePhyto Hub Transmission — Officer",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "userform",
+      "type": "TASK",
+      "task_template_id": "npqs-ephyto-transmit--officer-review",
+      "input_mapping": {
+        "submission?": "submission"
+      },
+      "output_mapping": {
+        "__command": "command",
+        "hub_destination": "reviewform.hub_destination",
+        "send_application_documents?": "reviewform.send_application_documents",
+        "send_treatment_certificate?": "reviewform.send_treatment_certificate",
+        "send_supervision_report?": "reviewform.send_supervision_report",
+        "send_invoice?": "reviewform.send_invoice",
+        "send_packing_list?": "reviewform.send_packing_list",
+        "send_additional_document?": "reviewform.send_additional_document"
+      }
+    },
+    {
+      "id": "api_call",
+      "type": "TASK",
+      "task_template_id": "npqs-ephyto-transmit--notify-decision",
+      "input_mapping": {
+        "callbackToken": "callbackToken",
+        "reviewform?": "reviewform",
+        "submission?": "submission",
+        "taskId": "taskId",
+        "command": "payload.command",
+        "reviewform": "payload.payload"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "userform"
+    },
+    {
+      "id": "e2",
+      "source_id": "userform",
+      "target_id": "api_call"
+    },
+    {
+      "id": "e3",
+      "source_id": "api_call",
+      "target_id": "end"
+    }
+  ]
+}

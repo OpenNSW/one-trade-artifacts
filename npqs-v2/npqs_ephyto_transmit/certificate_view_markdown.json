@@ -1,0 +1,4 @@
+{
+  "id": "npqs-ephyto-transmit--certificate-view",
+  "template": "### Phytosanitary Certificate Ready for the IPPC ePhyto Hub\n\n- **Reference Number**: `{{ .reference_number }}`\n- **Certificate Number**: `{{ .certificate_id }}`\n{{ if .previous_error }}\n> ⚠️ **The last transmission was not accepted by the Hub:** {{ .previous_error }}\n>\n> Correct what it names, or change the documents, and transmit again.\n{{ end }}\nChoose the documents to send with the certificate, then press **Transmit to IPPC Hub**."
+}
