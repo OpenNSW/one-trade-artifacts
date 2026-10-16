@@ -1,0 +1,6 @@
+{
+  "id": "npqs-certificate-withdrawal--review",
+  "type": "APPLICATION",
+  "workflow_id": "npqs-certificate-withdrawal--review-workflow",
+  "render_config_id": "npqs-certificate-withdrawal--review:render"
+}

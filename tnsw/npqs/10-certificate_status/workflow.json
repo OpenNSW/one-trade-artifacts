@@ -1,0 +1,157 @@
+{
+  "id": "npqs-certificate-status",
+  "name": "NPQS Certificate Status & Next Action",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "refresh",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-status--refresh",
+      "input_mapping": {
+        "ephyto.tracking_number?": "tracking_number"
+      },
+      "output_mapping": {
+        "hubstatus.tracking_info?": "ephyto.tracking_info",
+        "hubstatus.delivered?": "ephyto.delivered",
+        "hubstatus.error?": "status_error"
+      }
+    },
+    {
+      "id": "choose",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-status--choose",
+      "input_mapping": {
+        "reference_number": "reference_number",
+        "certificate_id": "certificate_id",
+        "ephyto?": "ephyto",
+        "status_error?": "status_error",
+        "withdrawal?": "withdrawal"
+      },
+      "output_mapping": {
+        "action": "action.action",
+        "withdrawal_reason?": "action.withdrawal_reason"
+      }
+    },
+    {
+      "id": "gw_action",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "request_withdrawal",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-status--request-withdrawal",
+      "input_mapping": {
+        "certificate_id": "certificate_id",
+        "action?": "action",
+        "reference_number?": "submission.reference_number",
+        "certificate_id?": "submission.certificate_id",
+        "ephyto.tracking_number?": "submission.tracking_number",
+        "ephyto.tracking_info?": "submission.tracking_info",
+        "action.withdrawal_reason?": "submission.withdrawal_reason",
+        "withdrawal_hub_error?": "submission.hub_error"
+      },
+      "output_mapping": {
+        "decision": "withdrawal.decision",
+        "remarks?": "withdrawal.remarks"
+      }
+    },
+    {
+      "id": "gw_decision",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "hub_withdraw",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-status--hub-withdraw",
+      "input_mapping": {
+        "userform": "userform",
+        "certificate_id": "certificate_id",
+        "hub_destination?": "hub_destination",
+        "certificate_items?": "certificate_items"
+      },
+      "output_mapping": {
+        "hubwithdraw.withdrawn": "withdrawn",
+        "hubwithdraw.error?": "withdrawal_hub_error",
+        "hubwithdraw.tracking_number?": "withdrawal_tracking_number"
+      }
+    },
+    {
+      "id": "gw_withdrawn",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_start",
+      "source_id": "start",
+      "target_id": "refresh"
+    },
+    {
+      "id": "e_refresh_choose",
+      "source_id": "refresh",
+      "target_id": "choose"
+    },
+    {
+      "id": "e_choose_gw",
+      "source_id": "choose",
+      "target_id": "gw_action"
+    },
+    {
+      "id": "e_withdraw",
+      "source_id": "gw_action",
+      "target_id": "request_withdrawal",
+      "condition": "action.action == 'withdraw'"
+    },
+    {
+      "id": "e_complete",
+      "source_id": "gw_action",
+      "target_id": "end",
+      "condition": "action.action != 'withdraw'"
+    },
+    {
+      "id": "e_request_gw",
+      "source_id": "request_withdrawal",
+      "target_id": "gw_decision"
+    },
+    {
+      "id": "e_accepted",
+      "source_id": "gw_decision",
+      "target_id": "hub_withdraw",
+      "condition": "withdrawal.decision == 'accept'"
+    },
+    {
+      "id": "e_rejected",
+      "source_id": "gw_decision",
+      "target_id": "refresh",
+      "condition": "withdrawal.decision != 'accept'"
+    },
+    {
+      "id": "e_hub_gw",
+      "source_id": "hub_withdraw",
+      "target_id": "gw_withdrawn"
+    },
+    {
+      "id": "e_withdrawn",
+      "source_id": "gw_withdrawn",
+      "target_id": "end",
+      "condition": "withdrawn == true"
+    },
+    {
+      "id": "e_hub_refused",
+      "source_id": "gw_withdrawn",
+      "target_id": "request_withdrawal",
+      "condition": "withdrawn != true"
+    }
+  ]
+}

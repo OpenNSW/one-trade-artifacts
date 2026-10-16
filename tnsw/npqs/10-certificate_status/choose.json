@@ -1,0 +1,8 @@
+{
+  "id": "npqs-certificate-status--choose",
+  "task_type": "USER_INPUT",
+  "output_namespace": "action",
+  "plugin_properties": {
+    "user_jsonforms_id": "npqs-certificate-status--action-form"
+  }
+}

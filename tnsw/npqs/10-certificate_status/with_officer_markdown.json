@@ -1,0 +1,4 @@
+{
+  "id": "npqs-certificate-status--with-officer-msg",
+  "template": "### Withdrawal Request with the NPQS Officer\n\nYour request to withdraw certificate `{{ .certificate_id }}` is with the NPQS officer.{{ with .action }}{{ if .withdrawal_reason }}\n\n**Your reason:**\n\n> {{ .withdrawal_reason }}{{ end }}{{ end }}\n\nIf the officer accepts, the certificate is withdrawn on the IPPC ePhyto Hub and the NPQS process ends. If they reject it, you come back here to choose again."
+}

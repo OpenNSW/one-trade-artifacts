@@ -1,0 +1,63 @@
+{
+  "id": "npqs-certificate-withdrawal--officer-form",
+  "title": "Withdrawal Decision",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "decision": {
+        "type": "string",
+        "title": "Decision",
+        "oneOf": [
+          {
+            "const": "accept",
+            "title": "Accept: withdraw the certificate"
+          },
+          {
+            "const": "reject",
+            "title": "Reject: the certificate stands"
+          }
+        ]
+      },
+      "remarks": {
+        "type": "string",
+        "title": "Remarks",
+        "description": "Shown to the trader. Required when rejecting."
+      }
+    },
+    "required": [
+      "decision"
+    ],
+    "if": {
+      "properties": {
+        "decision": {
+          "const": "reject"
+        }
+      }
+    },
+    "then": {
+      "required": [
+        "decision",
+        "remarks"
+      ]
+    }
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/decision",
+        "options": {
+          "format": "radio"
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/remarks",
+        "options": {
+          "multi": true
+        }
+      }
+    ]
+  }
+}

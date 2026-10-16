@@ -1,0 +1,4 @@
+{
+  "id": "npqs-certificate-status--completed-msg",
+  "template": "{{ $withdrawn := false }}{{ with .hubwithdraw }}{{ if .withdrawn }}{{ $withdrawn = true }}{{ end }}{{ end }}{{ if $withdrawn }}### Certificate Withdrawn\n\nThe NPQS officer accepted your request, and certificate `{{ .certificate_id }}` has been **withdrawn** on the IPPC ePhyto Hub.{{ with .hubwithdraw }}{{ if .tracking_number }} (Hub tracking number `{{ .tracking_number }}`){{ end }}{{ end }}\n\nThe NPQS process for this certificate has ended.{{ else }}### Process Complete\n\nCertificate `{{ .certificate_id }}` stands as issued.{{ end }}"
+}
