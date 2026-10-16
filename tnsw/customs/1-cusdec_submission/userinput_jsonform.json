@@ -880,7 +880,7 @@
                   "title": "Document Code",
                   "x-search": {
                     "service": "static-data",
-                    "mode": "small-list",
+                    "mode": "large-searchable-list",
                     "displayTemplate": "{name} ({id})",
                     "params": {
                       "id": "customs-cusdec--supporting-document-codes",
@@ -907,24 +907,15 @@
                 "itemSequence": {
                   "type": "string",
                   "title": "Item Number",
-                  "description": "Attached-document item number.",
-                  "x-search": {
-                    "service": "static-data",
-                    "mode": "small-list",
-                    "displayTemplate": "{name} ({id})",
-                    "params": {
-                      "id": "customs-cusdec--supporting-document-item-numbers",
-                      "version": "1"
-                    }
-                  },
-                  "example": "017"
+                  "description": "Item number in the declaration that this document applies to, e.g. 8 for the 8th item.",
+                  "example": "8"
                 },
                 "documentCode": {
                   "type": "string",
                   "title": "Document Code",
                   "x-search": {
                     "service": "static-data",
-                    "mode": "small-list",
+                    "mode": "large-searchable-list",
                     "displayTemplate": "{name} ({id})",
                     "params": {
                       "id": "customs-cusdec--supporting-document-codes",

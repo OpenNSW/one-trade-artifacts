@@ -244,13 +244,7 @@
       "id": "customs-cusdec--supporting-document-codes",
       "kind": "static_data",
       "version": "1",
-      "path": "customs/static-data/supporting_document_codes.data.json"
-    },
-    {
-      "id": "customs-cusdec--supporting-document-item-numbers",
-      "kind": "static_data",
-      "version": "1",
-      "path": "customs/static-data/supporting_document_item_numbers.data.json"
+      "path": "customs/static-data/supporting_document_code_list.data.json"
     },
     {
       "id": "customs-cusdec--currencies",
