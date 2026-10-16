@@ -30,6 +30,10 @@
                 {
                   "const": "fail",
                   "title": "Fail"
+                },
+                {
+                  "const": "refer_warehouse",
+                  "title": "Refer to Warehouse Inspection"
                 }
               ]
             }

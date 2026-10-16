@@ -1,4 +1,4 @@
 {
   "id": "fcau-lab-testing--trader-results",
-  "template": "### Laboratory Test Results\n\nThe laboratory analysis has been completed by the FCAU laboratory.\n\n{{range .items}}* **{{.id}}** ({{.description_of_food}}): {{if eq .lab_result \"pass\"}}🟢 Pass - Cleared{{else if eq .lab_result \"fail\"}}🔴 Fail - Deficiencies Found{{else}}{{.lab_result}}{{end}}\n{{end}}"
+  "template": "### Laboratory Test Results\n\nThe laboratory analysis has been completed by the FCAU laboratory.\n\n{{range .items}}* **{{.id}}** ({{.description_of_food}}): {{if eq .lab_result \"pass\"}}🟢 Pass - Cleared{{else if eq .lab_result \"fail\"}}🔴 Fail - Deficiencies Found{{else if eq .lab_result \"refer_warehouse\"}}🟡 Referred to Warehouse Inspection{{else}}{{.lab_result}}{{end}}\n{{end}}"
 }
