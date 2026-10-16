@@ -15,6 +15,10 @@
           {
             "const": "withdraw",
             "title": "Withdraw the certificate"
+          },
+          {
+            "const": "refresh",
+            "title": "Check the delivery status again"
           }
         ]
       },

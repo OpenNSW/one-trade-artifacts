@@ -1,11 +1,11 @@
 {
   "id": "npqs-certificate-status:render",
   "type": "APPLICATION",
-  "title": "[NPQS] Certificate Status & Next Action",
+  "title": "[NPQS] Delivery Status & Next Action",
   "sections": {
     "checking": {
       "templateId": "npqs-certificate-status--checking-msg",
-      "title": "Certificate Status",
+      "title": "Delivery Status",
       "projector": "MARKDOWN",
       "visibleWhen": {
         "states": [
@@ -17,7 +17,7 @@
     },
     "status_msg": {
       "templateId": "npqs-certificate-status--status-msg",
-      "title": "Certificate Status",
+      "title": "Delivery Status",
       "projector": "MARKDOWN",
       "visibleWhen": {
         "states": [

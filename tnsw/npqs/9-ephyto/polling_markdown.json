@@ -1,4 +1,0 @@
-{
-  "id": "npqs-ephyto-upload--polling-msg",
-  "template": "### IPPC ePhyto Hub Delivery Status\n\nThe phytosanitary certificate has been transmitted to the IPPC ePhyto Hub. The delivery status is now checked **automatically every minute** — no action is needed. The certificate shows as `PendingDelivery` until the importing country's NPPO downloads it, then `Delivered`, which completes this step.\n\n- **Reference Number**: `{{ .reference_number }}`\n- **ePhyto Reference Number**: `{{ .certificate_id }}`\n{{if .replacement_reference_number}}- **Replacement Certificate Reference No.**: `{{ .replacement_reference_number }}`\n{{end}}{{ with .ephyto }}- **Hub Tracking Number**: `{{ .tracking_number }}`\n{{ if .tracking_info }}- **Current Status**: `{{ .tracking_info }}`\n{{ end }}{{ if .error }}\n> {{ .error }}\n{{ end }}{{ end }}\n_This page refreshes as each check completes._"
-}

@@ -1,7 +1,7 @@
 {
   "id": "npqs-certificate-status",
   "name": "NPQS Certificate Status & Next Action",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -103,11 +103,6 @@
       "target_id": "choose"
     },
     {
-      "id": "e_choose_gw",
-      "source_id": "choose",
-      "target_id": "gw_action"
-    },
-    {
       "id": "e_withdraw",
       "source_id": "gw_action",
       "target_id": "request_withdrawal",
@@ -117,7 +112,18 @@
       "id": "e_complete",
       "source_id": "gw_action",
       "target_id": "end",
-      "condition": "action.action != 'withdraw'"
+      "condition": "action.action == 'complete'"
+    },
+    {
+      "id": "e_check_again",
+      "source_id": "gw_action",
+      "target_id": "refresh",
+      "condition": "action.action != 'withdraw' && action.action != 'complete'"
+    },
+    {
+      "id": "e_choose_gw",
+      "source_id": "choose",
+      "target_id": "gw_action"
     },
     {
       "id": "e_request_gw",
