@@ -1,7 +1,7 @@
 {
   "id": "npqs-visual-sample-receive--review-workflow",
   "name": "NPQS Receive Sample (Visual Inspection) — Officer Review",
-  "version": 2,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
@@ -16,7 +16,9 @@
         "submission.reference_number": "reviewform.sample_number"
       },
       "output_mapping": {
-        "__command": "command"
+        "__command": "command",
+        "sample_number": "reviewform.sample_number",
+        "receive_comments?": "reviewform.receive_comments"
       }
     },
     {
