@@ -430,7 +430,7 @@
           },
           "remittanceCurrencyCode": {
             "type": "string",
-            "title": "Remittance Currency",
+            "title": "55. Remittance Currency",
             "description": "Currency of the remittance amount.",
             "example": "USD"
           },
@@ -1174,7 +1174,7 @@
       },
       {
         "type": "Group",
-        "label": "Packages and Description of Goods ( Cage 31 )",
+        "label": "Packages and Description of Goods",
         "elements": [
           {
             "type": "Control",
