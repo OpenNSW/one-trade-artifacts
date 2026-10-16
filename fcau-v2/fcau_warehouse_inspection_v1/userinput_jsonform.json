@@ -46,8 +46,12 @@
             "id": {
               "type": "string",
               "title": "Item ID",
-              "description": "A unique ID for this item (e.g. item-1). Do not reuse an ID within the same application.",
-              "example": "item-1"
+              "description": "Generated for you as each item is added.",
+              "readOnly": true,
+              "example": "item-1",
+              "x-template": {
+                "template": "item-{seq(1)}"
+              }
             },
             "description_of_food": {
               "type": "string",
