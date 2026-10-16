@@ -313,37 +313,37 @@
               },
               {
                 "type": "HorizontalLayout",
-                "rule": {
-                  "effect": "SHOW",
-                  "condition": {
-                    "scope": "#/properties/inspection_type",
-                    "schema": {
-                      "const": "lab"
-                    }
-                  }
-                },
                 "elements": [
                   {
                     "type": "Control",
-                    "scope": "#/properties/lab_sample_method"
+                    "scope": "#/properties/lab_sample_method",
+                    "rule": {
+                      "effect": "SHOW",
+                      "condition": {
+                        "scope": "#/properties/inspection_type",
+                        "schema": {
+                          "const": "lab"
+                        }
+                      }
+                    }
                   }
                 ]
               },
               {
                 "type": "HorizontalLayout",
-                "rule": {
-                  "effect": "SHOW",
-                  "condition": {
-                    "scope": "#/properties/inspection_type",
-                    "schema": {
-                      "const": "visual"
-                    }
-                  }
-                },
                 "elements": [
                   {
                     "type": "Control",
-                    "scope": "#/properties/visual_approach"
+                    "scope": "#/properties/visual_approach",
+                    "rule": {
+                      "effect": "SHOW",
+                      "condition": {
+                        "scope": "#/properties/inspection_type",
+                        "schema": {
+                          "const": "visual"
+                        }
+                      }
+                    }
                   },
                   {
                     "type": "Control",
@@ -351,10 +351,21 @@
                     "rule": {
                       "effect": "SHOW",
                       "condition": {
-                        "scope": "#/properties/visual_approach",
-                        "schema": {
-                          "const": "sample"
-                        }
+                        "type": "AND",
+                        "conditions": [
+                          {
+                            "scope": "#/properties/inspection_type",
+                            "schema": {
+                              "const": "visual"
+                            }
+                          },
+                          {
+                            "scope": "#/properties/visual_approach",
+                            "schema": {
+                              "const": "sample"
+                            }
+                          }
+                        ]
                       }
                     }
                   }
