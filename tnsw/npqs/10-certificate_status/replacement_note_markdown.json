@@ -1,0 +1,4 @@
+{
+  "id": "npqs-certificate-status--replacement-note-msg",
+  "template": "### Note for the Replacement Certificate\n\nThe NPQS officer accepted your request to replace certificate `{{ .certificate_id }}`, and your amended application has been saved. Add a note saying what changed and why: it goes to the NPQS officer, who issues the replacement certificate and sends it to the IPPC ePhyto Hub with this note as the reason for the replacement."
+}
