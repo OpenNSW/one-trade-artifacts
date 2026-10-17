@@ -1,7 +1,7 @@
 {
   "id": "npqs-v3-export-phytosanitary-reg",
   "name": "NPQS Export Consignment & Phytosanitary Registration (Linear Stages)",
-  "version": 10,
+  "version": 11,
   "nodes": [
     {
       "id": "start",
@@ -768,7 +768,13 @@
         "npqs.ephyto_reference_number": "certificate_id",
         "npqs.certificate_items?": "certificate_items",
         "npqs.ephyto?": "ephyto",
-        "npqs.ephyto_hub_destination?": "hub_destination"
+        "npqs.ephyto_hub_destination?": "hub_destination",
+        "npqs.ephyto_required?": "ephyto_required",
+        "npqs.treatment_certificate_urls?": "treatment_certificate_url",
+        "npqs.supervision_report_urls?": "supervision_report_url",
+        "npqs.docs_traderinput.invoice_file_url?": "invoice_file_url",
+        "npqs.docs_traderinput.packing_list_file_url?": "packing_list_file_url",
+        "npqs.docs_traderinput.additional_file_url?": "additional_file_url"
       },
       "output_mapping": {
         "withdrawn?": "npqs.certificate_withdrawn"

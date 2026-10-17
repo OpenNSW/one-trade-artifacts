@@ -1,0 +1,4 @@
+{
+  "id": "npqs-certificate-replacement--request-view",
+  "template": "### Request to Replace a Phytosanitary Certificate\n\nThe trader asks for this certificate to be replaced. If you accept, the trader amends the NPQS application and adds a note; you then issue the replacement certificate and send it to the IPPC ePhyto Hub as a replacement for this one. If you reject it, the certificate stands and the trader is told your remarks.\n\n- **Reference Number**: `{{ .reference_number }}`\n- **Certificate Number**: `{{ .certificate_id }}`\n{{ if .tracking_number }}- **Hub Tracking Number**: `{{ .tracking_number }}`\n{{ end }}{{ if .tracking_info }}- **IPPC Hub Status**: `{{ .tracking_info }}`\n{{ end }}\n**Reason given by the trader:**\n\n> {{ .replacement_reason }}\n"
+}

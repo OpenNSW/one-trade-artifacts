@@ -1,0 +1,50 @@
+{
+  "id": "npqs-certificate-replacement--review:render",
+  "type": "APPLICATION",
+  "title": "NPQS Certificate Replacement Request",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
+  "sections": {
+    "request_view": {
+      "templateId": "npqs-certificate-replacement--request-view",
+      "title": "Replacement Request",
+      "projector": "MARKDOWN",
+      "dataKey": "submission"
+    },
+    "review_form": {
+      "templateId": "npqs-certificate-replacement--officer-form",
+      "title": "Decision",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Decision",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "status_message": {
+      "templateId": "npqs-certificate-replacement--decided-view",
+      "title": "Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}

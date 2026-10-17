@@ -1,0 +1,29 @@
+{
+  "id": "npqs-certificate-status--replacement-note-form",
+  "title": "",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "note": {
+        "type": "string",
+        "title": "Replacement note",
+        "description": "What changed and why. It is sent to the IPPC ePhyto Hub with the replacement certificate, as the reason it replaces the earlier one."
+      }
+    },
+    "required": [
+      "note"
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/note",
+        "options": {
+          "multi": true
+        }
+      }
+    ]
+  }
+}

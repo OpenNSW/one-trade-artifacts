@@ -1,0 +1,4 @@
+{
+  "id": "npqs-certificate-status--amend-application-msg",
+  "template": "### Amend the NPQS Application\n\nThe NPQS officer accepted your request to replace the certificate. The application below is filled in with what you submitted before: correct what the replacement certificate needs, then continue to add a note."
+}

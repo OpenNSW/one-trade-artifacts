@@ -1193,6 +1193,66 @@
       "kind": "generic_template",
       "version": "",
       "path": "npqs_certificate_withdrawal/decided_view_markdown.json"
+    },
+    {
+      "id": "npqs_certificate_replacement",
+      "kind": "task_config",
+      "version": "",
+      "path": "npqs_certificate_replacement/npqs_certificate_replacement.taskconfig.json"
+    },
+    {
+      "id": "npqs_certificate_replacement",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_certificate_replacement/workflow.json"
+    },
+    {
+      "id": "npqs-certificate-replacement--review",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs_certificate_replacement/task_template.json"
+    },
+    {
+      "id": "npqs-certificate-replacement--review-workflow",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_certificate_replacement/review_workflow.json"
+    },
+    {
+      "id": "npqs-certificate-replacement--review:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_certificate_replacement/render.json"
+    },
+    {
+      "id": "npqs-certificate-replacement--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_certificate_replacement/officer_review.json"
+    },
+    {
+      "id": "npqs-certificate-replacement--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_certificate_replacement/officer_review_jsonform.json"
+    },
+    {
+      "id": "npqs-certificate-replacement--notify-decision",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_certificate_replacement/notify_decision.json"
+    },
+    {
+      "id": "npqs-certificate-replacement--request-view",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_certificate_replacement/request_view_markdown.json"
+    },
+    {
+      "id": "npqs-certificate-replacement--decided-view",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_certificate_replacement/decided_view_markdown.json"
     }
   ]
 }
