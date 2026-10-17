@@ -1,0 +1,38 @@
+{
+  "id": "npqs_certificate_replacement",
+  "name": "NPQS Certificate Replacement Request",
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "review_request",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-replacement--review",
+      "input_mapping": {
+        "callbackToken": "callbackToken",
+        "notification?": "submission",
+        "taskId": "taskId",
+        "taskCode": "taskCode",
+        "consignmentId": "consignmentId"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "review_request"
+    },
+    {
+      "id": "e2",
+      "source_id": "review_request",
+      "target_id": "end"
+    }
+  ]
+}
