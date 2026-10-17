@@ -1,0 +1,4 @@
+{
+  "id": "efc-boat-note-approval--previous-review",
+  "template": "{{if .}}\n### Previous Review\n\nYou asked the trader to change the boat note. This is their resubmission.\n\n> **Your remarks**: {{.}}\n{{end}}"
+}

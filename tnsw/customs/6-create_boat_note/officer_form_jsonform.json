@@ -1,0 +1,97 @@
+{
+  "id": "customs-boat-note-approval--officer-form",
+  "title": "Review Boat Note",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "approval_status": {
+        "type": "string",
+        "title": "Approval Outcome",
+        "oneOf": [
+          { "const": "approved", "title": "Approve Boat Note" },
+          { "const": "needs_more_info", "title": "Request Changes" }
+        ],
+        "default": "approved"
+      },
+      "approved_boat_note_file": {
+        "type": "string",
+        "format": "file",
+        "title": "Approved Boat Note (PDF)",
+        "x-file": {
+          "accept": ".pdf",
+          "maxSize": 10485760
+        }
+      },
+      "remarks": {
+        "type": "string",
+        "title": "Officer Remarks (Required if Requesting Changes)",
+        "example": "All container seals verified. Boat note approved."
+      }
+    },
+    "required": [
+      "approval_status"
+    ],
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "approval_status": {
+              "const": "approved"
+            }
+          },
+          "required": [
+            "approval_status"
+          ]
+        },
+        "then": {
+          "required": [
+            "approved_boat_note_file"
+          ]
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "approval_status": {
+              "const": "needs_more_info"
+            }
+          },
+          "required": [
+            "approval_status"
+          ]
+        },
+        "then": {
+          "required": [
+            "remarks"
+          ]
+        }
+      }
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/approval_status"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/approved_boat_note_file",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/approval_status",
+            "schema": {
+              "const": "approved"
+            }
+          }
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/remarks"
+      }
+    ]
+  }
+}

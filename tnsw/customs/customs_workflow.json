@@ -1,7 +1,7 @@
 {
   "id": "customs-workflow",
   "name": "Customs Declaration & Clearance Process",
-  "version": 2,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
@@ -123,22 +123,9 @@
       },
       "output_mapping": {
         "userform": "customs.boat_note_userform",
-        "boat_note_document_key": "customs.boat_note_document_key"
-      }
-    },
-    {
-      "id": "customs_7_boat_note_approval",
-      "type": "TASK",
-      "name": "[Customs 7.0] Boat Note Approval",
-      "task_template_id": "customs-boat-note-approval-flow",
-      "lane": "Trader/CHA",
-      "input_mapping": {
-        "customs.boat_note_userform": "userform",
-        "customs.boat_note_document_key": "boat_note_document_key"
-      },
-      "output_mapping": {
-        "approval_status": "customs.boat_note_approval_status",
-        "approved_boat_note_file": "customs.approved_boat_note_file"
+        "boat_note_document_key": "customs.boat_note_document_key",
+        "boat_note_approval.approval_status": "customs.boat_note_approval_status",
+        "boat_note_approval.approved_boat_note_file": "customs.approved_boat_note_file"
       }
     },
     {
@@ -234,13 +221,8 @@
       "target_id": "customs_8_wait_export_release"
     },
     {
-      "id": "e_6_to_7",
+      "id": "e_6_to_join",
       "source_id": "customs_6_create_boat_note",
-      "target_id": "customs_7_boat_note_approval"
-    },
-    {
-      "id": "e_7_to_join",
-      "source_id": "customs_7_boat_note_approval",
       "target_id": "customs_post_cdn_join"
     },
     {

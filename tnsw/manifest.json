@@ -2557,34 +2557,22 @@
       "path": "customs/6-create_boat_note/task_template.json"
     },
     {
-      "id": "customs-boat-note-approval-flow:render",
+      "id": "customs-boat-note--changes-requested",
       "kind": "generic_template",
       "version": "",
-      "path": "customs/7-boat_note_approval/render.json"
+      "path": "customs/6-create_boat_note/changes_requested_jsonform.json"
     },
     {
       "id": "customs-boat-note-approval",
       "kind": "subtask_template",
       "version": "",
-      "path": "customs/7-boat_note_approval/approval.json"
+      "path": "customs/6-create_boat_note/approval.json"
     },
     {
       "id": "customs-boat-note-approval--instructions",
       "kind": "generic_template",
       "version": "",
-      "path": "customs/7-boat_note_approval/instructions_jsonform.json"
-    },
-    {
-      "id": "customs-boat-note-approval-flow",
-      "kind": "workflow",
-      "version": "",
-      "path": "customs/7-boat_note_approval/workflow.json"
-    },
-    {
-      "id": "customs-boat-note-approval-flow",
-      "kind": "task_template",
-      "version": "",
-      "path": "customs/7-boat_note_approval/task_template.json"
+      "path": "customs/6-create_boat_note/instructions_jsonform.json"
     },
     {
       "id": "customs-wait-export-release-flow:render",
@@ -2638,7 +2626,7 @@
       "id": "customs-boat-note-approval--officer-form",
       "kind": "generic_template",
       "version": "",
-      "path": "customs/7-boat_note_approval/officer_form_jsonform.json"
+      "path": "customs/6-create_boat_note/officer_form_jsonform.json"
     },
     {
       "id": "customs-export-release-wait--officer-form",

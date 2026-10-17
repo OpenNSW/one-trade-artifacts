@@ -1,0 +1,4 @@
+{
+  "id": "customs-boat-note--changes-requested",
+  "template": "{{if .remarks}}\n### Changes requested\n\nThe EFC officer has sent your Boat Note back for changes. Correct it and submit it again.\n\n**Officer Remarks:** {{.remarks}}\n{{end}}"
+}

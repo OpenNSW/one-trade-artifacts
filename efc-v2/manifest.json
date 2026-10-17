@@ -49,6 +49,24 @@
       "path": "efc_boat_note_approval/notify_decision.json"
     },
     {
+      "id": "efc-boat-note-approval--request-info",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "efc_boat_note_approval/request_info.json"
+    },
+    {
+      "id": "efc-boat-note-approval--previous-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "efc_boat_note_approval/previous_review_markdown.json"
+    },
+    {
+      "id": "efc-boat-note-approval--awaiting-resubmission",
+      "kind": "generic_template",
+      "version": "",
+      "path": "efc_boat_note_approval/awaiting_resubmission_markdown.json"
+    },
+    {
       "id": "efc-boat-note-approval--submission-view",
       "kind": "generic_template",
       "version": "",

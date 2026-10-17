@@ -1,6 +1,6 @@
 {
   "id": "efc-boat-note-approval--officer-form",
-  "title": "Approve Boat Note",
+  "title": "Review Boat Note",
   "schema": {
     "type": "object",
     "properties": {
@@ -8,7 +8,8 @@
         "type": "string",
         "title": "Approval Outcome",
         "oneOf": [
-          { "const": "approved", "title": "Approve Boat Note" }
+          { "const": "approved", "title": "Approve Boat Note" },
+          { "const": "needs_more_info", "title": "Request Changes" }
         ],
         "default": "approved"
       },
@@ -23,13 +24,48 @@
       },
       "remarks": {
         "type": "string",
-        "title": "Officer Remarks",
+        "title": "Officer Remarks (Required if Requesting Changes)",
         "example": "All container seals verified. Boat note approved."
       }
     },
     "required": [
-      "approval_status",
-      "approved_boat_note_file"
+      "approval_status"
+    ],
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "approval_status": {
+              "const": "approved"
+            }
+          },
+          "required": [
+            "approval_status"
+          ]
+        },
+        "then": {
+          "required": [
+            "approved_boat_note_file"
+          ]
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "approval_status": {
+              "const": "needs_more_info"
+            }
+          },
+          "required": [
+            "approval_status"
+          ]
+        },
+        "then": {
+          "required": [
+            "remarks"
+          ]
+        }
+      }
     ]
   },
   "uiSchema": {
@@ -41,7 +77,16 @@
       },
       {
         "type": "Control",
-        "scope": "#/properties/approved_boat_note_file"
+        "scope": "#/properties/approved_boat_note_file",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/approval_status",
+            "schema": {
+              "const": "approved"
+            }
+          }
+        }
       },
       {
         "type": "Control",
