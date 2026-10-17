@@ -177,6 +177,14 @@ See `tnsw/fcau/3-2-warehouse_inspection/workflow.json` or
   precedence list. The names are the agency catalog's (`configs/agency/<agency>/catalog.json`
   in nsw-srilanka). `.github/scripts/check_agency_authz.py` fails CI on a task that omits
   either.
+- **Drafts never go through the workflow.** A step that offers "Save as Draft"
+  declares `"draft": {"command": "save_as_draft"}` on its `subtask_template`, and its
+  render handle uses `"element": "draft_action"`. The portal saves it with
+  `PUT /api/v1/tasks/{id}/steps/{stepId}/draft` (core's `SaveDraft`), which stores it
+  under the step's `output_namespace` without completing the step. So the handle's
+  section `dataKey` must be that namespace, the step's workflow needs no draft
+  gateway, and outputs the form requires can be required (no `?`) in the
+  `output_mapping`. An `authz` rule names the draft command like any other.
 - Single repo owner: `@Aravinda-HWK` (`.github/CODEOWNERS`, wildcard rule).
 
 ## When asked to explain or change a flow

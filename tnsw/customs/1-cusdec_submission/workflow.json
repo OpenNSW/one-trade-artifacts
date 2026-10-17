@@ -1,7 +1,7 @@
 {
   "id": "customs-cusdec-apply-flow",
   "name": "Submit & Review Customs Declaration",
-  "version": 6,
+  "version": 7,
   "nodes": [
     {
       "id": "start",
@@ -34,7 +34,7 @@
       }
     },
     {
-      "id": "draft_gateway",
+      "id": "command_gateway",
       "type": "GATEWAY",
       "gateway_type": "EXCLUSIVE_SPLIT"
     },
@@ -110,17 +110,11 @@
     {
       "id": "e2",
       "source_id": "applicant_submission",
-      "target_id": "draft_gateway"
-    },
-    {
-      "id": "e_draft",
-      "source_id": "draft_gateway",
-      "target_id": "applicant_submission",
-      "condition": "command == 'save_as_draft'"
+      "target_id": "command_gateway"
     },
     {
       "id": "e_verify",
-      "source_id": "draft_gateway",
+      "source_id": "command_gateway",
       "target_id": "cig_verify",
       "condition": "command == 'verify'"
     },
@@ -131,7 +125,7 @@
     },
     {
       "id": "e_submit",
-      "source_id": "draft_gateway",
+      "source_id": "command_gateway",
       "target_id": "cig_dispatch"
     },
     {

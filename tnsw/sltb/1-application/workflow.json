@@ -1,7 +1,7 @@
 {
   "id": "sltb-submit-blendsheet-flow",
   "name": "Submit and Review Blend Sheet",
-  "version": 8,
+  "version": 9,
   "nodes": [
     {
       "id": "start",
@@ -17,14 +17,8 @@
         "userform?": "userform"
       },
       "output_mapping": {
-        "__command": "command",
-        "blendsheet_data?": "userform.blendsheet_data"
+        "blendsheet_data": "userform.blendsheet_data"
       }
-    },
-    {
-      "id": "draft_gateway",
-      "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
       "id": "generate_blendsheet_nos",
@@ -74,17 +68,6 @@
     {
       "id": "e2",
       "source_id": "applicant_submission",
-      "target_id": "draft_gateway"
-    },
-    {
-      "id": "e_draft",
-      "source_id": "draft_gateway",
-      "target_id": "applicant_submission",
-      "condition": "command == 'save_as_draft'"
-    },
-    {
-      "id": "e_submit",
-      "source_id": "draft_gateway",
       "target_id": "generate_blendsheet_nos"
     },
     {
