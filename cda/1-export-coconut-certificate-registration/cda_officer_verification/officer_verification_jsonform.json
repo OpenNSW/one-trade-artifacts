@@ -25,15 +25,23 @@
         "title": "Comments / Feedback / Deficiencies (Required if Needs More Info)",
         "example": "Please upload the correct certificate template."
       },
-      "product_type_dc": {
-        "type": "boolean",
-        "title": "DC",
-        "default": false
-      },
-      "product_type_value_added_dc": {
-        "type": "boolean",
-        "title": "Value Added DC - Low Fat DC",
-        "default": false
+      "product_type": {
+        "type": "string",
+        "title": "Product Type",
+        "oneOf": [
+          {
+            "const": "dc",
+            "title": "DC"
+          },
+          {
+            "const": "value_added_dc",
+            "title": "Value Added DC / Low Fat DC"
+          },
+          {
+            "const": "both",
+            "title": "DC and Value Added DC / Low Fat DC"
+          }
+        ]
       }
     },
     "required": [
@@ -69,27 +77,8 @@
           ]
         },
         "then": {
-          "anyOf": [
-            {
-              "properties": {
-                "product_type_dc": {
-                  "const": true
-                }
-              },
-              "required": [
-                "product_type_dc"
-              ]
-            },
-            {
-              "properties": {
-                "product_type_value_added_dc": {
-                  "const": true
-                }
-              },
-              "required": [
-                "product_type_value_added_dc"
-              ]
-            }
+          "required": [
+            "product_type"
           ]
         }
       }
@@ -117,20 +106,11 @@
       },
       {
         "type": "Control",
-        "scope": "#/properties/product_type_dc",
-        "rule": {
-          "effect": "SHOW",
-          "condition": {
-            "scope": "#/properties/verification_outcome",
-            "schema": {
-              "const": "approve"
-            }
-          }
-        }
-      },
-      {
-        "type": "Control",
-        "scope": "#/properties/product_type_value_added_dc",
+        "scope": "#/properties/product_type",
+        "options": {
+          "format": "radio",
+          "required": true
+        },
         "rule": {
           "effect": "SHOW",
           "condition": {
