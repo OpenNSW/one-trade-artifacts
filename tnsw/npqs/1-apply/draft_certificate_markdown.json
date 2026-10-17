@@ -1,0 +1,4 @@
+{
+  "id": "npqs-apply-phyto-cert--draft-certificate-msg",
+  "template": "{{if and (eq (print .reviewerform.review_outcome) \"approve\") (not .reviewerform.ephyto_required)}}\nYour Phytosanitary Certificate will be issued by the PQS/NPQS officer once every required inspection is complete.\n{{else}}\nThis draft shows how your Phytosanitary Certificate will read, built from the application as you last submitted it. It is not a certificate: the PQS/NPQS officer issues the certificate, with its number, once every required inspection is complete.{{if eq (print .reviewerform.review_outcome) \"needs_more_info\"}} Resubmitting the application updates the draft.{{end}}\n\n#### [📄 Download Draft Phytosanitary Certificate]({{.draft_certificate_key}})\n\nOpen it and use your browser's print option to print it or save it as a PDF.\n{{end}}"
+}

@@ -1,7 +1,7 @@
 {
   "id": "npqs-certificate-issue--review-workflow",
   "name": "NPQS Certificate Issuance — Officer Review",
-  "version": 2,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
@@ -58,6 +58,37 @@
         "certificate_url?": "reviewform.certificate_url",
         "comments?": "reviewform.comments",
         "certificate_items?": "reviewform.certificate_items"
+      }
+    },
+    {
+      "id": "gw_ephyto",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "generate_certificate",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-issue--generate-certificate",
+      "input_mapping": {
+        "submission": "application",
+        "reviewform.certificate_id": "certificate_number",
+        "reviewform.certificate_items?": "items"
+      },
+      "output_mapping": {
+        "certificate_document.key": "signing_certificate_key"
+      }
+    },
+    {
+      "id": "sign_certificate",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-issue--sign-certificate",
+      "input_mapping": {
+        "submission?": "submission",
+        "reviewform": "reviewform",
+        "signing_certificate_key": "signing_certificate_key"
+      },
+      "output_mapping": {
+        "certificate_url": "signed_certificate.certificate_url"
       }
     },
     {
@@ -126,6 +157,28 @@
     {
       "id": "e_form_to_api",
       "source_id": "userform",
+      "target_id": "gw_ephyto"
+    },
+    {
+      "id": "e_sign_ephyto",
+      "source_id": "gw_ephyto",
+      "target_id": "generate_certificate",
+      "condition": "submission.ephyto_required == true"
+    },
+    {
+      "id": "e_not_ephyto",
+      "source_id": "gw_ephyto",
+      "target_id": "api_call",
+      "condition": "submission.ephyto_required != true"
+    },
+    {
+      "id": "e_generated",
+      "source_id": "generate_certificate",
+      "target_id": "sign_certificate"
+    },
+    {
+      "id": "e_signed",
+      "source_id": "sign_certificate",
       "target_id": "api_call"
     },
     {

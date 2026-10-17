@@ -1,0 +1,9 @@
+{
+  "id": "npqs-certificate-issue--generate-certificate",
+  "task_type": "HTML_DOCUMENT_GENERATOR",
+  "output_namespace": "certificate_document",
+  "plugin_properties": {
+    "template_id": "npqs-phyto-certificate--html",
+    "filename": "phytosanitary-certificate.html"
+  }
+}

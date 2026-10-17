@@ -13,6 +13,7 @@
       "task_template_id": "npqs-apply-phyto-cert--user-input",
       "input_mapping": {
         "reviewerform?": "reviewerform",
+        "draft_certificate_key?": "draft_certificate_key",
         "applicant_name?": "userform.applicant_name",
         "exporter_name?": "userform.exporter_name",
         "exporter_address?": "userform.exporter_address",
@@ -38,6 +39,8 @@
         "seal_number?": "userform.seal_number",
         "estimated_shipment_date?": "userform.estimated_shipment_date",
         "transport_mode?": "userform.transport_mode",
+        "vessel_name?": "userform.vessel_name",
+        "voyage_number?": "userform.voyage_number",
         "commodities?": "userform.commodities",
         "origin_country?": "userform.origin_country",
         "origin_area?": "userform.origin_area",
@@ -56,6 +59,17 @@
       "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
+      "id": "generate_draft_certificate",
+      "type": "TASK",
+      "task_template_id": "npqs-apply-phyto-cert--draft-certificate",
+      "input_mapping": {
+        "userform": "application"
+      },
+      "output_mapping": {
+        "draft_certificate.key": "draft_certificate_key"
+      }
+    },
+    {
       "id": "officer_review",
       "type": "TASK",
       "task_template_id": "npqs-apply-phyto-cert--external-review",
@@ -63,6 +77,7 @@
         "userform?": "userform",
         "reviewerform.reference_number?": "submission.reference_number",
         "userform": "submission",
+        "draft_certificate_key?": "draft_certificate_key",
         "agency_token?": "replyToken"
       },
       "output_mapping": {
@@ -104,6 +119,11 @@
     {
       "id": "e_submit",
       "source_id": "draft_gateway",
+      "target_id": "generate_draft_certificate"
+    },
+    {
+      "id": "e_draft_certificate",
+      "source_id": "generate_draft_certificate",
       "target_id": "officer_review"
     },
     {

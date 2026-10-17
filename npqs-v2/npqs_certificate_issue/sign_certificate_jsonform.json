@@ -1,0 +1,36 @@
+{
+  "id": "npqs-issue-certificate--sign-form",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "certificate_id": {
+        "type": "string",
+        "title": "Phytosanitary Certificate Number"
+      },
+      "certificate_url": {
+        "type": "string",
+        "format": "file",
+        "title": "Signed Phytosanitary Certificate (PDF)"
+      }
+    },
+    "required": [
+      "certificate_url"
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/certificate_id",
+        "options": {
+          "readOnly": true
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/certificate_url"
+      }
+    ]
+  }
+}

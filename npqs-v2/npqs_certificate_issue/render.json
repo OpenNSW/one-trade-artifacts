@@ -27,6 +27,35 @@
         }
       ]
     },
+    "signing_msg": {
+      "templateId": "npqs-certificate-issue--sign-msg",
+      "title": "Sign the Certificate",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_SIGNATURE"
+        ],
+        "requireDataKey": "signing_certificate_key"
+      }
+    },
+    "signing_form": {
+      "templateId": "npqs-issue-certificate--sign-form",
+      "title": "Signed Certificate",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "PENDING_SIGNATURE"
+        ]
+      },
+      "handles": [
+        {
+          "command": "upload_signed",
+          "label": "Submit Signed Certificate",
+          "element": "primary_action"
+        }
+      ]
+    },
     "status_message": {
       "templateId": "npqs-certificate-issue--submission-view",
       "title": "Review Status",
@@ -43,6 +72,13 @@
       "actions": [
         {
           "command": "submit"
+        }
+      ]
+    },
+    "PENDING_SIGNATURE": {
+      "actions": [
+        {
+          "command": "upload_signed"
         }
       ]
     }

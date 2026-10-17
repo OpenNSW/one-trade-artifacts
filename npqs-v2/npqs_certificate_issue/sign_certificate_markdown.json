@@ -1,0 +1,4 @@
+{
+  "id": "npqs-certificate-issue--sign-msg",
+  "template": "### ✍️ Sign the Phytosanitary Certificate\n\nThe certificate has been prepared from the application, the certificate number and the items you chose.\n\n1. Download it and print it (or save it as a PDF from your browser's print option).\n2. Fill in your name and the date, and sign it.\n3. Scan the signed certificate and upload it below as **Signed Phytosanitary Certificate (PDF)**.\n\n#### [📄 Download Certificate for Signing]({{.signing_certificate_key}})\n\nThe signed certificate is kept on record by NPQS; it is not shown to the trader."
+}
