@@ -100,18 +100,22 @@
             },
             "lab_sample_method": {
               "type": "string",
-              "title": "Sample Collection Method",
+              "title": "Sample Drop-off Method for Laboratory Testing",
               "oneOf": [
                 {
-                  "const": "drop_off",
-                  "title": "Sample Drop Off"
+                  "const": "drop_off_npqs",
+                  "title": "Sample Drop-off to NPQS"
+                },
+                {
+                  "const": "drop_off_pqs",
+                  "title": "Sample Drop-off to PQS"
                 },
                 {
                   "const": "drawn_at_site",
                   "title": "Sample Drawn by Officer at Site"
                 }
               ],
-              "default": "drop_off"
+              "default": "drop_off_pqs"
             },
             "visual_approach": {
               "type": "string",
@@ -169,7 +173,7 @@
             "quantity_net_weight_unit": "KGM",
             "packages_count": 50,
             "inspection_type": "lab",
-            "lab_sample_method": "drop_off",
+            "lab_sample_method": "drop_off_pqs",
             "visual_approach": "consignment",
             "treatment_required": false
           },
@@ -181,7 +185,7 @@
             "quantity_net_weight_unit": "KGM",
             "packages_count": 80,
             "inspection_type": "visual",
-            "lab_sample_method": "drop_off",
+            "lab_sample_method": "drop_off_pqs",
             "visual_approach": "consignment",
             "treatment_required": false
           },
@@ -193,7 +197,7 @@
             "quantity_net_weight_unit": "KGM",
             "packages_count": 12,
             "inspection_type": "visual",
-            "lab_sample_method": "drop_off",
+            "lab_sample_method": "drop_off_pqs",
             "visual_approach": "consignment",
             "treatment_required": true
           },
@@ -205,7 +209,7 @@
             "quantity_net_weight_unit": "KGM",
             "packages_count": 200,
             "inspection_type": "visual",
-            "lab_sample_method": "drop_off",
+            "lab_sample_method": "drop_off_pqs",
             "visual_approach": "consignment",
             "treatment_required": false
           }
