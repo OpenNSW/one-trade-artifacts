@@ -171,9 +171,7 @@
           },
           "required": [
             "id",
-            "commodity_common_name",
-            "inspection_type",
-            "treatment_required"
+            "commodity_common_name"
           ]
         },
         "example": [
@@ -243,6 +241,51 @@
     "required": [
       "reference_number",
       "review_outcome"
+    ],
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "review_outcome": {
+              "const": "approve"
+            }
+          },
+          "required": [
+            "review_outcome"
+          ]
+        },
+        "then": {
+          "properties": {
+            "commodities": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "inspection_type",
+                  "treatment_required"
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "review_outcome": {
+              "const": "needs_more_info"
+            }
+          },
+          "required": [
+            "review_outcome"
+          ]
+        },
+        "then": {
+          "required": [
+            "clarification_reason"
+          ]
+        }
+      }
     ]
   },
   "uiSchema": {

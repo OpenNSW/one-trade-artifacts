@@ -1610,7 +1610,11 @@
               },
               {
                 "type": "Control",
-                "scope": "#/properties/nppo_office_location"
+                "scope": "#/properties/nppo_office_location/properties/label",
+                "options": {
+                  "readOnly": true
+                },
+                "label": "NPPO Office Location"
               }
             ]
           },

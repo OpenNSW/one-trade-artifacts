@@ -138,7 +138,12 @@ Consignment re-inspected after treatment and found free from live pests.
   </tr>
   {{- if $app.transit_countries }}
   <tr><th colspan="2">Transit Countries</th></tr>
-  <tr><td colspan="2">{{ $app.transit_countries }}</td></tr>
+  <tr><td colspan="2">
+    {{- range $i, $tc := $app.transit_countries -}}
+      {{- if $i }}, {{ end -}}
+      {{- if $tc.label }}{{ $tc.label }}{{ else }}{{ $tc.value }}{{ end -}}
+    {{- end -}}
+  </td></tr>
   {{- end }}
   <tr><th colspan="2">Distinguishing Marks</th></tr>
   <tr><td colspan="2">{{ $app.distinguishing_marks }}</td></tr>
