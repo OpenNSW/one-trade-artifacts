@@ -4,5 +4,8 @@
   "output_namespace": "userform",
   "plugin_properties": {
     "user_jsonforms_id": "npqs-apply-phyto-cert--user-form"
+  },
+  "draft": {
+    "command": "save_as_draft"
   }
 }

@@ -39,7 +39,7 @@
         {
           "command": "save_as_draft",
           "label": "Save as Draft",
-          "element": "secondary_action"
+          "element": "draft_action"
         },
         {
           "command": "submit",
