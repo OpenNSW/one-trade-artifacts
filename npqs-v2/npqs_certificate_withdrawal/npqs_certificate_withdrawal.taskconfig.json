@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "npqs_certificate_withdrawal",
+  "workflow": "npqs_certificate_withdrawal",
+  "meta": {
+    "title": "NPQS Certificate Withdrawal Request",
+    "description": "Officer accepts or rejects a trader's request to withdraw an issued phytosanitary certificate."
+  }
+}

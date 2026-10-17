@@ -1,0 +1,4 @@
+{
+  "id": "npqs-certificate-withdrawal--request-view",
+  "template": "### Request to Withdraw a Phytosanitary Certificate\n\nThe trader asks for this certificate to be withdrawn. If you accept, it is withdrawn on the IPPC ePhyto Hub and the NPQS process ends. If you reject it, the certificate stands and the trader is told your remarks.\n\n- **Reference Number**: `{{ .reference_number }}`\n- **Certificate Number**: `{{ .certificate_id }}`\n{{ if .tracking_number }}- **Hub Tracking Number**: `{{ .tracking_number }}`\n{{ end }}{{ if .tracking_info }}- **IPPC Hub Status**: `{{ .tracking_info }}`\n{{ end }}\n**Reason given by the trader:**\n\n> {{ .withdrawal_reason }}\n{{ if .hub_error }}\n> ⚠️ **You accepted this request, but the IPPC Hub did not accept the withdrawal:** {{ .hub_error }}\n>\n> Accept again to retry, or reject to keep the certificate.\n{{ end }}"
+}

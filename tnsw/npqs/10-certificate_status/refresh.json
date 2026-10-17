@@ -1,0 +1,10 @@
+{
+  "id": "npqs-certificate-status--refresh",
+  "task_type": "NPQS_EPHYTO_HUB",
+  "output_namespace": "hubstatus",
+  "plugin_properties": {
+    "service_id": "ippc-hub",
+    "path": "DeliveryService",
+    "operation": "poll"
+  }
+}

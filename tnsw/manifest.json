@@ -733,12 +733,6 @@
       "path": "npqs/9-ephyto/with_officer_markdown.json"
     },
     {
-      "id": "npqs-ephyto-upload--polling-msg",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs/9-ephyto/polling_markdown.json"
-    },
-    {
       "id": "npqs-ephyto-upload--completed-msg",
       "kind": "generic_template",
       "version": "",
@@ -751,12 +745,6 @@
       "path": "npqs/9-ephyto/submit.json"
     },
     {
-      "id": "npqs-ephyto-upload--poll",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs/9-ephyto/poll.json"
-    },
-    {
       "id": "npqs-ephyto-upload",
       "kind": "workflow",
       "version": "",
@@ -767,6 +755,90 @@
       "kind": "task_template",
       "version": "",
       "path": "npqs/9-ephyto/task_template.json"
+    },
+    {
+      "id": "npqs-ephyto-upload--polling-msg",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/9-ephyto/polling_markdown.json"
+    },
+    {
+      "id": "npqs-ephyto-upload--poll",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/9-ephyto/poll.json"
+    },
+    {
+      "id": "npqs-certificate-status",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs/10-certificate_status/task_template.json"
+    },
+    {
+      "id": "npqs-certificate-status",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs/10-certificate_status/workflow.json"
+    },
+    {
+      "id": "npqs-certificate-status:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/10-certificate_status/render.json"
+    },
+    {
+      "id": "npqs-certificate-status--refresh",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/10-certificate_status/refresh.json"
+    },
+    {
+      "id": "npqs-certificate-status--choose",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/10-certificate_status/choose.json"
+    },
+    {
+      "id": "npqs-certificate-status--request-withdrawal",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/10-certificate_status/request_withdrawal.json"
+    },
+    {
+      "id": "npqs-certificate-status--hub-withdraw",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/10-certificate_status/hub_withdraw.json"
+    },
+    {
+      "id": "npqs-certificate-status--action-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/10-certificate_status/action_form.json"
+    },
+    {
+      "id": "npqs-certificate-status--status-msg",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/10-certificate_status/status_markdown.json"
+    },
+    {
+      "id": "npqs-certificate-status--with-officer-msg",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/10-certificate_status/with_officer_markdown.json"
+    },
+    {
+      "id": "npqs-certificate-status--completed-msg",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/10-certificate_status/completed_markdown.json"
+    },
+    {
+      "id": "npqs-certificate-status--checking-msg",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/10-certificate_status/checking_markdown.json"
     },
     {
       "id": "npqs-v3-export-phytosanitary-reg",

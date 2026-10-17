@@ -1,0 +1,10 @@
+{
+  "id": "npqs-certificate-status--hub-withdraw",
+  "task_type": "NPQS_EPHYTO_HUB",
+  "output_namespace": "hubwithdraw",
+  "plugin_properties": {
+    "service_id": "ippc-hub",
+    "path": "DeliveryService",
+    "operation": "withdraw"
+  }
+}

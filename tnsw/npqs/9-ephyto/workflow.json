@@ -1,7 +1,7 @@
 {
   "id": "npqs-ephyto-upload",
   "name": "Upload to IPPC ePhyto Hub",
-  "version": 12,
+  "version": 13,
   "nodes": [
     {
       "id": "start",
@@ -50,7 +50,8 @@
         "officerinput.send_packing_list?": "documents.packing_list.send",
         "additional_file_url?": "documents.additional_supporting_document.url",
         "officerinput.send_additional_document?": "documents.additional_supporting_document.send",
-        "replacement_reference_number?": "replacement_reference_number"
+        "replacement_reference_number?": "replacement_reference_number",
+        "reference_number?": "reference_number"
       },
       "output_mapping": {
         "ephyto.submitted": "ephyto.submitted",
@@ -61,39 +62,6 @@
     },
     {
       "id": "gw_submit",
-      "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
-    },
-    {
-      "id": "poll",
-      "type": "TASK",
-      "task_template_id": "npqs-ephyto-upload--poll",
-      "input_mapping": {
-        "reference_number?": "reference_number",
-        "ephyto.tracking_number": "tracking_number",
-        "replacement_reference_number?": "replacement_reference_number"
-      },
-      "output_mapping": {
-        "ephyto.delivered": "ephyto.delivered",
-        "ephyto.tracking_info?": "ephyto.tracking_info",
-        "ephyto.error": "ephyto.error"
-      }
-    },
-    {
-      "id": "gw_poll",
-      "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
-    },
-    {
-      "id": "wait",
-      "type": "TIMER",
-      "timer": {
-        "duration": "1m",
-        "counter_key": "poll_attempts"
-      }
-    },
-    {
-      "id": "gw_poll_cap",
       "type": "GATEWAY",
       "gateway_type": "EXCLUSIVE_SPLIT"
     },
@@ -121,7 +89,7 @@
     {
       "id": "e_submitted",
       "source_id": "gw_submit",
-      "target_id": "wait",
+      "target_id": "end",
       "condition": "ephyto.submitted == true"
     },
     {
@@ -129,40 +97,6 @@
       "source_id": "gw_submit",
       "target_id": "officer_transmit",
       "condition": "ephyto.submitted != true"
-    },
-    {
-      "id": "e_poll_gw",
-      "source_id": "poll",
-      "target_id": "gw_poll"
-    },
-    {
-      "id": "e_delivered",
-      "source_id": "gw_poll",
-      "target_id": "end",
-      "condition": "ephyto.delivered == true"
-    },
-    {
-      "id": "e_not_delivered",
-      "source_id": "gw_poll",
-      "target_id": "wait",
-      "condition": "ephyto.delivered != true"
-    },
-    {
-      "id": "e_wait_cap",
-      "source_id": "wait",
-      "target_id": "gw_poll_cap"
-    },
-    {
-      "id": "e_poll_again",
-      "source_id": "gw_poll_cap",
-      "target_id": "poll",
-      "condition": "poll_attempts < 1440"
-    },
-    {
-      "id": "e_poll_exhausted",
-      "source_id": "gw_poll_cap",
-      "target_id": "end",
-      "condition": "poll_attempts >= 1440"
     }
   ]
 }

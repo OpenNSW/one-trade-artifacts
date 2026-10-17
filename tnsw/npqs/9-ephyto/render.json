@@ -11,38 +11,20 @@
         "states": [
           "STARTING",
           "STARTING_STEP",
-          "QUEUED_EXTERNALLY"
-        ]
-      }
-    },
-    "polling_msg": {
-      "templateId": "npqs-ephyto-upload--polling-msg",
-      "title": "Delivery Status",
-      "projector": "MARKDOWN",
-      "visibleWhen": {
-        "states": [
-          "EPHYTO_SUBMITTED",
-          "EPHYTO_POLLING"
+          "QUEUED_EXTERNALLY",
+          "EPHYTO_SUBMITTED"
         ]
       }
     },
     "completed": {
       "templateId": "npqs-ephyto-upload--completed-msg",
-      "title": "IPPC ePhyto Hub Transmission",
+      "title": "IPPC ePhyto Hub",
       "projector": "MARKDOWN",
       "visibleWhen": {
         "states": [
           "COMPLETED"
         ]
       }
-    }
-  },
-  "states": {
-    "EPHYTO_SUBMITTED": {
-      "actions": []
-    },
-    "EPHYTO_POLLING": {
-      "actions": []
     }
   }
 }

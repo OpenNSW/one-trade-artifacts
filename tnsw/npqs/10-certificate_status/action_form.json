@@ -1,0 +1,76 @@
+{
+  "id": "npqs-certificate-status--action-form",
+  "title": "",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "action": {
+        "type": "string",
+        "title": "What would you like to do?",
+        "oneOf": [
+          {
+            "const": "complete",
+            "title": "Complete: keep the certificate and finish"
+          },
+          {
+            "const": "withdraw",
+            "title": "Withdraw the certificate"
+          },
+          {
+            "const": "refresh",
+            "title": "Check the delivery status again"
+          }
+        ]
+      },
+      "withdrawal_reason": {
+        "type": "string",
+        "title": "Reason for withdrawal",
+        "description": "Sent to the NPQS officer, who accepts or rejects the request."
+      }
+    },
+    "required": [
+      "action"
+    ],
+    "if": {
+      "properties": {
+        "action": {
+          "const": "withdraw"
+        }
+      }
+    },
+    "then": {
+      "required": [
+        "action",
+        "withdrawal_reason"
+      ]
+    }
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/action",
+        "options": {
+          "format": "radio"
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/withdrawal_reason",
+        "options": {
+          "multi": true
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/action",
+            "schema": {
+              "const": "withdraw"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

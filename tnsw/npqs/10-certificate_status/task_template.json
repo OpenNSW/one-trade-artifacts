@@ -1,0 +1,6 @@
+{
+  "id": "npqs-certificate-status",
+  "type": "APPLICATION",
+  "workflow_id": "npqs-certificate-status",
+  "render_config_id": "npqs-certificate-status:render"
+}

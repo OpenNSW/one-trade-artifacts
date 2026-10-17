@@ -1133,6 +1133,66 @@
       "kind": "generic_template",
       "version": "",
       "path": "npqs_ephyto_transmit/submitted_view_markdown.json"
+    },
+    {
+      "id": "npqs_certificate_withdrawal",
+      "kind": "task_config",
+      "version": "",
+      "path": "npqs_certificate_withdrawal/npqs_certificate_withdrawal.taskconfig.json"
+    },
+    {
+      "id": "npqs_certificate_withdrawal",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_certificate_withdrawal/workflow.json"
+    },
+    {
+      "id": "npqs-certificate-withdrawal--review",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs_certificate_withdrawal/task_template.json"
+    },
+    {
+      "id": "npqs-certificate-withdrawal--review-workflow",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_certificate_withdrawal/review_workflow.json"
+    },
+    {
+      "id": "npqs-certificate-withdrawal--review:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_certificate_withdrawal/render.json"
+    },
+    {
+      "id": "npqs-certificate-withdrawal--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_certificate_withdrawal/officer_review.json"
+    },
+    {
+      "id": "npqs-certificate-withdrawal--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_certificate_withdrawal/officer_review_jsonform.json"
+    },
+    {
+      "id": "npqs-certificate-withdrawal--notify-decision",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_certificate_withdrawal/notify_decision.json"
+    },
+    {
+      "id": "npqs-certificate-withdrawal--request-view",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_certificate_withdrawal/request_view_markdown.json"
+    },
+    {
+      "id": "npqs-certificate-withdrawal--decided-view",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_certificate_withdrawal/decided_view_markdown.json"
     }
   ]
 }
