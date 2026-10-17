@@ -4,5 +4,8 @@
   "output_namespace": "userform",
   "plugin_properties": {
     "user_jsonforms_id": "slpa-ecdn--user-form"
+  },
+  "draft": {
+    "command": "save_as_draft"
   }
 }

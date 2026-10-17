@@ -246,6 +246,100 @@ def check_workflow_shapes(manifests, index, root, report):
                 report.error(f"[{a['path']}] edge {e['id']!r} target_id {e['target_id']!r} is not a node in this workflow")
 
 
+DRAFT_ELEMENT = "draft_action"
+
+
+def check_drafts(manifests, index, report):
+    """A step template with `draft` saves drafts through the task manager, not the
+    workflow (core's SaveDraft). For every task template, check its render config
+    against the draft steps of its workflow:
+
+    - the draft command has a handle with element 'draft_action' (any other
+      element submits it as a step completion, moving the workflow on with a
+      partial form) that the render's states make legal;
+    - that handle's section reads the step's output_namespace as its dataKey,
+      since the draft is stored there and the form is seeded from its dataKey;
+    - a 'draft_action' handle belongs to a draft step;
+    - no workflow still loops drafts back through a `command == ...` edge.
+    """
+    tnsw_mpath, tnsw_mdir = manifests.get("tnsw", (None, None))
+    if tnsw_mdir is None:
+        return
+    # Keyed by kind too: a task template and its workflow often share an id.
+    by_id = {}
+    for a in load_json(tnsw_mpath).get("artifacts", []):
+        fpath = tnsw_mdir / a["path"]
+        if fpath.exists():
+            by_id.setdefault((a["kind"], a["id"]), (a, fpath))
+
+    def load(kind, i):
+        hit = by_id.get((kind, i))
+        return (hit[0]["path"], load_json(hit[1])) if hit else (None, None)
+
+    for (_kind, _id), (a, fpath) in by_id.items():
+        if a["kind"] == "subtask_template":
+            st = load_json(fpath)
+            draft = st.get("draft")
+            if draft is not None and (not draft.get("command") or not st.get("output_namespace")):
+                report.error(f"[{a['path']}] draft needs a command and an output_namespace")
+        if a["kind"] == "workflow":
+            for e in load_json(fpath).get("edges", []):
+                if "save_as_draft" in e.get("condition", ""):
+                    report.error(
+                        f"[{a['path']}] edge {e['id']!r} routes drafts through the workflow; "
+                        f"give the step template a `draft` instead"
+                    )
+        if a["kind"] != "task_template":
+            continue
+
+        tt = load_json(fpath)
+        _wpath, wf = load("workflow", tt.get("workflow_id"))
+        rpath, rc = load("generic_template", tt.get("render_config_id"))
+        if wf is None or rc is None:
+            continue
+        drafts = {}  # command -> [output_namespace]
+        for n in wf.get("nodes", []):
+            if n.get("type") != "TASK":
+                continue
+            _spath, st = load("subtask_template", n.get("task_template_id"))
+            if st and st.get("draft", {}).get("command") and st.get("output_namespace"):
+                drafts.setdefault(st["draft"]["command"], []).append(st["output_namespace"])
+
+        handles = []  # (section, dataKey, handle)
+        for sid, sec in (rc.get("sections") or {}).items():
+            for h in sec.get("handles") or []:
+                handles.append((sid, sec.get("dataKey"), h))
+        legal = {
+            act.get("command")
+            for state in (rc.get("states") or {}).values()
+            for act in (state.get("actions") or [])
+        }
+
+        for command, namespaces in drafts.items():
+            mine = [(sid, key, h) for sid, key, h in handles if h.get("command") == command]
+            if not mine:
+                report.error(f"[{rpath}] no handle for draft command {command!r} of a step in {tt['workflow_id']!r}")
+            for sid, key, h in mine:
+                if h.get("element") != DRAFT_ELEMENT:
+                    report.error(
+                        f"[{rpath}] section {sid!r}: draft command {command!r} has element "
+                        f"{h.get('element')!r}, want {DRAFT_ELEMENT!r}"
+                    )
+                if key not in namespaces:
+                    report.error(
+                        f"[{rpath}] section {sid!r}: dataKey {key!r} is not the draft step's "
+                        f"output_namespace ({', '.join(namespaces)}), so a saved draft would not show"
+                    )
+            if command not in legal:
+                report.error(f"[{rpath}] draft command {command!r} is not an action of any state")
+        for sid, _key, h in handles:
+            if h.get("element") == DRAFT_ELEMENT and h.get("command") not in drafts:
+                report.error(
+                    f"[{rpath}] section {sid!r}: {DRAFT_ELEMENT!r} handle {h.get('command')!r} "
+                    f"has no step template with that draft command in {tt['workflow_id']!r}"
+                )
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", type=Path, default=None, help="repo root (default: auto-detect from script location)")
@@ -265,6 +359,7 @@ def main():
     check_shared_ids_across_tnsw_and_agency(index, root, report)
     check_external_review_linkage(manifests, index, root, report)
     check_workflow_shapes(manifests, index, root, report)
+    check_drafts(manifests, index, report)
 
     report.print_and_exit()
 

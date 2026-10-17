@@ -22,7 +22,7 @@
       "projector": "FORM",
       "dataKey": "userform",
       "handles": [
-        { "command": "save_as_draft", "label": "Save as Draft", "element": "secondary_action" },
+        { "command": "save_as_draft", "label": "Save as Draft", "element": "draft_action" },
         { "command": "submit", "label": "Generate XML & Upload to SLPA", "element": "primary_action" }
       ]
     }

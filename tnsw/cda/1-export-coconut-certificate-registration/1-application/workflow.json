@@ -1,7 +1,7 @@
 {
   "id": "cda-apply-coconut-cert-flow",
   "name": "Apply for Export Coconut Certificate",
-  "version": 7,
+  "version": 8,
   "nodes": [
     {
       "id": "start",
@@ -16,10 +16,9 @@
         "userform?": "userform"
       },
       "output_mapping": {
-        "__command": "command",
-        "exporter_details?": "userform.exporter_details",
-        "cusdec_number?": "userform.cusdec_number",
-        "relates_to_previous_approval?": "userform.relates_to_previous_approval",
+        "exporter_details": "userform.exporter_details",
+        "cusdec_number": "userform.cusdec_number",
+        "relates_to_previous_approval": "userform.relates_to_previous_approval",
         "previous_cusdec_number?": "userform.previous_cusdec_number",
         "previous_certificate_number?": "userform.previous_certificate_number",
         "cancellation_reason?": "userform.cancellation_reason",
@@ -28,24 +27,19 @@
         "lot_number?": "userform.lot_number",
         "product_type_dc?": "userform.product_type_dc",
         "product_type_value_added_dc?": "userform.product_type_value_added_dc",
-        "dc_grades?": "userform.dc_grades",
+        "dc_grades": "userform.dc_grades",
         "date_of_containerization?": "userform.date_of_containerization",
         "vessel_name?": "userform.vessel_name",
         "container_number?": "userform.container_number",
         "date_of_sailing?": "userform.date_of_sailing",
-        "port_of_discharge?": "userform.port_of_discharge",
-        "final_destination?": "userform.final_destination",
+        "port_of_discharge": "userform.port_of_discharge",
+        "final_destination": "userform.final_destination",
         "buyer_name?": "userform.buyer_name",
-        "container_filling_status?": "userform.container_filling_status",
+        "container_filling_status": "userform.container_filling_status",
         "balance_material_nature?": "userform.balance_material_nature",
-        "cert_type?": "userform.cert_type",
-        "uploaded_dc_bags_details?": "userform.uploaded_dc_bags_details"
+        "cert_type": "userform.cert_type",
+        "uploaded_dc_bags_details": "userform.uploaded_dc_bags_details"
       }
-    },
-    {
-      "id": "draft_gateway",
-      "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
       "id": "officer_verification",
@@ -83,17 +77,6 @@
     {
       "id": "e2",
       "source_id": "applicant_submission",
-      "target_id": "draft_gateway"
-    },
-    {
-      "id": "e_draft",
-      "source_id": "draft_gateway",
-      "target_id": "applicant_submission",
-      "condition": "command == 'save_as_draft'"
-    },
-    {
-      "id": "e_submit",
-      "source_id": "draft_gateway",
       "target_id": "officer_verification"
     },
     {
