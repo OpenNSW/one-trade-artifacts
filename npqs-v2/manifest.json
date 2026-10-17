@@ -79,6 +79,12 @@
       "path": "npqs_application_review/awaiting_resubmission_markdown.json"
     },
     {
+      "id": "npqs-application-review--draft-certificate",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_application_review/draft_certificate_markdown.json"
+    },
+    {
       "id": "npqs-apply-phyto-cert--reviewer-form",
       "kind": "generic_template",
       "version": "",
