@@ -1,0 +1,2200 @@
+{
+  "data": [
+    {
+      "const": "035",
+      "title": "Raw materials, inter goods, parts and accessories  in fashion jeweller"
+    },
+    {
+      "const": "036",
+      "title": "Time locks of a kind used for the manufacture of safe deposits lockers"
+    },
+    {
+      "const": "037",
+      "title": "Parts & accesories of motor vehciles or loco motives..."
+    },
+    {
+      "const": "218",
+      "title": "Motor vehicles; 1601 - 2000cc; permits for GS"
+    },
+    {
+      "const": "219",
+      "title": "Motor vehcles; 2001 - 2600 cc; permits GS"
+    },
+    {
+      "const": "721",
+      "title": "Excise and Customs duty excempted"
+    },
+    {
+      "const": "P23",
+      "title": "SD projects machinery etc to be used for the project permanent basis"
+    },
+    {
+      "const": "00B",
+      "title": "BOI Cusdecs submitted on removal out basis"
+    },
+    {
+      "const": "414",
+      "title": "CID, PAL, NBT, VAT, XID exempted, Cess payable"
+    },
+    {
+      "const": "223",
+      "title": "No levies involed by special order (import goods)"
+    },
+    {
+      "const": "711",
+      "title": "VAT and CID excempted (general cargo and Ex. based on value only)"
+    },
+    {
+      "const": "707",
+      "title": "Only PAL Payable"
+    },
+    {
+      "const": "701",
+      "title": "Only PAL & NBT are payable"
+    },
+    {
+      "const": "501",
+      "title": "VAT, NBT excempted. Other levies payable (Excise based on value)."
+    },
+    {
+      "const": "713",
+      "title": "PAL 2% & NBT Payable Only"
+    },
+    {
+      "const": "716",
+      "title": "PAL 2% Payable only"
+    },
+    {
+      "const": "717",
+      "title": "EIC, PAL payable NBT VAT not payable"
+    },
+    {
+      "const": "704",
+      "title": "EIC & PAL, NBT Payable"
+    },
+    {
+      "const": "00R",
+      "title": "Provisional CusDecs imported for the purpose of re exports"
+    },
+    {
+      "const": "0AE",
+      "title": "Additional CusDecs"
+    },
+    {
+      "const": "805",
+      "title": "Motor vehicles Central sales"
+    },
+    {
+      "const": "806",
+      "title": "SPC manual feeding"
+    },
+    {
+      "const": "952",
+      "title": "Export of goods(Raw Materials) for processing & return by BOI"
+    },
+    {
+      "const": "963",
+      "title": "Export of machineries & capital goods with intention of re-importation"
+    },
+    {
+      "const": "L21",
+      "title": "Purchase of local manufactured raw materials"
+    },
+    {
+      "const": "147",
+      "title": "Waiver  for  items on Customs Value"
+    },
+    {
+      "const": "702",
+      "title": "PAL & VAT payable only"
+    },
+    {
+      "const": "024",
+      "title": "Any ships excl yacht/plesure craft impt to SL and registered .."
+    },
+    {
+      "const": "025",
+      "title": "Long grain pakistan rice and potatoes impt on quota and FTA"
+    },
+    {
+      "const": "027",
+      "title": "Finished leather to be used for sole mafct industry on reco Min Indust"
+    },
+    {
+      "const": "148",
+      "title": "Wiaver (General 19A) applying for food items on Unit of quantity"
+    },
+    {
+      "const": "988",
+      "title": "Export tea cess manual recovery"
+    },
+    {
+      "const": "718",
+      "title": "CID and NBT excempted"
+    },
+    {
+      "const": "047",
+      "title": "VAT to be deffered after PAL = 1 paid"
+    },
+    {
+      "const": "703",
+      "title": "PAL & EIC Excempted"
+    },
+    {
+      "const": "000",
+      "title": "Normal procedure"
+    },
+    {
+      "const": "551",
+      "title": "Cess Exempted"
+    },
+    {
+      "const": "054",
+      "title": "Export of Music/other equipments to stage programme in abroad &return"
+    },
+    {
+      "const": "056",
+      "title": "Export of defective items/parts on NFE basis"
+    },
+    {
+      "const": "053",
+      "title": "Export of lacal cargo/products mixed/blended with imported goods"
+    },
+    {
+      "const": "078",
+      "title": "CESS Exempted Refer Attached documents"
+    },
+    {
+      "const": "022",
+      "title": "Import of personal Items & samples cif < Rs. 10000 by courier/p.post"
+    },
+    {
+      "const": "205",
+      "title": "ATA Carnet"
+    },
+    {
+      "const": "00M",
+      "title": "Motor Vehicles with bank gurantee"
+    },
+    {
+      "const": "0PR",
+      "title": "Cusdecs processed at D branch not finalized due to value,Qty,Clssifica"
+    },
+    {
+      "const": "220",
+      "title": "Motor Vehicle Permit Holder over 2600 CC"
+    },
+    {
+      "const": "95G",
+      "title": "Exportation of Finished Garments ( Export Taxes/Cess - Non Payable)"
+    },
+    {
+      "const": "95S",
+      "title": "Exportation of Sample garments on NFE basis ( Export Taxes/Cess - Non"
+    },
+    {
+      "const": "95N",
+      "title": "Exportation of finished goods (Non garments) ( Export Taxes/Cess - Non"
+    },
+    {
+      "const": "95A",
+      "title": "Exportation of garment accessories ( Export Taxes/Cess - Non Payable)"
+    },
+    {
+      "const": "95W",
+      "title": "Exportation of collected/other waste (Export Taxes/Cess - Non Payable)"
+    },
+    {
+      "const": "95R",
+      "title": "Exportation of rejected goods after necessary modification (Export Tax"
+    },
+    {
+      "const": "95E",
+      "title": "Exportation of goods exhibition purpose(Export Taxes/Cess - Non Payabl"
+    },
+    {
+      "const": "95T",
+      "title": "Exportation of goods for Testing and Return (Export Taxes/Cess - Non P"
+    },
+    {
+      "const": "954",
+      "title": "Capital goods for Repair & Return ( Export Taxes/Cess - Non Payable)"
+    },
+    {
+      "const": "958",
+      "title": "Importation of Machinery & equipment for temporary purpose ( Export Ta"
+    },
+    {
+      "const": "959",
+      "title": "Exportation of machinery & Equipment for temporary period  ( Export Ta"
+    },
+    {
+      "const": "R10",
+      "title": "RM.  VAT- UP  Other Taxes  not payable"
+    },
+    {
+      "const": "96N",
+      "title": "Export of finished goods (Non garments) - Export Taxes/Cess Payable"
+    },
+    {
+      "const": "96M",
+      "title": "Manual  recovery of export taxes/Cess"
+    },
+    {
+      "const": "965",
+      "title": "Processing & Return( Export Taxes/Cess - Payable)"
+    },
+    {
+      "const": "95P",
+      "title": "Exportation of promotional item (Export Taxes/Cess-Non Payable)"
+    },
+    {
+      "const": "110",
+      "title": "Re-Exports after paying 1/10 of import customs import duty"
+    },
+    {
+      "const": "111",
+      "title": "Recovery of 1/10CID for re-exportation no oter levies"
+    },
+    {
+      "const": "800",
+      "title": "Partil Waiver & ammendments"
+    },
+    {
+      "const": "200",
+      "title": "Recovery of levies at disposal for vehicles imported as dutyfree"
+    },
+    {
+      "const": "804",
+      "title": "Recover short-Levied / Old CUSDECs Processing"
+    },
+    {
+      "const": "051",
+      "title": "Exp/Imp unaccompanied baggage"
+    },
+    {
+      "const": "001",
+      "title": "Passengers baggage under Section 107(A) of the C/O)"
+    },
+    {
+      "const": "144",
+      "title": "Consolidated Duty on Gmt Local Sale."
+    },
+    {
+      "const": "571",
+      "title": "VAT diff. All other paid"
+    },
+    {
+      "const": "700",
+      "title": "Vat Not Payable, Paid at the Importation."
+    },
+    {
+      "const": "500",
+      "title": "Additional Entries (where payments made)"
+    },
+    {
+      "const": "145",
+      "title": "GRN - Local Transfer of Liability"
+    },
+    {
+      "const": "070",
+      "title": "CID Exempted. Refer relevent documents."
+    },
+    {
+      "const": "SP9",
+      "title": "BOI Special Removals"
+    },
+    {
+      "const": "003",
+      "title": "Temp import of professional & scientific Equip &pedagogic material"
+    },
+    {
+      "const": "009",
+      "title": "Arti limbs,hear aids,worn,carried implant for disability..S/T"
+    },
+    {
+      "const": "010",
+      "title": "Articles specially designed for the use of the deaf & blind..S/T"
+    },
+    {
+      "const": "011",
+      "title": "Foreign prod re-import, upon which imp duty previously paid..S/T"
+    },
+    {
+      "const": "013",
+      "title": "Goods  Imp/Exp for display or use at Exhibitions,fairs,meetings..S/T"
+    },
+    {
+      "const": "016",
+      "title": "Ornamental fish import for re-export...S/T"
+    },
+    {
+      "const": "017",
+      "title": "Fish Caught by vessel operate from regd. port/permit by M/Fish"
+    },
+    {
+      "const": "018",
+      "title": "Ground Equip,Tech supply used inside airport by Intl Airline..S/T"
+    },
+    {
+      "const": "180",
+      "title": "CID 5%, VAT, PAL payable"
+    },
+    {
+      "const": "079",
+      "title": "CID & SUR Excemp. Not calculate in other Base."
+    },
+    {
+      "const": "101",
+      "title": "Direct imp/exp DPL Mails"
+    },
+    {
+      "const": "058",
+      "title": "Goods for repairs"
+    },
+    {
+      "const": "146",
+      "title": "Motor vehicle importation under PA circular 20/99"
+    },
+    {
+      "const": "204",
+      "title": "Motor Vehicle Concessionery Levy"
+    },
+    {
+      "const": "R20",
+      "title": "RM.  VAT- DE Other Taxes not payable"
+    },
+    {
+      "const": "R30",
+      "title": "RM.  VAT- Settled  (BOI Office use )"
+    },
+    {
+      "const": "901",
+      "title": "Non RM. VAT- EX  Other Taxes Payable"
+    },
+    {
+      "const": "911",
+      "title": "Non RM. VAT- UP  Other Taxes Payable"
+    },
+    {
+      "const": "921",
+      "title": "Non RM. VAT- DE  Other Taxes Payable"
+    },
+    {
+      "const": "931",
+      "title": "Non RM.  VAT- Settled (BOI Office use )"
+    },
+    {
+      "const": "905",
+      "title": "Non RM. VAT-EX , PAL - EX"
+    },
+    {
+      "const": "910",
+      "title": "Non RM.  VAT- UP Other Taxes  not payable"
+    },
+    {
+      "const": "920",
+      "title": "Non RM.  VAT- DE Other Taxes   not payable"
+    },
+    {
+      "const": "930",
+      "title": "Non RM.  VAT- Settled  (BOI Office use )"
+    },
+    {
+      "const": "R11",
+      "title": "RM.  VAT- UP  Other Taxes   payable"
+    },
+    {
+      "const": "902",
+      "title": "Non RM.  VAT- EX  , (PAL, SSL, EIC are  - EX )"
+    },
+    {
+      "const": "922",
+      "title": "Non RM.  VAT- DE  , (PAL, SSL, EIC are  - EX )"
+    },
+    {
+      "const": "932",
+      "title": "Non RM.  VAT- Settled  (PAL, SSL, EIC are  - EX )"
+    },
+    {
+      "const": "903",
+      "title": "Non RM.  VAT- EX  , (PAL, SSL,  are  - EX )"
+    },
+    {
+      "const": "923",
+      "title": "Non RM.  VAT- DE  , (PAL, SSL,  are  - EX )"
+    },
+    {
+      "const": "933",
+      "title": "Non RM.  VAT- Settled  , (PAL, SSL,  are  - EX )"
+    },
+    {
+      "const": "904",
+      "title": "Non RM.  VAT- EX  , (XID , PAL,  are  - EX )"
+    },
+    {
+      "const": "R15",
+      "title": "Non RM.  VAT- UP  , ( PAL  - EX )"
+    },
+    {
+      "const": "906",
+      "title": "Non RM.  VAT- EX  , ( EIC, PAL,  are  - EX )"
+    },
+    {
+      "const": "913",
+      "title": "Non RM.  VAT- UP  , (PAL, SSL,  are  - EX)"
+    },
+    {
+      "const": "C00",
+      "title": "Goods with Intention of paying Custom Duty"
+    },
+    {
+      "const": "T00",
+      "title": "Goods cleared on Bank Guarantee all Taxes EX"
+    },
+    {
+      "const": "915",
+      "title": "Non RM.  VAT- UP  , (PAL  - EX)"
+    },
+    {
+      "const": "925",
+      "title": "Non RM.  VAT- DE  , (PAL  - EX)"
+    },
+    {
+      "const": "935",
+      "title": "Non RM.  VAT- Settled   (PAL  - EX)"
+    },
+    {
+      "const": "900",
+      "title": "Non RM. VAT and Other Taxes not payable"
+    },
+    {
+      "const": "907",
+      "title": "Non RM. VAT-EX, SSL-EX"
+    },
+    {
+      "const": "942",
+      "title": "BOI Manually Tax Recovery"
+    },
+    {
+      "const": "908",
+      "title": "Non RM. VAT-EX, SSL,EIC-EX"
+    },
+    {
+      "const": "916",
+      "title": "Non RM. VAT-UP, EIC,PAL-Ex"
+    },
+    {
+      "const": "R02",
+      "title": "RM, VAT-EX(PAL,NBT,EIC are -EX)"
+    },
+    {
+      "const": "151",
+      "title": "Waivers(general 19A) for items on comparision duty(Value or Weight)"
+    },
+    {
+      "const": "0P1",
+      "title": "Provisional entries with bank gurantee"
+    },
+    {
+      "const": "C43",
+      "title": "Items imported Duty Consession 5% and EIC Waiver"
+    },
+    {
+      "const": "161",
+      "title": "Pertrolium Gas Oil CID waiver"
+    },
+    {
+      "const": "SA1",
+      "title": "All free for sales goods"
+    },
+    {
+      "const": "080",
+      "title": "Item 8 CID EXE on Dairy equp"
+    },
+    {
+      "const": "V60",
+      "title": "Motor Vehicles permits <1000CC"
+    },
+    {
+      "const": "V65",
+      "title": "Motor Vehicles permits 1000-1600CC"
+    },
+    {
+      "const": "V70",
+      "title": "Motor Vehicle permits 1600-2000CC"
+    },
+    {
+      "const": "V80",
+      "title": "Motor Vehicle permits 2000-2600CC"
+    },
+    {
+      "const": "V90",
+      "title": "Motor Vehicle permits >2600CC"
+    },
+    {
+      "const": "V00",
+      "title": "Motor Vehicle permits > 2600CC"
+    },
+    {
+      "const": "162",
+      "title": "Perolium Gas Oil (Diesel) CID waiver"
+    },
+    {
+      "const": "LS1",
+      "title": "Motor Vehicle Central Sales"
+    },
+    {
+      "const": "798",
+      "title": "Ask Tax for all duties"
+    },
+    {
+      "const": "V45",
+      "title": "Motor Vehicle permits - Retired"
+    },
+    {
+      "const": "V40",
+      "title": "Motor Vehicle permits - Foreign Service"
+    },
+    {
+      "const": "PTY",
+      "title": "Baggage Office Penalty"
+    },
+    {
+      "const": "INF",
+      "title": "Export CusDec at CBIF1"
+    },
+    {
+      "const": "IMU",
+      "title": "Machinery upfront VAT at INFAC"
+    },
+    {
+      "const": "IMD",
+      "title": "Machinery defferred VAT at INFAC"
+    },
+    {
+      "const": "075",
+      "title": "All exempted - Refer attached document"
+    },
+    {
+      "const": "V75",
+      "title": "Motor Vehicle permits Category-75%"
+    },
+    {
+      "const": "V10",
+      "title": "Motor Vehicle permits Category-110%"
+    },
+    {
+      "const": "V25",
+      "title": "Motor Vehicle permits Category-125%"
+    },
+    {
+      "const": "V50",
+      "title": "Motor Vehicle permits Category-150%"
+    },
+    {
+      "const": "BVP",
+      "title": "Bonding VAT already paid"
+    },
+    {
+      "const": "BVD",
+      "title": "Bonding VAT deferred"
+    },
+    {
+      "const": "BPP",
+      "title": "Bonding PAL payable"
+    },
+    {
+      "const": "BPE",
+      "title": "Bonding PAL exempted"
+    },
+    {
+      "const": "IBG",
+      "title": "IBG GRN"
+    },
+    {
+      "const": "TRG",
+      "title": "TIEP1 GRN"
+    },
+    {
+      "const": "TRD",
+      "title": "TIEP1 Raw Material deferred VAT"
+    },
+    {
+      "const": "TRS",
+      "title": "TIEP1 Raw Material VAT settlement"
+    },
+    {
+      "const": "TMU",
+      "title": "TIEP4 Machinery upfront VAT"
+    },
+    {
+      "const": "TMS",
+      "title": "TIEP4 Machinery VAT settlement"
+    },
+    {
+      "const": "IBU",
+      "title": "IBG upfront VAT"
+    },
+    {
+      "const": "IBD",
+      "title": "IBG deferred VAT"
+    },
+    {
+      "const": "T4U",
+      "title": "TIEP4  Machinery upfront VAT"
+    },
+    {
+      "const": "T4V",
+      "title": "TIEP4 Machinery VAT should be paid"
+    },
+    {
+      "const": "T4E",
+      "title": "TIEP4 exports"
+    },
+    {
+      "const": "TBE",
+      "title": "IBG exports"
+    },
+    {
+      "const": "100",
+      "title": "Bonding all levies under guarantee"
+    },
+    {
+      "const": "722",
+      "title": "Medical Devies Registered With NMRA -CID & EIC Exempted"
+    },
+    {
+      "const": "BPF",
+      "title": "Bonding PAL Free, Other Levies Payable"
+    },
+    {
+      "const": "044",
+      "title": "Items imported under concessions of 15% Customs duty"
+    },
+    {
+      "const": "VT4",
+      "title": "Vehicle Taxi Permit 40%"
+    },
+    {
+      "const": "VT5",
+      "title": "Vehicle Taxi Permit 50%"
+    },
+    {
+      "const": "150",
+      "title": "Consolidated Tax for local sale BOI garments Rs40"
+    },
+    {
+      "const": "504",
+      "title": "VAT, PAL & NBT Excempted"
+    },
+    {
+      "const": "C44",
+      "title": "Items imported Duty Consession 7.5% and EIC Waiver"
+    },
+    {
+      "const": "H99",
+      "title": "Hub transactions"
+    },
+    {
+      "const": "CON",
+      "title": "Empty container clearance"
+    },
+    {
+      "const": "P60",
+      "title": "Motor Vehicles permits 1000-1600CC"
+    },
+    {
+      "const": "P70",
+      "title": "Motor Vehicle permits Category-70%"
+    },
+    {
+      "const": "P80",
+      "title": "Motor Vehicle permits Category-80%"
+    },
+    {
+      "const": "P00",
+      "title": "Motor Vehicle permits Category-100%"
+    },
+    {
+      "const": "P20",
+      "title": "Motor Vehicle permits Category-120%"
+    },
+    {
+      "const": "BEX",
+      "title": "Goods transferred from Barges/Vessel for bunkering in foreign jurisdic"
+    },
+    {
+      "const": "TEX",
+      "title": "Goods transferred from shore tank for bunkering in foreign jurisdictio"
+    },
+    {
+      "const": "IMP",
+      "title": "Balance goods after bunker supply in foreign jurisdiction"
+    },
+    {
+      "const": "EXP",
+      "title": "Good supplied as bunkering/ship stores in foreign jurisdiction"
+    },
+    {
+      "const": "HYV",
+      "title": "Budget Jan_2015_Hybrid_Vehicles"
+    },
+    {
+      "const": "DHC",
+      "title": "Destroy at Holcim Lanka Ltd (Puttalam) Premises"
+    },
+    {
+      "const": "043",
+      "title": "Items imported under concessions of 7.5% Customs duty"
+    },
+    {
+      "const": "DOP",
+      "title": "Destroy at Factory or any Other Premises (except Holcim)"
+    },
+    {
+      "const": "9E0",
+      "title": "Imports of Capital goods and other Fixed Assets by Hub Entrepot Compny"
+    },
+    {
+      "const": "TE0",
+      "title": "Temporary Imports of Capital goods by Hub Entrepot Company"
+    },
+    {
+      "const": "9S0",
+      "title": "Imports of Capital goods and other Fixed assets by Hub Off-Show Compny"
+    },
+    {
+      "const": "TS0",
+      "title": "Temporary Imports of Capital goods by Hub Off-Show Company"
+    },
+    {
+      "const": "9F0",
+      "title": "Impts of Capital gds & other Fixed assts by HubFrontEndServicesCompany"
+    },
+    {
+      "const": "RF0",
+      "title": "Impts of gds or materials to be Exported by HubFrontEndServicesCompany"
+    },
+    {
+      "const": "TF0",
+      "title": "Temporary Imports of Capital goods by Hub Front End Services Company"
+    },
+    {
+      "const": "9H0",
+      "title": "Imports of Capital gds & other Fixed assts by Hub Headquarters Company"
+    },
+    {
+      "const": "TH0",
+      "title": "Temporary Imports of Capital goods by Hub Headquarters Company"
+    },
+    {
+      "const": "RL0",
+      "title": "Impts of gds or materials to be Exported by HubLogisticsServicesCompny"
+    },
+    {
+      "const": "9L0",
+      "title": "Impts of Capital gds & other Fixed assts by HubLogisticsServicesCompny"
+    },
+    {
+      "const": "TL0",
+      "title": "Temporary Imports of Capital goods by Hub Logistics Services Company"
+    },
+    {
+      "const": "RE0",
+      "title": "Imports of goods or mateials to be Exported by Hub Enterport Co"
+    },
+    {
+      "const": "ES9",
+      "title": "Manual taxation for Excise(Sp.Prov.) Division"
+    },
+    {
+      "const": "ES1",
+      "title": "Excise duty for Excise(Sp.Prov.) Division"
+    },
+    {
+      "const": "ES2",
+      "title": "All free for Excise(Sp.Prov.) Division"
+    },
+    {
+      "const": "572",
+      "title": "VAT Deferred with ISFTA"
+    },
+    {
+      "const": "M35",
+      "title": "Diplomatic officer/Member of Pro. Council"
+    },
+    {
+      "const": "M40",
+      "title": "Public officer PA circular22/99"
+    },
+    {
+      "const": "M45",
+      "title": "Recommended by President/ Mayor MC"
+    },
+    {
+      "const": "M30",
+      "title": "Holder of S L  Nation Building Bond under circular dated 01/04/2006"
+    },
+    {
+      "const": "M20",
+      "title": "Member of Parliament"
+    },
+    {
+      "const": "M75",
+      "title": "Tax payer prov. of sec. 2(1)(b)(i)(ii) of fin act no 11of 2006"
+    },
+    {
+      "const": "M50",
+      "title": "Projects  or activities  bringing economic benefits approved by MOF"
+    },
+    {
+      "const": "P55",
+      "title": "Motor Vehicles permits <1000CC"
+    },
+    {
+      "const": "P65",
+      "title": "Motor Vehicle permits 1600-2000CC"
+    },
+    {
+      "const": "P75",
+      "title": "Motor Vehicle permits 2000-2600CC"
+    },
+    {
+      "const": "P90",
+      "title": "Motor Vehicle permits > 2600CC"
+    },
+    {
+      "const": "P10",
+      "title": "Motor Vehicle permits Category-110%"
+    },
+    {
+      "const": "P35",
+      "title": "Motor Vehicle permits Category-135%"
+    },
+    {
+      "const": "M15",
+      "title": "Locally assembled vehicles with >30% domestic value addition"
+    },
+    {
+      "const": "R16",
+      "title": "RM VAT-UP (NBT, EIC Suspended"
+    },
+    {
+      "const": "797",
+      "title": "Ask Tax for Exports"
+    },
+    {
+      "const": "Q23",
+      "title": "Machinery and equip/parts to be used for the project permament"
+    },
+    {
+      "const": "S01",
+      "title": "Payment for raw naterails imported under CPC 5500-p21"
+    },
+    {
+      "const": "039",
+      "title": "Lacqures, coating and varnishes used exclusively for coating of metals"
+    },
+    {
+      "const": "004",
+      "title": "Article awarded aboard to any persons for distintion in arts, sports.."
+    },
+    {
+      "const": "019",
+      "title": "Apparatus, drugs and chemical imported for reserach work"
+    },
+    {
+      "const": "029",
+      "title": "Raw materials, components parts etc for mfg of fishing boats"
+    },
+    {
+      "const": "038",
+      "title": "Diesel engines of four cylinder or over =>3250 cc for mf 8702, 8704"
+    },
+    {
+      "const": "96L",
+      "title": "Liable to pay income tax"
+    },
+    {
+      "const": "956",
+      "title": "Exportation of waste generated from manufacturing process/other (Expor"
+    },
+    {
+      "const": "301",
+      "title": "Partial waiver under Section 19(A) of the Customs Ordinance"
+    },
+    {
+      "const": "099",
+      "title": "Levies Already Paid elsewhere"
+    },
+    {
+      "const": "715",
+      "title": "VAT Deffered"
+    },
+    {
+      "const": "002",
+      "title": "Film of Educat,Science,Cultural char prod by UNO/spec agency"
+    },
+    {
+      "const": "012",
+      "title": "Overseas gift to releif of distress caused by natural or any...S/T"
+    },
+    {
+      "const": "222",
+      "title": "Clearence of Dead Body"
+    },
+    {
+      "const": "059",
+      "title": "Bill of Store"
+    },
+    {
+      "const": "R00",
+      "title": "RM. VAT and Other Taxes not payable"
+    },
+    {
+      "const": "IRS",
+      "title": "Raw material suspended VAT - INFAC"
+    },
+    {
+      "const": "VMP",
+      "title": "Motor Vehicle permits - MP"
+    },
+    {
+      "const": "V35",
+      "title": "Motor Vehicle permits Category-135%"
+    },
+    {
+      "const": "BVS",
+      "title": "Bonding VAT settlement"
+    },
+    {
+      "const": "ING",
+      "title": "INFAC GRN"
+    },
+    {
+      "const": "TRU",
+      "title": "TIEP1 Raw Material upfront VAT"
+    },
+    {
+      "const": "TMD",
+      "title": "TIEP4 Machinery deferred VAT"
+    },
+    {
+      "const": "IBS",
+      "title": "IBG VAT settlement"
+    },
+    {
+      "const": "T1E",
+      "title": "TIEP1 exports"
+    },
+    {
+      "const": "152",
+      "title": "Local sales of locally manufactured fabric (Rs.40/KG)"
+    },
+    {
+      "const": "031",
+      "title": "Multi layered packing materails and packs consisting of laminated pape"
+    },
+    {
+      "const": "950",
+      "title": "Export of finished garments by BOI"
+    },
+    {
+      "const": "961",
+      "title": "Export of goods for repair and return by BOI"
+    },
+    {
+      "const": "962",
+      "title": "Export of plants machi imported for temporary period by BOI projec"
+    },
+    {
+      "const": "060",
+      "title": "Free Re-Importation Certificate (PAL not payable DOPL 465 15.10.04)"
+    },
+    {
+      "const": "048",
+      "title": "VAT to be deffered after other levies are paid"
+    },
+    {
+      "const": "720",
+      "title": "VAT Deffered all other levies payable."
+    },
+    {
+      "const": "A44",
+      "title": "Consiladate Duty for Garments Tax recovered manually"
+    },
+    {
+      "const": "994",
+      "title": "Only Pal payable"
+    },
+    {
+      "const": "120",
+      "title": "Ship Stores"
+    },
+    {
+      "const": "941",
+      "title": "BOI manual tax recovery (all taxes)"
+    },
+    {
+      "const": "957",
+      "title": "Export of goods for other purposes by BOI Project"
+    },
+    {
+      "const": "582",
+      "title": "Full waiver on export goods"
+    },
+    {
+      "const": "00D",
+      "title": "Finalising of provisional  CusDecs at D brach"
+    },
+    {
+      "const": "955",
+      "title": "Provide services by BOI IT related projects"
+    },
+    {
+      "const": "710",
+      "title": "PAL, EIC & VAT payable"
+    },
+    {
+      "const": "708",
+      "title": "VAT & PAL payable; Only for Bonds TIEP IV goods"
+    },
+    {
+      "const": "00V",
+      "title": "CusDecs submitted on pending approval of VOTE acoount deduction"
+    },
+    {
+      "const": "00E",
+      "title": "Goods imp. with intention of exp.(on provisional basis under 22(A))"
+    },
+    {
+      "const": "I99",
+      "title": "Import Subsitutions for BOI"
+    },
+    {
+      "const": "F99",
+      "title": "For fabric manufactures only"
+    },
+    {
+      "const": "215",
+      "title": "Imts of locally manufactured vehicles on concessionary terms"
+    },
+    {
+      "const": "586",
+      "title": "Manual Recovery of Exports Duty"
+    },
+    {
+      "const": "750",
+      "title": "CID 50% payment for Bonded Goods"
+    },
+    {
+      "const": "P99",
+      "title": "Printing services (BOI)"
+    },
+    {
+      "const": "Q99",
+      "title": "Other non specific activities for BOI (GRN)"
+    },
+    {
+      "const": "S99",
+      "title": "Sub Contract for BOI enterprises"
+    },
+    {
+      "const": "T99",
+      "title": "Trading House activities for BOI"
+    },
+    {
+      "const": "712",
+      "title": "CID & VAT excempted (motor vehicle)"
+    },
+    {
+      "const": "130",
+      "title": "DUTY FREE SALES FROM FEEDER BOND"
+    },
+    {
+      "const": "103",
+      "title": "Direct imp/exp Dip Cargo"
+    },
+    {
+      "const": "410",
+      "title": "TIEP IV  goods under bonding scheme"
+    },
+    {
+      "const": "045",
+      "title": "PAL payable VAT suspended intermediate goods app TQB"
+    },
+    {
+      "const": "999",
+      "title": "BOI local transaction"
+    },
+    {
+      "const": "141",
+      "title": "Special Tax  for Palm Oil"
+    },
+    {
+      "const": "140",
+      "title": "Special Tax for Palm Oil- Vat Differed"
+    },
+    {
+      "const": "177",
+      "title": "Waivers for Vehicles (VAT & PAL payable)"
+    },
+    {
+      "const": "046",
+      "title": "VAT EX. ; Export Oriented Industry"
+    },
+    {
+      "const": "706",
+      "title": "Sur & Duty Excempted Other levies payable"
+    },
+    {
+      "const": "020",
+      "title": "Container & other Acc. therefore used for safe carriage of goods"
+    },
+    {
+      "const": "021",
+      "title": "Products & perp. certififed by M/H & Ind. Medi as having..as DRUG..CD"
+    },
+    {
+      "const": "709",
+      "title": "Excise excempted VAT not based on Excise"
+    },
+    {
+      "const": "714",
+      "title": "VAT Payable upfront base with out CID"
+    },
+    {
+      "const": "149",
+      "title": "Consolidated Tax for local sale BOI garments"
+    },
+    {
+      "const": "186",
+      "title": "Petrolium waiver Rs.20/litre"
+    },
+    {
+      "const": "W99",
+      "title": "Washing plants services"
+    },
+    {
+      "const": "E99",
+      "title": "Emboidery services (BOI)"
+    },
+    {
+      "const": "KT1",
+      "title": "Courier Cargo at Aircargo"
+    },
+    {
+      "const": "00P",
+      "title": "CusDecs process at D Branch not finalised due to value, quant, classif"
+    },
+    {
+      "const": "00W",
+      "title": "CusDecs submitted with the intention of waivers"
+    },
+    {
+      "const": "966",
+      "title": "Exports of Metal base waste and scrap derived in the manufacturing pro"
+    },
+    {
+      "const": "216",
+      "title": "Motor vehicles; 1001 - 1600cc; permit for GS"
+    },
+    {
+      "const": "217",
+      "title": "Motor vehicle permits; upto 1000 cc; GS"
+    },
+    {
+      "const": "224",
+      "title": "Hybrid vehicles less than 2000 cc, Excise excempted"
+    },
+    {
+      "const": "Q22",
+      "title": "Materials to be used for the SD projects"
+    },
+    {
+      "const": "Q29",
+      "title": "Samples imported for export oriented projects (<Rs.25,000/-)"
+    },
+    {
+      "const": "S23",
+      "title": "Machinery equi/parts to be used for the permenent SD projects"
+    },
+    {
+      "const": "S22",
+      "title": "Materials to be used for the permenent basis (SD)"
+    },
+    {
+      "const": "T21",
+      "title": "Import of raw materails by SD project on BG"
+    },
+    {
+      "const": "P28",
+      "title": "Consubables which are imported and totally consumed during the project"
+    },
+    {
+      "const": "P22",
+      "title": "SD projects materials to be used on permanant basis"
+    },
+    {
+      "const": "503",
+      "title": "PAL, NBT payable, VAT excempted XID based on value"
+    },
+    {
+      "const": "502",
+      "title": "PAL, VAT exempted, other levies payable Excise based on quantity"
+    },
+    {
+      "const": "033",
+      "title": "Weapons, armaments, etc capable being used with the armed forces.."
+    },
+    {
+      "const": "226",
+      "title": "Hybrid vehicles excise duty 26%"
+    },
+    {
+      "const": "T28",
+      "title": "Consumables imported, partially consumed and balance to be re exported"
+    },
+    {
+      "const": "T23",
+      "title": "Machinery, equip. imported for specific acitivities subj. re exported"
+    },
+    {
+      "const": "799",
+      "title": "Manual Taxation with SRL, RDL etc"
+    },
+    {
+      "const": "225",
+      "title": "Hybrid vehicle excise duty 12%"
+    },
+    {
+      "const": "005",
+      "title": "Raw & packing material for mnf of phamaceuticals.."
+    },
+    {
+      "const": "006",
+      "title": "Ayuveda, Siida and Unani raw and prepared drugs and medicinal plants.."
+    },
+    {
+      "const": "007",
+      "title": "Homeopathic deud recomendations of the HC"
+    },
+    {
+      "const": "008",
+      "title": "Goods, required for contruction or refurbishing of tourist hotels"
+    },
+    {
+      "const": "015",
+      "title": "Inputs Raw mat. & component parts imp under inward proc scheme..M/F"
+    },
+    {
+      "const": "014",
+      "title": "Capital & inter goods,transport equip for use export or supplier"
+    },
+    {
+      "const": "023",
+      "title": "Imports of samples in re to business <Rs. 25,000 app DGC"
+    },
+    {
+      "const": "026",
+      "title": "Any machinery, equioments etc forb CEB and subsidaries ..."
+    },
+    {
+      "const": "028",
+      "title": "Cinematic goods and any film which is produced in SL and sent abroad.."
+    },
+    {
+      "const": "032",
+      "title": "Ingradients other than maize, lentis and rice for manuf of animal feed"
+    },
+    {
+      "const": "030",
+      "title": "Machineery including Ambulances, medi, surgi & Dental equp....for"
+    },
+    {
+      "const": "034",
+      "title": "Weather stations, green houses, poly tunnels, spinkles etc for Agricul"
+    },
+    {
+      "const": "VP1",
+      "title": "Vehicle Permit 2016 TIP Circular01/2016"
+    },
+    {
+      "const": "VRE",
+      "title": "Vehicle retirement permit VR0 (excess amont)"
+    },
+    {
+      "const": "P25",
+      "title": "Motor Vehicle permits Category-125%"
+    },
+    {
+      "const": "VSP",
+      "title": "Vehi.imported LC opened before 26052016 for approved chasis by Cabinet"
+    },
+    {
+      "const": "MEG",
+      "title": "Manufactured Finished Garments using imported inputs/imported & local"
+    },
+    {
+      "const": "PEN",
+      "title": "Merchandise for minor processing Goods (Non Garments)  by  Entrepot Tr"
+    },
+    {
+      "const": "257",
+      "title": "Local sale of locally manufacture garment (Rs.75/-)"
+    },
+    {
+      "const": "VR3",
+      "title": "Public officer permit Public Administration Circular 22/99 - Group II"
+    },
+    {
+      "const": "BCD",
+      "title": "LC opened before 01082018(DOPL1192 I)"
+    },
+    {
+      "const": "248",
+      "title": "Waiver on SCL for Fish Bait (Rs 25/KG)"
+    },
+    {
+      "const": "415",
+      "title": "EIC SSL PAY"
+    },
+    {
+      "const": "730",
+      "title": "TIEP_VAT_Deferred_EIC_Exempted"
+    },
+    {
+      "const": "MLX",
+      "title": "XID for Locally Assembled Vehicles Manual Rate"
+    },
+    {
+      "const": "DRR",
+      "title": "DMC.Goos Import on Re-export Basis – All Free"
+    },
+    {
+      "const": "927",
+      "title": "Non RM SSL Ex VAT Def"
+    },
+    {
+      "const": "XKD",
+      "title": "Brand new kits of semi knocked down vehicles imported by a company for"
+    },
+    {
+      "const": "B16",
+      "title": "Vehi imported LC before budget 2016"
+    },
+    {
+      "const": "153",
+      "title": "19(A) Duty Waiver for Lion Beer > 5% per Liter"
+    },
+    {
+      "const": "506",
+      "title": "NBT Exempted"
+    },
+    {
+      "const": "156",
+      "title": "19A Duty Waiver of  furnitur for BOI hotel projects.(15%CIF)"
+    },
+    {
+      "const": "BLN",
+      "title": "Regional Trading Bonds (in the form of import) Goods (Non Garments) by"
+    },
+    {
+      "const": "VD2",
+      "title": "Diplomatic Officer permits circular210(III) 31/10/2016"
+    },
+    {
+      "const": "042",
+      "title": "Items imported under concessions of 5% Customs duty"
+    },
+    {
+      "const": "DCY",
+      "title": "Destroy/Dump at CEA approved yard"
+    },
+    {
+      "const": "918",
+      "title": "BOI VAT UP EIC & SSL EX"
+    },
+    {
+      "const": "928",
+      "title": "BOI VAT DE EIC & SSL EX"
+    },
+    {
+      "const": "081",
+      "title": "CID & PAL EXEMPTED"
+    },
+    {
+      "const": "BRI",
+      "title": "Bonding Re-Import Under Inward Processing"
+    },
+    {
+      "const": "NMF",
+      "title": "Manifesting not required for this commodity"
+    },
+    {
+      "const": "MLE",
+      "title": "XID for locally assembled motor bikes and electric three-wheelers"
+    },
+    {
+      "const": "115",
+      "title": "CID, PAL & SSL Manual for Re-exportation"
+    },
+    {
+      "const": "DDF",
+      "title": "DEPARTED DUTY FREE FACILITY"
+    },
+    {
+      "const": "937",
+      "title": "Non RM SSL Ex VAT Setlement"
+    },
+    {
+      "const": "XLM",
+      "title": "Locally assembled vehicles with >30% domestic value addition"
+    },
+    {
+      "const": "796",
+      "title": "Ask Tax for Old duty - Imports"
+    },
+    {
+      "const": "909",
+      "title": "Non RM.  VAT - EX,  Only  EIC not payable"
+    },
+    {
+      "const": "801",
+      "title": "Imp/Exp Cur. by CB or by any  commercial banks authorized by CB"
+    },
+    {
+      "const": "CBT",
+      "title": "THINETH balance transfer to CBOND"
+    },
+    {
+      "const": "0SD",
+      "title": "Shipments cleared under Special Deposit"
+    },
+    {
+      "const": "VP5",
+      "title": "Public officer permit TIP Circular01/2018 of 15/02/2018"
+    },
+    {
+      "const": "164",
+      "title": "BOI Machinery Utilization by Non BOI Companies"
+    },
+    {
+      "const": "ED1",
+      "title": "EXMP PAL Only (11) Sanitary Napkin"
+    },
+    {
+      "const": "417",
+      "title": "CID, PAL, NBT, VAT, XID,EIC exempted"
+    },
+    {
+      "const": "ZCR",
+      "title": "Port City Construction Related Goods Imports - Reusable"
+    },
+    {
+      "const": "TR1",
+      "title": "TRANSHIPMENT - SEA TO SEA"
+    },
+    {
+      "const": "739",
+      "title": "CID,SUR,SSL Exempt (Packing Material - Ayurvedic Drugs)"
+    },
+    {
+      "const": "155",
+      "title": "19(A) Duty Waiver for Lion Beer Rs.196/L"
+    },
+    {
+      "const": "705",
+      "title": "VAT & EIC Exempted"
+    },
+    {
+      "const": "719",
+      "title": "Excise deferred"
+    },
+    {
+      "const": "VP4",
+      "title": "Public officer permit TTIP 01/2016 of 14072016"
+    },
+    {
+      "const": "TAS",
+      "title": "Transshipment Admission to Storage"
+    },
+    {
+      "const": "MLA",
+      "title": "XID 4 Vehicles Locally Assembled Vehicles"
+    },
+    {
+      "const": "938",
+      "title": "BOI VAT SETTLE EIC & SSL EX"
+    },
+    {
+      "const": "259",
+      "title": "SCL Waiver"
+    },
+    {
+      "const": "795",
+      "title": "Ask TAX for UPB Warehouses"
+    },
+    {
+      "const": "TDS",
+      "title": "Transshipment Discharge from Storage"
+    },
+    {
+      "const": "TAV",
+      "title": "Transshipment Admission for Value Addition"
+    },
+    {
+      "const": "TDV",
+      "title": "Transshipment Discharge from Value Addition"
+    },
+    {
+      "const": "936",
+      "title": "Non RM.  VAT- Settled  , (PAL, EIC are  - EX )"
+    },
+    {
+      "const": "ZPP",
+      "title": "Port City Provisional CusDec (Pending Regularity Approval)"
+    },
+    {
+      "const": "VEE",
+      "title": "Vehicles - Excise duty exempted"
+    },
+    {
+      "const": "VR0",
+      "title": "Vehi. Retire. Permit-before 20/11/2015,CircularNo:22/99(XXXI)"
+    },
+    {
+      "const": "929",
+      "title": "Non RM. VAT- DE, only EIC not payable"
+    },
+    {
+      "const": "VP2",
+      "title": "Vehi Permit 2016 TIP Circular01/2016 35% payable duty"
+    },
+    {
+      "const": "BLG",
+      "title": "Regional Trading Bonds (in the form of import) Finished Garments by  L"
+    },
+    {
+      "const": "VPC",
+      "title": "Mem. of  Prvincial Councils, 35% of payable XID"
+    },
+    {
+      "const": "113",
+      "title": "1/10th recovery of CID & PAL without CC1 on re-exportation"
+    },
+    {
+      "const": "171",
+      "title": "List of Exemption (Imports)"
+    },
+    {
+      "const": "IVS",
+      "title": "INFAC VAT Settlement"
+    },
+    {
+      "const": "IC1",
+      "title": "IECD Cross Border Vehicles Upfront payment"
+    },
+    {
+      "const": "114",
+      "title": "1/10 Recovery for Refund (for PCAD Refund Branch use only)"
+    },
+    {
+      "const": "ZDL",
+      "title": "Port City Duty Free Shop - Transfer of Local Goods (Gems/Food Items/T)"
+    },
+    {
+      "const": "ZDD",
+      "title": "Port City Duty Free Sales (Re-Export) - To Departing Passengers/Touris"
+    },
+    {
+      "const": "ZDR",
+      "title": "Port City Duty Free Shop (Re-Export) - Unsold Goods"
+    },
+    {
+      "const": "ZDO",
+      "title": "Port City Duty Free Online Sales (Re-Exports) - To persons residing o"
+    },
+    {
+      "const": "ZDA",
+      "title": "Port City Duty Free Sales - To arriving passengers (Sri Lankan & Resi)"
+    },
+    {
+      "const": "IC0",
+      "title": "IEC Cross Border Vehicles under BG"
+    },
+    {
+      "const": "00A",
+      "title": "All Taxes and Levies under Guarantee - Bonding"
+    },
+    {
+      "const": "C99",
+      "title": "Activities done on commission basis"
+    },
+    {
+      "const": "LLG",
+      "title": "Logistic value addition for international clients Finished Garments by"
+    },
+    {
+      "const": "160",
+      "title": "SCL compair  RATE vs KG"
+    },
+    {
+      "const": "BLC",
+      "title": "Before LC 01082018 (DOPL 1192 I)"
+    },
+    {
+      "const": "LP6",
+      "title": "LC B4 BDG 05032019 Public officer permit TIP Circular01/2018(Amended)"
+    },
+    {
+      "const": "LP5",
+      "title": "LC B4 BDG 05032019 Public officer permit TIP Circular01/2018"
+    },
+    {
+      "const": "LR3",
+      "title": "LC B4 BDG 05032019 Public officer permit PA Circular 22/99-Group II"
+    },
+    {
+      "const": "BPC",
+      "title": "Bonding PAL Free, CID Waived, Other Levies Payable"
+    },
+    {
+      "const": "MLC",
+      "title": "XID for locally assembled (20-24%)"
+    },
+    {
+      "const": "794",
+      "title": "Ask Tax for CBBCD"
+    },
+    {
+      "const": "726",
+      "title": "BOND - CID and VAT Not applicable/ Others applicable"
+    },
+    {
+      "const": "926",
+      "title": "Non RM.  VAT- DE  , (PAL, EIC are  - EX )"
+    },
+    {
+      "const": "416",
+      "title": "XID Only"
+    },
+    {
+      "const": "DC2",
+      "title": "Destroy/Dump at CEA approved - All Free"
+    },
+    {
+      "const": "SKX",
+      "title": "SKD XID 30 ONLY DOPL 1316R"
+    },
+    {
+      "const": "X40",
+      "title": "XID 40P CONCESSION FOR HEARSES"
+    },
+    {
+      "const": "ZRE",
+      "title": "Port City Goods Import with Intension of Re-export"
+    },
+    {
+      "const": "112",
+      "title": "1/10th recovery of CID & PAL on re-exportation"
+    },
+    {
+      "const": "917",
+      "title": "Non RM SSL Ex VAT UP"
+    },
+    {
+      "const": "XHI",
+      "title": "Hearses imported by registered funeral undertakers, subject to the app"
+    },
+    {
+      "const": "B75",
+      "title": "Vehicle imported before budget 2016 permit category M75"
+    },
+    {
+      "const": "VR1",
+      "title": "Vehi. Retire. Permit-after 21/11/2015,CircularNo:22/99(XXXII)"
+    },
+    {
+      "const": "154",
+      "title": "19(A) Duty Waiver for Lion Beer Rs.79/L"
+    },
+    {
+      "const": "VD1",
+      "title": "Vehi permit  Diplomat Officers 35% of Duty(Excise"
+    },
+    {
+      "const": "B56",
+      "title": "Duty Waiver (15%CIF) / VAT dfrd for BOI hotel prjts."
+    },
+    {
+      "const": "CLG",
+      "title": "MCC cargo including pick & pack cargo Finished Garments by  Logistic S"
+    },
+    {
+      "const": "CLN",
+      "title": "MCC cargo including pick & pack cargo Goods (Non Garments)  by  Logist"
+    },
+    {
+      "const": "LLN",
+      "title": "Logistic value addition for international clients Goods (Non Garments)"
+    },
+    {
+      "const": "B18",
+      "title": "Vehi imported LC before budget 2018"
+    },
+    {
+      "const": "BCL",
+      "title": "Local Sale of Finished Products(BOI)-Statistical Purposes Only"
+    },
+    {
+      "const": "ED3",
+      "title": "Exempt CID, EIC, PAL"
+    },
+    {
+      "const": "729",
+      "title": "CID, PAL, SSL, Exempted"
+    },
+    {
+      "const": "ZMC",
+      "title": "Port City Management Related Goods - Consumables"
+    },
+    {
+      "const": "ZMM",
+      "title": "Port City Management Related Goods - Machineries"
+    },
+    {
+      "const": "ZML",
+      "title": "Port City Management Local Purchases of Any Goods"
+    },
+    {
+      "const": "MLG",
+      "title": "XID for locally assembled (30%-34%)"
+    },
+    {
+      "const": "PL1",
+      "title": "PAL ONLY EXEMPTED"
+    },
+    {
+      "const": "PRV",
+      "title": "Recovery of Vessel OT by Preventive Directorate"
+    },
+    {
+      "const": "DBR",
+      "title": "Recovery of Vessel OT by D Branch"
+    },
+    {
+      "const": "MVU",
+      "title": "Recovery of Vessel OT by Motor Vehicle Unit"
+    },
+    {
+      "const": "570",
+      "title": "Release Goods on VAT under Guarantee"
+    },
+    {
+      "const": "DUM",
+      "title": "Dummy NPC"
+    },
+    {
+      "const": "FEV",
+      "title": "XID AND VAT FOR FULL EV"
+    },
+    {
+      "const": "737",
+      "title": "EXMP CID(36), EIC(12), SUR Only LLDPE"
+    },
+    {
+      "const": "LS2",
+      "title": "Local Sales Under 162"
+    },
+    {
+      "const": "LS3",
+      "title": "Local Sales Under 109"
+    },
+    {
+      "const": "BT5",
+      "title": "Vehicle Imported before budget 2016 permit category VT5"
+    },
+    {
+      "const": "505",
+      "title": "NBT exempted only if, USD200 collected for an import cusdec of Gem"
+    },
+    {
+      "const": "PEG",
+      "title": "Merchandise for minor processing Finished Garments by  Entrepot Trade"
+    },
+    {
+      "const": "VP3",
+      "title": "Vehi Permit 2016 TIP Circular01/2016 40% payable duty"
+    },
+    {
+      "const": "MEN",
+      "title": "Manufactured Goods (Non Garments)  using imported inputs/imported & lo"
+    },
+    {
+      "const": "249",
+      "title": "Waiver on SCL for Coconut Oil"
+    },
+    {
+      "const": "413",
+      "title": "CID, PAL, EIC, VAT, XID under guarantee, NBT payable"
+    },
+    {
+      "const": "LR4",
+      "title": "LC B4 BDG 05032019 Public officer permit PA Circular 22/99-Group III"
+    },
+    {
+      "const": "MLO",
+      "title": "B4 budget 05032019 XID 4 Vehi. Local. Asmb"
+    },
+    {
+      "const": "NEC",
+      "title": "XID for Elctric cars not more than 1year old"
+    },
+    {
+      "const": "ED4",
+      "title": "EXMP PAL Only (07) Pharmaceutical Machinery"
+    },
+    {
+      "const": "VD3",
+      "title": "Diplomatic officer permit MFA Circular210(III) dated 31/10/2016"
+    },
+    {
+      "const": "PC1",
+      "title": "Memberof FirstNorthenProvinCouncilPermit"
+    },
+    {
+      "const": "VD4",
+      "title": "Diplomat officer permit MFA Circular210(III) dated 31/10/2016(Amended)"
+    },
+    {
+      "const": "DMB",
+      "title": "DeMinimis Con.appli.onlySampleBusi.worth not>Rs.50000(CID)Rs.10000(VAT"
+    },
+    {
+      "const": "DMP",
+      "title": "DeMinimisCon.appli.onlySamp/GiftPerso.worthNot>Rs15000(CID)Rs10000(VAT"
+    },
+    {
+      "const": "T5N",
+      "title": "Export of Imported Non Garments from Trading House(Tax/Cess-Non Pay)"
+    },
+    {
+      "const": "251",
+      "title": "Waiver on SCL for Veg. Fats and Oils"
+    },
+    {
+      "const": "VEX",
+      "title": "VAT ONLY EXEMPTED"
+    },
+    {
+      "const": "RB0",
+      "title": "Receiving goods to be Exported by CHP(Barge) behalf of  Entreport Comp"
+    },
+    {
+      "const": "15A",
+      "title": "CID and SUR excempted"
+    },
+    {
+      "const": "MLI",
+      "title": "XID for locally assembled electric vehicle (45%-54%)"
+    },
+    {
+      "const": "734",
+      "title": "EXMP CID(23), EIC(06), SUR Only Packing Materials"
+    },
+    {
+      "const": "738",
+      "title": "EXMP VAT, SSL Only Highway Projects"
+    },
+    {
+      "const": "159",
+      "title": "SCL for imported Fish  25Rs pkg"
+    },
+    {
+      "const": "158",
+      "title": "SCL Waiver for imported Fish  25Rs pkg"
+    },
+    {
+      "const": "TR3",
+      "title": "TRANSHIPMENT - AIR"
+    },
+    {
+      "const": "250",
+      "title": "Waiver on SCL for Fish 0303.55"
+    },
+    {
+      "const": "ED2",
+      "title": "CID, EIC, PAL & VAT EXCEMPTED."
+    },
+    {
+      "const": "252",
+      "title": "Waiver on SCL for Salt 2501.00"
+    },
+    {
+      "const": "725",
+      "title": "EXMP CID(31), EIC(05), SUR Only Agricultural Materials"
+    },
+    {
+      "const": "ES8",
+      "title": "Locally Manufactured E bikes"
+    },
+    {
+      "const": "727",
+      "title": "CID.PAL.CESS.SCL.EXEMPT"
+    },
+    {
+      "const": "732",
+      "title": "ONLY PAL, ALL EXEMPTED"
+    },
+    {
+      "const": "PEB",
+      "title": "Merchandise 4 minor proce. Good 4 BusinesstoConsumer by EntrepotTradeP"
+    },
+    {
+      "const": "MEB",
+      "title": "Manufactured Good4 Busi.ToConsumer imp.input&local input by EntrepotTP"
+    },
+    {
+      "const": "CLB",
+      "title": "MCC cargo inclu.pick&pack Goods4Busi.ToConsumer by LogisticServiceProj"
+    },
+    {
+      "const": "LLB",
+      "title": "LogisticValue additi.4interna.client Goods4Busi.toConsum.by Logis.SerP"
+    },
+    {
+      "const": "BLB",
+      "title": "RegionalTradeBonds Goods4BusinessToConsumer by LogisticServiceProjects"
+    },
+    {
+      "const": "939",
+      "title": "BOI VAT SETTLE, EIC EX"
+    },
+    {
+      "const": "214",
+      "title": "EMV imports under FRP"
+    },
+    {
+      "const": "157",
+      "title": "Local sale of local manu garment ch 61,62,63 (Rs.100/-)"
+    },
+    {
+      "const": "724",
+      "title": "Collect CID and exempt others"
+    },
+    {
+      "const": "T5G",
+      "title": "Export of Imported Finished Garmnt Frm Trading House(Tax/Cess-Non Pay)"
+    },
+    {
+      "const": "728",
+      "title": "EIC, PAL, SSL PAY"
+    },
+    {
+      "const": "071",
+      "title": "CID VAT Differ SCL Exmp. Imports on re-export(TIP/TP/08/90/2025-09)"
+    },
+    {
+      "const": "DRL",
+      "title": "Disaster Management Centre – All Free(Except XID&LXT)"
+    },
+    {
+      "const": "VR2",
+      "title": "Public officer permit Public Administration Circular 22/99 - Group I"
+    },
+    {
+      "const": "VR4",
+      "title": "Public officer permit Public Administration Circular 22/99 - Group III"
+    },
+    {
+      "const": "IVU",
+      "title": "INFAC VAT Upfront"
+    },
+    {
+      "const": "ROA",
+      "title": "Removal Out Application"
+    },
+    {
+      "const": "DIA",
+      "title": "Deposit In Application"
+    },
+    {
+      "const": "ADH",
+      "title": "ASK TAX FOR KTDH"
+    },
+    {
+      "const": "807",
+      "title": "Forfeited Goods"
+    },
+    {
+      "const": "MLF",
+      "title": "XID For Locally assembled bikes (35-44)"
+    },
+    {
+      "const": "ZCC",
+      "title": "Port City Construction Related Goods Imports - Consumables"
+    },
+    {
+      "const": "ZCM",
+      "title": "Port City Construction Related Goods Imports - Machineries"
+    },
+    {
+      "const": "ZCL",
+      "title": "Port City Construction Local Purchases of any goods"
+    },
+    {
+      "const": "736",
+      "title": "EXEMPT VAT, PAL, CESS & SSL"
+    },
+    {
+      "const": "LCM",
+      "title": "Remove SUR for MV (GZ 2488/56)"
+    },
+    {
+      "const": "919",
+      "title": "BOI VAT UP,  EIC  EX"
+    },
+    {
+      "const": "912",
+      "title": "BOI VAT UP EIC, PAL, SSL EX"
+    },
+    {
+      "const": "LR2",
+      "title": "LC B4 BDG 05032019 Public officer permit PA Circular 22/99-Group I"
+    },
+    {
+      "const": "LD4",
+      "title": "LC B4 BDG 05032019 Diplomat officer permit MFA Circular210(III)31/10/1"
+    },
+    {
+      "const": "EDC",
+      "title": "Exp. Oriented Manu. Comp. Supply/Donations"
+    },
+    {
+      "const": "MLH",
+      "title": "XID for locally assembled electric vehicle (20%-24%)"
+    },
+    {
+      "const": "SKP",
+      "title": "SK Provisional"
+    },
+    {
+      "const": "15B",
+      "title": "CID (19A Waiver) and VAT Exemption"
+    },
+    {
+      "const": "MLJ",
+      "title": "XID for locally assembled electric vehicle (55%-64%)"
+    },
+    {
+      "const": "15C",
+      "title": "Goods imp. with intention of exp.(on provisional basis under 19(A))"
+    },
+    {
+      "const": "00F",
+      "title": "Goods imp with intention of exp(provisional basis not 19(A) or 22(A))"
+    },
+    {
+      "const": "733",
+      "title": "EXMP VAT, SSL Only Railway (REIP)"
+    },
+    {
+      "const": "PIG",
+      "title": "Plant-In-Bond all levies under bank guarantee"
+    },
+    {
+      "const": "VP6",
+      "title": "Public officer permit TIP Circular01/2018 of 15/02/2018(Amended)"
+    },
+    {
+      "const": "LC1",
+      "title": "LC B4 BDG 05032019 Memberof FirstNorthenProvinCouncilPermit"
+    },
+    {
+      "const": "227",
+      "title": "ALL FREE, SSCL PAY"
+    },
+    {
+      "const": "731",
+      "title": "EXMP VAT, SSL Only Mahaweli (MWSIP)"
+    },
+    {
+      "const": "995",
+      "title": "SSCL Excempted"
+    },
+    {
+      "const": "802",
+      "title": "Ask tax manually for vehicles (10% surcharge)"
+    },
+    {
+      "const": "MLB",
+      "title": "Locally Assembled Vehicles XID calculation"
+    },
+    {
+      "const": "95B",
+      "title": "Exportation of goods for Business to Consumer(Tax Non Payable)"
+    },
+    {
+      "const": "96B",
+      "title": "Exportation of goods for Business to Consumer(Tax Payable)"
+    },
+    {
+      "const": "95C",
+      "title": "Exportation of goods for International Sub Contract(Tax Non Payable)"
+    },
+    {
+      "const": "163",
+      "title": "19A Sugar Special Waiver TIP Letter 19102018"
+    },
+    {
+      "const": "IVD",
+      "title": "INFAC VAT Deferred"
+    },
+    {
+      "const": "B19",
+      "title": "Vehi imported LC before budget 05032019"
+    },
+    {
+      "const": "ACC",
+      "title": "Ask TAX for KTCC2"
+    },
+    {
+      "const": "LSB",
+      "title": "CID EXEMPTED - BOI LOCAL SALE"
+    },
+    {
+      "const": "723",
+      "title": "Collect VAT and Exempt all other duties"
+    },
+    {
+      "const": "MLD",
+      "title": "XID for locally assembled (25%-29%)"
+    },
+    {
+      "const": "90A",
+      "title": "Non RM.  VAT- EX  , (PAL, ,EIC ,XID are  - EX )"
+    },
+    {
+      "const": "793",
+      "title": "Motor Vehicle - Ask Old Taxes"
+    },
+    {
+      "const": "418",
+      "title": "CID, PAL, NBT,  XID,EIC exempted, VAT PAY"
+    },
+    {
+      "const": "ZDF",
+      "title": "Port City Duty Free Shop - Imports"
+    },
+    {
+      "const": "CWV",
+      "title": "CWIT VAT EXEMPTED"
+    },
+    {
+      "const": "735",
+      "title": "EXMP CID(35), EIC(10), SUR Only Tyre Casing"
+    }
+  ]
+}
