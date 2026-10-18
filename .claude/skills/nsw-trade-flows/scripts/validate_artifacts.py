@@ -280,11 +280,14 @@ def check_drafts(manifests, index, report):
         if a["kind"] == "subtask_template":
             st = load_json(fpath)
             draft = st.get("draft")
-            if draft is not None and (not draft.get("command") or not st.get("output_namespace")):
+            if draft is not None and not isinstance(draft, dict):
+                report.error(f"[{a['path']}] draft must be an object, like {{\"command\": \"save_as_draft\"}}")
+            elif draft is not None and (not draft.get("command") or not st.get("output_namespace")):
                 report.error(f"[{a['path']}] draft needs a command and an output_namespace")
         if a["kind"] == "workflow":
             for e in load_json(fpath).get("edges", []):
-                if "save_as_draft" in e.get("condition", ""):
+                condition = e.get("condition")
+                if isinstance(condition, str) and "save_as_draft" in condition:
                     report.error(
                         f"[{a['path']}] edge {e['id']!r} routes drafts through the workflow; "
                         f"give the step template a `draft` instead"
@@ -302,8 +305,9 @@ def check_drafts(manifests, index, report):
             if n.get("type") != "TASK":
                 continue
             _spath, st = load("subtask_template", n.get("task_template_id"))
-            if st and st.get("draft", {}).get("command") and st.get("output_namespace"):
-                drafts.setdefault(st["draft"]["command"], []).append(st["output_namespace"])
+            draft = (st or {}).get("draft")
+            if isinstance(draft, dict) and draft.get("command") and st.get("output_namespace"):
+                drafts.setdefault(draft["command"], []).append(st["output_namespace"])
 
         handles = []  # (section, dataKey, handle)
         for sid, sec in (rc.get("sections") or {}).items():
