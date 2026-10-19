@@ -1,7 +1,7 @@
 {
   "id": "cda-lot-adjustment-review--review-workflow",
   "name": "CDA Officer Lot Adjustment Review \u2014 Officer Review",
-  "version": 4,
+  "version": 5,
   "nodes": [
     {
       "id": "start",
@@ -34,8 +34,10 @@
       "task_template_id": "cda-lot-adjustment-review--request-info",
       "input_mapping": {
         "callbackToken": "replyToken",
-        "reviewform.adjustment_outcome": "adjustment_outcome",
-        "reviewform.adjustment_feedback?": "adjustment_feedback"
+        "reviewform.adjustment_outcome": "payload.adjustment_outcome",
+        "reviewform.adjustment_feedback?": "payload.adjustment_feedback",
+        "submission?": "submission",
+        "reviewform": "reviewform"
       },
       "output_mapping": {
         "__command": "trader_command",
