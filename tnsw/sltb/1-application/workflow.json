@@ -1,7 +1,7 @@
 {
   "id": "sltb-submit-blendsheet-flow",
   "name": "Submit and Review Blend Sheet",
-  "version": 9,
+  "version": 10,
   "nodes": [
     {
       "id": "start",
@@ -17,7 +17,8 @@
         "userform?": "userform"
       },
       "output_mapping": {
-        "blendsheet_data": "userform.blendsheet_data"
+        "blendsheet_data": "userform.blendsheet_data",
+        "cusdec_draft_xml": "userform.cusdec_draft_xml"
       }
     },
     {

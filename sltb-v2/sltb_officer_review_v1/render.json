@@ -7,6 +7,9 @@
       "officer"
     ]
   },
+  "files": [
+    "submission.cusdec_draft_xml"
+  ],
   "sections": {
     "previous_review": {
       "templateId": "sltb-officer-review--previous-review",
