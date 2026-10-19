@@ -1,0 +1,63 @@
+{
+  "id": "sltb-xml-download--review:render",
+  "type": "APPLICATION",
+  "title": "SLTB XML Download",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
+  "files": [
+    "submission.cusdec_draft_xml"
+  ],
+  "sections": {
+    "review_form": {
+      "templateId": "sltb-xml-download--officer-form",
+      "title": "Acknowledgement",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Acknowledge",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "blend_sheet_view": {
+      "templateId": "sltb-submit-blendsheet--officer-view-form",
+      "title": "Submitted Blend Sheet",
+      "projector": "FORM",
+      "dataKey": "submission"
+    },
+    "cusdec_notice": {
+      "templateId": "sltb-xml-download--cusdec-notice",
+      "title": "CusDec",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ]
+      }
+    },
+    "status_message": {
+      "templateId": "sltb-xml-download--submission-view",
+      "title": "Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "sltb-xml-download--officer-form",
+  "title": "Acknowledge XML Download",
+  "schema": {
+    "type": "object",
+    "required": [
+      "xml_acknowledgement"
+    ],
+    "properties": {
+      "xml_acknowledgement": {
+        "type": "string",
+        "title": "Acknowledgement",
+        "oneOf": [
+          {
+            "const": "acknowledged",
+            "title": "Acknowledged: the XML files have been downloaded"
+          }
+        ],
+        "default": "acknowledged"
+      }
+    }
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/xml_acknowledgement"
+      }
+    ]
+  }
+}
