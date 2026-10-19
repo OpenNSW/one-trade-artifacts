@@ -1,0 +1,768 @@
+{
+  "data": [
+    {
+      "const": "BHD",
+      "title": "Bahraini Dinar"
+    },
+    {
+      "const": "XEU",
+      "title": "European Currency Unit ECU"
+    },
+    {
+      "const": "JPY",
+      "title": "Japanese Yen"
+    },
+    {
+      "const": "SGD",
+      "title": "Singapore Dollar"
+    },
+    {
+      "const": "TWD",
+      "title": "New Taiwan Dollar"
+    },
+    {
+      "const": "GBP",
+      "title": "United kingdom Pound"
+    },
+    {
+      "const": "USD",
+      "title": "United States Dollar"
+    },
+    {
+      "const": "ZZZ",
+      "title": "No Currency"
+    },
+    {
+      "const": "ZMN",
+      "title": "Zambia(new) Kwacha"
+    },
+    {
+      "const": "DZD",
+      "title": "Algerian Dinar"
+    },
+    {
+      "const": "CYP",
+      "title": "Cyprus Pound"
+    },
+    {
+      "const": "CUP",
+      "title": "Cuban Peso"
+    },
+    {
+      "const": "CRC",
+      "title": "Costa rica Colon"
+    },
+    {
+      "const": "CLP",
+      "title": "Chilean Peso"
+    },
+    {
+      "const": "BZD",
+      "title": "Belize Dollar"
+    },
+    {
+      "const": "BTN",
+      "title": "Bhutan"
+    },
+    {
+      "const": "BRN",
+      "title": "Brazilian Cruzeiro"
+    },
+    {
+      "const": "BND",
+      "title": "Brunei Dollar"
+    },
+    {
+      "const": "BIF",
+      "title": "Burundi Franc"
+    },
+    {
+      "const": "BEC",
+      "title": "Belgian Franc(convertible)"
+    },
+    {
+      "const": "AZE",
+      "title": "Azerbaijan"
+    },
+    {
+      "const": "ATS",
+      "title": "Austrian Schilling"
+    },
+    {
+      "const": "AOK",
+      "title": "Angola Kwanza"
+    },
+    {
+      "const": "ALL",
+      "title": "Albanian Lek"
+    },
+    {
+      "const": "BGL",
+      "title": "Lev of Bulgaria"
+    },
+    {
+      "const": "GRD",
+      "title": "Greek Drachma"
+    },
+    {
+      "const": "NLG",
+      "title": "Netherlands Guilder"
+    },
+    {
+      "const": "SEK",
+      "title": "Swedish Krona"
+    },
+    {
+      "const": "MYR",
+      "title": "Malaysian Ringgit"
+    },
+    {
+      "const": "ESP",
+      "title": "Spanish peseta"
+    },
+    {
+      "const": "FRF",
+      "title": "French Franc"
+    },
+    {
+      "const": "MTL",
+      "title": "Maltese Lira"
+    },
+    {
+      "const": "GHC",
+      "title": "Ghana Cedi"
+    },
+    {
+      "const": "CAD",
+      "title": "Canadian Dollar"
+    },
+    {
+      "const": "INR",
+      "title": "Indian rupee"
+    },
+    {
+      "const": "SAR",
+      "title": "Saudi riyal"
+    },
+    {
+      "const": "AED",
+      "title": "Unitd Arab Emirates Dirham"
+    },
+    {
+      "const": "CNH",
+      "title": "China Yuan Renminbi Offshore"
+    },
+    {
+      "const": "BRL",
+      "title": "Brazil Real"
+    },
+    {
+      "const": "ZRZ",
+      "title": "Zaire"
+    },
+    {
+      "const": "ZMK",
+      "title": "Zambia Kwacha"
+    },
+    {
+      "const": "ZAR",
+      "title": "South Africa Rand"
+    },
+    {
+      "const": "YUD",
+      "title": "Yugoslavian Dinar"
+    },
+    {
+      "const": "YER",
+      "title": "Yemeni Rial"
+    },
+    {
+      "const": "XPF",
+      "title": "CFP Franc"
+    },
+    {
+      "const": "XOF",
+      "title": "CFA Franc - BCEAO"
+    },
+    {
+      "const": "XDR",
+      "title": "IMF Special Drawing Rights"
+    },
+    {
+      "const": "XCD",
+      "title": "East caribbean Dollar"
+    },
+    {
+      "const": "XAF",
+      "title": "CFA Franc - BEAC"
+    },
+    {
+      "const": "WST",
+      "title": "Samoa Tala"
+    },
+    {
+      "const": "VUV",
+      "title": "Vanuatu Vatu"
+    },
+    {
+      "const": "VND",
+      "title": "Viet nam Dong"
+    },
+    {
+      "const": "VEB",
+      "title": "Venezuela Bolivar"
+    },
+    {
+      "const": "UZB",
+      "title": "Uzbekistan"
+    },
+    {
+      "const": "UYP",
+      "title": "Uruguayan Peso"
+    },
+    {
+      "const": "USS",
+      "title": "US Dollar same day"
+    },
+    {
+      "const": "USN",
+      "title": "US Dollar next day"
+    },
+    {
+      "const": "UKR",
+      "title": "Ukraine"
+    },
+    {
+      "const": "TUN",
+      "title": "Dinar tunisien"
+    },
+    {
+      "const": "SKK",
+      "title": "Slovakian Crown"
+    },
+    {
+      "const": "UGS",
+      "title": "Uganda Shilling"
+    },
+    {
+      "const": "TZS",
+      "title": "Tanzanian Shilling"
+    },
+    {
+      "const": "TTD",
+      "title": "Trinidad and Tobago Dollar"
+    },
+    {
+      "const": "TRL",
+      "title": "Turkish Lira"
+    },
+    {
+      "const": "TPE",
+      "title": "Timor escudo"
+    },
+    {
+      "const": "TOP",
+      "title": "Tonga Pa'anga"
+    },
+    {
+      "const": "TND",
+      "title": "Tunisian Dinar"
+    },
+    {
+      "const": "TKM",
+      "title": "Turkmenistan"
+    },
+    {
+      "const": "TJK",
+      "title": "Tajikistan"
+    },
+    {
+      "const": "THB",
+      "title": "Thailand Baht"
+    },
+    {
+      "const": "SZL",
+      "title": "Swaziland Lilangeni"
+    },
+    {
+      "const": "SYP",
+      "title": "Syrian pound"
+    },
+    {
+      "const": "SVN",
+      "title": "Slovenia"
+    },
+    {
+      "const": "SVC",
+      "title": "El salvador Colon"
+    },
+    {
+      "const": "SUR",
+      "title": "Rouble"
+    },
+    {
+      "const": "STD",
+      "title": "Sao Tome Dobra"
+    },
+    {
+      "const": "SRG",
+      "title": "Suriname Guilder"
+    },
+    {
+      "const": "SOS",
+      "title": "Somali Shilling"
+    },
+    {
+      "const": "SLL",
+      "title": "Sierra leone Leone"
+    },
+    {
+      "const": "SHP",
+      "title": "St. Helena Pound"
+    },
+    {
+      "const": "SDP",
+      "title": "Sudanese Pound"
+    },
+    {
+      "const": "SCR",
+      "title": "Seychelles Rupee"
+    },
+    {
+      "const": "SBD",
+      "title": "Solomon islands Dollar"
+    },
+    {
+      "const": "RWF",
+      "title": "Rwanda Franc"
+    },
+    {
+      "const": "RUS",
+      "title": "Russian federation"
+    },
+    {
+      "const": "ROL",
+      "title": "Romania Leu"
+    },
+    {
+      "const": "QAR",
+      "title": "Qatari Rial"
+    },
+    {
+      "const": "PYG",
+      "title": "Paraguay Guarani"
+    },
+    {
+      "const": "PLZ",
+      "title": "Poland Zloty"
+    },
+    {
+      "const": "PKR",
+      "title": "Pakistan Rupee"
+    },
+    {
+      "const": "PHP",
+      "title": "Philippine Peso"
+    },
+    {
+      "const": "PGK",
+      "title": "Papua new guinea Kina"
+    },
+    {
+      "const": "PEI",
+      "title": "Peru Sol"
+    },
+    {
+      "const": "PAB",
+      "title": "Panama Balboa"
+    },
+    {
+      "const": "OMR",
+      "title": "Rial Omani"
+    },
+    {
+      "const": "NZD",
+      "title": "New zealand Dollar"
+    },
+    {
+      "const": "NPR",
+      "title": "Nepalese Rupee"
+    },
+    {
+      "const": "NIC",
+      "title": "Nicaragua Cordoba"
+    },
+    {
+      "const": "NGN",
+      "title": "Nigeria Naira"
+    },
+    {
+      "const": "MZM",
+      "title": "Mozambique Metical"
+    },
+    {
+      "const": "MXP",
+      "title": "Mexican Peso"
+    },
+    {
+      "const": "MWK",
+      "title": "Malawi Kwacha"
+    },
+    {
+      "const": "MVR",
+      "title": "Maldives Rupee"
+    },
+    {
+      "const": "MUR",
+      "title": "Mauritius Rupee"
+    },
+    {
+      "const": "MRO",
+      "title": "Mauritania Ouguiya"
+    },
+    {
+      "const": "MOP",
+      "title": "Macau Pataca"
+    },
+    {
+      "const": "MNT",
+      "title": "Mongolia Tugrik"
+    },
+    {
+      "const": "MGF",
+      "title": "Madagascar Franc"
+    },
+    {
+      "const": "MDA",
+      "title": "Moldova"
+    },
+    {
+      "const": "MAD",
+      "title": "Moroccan dirham"
+    },
+    {
+      "const": "LYD",
+      "title": "Libyan Dollar"
+    },
+    {
+      "const": "LVA",
+      "title": "Latvia"
+    },
+    {
+      "const": "LUF",
+      "title": "Luxembourg Franc"
+    },
+    {
+      "const": "LTU",
+      "title": "Lithuania"
+    },
+    {
+      "const": "LSL",
+      "title": "Lesotho"
+    },
+    {
+      "const": "LRD",
+      "title": "Liberean Dollar"
+    },
+    {
+      "const": "LBP",
+      "title": "Lebanese Pound"
+    },
+    {
+      "const": "LAK",
+      "title": "Laotian Kip"
+    },
+    {
+      "const": "KYD",
+      "title": "Cayman islands Dollar"
+    },
+    {
+      "const": "KWD",
+      "title": "Kuwaiti dinar"
+    },
+    {
+      "const": "KRW",
+      "title": "Korean Won"
+    },
+    {
+      "const": "KPW",
+      "title": "North Korean Won"
+    },
+    {
+      "const": "KMF",
+      "title": "Comoros Franc"
+    },
+    {
+      "const": "KHR",
+      "title": "Kampuchea Riel"
+    },
+    {
+      "const": "KGZ",
+      "title": "Kyrgyzstan"
+    },
+    {
+      "const": "KES",
+      "title": "Kenyan Schilling"
+    },
+    {
+      "const": "KAZ",
+      "title": "Kazakhstan"
+    },
+    {
+      "const": "JOD",
+      "title": "Jordanian Dollar"
+    },
+    {
+      "const": "JMD",
+      "title": "Jamaican Dollar"
+    },
+    {
+      "const": "ISK",
+      "title": "Iceland Krona"
+    },
+    {
+      "const": "IRR",
+      "title": "Iranian Rial"
+    },
+    {
+      "const": "IQD",
+      "title": "Iraqi dinar"
+    },
+    {
+      "const": "ILS",
+      "title": "Israel Shekel"
+    },
+    {
+      "const": "IEP",
+      "title": "Irish pound"
+    },
+    {
+      "const": "IDR",
+      "title": "Indonesian Rupiah"
+    },
+    {
+      "const": "HTG",
+      "title": "Haiti Gourde"
+    },
+    {
+      "const": "HRV",
+      "title": "Croatia"
+    },
+    {
+      "const": "HNL",
+      "title": "Honduras Lempira"
+    },
+    {
+      "const": "GYD",
+      "title": "Guyana Dollar"
+    },
+    {
+      "const": "GWP",
+      "title": "Guinea-Bissau peso"
+    },
+    {
+      "const": "GTQ",
+      "title": "Guatemala Quetzal"
+    },
+    {
+      "const": "GNF",
+      "title": "Guinea Franc"
+    },
+    {
+      "const": "GMD",
+      "title": "Gambia Dalasi"
+    },
+    {
+      "const": "GIP",
+      "title": "Gibraltar Pound"
+    },
+    {
+      "const": "GEO",
+      "title": "Georgia"
+    },
+    {
+      "const": "FKP",
+      "title": "Falkland Islands Pound"
+    },
+    {
+      "const": "ETB",
+      "title": "Ethiopian Birr"
+    },
+    {
+      "const": "EST",
+      "title": "Estonia"
+    },
+    {
+      "const": "EGP",
+      "title": "Egyptian Pound"
+    },
+    {
+      "const": "ECS",
+      "title": "Ecuador Sucre"
+    },
+    {
+      "const": "DOP",
+      "title": "Dominican Peso"
+    },
+    {
+      "const": "DJF",
+      "title": "Djibouti Franc"
+    },
+    {
+      "const": "CVE",
+      "title": "Cape verde Escudo"
+    },
+    {
+      "const": "CSK",
+      "title": "Czechoslovakian Koruna"
+    },
+    {
+      "const": "COP",
+      "title": "Columbian Peso"
+    },
+    {
+      "const": "CNY",
+      "title": "China Yuan Renminbi"
+    },
+    {
+      "const": "CHF",
+      "title": "Swiss Franc"
+    },
+    {
+      "const": "BWP",
+      "title": "Botswana Puta"
+    },
+    {
+      "const": "BUK",
+      "title": "Burma Kyat"
+    },
+    {
+      "const": "BSD",
+      "title": "Bahamian Dollar"
+    },
+    {
+      "const": "BOB",
+      "title": "Bolivian Peso"
+    },
+    {
+      "const": "BMD",
+      "title": "Bermudan Dollar"
+    },
+    {
+      "const": "BLR",
+      "title": "Belarus"
+    },
+    {
+      "const": "BEL",
+      "title": "Belgian Franc(financial)"
+    },
+    {
+      "const": "BDT",
+      "title": "Bangladesh Taka"
+    },
+    {
+      "const": "BBD",
+      "title": "Barbados Dollar"
+    },
+    {
+      "const": "AWG",
+      "title": "Aruba"
+    },
+    {
+      "const": "ARM",
+      "title": "Armenia"
+    },
+    {
+      "const": "ARA",
+      "title": "Argentina Austral"
+    },
+    {
+      "const": "ANG",
+      "title": "Nether. antillian Guilder"
+    },
+    {
+      "const": "AFA",
+      "title": "Afghani"
+    },
+    {
+      "const": "FJD",
+      "title": "Fiji Dollar"
+    },
+    {
+      "const": "DKK",
+      "title": "Danish krone"
+    },
+    {
+      "const": "HUF",
+      "title": "Hungary Forint"
+    },
+    {
+      "const": "ITL",
+      "title": "Italian Lira"
+    },
+    {
+      "const": "NOK",
+      "title": "Norwegian krone"
+    },
+    {
+      "const": "LKR",
+      "title": "Sri Lanka Rupee"
+    },
+    {
+      "const": "HKD",
+      "title": "Hong kong Dollar"
+    },
+    {
+      "const": "PTE",
+      "title": "Portugal Escudo"
+    },
+    {
+      "const": "BEF",
+      "title": "Belgian Franc"
+    },
+    {
+      "const": "FIM",
+      "title": "Finland Markka"
+    },
+    {
+      "const": "DEM",
+      "title": "Deutsche mark"
+    },
+    {
+      "const": "ZWD",
+      "title": "Zimbabwe Dollar"
+    },
+    {
+      "const": "AUD",
+      "title": "Australian Dollar"
+    },
+    {
+      "const": "CZK",
+      "title": "Czechoslovakian Koruna"
+    },
+    {
+      "const": "PLN",
+      "title": "Poland Zloty"
+    },
+    {
+      "const": "GHS",
+      "title": "Ghana Cedi"
+    },
+    {
+      "const": "MMK",
+      "title": "Myanmar (Burma) Kyat"
+    },
+    {
+      "const": "ZMW",
+      "title": "Zambia Kwacha (New)"
+    },
+    {
+      "const": "EUR",
+      "title": "Euro European Currency Unit ECU"
+    },
+    {
+      "const": "RUB",
+      "title": "Russian Rouble"
+    }
+  ]
+}

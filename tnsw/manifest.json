@@ -223,6 +223,12 @@
       "path": "customs/static-data/extended_procedure.data.json"
     },
     {
+      "id": "customs-cusdec--national-procedures",
+      "kind": "static_data",
+      "version": "1",
+      "path": "customs/static-data/national_procedures.data.json"
+    },
+    {
       "id": "customs-cusdec--port-of-entry-and-discharge",
       "kind": "static_data",
       "version": "1",
@@ -238,13 +244,13 @@
       "id": "customs-cusdec--supporting-document-codes",
       "kind": "static_data",
       "version": "1",
-      "path": "customs/static-data/supporting_document_codes.data.json"
+      "path": "customs/static-data/supporting_document_code_list.data.json"
     },
     {
-      "id": "customs-cusdec--supporting-document-item-numbers",
+      "id": "customs-cusdec--currencies",
       "kind": "static_data",
       "version": "1",
-      "path": "customs/static-data/supporting_document_item_numbers.data.json"
+      "path": "customs/static-data/currencies.data.json"
     },
     {
       "id": "npqs-apply-phyto-cert--importing-countries",
