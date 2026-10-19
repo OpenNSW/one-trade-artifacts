@@ -225,76 +225,68 @@
         "format": "date",
         "title": "Estimated Shipment Date"
       },
-      "transport_mode": {
-        "type": "object",
-        "title": "Transport Mode",
-        "properties": {
-          "value": {
-            "type": "string",
-            "oneOf": [
-              {
-                "const": "1",
-                "title": "Air transport"
-              },
-              {
-                "const": "2",
-                "title": "Mail"
-              },
-              {
-                "const": "3",
-                "title": "Maritime transport"
-              },
-              {
-                "const": "4",
-                "title": "Fixed transport installations"
-              },
-              {
-                "const": "5",
-                "title": "Inland water transport"
-              },
-              {
-                "const": "6",
-                "title": "Multimodal transport"
-              },
-              {
-                "const": "7",
-                "title": "Rail transport"
-              },
-              {
-                "const": "8",
-                "title": "Road transport"
-              },
-              {
-                "const": "9",
-                "title": "Transport mode not applicable"
-              },
-              {
-                "const": "10",
-                "title": "Transport mode not specified"
-              }
-            ]
-          },
-          "label": {
-            "type": "string"
+      "transport_details": {
+        "type": "array",
+        "title": "Transport Details",
+        "items": {
+          "type": "object",
+          "properties": {
+            "transport_mode": {
+              "type": "string",
+              "title": "Transport Mode",
+              "oneOf": [
+                {
+                  "const": "1",
+                  "title": "Air transport"
+                },
+                {
+                  "const": "2",
+                  "title": "Mail"
+                },
+                {
+                  "const": "3",
+                  "title": "Maritime transport"
+                },
+                {
+                  "const": "4",
+                  "title": "Fixed transport installations"
+                },
+                {
+                  "const": "5",
+                  "title": "Inland water transport"
+                },
+                {
+                  "const": "6",
+                  "title": "Multimodal transport"
+                },
+                {
+                  "const": "7",
+                  "title": "Rail transport"
+                },
+                {
+                  "const": "8",
+                  "title": "Road transport"
+                },
+                {
+                  "const": "9",
+                  "title": "Transport mode not applicable"
+                },
+                {
+                  "const": "10",
+                  "title": "Transport mode not specified"
+                }
+              ]
+            },
+            "transport_name": {
+              "type": "string",
+              "title": "Transport Name"
+            },
+            "transport_number": {
+              "type": "string",
+              "title": "Transport Number"
+            }
           }
-        },
-        "required": [
-          "value"
-        ],
-        "default": {
-          "value": "10",
-          "label": "Transport mode not specified"
         }
-      },
-      "vessel_name": {
-        "type": "string",
-        "title": "Vessel / Carrier Name",
-        "example": "Indian Empress"
-      },
-      "voyage_number": {
-        "type": "string",
-        "title": "Voyage / Flight Number",
-        "example": "MV-2026-118"
       },
       "commodities": {
         "type": "array",
@@ -1629,20 +1621,45 @@
           },
           {
             "type": "Control",
-            "scope": "#/properties/transport_mode"
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/vessel_name"
+            "scope": "#/properties/transport_details",
+            "options": {
+              "detail": {
+                "type": "VerticalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/transport_mode",
+                    "options": { "readOnly": true }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/transport_name",
+                    "options": { "readOnly": true },
+                    "rule": {
+                      "effect": "SHOW",
+                      "condition": {
+                        "scope": "#/properties/transport_mode",
+                        "schema": { "enum": ["1", "2", "3", "4", "5", "6", "7", "8"] }
+                      }
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/transport_number",
+                    "options": { "readOnly": true },
+                    "rule": {
+                      "effect": "SHOW",
+                      "condition": {
+                        "scope": "#/properties/transport_mode",
+                        "schema": { "enum": ["1", "2", "3", "4", "5", "6", "7", "8"] }
+                      }
+                    }
+                  }
+                ]
               },
-              {
-                "type": "Control",
-                "scope": "#/properties/voyage_number"
-              }
-            ]
+              "addable": false,
+              "removable": false
+            }
           }
         ]
       },
