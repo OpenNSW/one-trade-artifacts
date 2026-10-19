@@ -20,7 +20,7 @@
               "x-xml": {
                 "accept": ".xml,text/xml,application/xml",
                 "maxSize": 5242880,
-                "arrayPaths": ["BLEND_SHEET.Particulars_of_sale"],
+                "arrayPaths": ["BLEND_SHEET.Particulars_of_sale", "BLEND_SHEET.Particulars_of_import", "BLEND_SHEET.Particulars_of_balance"],
                 "persistDocument": false,
                 "writeBase": "parent",
                 "writeTo": [
@@ -49,17 +49,47 @@
                     "map": { "1": "yes", "0": "no" },
                     "default": "no"
                   },
+                  { "from": "BLEND_SHEET.@_id", "to": "source_blend_sheet_id", "as": "string" },
                   { "from": "BLEND_SHEET.Particulars_of_sale", "to": "sales.sheet" },
+                  {
+                    "from": "BLEND_SHEET.Particulars_of_import",
+                    "to": "imported_tea.sheet",
+                    "writeTo": [
+                      { "from": "Import_number", "to": "permit_no", "as": "string" },
+                      { "from": "Import_date", "to": "date", "as": "string" },
+                      { "from": "ID_mark", "to": "identification_mark", "as": "string" },
+                      { "from": "Import_grade", "to": "grade", "as": "string" },
+                      { "from": "CIF_price", "to": "cif_price" },
+                      { "from": "Import_quantity", "to": "import_quantity" },
+                      { "from": "Import_value", "to": "value" }
+                    ]
+                  },
+                  {
+                    "from": "BLEND_SHEET.Particulars_of_balance",
+                    "to": "blend_balances.sheet",
+                    "writeTo": [
+                      { "from": "Previous_date", "to": "date", "as": "string" },
+                      { "from": "Previous_number", "to": "blend_no", "as": "string" },
+                      { "from": "Previous_balance", "to": "blend_balance" },
+                      { "from": "Blend_gain", "to": "blend_gain" },
+                      { "from": "Previous_Average", "to": "blend_avg_per_kg" }
+                    ]
+                  },
                   { "from": "BLEND_SHEET.Sample.Remarks", "to": "remarks", "as": "string", "default": "" },
                   { "from": "BLEND_SHEET.Sample.Sample_date", "to": "sample_rediness_date", "as": "date", "format": "M/D/YY" },
                   { "from": "BLEND_SHEET.Sample.Sample_Warehouse", "to": "warehouse_address", "as": "string" },
-                  { "from": "BLEND_SHEET.Total.Blend_gain", "to": "blend_gain_determined", "as": "number", "default": 0 },
-                  { "from": "BLEND_SHEET.Total.Flavor", "to": "flavors", "as": "number", "default": 0 },
+                  { "from": "BLEND_SHEET.Total.Blend_gain", "to": "blend_gain_determined", "as": "number" },
+                  { "from": "BLEND_SHEET.Total.Flavor", "to": "flavors", "as": "number" },
                   { "from": "BLEND_SHEET.Total.Average_value", "to": "avg_value_per_kg", "as": "number" },
-                  { "from": "BLEND_SHEET.Total.Ship_import", "to": "quantity_to_be_shipped_imported", "as": "number", "default": 0 },
-                  { "from": "BLEND_SHEET.Total.Ship_local", "to": "quantity_to_be_shipped_local", "as": "number", "default": 0 }
+                  { "from": "BLEND_SHEET.Total.Ship_import", "to": "quantity_to_be_shipped_imported", "as": "number" },
+                  { "from": "BLEND_SHEET.Total.Ship_local", "to": "quantity_to_be_shipped_local", "as": "number" }
                 ]
               }
+            },
+            "source_blend_sheet_id": {
+              "type": "string",
+              "title": "Source Blend Sheet ID",
+              "description": "The id attribute of the imported blend sheet XML. Not shown on the form; written back when the blend sheet is exported."
             },
             "form": {
               "type": "string",
@@ -256,32 +286,32 @@
             "remarks": {
               "type": "string",
               "title": "Remarks",
-              "description": "This value need to enter manually",
+              "description": "Filled from the blend sheet XML when one is imported; otherwise enter manually.",
               "example": "This is a sample remark for the blend sheet."
             },
             "sample_rediness_date": {
               "type": "string",
               "format": "date",
               "title": "Sample Readiness Date",
-              "description": "This value need to enter manually",
+              "description": "Filled from the blend sheet XML when one is imported; otherwise enter manually.",
               "example": "2026-07-24"
             },
             "warehouse_address": {
               "type": "string",
               "title": "Warehouse Address",
-              "description": "This value need to enter manually",
+              "description": "Filled from the blend sheet XML when one is imported; otherwise enter manually.",
               "example": "Quick Tea (Pvt) Ltd, 119, 119/1 Attampolawatte, Mabole, Wattala"
             },
             "blend_gain_determined": {
               "type": "number",
               "title": "Blend Gain Determined (KG)",
-              "description": "This value need to enter manually",
+              "description": "Filled from the blend sheet XML when one is imported; otherwise enter manually.",
               "example": 0
             },
             "flavors": {
               "type": "number",
               "title": "Flavors (KG)",
-              "description": "This value need to enter manually",
+              "description": "Filled from the blend sheet XML when one is imported; otherwise enter manually.",
               "example": 0
             },
             "total": {
@@ -316,13 +346,13 @@
             "quantity_to_be_shipped_imported": {
               "type": "number",
               "title": "Quantity to be Shipped — Imported (KG)",
-              "description": "This value need to enter manually",
+              "description": "Filled from the blend sheet XML when one is imported; otherwise enter manually.",
               "example": 0
             },
             "quantity_to_be_shipped_local": {
               "type": "number",
               "title": "Quantity to be Shipped — Local (KG)",
-              "description": "This value need to enter manually",
+              "description": "Filled from the blend sheet XML when one is imported; otherwise enter manually.",
               "example": 16128
             },
             "blend_balance": {
@@ -354,7 +384,6 @@
             "grade_or_standard",
             "fob_avg",
             "date_of_blend",
-            "sales",
             "total_blend_balances_and_gain",
             "total",
             "blend_balance"
