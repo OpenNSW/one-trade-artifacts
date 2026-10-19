@@ -5,6 +5,13 @@
     "type": "object",
     "required": ["blendsheet_data"],
     "properties": {
+      "cusdec_draft_xml": {
+        "type": "string",
+        "format": "file",
+        "title": "Cusdec Draft XML",
+        "description": "Upload the draft CusDec XML for this application. The SLTB officer reviews it together with the blend sheets.",
+        "x-file": { "accept": ".xml", "fileName": "Cusdec_Draft" }
+      },
       "blendsheet_data": {
         "type": "array",
         "title": "Blend Sheets",
@@ -378,6 +385,7 @@
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
+      { "type": "Control", "scope": "#/properties/cusdec_draft_xml" },
       {
         "type": "Control",
         "scope": "#/properties/blendsheet_data",

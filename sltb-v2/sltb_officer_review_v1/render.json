@@ -7,6 +7,9 @@
       "officer"
     ]
   },
+  "files": [
+    "submission.cusdec_draft_xml"
+  ],
   "sections": {
     "previous_review": {
       "templateId": "sltb-officer-review--previous-review",
@@ -25,6 +28,16 @@
       "title": "Submitted Application",
       "projector": "FORM",
       "dataKey": "submission"
+    },
+    "second_step_notice": {
+      "templateId": "sltb-officer-review--second-step-notice",
+      "title": "What Happens Next",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ]
+      }
     },
     "review_form": {
       "templateId": "sltb-submit-blendsheet--officer-review-form",

@@ -1,7 +1,7 @@
 {
   "id": "sltb-blendsheet-approval",
   "name": "SLTB Tea Blendsheet Approval & Sample Collection Flow",
-  "version": 3,
+  "version": 4,
   "nodes": [
     { "id": "start", "type": "START", "name": "Start" },
     {
@@ -24,6 +24,18 @@
       "type": "GATEWAY",
       "gateway_type": "EXCLUSIVE_SPLIT",
       "name": "Blend Sheet Reconcilable?"
+    },
+    {
+      "id": "sltb_1b_xml_download",
+      "type": "TASK",
+      "name": "[SLTB 1b] Acknowledge & Download XML",
+      "task_template_id": "sltb-xml-download-flow",
+      "lane": "SLTB Officer",
+      "input_mapping": {
+        "sltb.userform": "userform",
+        "sltb.cusdec?": "cusdec"
+      },
+      "output_mapping": {}
     },
     {
       "id": "sltb_2_pay_levy",
@@ -190,9 +202,10 @@
     {
       "id": "e_review_approve",
       "source_id": "sltb_1_review_gateway",
-      "target_id": "sltb_2_pay_levy",
+      "target_id": "sltb_1b_xml_download",
       "condition": "sltb.review_outcome == 'approve'"
     },
+    { "id": "e_1b_to_levy", "source_id": "sltb_1b_xml_download", "target_id": "sltb_2_pay_levy" },
     { "id": "e_2_split", "source_id": "sltb_2_pay_levy", "target_id": "sltb_3_collection_split" },
     {
       "id": "e_split_none",

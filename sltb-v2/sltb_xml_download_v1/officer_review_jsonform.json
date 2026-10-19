@@ -1,0 +1,17 @@
+{
+  "id": "sltb-xml-download--officer-form",
+  "title": "Acknowledge XML Download",
+  "schema": {
+    "type": "object",
+    "properties": {}
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Label",
+        "text": "You are about to acknowledge that you have downloaded the XML files for this application."
+      }
+    ]
+  }
+}
