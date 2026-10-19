@@ -7,6 +7,14 @@
       "officer"
     ]
   },
+  "files": [
+    "payload.payload.new_physical_certificate_file",
+    "payload.payload.new_salmonella_certificate_file",
+    "reviewform.new_physical_certificate_file",
+    "reviewform.new_salmonella_certificate_file",
+    "submission.cusdec_document",
+    "submission.lots_to_remove"
+  ],
   "sections": {
     "previous_review": {
       "templateId": "cda-lot-adjustment-review--previous-review",

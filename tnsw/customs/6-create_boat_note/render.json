@@ -2,6 +2,11 @@
   "id": "customs-create-boat-note-flow:render",
   "type": "APPLICATION",
   "title": "[Customs] Boat Note Creation",
+  "files": [
+    "boat_note_approval.approved_boat_note_file",
+    "boat_note_document.key",
+    "submission.boat_note_document_key"
+  ],
   "sections": {
     "changes_requested": {
       "templateId": "customs-boat-note--changes-requested",

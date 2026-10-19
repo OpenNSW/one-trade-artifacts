@@ -2,6 +2,9 @@
   "id": "cda-asycuda-green-check-flow:render",
   "type": "REVIEW",
   "title": "[CDA] ASYCUDA Green Check",
+  "files": [
+    "submission.uploaded_dc_bags_details"
+  ],
   "sections": {
     "status_message": {
       "templateId": "cda-asycuda-green-check--trader-instructions",
