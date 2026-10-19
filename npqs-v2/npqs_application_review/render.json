@@ -20,6 +20,14 @@
         "requireDataKey": "previous_clarification_reason"
       }
     },
+    "draft_certificate": {
+      "templateId": "npqs-application-review--draft-certificate",
+      "title": "Draft Phytosanitary Certificate",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "requireDataKey": "submission"
+      }
+    },
     "submission_view": {
       "templateId": "npqs-apply-phyto-cert--officer-view-form",
       "title": "Submitted Application",

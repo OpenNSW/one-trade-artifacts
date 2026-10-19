@@ -78,6 +78,7 @@
         "reviewerform.reference_number?": "submission.reference_number",
         "userform": "submission",
         "draft_certificate_key?": "draft_certificate_key",
+        "draft_certificate_key": "submission.draft_certificate_key",
         "agency_token?": "replyToken"
       },
       "output_mapping": {
