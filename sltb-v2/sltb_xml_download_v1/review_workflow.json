@@ -15,7 +15,7 @@
         "submission?": "submission"
       },
       "output_mapping": {
-        "xml_acknowledgement": "reviewform.xml_acknowledgement"
+        "__command": "command"
       }
     },
     {
@@ -24,11 +24,9 @@
       "task_template_id": "sltb-xml-download--notify-decision",
       "input_mapping": {
         "callbackToken": "callbackToken",
-        "reviewform?": "reviewform",
         "submission?": "submission",
         "taskId": "taskId",
-        "reviewform.xml_acknowledgement": "payload.command",
-        "reviewform": "payload.payload"
+        "command": "payload.command"
       }
     },
     {

@@ -7,10 +7,9 @@
   ],
   "sections": {
     "trader_status": {
-      "templateId": "sltb-xml-download--trader-view",
+      "templateId": "sltb-xml-download--trader-completed",
       "title": "Application Status",
       "projector": "MARKDOWN",
-      "dataKey": "ack",
       "visibleWhen": {
         "states": [
           "COMPLETED"

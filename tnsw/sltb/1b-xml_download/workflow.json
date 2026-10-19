@@ -15,9 +15,7 @@
         "userform": "submission",
         "cusdec?": "submission.cusdec"
       },
-      "output_mapping": {
-        "xml_acknowledgement": "ack.xml_acknowledgement"
-      }
+      "output_mapping": {}
     },
     {
       "id": "end",

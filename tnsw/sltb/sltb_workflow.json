@@ -35,9 +35,7 @@
         "sltb.userform": "userform",
         "sltb.cusdec?": "cusdec"
       },
-      "output_mapping": {
-        "ack.xml_acknowledgement": "sltb.xml_acknowledgement"
-      }
+      "output_mapping": {}
     },
     {
       "id": "sltb_2_pay_levy",

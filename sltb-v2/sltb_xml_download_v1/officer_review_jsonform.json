@@ -3,29 +3,14 @@
   "title": "Acknowledge XML Download",
   "schema": {
     "type": "object",
-    "required": [
-      "xml_acknowledgement"
-    ],
-    "properties": {
-      "xml_acknowledgement": {
-        "type": "string",
-        "title": "Acknowledgement",
-        "oneOf": [
-          {
-            "const": "acknowledged",
-            "title": "Acknowledged: the XML files have been downloaded"
-          }
-        ],
-        "default": "acknowledged"
-      }
-    }
+    "properties": {}
   },
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
       {
-        "type": "Control",
-        "scope": "#/properties/xml_acknowledgement"
+        "type": "Label",
+        "text": "You are about to acknowledge that you have downloaded the XML files for this application."
       }
     ]
   }

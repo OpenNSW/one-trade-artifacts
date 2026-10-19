@@ -2821,6 +2821,12 @@
       "path": "sltb/1b-xml_download/trader_view_jsonform.json"
     },
     {
+      "id": "sltb-xml-download--trader-completed",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/1b-xml_download/trader_completed_jsonform.json"
+    },
+    {
       "id": "sltb-xml-download-flow",
       "kind": "workflow",
       "version": "",
