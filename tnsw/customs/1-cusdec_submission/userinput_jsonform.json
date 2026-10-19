@@ -928,6 +928,7 @@
                   "type": "string",
                   "title": "Item Number",
                   "description": "Item number in the declaration that this document applies to, e.g. 8 for the 8th item.",
+                  "pattern": "^[1-9][0-9]*$",
                   "example": "8"
                 },
                 "documentCode": {
