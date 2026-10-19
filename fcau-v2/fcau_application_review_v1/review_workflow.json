@@ -1,7 +1,7 @@
 {
   "id": "fcau-application-review--review-workflow",
   "name": "FCAU Application Review — Officer Review",
-  "version": 2,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
@@ -34,10 +34,12 @@
       "task_template_id": "fcau-application-review--request-info",
       "input_mapping": {
         "callbackToken": "replyToken",
-        "reviewform.application_review_outcome": "application_review_outcome",
-        "reviewform.commodities?": "commodities",
-        "reviewform.reference_number?": "reference_number",
-        "reviewform.rejection_reason?": "rejection_reason"
+        "reviewform.application_review_outcome": "payload.application_review_outcome",
+        "reviewform.commodities?": "payload.commodities",
+        "reviewform.reference_number?": "payload.reference_number",
+        "reviewform.rejection_reason?": "payload.rejection_reason",
+        "submission?": "submission",
+        "reviewform": "reviewform"
       },
       "output_mapping": {
         "submission": "submission",
