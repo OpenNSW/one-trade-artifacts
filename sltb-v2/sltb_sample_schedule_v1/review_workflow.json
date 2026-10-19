@@ -1,7 +1,7 @@
 {
   "id": "sltb-sample-schedule--review-workflow",
   "name": "Review Pickup Schedule — Officer Review",
-  "version": 2,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
@@ -38,13 +38,13 @@
       "task_template_id": "sltb-sample-schedule--request-info",
       "input_mapping": {
         "callbackToken": "replyToken",
-        "reviewform.schedule_outcome": "schedule_outcome",
-        "reviewform.visit_date?": "visit_date",
-        "reviewform.visit_time?": "visit_time",
-        "reviewform.inspector_name?": "inspector_name",
-        "reviewform.contact_number?": "contact_number",
-        "reviewform.feedback?": "feedback",
-        "reviewform": "proposal"
+        "reviewform.schedule_outcome": "payload.schedule_outcome",
+        "reviewform.visit_date?": "payload.visit_date",
+        "reviewform.visit_time?": "payload.visit_time",
+        "reviewform.inspector_name?": "payload.inspector_name",
+        "reviewform.contact_number?": "payload.contact_number",
+        "reviewform.feedback?": "payload.feedback",
+        "reviewform": "reviewform"
       },
       "output_mapping": {
         "__command": "trader_command",
