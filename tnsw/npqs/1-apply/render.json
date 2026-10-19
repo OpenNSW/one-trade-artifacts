@@ -3,7 +3,11 @@
   "type": "APPLICATION",
   "title": "[NPQS] Phytosanitary Certificate Application",
   "files": [
+    "application.attachments[*].attachment_file_url",
+    "draft_certificate.key",
+    "draft_certificate_key",
     "submission.attachments[*].attachment_file_url",
+    "submission.draft_certificate_key",
     "userform.attachments[*].attachment_file_url"
   ],
   "sections": {

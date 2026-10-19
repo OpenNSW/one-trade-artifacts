@@ -3,9 +3,11 @@
   "type": "APPLICATION",
   "title": "[FCAU] Apply for Health Certificate",
   "files": [
-    "submission.analysis_certificates",
+    "submission.commodities[*].analysis_certificates",
+    "submission.commodities[*].other_declarations",
     "submission.other_supporting_documents[*]",
-    "userform.analysis_certificates",
+    "userform.commodities[*].analysis_certificates",
+    "userform.commodities[*].other_declarations",
     "userform.other_supporting_documents[*]"
   ],
   "sections": {

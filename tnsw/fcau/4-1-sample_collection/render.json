@@ -3,7 +3,8 @@
   "type": "SAMPLE_COLLECTION",
   "title": "[FCAU] Submit, Receive and Number Sample",
   "files": [
-    "submission.analysis_certificates",
+    "submission.commodities[*].analysis_certificates",
+    "submission.commodities[*].other_declarations",
     "submission.other_supporting_documents[*]"
   ],
   "sections": {

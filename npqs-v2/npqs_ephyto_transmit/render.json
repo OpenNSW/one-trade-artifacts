@@ -7,11 +7,6 @@
       "officer"
     ]
   },
-  "files": [
-    "payload.payload.treatment_certificate_url",
-    "reviewform.treatment_certificate_url",
-    "submission.attachments[*].attachment_file_url"
-  ],
   "sections": {
     "certificate_view": {
       "templateId": "npqs-ephyto-transmit--certificate-view",

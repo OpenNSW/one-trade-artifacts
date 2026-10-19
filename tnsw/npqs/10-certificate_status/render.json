@@ -2,6 +2,9 @@
   "id": "npqs-certificate-status:render",
   "type": "APPLICATION",
   "title": "[NPQS] Delivery Status & Next Action",
+  "files": [
+    "userform.attachments[*].attachment_file_url"
+  ],
   "sections": {
     "checking": {
       "templateId": "npqs-certificate-status--checking-msg",

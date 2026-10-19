@@ -12,7 +12,8 @@
     "payload.payload.supporting_documents[*]",
     "reviewform.certificate",
     "reviewform.supporting_documents[*]",
-    "submission.analysis_certificates",
+    "submission.commodities[*].analysis_certificates",
+    "submission.commodities[*].other_declarations",
     "submission.other_supporting_documents[*]"
   ],
   "sections": {

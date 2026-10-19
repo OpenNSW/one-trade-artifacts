@@ -8,7 +8,8 @@
     ]
   },
   "files": [
-    "submission.attachments[*].attachment_file_url"
+    "submission.attachments[*].attachment_file_url",
+    "submission.draft_certificate_key"
   ],
   "sections": {
     "previous_review": {

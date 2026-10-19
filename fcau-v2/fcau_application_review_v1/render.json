@@ -8,7 +8,10 @@
     ]
   },
   "files": [
-    "submission.analysis_certificates",
+    "reviewform.commodities[*].analysis_certificates",
+    "reviewform.commodities[*].other_declarations",
+    "submission.commodities[*].analysis_certificates",
+    "submission.commodities[*].other_declarations",
     "submission.other_supporting_documents[*]"
   ],
   "sections": {

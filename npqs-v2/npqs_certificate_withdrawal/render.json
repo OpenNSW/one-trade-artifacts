@@ -7,10 +7,6 @@
       "officer"
     ]
   },
-  "files": [
-    "submission.supervision_report_url",
-    "submission.treatment_certificate_url"
-  ],
   "sections": {
     "request_view": {
       "templateId": "npqs-certificate-withdrawal--request-view",

@@ -8,8 +8,11 @@
     ]
   },
   "files": [
+    "application.attachments[*].attachment_file_url",
+    "certificate_document.key",
     "payload.payload.certificate_url",
     "reviewform.certificate_url",
+    "signing_certificate_key",
     "submission.attachments[*].attachment_file_url"
   ],
   "sections": {
