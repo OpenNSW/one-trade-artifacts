@@ -18,9 +18,11 @@
               "title": "Download Blend Sheet XML",
               "x-xml-export": {
                 "rootElement": "BLEND_SHEET",
-                "fileName": "blend_sheet.xml",
+                "declaration": { "standalone": "no" },
+                "fileName": "{blend_no}.xml",
                 "writeBase": "parent",
                 "writeTo": [
+                  { "from": "source_blend_sheet_id", "to": "@_id", "default": null },
                   { "to": "Blend_type", "formula": "\"\"" },
                   { "from": "private_treaty_to_be_exported", "to": "Country", "default": null },
                   { "from": "exporter_registration_no", "to": "Exporter.registration_number", "default": null },
@@ -57,24 +59,53 @@
                   { "from": "lion_logo_requested", "to": "Blend.Lion_logo", "map": { "yes": "1", "no": "0" }, "default": "0" },
                   { "from": "quality_to_be_exported", "to": "Blend.Quantity_export", "default": null },
                   { "from": "grade_or_standard", "to": "Blend.Blend_grade", "default": null },
+                  { "from": "date_of_blend", "to": "Blend.Blend_date", "as": "date", "format": "M/D/YY", "default": null },
                   {
-                    "to": "Blend.Blend_date",
-                    "inputs": { "blend_date": "date_of_blend" },
-                    "formula": "MONTH(blend_date)&\"/\"&DAY(blend_date)&\"/\"&RIGHT(YEAR(blend_date),2)",
-                    "default": null
+                    "from": "sales.sheet",
+                    "to": "Particulars_of_sale",
+                    "writeTo": [
+                      { "from": "Sale_date", "to": "Sale_date" },
+                      { "from": "Sale_code", "to": "Sale_code" },
+                      { "from": "BR_code", "to": "BR_code" },
+                      { "from": "LOT_number", "to": "LOT_number" },
+                      { "from": "Invoice_number", "to": "Invoice_number" },
+                      { "from": "Garden_mark", "to": "Garden_mark" },
+                      { "from": "Sale_grade", "to": "Sale_grade" },
+                      { "from": "Sale_rate", "to": "Sale_rate" },
+                      { "from": "Sale_quantity", "to": "Sale_quantity" },
+                      { "from": "Sale_value", "to": "Sale_value" }
+                    ]
                   },
-                  { "from": "sales.sheet", "to": "Particulars_of_sale" },
-                  { "from": "sales.derivations.average_value_per_kg.value", "to": "Sale_Sum.Sale_total.SaleTotal_average", "default": null },
-                  { "from": "sales.derivations.total_sales_quantity.value", "to": "Sale_Sum.Sale_total.SaleTotal_quantity", "default": null },
-                  { "from": "sales.derivations.total_sales_value.value", "to": "Sale_Sum.Sale_total.SaleTotal_value", "default": null },
+                  { "from": "sales.derivations.average_value_per_kg.value", "to": "Sale_Sum.Sale_total.SaleTotal_average", "default": { "null": null } },
+                  { "from": "sales.derivations.total_sales_quantity.value", "to": "Sale_Sum.Sale_total.SaleTotal_quantity", "default": { "null": null } },
+                  { "from": "sales.derivations.total_sales_value.value", "to": "Sale_Sum.Sale_total.SaleTotal_value", "default": { "null": null } },
+                  {
+                    "from": "imported_tea.sheet",
+                    "to": "Particulars_of_import",
+                    "writeTo": [
+                      { "from": "permit_no", "to": "Import_number" },
+                      { "from": "date", "to": "Import_date" },
+                      { "from": "identification_mark", "to": "ID_mark" },
+                      { "from": "grade", "to": "Import_grade" },
+                      { "from": "cif_price", "to": "CIF_price" },
+                      { "from": "import_quantity", "to": "Import_quantity" },
+                      { "from": "value", "to": "Import_value" }
+                    ]
+                  },
                   { "to": "Import_total", "formula": "\"\"" },
-                  { "to": "balance_total.Previous_total.null", "formula": "\"\"" },
                   {
-                    "to": "Sample.Sample_date",
-                    "inputs": { "sample_date": "sample_rediness_date" },
-                    "formula": "MONTH(sample_date)&\"/\"&DAY(sample_date)&\"/\"&RIGHT(YEAR(sample_date),2)",
-                    "default": null
+                    "from": "blend_balances.sheet",
+                    "to": "Particulars_of_balance",
+                    "writeTo": [
+                      { "from": "date", "to": "Previous_date" },
+                      { "from": "blend_no", "to": "Previous_number" },
+                      { "from": "blend_balance", "to": "Previous_balance" },
+                      { "from": "blend_gain", "to": "Blend_gain" },
+                      { "from": "blend_avg_per_kg", "to": "Previous_Average" }
+                    ]
                   },
+                  { "from": "blend_balances.derivations.total_blend_balances.value", "to": "balance_total.Previous_total", "default": { "null": null } },
+                  { "from": "sample_rediness_date", "to": "Sample.Sample_date", "as": "date", "format": "M/D/YY", "default": null },
                   { "from": "warehouse_address", "to": "Sample.Sample_Warehouse", "default": null },
                   { "from": "remarks", "to": "Sample.Remarks", "default": { "null": null } },
                   { "from": "blend_gain_determined", "to": "Total.Blend_gain", "default": { "null": null } },
