@@ -6,6 +6,7 @@
     "user_jsonforms_id": "fcau-apply-health-cert--user-form",
     "reviewer_jsonforms_id": "fcau-apply-health-cert--reviewer-form"
   },
+  "draft": { "command": "save_as_draft" },
   "extensions": [
     {
       "id": "authz",

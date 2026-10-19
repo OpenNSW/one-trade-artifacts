@@ -5,5 +5,8 @@
   "plugin_properties": {
     "user_jsonforms_id": "cda-apply-coconut-cert--user-form",
     "reviewer_jsonforms_id": "cda-apply-coconut-cert--officer-verification-form"
+  },
+  "draft": {
+    "command": "save_as_draft"
   }
 }

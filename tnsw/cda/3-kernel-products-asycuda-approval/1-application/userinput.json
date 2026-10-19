@@ -5,5 +5,8 @@
   "plugin_properties": {
     "user_jsonforms_id": "cda-kernel-asycuda--user-form",
     "reviewer_jsonforms_id": "cda-kernel-asycuda--officer-review-form"
+  },
+  "draft": {
+    "command": "save_as_draft"
   }
 }

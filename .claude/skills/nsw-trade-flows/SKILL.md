@@ -220,7 +220,12 @@ It checks, across `tnsw/manifest.json` and every top-level agency
   in the agency's manifest or `tnsw/manifest.json`;
   - every workflow node's `type`/`gateway_type` is in the observed
   vocabulary, every `TASK` node's `task_template_id` resolves, and every edge's
-  `source_id`/`target_id` names a real node in that workflow.
+  `source_id`/`target_id` names a real node in that workflow;
+- every draft step (a `subtask_template` with `draft`) has a handle with
+  element `draft_action` for its draft command, legal in some state, in a
+  section whose `dataKey` is the step's `output_namespace`; every
+  `draft_action` handle belongs to a draft step; and no workflow still loops
+  drafts back through a `command == 'save_as_draft'` edge.
 
 Errors (non-zero exit) are invariant violations worth fixing or explaining in
 the PR description; warnings are worth a glance but are sometimes the
