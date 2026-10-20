@@ -663,17 +663,147 @@
   },
   "uiSchema": {
     "type": "VerticalLayout",
-    "options": {
-      "readonly": true
-    },
     "elements": [
       {
         "type": "Group",
         "label": "Declaration",
         "elements": [
           {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/baseGeneralSegment/properties/declarationType",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/baseGeneralSegment/properties/declarationProcedure",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/baseGeneralSegment/properties/declarationMode",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/baseGeneralSegment/properties/officeCode",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          },
+          {
             "type": "Control",
-            "scope": "#/properties/baseGeneralSegment",
+            "scope": "#/properties/baseGeneralSegment/properties/manifestRegNumber",
+            "options": {
+              "readonly": true
+            }
+          },
+          {
+            "type": "Group",
+            "label": "Importer / Consignee",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/baseGeneralSegment/properties/importer/properties/id",
+                    "options": {
+                      "readonly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/baseGeneralSegment/properties/importer/properties/name",
+                    "options": {
+                      "readonly": true
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/baseGeneralSegment/properties/importer/properties/address",
+                    "options": {
+                      "readonly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/baseGeneralSegment/properties/importer/properties/countryCode",
+                    "options": {
+                      "readonly": true
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Group",
+            "label": "Exporter",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/baseGeneralSegment/properties/exporter/properties/id",
+                    "options": {
+                      "readonly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/baseGeneralSegment/properties/exporter/properties/name",
+                    "options": {
+                      "readonly": true
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/baseGeneralSegment/properties/exporter/properties/address",
+                    "options": {
+                      "readonly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/baseGeneralSegment/properties/exporter/properties/countryCode",
+                    "options": {
+                      "readonly": true
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/baseGeneralSegment/properties/declarantCode",
             "options": {
               "readonly": true
             }
@@ -685,11 +815,350 @@
         "label": "General Segment",
         "elements": [
           {
-            "type": "Control",
-            "scope": "#/properties/generalSegment",
-            "options": {
-              "readonly": true
-            }
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/generalSegment/properties/numberOfItems",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/generalSegment/properties/numberOfPackages",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/generalSegment/properties/countryOfExportCode",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/generalSegment/properties/countryOfDestination",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/generalSegment/properties/countryFirstDestination",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/generalSegment/properties/transportVesselName",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/generalSegment/properties/transportVesselNameNationality",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/generalSegment/properties/transportVoyageName",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/generalSegment/properties/transportVoyageNameNationality",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/generalSegment/properties/deliveryTerms",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/generalSegment/properties/deliveryTermsPlace",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/generalSegment/properties/modeOfTransportAtBorder",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/generalSegment/properties/placeOfDischarge",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/generalSegment/properties/borderOffice",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          },
+          {
+            "type": "Group",
+            "label": "Total Customs Valuation",
+            "elements": [
+              {
+                "type": "Group",
+                "label": "Invoice / Charge Amount",
+                "elements": [
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/generalSegment/properties/totalCustomsValuation/properties/chargeAmount/properties/value",
+                        "options": {
+                          "readonly": true
+                        }
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/generalSegment/properties/totalCustomsValuation/properties/chargeAmount/properties/currencyID",
+                        "options": {
+                          "readonly": true
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Group",
+                "label": "External Freight",
+                "elements": [
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/generalSegment/properties/totalCustomsValuation/properties/externalFreight/properties/value",
+                        "options": {
+                          "readonly": true
+                        }
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/generalSegment/properties/totalCustomsValuation/properties/externalFreight/properties/currencyID",
+                        "options": {
+                          "readonly": true
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Group",
+                "label": "Internal Freight",
+                "elements": [
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/generalSegment/properties/totalCustomsValuation/properties/internalFreight/properties/value",
+                        "options": {
+                          "readonly": true
+                        }
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/generalSegment/properties/totalCustomsValuation/properties/internalFreight/properties/currencyID",
+                        "options": {
+                          "readonly": true
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Group",
+                "label": "Insurance",
+                "elements": [
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/generalSegment/properties/totalCustomsValuation/properties/insurance/properties/value",
+                        "options": {
+                          "readonly": true
+                        }
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/generalSegment/properties/totalCustomsValuation/properties/insurance/properties/currencyID",
+                        "options": {
+                          "readonly": true
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Group",
+                "label": "Other Costs",
+                "elements": [
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/generalSegment/properties/totalCustomsValuation/properties/otherCost/properties/value",
+                        "options": {
+                          "readonly": true
+                        }
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/generalSegment/properties/totalCustomsValuation/properties/otherCost/properties/currencyID",
+                        "options": {
+                          "readonly": true
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Group",
+                "label": "Deductions",
+                "elements": [
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/generalSegment/properties/totalCustomsValuation/properties/deductions/properties/value",
+                        "options": {
+                          "readonly": true
+                        }
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/generalSegment/properties/totalCustomsValuation/properties/deductions/properties/currencyID",
+                        "options": {
+                          "readonly": true
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/generalSegment/properties/warehouseCode",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/generalSegment/properties/warehouseDelay",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/generalSegment/properties/deferredPayment",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/generalSegment/properties/containerFlag",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/generalSegment/properties/numberOfContainers",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/generalSegment/properties/locationOfGoods",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
           }
         ]
       },
@@ -701,7 +1170,395 @@
             "type": "Control",
             "scope": "#/properties/goodsShipments",
             "options": {
-              "readonly": true
+              "readonly": true,
+              "detail": {
+                "type": "VerticalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/sequenceNumeric",
+                    "options": {
+                      "readonly": true
+                    }
+                  },
+                  {
+                    "type": "Group",
+                    "label": "Item Customs Value",
+                    "elements": [
+                      {
+                        "type": "Group",
+                        "label": "Invoice / Charge Amount",
+                        "elements": [
+                          {
+                            "type": "HorizontalLayout",
+                            "elements": [
+                              {
+                                "type": "Control",
+                                "scope": "#/properties/customsValue/properties/chargeAmount/properties/value",
+                                "options": {
+                                  "readonly": true
+                                }
+                              },
+                              {
+                                "type": "Control",
+                                "scope": "#/properties/customsValue/properties/chargeAmount/properties/currencyID",
+                                "options": {
+                                  "readonly": true
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Group",
+                        "label": "External Freight",
+                        "elements": [
+                          {
+                            "type": "HorizontalLayout",
+                            "elements": [
+                              {
+                                "type": "Control",
+                                "scope": "#/properties/customsValue/properties/externalFreight/properties/value",
+                                "options": {
+                                  "readonly": true
+                                }
+                              },
+                              {
+                                "type": "Control",
+                                "scope": "#/properties/customsValue/properties/externalFreight/properties/currencyID",
+                                "options": {
+                                  "readonly": true
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Group",
+                        "label": "Internal Freight",
+                        "elements": [
+                          {
+                            "type": "HorizontalLayout",
+                            "elements": [
+                              {
+                                "type": "Control",
+                                "scope": "#/properties/customsValue/properties/internalFreight/properties/value",
+                                "options": {
+                                  "readonly": true
+                                }
+                              },
+                              {
+                                "type": "Control",
+                                "scope": "#/properties/customsValue/properties/internalFreight/properties/currencyID",
+                                "options": {
+                                  "readonly": true
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Group",
+                        "label": "Insurance",
+                        "elements": [
+                          {
+                            "type": "HorizontalLayout",
+                            "elements": [
+                              {
+                                "type": "Control",
+                                "scope": "#/properties/customsValue/properties/insurance/properties/value",
+                                "options": {
+                                  "readonly": true
+                                }
+                              },
+                              {
+                                "type": "Control",
+                                "scope": "#/properties/customsValue/properties/insurance/properties/currencyID",
+                                "options": {
+                                  "readonly": true
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Group",
+                        "label": "Other Costs",
+                        "elements": [
+                          {
+                            "type": "HorizontalLayout",
+                            "elements": [
+                              {
+                                "type": "Control",
+                                "scope": "#/properties/customsValue/properties/otherCost/properties/value",
+                                "options": {
+                                  "readonly": true
+                                }
+                              },
+                              {
+                                "type": "Control",
+                                "scope": "#/properties/customsValue/properties/otherCost/properties/currencyID",
+                                "options": {
+                                  "readonly": true
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Group",
+                        "label": "Deductions",
+                        "elements": [
+                          {
+                            "type": "HorizontalLayout",
+                            "elements": [
+                              {
+                                "type": "Control",
+                                "scope": "#/properties/customsValue/properties/deductions/properties/value",
+                                "options": {
+                                  "readonly": true
+                                }
+                              },
+                              {
+                                "type": "Control",
+                                "scope": "#/properties/customsValue/properties/deductions/properties/currencyID",
+                                "options": {
+                                  "readonly": true
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Group",
+                    "label": "Commodity",
+                    "elements": [
+                      {
+                        "type": "HorizontalLayout",
+                        "elements": [
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/commodity/properties/commercialDescription",
+                            "options": {
+                              "readonly": true
+                            }
+                          },
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/commodity/properties/commercialDescription1",
+                            "options": {
+                              "readonly": true
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "HorizontalLayout",
+                        "elements": [
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/commodity/properties/commodityDescription",
+                            "options": {
+                              "readonly": true
+                            }
+                          },
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/commodity/properties/classification",
+                            "options": {
+                              "readonly": true
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Group",
+                        "label": "Measures",
+                        "elements": [
+                          {
+                            "type": "Group",
+                            "label": "Gross Mass",
+                            "elements": [
+                              {
+                                "type": "HorizontalLayout",
+                                "elements": [
+                                  {
+                                    "type": "Control",
+                                    "scope": "#/properties/commodity/properties/goodsMeasure/properties/grossMassMeasure/properties/value",
+                                    "options": {
+                                      "readonly": true
+                                    }
+                                  },
+                                  {
+                                    "type": "Control",
+                                    "scope": "#/properties/commodity/properties/goodsMeasure/properties/grossMassMeasure/properties/unitCode",
+                                    "options": {
+                                      "readonly": true
+                                    }
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "Group",
+                            "label": "Net Mass",
+                            "elements": [
+                              {
+                                "type": "HorizontalLayout",
+                                "elements": [
+                                  {
+                                    "type": "Control",
+                                    "scope": "#/properties/commodity/properties/goodsMeasure/properties/netWeightMeasure/properties/value",
+                                    "options": {
+                                      "readonly": true
+                                    }
+                                  },
+                                  {
+                                    "type": "Control",
+                                    "scope": "#/properties/commodity/properties/goodsMeasure/properties/netWeightMeasure/properties/unitCode",
+                                    "options": {
+                                      "readonly": true
+                                    }
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "Group",
+                            "label": "Tariff Quantity",
+                            "elements": [
+                              {
+                                "type": "HorizontalLayout",
+                                "elements": [
+                                  {
+                                    "type": "Control",
+                                    "scope": "#/properties/commodity/properties/goodsMeasure/properties/tariffQuantity/properties/value",
+                                    "options": {
+                                      "readonly": true
+                                    }
+                                  },
+                                  {
+                                    "type": "Control",
+                                    "scope": "#/properties/commodity/properties/goodsMeasure/properties/tariffQuantity/properties/unitCode",
+                                    "options": {
+                                      "readonly": true
+                                    }
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Group",
+                    "label": "Procedure",
+                    "elements": [
+                      {
+                        "type": "HorizontalLayout",
+                        "elements": [
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/governmentProcedure/properties/extendedProcedure",
+                            "options": {
+                              "readonly": true
+                            }
+                          },
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/governmentProcedure/properties/nationalProcedure",
+                            "options": {
+                              "readonly": true
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/countryOfOriginCode",
+                        "options": {
+                          "readonly": true
+                        }
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/goodsPreference",
+                        "options": {
+                          "readonly": true
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Group",
+                    "label": "Item Packaging",
+                    "elements": [
+                      {
+                        "type": "HorizontalLayout",
+                        "elements": [
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/itemPackage/properties/value",
+                            "options": {
+                              "readonly": true
+                            }
+                          },
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/itemPackage/properties/unitCode",
+                            "options": {
+                              "readonly": true
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/bol",
+                        "options": {
+                          "readonly": true
+                        }
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/bolSplit",
+                        "options": {
+                          "readonly": true
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/marksAndNumbers",
+                    "options": {
+                      "readonly": true
+                    }
+                  }
+                ]
+              }
             }
           }
         ]
@@ -714,7 +1571,63 @@
             "type": "Control",
             "scope": "#/properties/remittances",
             "options": {
-              "readonly": true
+              "readonly": true,
+              "detail": {
+                "type": "VerticalLayout",
+                "elements": [
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/bankCode",
+                        "options": {
+                          "readonly": true
+                        }
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/reference",
+                        "options": {
+                          "readonly": true
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/termsOfPayment",
+                    "options": {
+                      "readonly": true
+                    }
+                  },
+                  {
+                    "type": "Group",
+                    "label": "Amount",
+                    "elements": [
+                      {
+                        "type": "HorizontalLayout",
+                        "elements": [
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/remittanceValue/properties/value",
+                            "options": {
+                              "readonly": true
+                            }
+                          },
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/remittanceValue/properties/currencyID",
+                            "options": {
+                              "readonly": true
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
             }
           }
         ]
@@ -727,7 +1640,69 @@
             "type": "Control",
             "scope": "#/properties/supportingDocuments",
             "options": {
-              "readonly": true
+              "readonly": true,
+              "detail": {
+                "type": "VerticalLayout",
+                "elements": [
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/sequenceNumber",
+                        "options": {
+                          "readonly": true
+                        }
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/itemSequence",
+                        "options": {
+                          "readonly": true
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/documentCode",
+                        "options": {
+                          "readonly": true
+                        }
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/documentId",
+                        "options": {
+                          "readonly": true
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/dateAsString",
+                        "options": {
+                          "readonly": true
+                        }
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/fileName",
+                        "options": {
+                          "readonly": true
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
             }
           }
         ]
