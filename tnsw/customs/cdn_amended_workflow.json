@@ -1,0 +1,41 @@
+{
+  "id": "customs-cdn-amended",
+  "name": "Cargo Dispatch Note Amended",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START",
+      "name": "Start"
+    },
+    {
+      "id": "customs_cdn_amended_review",
+      "type": "TASK",
+      "name": "[Customs] Review Amended Cargo Dispatch Note",
+      "task_template_id": "customs-cdn-amended-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "cdn": "cdn",
+        "cdn_number": "cdn_number",
+        "amended_at": "amended_at"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END",
+      "name": "Amendment Acknowledged"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_start",
+      "source_id": "start",
+      "target_id": "customs_cdn_amended_review"
+    },
+    {
+      "id": "e_end",
+      "source_id": "customs_cdn_amended_review",
+      "target_id": "end"
+    }
+  ]
+}

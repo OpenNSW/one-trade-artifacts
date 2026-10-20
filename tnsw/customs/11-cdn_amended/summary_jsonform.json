@@ -1,0 +1,4 @@
+{
+  "id": "customs-cdn-amended--summary",
+  "template": "{{if .acknowledgement}}### ✅ Amendment Acknowledged\n\nYou acknowledged the amendment Sri Lanka Customs made to Cargo Dispatch Note `{{.cdn_number}}`.\n{{else}}### Sri Lanka Customs Amended Your Cargo Dispatch Note\n\nCustoms amended Cargo Dispatch Note `{{.cdn_number}}` in ASYCUDA World on **{{.amended_at}}**. The dispatch note as it now stands, with the declarations it is linked to, is below. Review it and acknowledge the amendment.\n{{end}}\n* **CDN Number**: `{{.cdn_number}}`\n* **Amended At**: {{.amended_at}}"
+}
