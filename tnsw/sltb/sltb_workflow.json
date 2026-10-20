@@ -186,7 +186,7 @@
         "sltb.userform": "userform"
       },
       "output_mapping": {
-        "final_decision_outcome": "sltb.final_decision_outcome"
+        "decision.final_decision_outcome": "sltb.final_decision_outcome"
       }
     },
     {
