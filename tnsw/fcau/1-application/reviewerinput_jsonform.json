@@ -62,8 +62,9 @@
       "reference_number": {
         "type": "string",
         "title": "FCAU Application Reference Number",
-        "pattern": "^034/[0-9]{5,}$",
-        "example": "034/00481"
+        "description": "Assigned when the application review opens.",
+        "readOnly": true,
+        "example": "PB/034/0001"
       },
       "rejection_reason": {
         "type": "string",
@@ -88,7 +89,6 @@
         },
         "then": {
           "required": [
-            "reference_number",
             "commodities"
           ]
         }
@@ -179,16 +179,7 @@
       },
       {
         "type": "Control",
-        "scope": "#/properties/reference_number",
-        "rule": {
-          "effect": "SHOW",
-          "condition": {
-            "scope": "#/properties/application_review_outcome",
-            "schema": {
-              "const": "approve"
-            }
-          }
-        }
+        "scope": "#/properties/reference_number"
       },
       {
         "type": "Control",

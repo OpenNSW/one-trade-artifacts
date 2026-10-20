@@ -1,11 +1,20 @@
 {
   "id": "fcau-issue-certificate--review-workflow",
   "name": "FCAU Health Certificate Issuance — Officer Review",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
       "type": "START"
+    },
+    {
+      "id": "generate_certificate_no",
+      "type": "TASK",
+      "task_template_id": "fcau-issue-certificate--generate-certificate-no",
+      "input_mapping": {},
+      "output_mapping": {
+        "refid.certificate_id": "reviewform.certificate_id"
+      }
     },
     {
       "id": "userform",
@@ -13,13 +22,13 @@
       "task_template_id": "fcau-issue-certificate--officer-review",
       "input_mapping": {
         "submission?": "submission",
-        "submission.items?": "reviewform.items"
+        "submission.items?": "reviewform.items",
+        "reviewform.certificate_id": "reviewform.certificate_id"
       },
       "output_mapping": {
         "__command": "command",
         "certificate_decision": "reviewform.certificate_decision",
         "items?": "reviewform.items",
-        "certificate_id?": "reviewform.certificate_id",
         "certificate?": "reviewform.certificate",
         "supporting_documents?": "reviewform.supporting_documents",
         "authorized_signature?": "reviewform.authorized_signature",
@@ -48,6 +57,11 @@
     {
       "id": "e1",
       "source_id": "start",
+      "target_id": "generate_certificate_no"
+    },
+    {
+      "id": "e_generated",
+      "source_id": "generate_certificate_no",
       "target_id": "userform"
     },
     {

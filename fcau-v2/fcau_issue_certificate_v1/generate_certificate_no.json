@@ -1,0 +1,14 @@
+{
+  "id": "fcau-issue-certificate--generate-certificate-no",
+  "task_type": "REFID_GENERATOR",
+  "output_namespace": "refid",
+  "plugin_properties": {
+    "ids": [
+      {
+        "path": "/certificate_id",
+        "issuer": "FCAU",
+        "id_type": "health_certificate_no"
+      }
+    ]
+  }
+}

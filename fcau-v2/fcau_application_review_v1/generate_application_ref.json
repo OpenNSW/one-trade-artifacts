@@ -1,0 +1,14 @@
+{
+  "id": "fcau-application-review--generate-application-ref",
+  "task_type": "REFID_GENERATOR",
+  "output_namespace": "refid",
+  "plugin_properties": {
+    "ids": [
+      {
+        "path": "/reference_number",
+        "issuer": "FCAU",
+        "id_type": "application_ref"
+      }
+    ]
+  }
+}

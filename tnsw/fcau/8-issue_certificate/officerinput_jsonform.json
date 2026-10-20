@@ -103,7 +103,9 @@
       "certificate_id": {
         "type": "string",
         "title": "Health Certificate ID",
-        "example": "CERT-FCAU-ACME-9024"
+        "description": "Assigned when the issue task opens.",
+        "readOnly": true,
+        "example": "0001/2026"
       },
       "certificate": {
         "type": "string",
@@ -146,7 +148,6 @@
         },
         "then": {
           "required": [
-            "certificate_id",
             "certificate",
             "authorized_signature"
           ],

@@ -31,6 +31,12 @@
       "path": "fcau_application_review_v1/render.json"
     },
     {
+      "id": "fcau-application-review--generate-application-ref",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "fcau_application_review_v1/generate_application_ref.json"
+    },
+    {
       "id": "fcau-application-review--notify-decision",
       "kind": "subtask_template",
       "version": "",
@@ -107,6 +113,12 @@
       "kind": "generic_template",
       "version": "",
       "path": "fcau_issue_certificate_v1/render.json"
+    },
+    {
+      "id": "fcau-issue-certificate--generate-certificate-no",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "fcau_issue_certificate_v1/generate_certificate_no.json"
     },
     {
       "id": "fcau-issue-certificate--notify-decision",
@@ -449,6 +461,12 @@
       "kind": "generic_template",
       "version": "",
       "path": "fcau_sample_collection_v1/render.json"
+    },
+    {
+      "id": "fcau-sample-collection--generate-sample-numbers",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "fcau_sample_collection_v1/generate_sample_numbers.json"
     },
     {
       "id": "fcau-sample-collection--notify-decision",

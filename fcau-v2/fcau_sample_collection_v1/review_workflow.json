@@ -1,7 +1,7 @@
 {
   "id": "fcau-sample-collection--review-workflow",
   "name": "FCAU Sample Handover & Receipt Registry — Officer Review",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -17,9 +17,22 @@
       },
       "output_mapping": {
         "__command": "command",
+        "lab_code": "reviewform.lab_code",
         "items": "reviewform.items",
         "received_at?": "reviewform.received_at",
         "notes?": "reviewform.notes"
+      }
+    },
+    {
+      "id": "generate_sample_numbers",
+      "type": "TASK",
+      "task_template_id": "fcau-sample-collection--generate-sample-numbers",
+      "input_mapping": {
+        "reviewform.items": "items",
+        "reviewform.lab_code": "lab_code"
+      },
+      "output_mapping": {
+        "refid.items": "reviewform.items"
       }
     },
     {
@@ -49,6 +62,11 @@
     {
       "id": "e2",
       "source_id": "userform",
+      "target_id": "generate_sample_numbers"
+    },
+    {
+      "id": "e_numbered",
+      "source_id": "generate_sample_numbers",
       "target_id": "api_call"
     },
     {

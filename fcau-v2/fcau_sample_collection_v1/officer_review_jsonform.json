@@ -4,6 +4,21 @@
   "schema": {
     "type": "object",
     "properties": {
+      "lab_code": {
+        "type": "string",
+        "title": "Testing Lab",
+        "description": "The lab that tests these samples. Each sample number carries its code.",
+        "oneOf": [
+          {
+            "const": "BR",
+            "title": "BR"
+          },
+          {
+            "const": "SGS",
+            "title": "SGS"
+          }
+        ]
+      },
       "items": {
         "type": "array",
         "title": "Samples Received (Per Item)",
@@ -17,16 +32,10 @@
             "description_of_food": {
               "type": "string",
               "title": "Description of consignment and quantity"
-            },
-            "sample_number": {
-              "type": "string",
-              "title": "Issued Sample Number",
-              "example": "SMP-FCAU-2026-948"
             }
           },
           "required": [
-            "id",
-            "sample_number"
+            "id"
           ]
         }
       },
@@ -43,6 +52,7 @@
       }
     },
     "required": [
+      "lab_code",
       "items",
       "received_at"
     ]
@@ -50,6 +60,13 @@
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/lab_code",
+        "options": {
+          "format": "radio"
+        }
+      },
       {
         "type": "Control",
         "scope": "#/properties/items",
@@ -75,10 +92,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/sample_number"
               }
             ]
           },

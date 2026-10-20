@@ -1,0 +1,18 @@
+{
+  "id": "fcau-sample-collection--generate-sample-numbers",
+  "task_type": "REFID_GENERATOR",
+  "output_namespace": "refid",
+  "plugin_properties": {
+    "ids": [
+      {
+        "each": "/items",
+        "path": "0/sample_number",
+        "issuer": "FCAU",
+        "id_type": "sample_ref",
+        "params": {
+          "labCode": "/lab_code"
+        }
+      }
+    ]
+  }
+}
