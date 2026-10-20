@@ -18,6 +18,13 @@
               "type": "string",
               "title": "Description of consignment and quantity"
             },
+            "sample_number": {
+              "type": "string",
+              "title": "Sample Number",
+              "description": "Assigned when the samples are registered.",
+              "readOnly": true,
+              "example": "FCAU/Exp/BR/0001/2026"
+            },
             "visual_result": {
               "type": "string",
               "title": "Visual Inspection Result",
@@ -82,6 +89,20 @@
                     "scope": "#/properties/description_of_food",
                     "options": {
                       "readOnly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/sample_number",
+                    "rule": {
+                      "effect": "SHOW",
+                      "condition": {
+                        "scope": "#/properties/sample_number",
+                        "schema": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      }
                     }
                   }
                 ]
