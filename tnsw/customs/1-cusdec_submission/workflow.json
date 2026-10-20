@@ -62,7 +62,7 @@
         "reviewerform?": "reviewerform",
         "userform?": "userform",
         "userform": "payload",
-        "cig.edgeId?": "previous_edge_id"
+        "cig.edgeId?": "previousEdgeId"
       },
       "output_mapping": {
         "cig.accepted": "cig.accepted",
