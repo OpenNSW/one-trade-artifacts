@@ -1,0 +1,737 @@
+{
+  "id": "customs-cusdec-amended--declaration",
+  "title": "Amended Customs Declaration",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "properties": {
+        "type": "object",
+        "title": "Properties",
+        "properties": {
+          "submitter": {
+            "type": "string",
+            "title": "Submitter / Channel",
+            "readOnly": true
+          },
+          "nswId": {
+            "type": "string",
+            "title": "NSW ID",
+            "readOnly": true
+          }
+        }
+      },
+      "status": {
+        "type": "string",
+        "title": "Declaration Status",
+        "readOnly": true
+      },
+      "baseGeneralSegment": {
+        "type": "object",
+        "title": "Declaration",
+        "properties": {
+          "declarationType": {
+            "type": "string",
+            "title": "Declaration Type",
+            "readOnly": true
+          },
+          "declarationProcedure": {
+            "type": "string",
+            "title": "Declaration Procedure",
+            "readOnly": true
+          },
+          "declarationMode": {
+            "type": "string",
+            "title": "Declaration Mode",
+            "readOnly": true
+          },
+          "officeCode": {
+            "type": "string",
+            "title": "Customs Office Code",
+            "readOnly": true
+          },
+          "manifestRegNumber": {
+            "type": "string",
+            "title": "Manifest Reg. Number",
+            "readOnly": true
+          },
+          "importer": {
+            "type": "object",
+            "title": "Importer / Consignee",
+            "properties": {
+              "id": {
+                "type": "string",
+                "title": "Code",
+                "readOnly": true
+              },
+              "name": {
+                "type": "string",
+                "title": "Name",
+                "readOnly": true
+              },
+              "address": {
+                "type": "string",
+                "title": "Address",
+                "readOnly": true
+              },
+              "countryCode": {
+                "type": "string",
+                "title": "Country",
+                "readOnly": true
+              }
+            }
+          },
+          "exporter": {
+            "type": "object",
+            "title": "Exporter",
+            "properties": {
+              "id": {
+                "type": "string",
+                "title": "Code",
+                "readOnly": true
+              },
+              "name": {
+                "type": "string",
+                "title": "Name",
+                "readOnly": true
+              },
+              "address": {
+                "type": "string",
+                "title": "Address",
+                "readOnly": true
+              },
+              "countryCode": {
+                "type": "string",
+                "title": "Country",
+                "readOnly": true
+              }
+            }
+          },
+          "declarantCode": {
+            "type": "string",
+            "title": "Declarant Code",
+            "readOnly": true
+          }
+        }
+      },
+      "generalSegment": {
+        "type": "object",
+        "title": "General Segment",
+        "properties": {
+          "numberOfItems": {
+            "type": "number",
+            "title": "Number of Items",
+            "readOnly": true
+          },
+          "numberOfPackages": {
+            "type": "number",
+            "title": "Number of Packages",
+            "readOnly": true
+          },
+          "countryOfExportCode": {
+            "type": "string",
+            "title": "Country of Export",
+            "readOnly": true
+          },
+          "countryOfDestination": {
+            "type": "string",
+            "title": "Country of Destination",
+            "readOnly": true
+          },
+          "countryFirstDestination": {
+            "type": "string",
+            "title": "Country of First Destination",
+            "readOnly": true
+          },
+          "transportVesselName": {
+            "type": "string",
+            "title": "Transport Name at Departure",
+            "readOnly": true
+          },
+          "transportVesselNameNationality": {
+            "type": "string",
+            "title": "Transport Nationality",
+            "readOnly": true
+          },
+          "transportVoyageName": {
+            "type": "string",
+            "title": "Voyage Name",
+            "readOnly": true
+          },
+          "transportVoyageNameNationality": {
+            "type": "string",
+            "title": "Voyage Nationality",
+            "readOnly": true
+          },
+          "deliveryTerms": {
+            "type": "string",
+            "title": "Delivery Terms",
+            "readOnly": true
+          },
+          "deliveryTermsPlace": {
+            "type": "string",
+            "title": "Delivery Terms Place",
+            "readOnly": true
+          },
+          "modeOfTransportAtBorder": {
+            "type": "string",
+            "title": "Transport Mode at Border",
+            "readOnly": true
+          },
+          "placeOfDischarge": {
+            "type": "string",
+            "title": "Place of Discharge",
+            "readOnly": true
+          },
+          "borderOffice": {
+            "type": "string",
+            "title": "Office of Entry / Exit",
+            "readOnly": true
+          },
+          "totalCustomsValuation": {
+            "type": "object",
+            "title": "Total Customs Valuation",
+            "properties": {
+              "chargeAmount": {
+                "type": "object",
+                "title": "Invoice / Charge Amount",
+                "properties": {
+                  "value": {
+                    "type": "number",
+                    "title": "Value",
+                    "readOnly": true
+                  },
+                  "currencyID": {
+                    "type": "string",
+                    "title": "Currency",
+                    "readOnly": true
+                  }
+                }
+              },
+              "externalFreight": {
+                "type": "object",
+                "title": "External Freight",
+                "properties": {
+                  "value": {
+                    "type": "number",
+                    "title": "Value",
+                    "readOnly": true
+                  },
+                  "currencyID": {
+                    "type": "string",
+                    "title": "Currency",
+                    "readOnly": true
+                  }
+                }
+              },
+              "internalFreight": {
+                "type": "object",
+                "title": "Internal Freight",
+                "properties": {
+                  "value": {
+                    "type": "number",
+                    "title": "Value",
+                    "readOnly": true
+                  },
+                  "currencyID": {
+                    "type": "string",
+                    "title": "Currency",
+                    "readOnly": true
+                  }
+                }
+              },
+              "insurance": {
+                "type": "object",
+                "title": "Insurance",
+                "properties": {
+                  "value": {
+                    "type": "number",
+                    "title": "Value",
+                    "readOnly": true
+                  },
+                  "currencyID": {
+                    "type": "string",
+                    "title": "Currency",
+                    "readOnly": true
+                  }
+                }
+              },
+              "otherCost": {
+                "type": "object",
+                "title": "Other Costs",
+                "properties": {
+                  "value": {
+                    "type": "number",
+                    "title": "Value",
+                    "readOnly": true
+                  },
+                  "currencyID": {
+                    "type": "string",
+                    "title": "Currency",
+                    "readOnly": true
+                  }
+                }
+              },
+              "deductions": {
+                "type": "object",
+                "title": "Deductions",
+                "properties": {
+                  "value": {
+                    "type": "number",
+                    "title": "Value",
+                    "readOnly": true
+                  },
+                  "currencyID": {
+                    "type": "string",
+                    "title": "Currency",
+                    "readOnly": true
+                  }
+                }
+              }
+            }
+          },
+          "warehouseCode": {
+            "type": "string",
+            "title": "Warehouse Code",
+            "readOnly": true
+          },
+          "warehouseDelay": {
+            "type": "number",
+            "title": "Warehouse Delay",
+            "readOnly": true
+          },
+          "deferredPayment": {
+            "type": "string",
+            "title": "Deferred Payment",
+            "readOnly": true
+          },
+          "containerFlag": {
+            "type": "boolean",
+            "title": "Containerised",
+            "readOnly": true
+          },
+          "numberOfContainers": {
+            "type": "number",
+            "title": "Number of Containers",
+            "readOnly": true
+          },
+          "locationOfGoods": {
+            "type": "string",
+            "title": "Location of Goods",
+            "readOnly": true
+          }
+        }
+      },
+      "goodsShipments": {
+        "type": "array",
+        "title": "Items",
+        "readOnly": true,
+        "items": {
+          "type": "object",
+          "title": "Item",
+          "properties": {
+            "sequenceNumeric": {
+              "type": "number",
+              "title": "Item Number",
+              "readOnly": true
+            },
+            "customsValue": {
+              "type": "object",
+              "title": "Item Customs Value",
+              "properties": {
+                "chargeAmount": {
+                  "type": "object",
+                  "title": "Invoice / Charge Amount",
+                  "properties": {
+                    "value": {
+                      "type": "number",
+                      "title": "Value",
+                      "readOnly": true
+                    },
+                    "currencyID": {
+                      "type": "string",
+                      "title": "Currency",
+                      "readOnly": true
+                    }
+                  }
+                },
+                "externalFreight": {
+                  "type": "object",
+                  "title": "External Freight",
+                  "properties": {
+                    "value": {
+                      "type": "number",
+                      "title": "Value",
+                      "readOnly": true
+                    },
+                    "currencyID": {
+                      "type": "string",
+                      "title": "Currency",
+                      "readOnly": true
+                    }
+                  }
+                },
+                "internalFreight": {
+                  "type": "object",
+                  "title": "Internal Freight",
+                  "properties": {
+                    "value": {
+                      "type": "number",
+                      "title": "Value",
+                      "readOnly": true
+                    },
+                    "currencyID": {
+                      "type": "string",
+                      "title": "Currency",
+                      "readOnly": true
+                    }
+                  }
+                },
+                "insurance": {
+                  "type": "object",
+                  "title": "Insurance",
+                  "properties": {
+                    "value": {
+                      "type": "number",
+                      "title": "Value",
+                      "readOnly": true
+                    },
+                    "currencyID": {
+                      "type": "string",
+                      "title": "Currency",
+                      "readOnly": true
+                    }
+                  }
+                },
+                "otherCost": {
+                  "type": "object",
+                  "title": "Other Costs",
+                  "properties": {
+                    "value": {
+                      "type": "number",
+                      "title": "Value",
+                      "readOnly": true
+                    },
+                    "currencyID": {
+                      "type": "string",
+                      "title": "Currency",
+                      "readOnly": true
+                    }
+                  }
+                },
+                "deductions": {
+                  "type": "object",
+                  "title": "Deductions",
+                  "properties": {
+                    "value": {
+                      "type": "number",
+                      "title": "Value",
+                      "readOnly": true
+                    },
+                    "currencyID": {
+                      "type": "string",
+                      "title": "Currency",
+                      "readOnly": true
+                    }
+                  }
+                }
+              }
+            },
+            "commodity": {
+              "type": "object",
+              "title": "Commodity",
+              "properties": {
+                "commercialDescription": {
+                  "type": "string",
+                  "title": "Commercial Description",
+                  "readOnly": true
+                },
+                "commercialDescription1": {
+                  "type": "string",
+                  "title": "Commercial Description (line 2)",
+                  "readOnly": true
+                },
+                "commodityDescription": {
+                  "type": "string",
+                  "title": "Commodity Description",
+                  "readOnly": true
+                },
+                "classification": {
+                  "type": "string",
+                  "title": "Classification (HS)",
+                  "readOnly": true
+                },
+                "goodsMeasure": {
+                  "type": "object",
+                  "title": "Measures",
+                  "properties": {
+                    "grossMassMeasure": {
+                      "type": "object",
+                      "title": "Gross Mass",
+                      "properties": {
+                        "value": {
+                          "type": "number",
+                          "title": "Value",
+                          "readOnly": true
+                        },
+                        "unitCode": {
+                          "type": "string",
+                          "title": "Unit",
+                          "readOnly": true
+                        }
+                      }
+                    },
+                    "netWeightMeasure": {
+                      "type": "object",
+                      "title": "Net Mass",
+                      "properties": {
+                        "value": {
+                          "type": "number",
+                          "title": "Value",
+                          "readOnly": true
+                        },
+                        "unitCode": {
+                          "type": "string",
+                          "title": "Unit",
+                          "readOnly": true
+                        }
+                      }
+                    },
+                    "tariffQuantity": {
+                      "type": "object",
+                      "title": "Tariff Quantity",
+                      "properties": {
+                        "value": {
+                          "type": "number",
+                          "title": "Value",
+                          "readOnly": true
+                        },
+                        "unitCode": {
+                          "type": "string",
+                          "title": "Unit",
+                          "readOnly": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "governmentProcedure": {
+              "type": "object",
+              "title": "Procedure",
+              "properties": {
+                "extendedProcedure": {
+                  "type": "string",
+                  "title": "Extended Procedure (CPC)",
+                  "readOnly": true
+                },
+                "nationalProcedure": {
+                  "type": "string",
+                  "title": "National Procedure",
+                  "readOnly": true
+                }
+              }
+            },
+            "countryOfOriginCode": {
+              "type": "string",
+              "title": "Country of Origin",
+              "readOnly": true
+            },
+            "goodsPreference": {
+              "type": "string",
+              "title": "Goods Preference",
+              "readOnly": true
+            },
+            "itemPackage": {
+              "type": "object",
+              "title": "Item Packaging",
+              "properties": {
+                "value": {
+                  "type": "number",
+                  "title": "Value",
+                  "readOnly": true
+                },
+                "unitCode": {
+                  "type": "string",
+                  "title": "Unit",
+                  "readOnly": true
+                }
+              }
+            },
+            "bol": {
+              "type": "string",
+              "title": "Bill of Lading",
+              "readOnly": true
+            },
+            "bolSplit": {
+              "type": "string",
+              "title": "BoL Split",
+              "readOnly": true
+            },
+            "marksAndNumbers": {
+              "type": "string",
+              "title": "Marks and Numbers",
+              "readOnly": true
+            }
+          }
+        }
+      },
+      "remittances": {
+        "type": "array",
+        "title": "Remittance",
+        "readOnly": true,
+        "items": {
+          "type": "object",
+          "title": "Remittance",
+          "properties": {
+            "bankCode": {
+              "type": "string",
+              "title": "Bank Code",
+              "readOnly": true
+            },
+            "reference": {
+              "type": "string",
+              "title": "Payment Reference",
+              "readOnly": true
+            },
+            "termsOfPayment": {
+              "type": "string",
+              "title": "Terms of Payment",
+              "readOnly": true
+            },
+            "remittanceValue": {
+              "type": "object",
+              "title": "Amount",
+              "properties": {
+                "value": {
+                  "type": "number",
+                  "title": "Value",
+                  "readOnly": true
+                },
+                "currencyID": {
+                  "type": "string",
+                  "title": "Currency",
+                  "readOnly": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "supportingDocuments": {
+        "type": "array",
+        "title": "Supporting Documents",
+        "readOnly": true,
+        "items": {
+          "type": "object",
+          "title": "Document",
+          "properties": {
+            "sequenceNumber": {
+              "type": "number",
+              "title": "Line Number",
+              "readOnly": true
+            },
+            "itemSequence": {
+              "type": "string",
+              "title": "Item Number",
+              "readOnly": true
+            },
+            "documentCode": {
+              "type": "string",
+              "title": "Document Code",
+              "readOnly": true
+            },
+            "documentId": {
+              "type": "string",
+              "title": "Document Reference Number",
+              "readOnly": true
+            },
+            "dateAsString": {
+              "type": "string",
+              "title": "Document Date",
+              "readOnly": true
+            },
+            "fileName": {
+              "type": "string",
+              "title": "File Name",
+              "readOnly": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "options": {
+      "readonly": true
+    },
+    "elements": [
+      {
+        "type": "Group",
+        "label": "Declaration",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/baseGeneralSegment",
+            "options": {
+              "readonly": true
+            }
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "label": "General Segment",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/generalSegment",
+            "options": {
+              "readonly": true
+            }
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "label": "Items",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/goodsShipments",
+            "options": {
+              "readonly": true
+            }
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "label": "Remittance",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/remittances",
+            "options": {
+              "readonly": true
+            }
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "label": "Supporting Documents",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/supportingDocuments",
+            "options": {
+              "readonly": true
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
