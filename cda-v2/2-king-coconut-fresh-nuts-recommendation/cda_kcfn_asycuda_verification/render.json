@@ -11,7 +11,7 @@
     "submission.additional_documents[*]",
     "submission.commercial_invoice",
     "submission.packing_list",
-    "submission.recommendation_letter_file"
+    "submission.recommendation_letter_file[*]"
   ],
   "sections": {
     "submission_view": {

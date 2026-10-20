@@ -5,9 +5,12 @@
     "type": "object",
     "properties": {
       "recommendation_letter_file": {
-        "type": "string",
-        "format": "file",
-        "title": "Signed Recommendation Letter (PDF)",
+        "type": "array",
+        "title": "Signed Recommendation Letters (PDF)",
+        "items": {
+          "type": "string",
+          "format": "file"
+        },
         "readOnly": true
       },
       "commercial_invoice": {

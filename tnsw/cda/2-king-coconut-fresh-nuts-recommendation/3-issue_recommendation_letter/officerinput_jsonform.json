@@ -10,10 +10,22 @@
         "example": "CDA-KCFN-REC-2026-00123"
       },
       "recommendation_letter_file": {
-        "type": "string",
-        "format": "file",
-        "title": "Recommendation Letter File (PDF)",
-        "example": "https://cda.gov.lk/kcfn/recommendations/CDA-KCFN-REC-2026-00123.pdf"
+        "type": "array",
+        "title": "Recommendation Letters (PDF)",
+        "description": "Upload one or more recommendation letters.",
+        "items": {
+          "type": "string",
+          "format": "file"
+        },
+        "minItems": 1,
+        "x-file": {
+          "maxFiles": 10,
+          "accept": ".pdf"
+        },
+        "example": [
+          "https://cda.gov.lk/kcfn/recommendations/CDA-KCFN-REC-2026-00123-1.pdf",
+          "https://cda.gov.lk/kcfn/recommendations/CDA-KCFN-REC-2026-00123-2.pdf"
+        ]
       },
       "remarks": {
         "type": "string",
