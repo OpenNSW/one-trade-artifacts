@@ -1,4 +1,4 @@
 {
   "id": "sltb-levy-payment-review-receipt--awaiting-resubmission",
-  "template": "Sent back to the applicant to re-upload the payment slip. Waiting for their resubmission.\n\n> **Your comments**: {{.}}"
+  "template": "Sent back to the applicant to re-upload the payment slip. Waiting for their resubmission.{{if .payment_feedback}}\n\n> **Your comments**: {{.payment_feedback}}{{end}}"
 }

@@ -55,19 +55,19 @@
         "states": [
           "QUEUED_EXTERNALLY"
         ],
-        "requireDataKey": "payload"
+        "requireDataKey": "callbackToken"
       }
     },
     "awaiting_resubmission": {
       "templateId": "cda-lot-adjustment-review--awaiting-resubmission",
       "title": "Review Status",
       "projector": "MARKDOWN",
-      "dataKey": "adjustment_feedback",
+      "dataKey": "reviewform",
       "visibleWhen": {
         "states": [
           "QUEUED_EXTERNALLY"
         ],
-        "requireDataKey": "adjustment_feedback"
+        "requireDataKey": "replyToken"
       }
     },
     "withdrawn": {

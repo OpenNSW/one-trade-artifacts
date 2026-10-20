@@ -47,19 +47,19 @@
         "states": [
           "QUEUED_EXTERNALLY"
         ],
-        "requireDataKey": "payload"
+        "requireDataKey": "callbackToken"
       }
     },
     "awaiting_resubmission": {
       "templateId": "cda-kcfn-inspection-review--awaiting-resubmission",
       "title": "Review Status",
       "projector": "MARKDOWN",
-      "dataKey": "rejection_reason",
+      "dataKey": "reviewform",
       "visibleWhen": {
         "states": [
           "QUEUED_EXTERNALLY"
         ],
-        "requireDataKey": "rejection_reason"
+        "requireDataKey": "replyToken"
       }
     }
   },

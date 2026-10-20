@@ -1,7 +1,7 @@
 {
   "id": "npqs-treatment-request-review--review-workflow",
   "name": "NPQS Treatment Request Review — Officer Review",
-  "version": 2,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
@@ -33,9 +33,11 @@
       "task_template_id": "npqs-treatment-request-review--request-info",
       "input_mapping": {
         "callbackToken": "replyToken",
-        "reviewform.treatment_request_outcome": "treatment_request_outcome",
-        "reviewform.clarification_comments?": "clarification_comments",
-        "reviewform.treatment_items?": "treatment_items"
+        "reviewform.treatment_request_outcome": "payload.treatment_request_outcome",
+        "reviewform.clarification_comments?": "payload.clarification_comments",
+        "reviewform.treatment_items?": "payload.treatment_items",
+        "submission?": "submission",
+        "reviewform": "reviewform"
       },
       "output_mapping": {
         "submission": "submission",

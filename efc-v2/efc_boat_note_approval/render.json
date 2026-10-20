@@ -29,19 +29,13 @@
       "templateId": "efc-boat-note-approval--boat-note-document",
       "title": "Boat Note Document",
       "projector": "MARKDOWN",
-      "dataKey": "submission",
-      "visibleWhen": {
-        "requireDataKey": "submission"
-      }
+      "dataKey": "submission"
     },
     "submission_view": {
       "templateId": "efc-boat-note--user-form",
       "title": "Submitted Boat Note",
       "projector": "FORM",
-      "dataKey": "submission",
-      "visibleWhen": {
-        "requireDataKey": "submission"
-      }
+      "dataKey": "submission"
     },
     "review_form": {
       "templateId": "efc-boat-note-approval--officer-form",
@@ -64,19 +58,19 @@
         "states": [
           "QUEUED_EXTERNALLY"
         ],
-        "requireDataKey": "payload"
+        "requireDataKey": "callbackToken"
       }
     },
     "awaiting_resubmission": {
       "templateId": "efc-boat-note-approval--awaiting-resubmission",
       "title": "Review Status",
       "projector": "MARKDOWN",
-      "dataKey": "remarks",
+      "dataKey": "reviewform",
       "visibleWhen": {
         "states": [
           "QUEUED_EXTERNALLY"
         ],
-        "requireDataKey": "remarks"
+        "requireDataKey": "replyToken"
       }
     }
   },

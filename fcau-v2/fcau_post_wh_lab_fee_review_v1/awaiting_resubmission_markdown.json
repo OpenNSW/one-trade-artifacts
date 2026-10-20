@@ -1,4 +1,4 @@
 {
   "id": "fcau-post-wh-lab-fee-review--awaiting-resubmission",
-  "template": "Sent back to the applicant to re-upload the lab fee receipt. Waiting for their resubmission.\n\n> **Your comments**: {{.}}"
+  "template": "Sent back to the applicant to re-upload the lab fee receipt. Waiting for their resubmission.{{if .payment_feedback}}\n\n> **Your comments**: {{.payment_feedback}}{{end}}"
 }

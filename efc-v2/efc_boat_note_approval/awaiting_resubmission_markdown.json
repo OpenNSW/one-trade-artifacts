@@ -1,4 +1,4 @@
 {
   "id": "efc-boat-note-approval--awaiting-resubmission",
-  "template": "Sent back to the trader for changes to the boat note. Waiting for their resubmission.\n\n> **Your remarks**: {{.}}"
+  "template": "Sent back to the trader for changes to the boat note. Waiting for their resubmission.{{if .remarks}}\n\n> **Your remarks**: {{.remarks}}{{end}}"
 }

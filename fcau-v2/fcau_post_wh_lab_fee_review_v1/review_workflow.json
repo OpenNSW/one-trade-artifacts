@@ -1,7 +1,7 @@
 {
   "id": "fcau-post-wh-lab-fee-review--review-workflow",
   "name": "FCAU Post-Warehouse Lab Test Fee Payment Review — Officer Review",
-  "version": 2,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
@@ -31,8 +31,10 @@
       "task_template_id": "fcau-post-wh-lab-fee-review--request-info",
       "input_mapping": {
         "callbackToken": "replyToken",
-        "reviewform.payment_review_outcome": "payment_review_outcome",
-        "reviewform.payment_feedback?": "payment_feedback"
+        "reviewform.payment_review_outcome": "payload.payment_review_outcome",
+        "reviewform.payment_feedback?": "payload.payment_feedback",
+        "submission?": "submission",
+        "reviewform": "reviewform"
       },
       "output_mapping": {
         "submission": "submission",

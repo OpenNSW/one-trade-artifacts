@@ -1,7 +1,7 @@
 {
   "id": "cda-officer-verification--review-workflow",
   "name": "CDA Coconut Certificate Verification \u2014 Officer Review",
-  "version": 4,
+  "version": 5,
   "nodes": [
     {
       "id": "start",
@@ -44,8 +44,10 @@
       "task_template_id": "cda-officer-verification--request-info",
       "input_mapping": {
         "callbackToken": "replyToken",
-        "reviewform.verification_outcome": "verification_outcome",
-        "reviewform.rejection_reason?": "rejection_reason"
+        "reviewform.verification_outcome": "payload.verification_outcome",
+        "reviewform.rejection_reason?": "payload.rejection_reason",
+        "submission?": "submission",
+        "reviewform": "reviewform"
       },
       "output_mapping": {
         "submission": "submission",

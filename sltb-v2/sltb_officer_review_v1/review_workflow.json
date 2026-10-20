@@ -1,7 +1,7 @@
 {
   "id": "sltb-officer-review--review-workflow",
   "name": "SLTB Blend Sheet Review — Officer Review",
-  "version": 3,
+  "version": 4,
   "nodes": [
     {
       "id": "start",
@@ -33,8 +33,10 @@
       "task_template_id": "sltb-officer-review--request-info",
       "input_mapping": {
         "callbackToken": "replyToken",
-        "reviewform.review_outcome": "review_outcome",
-        "reviewform.feedback?": "feedback"
+        "reviewform.review_outcome": "payload.review_outcome",
+        "reviewform.feedback?": "payload.feedback",
+        "submission?": "submission",
+        "reviewform": "reviewform"
       },
       "output_mapping": {
         "submission": "submission",
