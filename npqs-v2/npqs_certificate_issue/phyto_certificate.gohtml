@@ -119,7 +119,21 @@ Consignment re-inspected after treatment and found free from live pests.
   </tr>
   <tr><th>Declared Means of Conveyance</th><th>Declared Point of Entry</th></tr>
   <tr>
-    <td>{{ $app.transport_mode.label }}{{ if $app.vessel_name }} - {{ $app.vessel_name }}{{ end }}{{ if $app.voyage_number }} - Voyage {{ $app.voyage_number }}{{ end }}</td>
+    <td>{{- if and $app.transport_details (gt (len $app.transport_details) 0) -}}
+{{- range $i, $t := $app.transport_details -}}
+{{- if $i }}, {{ end -}}
+{{- $mode := print $t.transport_mode -}}
+{{- lookup $mode "1" "Air transport" "2" "Mail" "3" "Maritime transport" "4" "Fixed transport installations" "5" "Inland water transport" "6" "Multimodal transport" "7" "Rail transport" "8" "Road transport" "9" "Transport mode not applicable" "10" "Transport mode not specified" -}}
+{{- if and (ne $mode "") (ne $mode "9") (ne $mode "10") -}}
+{{- if $t.transport_name }} - {{ $t.transport_name }}{{ end -}}
+{{- if $t.transport_number }} ({{ $t.transport_number }}){{ end -}}
+{{- end -}}
+{{- end -}}
+{{- else if $app.transport_mode -}}
+{{- with $app.transport_mode }}{{ .label }}{{ end -}}
+{{- if $app.vessel_name }} - {{ $app.vessel_name }}{{ end -}}
+{{- if $app.voyage_number }} - Voyage {{ $app.voyage_number }}{{ end -}}
+{{- end -}}</td>
     <td>{{ $app.point_of_entry_port }}</td>
   </tr>
   {{- if $app.transit_countries }}
