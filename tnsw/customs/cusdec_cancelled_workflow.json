@@ -1,0 +1,40 @@
+{
+  "id": "customs-cusdec-cancelled",
+  "name": "Customs Declaration Cancelled",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START",
+      "name": "Start"
+    },
+    {
+      "id": "customs_cancelled_notice",
+      "type": "TASK",
+      "name": "[Customs] Declaration Cancelled",
+      "task_template_id": "customs-cusdec-cancelled-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "cusdec_number": "cusdec_number",
+        "cancelled_at": "cancelled_at"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END",
+      "name": "Cancellation Acknowledged"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_start",
+      "source_id": "start",
+      "target_id": "customs_cancelled_notice"
+    },
+    {
+      "id": "e_end",
+      "source_id": "customs_cancelled_notice",
+      "target_id": "end"
+    }
+  ]
+}

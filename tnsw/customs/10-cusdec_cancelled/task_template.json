@@ -1,0 +1,6 @@
+{
+  "id": "customs-cusdec-cancelled-flow",
+  "type": "REVIEW",
+  "workflow_id": "customs-cusdec-cancelled-flow",
+  "render_config_id": "customs-cusdec-cancelled-flow:render"
+}

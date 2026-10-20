@@ -1,0 +1,26 @@
+{
+  "id": "customs-cusdec-cancelled--acknowledge-form",
+  "title": "Acknowledge Cancellation",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "acknowledged": {
+        "type": "boolean",
+        "title": "I understand the export process for this consignment has been stopped",
+        "const": true
+      }
+    },
+    "required": [
+      "acknowledged"
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/acknowledged"
+      }
+    ]
+  }
+}

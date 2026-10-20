@@ -1,0 +1,38 @@
+{
+  "id": "customs-cusdec-cancelled-flow:render",
+  "type": "REVIEW",
+  "title": "[Customs] Declaration Cancelled",
+  "sections": {
+    "notice": {
+      "templateId": "customs-cusdec-cancelled--notice",
+      "title": "Declaration Cancelled",
+      "projector": "MARKDOWN"
+    },
+    "acknowledge": {
+      "templateId": "customs-cusdec-cancelled--acknowledge-form",
+      "title": "Acknowledge",
+      "projector": "FORM",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Acknowledge Cancellation",
+          "element": "primary_action"
+        }
+      ],
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ]
+      }
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}
