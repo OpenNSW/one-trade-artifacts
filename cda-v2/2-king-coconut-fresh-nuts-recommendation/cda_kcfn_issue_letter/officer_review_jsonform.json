@@ -18,6 +18,7 @@
           "format": "file"
         },
         "minItems": 1,
+        "maxItems": 10,
         "x-file": {
           "maxFiles": 10,
           "accept": ".pdf"
