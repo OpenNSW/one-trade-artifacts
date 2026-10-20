@@ -17,7 +17,8 @@
       },
       "output_mapping": {
         "final_decision_outcome": "decision.final_decision_outcome",
-        "remarks?": "decision.remarks"
+        "remarks?": "decision.remarks",
+        "asycuda_approval_confirmed?": "decision.asycuda_approval_confirmed"
       }
     },
     {
