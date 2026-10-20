@@ -7,12 +7,12 @@ by hand and reasoning about it as a workflow spec, not writing/running code.
 
 ## Agencies
 
-- `cda/` — Coconut Development Authority
-- `efc/` — Export Facilitation Center (EFC), which reviews the boat note for the
+- `cda-v2/` — Coconut Development Authority
+- `efc-v2/` — Export Facilitation Center (EFC), which reviews the boat note for the
   `tnsw/customs/` workflow
-- `fcau/` — Food Control Administration Unit
-- `npqs/` — National Plant Quarantine Service
-- `sltb/` — Sri Lanka Tea Board
+- `fcau-v2/` — Food Control Administration Unit
+- `npqs-v2/` — National Plant Quarantine Service
+- `sltb-v2/` — Sri Lanka Tea Board
 - `tnsw/` — the NSW orchestration layer that ties all of the above into end-to-end
   trader-facing application flows (plus its own `trade/` sub-flow for consignment setup
   shared across agencies)
@@ -29,10 +29,10 @@ Each agency has artifacts in two places that must be read together, not independ
      **step sub-workflow** (its own `workflow.json` FSM) representing one macro-workflow
      node. Letter suffixes (`3a`/`3b`/`3c`) mark parallel/exclusive branches of the same
      numbered stage.
-2. **`<agency>/`** (top-level, e.g. `sltb/`) — owned by the agency's own backend service.
-   Flat list of `task_config` artifacts only (no workflow logic), each with a
-   `manifest.json` indexing them. These are the officer-facing forms that the agency
-   service injects into a task at runtime.
+2. **`<agency>-v2/`** (top-level, e.g. `sltb-v2/`) — owned by the agency's own backend
+   (nsw-srilanka in agency mode). One folder per officer task, each holding the task's
+   `*.taskconfig.json` and the workflow, templates and forms that drive it (see "The
+   agency (v2) shape" below), all indexed in `<agency>-v2/manifest.json`.
 
 ### Agencies with more than one process
 
@@ -45,9 +45,9 @@ under one folder per process:
   folders — same internal structure as the single-process layout, just moved down a
   level. `tnsw/manifest.json` stays put; only the `path` of that process's artifacts
   gains the `<process-slug>/` segment.
-- `<agency>/<process-slug>/<task_config_dir>/` for that process's agency-side
-  `task_config`s. `<agency>/manifest.json` stays at the agency's top level; only its
-  artifact `path`s move under `<process-slug>/`.
+- `<agency>-v2/<process-slug>/<task folder>/` for that process's agency-side tasks.
+  `<agency>-v2/manifest.json` stays at the agency's top level; only its artifact
+  `path`s move under `<process-slug>/`.
 
 `<process-slug>` is an arbitrary folder name, not a numbering scheme — it's whatever
 that process happens to be called at the time it's split out (e.g. a placeholder like
@@ -56,42 +56,31 @@ once the process is named). Don't assume sibling processes are numbered sequenti
 or read any other meaning into the slug.
 
 Agencies are migrated to this layout only when they actually need a second process —
-premature nesting for a single-process agency is not the convention. `cda/` is the
-first agency making this transition: its original (and, until now, only) process was
-moved under its own process folder (`1-export-coconut-certificate-registration/`) as
-part of adding a second CDA process; `customs/`, `fcau/`, `npqs/`, `sltb/`, and `trade/`
-remain flat (no per-process folder) until one of them needs a second process.
+premature nesting for a single-process agency is not the convention. CDA is the only
+agency nested so far, on both sides (`tnsw/cda/` and `cda-v2/`); `tnsw/customs/`,
+`tnsw/fcau/`, `tnsw/npqs/`, `tnsw/sltb/`, `tnsw/trade/` and the other `<agency>-v2/`
+folders remain flat until one of them needs a second process.
 
-The link between the two: a step's `EXTERNAL_REVIEW` task template
-(`tnsw/<agency>/<step>/officer_*.json`) references `service_id` + `task_code`, and that
-`task_code` resolves to the matching file under the agency's own top-level folder. The
-officer-facing JSONForm (`*_jsonform.json`) is duplicated in both locations byte-for-byte
-— **when changing an officer-facing form, update both copies.**
+The link between the two: a step's `EXTERNAL_REVIEW` subtask template
+(`tnsw/<agency>/<step>/officer_*.json`) names `service_id` + `task_code`. The agency
+service picks the `*.taskconfig.json` in `<agency>-v2/` whose `taskCode` matches, and
+that taskconfig's `workflow` is the officer task the case is injected into. The forms on
+each side are separate copies, and some share an id with a `tnsw/` form but differ from
+it, so change each side's copy on its own terms.
 
-**Exception — a reused "view" form may intentionally diverge from its trader-facing
-twin.** A `task_config`'s `forms.view` sometimes points at the *same id* as the
-applicant/trader's own input form, rather than a dedicated view-only copy. When the
-officer needs to see one extra field the trader doesn't (typically a value produced by
-an earlier step — a certificate/letter the officer must reference, not something the
-trader re-submits), it's correct to add that field, marked `readOnly`, to the
-agency-side copy only and leave the trader-facing copy untouched. Don't add it to both
-copies just to satisfy the byte-for-byte rule above — doing so puts an unpopulated (or
-wrongly-wired) field in front of the trader and risks breaking their form. Wire the
-extra field's data via the officer's `EXTERNAL_REVIEW` `TASK` node's `input_mapping`
-(see the merge idiom below), not by routing it through the trader's own task
-output_mapping. This is a known, repeated pattern (e.g. `npqs-upload-docs--trader-form`,
-`npqs-treatment-request--trader-form`) — the validator will flag the resulting
-tnsw/agency drift for that id as an error; that's expected here and worth a one-line
-mention in the PR description, not something to "fix" by re-syncing the copies.
+When the officer needs to see a field the trader's form doesn't carry (typically a value
+produced by an earlier step — a certificate/letter the officer must reference, not
+something the trader re-submits), add it, marked `readOnly`, to the agency-side form
+only, and wire its data through the officer's `EXTERNAL_REVIEW` `TASK` node's
+`input_mapping` (see the merge idiom below), not through the trader's own task
+`output_mapping`.
 
-## Migration to the unified (v2) shape
+## The agency (v2) shape
 
-The top-level agency folders are being migrated, one agency at a time, to the same
-shape as `tnsw/`: workflows, task templates, subtask templates and generic templates,
-plus a `task_config` binding each officer task to its workflow. `tnsw/` itself is the
-target shape and is not migrated (there is no `tnsw-v2/`). A migrated agency appears
-**alongside** its original as `<agency>-v2/`, rather than replacing it in place.
-`cda-v2/` is the first one; expect more `<agency>-v2/` folders to appear.
+The agency folders have the same shape as `tnsw/`: workflows, task templates, subtask
+templates and generic templates, plus a `task_config` binding each officer task to its
+workflow. They replaced the original flat, `task_config`-only `<agency>/` folders, which
+have been removed; the `-v2` suffix is what's left of that migration.
 
 What the v2 shape looks like (as in `cda-v2/`):
 
@@ -104,12 +93,7 @@ What the v2 shape looks like (as in `cda-v2/`):
 - Taskconfigs are `schemaVersion: 2`: a `workflow` id binding plus `meta`, with no
   inline `forms`/`behavior`/`permissions`. `schemas/taskconfig.schema.json` dispatches
   on `schemaVersion` to `taskconfig.v1.schema.json` or `taskconfig.v2.schema.json`.
-- `cda-v2/manifest.json` entries intentionally omit `"loader": "local"`.
-
-An `<agency>-v2/` folder reuses ids from its v1 counterpart. They never coexist at
-runtime: a backend loads one of `<agency>/manifest.json` or `<agency>-v2/manifest.json`,
-and the cutover switches it from one to the other. Don't rename the reused ids to
-"avoid" the overlap.
+- `<agency>-v2/manifest.json` entries intentionally omit `"loader": "local"`.
 
 **Whenever a new top-level folder is introduced (an `<agency>-v2/` or anything else),
 add it to the `aws s3 sync --include` list in both `.github/workflows/push-to-r2-dev.yml`
@@ -135,8 +119,8 @@ alone does not publish anything.
 - `generic_template` — a JSONForms schema+uiSchema (`*_jsonform.json`), a markdown
   template, or a `render.json` UI layout (sections, `visibleWhen` states, action
   `handles`).
-- `task_config` — an agency-side officer task definition (top-level agency folders only):
-  `taskCode`, `meta.title/description`, and a `forms` map to a `generic_template` id.
+- `task_config` — an agency-side officer task definition (`<agency>-v2/` only):
+  `schemaVersion: 2`, `taskCode`, the `workflow` id it runs, and `meta.title/description`.
 
 ### File fields (`render.json` `files`)
 
@@ -192,10 +176,10 @@ See `tnsw/fcau/3-2-warehouse_inspection/workflow.json` or
 
 - IDs are kebab-case and scoped by agency/flow, e.g. `sltb-schedule-pickup-flow`,
   `npqs-draw-sample--officer-draw`.
-- `manifest.json` files are flat arrays of `{id, kind, version, path}` (top-level agency
-  folders also add `"loader": "local"`) — adding a new artifact file means also adding an
-  entry to the relevant `manifest.json`. The two sides are asymmetric: each top-level
-  agency folder (`cda/`, `efc/`, `fcau/`, `npqs/`, `sltb/`) has its own manifest, but
+- `manifest.json` files list `{id, kind, version, path}` rows under `artifacts` — adding
+  a new artifact file means also adding an entry to the relevant `manifest.json`. The two
+  sides are asymmetric: each agency folder (`cda-v2/`, `efc-v2/`, `fcau-v2/`, `npqs-v2/`,
+  `sltb-v2/`) has its own manifest, but
   the `tnsw/` side has a single shared `tnsw/manifest.json` covering every agency's step
   artifacts — there is no per-agency manifest under `tnsw/<agency>/`.
 - Every task of an agency deployment (`cda-v2/`, `efc-v2/`, `fcau-v2/`, `npqs-v2/`,
@@ -221,6 +205,6 @@ See `tnsw/fcau/3-2-warehouse_inspection/workflow.json` or
 ## When asked to explain or change a flow
 
 Read both halves before answering: the `tnsw/<agency>/` macro workflow + step
-sub-workflows for the control flow, and the top-level `<agency>/` folder for what the
-officer actually sees/fills in. Don't assume the two are independent — the officer-facing
-form content is intentionally duplicated, not divergent, unless a diff proves otherwise.
+sub-workflows for the control flow, and the matching task folder under `<agency>-v2/` for
+what the officer actually sees and fills in. Don't assume the two are independent, or
+that a form id shared by both sides has the same content on each.
