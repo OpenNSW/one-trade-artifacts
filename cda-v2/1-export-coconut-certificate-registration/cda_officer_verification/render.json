@@ -7,6 +7,9 @@
       "officer"
     ]
   },
+  "files": [
+    "submission.uploaded_dc_bags_details"
+  ],
   "sections": {
     "previous_review": {
       "templateId": "cda-officer-verification--previous-review",

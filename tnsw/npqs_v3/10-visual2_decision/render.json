@@ -2,6 +2,9 @@
   "id": "npqs-visual2-decision:render",
   "type": "REVIEW",
   "title": "[NPQS] Visual Inspection 2 Decision",
+  "files": [
+    "submission.attachments[*].attachment_file_url"
+  ],
   "sections": {
     "assessment_outcome": {
       "templateId": "npqs-visual2-decision--status",

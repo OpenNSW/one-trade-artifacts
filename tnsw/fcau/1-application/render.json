@@ -2,6 +2,14 @@
   "id": "fcau-apply-health-cert-flow:render",
   "type": "APPLICATION",
   "title": "[FCAU] Apply for Health Certificate",
+  "files": [
+    "submission.commodities[*].analysis_certificates",
+    "submission.commodities[*].other_declarations",
+    "submission.other_supporting_documents[*]",
+    "userform.commodities[*].analysis_certificates",
+    "userform.commodities[*].other_declarations",
+    "userform.other_supporting_documents[*]"
+  ],
   "sections": {
     "assessment_outcome": {
       "templateId": "fcau-apply-health-cert--trader-results",

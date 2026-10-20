@@ -223,6 +223,12 @@
       "path": "customs/static-data/extended_procedure.data.json"
     },
     {
+      "id": "customs-cusdec--national-procedures",
+      "kind": "static_data",
+      "version": "1",
+      "path": "customs/static-data/national_procedures.data.json"
+    },
+    {
       "id": "customs-cusdec--port-of-entry-and-discharge",
       "kind": "static_data",
       "version": "1",
@@ -238,13 +244,13 @@
       "id": "customs-cusdec--supporting-document-codes",
       "kind": "static_data",
       "version": "1",
-      "path": "customs/static-data/supporting_document_codes.data.json"
+      "path": "customs/static-data/supporting_document_code_list.data.json"
     },
     {
-      "id": "customs-cusdec--supporting-document-item-numbers",
+      "id": "customs-cusdec--currencies",
       "kind": "static_data",
       "version": "1",
-      "path": "customs/static-data/supporting_document_item_numbers.data.json"
+      "path": "customs/static-data/currencies.data.json"
     },
     {
       "id": "npqs-apply-phyto-cert--importing-countries",
@@ -2789,6 +2795,48 @@
       "kind": "task_template",
       "version": "",
       "path": "sltb/1-application/task_template.json"
+    },
+    {
+      "id": "sltb-xml-download-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/1b-xml_download/render.json"
+    },
+    {
+      "id": "sltb-xml-download--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb/1b-xml_download/officer_review.json"
+    },
+    {
+      "id": "sltb-xml-download--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/1b-xml_download/officer_review_jsonform.json"
+    },
+    {
+      "id": "sltb-xml-download--trader-view",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/1b-xml_download/trader_view_jsonform.json"
+    },
+    {
+      "id": "sltb-xml-download--trader-completed",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/1b-xml_download/trader_completed_jsonform.json"
+    },
+    {
+      "id": "sltb-xml-download-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "sltb/1b-xml_download/workflow.json"
+    },
+    {
+      "id": "sltb-xml-download-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "sltb/1b-xml_download/task_template.json"
     },
     {
       "id": "sltb-pay-levy-flow:render",

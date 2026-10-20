@@ -2,6 +2,12 @@
   "id": "npqs-v3-treatment-final-review:render",
   "type": "REVIEW",
   "title": "[NPQS] Treatment Review",
+  "files": [
+    "reviewerform.supervision_report_urls[*]",
+    "reviewerform.treatment_certificate_urls[*]",
+    "submission.attachments[*].attachment_file_url",
+    "userform.attachments[*].attachment_file_url"
+  ],
   "sections": {
     "assessment_outcome": {
       "templateId": "npqs-v3-treatment-final-review--status",

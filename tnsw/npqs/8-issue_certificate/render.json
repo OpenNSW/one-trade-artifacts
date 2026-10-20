@@ -2,6 +2,10 @@
   "id": "npqs-issue-certificate:render",
   "type": "REVIEW",
   "title": "[NPQS] Phytosanitary Certificate",
+  "files": [
+    "reviewerform.certificate_url",
+    "submission.attachments[*].attachment_file_url"
+  ],
   "sections": {
     "assessment_outcome": {
       "templateId": "npqs-issue-certificate--status",

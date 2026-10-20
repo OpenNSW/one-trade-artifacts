@@ -7,6 +7,13 @@
       "officer"
     ]
   },
+  "files": [
+    "payload.payload.physical_certificate_file",
+    "payload.payload.salmonella_certificate_file",
+    "reviewform.physical_certificate_file",
+    "reviewform.salmonella_certificate_file",
+    "submission.uploaded_dc_bags_details"
+  ],
   "sections": {
     "submission_view": {
       "templateId": "cda-apply-coconut-cert--user-form",

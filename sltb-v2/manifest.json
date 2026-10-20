@@ -79,6 +79,72 @@
       "path": "sltb_officer_review_v1/userinput_jsonform.json"
     },
     {
+      "id": "sltb-officer-review--second-step-notice",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_officer_review_v1/second_step_notice_markdown.json"
+    },
+    {
+      "id": "sltb_xml_download_v1",
+      "kind": "task_config",
+      "version": "",
+      "path": "sltb_xml_download_v1/sltb_xml_download_v1.taskconfig.json"
+    },
+    {
+      "id": "sltb_xml_download_v1",
+      "kind": "workflow",
+      "version": "",
+      "path": "sltb_xml_download_v1/workflow.json"
+    },
+    {
+      "id": "sltb-xml-download--review",
+      "kind": "task_template",
+      "version": "",
+      "path": "sltb_xml_download_v1/task_template.json"
+    },
+    {
+      "id": "sltb-xml-download--review-workflow",
+      "kind": "workflow",
+      "version": "",
+      "path": "sltb_xml_download_v1/review_workflow.json"
+    },
+    {
+      "id": "sltb-xml-download--review:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_xml_download_v1/render.json"
+    },
+    {
+      "id": "sltb-xml-download--notify-decision",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb_xml_download_v1/notify_decision.json"
+    },
+    {
+      "id": "sltb-xml-download--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb_xml_download_v1/officer_review.json"
+    },
+    {
+      "id": "sltb-xml-download--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_xml_download_v1/officer_review_jsonform.json"
+    },
+    {
+      "id": "sltb-xml-download--submission-view",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_xml_download_v1/submission_view_markdown.json"
+    },
+    {
+      "id": "sltb-xml-download--cusdec-notice",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_xml_download_v1/cusdec_notice_markdown.json"
+    },
+    {
       "id": "sltb_final_decision_v1",
       "kind": "task_config",
       "version": "",

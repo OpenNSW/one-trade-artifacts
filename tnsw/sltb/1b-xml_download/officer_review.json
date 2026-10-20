@@ -1,0 +1,11 @@
+{
+  "id": "sltb-xml-download--officer-review",
+  "task_type": "EXTERNAL_REVIEW",
+  "output_namespace": "ack",
+  "plugin_properties": {
+    "officer_jsonforms_id": "sltb-xml-download--officer-form",
+    "service_id": "sltb",
+    "path": "/api/v1/inject",
+    "task_code": "sltb_xml_download_v1"
+  }
+}

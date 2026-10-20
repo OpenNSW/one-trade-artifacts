@@ -1,0 +1,53 @@
+name: Validate render configs
+
+on:
+  pull_request:
+    paths:
+      - "**/*.json"
+      - "scripts/check_file_fields.py"
+      - ".github/workflows/validate-render-configs.yml"
+  push:
+    branches: [main]
+    paths:
+      - "**/*.json"
+      - "scripts/check_file_fields.py"
+      - ".github/workflows/validate-render-configs.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  schema:
+    name: File declarations are well formed
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install check-jsonschema
+        run: pip install check-jsonschema
+
+      - name: Validate *render.json against schemas/render.schema.json
+        run: |
+          mapfile -d '' -t files < <(find . -name '*render.json' -not -path './.git/*' -print0)
+          if [ "${#files[@]}" -eq 0 ]; then
+            echo "No render configs found."
+            exit 0
+          fi
+          check-jsonschema --schemafile schemas/render.schema.json "${files[@]}"
+
+  files:
+    name: Every file field is declared
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Check file declarations against the workflows
+        run: python3 scripts/check_file_fields.py

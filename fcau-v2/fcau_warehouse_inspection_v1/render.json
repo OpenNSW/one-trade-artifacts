@@ -7,6 +7,11 @@
       "officer"
     ]
   },
+  "files": [
+    "submission.commodities[*].analysis_certificates",
+    "submission.commodities[*].other_declarations",
+    "submission.other_supporting_documents[*]"
+  ],
   "sections": {
     "submission_view": {
       "templateId": "fcau-warehouse-inspection--user-form",

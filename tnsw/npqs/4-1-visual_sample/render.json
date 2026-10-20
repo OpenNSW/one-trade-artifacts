@@ -2,6 +2,9 @@
   "id": "npqs-visual-sample-inspection:render",
   "type": "REVIEW",
   "title": "[NPQS] Visual Sample Inspection",
+  "files": [
+    "submission.attachments[*].attachment_file_url"
+  ],
   "sections": {
     "assessment_outcome": {
       "templateId": "npqs-visual-sample--status",

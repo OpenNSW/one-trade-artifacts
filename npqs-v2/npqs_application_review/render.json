@@ -7,6 +7,10 @@
       "officer"
     ]
   },
+  "files": [
+    "submission.attachments[*].attachment_file_url",
+    "submission.draft_certificate_key"
+  ],
   "sections": {
     "previous_review": {
       "templateId": "npqs-application-review--previous-review",

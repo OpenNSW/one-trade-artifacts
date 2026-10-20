@@ -2,6 +2,13 @@
   "id": "fcau-issue-certificate-flow:render",
   "type": "CERTIFICATE_ISSUANCE",
   "title": "[FCAU] Issue Health Certificate",
+  "files": [
+    "officerform.certificate",
+    "officerform.supporting_documents[*]",
+    "submission.commodities[*].analysis_certificates",
+    "submission.commodities[*].other_declarations",
+    "submission.other_supporting_documents[*]"
+  ],
   "sections": {
     "status_message": {
       "templateId": "fcau-issue-certificate--trader-instructions",

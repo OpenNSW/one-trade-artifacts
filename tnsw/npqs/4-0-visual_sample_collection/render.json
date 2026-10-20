@@ -2,6 +2,10 @@
   "id": "npqs-visual-sample-collection:render",
   "type": "APPLICATION",
   "title": "[NPQS] Sample Collection for Visual Inspection",
+  "files": [
+    "submission.attachments[*].attachment_file_url",
+    "userform.attachments[*].attachment_file_url"
+  ],
   "sections": {
     "status_message": {
       "templateId": "npqs-visual-sample-collection--status",

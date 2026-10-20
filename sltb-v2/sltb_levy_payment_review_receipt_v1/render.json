@@ -7,6 +7,9 @@
       "officer"
     ]
   },
+  "files": [
+    "submission.payment_slip"
+  ],
   "sections": {
     "previous_review": {
       "templateId": "sltb-levy-payment-review-receipt--previous-review",
