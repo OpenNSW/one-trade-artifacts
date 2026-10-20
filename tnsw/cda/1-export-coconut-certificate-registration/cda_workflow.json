@@ -159,7 +159,7 @@
       "id": "e_dc_certificate_path",
       "source_id": "cda_check_product_type_gateway",
       "target_id": "cda_check_payment_gateway",
-      "condition": "cda.userform.product_type != 'value_added_dc'"
+      "condition": "cda.userform.product_type == 'dc' || cda.userform.product_type == 'both'"
     },
     {
       "id": "e_pay_required",
