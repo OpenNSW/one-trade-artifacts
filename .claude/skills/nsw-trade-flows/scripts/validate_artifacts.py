@@ -6,10 +6,8 @@ resolved relative to the repo root, which is detected as the directory
 containing this script's ancestor `.claude/skills/...` (four levels up from
 `scripts/`) unless overridden with --root.
 
-Exit code is non-zero iff at least one ERROR was found. WARNINGs never affect
-the exit code — they flag things worth a human glance (e.g. an id
-deliberately reused across sibling task_config folders) but are not
-necessarily wrong.
+Exit code is non-zero iff at least one ERROR was found. WARNINGs (no check
+emits one at the moment) never affect the exit code.
 """
 import argparse
 import json
@@ -93,20 +91,12 @@ def check_unregistered_files(manifests, report):
                 report.error(f"[{label}] file not registered in manifest.json: {p.relative_to(mdir)}")
 
 
-def diff_contents(paths):
-    """True if all given files are byte-identical."""
-    contents = {p.read_bytes() for p in paths}
-    return len(contents) <= 1
-
-
 def check_duplicate_ids_within_manifest(index, report):
-    """An id repeated within one manifest for the SAME kind is a deliberate
-    pattern here (e.g. the same read-only 'original submission' form
-    duplicated across every officer task_config folder in an agency) -- only
-    flag it if the duplicated files' contents have actually drifted apart.
-    (An id shared across *different* kinds -- e.g. a workflow.json and its
-    sibling task_template.json both named after the flow -- is normal and
-    not comparable at all.)"""
+    """An id listed twice in one manifest for the SAME kind is a bug: the
+    artifact registry keeps only the last row, so an edit to the other copy
+    silently does nothing. (An id shared across *different* kinds -- e.g. a
+    workflow.json and its sibling task_template.json both named after the
+    flow -- is normal.)"""
     for label, by_id in index.items():
         for artifact_id, entries in by_id.items():
             by_kind = {}
@@ -115,11 +105,8 @@ def check_duplicate_ids_within_manifest(index, report):
             for kind, paths in by_kind.items():
                 if len(paths) < 2:
                     continue
-                if not diff_contents(paths):
-                    rels = ", ".join(str(p) for p in paths)
-                    report.warn(
-                        f"[{label}] id {artifact_id!r} ({kind}) is reused {len(paths)}x with DIFFERING content: {rels}"
-                    )
+                rels = ", ".join(str(p) for p in paths)
+                report.error(f"[{label}] id {artifact_id!r} ({kind}) is listed {len(paths)}x; only the last row loads: {rels}")
 
 
 def check_external_review_linkage(manifests, index, root, report):
@@ -171,8 +158,11 @@ def check_external_review_linkage(manifests, index, root, report):
 # npqs 9-ephyto) and SPLIT_TASK (fan-out to parallel agency flows, e.g.
 # tnsw/trade/trade_workflow.json) are additional node types observed in the
 # repo that don't carry a task_template_id, so they're exempted from that check.
-VALID_NODE_TYPES = {"START", "TASK", "GATEWAY", "END", "TIMER", "SPLIT_TASK"}
-VALID_GATEWAY_TYPES = {"EXCLUSIVE_SPLIT", "EXCLUSIVE_JOIN", "PARALLEL_SPLIT", "PARALLEL_JOIN"}
+# As core's workflow/dsl.go defines them.
+VALID_NODE_TYPES = {"START", "TASK", "GATEWAY", "END", "TIMER", "SPLIT_TASK", "SIGNALING"}
+VALID_GATEWAY_TYPES = {
+    "EXCLUSIVE_SPLIT", "EXCLUSIVE_JOIN", "PARALLEL_SPLIT", "PARALLEL_JOIN", "BATCH_SPLIT", "BATCH_JOIN",
+}
 
 
 TASK_TEMPLATE_ID_KINDS = {"task_template", "subtask_template"}

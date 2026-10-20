@@ -21,19 +21,23 @@ for `tnsw/npqs/1-apply/`:
    `task_template_id` is `npqs-apply-phyto-cert--external-review`.
 2. That id resolves (via `tnsw/manifest.json`) to `reviewerinput.json`, a
    `subtask_template` with `task_type: "EXTERNAL_REVIEW"` and
-   `plugin_properties: { service_id: "npqs", task_code: "npqs_application_review_v1" }`.
+   `plugin_properties: { service_id: "npqs", task_code: "npqs_application_review" }`.
 3. `service_id` names the agency, whose tasks live in `<service_id>-v2/`:
-   `npqs-v2/manifest.json` has a `task_config`
-   (`npqs_application_review/npqs_application_review.taskconfig.json`) whose
-   `taskCode` is `npqs_application_review_v1`. That's the task the NPQS
-   service creates for the officer when TNSW injects the case.
+   `npqs-v2/manifest.json` has a `task_config` with id
+   `npqs_application_review`
+   (`npqs_application_review/npqs_application_review.taskconfig.json`, whose
+   `taskCode` field repeats the id). The NPQS service loads it by that id
+   and creates the officer's task from it when TNSW injects the case.
 4. The taskconfig's `workflow` names the workflow in that same task folder
    (`workflow.json` → `task_template.json` → `review_workflow.json`). Its
    steps are the officer's own: here, generate a reference number, the
    officer's review form (`officer_review.json` +
-   `officer_review_jsonform.json`), and `notify_decision.json`, an
-   `AUTH_API_CALL` that posts the decision back to TNSW's
-   `/api/v1/callbacks/{callbackToken}`.
+   `officer_review_jsonform.json`), then a gateway on its `review_outcome`.
+   `needs_more_info` goes to `request_info.json`, an `EXTERNAL_REVIEW` back to
+   `tnsw` (`reply_command: "needs_more_info"`) that waits for the trader's
+   resubmission and loops back to the form. `approve` goes to
+   `notify_decision.json`, an `AUTH_API_CALL` that posts the decision to
+   TNSW's `/api/v1/callbacks/{callbackToken}`.
 5. The officer form's `review_outcome` value (`approve`,
    `needs_more_info`) comes back as the `EXTERNAL_REVIEW` step's output, and
    that is what satisfies the `condition`s on `workflow.json`'s
@@ -41,12 +45,12 @@ for `tnsw/npqs/1-apply/`:
 
 **To trace any flow**, walk this same chain: macro workflow → step
 `workflow.json` → step's `subtask_template` files → (for any
-`EXTERNAL_REVIEW`) the `<service_id>-v2/` taskconfig with that `taskCode` →
+`EXTERNAL_REVIEW`) the `<service_id>-v2/` task_config whose id is that `task_code` →
 its task folder's workflow, forms and `render.json`. Do this before answering
 "what happens when an officer does X" or "where does field Y come from" — the
 answer is almost always split across both halves.
 
-## Two things CLAUDE.md simplifies — don't be surprised by them
+## What CLAUDE.md simplifies — don't be surprised by these
 
 - **Node vocabulary is bigger than START/TASK/GATEWAY/END.** `TIMER` (a
   polling wait with `timer.duration` / `timer.counter_key`, e.g.
@@ -55,12 +59,13 @@ answer is almost always split across both halves.
   `tnsw/trade/trade_workflow.json`) both appear in real workflows. Neither
   carries a `task_template_id`.
 - **The two sides' forms are separate copies.** The read-only "here's what
-  the applicant originally submitted" form (id like `<flow>--user-form`) is
-  often copied into each officer task folder of an agency, and some of those
-  copies share an id with the trader's form in `tnsw/`. They are not kept
-  byte-identical: an agency-side copy may carry `readOnly` fields the trader
-  never sees, and many shared ids already differ between the two sides. Edit
-  the copy the screen you're changing actually loads.
+  the applicant originally submitted" form (id like `<flow>--user-form`) has
+  an agency-side copy, kept in one task folder and used by id from that
+  agency's other tasks, and it often shares its id with the trader's form in
+  `tnsw/`. The two sides are not kept byte-identical: an agency-side copy may
+  carry `readOnly` fields the trader never sees, and many shared ids already
+  differ between the two sides. Edit the copy the screen you're changing
+  actually loads.
 - **An agency can have more than one process.** An agency that runs more
   than one certificate/approval process nests *both* halves one level
   deeper, under one folder per process:
@@ -146,9 +151,9 @@ the 3 above if it's actually one of these:**
 
 - **Editing a form** (`*_jsonform.json`): find every path its id resolves to
   with `grep -rn '"<the-id>"' tnsw/manifest.json <agency>-v2/manifest.json`,
-  not just the one you happened to open. An id can be listed once per task
-  folder in an agency (all those copies are meant to match), and the same id
-  in `tnsw/` is the trader's side, which may legitimately differ.
+  not just the one you happened to open. Each manifest lists an id once (the
+  registry keeps only the last of two rows), and the same id in `tnsw/` is
+  the trader's side, which may legitimately differ.
 - **Adding a new artifact file**: it does nothing until it's registered.
   Add an entry to `tnsw/manifest.json` (tnsw-side files) or the relevant
   `<agency>-v2/manifest.json` (agency-side files) — there is no per-agency
@@ -197,14 +202,13 @@ It checks, across `tnsw/manifest.json` and every `<agency>-v2/manifest.json`:
 
 - every manifest entry's `path` points to a file that exists;
 - every `*.json` file under a manifest's tree is actually registered in it;
-- an id reused *for the same artifact kind* within one manifest (the
-  deliberate duplicated-user-form pattern) has byte-identical content across
-  every copy — **warns** if it's drifted;
+- no id is listed twice *for the same artifact kind* within one manifest
+  (only the last row would load);
 - every `EXTERNAL_REVIEW` subtask_template's `service_id` + `task_code`
   resolves to a real `task_config` in `<service_id>-v2/manifest.json`, and
   that task_config's `workflow` resolves to a workflow in the same manifest;
-  - every workflow node's `type`/`gateway_type` is in the observed
-  vocabulary, every `TASK` node's `task_template_id` resolves, and every edge's
+- every workflow node's `type`/`gateway_type` is one core's `workflow/dsl.go`
+  defines, every `TASK` node's `task_template_id` resolves, and every edge's
   `source_id`/`target_id` names a real node in that workflow;
 - every draft step (a `subtask_template` with `draft`) has a handle with
   element `draft_action` for its draft command, legal in some state, in a
@@ -213,22 +217,15 @@ It checks, across `tnsw/manifest.json` and every `<agency>-v2/manifest.json`:
   drafts back through a `command == 'save_as_draft'` edge.
 
 Errors (non-zero exit) are invariant violations worth fixing or explaining in
-the PR description; warnings are worth a glance but are sometimes the
-deliberate reused-form pattern working as intended.
-
-**Known pre-existing errors** (unrelated to whatever change you're
-making): the node vocabulary check doesn't know the batch gateways
-(`BATCH_SPLIT`, `BATCH_JOIN`) and a few other `gateway_type`s used in
-`tnsw/fcau/` and `tnsw/npqs*/`, so a fresh checkout reports those. Compare
-against a run on `main` and only chase errors your change adds.
+the PR description. If `main` itself isn't clean, compare against a run on
+`main` and only chase errors your change adds.
 
 ## Opening the PR
 
 1. Create a branch, make the edits, register any new files in the relevant
    `manifest.json`(s).
 2. Run the validator above; resolve any *new* errors it reports (compare
-   against the known pre-existing errors noted above so you don't chase a bug
-   that isn't yours).
+   against a run on `main` so you don't chase a bug that isn't yours).
 3. `git diff` and re-check every place a changed id/path is referenced
    (`grep -rn '"<id>"' .`) — a manifest path typo or a half-updated copy of a
    form is the most common way this repo breaks silently, since there's no
