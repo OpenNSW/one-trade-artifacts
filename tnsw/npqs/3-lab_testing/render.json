@@ -2,6 +2,12 @@
   "id": "npqs-lab-testing:render",
   "type": "REVIEW",
   "title": "[NPQS] Laboratory Testing",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "files": [
     "reviewerform.lab_report_attachment_url",
     "submission.attachments[*].attachment_file_url"

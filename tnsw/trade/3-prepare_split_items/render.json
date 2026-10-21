@@ -1,6 +1,12 @@
 {
   "id": "trade-prepare-split-items-flow:render",
   "type": "SYSTEM",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "sections": {},
   "states": {}
 }

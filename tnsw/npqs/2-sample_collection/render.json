@@ -2,6 +2,12 @@
   "id": "npqs-draw-sample:render",
   "type": "APPLICATION",
   "title": "[NPQS] Sample Collection",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "files": [
     "submission.attachments[*].attachment_file_url",
     "userform.attachments[*].attachment_file_url"

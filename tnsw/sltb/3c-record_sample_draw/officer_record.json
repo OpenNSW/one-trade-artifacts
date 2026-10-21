@@ -7,5 +7,14 @@
     "service_id": "sltb",
     "path": "/api/v1/inject",
     "task_code": "sltb_sample_draw_v1"
-  }
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "QUEUED_EXTERNALLY": { "submit": ["sltb"] }
+      }
+    }
+  ]
 }

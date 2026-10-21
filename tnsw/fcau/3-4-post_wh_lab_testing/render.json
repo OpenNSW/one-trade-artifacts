@@ -2,6 +2,12 @@
   "id": "fcau-post-wh-lab-testing-flow:render",
   "type": "LAB_TEST",
   "title": "[FCAU] Wait on Post-Warehouse Lab Results",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "files": [
     "submission.commodities[*].analysis_certificates",
     "submission.commodities[*].other_declarations",

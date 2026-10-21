@@ -2,6 +2,12 @@
   "id": "npqs-v3-treatment-final-review:render",
   "type": "REVIEW",
   "title": "[NPQS] Treatment Review",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "files": [
     "reviewerform.supervision_report_urls[*]",
     "reviewerform.treatment_certificate_urls[*]",

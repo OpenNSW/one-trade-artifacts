@@ -2,6 +2,12 @@
   "id": "customs-wait-cdn-ack-flow:render",
   "type": "REVIEW",
   "title": "[Customs] CDN Acknowledgement Status",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "sections": {
     "status_message": {
       "templateId": "customs-wait-cdn-ack--instructions",

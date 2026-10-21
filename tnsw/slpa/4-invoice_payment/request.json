@@ -4,5 +4,14 @@
   "output_namespace": "request",
   "plugin_properties": {
     "user_jsonforms_id": "slpa-invoice--request-form"
-  }
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "PENDING_USER": { "submit": ["trader", "cha"] }
+      }
+    }
+  ]
 }

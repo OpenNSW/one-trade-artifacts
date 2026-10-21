@@ -2,6 +2,12 @@
   "id": "sltb-final-decision-flow:render",
   "type": "APPLICATION",
   "title": "[SLTB] Final Application Decision",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "files": [
     "submission.cusdec_draft_xml"
   ],

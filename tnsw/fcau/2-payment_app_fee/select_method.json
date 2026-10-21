@@ -4,5 +4,14 @@
   "output_namespace": "payment_method",
   "plugin_properties": {
     "task_code": "fcau_app_fee_select_method_v1"
-  }
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "PENDING_USER": { "submit": ["trader", "cha"] }
+      }
+    }
+  ]
 }

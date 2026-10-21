@@ -2,6 +2,12 @@
   "id": "sltb-xml-download-flow:render",
   "type": "APPLICATION",
   "title": "[SLTB] XML Download Acknowledgement",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "files": [
     "submission.cusdec_draft_xml"
   ],

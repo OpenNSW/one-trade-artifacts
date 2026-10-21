@@ -2,6 +2,12 @@
   "id": "npqs-v3-sample-draw-at-site:render",
   "type": "REVIEW",
   "title": "[NPQS] Sample Drawn at Your Site",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "files": [
     "submission.attachments[*].attachment_file_url",
     "userform.attachments[*].attachment_file_url"

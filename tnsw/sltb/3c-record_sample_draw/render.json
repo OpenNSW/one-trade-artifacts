@@ -2,6 +2,12 @@
   "id": "sltb-record-sample-draw-flow:render",
   "type": "APPLICATION",
   "title": "[SLTB 3C] Officer Records Sample Draw",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "sections": {
     "status_message": {
       "templateId": "sltb-record-sample-draw--status",

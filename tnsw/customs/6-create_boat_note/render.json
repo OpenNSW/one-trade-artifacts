@@ -2,6 +2,12 @@
   "id": "customs-create-boat-note-flow:render",
   "type": "APPLICATION",
   "title": "[Customs] Boat Note Creation",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "files": [
     "boat_note_approval.approved_boat_note_file",
     "boat_note_document.key",

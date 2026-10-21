@@ -11,5 +11,14 @@
       "issuer": "SLTB",
       "id_type": "levy_payment_ref"
     }
-  }
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "PENDING_PAYMENT": { "submit": ["system"] }
+      }
+    }
+  ]
 }

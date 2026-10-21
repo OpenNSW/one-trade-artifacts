@@ -2,6 +2,12 @@
   "id": "cda-view-new-certificate-flow:render",
   "type": "APPLICATION",
   "title": "[CDA] View Revised Certificate",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "files": [
     "physical_certificate_file",
     "salmonella_certificate_file"

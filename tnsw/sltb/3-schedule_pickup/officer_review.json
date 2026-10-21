@@ -8,5 +8,14 @@
     "path": "/api/v1/inject",
     "task_code": "sltb_sample_schedule_v1",
     "reply_command": "resubmit"
-  }
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "QUEUED_EXTERNALLY": { "approve": ["sltb"], "propose_alternative": ["sltb"] }
+      }
+    }
+  ]
 }

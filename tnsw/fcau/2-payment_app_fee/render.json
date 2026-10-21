@@ -2,6 +2,12 @@
   "id": "fcau-pay-app-fee-flow:render",
   "type": "PAYMENT",
   "title": "[FCAU] Pay Application Fee",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "sections": {
     "workspace": {
       "templateId": "fcau-pay-app-fee--select-method-form",

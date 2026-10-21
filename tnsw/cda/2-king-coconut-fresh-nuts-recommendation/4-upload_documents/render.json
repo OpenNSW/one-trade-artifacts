@@ -2,6 +2,12 @@
   "id": "cda-kcfn-upload-docs-flow:render",
   "type": "APPLICATION",
   "title": "[CDA] Submit Necessary Documents & ASYCUDA Verification",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "files": [
     "submission.additional_documents[*]",
     "submission.commercial_invoice",

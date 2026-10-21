@@ -2,6 +2,12 @@
   "id": "slpa-invoice-flow:render",
   "type": "APPLICATION",
   "title": "[SLPA] Invoice & Payment",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "sections": {
     "request_prompt": {
       "templateId": "slpa-invoice--request-message",

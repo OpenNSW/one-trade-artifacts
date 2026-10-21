@@ -14,11 +14,6 @@
           "submit": [
             "officer"
           ]
-        },
-        "PENDING_SIGNATURE": {
-          "upload_signed": [
-            "officer"
-          ]
         }
       }
     }

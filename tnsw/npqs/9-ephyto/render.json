@@ -2,6 +2,12 @@
   "id": "npqs-ephyto-upload:render",
   "type": "APPLICATION",
   "title": "[NPQS] IPPC ePhyto Hub Transfer",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "files": [
     "documents.additional_supporting_document.url",
     "documents.commercial_invoice.url",

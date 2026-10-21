@@ -2,5 +2,14 @@
   "id": "fcau-pay-lab-fee--upload-receipt",
   "task_type": "USER_INPUT",
   "output_namespace": "traderinput",
-  "plugin_properties": {}
+  "plugin_properties": {},
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "PENDING_USER": { "submit": ["trader", "cha"] }
+      }
+    }
+  ]
 }

@@ -2,6 +2,12 @@
   "id": "fcau-sample-collection-flow:render",
   "type": "SAMPLE_COLLECTION",
   "title": "[FCAU] Submit, Receive and Number Sample",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "files": [
     "submission.commodities[*].analysis_certificates",
     "submission.commodities[*].other_declarations",

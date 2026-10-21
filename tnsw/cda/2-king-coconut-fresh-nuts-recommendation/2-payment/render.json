@@ -2,6 +2,12 @@
   "id": "cda-kcfn-payment-flow:render",
   "type": "PAYMENT",
   "title": "[CDA] Pay Recommendation Report Fee",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "sections": {
     "workspace": {
       "templateId": "cda-kcfn-payment--select-method-form",

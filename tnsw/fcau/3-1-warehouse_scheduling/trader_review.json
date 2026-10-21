@@ -5,5 +5,14 @@
   "plugin_properties": {
     "user_jsonforms_id": "fcau-warehouse-scheduling--trader-review-form",
     "status_override": "PENDING_TRADER_DATE_REVIEW"
-  }
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "PENDING_TRADER_DATE_REVIEW": { "submit": ["trader", "cha"] }
+      }
+    }
+  ]
 }

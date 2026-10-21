@@ -5,5 +5,14 @@
   "plugin_properties": {
     "user_jsonforms_id": "cda-pay-app-fee--select-method-form",
     "task_code": "cda_app_fee_select_method_v1"
-  }
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "PENDING_USER": { "submit": ["trader", "cha"] }
+      }
+    }
+  ]
 }

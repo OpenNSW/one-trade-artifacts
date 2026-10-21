@@ -7,5 +7,14 @@
     "service_id": "cda",
     "path": "/api/v1/inject",
     "task_code": "cda_kcfn_issue_letter_v1"
-  }
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "QUEUED_EXTERNALLY": { "submit": ["cda"] }
+      }
+    }
+  ]
 }

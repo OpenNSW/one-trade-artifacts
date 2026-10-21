@@ -2,6 +2,12 @@
   "id": "cda-apply-coconut-cert-flow:render",
   "type": "APPLICATION",
   "title": "[CDA] Submit Application",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "files": [
     "submission.uploaded_dc_bags_details",
     "userform.uploaded_dc_bags_details"

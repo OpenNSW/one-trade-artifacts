@@ -2,6 +2,12 @@
   "id": "npqs-certificate-status:render",
   "type": "APPLICATION",
   "title": "[NPQS] Delivery Status & Next Action",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "files": [
     "userform.attachments[*].attachment_file_url"
   ],

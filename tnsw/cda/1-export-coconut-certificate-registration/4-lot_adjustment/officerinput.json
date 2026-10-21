@@ -9,5 +9,14 @@
     "path": "/api/v1/inject",
     "task_code": "cda_lot_adjustment_review_v1",
     "reply_command": "resubmit"
-  }
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "QUEUED_EXTERNALLY": { "approve": ["cda"], "needs_more_info": ["cda"] }
+      }
+    }
+  ]
 }

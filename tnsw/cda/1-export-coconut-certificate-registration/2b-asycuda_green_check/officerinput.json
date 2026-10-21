@@ -7,5 +7,14 @@
     "service_id": "cda",
     "path": "/api/v1/inject",
     "task_code": "cda_asycuda_green_check_v1"
-  }
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "QUEUED_EXTERNALLY": { "approve": ["cda"] }
+      }
+    }
+  ]
 }

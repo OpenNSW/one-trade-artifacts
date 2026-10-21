@@ -9,6 +9,14 @@
     "path": "/api/v1/inject",
     "task_code": "sltb_levy_payment_review_receipt_v1",
     "reply_command": "resubmit"
-  }
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "QUEUED_EXTERNALLY": { "approve": ["sltb"], "needs_more_info": ["sltb"] }
+      }
+    }
+  ]
 }
-
