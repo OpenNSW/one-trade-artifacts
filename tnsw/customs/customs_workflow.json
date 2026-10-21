@@ -113,13 +113,29 @@
       "name": "Boat Note and Export Release in Parallel"
     },
     {
+      "id": "customs_6a_prefill_boat_note",
+      "type": "TASK",
+      "name": "[Customs 6.0a] Prefill Boat Note",
+      "task_template_id": "customs-prefill-boat-note-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "customs.cusdec_number?": "cusdec_ref",
+        "customs.userform.traders?": "userform.traders",
+        "customs.containers": "containers"
+      },
+      "output_mapping": {
+        "boat_note_prefill.userform": "customs.boat_note_prefill"
+      }
+    },
+    {
       "id": "customs_6_create_boat_note",
       "type": "TASK",
       "name": "[Customs 6.0] Create Boat Note",
       "task_template_id": "customs-create-boat-note-flow",
       "lane": "Trader/CHA",
       "input_mapping": {
-        "customs.containers": "containers"
+        "customs.boat_note_prefill": "userform",
+        "customs.boat_note_prefill.containers": "containers"
       },
       "output_mapping": {
         "userform": "customs.boat_note_userform",
@@ -213,6 +229,11 @@
     {
       "id": "e_fork_to_6",
       "source_id": "customs_post_cdn_fork",
+      "target_id": "customs_6a_prefill_boat_note"
+    },
+    {
+      "id": "e_prefill_boat_note",
+      "source_id": "customs_6a_prefill_boat_note",
       "target_id": "customs_6_create_boat_note"
     },
     {
