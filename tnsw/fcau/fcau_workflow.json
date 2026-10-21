@@ -404,13 +404,13 @@
       "id": "e_warehouse_split_to_schedule",
       "source_id": "fcau_gw_warehouse_split",
       "target_id": "fcau_3_1_schedule_warehouse",
-      "condition": "item.inspection_type == 'warehouse' || item.visual_referral == 'warehouse' || item.lab_result == 'refer_warehouse'"
+      "condition": "item.inspection_type == 'warehouse' || item.visual_referral == 'warehouse' || item.lab_referral == 'warehouse'"
     },
     {
       "id": "e_warehouse_split_bypass",
       "source_id": "fcau_gw_warehouse_split",
       "target_id": "fcau_gw_warehouse_join",
-      "condition": "item.inspection_type != 'warehouse' && item.visual_referral != 'warehouse' && item.lab_result != 'refer_warehouse'"
+      "condition": "item.inspection_type != 'warehouse' && item.visual_referral != 'warehouse' && item.lab_referral != 'warehouse'"
     },
     {
       "id": "e_schedule_to_inspect",
