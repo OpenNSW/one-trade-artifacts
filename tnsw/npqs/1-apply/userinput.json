@@ -7,5 +7,12 @@
   },
   "draft": {
     "command": "save_as_draft"
-  }
+  },
+  "extensions": [
+    {
+      "id": "payload_schema",
+      "phase": "PRE_RESUME",
+      "properties": { "form": "npqs-apply-phyto-cert--user-form" }
+    }
+  ]
 }
