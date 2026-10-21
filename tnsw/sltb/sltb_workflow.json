@@ -192,7 +192,7 @@
     {
       "id": "end_success",
       "type": "END",
-      "name": "Application Approved (Certificate Issued)",
+      "name": "Blend Sheet Application Approved",
       "end": { "outcome": "success" }
     },
     {

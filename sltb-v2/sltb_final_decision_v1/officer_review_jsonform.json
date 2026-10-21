@@ -18,7 +18,7 @@
         "oneOf": [
           {
             "const": "approve",
-            "title": "Approve Application & Issue Tea Export Certificate"
+            "title": "Approve the Blend Sheet Application"
           }
         ]
       },
@@ -26,41 +26,9 @@
         "type": "string",
         "title": "Decision Remarks / Comments",
         "description": "Provide detail about the approval.",
-        "example": "All quality checks passed. Certificate issued for export consignment."
-      },
-      "certificate_id": {
-        "type": "string",
-        "title": "Issued SLTB Tea Export Certificate ID",
-        "example": "SLTB/CERT/2026/88412",
-        "description": "Enter the unique certificate number issued by the Sri Lanka Tea Board."
-      },
-      "certificate_file": {
-        "type": "string",
-        "format": "file",
-        "title": "Upload Issued Tea Export Certificate (PDF)",
-        "description": "Upload the signed digital certificate."
+        "example": "All quality checks passed. Blend sheet approved."
       }
-    },
-    "allOf": [
-      {
-        "if": {
-          "properties": {
-            "final_decision_outcome": {
-              "const": "approve"
-            }
-          },
-          "required": [
-            "final_decision_outcome"
-          ]
-        },
-        "then": {
-          "required": [
-            "certificate_id",
-            "certificate_file"
-          ]
-        }
-      }
-    ]
+    }
   },
   "uiSchema": {
     "type": "VerticalLayout",
@@ -86,29 +54,6 @@
         "options": {
           "multiLine": true
         }
-      },
-      {
-        "type": "Group",
-        "label": "Certificate Issuance",
-        "rule": {
-          "effect": "SHOW",
-          "condition": {
-            "scope": "#/properties/final_decision_outcome",
-            "schema": {
-              "const": "approve"
-            }
-          }
-        },
-        "elements": [
-          {
-            "type": "Control",
-            "scope": "#/properties/certificate_id"
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/certificate_file"
-          }
-        ]
       }
     ]
   }

@@ -1,7 +1,7 @@
 {
   "id": "sltb-final-decision-flow",
   "name": "Final Application Decision",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -17,9 +17,7 @@
       },
       "output_mapping": {
         "final_decision_outcome": "decision.final_decision_outcome",
-        "remarks?": "decision.remarks",
-        "certificate_id?": "decision.certificate_id",
-        "certificate_file?": "decision.certificate_file"
+        "remarks?": "decision.remarks"
       }
     },
     {
