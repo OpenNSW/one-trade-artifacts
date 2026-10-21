@@ -1,0 +1,4 @@
+{
+  "id": "sltb-lab-report-verification--completed",
+  "template": "### ✅ Lab Test Report Verified\n\nThe SLTB Export Division has verified your lab test report. Your application proceeds to the final decision.{{with .submission.lab_report_file}}\n\n* **Submitted report**: [Download](files:{{.}}){{end}}"
+}

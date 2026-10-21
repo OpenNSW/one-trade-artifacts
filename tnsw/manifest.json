@@ -3061,6 +3061,72 @@
       "path": "sltb/6-lab_testing/task_template.json"
     },
     {
+      "id": "sltb-lab-report-verification--completed",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/7-lab_report_verification/completed_markdown.json"
+    },
+    {
+      "id": "sltb-lab-report-verification--download-report",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/7-lab_report_verification/download_report_markdown.json"
+    },
+    {
+      "id": "sltb-lab-report-verification--officer-verify",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb/7-lab_report_verification/officer_verify.json"
+    },
+    {
+      "id": "sltb-lab-report-verification--pending-verification",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/7-lab_report_verification/pending_verification_markdown.json"
+    },
+    {
+      "id": "sltb-lab-report-verification-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/7-lab_report_verification/render.json"
+    },
+    {
+      "id": "sltb-lab-report-verification--reupload-reason",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/7-lab_report_verification/reupload_reason_markdown.json"
+    },
+    {
+      "id": "sltb-lab-report-verification--review-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/7-lab_report_verification/review_jsonform.json"
+    },
+    {
+      "id": "sltb-lab-report-verification-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "sltb/7-lab_report_verification/task_template.json"
+    },
+    {
+      "id": "sltb-lab-report-verification--trader-upload",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb/7-lab_report_verification/trader_upload.json"
+    },
+    {
+      "id": "sltb-lab-report-verification--upload-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/7-lab_report_verification/trader_upload_jsonform.json"
+    },
+    {
+      "id": "sltb-lab-report-verification-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "sltb/7-lab_report_verification/workflow.json"
+    },
+    {
       "id": "sltb-pay-lab-fee-flow:render",
       "kind": "generic_template",
       "version": "",

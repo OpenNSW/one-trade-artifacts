@@ -1,0 +1,6 @@
+{
+  "id": "sltb-lab-report-verification--review",
+  "type": "APPLICATION",
+  "workflow_id": "sltb-lab-report-verification--review-workflow",
+  "render_config_id": "sltb-lab-report-verification--review:render"
+}

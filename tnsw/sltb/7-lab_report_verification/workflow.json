@@ -1,0 +1,81 @@
+{
+  "id": "sltb-lab-report-verification-flow",
+  "name": "Lab Test Report Verification",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "trader_upload",
+      "type": "TASK",
+      "name": "Upload the Lab Test Report",
+      "task_template_id": "sltb-lab-report-verification--trader-upload",
+      "input_mapping": {
+        "sample_number?": "sample_number",
+        "lab_test_report_file": "lab_test_report_file",
+        "report_review?": "report_review",
+        "report_review.report_feedback?": "report_feedback"
+      },
+      "output_mapping": {
+        "lab_report_file": "labreport.lab_report_file"
+      }
+    },
+    {
+      "id": "officer_verify",
+      "type": "TASK",
+      "name": "Verify the Lab Test Report",
+      "task_template_id": "sltb-lab-report-verification--officer-verify",
+      "input_mapping": {
+        "sample_number?": "submission.sample_number",
+        "lab_test_report_file": "submission.lab_test_report_file",
+        "labreport.lab_report_file": "submission.lab_report_file",
+        "agency_token?": "replyToken"
+      },
+      "output_mapping": {
+        "report_review_outcome": "report_review.report_review_outcome",
+        "report_feedback?": "report_review.report_feedback",
+        "callbackToken?": "agency_token"
+      }
+    },
+    {
+      "id": "review_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_start",
+      "source_id": "start",
+      "target_id": "trader_upload"
+    },
+    {
+      "id": "e_to_review",
+      "source_id": "trader_upload",
+      "target_id": "officer_verify"
+    },
+    {
+      "id": "e_to_gateway",
+      "source_id": "officer_verify",
+      "target_id": "review_gateway"
+    },
+    {
+      "id": "e_approve",
+      "source_id": "review_gateway",
+      "target_id": "end",
+      "condition": "report_review.report_review_outcome == 'approve'"
+    },
+    {
+      "id": "e_needs_info",
+      "source_id": "review_gateway",
+      "target_id": "trader_upload",
+      "condition": "report_review.report_review_outcome == 'needs_more_info'"
+    }
+  ]
+}

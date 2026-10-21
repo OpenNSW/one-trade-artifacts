@@ -1,0 +1,49 @@
+{
+  "id": "sltb-lab-report-verification--upload-form",
+  "title": "Submit the Lab Test Report",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "report_feedback": {
+        "type": "string",
+        "title": "Reason for re-upload (from the SLTB Export Division)",
+        "readOnly": true
+      },
+      "lab_report_file": {
+        "type": "string",
+        "format": "file",
+        "title": "Lab Test Report (PDF)",
+        "description": "Upload the lab test report you downloaded above."
+      }
+    },
+    "required": [
+      "lab_report_file"
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/report_feedback",
+        "options": {
+          "multiLine": true
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/report_feedback",
+            "schema": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/lab_report_file"
+      }
+    ]
+  }
+}

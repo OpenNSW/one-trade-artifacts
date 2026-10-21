@@ -1,0 +1,85 @@
+{
+  "id": "sltb-lab-report-verification-flow:render",
+  "type": "APPLICATION",
+  "title": "[SLTB 7] Lab Test Report Verification",
+  "files": [
+    "lab_test_report_file",
+    "labreport.lab_report_file",
+    "submission.lab_report_file",
+    "submission.lab_test_report_file"
+  ],
+  "sections": {
+    "download_report": {
+      "templateId": "sltb-lab-report-verification--download-report",
+      "title": "Lab Test Report",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ]
+      }
+    },
+    "reupload_reason": {
+      "templateId": "sltb-lab-report-verification--reupload-reason",
+      "title": "Export Division Requested Changes",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "report_review"
+      }
+    },
+    "upload_form": {
+      "templateId": "sltb-lab-report-verification--upload-form",
+      "title": "Upload the Lab Test Report",
+      "projector": "FORM",
+      "dataKey": "labreport",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ]
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit to the Export Division",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "pending_verification": {
+      "templateId": "sltb-lab-report-verification--pending-verification",
+      "title": "Waiting for Verification",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    },
+    "completed": {
+      "templateId": "sltb-lab-report-verification--completed",
+      "title": "Lab Test Report Verification",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "COMPLETED"
+        ]
+      }
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    },
+    "QUEUED_EXTERNALLY": {
+      "actions": []
+    },
+    "COMPLETED": {}
+  }
+}

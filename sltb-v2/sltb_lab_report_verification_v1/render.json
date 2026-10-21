@@ -1,0 +1,79 @@
+{
+  "id": "sltb-lab-report-verification--review:render",
+  "type": "APPLICATION",
+  "title": "Lab Test Report Verification",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
+  "files": [
+    "submission.lab_report_file",
+    "submission.lab_test_report_file"
+  ],
+  "sections": {
+    "previous_review": {
+      "templateId": "sltb-lab-report-verification--previous-review",
+      "title": "Previous Review",
+      "projector": "MARKDOWN",
+      "dataKey": "previous_report_feedback",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "previous_report_feedback"
+      }
+    },
+    "submission_view": {
+      "templateId": "sltb-lab-report-verification--upload-form",
+      "title": "Submitted Lab Test Report",
+      "projector": "FORM",
+      "dataKey": "submission"
+    },
+    "review_form": {
+      "templateId": "sltb-lab-report-verification--review-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Review",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "status_message": {
+      "templateId": "sltb-lab-report-verification--submission-view",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ],
+        "requireDataKey": "callbackToken"
+      }
+    },
+    "awaiting_resubmission": {
+      "templateId": "sltb-lab-report-verification--awaiting-resubmission",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ],
+        "requireDataKey": "replyToken"
+      }
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}

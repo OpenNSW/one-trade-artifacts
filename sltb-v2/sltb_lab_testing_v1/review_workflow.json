@@ -1,7 +1,7 @@
 {
   "id": "sltb-lab-testing--review-workflow",
   "name": "Lab Testing & Results — Officer Review",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -19,7 +19,8 @@
         "test_result": "reviewform.test_result",
         "test_date": "reviewform.test_date",
         "test_report_ref?": "reviewform.test_report_ref",
-        "test_notes?": "reviewform.test_notes"
+        "test_notes?": "reviewform.test_notes",
+        "test_report_file": "reviewform.test_report_file"
       }
     },
     {

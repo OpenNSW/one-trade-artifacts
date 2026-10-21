@@ -1,0 +1,8 @@
+{
+  "id": "sltb-lab-report-verification--trader-upload",
+  "task_type": "USER_INPUT",
+  "output_namespace": "labreport",
+  "plugin_properties": {
+    "user_jsonforms_id": "sltb-lab-report-verification--upload-form"
+  }
+}
