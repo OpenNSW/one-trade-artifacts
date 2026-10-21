@@ -133,12 +133,6 @@
       "path": "fcau_issue_certificate_v1/submission_view_markdown.json"
     },
     {
-      "id": "fcau-apply-health-cert--user-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "fcau_issue_certificate_v1/userinput_jsonform.json"
-    },
-    {
       "id": "fcau-warehouse-scheduling--review-v1",
       "kind": "task_config",
       "version": "",
@@ -415,12 +409,6 @@
       "path": "fcau_post_wh_lab_test_v1/submission_view_markdown.json"
     },
     {
-      "id": "fcau-apply-health-cert--user-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "fcau_post_wh_lab_test_v1/userinput_jsonform.json"
-    },
-    {
       "id": "fcau_sample_collection_v1",
       "kind": "task_config",
       "version": "",
@@ -475,12 +463,6 @@
       "path": "fcau_sample_collection_v1/submission_view_markdown.json"
     },
     {
-      "id": "fcau-apply-health-cert--user-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "fcau_sample_collection_v1/userinput_jsonform.json"
-    },
-    {
       "id": "fcau_visual_assessment_v1",
       "kind": "task_config",
       "version": "",
@@ -533,12 +515,6 @@
       "kind": "generic_template",
       "version": "",
       "path": "fcau_visual_assessment_v1/submission_view_markdown.json"
-    },
-    {
-      "id": "fcau-apply-health-cert--user-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "fcau_visual_assessment_v1/userinput_jsonform.json"
     },
     {
       "id": "fcau_lab_fee_payment_review_v1",
@@ -671,12 +647,6 @@
       "kind": "generic_template",
       "version": "",
       "path": "fcau_lab_test_v1/submission_view_markdown.json"
-    },
-    {
-      "id": "fcau-apply-health-cert--user-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "fcau_lab_test_v1/userinput_jsonform.json"
     }
   ]
 }
