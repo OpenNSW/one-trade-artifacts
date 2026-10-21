@@ -1,7 +1,7 @@
 {
   "id": "fcau-post-wh-lab-test--review-workflow",
   "name": "FCAU Post-Warehouse Lab Test Results Submission — Officer Review",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -12,10 +12,12 @@
       "type": "TASK",
       "task_template_id": "fcau-post-wh-lab-test--officer-review",
       "input_mapping": {
-        "submission?": "submission"
+        "submission?": "submission",
+        "submission.items?": "reviewform.items"
       },
       "output_mapping": {
-        "lab_result": "reviewform.lab_result"
+        "__command": "command",
+        "items": "reviewform.items"
       }
     },
     {
@@ -27,7 +29,7 @@
         "reviewform?": "reviewform",
         "submission?": "submission",
         "taskId": "taskId",
-        "reviewform.lab_result": "payload.command",
+        "command": "payload.command",
         "reviewform": "payload.payload"
       }
     },
