@@ -1,0 +1,70 @@
+name: Validate manifests
+
+# Every bundle (a top-level folder with manifest_v1.json, manifest_v2.json, …) is
+# checked with core's manifestcheck:
+#   - manifest versions are contiguous from 1, so the backend's probe reaches every one;
+#   - every manifest loads: no two rows share an id, kind and version, and an
+#     explicitly versioned row keeps its path in every manifest that lists it;
+#   - every artifact each manifest lists exists, parses, and points only at artifacts
+#     the same manifest lists.
+# On a pull request it also checks against the base branch that no published manifest
+# and no file a published manifest lists was changed or deleted: a change is a new file
+# plus a new manifest (see scripts/bump_manifest.py).
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+env:
+  # The OpenNSW/core commit manifestcheck is built from.
+  MANIFESTCHECK_VERSION: 09f462c7359bcf463591506c826aaca961b6ab94
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.26.x"
+          cache: false
+
+      - name: Install manifestcheck
+        run: go install "github.com/OpenNSW/core/artifact/cmd/manifestcheck@${MANIFESTCHECK_VERSION}"
+
+      - name: Check out the base branch
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: git worktree add --detach "$RUNNER_TEMP/base" "$BASE_SHA"
+
+      - name: Check every bundle
+        env:
+          BASE_DIR: ${{ github.event_name == 'pull_request' && format('{0}/base', runner.temp) || '' }}
+        run: |
+          shopt -s nullglob
+          # Bundles on this branch, plus any the base has, so deleting a whole bundle
+          # is caught too.
+          bundles=()
+          for f in */manifest_v1.json; do bundles+=("$(dirname "$f")"); done
+          if [ -n "$BASE_DIR" ]; then
+            for f in "$BASE_DIR"/*/manifest_v1.json; do bundles+=("$(basename "$(dirname "$f")")"); done
+          fi
+          # Bundle folder names hold no spaces.
+          bundles=($(printf '%s\n' "${bundles[@]}" | sort -u))
+          if [ "${#bundles[@]}" -eq 0 ]; then
+            # Nothing is published yet: a bundle is checked from its first manifest_v1.json.
+            echo "No bundle has a manifest_v1.json yet; nothing to check."
+            exit 0
+          fi
+          args=()
+          if [ -n "$BASE_DIR" ]; then args+=(-base "$BASE_DIR"); fi
+          manifestcheck "${args[@]}" "${bundles[@]}"

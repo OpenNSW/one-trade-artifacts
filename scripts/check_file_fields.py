@@ -45,6 +45,20 @@ def load(root, path):
         return json.load(f)
 
 
+MANIFEST_VERSION = re.compile(r"^manifest_v([1-9][0-9]*)\.json$")
+
+
+def manifest_of(root, name):
+    """The bundle's current manifest: its highest manifest_vN.json, or manifest.json
+    in a bundle that has no versioned manifest yet. None if it has neither."""
+    versions = [int(m.group(1)) for m in (MANIFEST_VERSION.match(f) for f in os.listdir(os.path.join(root, name))) if m]
+    if versions:
+        return f"{name}/manifest_v{max(versions)}.json"
+    if os.path.exists(os.path.join(root, name, "manifest.json")):
+        return f"{name}/manifest.json"
+    return None
+
+
 def clean(path):
     # "reviewerform?" marks an optional mapping; "?" can only end a segment.
     return ".".join(seg.rstrip("?") for seg in path.split("."))
@@ -124,7 +138,7 @@ class Scope:
         self.by_kind = defaultdict(dict)
         self.path_of = {}
         base = name
-        for a in load(root, f"{name}/manifest.json")["artifacts"]:
+        for a in load(root, manifest_of(root, name))["artifacts"]:
             path = os.path.join(base, a["path"])
             if not path.endswith(".json"):
                 continue  # an HTML or other text template: it declares nothing
@@ -188,7 +202,7 @@ def all_forms(root):
 class Checker:
     def __init__(self, root):
         self.root = root
-        names = sorted(os.path.basename(os.path.dirname(p)) for p in glob.glob(os.path.join(root, "*", "manifest.json")))
+        names = sorted(d for d in os.listdir(root) if os.path.isdir(os.path.join(root, d)) and manifest_of(root, d))
         self.tnsw = Scope(root, TNSW)
         self.agencies = []
         for name in names:

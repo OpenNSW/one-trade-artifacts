@@ -11,6 +11,7 @@ emits one at the moment) never affect the exit code.
 """
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -51,15 +52,33 @@ class Report:
         sys.exit(1 if self.errors else 0)
 
 
+MANIFEST_VERSION = re.compile(r"^manifest_v([1-9][0-9]*)\.json$")
+
+
+def manifest_versions(bundle):
+    """The bundle's manifest_vN.json files, lowest version first."""
+    found = [(int(m.group(1)), p) for p in bundle.iterdir() if (m := MANIFEST_VERSION.match(p.name))]
+    return [p for _n, p in sorted(found)]
+
+
+def current_manifest(bundle):
+    """The bundle's highest manifest_vN.json, or manifest.json in a bundle that has no
+    versioned manifest yet. None if it has neither."""
+    versions = manifest_versions(bundle)
+    if versions:
+        return versions[-1]
+    return bundle / "manifest.json" if (bundle / "manifest.json").exists() else None
+
+
 def find_manifests(root):
-    """Return {label: (manifest_path, manifest_dir)} for every manifest.json this repo cares about."""
+    """Return {label: (manifest_path, manifest_dir)} with the current manifest of every bundle
+    this repo cares about."""
     manifests = {}
-    tnsw_manifest = root / "tnsw" / "manifest.json"
-    if tnsw_manifest.exists():
-        manifests["tnsw"] = (tnsw_manifest, tnsw_manifest.parent)
     for d in sorted(root.iterdir()):
-        if d.name in AGENCY_DIRS and (d / "manifest.json").exists():
-            manifests[d.name] = (d / "manifest.json", d)
+        if (d.name == "tnsw" or d.name in AGENCY_DIRS) and d.is_dir():
+            m = current_manifest(d)
+            if m:
+                manifests[d.name] = (m, d)
     return manifests
 
 
@@ -80,12 +99,14 @@ def check_paths_exist(manifests, report):
 
 
 def check_unregistered_files(manifests, report):
-    """Every *.json file under a manifest's tree (except manifest.json itself) should be referenced by it."""
+    """Every *.json file under a bundle (except its manifests) should be listed by one of its
+    manifests: the current one, or an older version a running flow may still be on."""
     for label, (mpath, mdir) in manifests.items():
-        data = load_json(mpath)
-        registered = {(mdir / a["path"]).resolve() for a in data.get("artifacts", [])}
+        registered = set()
+        for m in manifest_versions(mdir) or [mpath]:
+            registered |= {(mdir / a["path"]).resolve() for a in load_json(m).get("artifacts", [])}
         for p in mdir.rglob("*.json"):
-            if p.name == "manifest.json":
+            if p.name == "manifest.json" or MANIFEST_VERSION.match(p.name):
                 continue
             if p.resolve() not in registered:
                 report.error(f"[{label}] file not registered in manifest.json: {p.relative_to(mdir)}")

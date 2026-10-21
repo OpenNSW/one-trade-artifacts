@@ -18,6 +18,7 @@ in nsw-srilanka) maps them to IdP roles.
 Usage: check_agency_authz.py [repo-root]
 """
 import json
+import re
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -58,6 +59,18 @@ def check_authz(step, render):
     return problems
 
 
+MANIFEST_VERSION = re.compile(r"^manifest_v([1-9][0-9]*)\.json$")
+
+
+def current_manifest(bundle):
+    """The bundle's highest manifest_vN.json, or manifest.json in a bundle that has no
+    versioned manifest yet. None if it has neither."""
+    versions = [int(m.group(1)) for m in (MANIFEST_VERSION.match(p.name) for p in bundle.iterdir()) if m]
+    if versions:
+        return bundle / f"manifest_v{max(versions)}.json"
+    return bundle / "manifest.json" if (bundle / "manifest.json").exists() else None
+
+
 def check_agency(root, manifest_path):
     agency_dir = manifest_path.parent
     paths = defaultdict(dict)
@@ -94,9 +107,9 @@ def check_agency(root, manifest_path):
 
 def main():
     root = Path(sys.argv[1] if len(sys.argv) > 1 else ".")
-    manifests = sorted(root.glob("*-v2/manifest.json"))
+    manifests = sorted(m for m in (current_manifest(d) for d in root.glob("*-v2") if d.is_dir()) if m)
     if not manifests:
-        sys.exit("no *-v2/manifest.json found")
+        sys.exit("no *-v2 manifest found")
 
     all_problems, total = [], 0
     for manifest in manifests:
