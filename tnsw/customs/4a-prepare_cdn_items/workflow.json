@@ -4,11 +4,25 @@
   "nodes": [
     { "id": "start", "type": "START" },
     {
+      "id": "retrieve_cusdec",
+      "type": "TASK",
+      "task_template_id": "customs-prepare-cdn-items--cusdec-retrieve",
+      "input_mapping": {
+        "cusdec_ref?": "cusdec_ref",
+        "userform?": "userform"
+      },
+      "output_mapping": {
+        "cusdec_latest.retrieved?": "cusdec_latest.retrieved",
+        "cusdec_latest.container_count?": "latest_container_count"
+      }
+    },
+    {
       "id": "build_split_items",
       "type": "TASK",
       "task_template_id": "customs-prepare-cdn-items--transform",
       "input_mapping": {
         "container_count": "container_count",
+        "latest_container_count?": "latest_container_count",
         "cusdec_ref?": "cusdec_ref"
       },
       "output_mapping": {
@@ -18,7 +32,8 @@
     { "id": "end", "type": "END" }
   ],
   "edges": [
-    { "id": "e1", "source_id": "start", "target_id": "build_split_items" },
-    { "id": "e2", "source_id": "build_split_items", "target_id": "end" }
+    { "id": "e1", "source_id": "start", "target_id": "retrieve_cusdec" },
+    { "id": "e2", "source_id": "retrieve_cusdec", "target_id": "build_split_items" },
+    { "id": "e3", "source_id": "build_split_items", "target_id": "end" }
   ]
 }
