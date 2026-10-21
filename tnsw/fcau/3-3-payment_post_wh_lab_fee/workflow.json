@@ -1,7 +1,7 @@
 {
   "id": "fcau-pay-post-wh-lab-fee-flow",
   "name": "Pay Post-Warehouse Lab Test Fee",
-  "version": 2,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
@@ -12,6 +12,7 @@
       "type": "TASK",
       "task_template_id": "fcau-pay-post-wh-lab-fee--upload-receipt",
       "input_mapping": {
+        "post_wh_lab_payment_status?": "payment_review_outcome",
         "payment_feedback?": "payment_feedback"
       },
       "output_mapping": {
