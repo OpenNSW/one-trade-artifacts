@@ -982,16 +982,22 @@
     ]
   },
   "uiSchema": {
-    "type": "VerticalLayout",
+    "type": "Categorization",
+    "options": {
+      "variant": "stepper"
+    },
     "elements": [
       {
-        "type": "Control",
-        "scope": "#/properties/import_cusdec_xml"
-      },
-      {
-        "type": "Group",
-        "label": "General information",
+        "type": "Category",
+        "label": "Declaration",
+        "options": {
+          "description": "Import a CusDec XML to fill in the form, or enter the declaration by hand."
+        },
         "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/import_cusdec_xml"
+          },
           {
             "type": "Control",
             "scope": "#/properties/identification/properties/declarationType"
@@ -1011,36 +1017,32 @@
           {
             "type": "Control",
             "scope": "#/properties/identification/properties/manifestRegNumber"
-          },
+          }
+        ]
+      },
+      {
+        "type": "Category",
+        "label": "Parties",
+        "elements": [
           {
             "type": "Group",
             "label": "Exporter",
             "elements": [
               {
-                "type": "HorizontalLayout",
-                "elements": [
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/traders/properties/exporter/properties/code"
-                  },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/traders/properties/exporter/properties/name"
-                  }
-                ]
+                "type": "Control",
+                "scope": "#/properties/traders/properties/exporter/properties/code"
               },
               {
-                "type": "HorizontalLayout",
-                "elements": [
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/traders/properties/exporter/properties/address"
-                  },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/traders/properties/exporter/properties/countryCode"
-                  }
-                ]
+                "type": "Control",
+                "scope": "#/properties/traders/properties/exporter/properties/name"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/traders/properties/exporter/properties/address"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/traders/properties/exporter/properties/countryCode"
               }
             ]
           },
@@ -1049,17 +1051,12 @@
             "label": "Consignee",
             "elements": [
               {
-                "type": "HorizontalLayout",
-                "elements": [
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/traders/properties/consignee/properties/name"
-                  },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/traders/properties/consignee/properties/address"
-                  }
-                ]
+                "type": "Control",
+                "scope": "#/properties/traders/properties/consignee/properties/name"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/traders/properties/consignee/properties/address"
               },
               {
                 "type": "Control",
@@ -1070,11 +1067,13 @@
           {
             "type": "Control",
             "scope": "#/properties/traders/properties/declarant/properties/code"
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/packages/properties/totalPackages"
-          },
+          }
+        ]
+      },
+      {
+        "type": "Category",
+        "label": "Transport",
+        "elements": [
           {
             "type": "Control",
             "scope": "#/properties/generalInfo/properties/countryOfFirstDestination"
@@ -1084,17 +1083,12 @@
             "scope": "#/properties/generalInfo/properties/exportCountryCode"
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/generalInfo/properties/destinationCountryCode"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/vesselName"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/generalInfo/properties/destinationCountryCode"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport/properties/vesselName"
           },
           {
             "type": "Control",
@@ -1110,19 +1104,37 @@
           },
           {
             "type": "Control",
-            "scope": "#/properties/transport/properties/deliveryTermsCode"
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/transport/properties/deliveryTermsPlace"
-          },
-          {
-            "type": "Control",
             "scope": "#/properties/transport/properties/voyageNo"
           },
           {
             "type": "Control",
             "scope": "#/properties/transport/properties/voyageNationality"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport/properties/modeOfTransport"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport/properties/placeOfDischargeCode"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport/properties/borderOfficeCode"
+          }
+        ]
+      },
+      {
+        "type": "Category",
+        "label": "Valuation",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/transport/properties/deliveryTermsCode"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport/properties/deliveryTermsPlace"
           },
           {
             "type": "Group",
@@ -1237,37 +1249,17 @@
                 ]
               }
             ]
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/transport/properties/modeOfTransport"
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/transport/properties/placeOfDischargeCode"
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/transport/properties/borderOfficeCode"
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/financial/properties/deferredPayment"
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/transport/properties/warehouseCode"
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/transport/properties/warehouseDelay"
           }
         ]
       },
       {
-        "type": "Group",
-        "label": "Packages and Description of Goods",
+        "type": "Category",
+        "label": "Goods",
         "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/packages/properties/totalPackages"
+          },
           {
             "type": "Control",
             "scope": "#/properties/items",
@@ -1388,12 +1380,25 @@
         ]
       },
       {
-        "type": "Control",
-        "scope": "#/properties/financial/properties/bankCode"
-      },
-      {
-        "type": "HorizontalLayout",
+        "type": "Category",
+        "label": "Payment and Warehouse",
         "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/financial/properties/deferredPayment"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport/properties/warehouseCode"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport/properties/warehouseDelay"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/financial/properties/bankCode"
+          },
           {
             "type": "Control",
             "scope": "#/properties/financial/properties/bankReference"
@@ -1401,24 +1406,24 @@
           {
             "type": "Control",
             "scope": "#/properties/financial/properties/paymentTermsCode"
-          }
-        ]
-      },
-      {
-        "type": "HorizontalLayout",
-        "elements": [
-          {
-            "type": "Control",
-            "scope": "#/properties/financial/properties/remittanceAmount"
           },
           {
-            "type": "Control",
-            "scope": "#/properties/financial/properties/remittanceCurrencyCode"
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/financial/properties/remittanceAmount"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/financial/properties/remittanceCurrencyCode"
+              }
+            ]
           }
         ]
       },
       {
-        "type": "Group",
+        "type": "Category",
         "label": "Supporting Documents",
         "elements": [
           {

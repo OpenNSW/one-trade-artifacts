@@ -811,84 +811,144 @@
     ]
   },
   "uiSchema": {
-    "type": "VerticalLayout",
+    "type": "Categorization",
+    "options": {
+      "variant": "stepper"
+    },
     "elements": [
       {
-        "type": "Group",
-        "label": "1. General Info",
+        "type": "Category",
+        "label": "General Info",
         "elements": [
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              { "type": "Control", "scope": "#/properties/certificate_type" },
-              { "type": "Control", "scope": "#/properties/shipment_value" }
-            ]
+            "type": "Control",
+            "scope": "#/properties/certificate_type"
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              { "type": "Control", "scope": "#/properties/applicant_name" },
-              { "type": "Control", "scope": "#/properties/nppo_office_location" }
-            ]
+            "type": "Control",
+            "scope": "#/properties/shipment_value"
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              { "type": "Control", "scope": "#/properties/importing_country" },
-              { "type": "Control", "scope": "#/properties/transit_countries" }
-            ]
+            "type": "Control",
+            "scope": "#/properties/applicant_name"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/nppo_office_location"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/importing_country"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transit_countries"
           },
           {
             "type": "Control",
             "scope": "#/properties/re_export/properties/original_certificate_number",
-            "rule": { "effect": "SHOW", "condition": { "scope": "#/properties/certificate_type", "schema": { "const": "re-export" } } }
+            "rule": {
+              "effect": "SHOW",
+              "condition": {
+                "scope": "#/properties/certificate_type",
+                "schema": {
+                  "const": "re-export"
+                }
+              }
+            }
           },
           {
             "type": "Control",
             "scope": "#/properties/re_export/properties/original_certificate_form",
-            "rule": { "effect": "SHOW", "condition": { "scope": "#/properties/certificate_type", "schema": { "const": "re-export" } } }
+            "rule": {
+              "effect": "SHOW",
+              "condition": {
+                "scope": "#/properties/certificate_type",
+                "schema": {
+                  "const": "re-export"
+                }
+              }
+            }
           },
           {
             "type": "Control",
             "scope": "#/properties/re_export/properties/packing",
-            "rule": { "effect": "SHOW", "condition": { "scope": "#/properties/certificate_type", "schema": { "const": "re-export" } } }
+            "rule": {
+              "effect": "SHOW",
+              "condition": {
+                "scope": "#/properties/certificate_type",
+                "schema": {
+                  "const": "re-export"
+                }
+              }
+            }
           },
           {
             "type": "Control",
             "scope": "#/properties/re_export/properties/containers",
-            "rule": { "effect": "SHOW", "condition": { "scope": "#/properties/certificate_type", "schema": { "const": "re-export" } } }
+            "rule": {
+              "effect": "SHOW",
+              "condition": {
+                "scope": "#/properties/certificate_type",
+                "schema": {
+                  "const": "re-export"
+                }
+              }
+            }
           },
           {
             "type": "Control",
             "scope": "#/properties/re_export/properties/original_certificate_attached",
-            "rule": { "effect": "SHOW", "condition": { "scope": "#/properties/certificate_type", "schema": { "const": "re-export" } } }
+            "rule": {
+              "effect": "SHOW",
+              "condition": {
+                "scope": "#/properties/certificate_type",
+                "schema": {
+                  "const": "re-export"
+                }
+              }
+            }
           },
           {
             "type": "Control",
             "scope": "#/properties/re_export/properties/additional_inspection",
-            "rule": { "effect": "SHOW", "condition": { "scope": "#/properties/certificate_type", "schema": { "const": "re-export" } } }
+            "rule": {
+              "effect": "SHOW",
+              "condition": {
+                "scope": "#/properties/certificate_type",
+                "schema": {
+                  "const": "re-export"
+                }
+              }
+            }
           },
           {
             "type": "Control",
             "scope": "#/properties/re_export/properties/statement_code",
-            "rule": { "effect": "SHOW", "condition": { "scope": "#/properties/certificate_type", "schema": { "const": "re-export" } } }
+            "rule": {
+              "effect": "SHOW",
+              "condition": {
+                "scope": "#/properties/certificate_type",
+                "schema": {
+                  "const": "re-export"
+                }
+              }
+            }
           }
         ]
       },
       {
-        "type": "Group",
-        "label": "2. Consignment Details",
+        "type": "Category",
+        "label": "Consignment Details",
         "elements": [
           {
-            "type": "HorizontalLayout",
+            "type": "Group",
+            "label": "Exporter",
             "elements": [
-              { "type": "Control", "scope": "#/properties/exporter_name" },
-              { "type": "Control", "scope": "#/properties/consignee_name" }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/exporter_name"
+              },
               {
                 "type": "Control",
                 "scope": "#/properties/exporter_address",
@@ -898,80 +958,127 @@
               },
               {
                 "type": "Control",
+                "scope": "#/properties/exporter_country"
+              }
+            ]
+          },
+          {
+            "type": "Group",
+            "label": "Consignee",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/consignee_name"
+              },
+              {
+                "type": "Control",
                 "scope": "#/properties/consignee_address",
                 "options": {
                   "multiLine": true
                 }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/consignee_country"
               }
             ]
           },
           {
-            "type": "HorizontalLayout",
+            "type": "Group",
+            "label": "Shipment",
             "elements": [
-              { "type": "Control", "scope": "#/properties/exporter_country" },
-              { "type": "Control", "scope": "#/properties/consignee_country" }
-            ]
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/distinguishing_marks",
-            "options": {
-              "multiLine": true
-            }
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              { "type": "Control", "scope": "#/properties/point_of_entry_country" },
-              { "type": "Control", "scope": "#/properties/point_of_entry_port" }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              { "type": "Control", "scope": "#/properties/seal_number" },
-              { "type": "Control", "scope": "#/properties/estimated_shipment_date" }
-            ]
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/transport_details",
-            "options": {
-              "detail": {
-                "type": "VerticalLayout",
-                "elements": [
-                  { "type": "Control", "scope": "#/properties/transport_mode" },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/transport_name",
-                    "rule": {
-                      "effect": "SHOW",
-                      "condition": {
-                        "scope": "#/properties/transport_mode",
-                        "schema": { "enum": ["1", "2", "3", "4", "5", "6", "7", "8"] }
+              {
+                "type": "Control",
+                "scope": "#/properties/distinguishing_marks",
+                "options": {
+                  "multiLine": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/point_of_entry_country"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/point_of_entry_port"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/seal_number"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/estimated_shipment_date"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/transport_details",
+                "options": {
+                  "detail": {
+                    "type": "VerticalLayout",
+                    "elements": [
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/transport_mode"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/transport_name",
+                        "rule": {
+                          "effect": "SHOW",
+                          "condition": {
+                            "scope": "#/properties/transport_mode",
+                            "schema": {
+                              "enum": [
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5",
+                                "6",
+                                "7",
+                                "8"
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/transport_number",
+                        "rule": {
+                          "effect": "SHOW",
+                          "condition": {
+                            "scope": "#/properties/transport_mode",
+                            "schema": {
+                              "enum": [
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5",
+                                "6",
+                                "7",
+                                "8"
+                              ]
+                            }
+                          }
+                        }
                       }
-                    }
-                  },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/transport_number",
-                    "rule": {
-                      "effect": "SHOW",
-                      "condition": {
-                        "scope": "#/properties/transport_mode",
-                        "schema": { "enum": ["1", "2", "3", "4", "5", "6", "7", "8"] }
-                      }
-                    }
+                    ]
                   }
-                ]
+                }
               }
-            }
+            ]
           }
         ]
       },
       {
-        "type": "Group",
-        "label": "3. Commodity Details",
+        "type": "Category",
+        "label": "Commodity Details",
+        "options": {
+          "description": "Add one item for each commodity in this consignment."
+        },
         "elements": [
           {
             "type": "Control",
@@ -979,45 +1086,109 @@
             "options": {
               "errorMessage": "At least one commodity must be added before submitting the Phytosanitary Certificate application",
               "detail": {
-                "type" : "VerticalLayout",
+                "type": "VerticalLayout",
                 "elements": [
                   {
                     "type": "Control",
                     "scope": "#/properties/commodity_common_name",
-                    "options": { "placeholder": "Type to search commodities…" }
+                    "options": {
+                      "placeholder": "Type to search commodities…"
+                    }
                   },
                   {
                     "type": "Control",
                     "scope": "#/properties/commodity_botanical_name",
-                    "options": { "placeholder": "Type to search scientific names…" }
+                    "options": {
+                      "placeholder": "Type to search scientific names…"
+                    }
                   },
-                  { "type": "Control", "scope": "#/properties/commodity_language" },
-                  { "type": "Control", "scope": "#/properties/commodity_description" },
-                  { "type": "Control", "scope": "#/properties/commodity_plant_part" },
-                  { "type": "Control", "scope": "#/properties/commodity_condition" },
-                  { "type": "Control", "scope": "#/properties/commodity_intended_use" },
-                  { "type": "Control", "scope": "#/properties/quantity_net_weight" },
-                  { "type": "Control", "scope": "#/properties/quantity_net_weight_unit" },
-                  { "type": "Control", "scope": "#/properties/quantity_gross_weight" },
-                  { "type": "Control", "scope": "#/properties/quantity_gross_weight_unit" },
-                  { "type": "Control", "scope": "#/properties/packages_count" },
-                  { "type": "Control", "scope": "#/properties/packages_description" },
-                  { "type": "Control", "scope": "#/properties/packages_in_bulk" },
-                  { "type": "Control", "scope": "#/properties/packages_free_text_enabled" },
-                  { "type": "Control", "scope": "#/properties/packages_free_text" },
-                  { "type": "Control", "scope": "#/properties/origin_country" },
-                  { "type": "Control", "scope": "#/properties/origin_area" },
-                  { "type": "Control", "scope": "#/properties/id" }
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/commodity_language"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/commodity_description"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/commodity_plant_part"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/commodity_condition"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/commodity_intended_use"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/quantity_net_weight"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/quantity_net_weight_unit"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/quantity_gross_weight"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/quantity_gross_weight_unit"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/packages_count"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/packages_description"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/packages_in_bulk"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/packages_free_text_enabled"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/packages_free_text"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/origin_country"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/origin_area"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/id"
+                  }
                 ]
               }
             }
           },
-          { "type": "Control", "scope": "#/properties/import_permit_number" },
+          {
+            "type": "Control",
+            "scope": "#/properties/import_permit_number"
+          },
           {
             "type": "HorizontalLayout",
             "elements": [
-              { "type": "Control", "scope": "#/properties/proposed_inspection_date" },
-              { "type": "Control", "scope": "#/properties/proposed_inspection_time" }
+              {
+                "type": "Control",
+                "scope": "#/properties/proposed_inspection_date"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/proposed_inspection_time"
+              }
             ]
           },
           {
@@ -1044,10 +1215,13 @@
         ]
       },
       {
-        "type": "Group",
-        "label": "4. Attachments",
+        "type": "Category",
+        "label": "Attachments",
         "elements": [
-          { "type": "Control", "scope": "#/properties/attachments" }
+          {
+            "type": "Control",
+            "scope": "#/properties/attachments"
+          }
         ]
       }
     ]

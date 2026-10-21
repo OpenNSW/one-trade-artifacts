@@ -311,42 +311,36 @@
     ]
   },
   "uiSchema": {
-    "type": "VerticalLayout",
+    "type": "Categorization",
+    "options": {
+      "variant": "stepper"
+    },
     "elements": [
       {
-        "type": "Group",
-        "label": "Declaration & Container",
+        "type": "Category",
+        "label": "Declaration and Container",
         "elements": [
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/cusdecRef"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/containerLabel"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/cusdecRef"
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/officeCode"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/containerLabel"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/officeCode"
           }
         ]
       },
       {
-        "type": "Group",
-        "label": "1. Shipper & Consignee",
+        "type": "Category",
+        "label": "Shipper and Consignee",
         "elements": [
           {
-            "type": "HorizontalLayout",
+            "type": "Group",
+            "label": "Shipper",
             "elements": [
               {
                 "type": "Control",
@@ -355,12 +349,7 @@
               {
                 "type": "Control",
                 "scope": "#/properties/shipper/properties/name"
-              }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
+              },
               {
                 "type": "Control",
                 "scope": "#/properties/shipper/properties/address"
@@ -372,7 +361,8 @@
             ]
           },
           {
-            "type": "HorizontalLayout",
+            "type": "Group",
+            "label": "Consignee",
             "elements": [
               {
                 "type": "Control",
@@ -381,12 +371,7 @@
               {
                 "type": "Control",
                 "scope": "#/properties/consignee/properties/name"
-              }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
+              },
               {
                 "type": "Control",
                 "scope": "#/properties/consignee/properties/address"
@@ -400,172 +385,112 @@
         ]
       },
       {
-        "type": "Group",
-        "label": "2. Voyage & Transport",
+        "type": "Category",
+        "label": "Voyage and Transport",
         "elements": [
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/voyageNumber"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/voyageDate"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/transport/properties/voyageNumber"
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/vessel"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/exVessel"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/transport/properties/voyageDate"
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/vesselOpCode"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/contOpCode"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/transport/properties/vessel"
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/placeOfLoading"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/placeOfDischarge"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/transport/properties/exVessel"
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/lorryRegNo"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/trailerRegNo"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/transport/properties/vesselOpCode"
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/driverName"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/transport/properties/locationOfGoods"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/transport/properties/contOpCode"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport/properties/placeOfLoading"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport/properties/placeOfDischarge"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport/properties/lorryRegNo"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport/properties/trailerRegNo"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport/properties/driverName"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport/properties/locationOfGoods"
           }
         ]
       },
       {
-        "type": "Group",
-        "label": "3. Container",
+        "type": "Category",
+        "label": "Container",
         "elements": [
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/container/properties/number"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/container/properties/type"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/container/properties/number"
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/container/properties/sealNo"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/container/properties/mark"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/container/properties/type"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/container/properties/sealNo"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/container/properties/mark"
           }
         ]
       },
       {
-        "type": "Group",
-        "label": "4. Goods & Packaging",
+        "type": "Category",
+        "label": "Goods and Packaging",
         "elements": [
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/goods/properties/description"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/goods/properties/description"
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/goods/properties/packageNumber"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/goods/properties/packageType"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/goods/properties/packageNumber"
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/goods/properties/grossWeight"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/goods/properties/volume"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/goods/properties/packageType"
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/goods/properties/bol"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/goods/properties/tempRequired"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/goods/properties/grossWeight"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/goods/properties/volume"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/goods/properties/bol"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/goods/properties/tempRequired"
           }
         ]
       }
