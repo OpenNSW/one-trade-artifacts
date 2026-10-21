@@ -29,22 +29,32 @@
                 {
                   "const": "fail",
                   "title": "Fail"
+                }
+              ]
+            },
+            "visual_referral": {
+              "type": "string",
+              "title": "Further Inspection",
+              "oneOf": [
+                {
+                  "const": "not_required",
+                  "title": "Not Required"
                 },
                 {
-                  "const": "refer_lab",
+                  "const": "lab",
                   "title": "Refer to Lab Test"
                 },
                 {
-                  "const": "refer_warehouse",
+                  "const": "warehouse",
                   "title": "Refer to Warehouse Inspection"
                 }
-              ],
-              "default": "pass"
+              ]
             }
           },
           "required": [
             "id",
-            "visual_result"
+            "visual_result",
+            "visual_referral"
           ]
         }
       },
@@ -87,8 +97,17 @@
                 ]
               },
               {
-                "type": "Control",
-                "scope": "#/properties/visual_result"
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/visual_result"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/visual_referral"
+                  }
+                ]
               }
             ]
           },

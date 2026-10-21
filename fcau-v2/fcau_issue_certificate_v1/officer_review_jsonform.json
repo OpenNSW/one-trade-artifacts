@@ -33,14 +33,6 @@
                 {
                   "const": "fail",
                   "title": "Fail"
-                },
-                {
-                  "const": "refer_lab",
-                  "title": "Referred to Lab"
-                },
-                {
-                  "const": "refer_warehouse",
-                  "title": "Referred to Warehouse"
                 }
               ]
             },
@@ -56,10 +48,6 @@
                 {
                   "const": "fail",
                   "title": "Fail"
-                },
-                {
-                  "const": "refer_warehouse",
-                  "title": "Referred to Warehouse"
                 }
               ]
             },
@@ -75,6 +63,55 @@
                 {
                   "const": "fail",
                   "title": "Fail"
+                }
+              ]
+            },
+            "visual_referral": {
+              "type": "string",
+              "title": "Visual Referral",
+              "readOnly": true,
+              "oneOf": [
+                {
+                  "const": "not_required",
+                  "title": "Not Required"
+                },
+                {
+                  "const": "lab",
+                  "title": "Referred to Lab Test"
+                },
+                {
+                  "const": "warehouse",
+                  "title": "Referred to Warehouse Inspection"
+                }
+              ]
+            },
+            "lab_referral": {
+              "type": "string",
+              "title": "Lab Referral",
+              "readOnly": true,
+              "oneOf": [
+                {
+                  "const": "not_required",
+                  "title": "Not Required"
+                },
+                {
+                  "const": "warehouse",
+                  "title": "Referred to Warehouse Inspection"
+                }
+              ]
+            },
+            "warehouse_referral": {
+              "type": "string",
+              "title": "Warehouse Referral",
+              "readOnly": true,
+              "oneOf": [
+                {
+                  "const": "not_required",
+                  "title": "Not Required"
+                },
+                {
+                  "const": "lab",
+                  "title": "Referred to Lab Test"
                 }
               ]
             }
@@ -266,64 +303,70 @@
                     }
                   }
                 ]
+              },
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/visual_referral",
+                    "options": {
+                      "readonly": true
+                    },
+                    "rule": {
+                      "effect": "SHOW",
+                      "condition": {
+                        "scope": "#/properties/visual_referral",
+                        "schema": {
+                          "enum": [
+                            "lab",
+                            "warehouse"
+                          ]
+                        },
+                        "failWhenUndefined": true
+                      }
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/lab_referral",
+                    "options": {
+                      "readonly": true
+                    },
+                    "rule": {
+                      "effect": "SHOW",
+                      "condition": {
+                        "scope": "#/properties/lab_referral",
+                        "schema": {
+                          "const": "warehouse"
+                        },
+                        "failWhenUndefined": true
+                      }
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/warehouse_referral",
+                    "options": {
+                      "readonly": true
+                    },
+                    "rule": {
+                      "effect": "SHOW",
+                      "condition": {
+                        "scope": "#/properties/warehouse_referral",
+                        "schema": {
+                          "const": "lab"
+                        },
+                        "failWhenUndefined": true
+                      }
+                    }
+                  }
+                ]
               }
             ]
           },
           "addable": false,
           "removable": false
-        }
-      },
-      {
-        "type": "Label",
-        "text": "Every item failed, so the health certificate can't be issued. Choose Reject Consignment.",
-        "rule": {
-          "effect": "SHOW",
-          "condition": {
-            "scope": "#/properties/items",
-            "schema": {
-              "type": "array",
-              "minItems": 1,
-              "not": {
-                "contains": {
-                  "not": {
-                    "anyOf": [
-                      {
-                        "properties": {
-                          "visual_result": {
-                            "const": "fail"
-                          }
-                        },
-                        "required": [
-                          "visual_result"
-                        ]
-                      },
-                      {
-                        "properties": {
-                          "lab_result": {
-                            "const": "fail"
-                          }
-                        },
-                        "required": [
-                          "lab_result"
-                        ]
-                      },
-                      {
-                        "properties": {
-                          "warehouse_result": {
-                            "const": "fail"
-                          }
-                        },
-                        "required": [
-                          "warehouse_result"
-                        ]
-                      }
-                    ]
-                  }
-                }
-              }
-            },
-            "failWhenUndefined": true
-          }
         }
       },
       {
