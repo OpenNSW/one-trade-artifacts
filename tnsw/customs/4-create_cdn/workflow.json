@@ -1,7 +1,7 @@
 {
   "id": "customs-create-cdn-flow",
   "name": "Create CDN",
-  "version": 4,
+  "version": 5,
   "nodes": [
     {
       "id": "start",
@@ -34,7 +34,7 @@
         "userform?": "userform",
         "userform": "payload",
         "cusdec_ref": "payload.cusdecRef",
-        "cig_cdn.edgeId?": "previous_edge_id"
+        "cig_cdn.edge_id?": "previous_edge_id"
       },
       "output_mapping": {
         "cig_cdn.accepted": "cig_cdn.accepted",
