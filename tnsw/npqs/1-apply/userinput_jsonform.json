@@ -253,7 +253,7 @@
               "title": "Commodity Name",
               "x-search": {
                 "service": "static-data",
-                "mode": "large-searchable-list",
+                "mode": "large-paginated-list",
                 "displayTemplate": "{name}",
                 "params": {
                   "id": "npqs-apply-phyto-cert--commodity-common-names",
@@ -271,7 +271,7 @@
               "title": "Scientific Name",
               "x-search": {
                 "service": "static-data",
-                "mode": "small-list",
+                "mode": "large-searchable-list",
                 "displayTemplate": "{name}",
                 "dependsOn": "commodity_common_name",
                 "params": {
@@ -981,8 +981,16 @@
               "detail": {
                 "type" : "VerticalLayout",
                 "elements": [
-                  { "type": "Control", "scope": "#/properties/commodity_common_name" },
-                  { "type": "Control", "scope": "#/properties/commodity_botanical_name" },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/commodity_common_name",
+                    "options": { "placeholder": "Type to search commodities…" }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/commodity_botanical_name",
+                    "options": { "placeholder": "Type to search scientific names…" }
+                  },
                   { "type": "Control", "scope": "#/properties/commodity_language" },
                   { "type": "Control", "scope": "#/properties/commodity_description" },
                   { "type": "Control", "scope": "#/properties/commodity_plant_part" },

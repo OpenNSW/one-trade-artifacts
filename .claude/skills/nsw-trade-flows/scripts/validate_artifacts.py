@@ -6,17 +6,17 @@ resolved relative to the repo root, which is detected as the directory
 containing this script's ancestor `.claude/skills/...` (four levels up from
 `scripts/`) unless overridden with --root.
 
-Exit code is non-zero iff at least one ERROR was found. WARNINGs never affect
-the exit code — they flag things worth a human glance (e.g. an id
-deliberately reused across sibling task_config folders) but are not
-necessarily wrong.
+Exit code is non-zero iff at least one ERROR was found. WARNINGs (no check
+emits one at the moment) never affect the exit code.
 """
 import argparse
 import json
 import sys
 from pathlib import Path
 
-AGENCY_DIRS = {"cda", "customs", "fcau", "npqs", "sltb"}
+# An EXTERNAL_REVIEW step's service_id names the agency; its tasks live in <service_id>-v2/.
+AGENCIES = {"cda", "efc", "fcau", "npqs", "sltb"}
+AGENCY_DIRS = {f"{a}-v2" for a in AGENCIES}
 
 
 def load_json(path):
@@ -91,20 +91,12 @@ def check_unregistered_files(manifests, report):
                 report.error(f"[{label}] file not registered in manifest.json: {p.relative_to(mdir)}")
 
 
-def diff_contents(paths):
-    """True if all given files are byte-identical."""
-    contents = {p.read_bytes() for p in paths}
-    return len(contents) <= 1
-
-
 def check_duplicate_ids_within_manifest(index, report):
-    """An id repeated within one manifest for the SAME kind is a deliberate
-    pattern here (e.g. the same read-only 'original submission' form
-    duplicated across every officer task_config folder in an agency) -- only
-    flag it if the duplicated files' contents have actually drifted apart.
-    (An id shared across *different* kinds -- e.g. a workflow.json and its
-    sibling task_template.json both named after the flow -- is normal and
-    not comparable at all.)"""
+    """An id listed twice in one manifest for the SAME kind is a bug: the
+    artifact registry keeps only the last row, so an edit to the other copy
+    silently does nothing. (An id shared across *different* kinds -- e.g. a
+    workflow.json and its sibling task_template.json both named after the
+    flow -- is normal.)"""
     for label, by_id in index.items():
         for artifact_id, entries in by_id.items():
             by_kind = {}
@@ -113,47 +105,18 @@ def check_duplicate_ids_within_manifest(index, report):
             for kind, paths in by_kind.items():
                 if len(paths) < 2:
                     continue
-                if not diff_contents(paths):
-                    rels = ", ".join(str(p) for p in paths)
-                    report.warn(
-                        f"[{label}] id {artifact_id!r} ({kind}) is reused {len(paths)}x with DIFFERING content: {rels}"
-                    )
-
-
-def check_shared_ids_across_tnsw_and_agency(index, root, report):
-    """Ids shared between tnsw/manifest.json and an agency manifest.json are the
-    officer-facing jsonforms/templates the CLAUDE.md convention says must stay
-    byte-identical in both places. Flag drift."""
-    tnsw_ids = index.get("tnsw", {})
-    for label, by_id in index.items():
-        if label == "tnsw":
-            continue
-        shared = set(tnsw_ids) & set(by_id)
-        for artifact_id in sorted(shared):
-            tnsw_by_kind = {}
-            for p, k in tnsw_ids[artifact_id]:
-                tnsw_by_kind.setdefault(k, []).append(p)
-            agency_by_kind = {}
-            for p, k in by_id[artifact_id]:
-                agency_by_kind.setdefault(k, []).append(p)
-            for kind in sorted(set(tnsw_by_kind) & set(agency_by_kind)):
-                all_paths = tnsw_by_kind[kind] + agency_by_kind[kind]
-                if not diff_contents(all_paths):
-                    rels = ", ".join(str(p.relative_to(root)) for p in all_paths)
-                    report.error(
-                        f"id {artifact_id!r} ({kind}) differs between tnsw/manifest.json and {label}/manifest.json: {rels}"
-                    )
+                rels = ", ".join(str(p) for p in paths)
+                report.error(f"[{label}] id {artifact_id!r} ({kind}) is listed {len(paths)}x; only the last row loads: {rels}")
 
 
 def check_external_review_linkage(manifests, index, root, report):
     """Every EXTERNAL_REVIEW subtask_template's plugin_properties.{service_id,task_code}
-    must resolve to a task_config in that agency's own manifest, and that
-    task_config's forms.* must resolve to a generic_template id."""
+    must resolve to a task_config in that agency's own <service_id>-v2/ manifest,
+    and that task_config's `workflow` must resolve to a workflow there."""
     tnsw_mpath, tnsw_mdir = manifests.get("tnsw", (None, None))
     if tnsw_mdir is None:
         report.error("tnsw/manifest.json not found; cannot check EXTERNAL_REVIEW linkage")
         return
-    tnsw_ids = index.get("tnsw", {})
     tnsw_data = load_json(tnsw_mpath)
     for a in tnsw_data.get("artifacts", []):
         if a["kind"] != "subtask_template":
@@ -168,42 +131,38 @@ def check_external_review_linkage(manifests, index, root, report):
         service_id = props.get("service_id")
         task_code = props.get("task_code")
         where = a["path"]
-        if service_id not in manifests:
-            report.error(f"[{where}] EXTERNAL_REVIEW service_id {service_id!r} has no top-level manifest")
+        label = f"{service_id}-v2"
+        if label not in manifests:
+            report.error(f"[{where}] EXTERNAL_REVIEW service_id {service_id!r} has no {label}/manifest.json")
             continue
-        agency_by_id = index.get(service_id, {})
+        agency_by_id = index.get(label, {})
         matches = [entries for aid, entries in agency_by_id.items() if aid == task_code]
         task_configs = [
             (p, k) for entries in matches for (p, k) in entries if k == "task_config"
         ]
         if not task_configs:
-            report.error(f"[{where}] task_code {task_code!r} not found as a task_config in {service_id}/manifest.json")
+            report.error(f"[{where}] task_code {task_code!r} not found as a task_config in {label}/manifest.json")
             continue
         task_config_path, _ = task_configs[0]
         tc = load_json(task_config_path)
-        # Officer-facing forms resolve against the union of the agency's own
-        # manifest and tnsw/manifest.json -- some forms are physically
-        # duplicated into the agency folder (see check_shared_ids_across_*),
-        # others are only ever defined on the tnsw side and the agency
-        # task_config just references that id directly.
-        global_template_ids = {
-            aid for aid, entries in (list(tnsw_ids.items()) + list(agency_by_id.items()))
-            for _p, k in entries if k == "generic_template"
-        }
-        for form_role, form_id in (tc.get("forms") or {}).items():
-            if form_id not in global_template_ids:
-                report.error(
-                    f"[{task_config_path.relative_to(root)}] forms.{form_role} references "
-                    f"{form_id!r}, not found as a generic_template in {service_id}/manifest.json or tnsw/manifest.json"
-                )
+        workflow_id = tc.get("workflow")
+        workflow_ids = {aid for aid, entries in agency_by_id.items() for _p, k in entries if k == "workflow"}
+        if workflow_id not in workflow_ids:
+            report.error(
+                f"[{task_config_path.relative_to(root)}] workflow {workflow_id!r} "
+                f"not found as a workflow in {label}/manifest.json"
+            )
 
 
 # CLAUDE.md documents START/TASK/GATEWAY/END; TIMER (polling waits, e.g.
 # npqs 9-ephyto) and SPLIT_TASK (fan-out to parallel agency flows, e.g.
 # tnsw/trade/trade_workflow.json) are additional node types observed in the
 # repo that don't carry a task_template_id, so they're exempted from that check.
-VALID_NODE_TYPES = {"START", "TASK", "GATEWAY", "END", "TIMER", "SPLIT_TASK"}
-VALID_GATEWAY_TYPES = {"EXCLUSIVE_SPLIT", "EXCLUSIVE_JOIN", "PARALLEL_SPLIT", "PARALLEL_JOIN"}
+# As core's workflow/dsl.go defines them.
+VALID_NODE_TYPES = {"START", "TASK", "GATEWAY", "END", "TIMER", "SPLIT_TASK", "SIGNALING"}
+VALID_GATEWAY_TYPES = {
+    "EXCLUSIVE_SPLIT", "EXCLUSIVE_JOIN", "PARALLEL_SPLIT", "PARALLEL_JOIN", "BATCH_SPLIT", "BATCH_JOIN",
+}
 
 
 TASK_TEMPLATE_ID_KINDS = {"task_template", "subtask_template"}
@@ -360,7 +319,6 @@ def main():
     index = check_paths_exist(manifests, report)
     check_unregistered_files(manifests, report)
     check_duplicate_ids_within_manifest(index, report)
-    check_shared_ids_across_tnsw_and_agency(index, root, report)
     check_external_review_linkage(manifests, index, root, report)
     check_workflow_shapes(manifests, index, root, report)
     check_drafts(manifests, index, report)
