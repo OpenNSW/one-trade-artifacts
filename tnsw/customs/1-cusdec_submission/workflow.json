@@ -1,7 +1,7 @@
 {
   "id": "customs-cusdec-apply-flow",
   "name": "Submit & Review Customs Declaration",
-  "version": 7,
+  "version": 8,
   "nodes": [
     {
       "id": "start",
@@ -62,7 +62,7 @@
         "reviewerform?": "reviewerform",
         "userform?": "userform",
         "userform": "payload",
-        "cig.edgeId?": "previous_edge_id"
+        "cig.edge_id?": "previous_edge_id"
       },
       "output_mapping": {
         "cig.accepted": "cig.accepted",
