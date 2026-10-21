@@ -13,6 +13,12 @@
       "path": "static-data/commodity_common_names.data.json"
     },
     {
+      "id": "npqs-apply-phyto-cert--scientific-names",
+      "kind": "static_data",
+      "version": "1",
+      "path": "static-data/scientific_names.data.json"
+    },
+    {
       "id": "npqs_application_review",
       "kind": "task_config",
       "version": "",
