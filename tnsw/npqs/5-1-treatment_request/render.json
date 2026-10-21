@@ -2,6 +2,9 @@
   "id": "npqs-treatment-request:render",
   "type": "APPLICATION",
   "title": "[NPQS] Treatment Request",
+  "files": [
+    "submission.userform.attachments[*].attachment_file_url"
+  ],
   "sections": {
     "items_summary": {
       "templateId": "npqs-treatment-request--items-summary",

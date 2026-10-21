@@ -37,6 +37,7 @@
         "point_of_entry_port?": "userform.point_of_entry_port",
         "seal_number?": "userform.seal_number",
         "estimated_shipment_date?": "userform.estimated_shipment_date",
+        "transport_details?": "userform.transport_details",
         "transport_mode?": "userform.transport_mode",
         "vessel_name?": "userform.vessel_name",
         "voyage_number?": "userform.voyage_number",

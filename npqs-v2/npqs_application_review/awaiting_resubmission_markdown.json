@@ -1,4 +1,4 @@
 {
   "id": "npqs-application-review--awaiting-resubmission",
-  "template": "Sent back to the applicant for modifications. Waiting for their resubmission.\n\n> **Your feedback**: {{.}}"
+  "template": "Sent back to the applicant for modifications. Waiting for their resubmission.{{if .clarification_reason}}\n\n> **Your feedback**: {{.clarification_reason}}{{end}}"
 }

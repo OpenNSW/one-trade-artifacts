@@ -7,6 +7,9 @@
       "officer"
     ]
   },
+  "files": [
+    "submission.uploaded_dc_bags_details"
+  ],
   "sections": {
     "submission_view": {
       "templateId": "cda-apply-coconut-cert--user-form",

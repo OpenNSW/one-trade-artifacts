@@ -1,7 +1,7 @@
 {
   "id": "efc-boat-note-approval--review-workflow",
   "name": "EFC Boat Note Approval — Officer Review",
-  "version": 3,
+  "version": 4,
   "nodes": [
     {
       "id": "start",
@@ -32,8 +32,10 @@
       "task_template_id": "efc-boat-note-approval--request-info",
       "input_mapping": {
         "callbackToken": "replyToken",
-        "reviewform.approval_status": "approval_status",
-        "reviewform.remarks?": "remarks"
+        "reviewform.approval_status": "payload.approval_status",
+        "reviewform.remarks?": "payload.remarks",
+        "submission?": "submission",
+        "reviewform": "reviewform"
       },
       "output_mapping": {
         "submission": "submission",

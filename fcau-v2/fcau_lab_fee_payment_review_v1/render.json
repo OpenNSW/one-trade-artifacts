@@ -7,6 +7,9 @@
       "officer"
     ]
   },
+  "files": [
+    "submission.lab_receipt"
+  ],
   "sections": {
     "previous_review": {
       "templateId": "fcau-lab-fee-payment-review--previous-review",
@@ -47,19 +50,19 @@
         "states": [
           "QUEUED_EXTERNALLY"
         ],
-        "requireDataKey": "payload"
+        "requireDataKey": "callbackToken"
       }
     },
     "awaiting_resubmission": {
       "templateId": "fcau-lab-fee-payment-review--awaiting-resubmission",
       "title": "Review Status",
       "projector": "MARKDOWN",
-      "dataKey": "payment_feedback",
+      "dataKey": "reviewform",
       "visibleWhen": {
         "states": [
           "QUEUED_EXTERNALLY"
         ],
-        "requireDataKey": "payment_feedback"
+        "requireDataKey": "replyToken"
       }
     }
   },

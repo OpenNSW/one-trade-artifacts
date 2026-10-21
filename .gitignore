@@ -1,0 +1,3 @@
+# Python writes these when it runs the checks in scripts/.
+__pycache__/
+*.pyc

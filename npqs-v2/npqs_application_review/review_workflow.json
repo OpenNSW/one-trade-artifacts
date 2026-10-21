@@ -1,7 +1,7 @@
 {
   "id": "npqs-application-review--review-workflow",
   "name": "NPQS Application Review — Officer Review",
-  "version": 3,
+  "version": 4,
   "nodes": [
     {
       "id": "start",
@@ -47,11 +47,13 @@
       "task_template_id": "npqs-application-review--request-info",
       "input_mapping": {
         "callbackToken": "replyToken",
-        "reviewform.review_outcome": "review_outcome",
-        "reviewform.reference_number": "reference_number",
-        "reviewform.commodities": "commodities",
-        "reviewform.ephyto_required?": "ephyto_required",
-        "reviewform.clarification_reason?": "clarification_reason"
+        "reviewform.review_outcome": "payload.review_outcome",
+        "reviewform.reference_number": "payload.reference_number",
+        "reviewform.commodities": "payload.commodities",
+        "reviewform.ephyto_required?": "payload.ephyto_required",
+        "reviewform.clarification_reason?": "payload.clarification_reason",
+        "submission?": "submission",
+        "reviewform": "reviewform"
       },
       "output_mapping": {
         "submission": "submission",

@@ -1,7 +1,7 @@
 {
   "id": "fcau-warehouse-scheduling--review-workflow",
   "name": "Warehouse Inspection Scheduling Review — Officer Review",
-  "version": 2,
+  "version": 3,
   "nodes": [
     {
       "id": "start",
@@ -32,10 +32,11 @@
       "task_template_id": "fcau-warehouse-scheduling--request-info",
       "input_mapping": {
         "callbackToken": "replyToken",
-        "reviewform.review_outcome": "review_outcome",
-        "reviewform.counter_inspection_date?": "counter_inspection_date",
-        "reviewform.officer_comments?": "officer_comments",
-        "reviewform": "proposal"
+        "reviewform.review_outcome": "payload.review_outcome",
+        "reviewform.counter_inspection_date?": "payload.counter_inspection_date",
+        "reviewform.officer_comments?": "payload.officer_comments",
+        "submission?": "submission",
+        "reviewform": "reviewform"
       },
       "output_mapping": {
         "__command": "trader_command",

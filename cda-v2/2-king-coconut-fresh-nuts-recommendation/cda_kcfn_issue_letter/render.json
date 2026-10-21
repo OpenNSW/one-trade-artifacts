@@ -7,6 +7,10 @@
       "officer"
     ]
   },
+  "files": [
+    "payload.payload.recommendation_letter_file",
+    "reviewform.recommendation_letter_file"
+  ],
   "sections": {
     "submission_view": {
       "templateId": "cda-kcfn-issue-letter--apply-view-form",

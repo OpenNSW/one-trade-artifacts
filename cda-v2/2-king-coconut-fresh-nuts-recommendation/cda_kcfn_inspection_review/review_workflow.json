@@ -1,7 +1,7 @@
 {
   "id": "cda-kcfn-inspection-review--review-workflow",
   "name": "CDA Container Inspection & Recommendation \u2014 Officer Review",
-  "version": 3,
+  "version": 4,
   "nodes": [
     {
       "id": "start",
@@ -32,9 +32,11 @@
       "task_template_id": "cda-kcfn-inspection-review--request-info",
       "input_mapping": {
         "callbackToken": "replyToken",
-        "reviewform.review_outcome": "review_outcome",
-        "reviewform.rejection_reason?": "rejection_reason",
-        "reviewform.inspection_notes?": "inspection_notes"
+        "reviewform.review_outcome": "payload.review_outcome",
+        "reviewform.rejection_reason?": "payload.rejection_reason",
+        "reviewform.inspection_notes?": "payload.inspection_notes",
+        "submission?": "submission",
+        "reviewform": "reviewform"
       },
       "output_mapping": {
         "submission": "submission",

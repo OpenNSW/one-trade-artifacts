@@ -2,6 +2,9 @@
   "id": "npqs-visual-system-inspection:render",
   "type": "REVIEW",
   "title": "[NPQS] Visual Inspection (Through System)",
+  "files": [
+    "submission.attachments[*].attachment_file_url"
+  ],
   "sections": {
     "assessment_outcome": {
       "templateId": "npqs-visual-system--status",

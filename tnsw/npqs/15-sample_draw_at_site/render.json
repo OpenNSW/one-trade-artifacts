@@ -1,0 +1,16 @@
+{
+  "id": "npqs-v3-sample-draw-at-site:render",
+  "type": "REVIEW",
+  "title": "[NPQS] Sample Drawn at Your Site",
+  "files": [
+    "submission.attachments[*].attachment_file_url",
+    "userform.attachments[*].attachment_file_url"
+  ],
+  "sections": {
+    "status_message": {
+      "templateId": "npqs-v3-sample-draw-at-site--status",
+      "title": "Sample Collection",
+      "projector": "MARKDOWN"
+    }
+  }
+}

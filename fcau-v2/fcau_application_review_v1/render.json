@@ -7,6 +7,13 @@
       "officer"
     ]
   },
+  "files": [
+    "reviewform.commodities[*].analysis_certificates",
+    "reviewform.commodities[*].other_declarations",
+    "submission.commodities[*].analysis_certificates",
+    "submission.commodities[*].other_declarations",
+    "submission.other_supporting_documents[*]"
+  ],
   "sections": {
     "previous_review": {
       "templateId": "fcau-application-review--previous-review",
@@ -47,19 +54,19 @@
         "states": [
           "QUEUED_EXTERNALLY"
         ],
-        "requireDataKey": "payload"
+        "requireDataKey": "callbackToken"
       }
     },
     "awaiting_resubmission": {
       "templateId": "fcau-application-review--awaiting-resubmission",
       "title": "Review Status",
       "projector": "MARKDOWN",
-      "dataKey": "rejection_reason",
+      "dataKey": "reviewform",
       "visibleWhen": {
         "states": [
           "QUEUED_EXTERNALLY"
         ],
-        "requireDataKey": "rejection_reason"
+        "requireDataKey": "replyToken"
       }
     }
   },

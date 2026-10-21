@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RenderConfig",
+  "description": "A task's render.json (kind: generic_template). Only `files` is checked here; nsw-srilanka reads the rest. See nsw-srilanka's docs/WORKFLOW_GUIDE.md, \"File fields\".",
+  "type": "object",
+  "properties": {
+    "files": {
+      "description": "The paths in the task's data that hold stored files. The backend hands their values out only as file references. Each path is listed once.",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "description": "Names joined by '.', each optionally followed by '[*]' to step into every element of a list.",
+        "type": "string",
+        "pattern": "^[A-Za-z0-9_-]+(\\[\\*\\])*(\\.[A-Za-z0-9_-]+(\\[\\*\\])*)*$"
+      }
+    }
+  }
+}

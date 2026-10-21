@@ -7,6 +7,10 @@
       "officer"
     ]
   },
+  "files": [
+    "submission.attachments[*].attachment_file_url",
+    "submission.draft_certificate_key"
+  ],
   "sections": {
     "previous_review": {
       "templateId": "npqs-application-review--previous-review",
@@ -55,19 +59,19 @@
         "states": [
           "QUEUED_EXTERNALLY"
         ],
-        "requireDataKey": "payload"
+        "requireDataKey": "callbackToken"
       }
     },
     "awaiting_resubmission": {
       "templateId": "npqs-application-review--awaiting-resubmission",
       "title": "Review Status",
       "projector": "MARKDOWN",
-      "dataKey": "clarification_reason",
+      "dataKey": "reviewform",
       "visibleWhen": {
         "states": [
           "QUEUED_EXTERNALLY"
         ],
-        "requireDataKey": "clarification_reason"
+        "requireDataKey": "replyToken"
       }
     }
   },

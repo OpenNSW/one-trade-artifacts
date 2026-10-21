@@ -1,0 +1,33 @@
+{
+  "id": "sltb-xml-download-flow:render",
+  "type": "APPLICATION",
+  "title": "[SLTB] XML Download Acknowledgement",
+  "files": [
+    "submission.cusdec_draft_xml"
+  ],
+  "sections": {
+    "trader_status": {
+      "templateId": "sltb-xml-download--trader-completed",
+      "title": "Application Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "COMPLETED"
+        ]
+      }
+    },
+    "status_message": {
+      "templateId": "sltb-xml-download--trader-view",
+      "title": "Application Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    }
+  },
+  "states": {
+    "COMPLETED": {}
+  }
+}

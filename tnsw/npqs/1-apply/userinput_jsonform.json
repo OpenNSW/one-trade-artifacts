@@ -199,38 +199,47 @@
         "format": "date",
         "title": "Estimated Shipment Date"
       },
-      "transport_mode": {
-        "type": "object",
-        "title": "Transport Mode",
-        "properties": {
-          "value": {
-            "type": "string",
-            "oneOf": [
-              { "const": "1", "title": "Air transport" },
-              { "const": "2", "title": "Mail" },
-              { "const": "3", "title": "Maritime transport" },
-              { "const": "4", "title": "Fixed transport installations" },
-              { "const": "5", "title": "Inland water transport" },
-              { "const": "6", "title": "Multimodal transport" },
-              { "const": "7", "title": "Rail transport" },
-              { "const": "8", "title": "Road transport" },
-              { "const": "9", "title": "Transport mode not applicable" },
-              { "const": "10", "title": "Transport mode not specified" }
-            ]
-          },
-          "label": { "type": "string" }
+      "transport_details": {
+        "type": "array",
+        "title": "Transport Details",
+        "items": {
+          "type": "object",
+          "properties": {
+            "transport_mode": {
+              "type": "string",
+              "title": "Transport Mode",
+              "oneOf": [
+                { "const": "1", "title": "Air transport" },
+                { "const": "2", "title": "Mail" },
+                { "const": "3", "title": "Maritime transport" },
+                { "const": "4", "title": "Fixed transport installations" },
+                { "const": "5", "title": "Inland water transport" },
+                { "const": "6", "title": "Multimodal transport" },
+                { "const": "7", "title": "Rail transport" },
+                { "const": "8", "title": "Road transport" },
+                { "const": "9", "title": "Transport mode not applicable" },
+                { "const": "10", "title": "Transport mode not specified" }
+              ]
+            },
+            "transport_name": {
+              "type": "string",
+              "title": "Transport Name",
+              "example": "Sri Lanka Railways"
+            },
+            "transport_number": {
+              "type": "string",
+              "title": "Transport Number",
+              "example": "TRAIN-4521"
+            }
+          }
         },
-        "required": ["value"]
-      },
-      "vessel_name": {
-        "type": "string",
-        "title": "Vessel / Carrier Name",
-        "example": "Indian Empress"
-      },
-      "voyage_number": {
-        "type": "string",
-        "title": "Voyage / Flight Number",
-        "example": "MV-2026-118"
+        "example": [
+          {
+            "transport_mode": "7",
+            "transport_name": "Sri Lanka Railways",
+            "transport_number": "TRAIN-4521"
+          }
+        ]
       },
       "commodities": {
         "type": "array",
@@ -244,7 +253,7 @@
               "title": "Commodity Name",
               "x-search": {
                 "service": "static-data",
-                "mode": "large-searchable-list",
+                "mode": "large-paginated-list",
                 "displayTemplate": "{name}",
                 "params": {
                   "id": "npqs-apply-phyto-cert--commodity-common-names",
@@ -262,7 +271,7 @@
               "title": "Scientific Name",
               "x-search": {
                 "service": "static-data",
-                "mode": "small-list",
+                "mode": "large-searchable-list",
                 "displayTemplate": "{name}",
                 "dependsOn": "commodity_common_name",
                 "params": {
@@ -924,13 +933,39 @@
               { "type": "Control", "scope": "#/properties/estimated_shipment_date" }
             ]
           },
-          { "type": "Control", "scope": "#/properties/transport_mode" },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              { "type": "Control", "scope": "#/properties/vessel_name" },
-              { "type": "Control", "scope": "#/properties/voyage_number" }
-            ]
+            "type": "Control",
+            "scope": "#/properties/transport_details",
+            "options": {
+              "detail": {
+                "type": "VerticalLayout",
+                "elements": [
+                  { "type": "Control", "scope": "#/properties/transport_mode" },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/transport_name",
+                    "rule": {
+                      "effect": "SHOW",
+                      "condition": {
+                        "scope": "#/properties/transport_mode",
+                        "schema": { "enum": ["1", "2", "3", "4", "5", "6", "7", "8"] }
+                      }
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/transport_number",
+                    "rule": {
+                      "effect": "SHOW",
+                      "condition": {
+                        "scope": "#/properties/transport_mode",
+                        "schema": { "enum": ["1", "2", "3", "4", "5", "6", "7", "8"] }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
           }
         ]
       },
@@ -946,8 +981,16 @@
               "detail": {
                 "type" : "VerticalLayout",
                 "elements": [
-                  { "type": "Control", "scope": "#/properties/commodity_common_name" },
-                  { "type": "Control", "scope": "#/properties/commodity_botanical_name" },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/commodity_common_name",
+                    "options": { "placeholder": "Type to search commodities…" }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/commodity_botanical_name",
+                    "options": { "placeholder": "Type to search scientific names…" }
+                  },
                   { "type": "Control", "scope": "#/properties/commodity_language" },
                   { "type": "Control", "scope": "#/properties/commodity_description" },
                   { "type": "Control", "scope": "#/properties/commodity_plant_part" },

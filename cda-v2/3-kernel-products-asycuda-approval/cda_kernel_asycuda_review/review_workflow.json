@@ -1,7 +1,7 @@
 {
   "id": "cda-kernel-asycuda-review--review-workflow",
   "name": "CDA ASYCUDA Approval Review \u2014 Kernel Products \u2014 Officer Review",
-  "version": 3,
+  "version": 4,
   "nodes": [
     {
       "id": "start",
@@ -32,8 +32,10 @@
       "task_template_id": "cda-kernel-asycuda-review--request-info",
       "input_mapping": {
         "callbackToken": "replyToken",
-        "reviewform.review_outcome": "review_outcome",
-        "reviewform.rejection_reason?": "rejection_reason"
+        "reviewform.review_outcome": "payload.review_outcome",
+        "reviewform.rejection_reason?": "payload.rejection_reason",
+        "submission?": "submission",
+        "reviewform": "reviewform"
       },
       "output_mapping": {
         "submission": "submission",

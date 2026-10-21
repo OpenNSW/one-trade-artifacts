@@ -5,6 +5,13 @@
     "type": "object",
     "required": ["blendsheet_data"],
     "properties": {
+      "cusdec_draft_xml": {
+        "type": "string",
+        "format": "file",
+        "title": "Cusdec Draft XML",
+        "description": "Upload the draft CusDec XML for this application. The SLTB officer reviews it together with the blend sheets.",
+        "x-file": { "accept": ".xml", "fileName": "Cusdec_Draft" }
+      },
       "blendsheet_data": {
         "type": "array",
         "title": "Blend Sheets",
@@ -301,32 +308,32 @@
             "remarks": {
               "type": "string",
               "title": "Remarks",
-              "description": "This value need to enter manually",
+              "description": "Filled from the blend sheet XML when one is imported; otherwise enter manually.",
               "example": "This is a sample remark for the blend sheet."
             },
             "sample_rediness_date": {
               "type": "string",
               "format": "date",
               "title": "Sample Readiness Date",
-              "description": "This value need to enter manually",
+              "description": "Filled from the blend sheet XML when one is imported; otherwise enter manually.",
               "example": "2026-07-24"
             },
             "warehouse_address": {
               "type": "string",
               "title": "Warehouse Address",
-              "description": "This value need to enter manually",
+              "description": "Filled from the blend sheet XML when one is imported; otherwise enter manually.",
               "example": "Quick Tea (Pvt) Ltd, 119, 119/1 Attampolawatte, Mabole, Wattala"
             },
             "blend_gain_determined": {
               "type": "number",
               "title": "Blend Gain Determined (KG)",
-              "description": "This value need to enter manually",
+              "description": "Filled from the blend sheet XML when one is imported; otherwise enter manually.",
               "example": 0
             },
             "flavors": {
               "type": "number",
               "title": "Flavors (KG)",
-              "description": "This value need to enter manually",
+              "description": "Filled from the blend sheet XML when one is imported; otherwise enter manually.",
               "example": 0
             },
             "total": {
@@ -343,13 +350,13 @@
             "quantity_to_be_shipped_imported": {
               "type": "number",
               "title": "Quantity to be Shipped — Imported (KG)",
-              "description": "This value need to enter manually",
+              "description": "Filled from the blend sheet XML when one is imported; otherwise enter manually.",
               "example": 0
             },
             "quantity_to_be_shipped_local": {
               "type": "number",
               "title": "Quantity to be Shipped — Local (KG)",
-              "description": "This value need to enter manually",
+              "description": "Filled from the blend sheet XML when one is imported; otherwise enter manually.",
               "example": 16128
             },
             "blend_balance": {
@@ -367,7 +374,6 @@
             "grade_or_standard",
             "fob_avg",
             "date_of_blend",
-            "sales",
             "total_blend_balances_and_gain",
             "total",
             "blend_balance"
@@ -379,6 +385,7 @@
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
+      { "type": "Control", "scope": "#/properties/cusdec_draft_xml" },
       {
         "type": "Control",
         "scope": "#/properties/blendsheet_data",

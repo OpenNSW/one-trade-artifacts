@@ -2,6 +2,11 @@
   "id": "customs-cusdec-apply-flow:render",
   "type": "APPLICATION",
   "title": "[Customs] Customs Declaration (CusDec) Submission & Review",
+  "files": [
+    "payload.supportingDocuments.scannedDocuments[*].fileBase64",
+    "submission.supportingDocuments.scannedDocuments[*].fileBase64",
+    "userform.supportingDocuments.scannedDocuments[*].fileBase64"
+  ],
   "sections": {
     "verify_result": {
       "templateId": "customs-cusdec--verify-result",
