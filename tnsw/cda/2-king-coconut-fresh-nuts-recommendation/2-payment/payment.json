@@ -4,6 +4,8 @@
   "output_namespace": "payment",
   "plugin_properties": {
     "task_code": "cda_kcfn_payment_v1",
+    "org_id": "cda",
+    "service_id": "kcfn_fee",
     "service_name": "CDA Recommendation Report Fee",
     "amount": "1500.00",
     "currency": "LKR",
