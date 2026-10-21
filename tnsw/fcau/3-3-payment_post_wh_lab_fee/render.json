@@ -12,7 +12,6 @@
       "templateId": "fcau-pay-post-wh-lab-fee--review-status",
       "title": "Payment Instructions",
       "projector": "MARKDOWN",
-      "dataKey": "paymentreviewerform",
       "visibleWhen": {
         "states": [
           "PENDING_USER"

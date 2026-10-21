@@ -249,6 +249,60 @@
       }
     },
     {
+      "id": "fcau_gw_post_wh_split",
+      "type": "GATEWAY",
+      "gateway_type": "BATCH_SPLIT",
+      "name": "Partition Items: Referred to Lab from Warehouse?",
+      "batch_gateway": {
+        "items_variable": "commodities",
+        "id_field": "id"
+      },
+      "input_mapping": {
+        "fcau.reference_number?": "fcau.reference_number",
+        "fcau.userform?": "fcau.userform"
+      }
+    },
+    {
+      "id": "fcau_3_3_pay_post_wh_lab_fee",
+      "type": "TASK",
+      "name": "[FCAU 3.3] Pay Post-Warehouse Lab Test Fee & Upload Receipt",
+      "task_template_id": "fcau-pay-post-wh-lab-fee-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "fcau.reference_number": "reference_number",
+        "fcau.userform": "userform"
+      },
+      "output_mapping": {
+        "post_wh_lab_payment_status": "fcau.post_wh_lab_fee_payment_status"
+      }
+    },
+    {
+      "id": "fcau_3_4_wait_post_wh_lab_results",
+      "type": "TASK",
+      "name": "[FCAU 3.4] Record Post-Warehouse Lab Results (per item)",
+      "task_template_id": "fcau-post-wh-lab-testing-flow",
+      "lane": "FCAU Officer/NSW System",
+      "input_mapping": {
+        "fcau.reference_number": "reference_number",
+        "fcau.userform": "userform",
+        "commodities": "commodities"
+      },
+      "output_mapping": {
+        "commodities": "commodities"
+      }
+    },
+    {
+      "id": "fcau_gw_post_wh_join",
+      "type": "GATEWAY",
+      "gateway_type": "BATCH_JOIN",
+      "name": "Merge Post-Warehouse Lab and Other Warehouse Items",
+      "batch_join": {
+        "gateway_node_id": "fcau_gw_post_wh_split",
+        "items_variable": "commodities",
+        "id_field": "id"
+      }
+    },
+    {
       "id": "fcau_gw_warehouse_join",
       "type": "GATEWAY",
       "gateway_type": "BATCH_JOIN",
@@ -418,8 +472,35 @@
       "target_id": "fcau_3_2_warehouse_inspection"
     },
     {
-      "id": "e_inspect_to_warehouse_join",
+      "id": "e_inspect_to_post_wh_split",
       "source_id": "fcau_3_2_warehouse_inspection",
+      "target_id": "fcau_gw_post_wh_split"
+    },
+    {
+      "id": "e_post_wh_refer_lab",
+      "source_id": "fcau_gw_post_wh_split",
+      "target_id": "fcau_3_3_pay_post_wh_lab_fee",
+      "condition": "item.warehouse_referral == 'lab'"
+    },
+    {
+      "id": "e_post_wh_other",
+      "source_id": "fcau_gw_post_wh_split",
+      "target_id": "fcau_gw_post_wh_join",
+      "condition": "item.warehouse_referral != 'lab'"
+    },
+    {
+      "id": "e_post_wh_fee_to_results",
+      "source_id": "fcau_3_3_pay_post_wh_lab_fee",
+      "target_id": "fcau_3_4_wait_post_wh_lab_results"
+    },
+    {
+      "id": "e_post_wh_results_to_join",
+      "source_id": "fcau_3_4_wait_post_wh_lab_results",
+      "target_id": "fcau_gw_post_wh_join"
+    },
+    {
+      "id": "e_post_wh_join_to_warehouse_join",
+      "source_id": "fcau_gw_post_wh_join",
       "target_id": "fcau_gw_warehouse_join"
     },
     {

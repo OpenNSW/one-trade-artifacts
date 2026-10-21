@@ -2,6 +2,11 @@
   "id": "fcau-post-wh-lab-testing-flow:render",
   "type": "LAB_TEST",
   "title": "[FCAU] Wait on Post-Warehouse Lab Results",
+  "files": [
+    "submission.commodities[*].analysis_certificates",
+    "submission.commodities[*].other_declarations",
+    "submission.other_supporting_documents[*]"
+  ],
   "sections": {
     "status_message": {
       "templateId": "fcau-post-wh-lab-testing--reviewer-instructions",
