@@ -19,11 +19,11 @@ for `tnsw/npqs/1-apply/`:
 
 1. `workflow.json` (kind `workflow`) has a `TASK` node `officer_review` whose
    `task_template_id` is `npqs-apply-phyto-cert--external-review`.
-2. That id resolves (via `tnsw/manifest.json`) to `reviewerinput.json`, a
+2. That id resolves (via `tnsw/`'s current manifest) to `reviewerinput.json`, a
    `subtask_template` with `task_type: "EXTERNAL_REVIEW"` and
    `plugin_properties: { service_id: "npqs", task_code: "npqs_application_review" }`.
 3. `service_id` names the agency, whose tasks live in `<service_id>-v2/`:
-   `npqs-v2/manifest.json` has a `task_config` with id
+   the `npqs-v2/` manifest has a `task_config` with id
    `npqs_application_review`
    (`npqs_application_review/npqs_application_review.taskconfig.json`, whose
    `taskCode` field repeats the id). The NPQS service loads it by that id
@@ -71,7 +71,7 @@ answer is almost always split across both halves.
   deeper, under one folder per process:
   `tnsw/<agency>/<process-slug>/<agency>_workflow.json` + its step folders,
   and `<agency>-v2/<process-slug>/<task folder>/` for that process's
-  agency-side tasks. `tnsw/manifest.json` and `<agency>-v2/manifest.json`
+  agency-side tasks. `tnsw/`'s and `<agency>-v2/`'s manifests
   stay put either way — only the artifact `path`s inside them gain the
   `<process-slug>/` segment. CDA is the only agency nested so far
   (`1-export-coconut-certificate-registration/`,
@@ -149,15 +149,20 @@ the 3 above if it's actually one of these:**
 
 ## Making a change
 
-- **Editing a form** (`*_jsonform.json`): find every path its id resolves to
-  with `grep -rn '"<the-id>"' tnsw/manifest.json <agency>-v2/manifest.json`,
-  not just the one you happened to open. Each manifest lists an id once (the
+- **Editing any listed artifact**: never edit a file a published manifest
+  lists; run `python3 scripts/bump_manifest.py <bundle> <file>...` and edit
+  the copy it makes (see CLAUDE.md's "Changing artifacts").
+- **Editing a form** (`*_jsonform.json`): find the path its id resolves to in
+  each bundle's current (highest) `manifest_vN.json`, e.g.
+  `grep -n '"<the-id>"' -A3 tnsw/manifest_v<N>.json`, not just the file you
+  happened to open. Each manifest lists an id once (the
   registry keeps only the last of two rows), and the same id in `tnsw/` is
   the trader's side, which may legitimately differ.
 - **Adding a new artifact file**: it does nothing until it's registered.
-  Add an entry to `tnsw/manifest.json` (tnsw-side files) or the relevant
-  `<agency>-v2/manifest.json` (agency-side files) — there is no per-agency
-  manifest under `tnsw/<agency>/`, only the one shared `tnsw/manifest.json`.
+  Add a row to the branch's working manifest of `tnsw/` (tnsw-side files) or
+  the relevant `<agency>-v2/` (agency-side files); `bump_manifest.py <bundle>`
+  with no files creates it — there is no per-agency manifest under
+  `tnsw/<agency>/`, only `tnsw/`'s shared set.
 - **Adding a new step**: first match it against the 3 shapes above and pick
   the closest existing folder of that shape as your template — copy its
   `workflow.json`, `task_template.json`, `userinput.json` +
@@ -185,8 +190,9 @@ the 3 above if it's actually one of these:**
   officer form produces (the `review_outcome` enum in that task folder's
   officer `*_jsonform.json`) must use the same literal — grep both sides
   when renaming an outcome value.
-- `version` fields in every `manifest.json` are consistently `""` in this
-  repo — there's no version-bump convention to follow.
+- A manifest row's `version` is `""` except for static data fetched by
+  explicit version (`"1"`); versioning is by manifest (`manifest_vN.json`),
+  not by row.
 
 ## Validate before opening a PR
 
@@ -198,14 +204,15 @@ root:
 python3 .claude/skills/nsw-trade-flows/scripts/validate_artifacts.py --root .
 ```
 
-It checks, across `tnsw/manifest.json` and every `<agency>-v2/manifest.json`:
+It checks, across the current (highest) manifest of `tnsw/` and every
+`<agency>-v2/`:
 
 - every manifest entry's `path` points to a file that exists;
-- every `*.json` file under a manifest's tree is actually registered in it;
+- every `*.json` file under a bundle is listed by one of its manifest versions;
 - no id is listed twice *for the same artifact kind* within one manifest
   (only the last row would load);
 - every `EXTERNAL_REVIEW` subtask_template's `service_id` + `task_code`
-  resolves to a real `task_config` in `<service_id>-v2/manifest.json`, and
+  resolves to a real `task_config` in `<service_id>-v2/`'s manifest, and
   that task_config's `workflow` resolves to a workflow in the same manifest;
 - every workflow node's `type`/`gateway_type` is one core's `workflow/dsl.go`
   defines, every `TASK` node's `task_template_id` resolves, and every edge's
@@ -222,8 +229,8 @@ the PR description. If `main` itself isn't clean, compare against a run on
 
 ## Opening the PR
 
-1. Create a branch, make the edits, register any new files in the relevant
-   `manifest.json`(s).
+1. Create a branch, bump what you change with `scripts/bump_manifest.py`,
+   make the edits, and register any new files in the working manifest(s).
 2. Run the validator above; resolve any *new* errors it reports (compare
    against a run on `main` so you don't chase a bug that isn't yours).
 3. `git diff` and re-check every place a changed id/path is referenced
