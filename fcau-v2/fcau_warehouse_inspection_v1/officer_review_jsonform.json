@@ -30,13 +30,50 @@
                   "const": "fail",
                   "title": "Failed (Deficiencies Found)"
                 }
-              ],
-              "default": "pass"
+              ]
+            },
+            "warehouse_referral": {
+              "type": "string",
+              "title": "Further Inspection",
+              "oneOf": [
+                {
+                  "const": "not_required",
+                  "title": "Not Required"
+                },
+                {
+                  "const": "lab",
+                  "title": "Refer to Lab Test"
+                }
+              ]
+            },
+            "sample_number": {
+              "type": "string",
+              "title": "Sample Number",
+              "example": "SMP-FCAU-2026-948"
             }
           },
           "required": [
             "id",
             "warehouse_result"
+          ],
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "inspection_type": {
+                    "const": "warehouse"
+                  }
+                },
+                "required": [
+                  "inspection_type"
+                ]
+              },
+              "then": {
+                "required": [
+                  "warehouse_referral"
+                ]
+              }
+            }
           ]
         }
       },
@@ -87,8 +124,41 @@
                 ]
               },
               {
-                "type": "Control",
-                "scope": "#/properties/warehouse_result"
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/warehouse_result"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/warehouse_referral",
+                    "rule": {
+                      "effect": "SHOW",
+                      "condition": {
+                        "scope": "#/properties/inspection_type",
+                        "schema": {
+                          "const": "warehouse"
+                        },
+                        "failWhenUndefined": true
+                      }
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/sample_number",
+                    "rule": {
+                      "effect": "SHOW",
+                      "condition": {
+                        "scope": "#/properties/warehouse_referral",
+                        "schema": {
+                          "const": "lab"
+                        },
+                        "failWhenUndefined": true
+                      }
+                    }
+                  }
+                ]
               }
             ]
           },

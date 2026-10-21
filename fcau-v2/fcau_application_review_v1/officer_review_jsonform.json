@@ -34,28 +34,28 @@
               "type": "string",
               "title": "Description of consignment and quantity"
             },
-            "visual_required": {
-              "type": "boolean",
-              "title": "Visual Inspection Required",
-              "default": false
-            },
-            "lab_required": {
-              "type": "boolean",
-              "title": "Lab Test Required",
-              "description": "If an item needs both Visual and Lab, tick Lab only (a lab test covers the visual check).",
-              "default": false
-            },
-            "warehouse_required": {
-              "type": "boolean",
-              "title": "Warehouse Inspection Required",
-              "default": false
+            "inspection_type": {
+              "type": "string",
+              "title": "Required Inspection",
+              "oneOf": [
+                {
+                  "const": "visual",
+                  "title": "Visual Inspection"
+                },
+                {
+                  "const": "lab",
+                  "title": "Lab Test"
+                },
+                {
+                  "const": "warehouse",
+                  "title": "Warehouse Inspection"
+                }
+              ]
             }
           },
           "required": [
             "id",
-            "visual_required",
-            "lab_required",
-            "warehouse_required"
+            "inspection_type"
           ]
         }
       },
@@ -155,21 +155,11 @@
                 ]
               },
               {
-                "type": "HorizontalLayout",
-                "elements": [
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/visual_required"
-                  },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/lab_required"
-                  },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/warehouse_required"
-                  }
-                ]
+                "type": "Control",
+                "scope": "#/properties/inspection_type",
+                "options": {
+                  "format": "radio"
+                }
               }
             ]
           },
