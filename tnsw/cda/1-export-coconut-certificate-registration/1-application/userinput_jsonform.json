@@ -394,7 +394,21 @@
                     "scope": "#/properties/total_weight"
                   }
                 ]
-              }
+              },
+              "display": "cards",
+              "itemLabel": "DC Grade",
+              "summary": "{dc_grade} · {number_of_bags} bags",
+              "summaryDetail": "{total_weight} kg total · {weight_of_bag} kg per bag",
+              "totals": [
+                {
+                  "field": "number_of_bags",
+                  "label": "{sum} bags"
+                },
+                {
+                  "field": "total_weight",
+                  "label": "{sum} kg total"
+                }
+              ]
             }
           }
         ],

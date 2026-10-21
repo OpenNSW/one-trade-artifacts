@@ -694,7 +694,13 @@
         "elements": [
           {
             "type": "Control",
-            "scope": "#/properties/containers"
+            "scope": "#/properties/containers",
+            "options": {
+              "display": "cards",
+              "itemLabel": "Container",
+              "summary": "{containerMark} · {containerSize} {containerType}",
+              "summaryDetail": "{containerNo} · Seal {sealNumber} · {commodity}"
+            }
           }
         ]
       }

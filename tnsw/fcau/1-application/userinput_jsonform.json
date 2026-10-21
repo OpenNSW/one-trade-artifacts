@@ -257,7 +257,10 @@
                     "scope": "#/properties/other_declarations"
                   }
                 ]
-              }
+              },
+              "display": "cards",
+              "summary": "{id} · {description_of_food}",
+              "summaryDetail": "{package_batch_weight_details}"
             }
           }
         ],
