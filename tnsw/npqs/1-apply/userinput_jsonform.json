@@ -1171,7 +1171,17 @@
                     "scope": "#/properties/id"
                   }
                 ]
-              }
+              },
+              "display": "cards",
+              "itemLabel": "Commodity",
+              "summary": "{commodity_common_name} · {quantity_net_weight} {quantity_net_weight_unit}",
+              "summaryDetail": "{packages_count} {packages_description} · {origin_country}",
+              "totals": [
+                {
+                  "field": "packages_count",
+                  "label": "{sum} packages"
+                }
+              ]
             }
           },
           {

@@ -1374,7 +1374,20 @@
                     ]
                   }
                 ]
-              }
+              },
+              "display": "cards",
+              "summary": "{goodsDescription.description} · HS {tarification.hsCode}",
+              "summaryDetail": "{packages.quantity} {packages.kindCode} · {valuation.grossWeight} kg gross",
+              "totals": [
+                {
+                  "field": "packages.quantity",
+                  "label": "{sum} packages"
+                },
+                {
+                  "field": "valuation.grossWeight",
+                  "label": "{sum} kg gross"
+                }
+              ]
             }
           }
         ]
