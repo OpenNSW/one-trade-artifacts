@@ -34,11 +34,11 @@
         "userform?": "userform",
         "userform": "payload",
         "cusdec_ref": "payload.cusdecRef",
-        "cig_cdn.edgeId?": "previous_edge_id"
+        "cig_cdn.edge_id?": "previous_edge_id"
       },
       "output_mapping": {
         "cig_cdn.accepted": "cig_cdn.accepted",
-        "cig_cdn.edgeId?": "cig_cdn.edgeId",
+        "cig_cdn.edgeId?": "cig_cdn.edge_id",
         "cig_cdn.error?": "cig_cdn.error"
       }
     },
