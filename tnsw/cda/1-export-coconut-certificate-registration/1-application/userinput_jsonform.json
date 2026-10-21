@@ -285,76 +285,64 @@
     }
   },
   "uiSchema": {
-    "type": "VerticalLayout",
+    "type": "Categorization",
+    "options": {
+      "variant": "stepper"
+    },
     "elements": [
       {
-        "type": "Group",
-        "label": "1. Exporter & Consignment General Info",
+        "type": "Category",
+        "label": "Exporter and Consignment",
         "elements": [
           {
             "type": "Control",
             "scope": "#/properties/exporter_details"
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/cusdec_number"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/hs_code"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/cusdec_number"
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/contract_number"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/lot_number"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/hs_code"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/contract_number"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/lot_number"
           },
           {
             "type": "Control",
             "scope": "#/properties/relates_to_previous_approval"
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/previous_cusdec_number",
-                "rule": {
-                  "effect": "SHOW",
-                  "condition": {
-                    "scope": "#/properties/relates_to_previous_approval",
-                    "schema": {
-                      "const": true
-                    }
-                  }
-                }
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/previous_certificate_number",
-                "rule": {
-                  "effect": "SHOW",
-                  "condition": {
-                    "scope": "#/properties/relates_to_previous_approval",
-                    "schema": {
-                      "const": true
-                    }
-                  }
+            "type": "Control",
+            "scope": "#/properties/previous_cusdec_number",
+            "rule": {
+              "effect": "SHOW",
+              "condition": {
+                "scope": "#/properties/relates_to_previous_approval",
+                "schema": {
+                  "const": true
                 }
               }
-            ]
+            }
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/previous_certificate_number",
+            "rule": {
+              "effect": "SHOW",
+              "condition": {
+                "scope": "#/properties/relates_to_previous_approval",
+                "schema": {
+                  "const": true
+                }
+              }
+            }
           },
           {
             "type": "Control",
@@ -372,16 +360,16 @@
         ]
       },
       {
-        "type": "Control",
-        "scope": "#/properties/product_type",
-        "options": {
-          "format": "radio"
-        }
-      },
-      {
-        "type": "Group",
-        "label": "2. DC Grade & Packaging Details",
+        "type": "Category",
+        "label": "Product and DC Grades",
         "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/product_type",
+            "options": {
+              "format": "radio"
+            }
+          },
           {
             "type": "Control",
             "scope": "#/properties/dc_grades",
@@ -406,14 +394,31 @@
                     "scope": "#/properties/total_weight"
                   }
                 ]
-              }
+              },
+              "display": "cards",
+              "itemLabel": "DC Grade",
+              "summary": "{dc_grade} · {number_of_bags} bags",
+              "summaryDetail": "{total_weight} kg total · {weight_of_bag} kg per bag",
+              "totals": [
+                {
+                  "field": "number_of_bags",
+                  "label": "{sum} bags"
+                },
+                {
+                  "field": "total_weight",
+                  "label": "{sum} kg total"
+                }
+              ]
             }
           }
-        ]
+        ],
+        "options": {
+          "description": "Choose the product type, then add one item for each DC grade in this consignment."
+        }
       },
       {
-        "type": "Group",
-        "label": "3. Shipping & Transport Logistics",
+        "type": "Category",
+        "label": "Shipping and Transport",
         "elements": [
           {
             "type": "HorizontalLayout",
@@ -429,30 +434,20 @@
             ]
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/vessel_name"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/container_number"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/vessel_name"
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/port_of_discharge"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/final_destination"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/container_number"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/port_of_discharge"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/final_destination"
           },
           {
             "type": "Control",
@@ -461,8 +456,8 @@
         ]
       },
       {
-        "type": "Group",
-        "label": "4. Container Filling Status",
+        "type": "Category",
+        "label": "Container Filling",
         "elements": [
           {
             "type": "Control",
@@ -487,8 +482,8 @@
         ]
       },
       {
-        "type": "Group",
-        "label": "5. Required Certificates",
+        "type": "Category",
+        "label": "Certificates",
         "elements": [
           {
             "type": "Control",
@@ -500,8 +495,8 @@
         ]
       },
       {
-        "type": "Group",
-        "label": "6. DC Bag Details",
+        "type": "Category",
+        "label": "DC Bag Details",
         "elements": [
           {
             "type": "Control",
