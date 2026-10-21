@@ -1,7 +1,7 @@
 {
   "id": "fcau-health-certificate-reg",
   "name": "FCAU Export Consignment & Health Certificate Registration",
-  "version": 21,
+  "version": 22,
   "nodes": [
     {
       "id": "start",
@@ -323,13 +323,13 @@
       "id": "e_test_split_to_sample",
       "source_id": "fcau_gw_test_split",
       "target_id": "fcau_4_1_sample_collection",
-      "condition": "item.lab_required == true || item.visual_required == true"
+      "condition": "item.inspection_type == 'lab' || item.inspection_type == 'visual'"
     },
     {
       "id": "e_test_split_bypass",
       "source_id": "fcau_gw_test_split",
       "target_id": "fcau_gw_test_join",
-      "condition": "item.lab_required != true && item.visual_required != true"
+      "condition": "item.inspection_type == 'warehouse'"
     },
     {
       "id": "e_sample_to_track_split",
@@ -340,13 +340,13 @@
       "id": "e_track_split_to_lab",
       "source_id": "fcau_gw_track_split",
       "target_id": "fcau_6_0_pay_lab_test_fee",
-      "condition": "item.lab_required == true"
+      "condition": "item.inspection_type == 'lab'"
     },
     {
       "id": "e_track_split_to_visual",
       "source_id": "fcau_gw_track_split",
       "target_id": "fcau_5_1_visual_assessment",
-      "condition": "item.lab_required != true"
+      "condition": "item.inspection_type == 'visual'"
     },
     {
       "id": "e_lab_fee_to_results",
@@ -404,13 +404,13 @@
       "id": "e_warehouse_split_to_schedule",
       "source_id": "fcau_gw_warehouse_split",
       "target_id": "fcau_3_1_schedule_warehouse",
-      "condition": "(item.warehouse_required == true || item.visual_result == 'refer_warehouse' || item.lab_result == 'refer_warehouse') && item.visual_result != 'fail' && item.lab_result != 'fail'"
+      "condition": "(item.inspection_type == 'warehouse' || item.visual_result == 'refer_warehouse' || item.lab_result == 'refer_warehouse') && item.visual_result != 'fail' && item.lab_result != 'fail'"
     },
     {
       "id": "e_warehouse_split_bypass",
       "source_id": "fcau_gw_warehouse_split",
       "target_id": "fcau_gw_warehouse_join",
-      "condition": "(item.warehouse_required != true && item.visual_result != 'refer_warehouse' && item.lab_result != 'refer_warehouse') || item.visual_result == 'fail' || item.lab_result == 'fail'"
+      "condition": "(item.inspection_type != 'warehouse' && item.visual_result != 'refer_warehouse' && item.lab_result != 'refer_warehouse') || item.visual_result == 'fail' || item.lab_result == 'fail'"
     },
     {
       "id": "e_schedule_to_inspect",
