@@ -339,6 +339,8 @@
       "vessel",
       "port_of_loading",
       "port_of_discharge",
+      "vessel_op_code",
+      "cont_op_code",
       "containers",
       "exporters_registration_no",
       "description_of_goods",
