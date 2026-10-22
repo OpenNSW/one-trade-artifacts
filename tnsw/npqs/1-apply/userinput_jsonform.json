@@ -216,7 +216,8 @@
       "estimated_shipment_date": {
         "type": "string",
         "format": "date",
-        "title": "Estimated Shipment Date"
+        "title": "Estimated Shipment Date",
+        "notBefore": "today"
       },
       "transport_details": {
         "type": "array",
@@ -1059,7 +1060,8 @@
               },
               {
                 "type": "Control",
-                "scope": "#/properties/estimated_shipment_date"
+                "scope": "#/properties/estimated_shipment_date",
+                "options": { "minDate": "today" }
               },
               {
                 "type": "Control",
@@ -1306,7 +1308,11 @@
             "scope": "#/properties/attachments",
             "options": {
               "display": "cards",
+              "showTitle": false,
               "itemLabel": "Attachment",
+              "itemOrdinal": "word",
+              "addLabel": "Add Attachment",
+              "emptyLabel": "No attachments have been added yet.",
               "summary": "{attachment_description}",
               "summaryDetail": "{file_type}"
             }
