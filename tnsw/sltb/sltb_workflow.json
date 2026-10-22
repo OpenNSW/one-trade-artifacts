@@ -186,7 +186,8 @@
         "sltb.userform": "userform"
       },
       "output_mapping": {
-        "decision.final_decision_outcome": "sltb.final_decision_outcome"
+        "decision.final_decision_outcome": "sltb.final_decision_outcome",
+        "decision.asycuda_approval_confirmed?": "sltb.asycuda_approval_confirmed"
       }
     },
     {
