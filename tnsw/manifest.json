@@ -1303,6 +1303,12 @@
       "path": "fcau/3-1-warehouse_scheduling/pending_officer_markdown.json"
     },
     {
+      "id": "fcau-warehouse-scheduling--confirmed-markdown",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau/3-1-warehouse_scheduling/confirmed_markdown.json"
+    },
+    {
       "id": "fcau-warehouse-inspection--officer-review",
       "kind": "subtask_template",
       "version": "",

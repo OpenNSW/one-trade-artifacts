@@ -67,6 +67,16 @@
           "QUEUED_EXTERNALLY"
         ]
       }
+    },
+    "confirmed": {
+      "templateId": "fcau-warehouse-scheduling--confirmed-markdown",
+      "title": "Inspection Date Confirmed",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "COMPLETED"
+        ]
+      }
     }
   },
   "states": {
