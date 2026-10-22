@@ -8,8 +8,6 @@
     ]
   },
   "files": [
-    "payload.payload.certificate_file",
-    "reviewform.certificate_file",
     "submission.cusdec_draft_xml"
   ],
   "sections": {

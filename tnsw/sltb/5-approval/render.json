@@ -3,7 +3,6 @@
   "type": "APPLICATION",
   "title": "[SLTB] Final Application Decision",
   "files": [
-    "decision.certificate_file",
     "submission.cusdec_draft_xml"
   ],
   "sections": {
