@@ -3,7 +3,7 @@
   "type": "REVIEW",
   "title": "[CDA] Recommendation Letter Issuance",
   "files": [
-    "reviewerform.recommendation_letter_file"
+    "reviewerform.recommendation_letter_file[*]"
   ],
   "sections": {
     "status_message": {

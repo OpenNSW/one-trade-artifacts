@@ -6,7 +6,7 @@
     "submission.additional_documents[*]",
     "submission.commercial_invoice",
     "submission.packing_list",
-    "submission.recommendation_letter_file",
+    "submission.recommendation_letter_file[*]",
     "uploadform.additional_documents[*]",
     "uploadform.commercial_invoice",
     "uploadform.packing_list"
