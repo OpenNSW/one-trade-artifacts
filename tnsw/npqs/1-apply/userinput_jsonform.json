@@ -216,7 +216,8 @@
       "estimated_shipment_date": {
         "type": "string",
         "format": "date",
-        "title": "Estimated Shipment Date"
+        "title": "Estimated Shipment Date",
+        "formatMinimum": "today"
       },
       "transport_details": {
         "type": "array",
@@ -1059,8 +1060,7 @@
               },
               {
                 "type": "Control",
-                "scope": "#/properties/estimated_shipment_date",
-                "options": { "minDate": "today" }
+                "scope": "#/properties/estimated_shipment_date"
               },
               {
                 "type": "Control",
