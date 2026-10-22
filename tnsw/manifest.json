@@ -253,6 +253,18 @@
       "path": "customs/static-data/currencies.data.json"
     },
     {
+      "id": "customs-cusdec--package-types",
+      "kind": "static_data",
+      "version": "1",
+      "path": "customs/static-data/package_type.data.json"
+    },
+    {
+      "id": "customs-cusdec--container-types",
+      "kind": "static_data",
+      "version": "1",
+      "path": "customs/static-data/container_type.data.json"
+    },
+    {
       "id": "npqs-apply-phyto-cert--importing-countries",
       "kind": "static_data",
       "version": "1",

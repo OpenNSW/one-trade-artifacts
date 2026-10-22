@@ -1,0 +1,1232 @@
+{
+  "data": [
+    {
+      "const": "1A",
+      "title": "Drum, steel"
+    },
+    {
+      "const": "1B",
+      "title": "Drum, aluminium"
+    },
+    {
+      "const": "1D",
+      "title": "Drum, plywood"
+    },
+    {
+      "const": "1G",
+      "title": "Drum, fibre"
+    },
+    {
+      "const": "2C",
+      "title": "Barrel, wooden"
+    },
+    {
+      "const": "3A",
+      "title": "Jerrican, steel"
+    },
+    {
+      "const": "3H",
+      "title": "Jerrican, plastic"
+    },
+    {
+      "const": "4A",
+      "title": "Box, steel"
+    },
+    {
+      "const": "4B",
+      "title": "Box, aluminium"
+    },
+    {
+      "const": "4C",
+      "title": "Box, natural wood"
+    },
+    {
+      "const": "4D",
+      "title": "Box, plywood"
+    },
+    {
+      "const": "4F",
+      "title": "Box, reconstituted wood"
+    },
+    {
+      "const": "4G",
+      "title": "Box, fibreboard"
+    },
+    {
+      "const": "4H",
+      "title": "Box, plastic"
+    },
+    {
+      "const": "5H",
+      "title": "Bag, woven plastic"
+    },
+    {
+      "const": "5L",
+      "title": "Bag, textile"
+    },
+    {
+      "const": "5M",
+      "title": "Bag, paper"
+    },
+    {
+      "const": "6H",
+      "title": "Composite packaging, plastic recept"
+    },
+    {
+      "const": "6P",
+      "title": "Composite packaging, glass receptac"
+    },
+    {
+      "const": "AE",
+      "title": "Aerosol"
+    },
+    {
+      "const": "AM",
+      "title": "Ampoule, non-protected"
+    },
+    {
+      "const": "AP",
+      "title": "Ampoule, protected"
+    },
+    {
+      "const": "AT",
+      "title": "Atomizer"
+    },
+    {
+      "const": "BA",
+      "title": "Barrel"
+    },
+    {
+      "const": "BB",
+      "title": "Bobbin"
+    },
+    {
+      "const": "BC",
+      "title": "Bottlecrate, bottlerack"
+    },
+    {
+      "const": "BD",
+      "title": "Board"
+    },
+    {
+      "const": "BE",
+      "title": "Bundle"
+    },
+    {
+      "const": "BF",
+      "title": "Balloon, non protected"
+    },
+    {
+      "const": "BG",
+      "title": "Bag"
+    },
+    {
+      "const": "BH",
+      "title": "Bunch"
+    },
+    {
+      "const": "BI",
+      "title": "Bin"
+    },
+    {
+      "const": "BJ",
+      "title": "Bucket"
+    },
+    {
+      "const": "BK",
+      "title": "Basket"
+    },
+    {
+      "const": "BL",
+      "title": "Bale, compressed"
+    },
+    {
+      "const": "BM",
+      "title": "Basin"
+    },
+    {
+      "const": "BN",
+      "title": "Bale, non-compressed"
+    },
+    {
+      "const": "BO",
+      "title": "Bottle, non-protected, cylindrical"
+    },
+    {
+      "const": "BP",
+      "title": "Balloon, protected"
+    },
+    {
+      "const": "BQ",
+      "title": "Bottle, protected, cylindrical"
+    },
+    {
+      "const": "BR",
+      "title": "Bar"
+    },
+    {
+      "const": "BS",
+      "title": "Bottle, non-protected, bulbous"
+    },
+    {
+      "const": "BT",
+      "title": "Bolt"
+    },
+    {
+      "const": "BU",
+      "title": "Butt"
+    },
+    {
+      "const": "BV",
+      "title": "Bottle, protected, bulbous"
+    },
+    {
+      "const": "BW",
+      "title": "Box, for liquids"
+    },
+    {
+      "const": "BX",
+      "title": "Box"
+    },
+    {
+      "const": "BY",
+      "title": "Board, in bundle/bunch/truss"
+    },
+    {
+      "const": "BZ",
+      "title": "Bars, in bundle/bunch/truss"
+    },
+    {
+      "const": "CA",
+      "title": "Can, rectangular"
+    },
+    {
+      "const": "CB",
+      "title": "Crate, beer"
+    },
+    {
+      "const": "CC",
+      "title": "Churn"
+    },
+    {
+      "const": "CD",
+      "title": "Can, with handle and spout"
+    },
+    {
+      "const": "CE",
+      "title": "Creel"
+    },
+    {
+      "const": "CF",
+      "title": "Coffer"
+    },
+    {
+      "const": "CG",
+      "title": "Cage"
+    },
+    {
+      "const": "CH",
+      "title": "Chest"
+    },
+    {
+      "const": "CI",
+      "title": "Canister"
+    },
+    {
+      "const": "CJ",
+      "title": "Coffin"
+    },
+    {
+      "const": "CK",
+      "title": "Cask"
+    },
+    {
+      "const": "CL",
+      "title": "Coil"
+    },
+    {
+      "const": "CN",
+      "title": "Container, not otherw. specif. as t"
+    },
+    {
+      "const": "CO",
+      "title": "Carboy, non-protected"
+    },
+    {
+      "const": "CP",
+      "title": "Carboy, protected"
+    },
+    {
+      "const": "CR",
+      "title": "Crate"
+    },
+    {
+      "const": "CS",
+      "title": "Case"
+    },
+    {
+      "const": "CT",
+      "title": "Carton"
+    },
+    {
+      "const": "CU",
+      "title": "Cup"
+    },
+    {
+      "const": "CV",
+      "title": "Cover"
+    },
+    {
+      "const": "CW",
+      "title": "Cage, roll"
+    },
+    {
+      "const": "CX",
+      "title": "Can, cylindrical"
+    },
+    {
+      "const": "CY",
+      "title": "Cylinder"
+    },
+    {
+      "const": "CZ",
+      "title": "Canvas"
+    },
+    {
+      "const": "DA",
+      "title": "Crate, multiple layer, plastic"
+    },
+    {
+      "const": "DB",
+      "title": "Crate, multiple layer, wooden"
+    },
+    {
+      "const": "DC",
+      "title": "Crate, multiple layer, cardboard"
+    },
+    {
+      "const": "DG",
+      "title": "Cage, Commonwealth Handling Equipme"
+    },
+    {
+      "const": "DH",
+      "title": "Box, Commonwealth Handl.Equip.Pool"
+    },
+    {
+      "const": "DI",
+      "title": "Drum, iron"
+    },
+    {
+      "const": "DJ",
+      "title": "Demijohn, non-protected"
+    },
+    {
+      "const": "DK",
+      "title": "Crate, bulk, cardboard"
+    },
+    {
+      "const": "DL",
+      "title": "Crate, bulk, plastic"
+    },
+    {
+      "const": "DM",
+      "title": "Crate, bulk, wooden"
+    },
+    {
+      "const": "DN",
+      "title": "Dispenser"
+    },
+    {
+      "const": "DP",
+      "title": "Demijohn, protected"
+    },
+    {
+      "const": "DR",
+      "title": "Drum"
+    },
+    {
+      "const": "DS",
+      "title": "Tray, one layer no cover, plastic"
+    },
+    {
+      "const": "DT",
+      "title": "Tray, one layer no cover, wooden"
+    },
+    {
+      "const": "DU",
+      "title": "Tray, one layer no cover, polystyre"
+    },
+    {
+      "const": "DV",
+      "title": "Tray, one layer no cover, cardboard"
+    },
+    {
+      "const": "DW",
+      "title": "Tray, two layers no cover, plastic"
+    },
+    {
+      "const": "DX",
+      "title": "Tray, two layers no cover, wooden"
+    },
+    {
+      "const": "DY",
+      "title": "Tray, two layers no cover, cardboar"
+    },
+    {
+      "const": "EC",
+      "title": "Bag, plastic"
+    },
+    {
+      "const": "ED",
+      "title": "Case, with pallet base"
+    },
+    {
+      "const": "EE",
+      "title": "Case, with pallet base, wooden"
+    },
+    {
+      "const": "EF",
+      "title": "Case, with pallet base, cardboard"
+    },
+    {
+      "const": "EG",
+      "title": "Case, with pallet base, plastic"
+    },
+    {
+      "const": "EH",
+      "title": "Case, with pallet base, metal"
+    },
+    {
+      "const": "EI",
+      "title": "Case, isothermic"
+    },
+    {
+      "const": "EN",
+      "title": "Envelope"
+    },
+    {
+      "const": "FB",
+      "title": "Flexibag"
+    },
+    {
+      "const": "FC",
+      "title": "Crate, fruit"
+    },
+    {
+      "const": "FD",
+      "title": "Crate, framed"
+    },
+    {
+      "const": "FI",
+      "title": "Firkin"
+    },
+    {
+      "const": "FL",
+      "title": "Flask"
+    },
+    {
+      "const": "FO",
+      "title": "Footlocker"
+    },
+    {
+      "const": "FP",
+      "title": "Filmpack"
+    },
+    {
+      "const": "FR",
+      "title": "Frame"
+    },
+    {
+      "const": "FT",
+      "title": "Foodtainer"
+    },
+    {
+      "const": "FX",
+      "title": "Bag, flexible container"
+    },
+    {
+      "const": "GB",
+      "title": "Bottle, gas"
+    },
+    {
+      "const": "GI",
+      "title": "Girder"
+    },
+    {
+      "const": "GR",
+      "title": "Receptacle, glass"
+    },
+    {
+      "const": "GZ",
+      "title": "Girders, in bundle/bunch/truss"
+    },
+    {
+      "const": "HA",
+      "title": "Basket, with handle, plastic"
+    },
+    {
+      "const": "HB",
+      "title": "Basket, with handle, wooden"
+    },
+    {
+      "const": "HC",
+      "title": "Basket, with handle, cardboard"
+    },
+    {
+      "const": "HG",
+      "title": "Hogshead"
+    },
+    {
+      "const": "HR",
+      "title": "Hamper"
+    },
+    {
+      "const": "IA",
+      "title": "Package, display, wooden"
+    },
+    {
+      "const": "IB",
+      "title": "Package, display, cardboard"
+    },
+    {
+      "const": "IC",
+      "title": "Package, display, plastic"
+    },
+    {
+      "const": "ID",
+      "title": "Package, display, metal"
+    },
+    {
+      "const": "IE",
+      "title": "Package, show"
+    },
+    {
+      "const": "IF",
+      "title": "Package, flow"
+    },
+    {
+      "const": "IG",
+      "title": "Package, paper wrapped"
+    },
+    {
+      "const": "IH",
+      "title": "Drum, plastic"
+    },
+    {
+      "const": "IN",
+      "title": "Ingot"
+    },
+    {
+      "const": "IZ",
+      "title": "Ingots, in bundle/bunch/truss"
+    },
+    {
+      "const": "JC",
+      "title": "Jerrican, rectangular"
+    },
+    {
+      "const": "JG",
+      "title": "Jug"
+    },
+    {
+      "const": "JR",
+      "title": "Jar"
+    },
+    {
+      "const": "JT",
+      "title": "Jutebag"
+    },
+    {
+      "const": "JY",
+      "title": "Jerrican, cylindrical"
+    },
+    {
+      "const": "KG",
+      "title": "Keg"
+    },
+    {
+      "const": "LG",
+      "title": "Log"
+    },
+    {
+      "const": "LT",
+      "title": "Lot"
+    },
+    {
+      "const": "LV",
+      "title": "Liftvan"
+    },
+    {
+      "const": "LZ",
+      "title": "Logs, in bundle/bunch/truss"
+    },
+    {
+      "const": "MB",
+      "title": "Multiply bag"
+    },
+    {
+      "const": "MC",
+      "title": "Crate, milk"
+    },
+    {
+      "const": "MR",
+      "title": "Receptacle, metal"
+    },
+    {
+      "const": "MS",
+      "title": "Sack, multi-wall"
+    },
+    {
+      "const": "MT",
+      "title": "Mat"
+    },
+    {
+      "const": "MW",
+      "title": "Receptacle, plastic wrapped"
+    },
+    {
+      "const": "MX",
+      "title": "Matchbox"
+    },
+    {
+      "const": "NA",
+      "title": "Not Applicable"
+    },
+    {
+      "const": "NE",
+      "title": "Unpacked or unpackaged"
+    },
+    {
+      "const": "NF",
+      "title": "Unpacked or unpackaged, single unit"
+    },
+    {
+      "const": "NG",
+      "title": "Unpacked or unpackaged,multipleunit"
+    },
+    {
+      "const": "NS",
+      "title": "Nest"
+    },
+    {
+      "const": "NT",
+      "title": "Net"
+    },
+    {
+      "const": "NU",
+      "title": "Net, tube, plastic"
+    },
+    {
+      "const": "NV",
+      "title": "Net, tube, textile"
+    },
+    {
+      "const": "OT",
+      "title": "Other"
+    },
+    {
+      "const": "PA",
+      "title": "Packet"
+    },
+    {
+      "const": "PB",
+      "title": "Pallet, box"
+    },
+    {
+      "const": "PC",
+      "title": "Parcel"
+    },
+    {
+      "const": "PD",
+      "title": "Pallet, modular, collars 80cms * 10"
+    },
+    {
+      "const": "PE",
+      "title": "Pallet, modular, collars 80cms * 12"
+    },
+    {
+      "const": "PG",
+      "title": "Plate"
+    },
+    {
+      "const": "PH",
+      "title": "Pitcher"
+    },
+    {
+      "const": "PI",
+      "title": "Pipe"
+    },
+    {
+      "const": "PK",
+      "title": "Package"
+    },
+    {
+      "const": "PL",
+      "title": "Pail"
+    },
+    {
+      "const": "PN",
+      "title": "Plank"
+    },
+    {
+      "const": "PO",
+      "title": "Pouch"
+    },
+    {
+      "const": "PR",
+      "title": "Receptacle, plastic"
+    },
+    {
+      "const": "PS",
+      "title": "Pieces"
+    },
+    {
+      "const": "PT",
+      "title": "Pot"
+    },
+    {
+      "const": "PU",
+      "title": "TRAY"
+    },
+    {
+      "const": "PV",
+      "title": "Pipes, in bundle/bunch/truss"
+    },
+    {
+      "const": "PX",
+      "title": "Pallet"
+    },
+    {
+      "const": "PY",
+      "title": "Plates, in bundle/bunch/truss"
+    },
+    {
+      "const": "QA",
+      "title": "Drum, steel, non-removable head"
+    },
+    {
+      "const": "QB",
+      "title": "Drum, steel, removable head"
+    },
+    {
+      "const": "QC",
+      "title": "Drum, aluminium, non-removable head"
+    },
+    {
+      "const": "QD",
+      "title": "Drum, aluminium, removable head"
+    },
+    {
+      "const": "QF",
+      "title": "Drum, plastic, non-removable head"
+    },
+    {
+      "const": "QG",
+      "title": "Drum, plastic, removable head"
+    },
+    {
+      "const": "QH",
+      "title": "Barrel, wooden, bung type"
+    },
+    {
+      "const": "QJ",
+      "title": "Barrel, wooden, removable head"
+    },
+    {
+      "const": "QK",
+      "title": "Jerrican, steel, non-removable head"
+    },
+    {
+      "const": "QL",
+      "title": "Jerrican, steel, removable head"
+    },
+    {
+      "const": "QM",
+      "title": "Jerrican, plastic, non-removable he"
+    },
+    {
+      "const": "QN",
+      "title": "Jerrican, plastic, removable head"
+    },
+    {
+      "const": "QP",
+      "title": "Box, wooden, natural wood, ordinary"
+    },
+    {
+      "const": "QQ",
+      "title": "Box, wooden, natural wood, with sif"
+    },
+    {
+      "const": "QR",
+      "title": "Box, plastic, expanded"
+    },
+    {
+      "const": "QS",
+      "title": "Box, plastic, solid"
+    },
+    {
+      "const": "RD",
+      "title": "Rod"
+    },
+    {
+      "const": "RG",
+      "title": "Ring"
+    },
+    {
+      "const": "RJ",
+      "title": "Rack, clothing hanger"
+    },
+    {
+      "const": "RK",
+      "title": "Rack"
+    },
+    {
+      "const": "RL",
+      "title": "Reel"
+    },
+    {
+      "const": "RO",
+      "title": "Roll"
+    },
+    {
+      "const": "RT",
+      "title": "Rednet"
+    },
+    {
+      "const": "RZ",
+      "title": "Rods, in bundle/bunch/truss"
+    },
+    {
+      "const": "SA",
+      "title": "Sack"
+    },
+    {
+      "const": "SC",
+      "title": "Crate, shallow"
+    },
+    {
+      "const": "SD",
+      "title": "Spindle"
+    },
+    {
+      "const": "SE",
+      "title": "Sea-chest"
+    },
+    {
+      "const": "SH",
+      "title": "Sachet"
+    },
+    {
+      "const": "SI",
+      "title": "Skid"
+    },
+    {
+      "const": "SK",
+      "title": "Case, skeleton"
+    },
+    {
+      "const": "SL",
+      "title": "Slipsheet"
+    },
+    {
+      "const": "SM",
+      "title": "Sheetmetal"
+    },
+    {
+      "const": "SP",
+      "title": "Sheet, plastic wrapping"
+    },
+    {
+      "const": "ST",
+      "title": "Sheet"
+    },
+    {
+      "const": "SU",
+      "title": "Suitcase"
+    },
+    {
+      "const": "SW",
+      "title": "Shrinkwrapped"
+    },
+    {
+      "const": "SX",
+      "title": "Set"
+    },
+    {
+      "const": "SZ",
+      "title": "Sheets, in bundle/bunch/truss"
+    },
+    {
+      "const": "TB",
+      "title": "Tub"
+    },
+    {
+      "const": "TC",
+      "title": "Tea-chest"
+    },
+    {
+      "const": "TD",
+      "title": "Tube, collapsible"
+    },
+    {
+      "const": "TK",
+      "title": "Tank, rectangular"
+    },
+    {
+      "const": "TN",
+      "title": "Tin"
+    },
+    {
+      "const": "TO",
+      "title": "Tun"
+    },
+    {
+      "const": "TR",
+      "title": "Trunk"
+    },
+    {
+      "const": "TS",
+      "title": "Truss"
+    },
+    {
+      "const": "TU",
+      "title": "Tube"
+    },
+    {
+      "const": "TV",
+      "title": "Tube, with nozzle"
+    },
+    {
+      "const": "TY",
+      "title": "Tank, cylindrical"
+    },
+    {
+      "const": "TZ",
+      "title": "Tubes, in bundle/bunch/truss"
+    },
+    {
+      "const": "UN",
+      "title": "Unit"
+    },
+    {
+      "const": "VA",
+      "title": "Vat"
+    },
+    {
+      "const": "VG",
+      "title": "Bulk, gas (at 1031 mbar and 15°C)"
+    },
+    {
+      "const": "VI",
+      "title": "Vial"
+    },
+    {
+      "const": "VL",
+      "title": "Bulk, liquid"
+    },
+    {
+      "const": "VN",
+      "title": "Vehicle"
+    },
+    {
+      "const": "VO",
+      "title": "Bulk, solid, large particles (\\\"\\\"n"
+    },
+    {
+      "const": "VP",
+      "title": "Vacuum-packed"
+    },
+    {
+      "const": "VQ",
+      "title": "Bulk, liquefied gas (at abnormal te"
+    },
+    {
+      "const": "VR",
+      "title": "Bulk, solid, granular particles (\\\""
+    },
+    {
+      "const": "VY",
+      "title": "Bulk, solid, fine particles (\\\"\\\"po"
+    },
+    {
+      "const": "WA",
+      "title": "Intermediate bulk container"
+    },
+    {
+      "const": "WB",
+      "title": "Wickerbottle"
+    },
+    {
+      "const": "WC",
+      "title": "Intermediate bulk container, steel"
+    },
+    {
+      "const": "WD",
+      "title": "Intermediate bulk container, alumin"
+    },
+    {
+      "const": "WF",
+      "title": "Intermediate bulk container, metal"
+    },
+    {
+      "const": "WG",
+      "title": "Intermed. bulk container, steel, pr"
+    },
+    {
+      "const": "WH",
+      "title": "IBC, aluminium, pressurise > 10 kpa"
+    },
+    {
+      "const": "WJ",
+      "title": "Intermediate bulk container, metal,"
+    },
+    {
+      "const": "WK",
+      "title": "Intermediate bulk container, steel,"
+    },
+    {
+      "const": "WL",
+      "title": "Intermediate bulk container, alumin"
+    },
+    {
+      "const": "WM",
+      "title": "Intermediate bulk container, metal,"
+    },
+    {
+      "const": "WN",
+      "title": "IBC, woven plastic, without coat/li"
+    },
+    {
+      "const": "WP",
+      "title": "IBC, woven plastic, coated"
+    },
+    {
+      "const": "WQ",
+      "title": "IBC, woven plastic, with liner"
+    },
+    {
+      "const": "WR",
+      "title": "IBC, woven plastic, coated and line"
+    },
+    {
+      "const": "WS",
+      "title": "Intermediate bulk container, plasti"
+    },
+    {
+      "const": "WT",
+      "title": "IBC, textile with out coat/liner"
+    },
+    {
+      "const": "WU",
+      "title": "IBC, natural wood, with inner liner"
+    },
+    {
+      "const": "WV",
+      "title": "Intermediate bulk container, textil"
+    },
+    {
+      "const": "WW",
+      "title": "IBC, textile, with liner"
+    },
+    {
+      "const": "WX",
+      "title": "IBC, textile, coated and liner"
+    },
+    {
+      "const": "WY",
+      "title": "IBC, plywood, with inner liner"
+    },
+    {
+      "const": "WZ",
+      "title": "IBC, reconstituted wood, with inner"
+    },
+    {
+      "const": "XA",
+      "title": "Bag, woven plastic, without inner c"
+    },
+    {
+      "const": "XB",
+      "title": "Bag, woven plastic, sift proof"
+    },
+    {
+      "const": "XC",
+      "title": "Bag, woven plastic, water resistant"
+    },
+    {
+      "const": "XD",
+      "title": "Bag, plastics film"
+    },
+    {
+      "const": "XF",
+      "title": "Bag, textile, without inner coat/li"
+    },
+    {
+      "const": "XG",
+      "title": "Bag, textile, sift proof"
+    },
+    {
+      "const": "XH",
+      "title": "Bag, textile, water resistant"
+    },
+    {
+      "const": "XJ",
+      "title": "Bag, paper, multi-wall"
+    },
+    {
+      "const": "XK",
+      "title": "Bag, paper, multi-wall, water resis"
+    },
+    {
+      "const": "YA",
+      "title": "Comp. pack., plastic receptacle in"
+    },
+    {
+      "const": "YB",
+      "title": "Comp. pack., plastic receptacle in"
+    },
+    {
+      "const": "YC",
+      "title": "Comp. pack., plastic receptacle in"
+    },
+    {
+      "const": "YD",
+      "title": "Comp. pack., plastic receptacle in"
+    },
+    {
+      "const": "YF",
+      "title": "Compos. packaging, plastic receptac"
+    },
+    {
+      "const": "YG",
+      "title": "Comp. pack., plastic receptacle in"
+    },
+    {
+      "const": "YH",
+      "title": "Comp. pack., plastic receptacle in"
+    },
+    {
+      "const": "YJ",
+      "title": "Comp. pack., plastic receptacle in"
+    },
+    {
+      "const": "YK",
+      "title": "Comp. pack., plastic receptacle in"
+    },
+    {
+      "const": "YL",
+      "title": "Comp. pack., plastic receptacle in"
+    },
+    {
+      "const": "YM",
+      "title": "Comp. pack., plastic recept. in sol"
+    },
+    {
+      "const": "YN",
+      "title": "Composite packag., glass receptacle"
+    },
+    {
+      "const": "YP",
+      "title": "Comp. pack., glass receptac. in ste"
+    },
+    {
+      "const": "YQ",
+      "title": "Composite packaging, glass recept."
+    },
+    {
+      "const": "YR",
+      "title": "Composite packaging, glass recept."
+    },
+    {
+      "const": "YS",
+      "title": "Composite packag., glass receptacle"
+    },
+    {
+      "const": "YT",
+      "title": "Comp. pack., glass receptacle in pl"
+    },
+    {
+      "const": "YV",
+      "title": "Comp. pack., glass receptac. in wic"
+    },
+    {
+      "const": "YW",
+      "title": "Composite packaging, glass recept."
+    },
+    {
+      "const": "YX",
+      "title": "Comp. pack., glass receptacle in fi"
+    },
+    {
+      "const": "YY",
+      "title": "Comp. pack., glass recept. in expan"
+    },
+    {
+      "const": "YZ",
+      "title": "Comp. pack., glass receptac. in sol"
+    },
+    {
+      "const": "ZA",
+      "title": "Intermediate bulk container, paper,"
+    },
+    {
+      "const": "ZB",
+      "title": "Bag, large"
+    },
+    {
+      "const": "ZC",
+      "title": "IBC, paper, multi-wall, water resis"
+    },
+    {
+      "const": "ZD",
+      "title": "IBC, rigid plastic, with struct. eq"
+    },
+    {
+      "const": "ZF",
+      "title": "IBC, rigid plastic, freestanding, s"
+    },
+    {
+      "const": "ZG",
+      "title": "IBC, rigid plastic, with struct. eq"
+    },
+    {
+      "const": "ZH",
+      "title": "IBC, rigid plastic, freestanding, p"
+    },
+    {
+      "const": "ZJ",
+      "title": "IBC, rigid plastic, with struct. eq"
+    },
+    {
+      "const": "ZK",
+      "title": "IBC, rigid plastic, freestanding, l"
+    },
+    {
+      "const": "ZL",
+      "title": "IBC, composite, rigid plastic, soli"
+    },
+    {
+      "const": "ZM",
+      "title": "IBC, composite, flexible plastic, s"
+    },
+    {
+      "const": "ZN",
+      "title": "IBC, composite, rigid plastic, pres"
+    },
+    {
+      "const": "ZP",
+      "title": "IBC, composite, flexible plastic, p"
+    },
+    {
+      "const": "ZQ",
+      "title": "IBC, composite, rigid plastic, liqu"
+    },
+    {
+      "const": "ZR",
+      "title": "IBC, composite, flexible plastic, l"
+    },
+    {
+      "const": "ZZ",
+      "title": "Mutually defined"
+    }
+  ]
+}
