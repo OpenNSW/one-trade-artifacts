@@ -1,7 +1,7 @@
 {
   "id": "fcau-post-wh-lab-testing-flow",
   "name": "Wait on Post-Warehouse Lab Results",
-  "version": 1,
+  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -13,10 +13,12 @@
       "task_template_id": "fcau-post-wh-lab-testing--wait",
       "input_mapping": {
         "reference_number": "submission.reference_number",
-        "userform": "submission"
+        "userform": "submission",
+        "commodities?": "submission.items",
+        "commodities": "commodities"
       },
       "output_mapping": {
-        "lab_result": "post_wh_lab_outcome"
+        "items": "commodities"
       }
     },
     {

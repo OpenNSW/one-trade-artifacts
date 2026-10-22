@@ -536,68 +536,52 @@
     ]
   },
   "uiSchema": {
-    "type": "VerticalLayout",
+    "type": "Categorization",
+    "options": {
+      "variant": "stepper"
+    },
     "elements": [
       {
-        "type": "Group",
-        "label": "1. Cusdec Details",
+        "type": "Category",
+        "label": "CusDec Details",
         "elements": [
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/cusdecNo"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/cusdecDate"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/cusdecNo"
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/cusdecOffice"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/cusdecDate"
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/cusdecSerLet"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/cdnNumber"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/cusdecOffice"
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/terminal"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/status"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/cusdecSerLet"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/cdnNumber"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/terminal"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/status"
           }
         ]
       },
       {
-        "type": "Group",
-        "label": "2. Shipper & Consignee",
+        "type": "Category",
+        "label": "Shipper and Consignee",
         "elements": [
           {
-            "type": "HorizontalLayout",
+            "type": "Group",
+            "label": "Shipper",
             "elements": [
               {
                 "type": "Control",
@@ -610,7 +594,8 @@
             ]
           },
           {
-            "type": "HorizontalLayout",
+            "type": "Group",
+            "label": "Consignee",
             "elements": [
               {
                 "type": "Control",
@@ -625,135 +610,96 @@
         ]
       },
       {
-        "type": "Group",
-        "label": "3. Cargo",
-        "elements": [
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/goodsDescription"
-              }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/packageNumber"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/packageType"
-              }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/volumeCBM"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/weightKg"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "Group",
-        "label": "4. Voyage & Route",
-        "elements": [
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/voyageNumber"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/voyageDate"
-              }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/portOfLoading"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/portOfUnloading"
-              }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/vesselOPCode"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/contOPCode"
-              }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/exVessel"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "Group",
-        "label": "5. Contact",
-        "elements": [
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/email"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/contactNo"
-              }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/remarks"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "Group",
-        "label": "6. Container Details",
+        "type": "Category",
+        "label": "Cargo",
         "elements": [
           {
             "type": "Control",
-            "scope": "#/properties/containers"
+            "scope": "#/properties/goodsDescription"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/packageNumber"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/packageType"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/volumeCBM"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/weightKg"
+          }
+        ]
+      },
+      {
+        "type": "Category",
+        "label": "Voyage and Route",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/voyageNumber"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/voyageDate"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/portOfLoading"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/portOfUnloading"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/vesselOPCode"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/contOPCode"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/exVessel"
+          }
+        ]
+      },
+      {
+        "type": "Category",
+        "label": "Contact",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/email"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/contactNo"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/remarks"
+          }
+        ]
+      },
+      {
+        "type": "Category",
+        "label": "Container Details",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/containers",
+            "options": {
+              "display": "cards",
+              "itemLabel": "Container",
+              "summary": "{containerMark} · {containerSize} {containerType}",
+              "summaryDetail": "{containerNo} · Seal {sealNumber} · {commodity}"
+            }
           }
         ]
       }

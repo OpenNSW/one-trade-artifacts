@@ -145,14 +145,18 @@
     ]
   },
   "uiSchema": {
-    "type": "VerticalLayout",
+    "type": "Categorization",
+    "options": {
+      "variant": "stepper"
+    },
     "elements": [
       {
-        "type": "Group",
-        "label": "1. Consignment Details",
+        "type": "Category",
+        "label": "Applicant and Consignee",
         "elements": [
           {
-            "type": "HorizontalLayout",
+            "type": "Group",
+            "label": "Applicant",
             "elements": [
               {
                 "type": "Control",
@@ -160,16 +164,17 @@
               },
               {
                 "type": "Control",
-                "scope": "#/properties/consignee_name"
+                "scope": "#/properties/exporter_address"
               }
             ]
           },
           {
-            "type": "HorizontalLayout",
+            "type": "Group",
+            "label": "Consignee",
             "elements": [
               {
                 "type": "Control",
-                "scope": "#/properties/exporter_address"
+                "scope": "#/properties/consignee_name"
               },
               {
                 "type": "Control",
@@ -180,40 +185,30 @@
         ]
       },
       {
-        "type": "Group",
-        "label": "2. Transport & Export Details",
+        "type": "Category",
+        "label": "Transport and Export",
         "elements": [
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/intended_export_date"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/lc_number"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/intended_export_date"
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/container_numbers"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/vessel_name"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/lc_number"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/container_numbers"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/vessel_name"
           }
         ]
       },
       {
-        "type": "Group",
-        "label": "3. Items & Specifications",
+        "type": "Category",
+        "label": "Items",
         "elements": [
           {
             "type": "Control",
@@ -261,14 +256,26 @@
                     "scope": "#/properties/other_declarations"
                   }
                 ]
-              }
+              },
+              "display": "cards",
+              "summary": "{id} · {description_of_food}",
+              "summaryDetail": "{package_batch_weight_details}"
             }
           }
-        ]
+        ],
+        "options": {
+          "description": "Add one item for each food product in this consignment."
+        }
       },
       {
-        "type": "Control",
-        "scope": "#/properties/other_supporting_documents"
+        "type": "Category",
+        "label": "Supporting Documents",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/other_supporting_documents"
+          }
+        ]
       }
     ]
   }
