@@ -1491,7 +1491,6 @@
                 ]
               },
               "display": "cards",
-              "itemLabel": "Document",
               "summary": "{documentCode} · {documentId}",
               "summaryDetail": "Item {itemSequence} · {dateAsString}"
             }
