@@ -35,7 +35,6 @@
               "type": "string",
               "title": "Item ID",
               "description": "Generated for you as each item is added.",
-              "readOnly": true,
               "example": "item-1",
               "x-template": {
                 "template": "item-{seq(1)}"
