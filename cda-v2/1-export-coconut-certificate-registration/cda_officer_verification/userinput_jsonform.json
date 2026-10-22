@@ -231,7 +231,7 @@
         "description": "Check below to download the template, then upload the completed Excel sheet (.xlsx or .xls) here.",
         "x-file": {
           "accept": ".xlsx,.xls",
-          "fileName": "DC BAGS DETAILS _{index}.xlsx"
+          "fileName": "DC BAGS DETAILS _{index}"
         }
       }
     },
