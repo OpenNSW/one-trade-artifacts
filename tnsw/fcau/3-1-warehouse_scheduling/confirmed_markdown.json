@@ -1,0 +1,4 @@
+{
+  "id": "fcau-warehouse-scheduling--confirmed-markdown",
+  "template": "### Warehouse Inspection Date Confirmed\n\nThe warehouse inspection date has been agreed with the FCAU officer.\n\n{{if .traderinput.warehouse_location}}* **Warehouse Location**: {{.traderinput.warehouse_location}}\n{{end}}{{if .scheduling.proposed_inspection_date}}* **Inspection Date**: {{.scheduling.proposed_inspection_date}}\n{{else if .traderinput.inspection_date}}* **Inspection Date**: {{.traderinput.inspection_date}}\n{{end}}\n**Items for warehouse inspection:**\n{{range .commodities}}* **{{.id}}**: {{.description_of_food}}\n{{end}}\nThe FCAU officer will visit the warehouse on this date to inspect the items."
+}

@@ -162,7 +162,7 @@
       },
       "authorized_signature": {
         "type": "string",
-        "title": "Approving Officer",
+        "title": "Prepared and Checked By",
         "example": "DR. ANURA SILVA - CHIEF FOOD INSPECTOR"
       }
     },
