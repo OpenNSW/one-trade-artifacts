@@ -2,6 +2,12 @@
   "id": "npqs-v3-treatment-issue:render",
   "type": "REVIEW",
   "title": "[NPQS] NPQS Treatment Certificate",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "files": [
     "reviewerform.treatment_certificate_url",
     "submission.attachments[*].attachment_file_url",

@@ -1,6 +1,12 @@
 {
   "id": "trade-persist-cha-flow:render",
   "type": "SYSTEM",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "sections": {},
   "states": {}
 }

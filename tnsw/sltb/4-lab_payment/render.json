@@ -2,6 +2,12 @@
   "id": "sltb-pay-lab-fee-flow:render",
   "type": "PAYMENT",
   "title": "[SLTB] Pay Lab Test Fee",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "sections": {
     "workspace": {
       "templateId": "sltb-pay-lab-fee--select-method-form",

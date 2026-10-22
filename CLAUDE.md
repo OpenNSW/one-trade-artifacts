@@ -187,16 +187,30 @@ See `tnsw/fcau/3-2-warehouse_inspection/workflow.json` or
   `sltb-v2/`) has its own manifest, but
   the `tnsw/` side has a single shared `tnsw/manifest.json` covering every agency's step
   artifacts — there is no per-agency manifest under `tnsw/<agency>/`.
-- Every task of an agency deployment (`cda-v2/`, `efc-v2/`, `fcau-v2/`, `npqs-v2/`,
-  `sltb-v2/`) declares who may act on it. An agency has no per-case owner, so any role
-  in its catalog owns every injected workflow, and only the task narrows that. Each
-  officer (`USER_INPUT`) step carries an `authz` extension, state → command → logical
-  roles (deny by default, so list every command the render config offers):
-  `"extensions": [{"id": "authz", "phase": "PRE_RESUME", "properties": {"PENDING_USER": {"submit": ["officer"]}}}]`.
-  Each task's render config carries `"read": {"roles": ["officer"]}`, an ordered
-  precedence list. The names are the agency catalog's (`configs/agency/<agency>/catalog.json`
-  in nsw-srilanka). `.github/scripts/check_agency_authz.py` fails CI on a task that omits
-  either.
+- Every task declares who may act on it and who may read it, in `tnsw/` and in each
+  agency deployment (`cda-v2/`, `efc-v2/`, `fcau-v2/`, `npqs-v2/`, `sltb-v2/`; an
+  agency has no per-case owner, so any role in its catalog owns every injected
+  workflow, and only the task narrows that). Each step that waits for a caller
+  (`USER_INPUT`, `EXTERNAL_REVIEW`, `PAYMENT`) carries an `authz` extension for the one
+  state it waits in, state → command → logical names, deny by default:
+  `"extensions": [{"id": "authz", "phase": "PRE_RESUME", "properties": {"PENDING_USER": {"submit": ["trader", "cha"]}}}]`.
+  Whom it names, for which commands:
+  - a trader/CHA step: `trader` and/or `cha` (an agency officer step: `officer`), for
+    every command its render config offers in that state, and its draft command;
+  - a `tnsw` `EXTERNAL_REVIEW` step: its `service_id`, the agency's client, for every
+    command the agency's task sends back (its decision values and reply commands);
+  - an agency step that waits for TNSW's reply: `tnsw`, for every command TNSW sends it
+    (`resubmit`, and the value of any TNSW callback to it);
+  - a `PAYMENT` step, or a `USER_INPUT` step that waits in `QUEUED_EXTERNALLY` for a
+    webhook: `"submit": ["system"]`. `system` is the name the backend's own code acts
+    as; no request can.
+
+  Each task's render config carries `"read": {"roles": [...]}`, an ordered precedence
+  list (`["trader", "cha"]` in `tnsw/`, `["officer"]` in an agency) that includes every
+  role its steps let act. The names are the catalogs' (`configs/catalog.example.json`
+  and `configs/agency/<agency>/catalog.json` in nsw-srilanka).
+  `.github/scripts/check_agency_authz.py` works each step's rule out from the artifacts
+  and fails CI on any difference.
 - **Drafts never go through the workflow.** A step that offers "Save as Draft"
   declares `"draft": {"command": "save_as_draft"}` on its `subtask_template`, and its
   render handle uses `"element": "draft_action"`. The portal saves it with

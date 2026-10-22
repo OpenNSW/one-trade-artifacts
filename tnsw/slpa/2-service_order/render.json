@@ -2,6 +2,12 @@
   "id": "slpa-service-order-flow:render",
   "type": "APPLICATION",
   "title": "[SLPA] Export Service Order",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "sections": {
     "order_refusal": {
       "templateId": "slpa-so--refusal",

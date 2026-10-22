@@ -2,6 +2,12 @@
   "id": "cda-kcfn-issue-letter-flow:render",
   "type": "REVIEW",
   "title": "[CDA] Recommendation Letter Issuance",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "files": [
     "reviewerform.recommendation_letter_file[*]"
   ],

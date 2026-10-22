@@ -2,6 +2,12 @@
   "id": "sltb-submit-blendsheet-flow:render",
   "type": "APPLICATION",
   "title": "[SLTB] Submit & Review Blend Sheet",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "files": [
     "userform.cusdec_draft_xml",
     "submission.cusdec_draft_xml"

@@ -2,6 +2,12 @@
   "id": "customs-wait-export-release-flow:render",
   "type": "REVIEW",
   "title": "[Customs] Export Release Status",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "files": [
     "submission.supportingDocuments.scannedDocuments[*].fileBase64"
   ],

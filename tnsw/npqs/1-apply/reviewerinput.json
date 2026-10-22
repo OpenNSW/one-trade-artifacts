@@ -7,5 +7,14 @@
     "path": "/api/v1/inject",
     "task_code": "npqs_application_review",
     "reply_command": "resubmit"
-  }
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "QUEUED_EXTERNALLY": { "approve": ["npqs"], "needs_more_info": ["npqs"] }
+      }
+    }
+  ]
 }

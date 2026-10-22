@@ -7,5 +7,14 @@
   },
   "draft": {
     "command": "save_as_draft"
-  }
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "PENDING_USER": { "save_as_draft": ["trader", "cha"], "submit": ["trader", "cha"] }
+      }
+    }
+  ]
 }

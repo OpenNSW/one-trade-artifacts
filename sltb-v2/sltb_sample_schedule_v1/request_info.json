@@ -5,5 +5,21 @@
   "plugin_properties": {
     "service_id": "tnsw",
     "reply_command": "propose_alternative"
-  }
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "QUEUED_EXTERNALLY": {
+          "accept": [
+            "tnsw"
+          ],
+          "resubmit": [
+            "tnsw"
+          ]
+        }
+      }
+    }
+  ]
 }

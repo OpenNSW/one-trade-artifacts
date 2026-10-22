@@ -2,6 +2,12 @@
   "id": "npqs-pay-certificate-fee:render",
   "type": "PAYMENT",
   "title": "[NPQS] Pay Phytosanitary Certificate Fee",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "sections": {
     "payment_details": {
       "templateId": "npqs-pay-certificate-fee--payment-details-markdown",

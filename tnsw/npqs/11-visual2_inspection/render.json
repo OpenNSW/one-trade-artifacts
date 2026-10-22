@@ -2,6 +2,12 @@
   "id": "npqs-visual2-inspection-flow:render",
   "type": "APPLICATION",
   "title": "[NPQS] Visual Inspection 2",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "sections": {
     "assessment_outcome": {
       "templateId": "npqs-visual2-inspection--status",

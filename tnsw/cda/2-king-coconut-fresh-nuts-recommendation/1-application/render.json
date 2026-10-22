@@ -2,6 +2,12 @@
   "id": "cda-kcfn-apply-flow:render",
   "type": "APPLICATION",
   "title": "[CDA] Submit Application for King Coconut / Fresh Nuts Export Recommendation",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "sections": {
     "approved_message": {
       "templateId": "cda-kcfn-apply--approved-message",

@@ -2,6 +2,12 @@
   "id": "fcau-apply-health-cert-flow:render",
   "type": "APPLICATION",
   "title": "[FCAU] Apply for Health Certificate",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "files": [
     "submission.commodities[*].analysis_certificates",
     "submission.commodities[*].other_declarations",

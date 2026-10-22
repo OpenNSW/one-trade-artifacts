@@ -2,6 +2,12 @@
   "id": "customs-cusdec-apply-flow:render",
   "type": "APPLICATION",
   "title": "[Customs] Customs Declaration (CusDec) Submission & Review",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "files": [
     "payload.supportingDocuments.scannedDocuments[*].fileBase64",
     "submission.supportingDocuments.scannedDocuments[*].fileBase64",

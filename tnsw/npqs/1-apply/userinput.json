@@ -10,6 +10,13 @@
   },
   "extensions": [
     {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "PENDING_USER": { "save_as_draft": ["trader", "cha"], "submit": ["trader", "cha"] }
+      }
+    },
+    {
       "id": "payload_schema",
       "phase": "PRE_RESUME",
       "properties": { "form": "npqs-apply-phyto-cert--user-form" }

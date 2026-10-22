@@ -1,14 +1,16 @@
-name: Validate agency task roles
+name: Validate task roles
 
 on:
   pull_request:
     paths:
+      - "tnsw/**"
       - "*-v2/**"
       - ".github/scripts/check_agency_authz.py"
       - ".github/workflows/validate-agency-authz.yml"
   push:
     branches: [main]
     paths:
+      - "tnsw/**"
       - "*-v2/**"
       - ".github/scripts/check_agency_authz.py"
       - ".github/workflows/validate-agency-authz.yml"
@@ -26,5 +28,5 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Check every agency task declares who may act
+      - name: Check every task declares who may act and read
         run: python .github/scripts/check_agency_authz.py

@@ -2,6 +2,12 @@
   "id": "cda-pay-app-fee-flow:render",
   "type": "PAYMENT",
   "title": "[CDA] Pay Application Fee",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "sections": {
     "workspace": {
       "templateId": "cda-pay-app-fee--select-method-form",

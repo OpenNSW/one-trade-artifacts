@@ -2,6 +2,12 @@
   "id": "customs-create-cdn-flow:render",
   "type": "APPLICATION",
   "title": "[Customs] Cargo Dispatch Note (CDN) Application",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "sections": {
     "cig_rejection": {
       "templateId": "customs-cdn--cig-rejection",

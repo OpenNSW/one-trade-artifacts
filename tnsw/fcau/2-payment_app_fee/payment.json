@@ -7,5 +7,14 @@
     "service_id": "app_fee",
     "amount": "1500.00",
     "currency": "LKR"
-  }
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "PENDING_PAYMENT": { "submit": ["system"] }
+      }
+    }
+  ]
 }

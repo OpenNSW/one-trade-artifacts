@@ -7,5 +7,14 @@
     "path": "/api/v1/inject",
     "task_code": "efc_boat_note_approval_v1",
     "reply_command": "resubmit"
-  }
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "QUEUED_EXTERNALLY": { "approved": ["efc"], "needs_more_info": ["efc"] }
+      }
+    }
+  ]
 }

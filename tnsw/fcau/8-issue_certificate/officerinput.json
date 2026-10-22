@@ -7,5 +7,14 @@
     "service_id": "fcau",
     "path": "/api/v1/inject",
     "task_code": "fcau_issue_certificate_v1"
-  }
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "QUEUED_EXTERNALLY": { "submit": ["fcau"] }
+      }
+    }
+  ]
 }

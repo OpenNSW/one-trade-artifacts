@@ -2,6 +2,12 @@
   "id": "fcau-pay-post-wh-lab-fee-flow:render",
   "type": "APPLICATION",
   "title": "[FCAU] Pay Post-Warehouse Lab Test Fee",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "files": [
     "lab_receipt",
     "submission.lab_receipt",

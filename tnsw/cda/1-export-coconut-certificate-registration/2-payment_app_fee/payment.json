@@ -18,5 +18,14 @@
         "subCategory": "00002"
       }
     }
-  }
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "PENDING_PAYMENT": { "submit": ["system"] }
+      }
+    }
+  ]
 }

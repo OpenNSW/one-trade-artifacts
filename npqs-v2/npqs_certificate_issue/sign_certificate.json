@@ -11,11 +11,6 @@
       "id": "authz",
       "phase": "PRE_RESUME",
       "properties": {
-        "PENDING_USER": {
-          "submit": [
-            "officer"
-          ]
-        },
         "PENDING_SIGNATURE": {
           "upload_signed": [
             "officer"

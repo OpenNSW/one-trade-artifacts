@@ -4,5 +4,14 @@
   "output_namespace": "warranting",
   "plugin_properties": {
     "status_override": "QUEUED_EXTERNALLY"
-  }
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "QUEUED_EXTERNALLY": { "submit": ["system"] }
+      }
+    }
+  ]
 }

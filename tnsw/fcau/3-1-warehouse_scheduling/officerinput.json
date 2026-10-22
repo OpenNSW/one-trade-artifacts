@@ -9,5 +9,14 @@
     "path": "/api/v1/inject",
     "task_code": "fcau-warehouse-scheduling--review-v1",
     "reply_command": "resubmit"
-  }
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "QUEUED_EXTERNALLY": { "accept": ["fcau"], "reschedule": ["fcau"] }
+      }
+    }
+  ]
 }

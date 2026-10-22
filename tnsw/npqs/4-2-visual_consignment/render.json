@@ -2,6 +2,12 @@
   "id": "npqs-visual-consignment-flow:render",
   "type": "APPLICATION",
   "title": "[NPQS] Consignment Visual Inspection",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "sections": {
     "assessment_outcome": {
       "templateId": "npqs-visual-consignment--status",

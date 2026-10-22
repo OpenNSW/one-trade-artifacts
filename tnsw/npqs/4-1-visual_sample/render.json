@@ -2,6 +2,12 @@
   "id": "npqs-visual-sample-inspection:render",
   "type": "REVIEW",
   "title": "[NPQS] Visual Sample Inspection",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "files": [
     "submission.attachments[*].attachment_file_url"
   ],
