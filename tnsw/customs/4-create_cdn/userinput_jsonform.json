@@ -235,6 +235,15 @@
           "packageType": {
             "type": "string",
             "title": "19. Kind of Packages",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-searchable-list",
+              "displayTemplate": "{name}",
+              "params": {
+                "id": "customs-cusdec--package-types",
+                "version": "1"
+              }
+            },
             "example": "DR",
             "description": "Package type code, e.g. DR (drum), PX (pallet)."
           },
@@ -278,6 +287,15 @@
           "type": {
             "type": "string",
             "title": "23. Type of Container",
+            "x-search": {
+              "service": "static-data",
+              "mode": "large-searchable-list",
+              "displayTemplate": "{name}",
+              "params": {
+                "id": "customs-cusdec--container-types",
+                "version": "1"
+              }
+            },
             "example": "20GP",
             "description": "Height / length / type, e.g. 20GP, 40HC."
           },
