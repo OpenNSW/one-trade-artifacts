@@ -2,6 +2,7 @@
   "id": "sltb-lab-testing-flow:render",
   "type": "APPLICATION",
   "title": "[SLTB 6] Lab Testing & Results",
+  "files": ["result.test_report_file"],
   "sections": {
     "status_message": {
       "templateId": "sltb-lab-testing--status",

@@ -1,7 +1,7 @@
 {
   "id": "sltb-blendsheet-approval",
   "name": "SLTB Tea Blendsheet Approval & Sample Collection Flow",
-  "version": 4,
+  "version": 5,
   "nodes": [
     { "id": "start", "type": "START", "name": "Start" },
     {
@@ -150,7 +150,23 @@
         "sltb.sample_number": "sample_number"
       },
       "output_mapping": {
-        "result.test_result": "sltb.lab_test_result"
+        "result.test_result": "sltb.lab_test_result",
+        "result.test_report_file": "sltb.lab_test_report_file"
+      }
+    },
+    {
+      "id": "sltb_7_lab_report_verification",
+      "type": "TASK",
+      "name": "[SLTB 7] Lab Test Report Verification",
+      "task_template_id": "sltb-lab-report-verification-flow",
+      "lane": "Trader/CHA & SLTB Officer",
+      "input_mapping": {
+        "sltb.sample_number?": "sample_number",
+        "sltb.lab_test_report_file": "lab_test_report_file"
+      },
+      "output_mapping": {
+        "labreport.lab_report_file": "sltb.lab_report_file",
+        "report_review.report_review_outcome": "sltb.lab_report_review_outcome"
       }
     },
     {
@@ -255,7 +271,8 @@
       "condition": "sltb.lab_testing_required == 'yes'"
     },
     { "id": "e_lab_fee_testing", "source_id": "sltb_5_pay_lab_fee", "target_id": "sltb_6_lab_testing" },
-    { "id": "e_testing_join", "source_id": "sltb_6_lab_testing", "target_id": "sltb_lab_join" },
+    { "id": "e_testing_report", "source_id": "sltb_6_lab_testing", "target_id": "sltb_7_lab_report_verification" },
+    { "id": "e_report_join", "source_id": "sltb_7_lab_report_verification", "target_id": "sltb_lab_join" },
     { "id": "e_lab_join_final", "source_id": "sltb_lab_join", "target_id": "sltb_8_final_decision" },
     { "id": "e_final_end", "source_id": "sltb_8_final_decision", "target_id": "end_success" }
   ]

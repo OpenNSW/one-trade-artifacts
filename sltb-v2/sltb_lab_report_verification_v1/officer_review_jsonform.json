@@ -1,0 +1,77 @@
+{
+  "id": "sltb-lab-report-verification--review-form",
+  "title": "Verify the Lab Test Report",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "report_review_outcome": {
+        "type": "string",
+        "title": "Verification Outcome",
+        "oneOf": [
+          {
+            "const": "approve",
+            "title": "Verified — the report matches the lab's test report"
+          },
+          {
+            "const": "needs_more_info",
+            "title": "Needs Re-upload / Clarification"
+          }
+        ],
+        "default": "approve"
+      },
+      "report_feedback": {
+        "type": "string",
+        "title": "Comments / Reason for Re-upload (Required if Needs Re-upload)",
+        "example": "The uploaded file is not the lab test report issued for this sample."
+      }
+    },
+    "required": [
+      "report_review_outcome"
+    ],
+    "if": {
+      "properties": {
+        "report_review_outcome": {
+          "const": "needs_more_info"
+        }
+      },
+      "required": [
+        "report_review_outcome"
+      ]
+    },
+    "then": {
+      "properties": {
+        "report_feedback": {
+          "minLength": 1
+        }
+      },
+      "required": [
+        "report_feedback"
+      ]
+    }
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/report_review_outcome"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/report_feedback",
+        "options": {
+          "multiLine": true
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/report_review_outcome",
+            "schema": {
+              "const": "needs_more_info"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

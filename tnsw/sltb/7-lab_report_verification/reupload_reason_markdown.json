@@ -1,0 +1,4 @@
+{
+  "id": "sltb-lab-report-verification--reupload-reason",
+  "template": "{{with .report_review}}{{if .report_feedback}}\n### Re-upload required\n\nThe SLTB Export Division has asked you to submit the lab test report again.\n\n**Reason:** {{.report_feedback}}\n{{end}}{{end}}"
+}

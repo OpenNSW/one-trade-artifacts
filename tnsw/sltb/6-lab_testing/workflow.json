@@ -1,7 +1,7 @@
 {
   "id": "sltb-lab-testing-flow",
   "name": "Lab Testing & Results",
-  "version": 1,
+  "version": 2,
   "nodes": [
     { "id": "start", "type": "START" },
     {
@@ -15,6 +15,7 @@
       "output_mapping": {
         "test_result": "result.test_result",
         "test_date": "result.test_date",
+        "test_report_file": "result.test_report_file",
         "test_report_ref?": "result.test_report_ref",
         "test_notes?": "result.test_notes"
       }

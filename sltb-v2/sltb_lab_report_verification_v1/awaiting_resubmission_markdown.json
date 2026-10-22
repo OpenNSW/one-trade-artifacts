@@ -1,0 +1,4 @@
+{
+  "id": "sltb-lab-report-verification--awaiting-resubmission",
+  "template": "Sent back to the applicant to re-upload the lab test report. Waiting for their resubmission.{{if .report_feedback}}\n\n> **Your comments**: {{.report_feedback}}{{end}}"
+}

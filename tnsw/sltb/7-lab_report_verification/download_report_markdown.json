@@ -1,0 +1,4 @@
+{
+  "id": "sltb-lab-report-verification--download-report",
+  "template": "### Submit the Lab Test Report to the SLTB Export Division\n\nThe SLTB laboratory has issued the test report for your tea sample{{with .sample_number}} (`{{.}}`){{end}}.\n\n{{with .lab_test_report_file}}1. [Download the lab test report](files:{{.}})\n{{end}}2. Upload it below and submit it to the SLTB Export Division for verification."
+}

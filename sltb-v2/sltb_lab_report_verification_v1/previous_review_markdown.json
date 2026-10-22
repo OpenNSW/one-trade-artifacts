@@ -1,0 +1,4 @@
+{
+  "id": "sltb-lab-report-verification--previous-review",
+  "template": "{{if .}}\n### Previous Review\n\nYou asked the applicant to re-upload the lab test report. This is their resubmission.\n\n> **Your comments**: {{.}}\n{{end}}"
+}

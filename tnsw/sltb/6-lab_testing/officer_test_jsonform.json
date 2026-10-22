@@ -3,7 +3,7 @@
   "title": "Record Lab Test Results",
   "schema": {
     "type": "object",
-    "required": ["test_result", "test_date"],
+    "required": ["test_result", "test_date", "test_report_file"],
     "properties": {
       "sample_number": {
         "type": "string",
@@ -22,6 +22,12 @@
         "format": "date",
         "title": "Date of Testing",
         "example": "2026-07-05"
+      },
+      "test_report_file": {
+        "type": "string",
+        "format": "file",
+        "title": "Lab Test Report (PDF)",
+        "description": "Upload the signed lab test report. The trader downloads it and submits it to the SLTB Export Division for verification."
       },
       "test_report_ref": {
         "type": "string",
@@ -51,6 +57,7 @@
       },
       { "type": "Control", "scope": "#/properties/test_result" },
       { "type": "Control", "scope": "#/properties/test_date" },
+      { "type": "Control", "scope": "#/properties/test_report_file" },
       { "type": "Control", "scope": "#/properties/test_report_ref" },
       {
         "type": "Control",

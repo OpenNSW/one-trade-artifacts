@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "sltb_lab_report_verification_v1",
+  "workflow": "sltb_lab_report_verification_v1",
+  "meta": {
+    "title": "Lab Test Report Verification",
+    "description": "The SLTB Export Division verifies the lab test report the trader submitted."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "sltb-lab-report-verification--officer-verify",
+  "task_type": "EXTERNAL_REVIEW",
+  "output_namespace": "report_review",
+  "plugin_properties": {
+    "officer_jsonforms_id": "sltb-lab-report-verification--review-form",
+    "service_id": "sltb",
+    "path": "/api/v1/inject",
+    "task_code": "sltb_lab_report_verification_v1",
+    "reply_command": "resubmit"
+  }
+}
