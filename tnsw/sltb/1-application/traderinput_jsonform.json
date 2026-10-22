@@ -537,7 +537,11 @@
                 ]
               }
             ]
-          }
+          },
+          "display": "cards",
+          "itemLabel": "Blend Sheet",
+          "summary": "{blendsheet_no} · Blend {blend_no} · {grade_or_standard}",
+          "summaryDetail": "{quality_to_be_exported} kg to {private_treaty_to_be_exported} · CusDec {cusdec_number}"
         }
       }
     ]
