@@ -7,53 +7,762 @@
       "import_cusdec_xml": {
         "type": "object",
         "title": "Import CusDec XML",
-        "description": "Upload the ASYCUDA CusDec XML to fill this declaration automatically, including declaration items. Only fields present in the XML are populated — exporter/consignee address details, cost breakdowns, and per-item supplementary unit still need manual entry. Values can be corrected afterwards.",
+        "description": "Upload the ASYCUDA CusDec XML to fill this declaration automatically, including declaration items. Also accepts a file from Download CusDec XML, which carries every field of this form except the scanned documents. From an ASYCUDA file, exporter name and address, consignee address and country, remittance, commercial description line 2 and supporting document references still need manual entry. Values can be corrected afterwards.",
         "x-xml": {
           "accept": ".xml,text/xml,application/xml",
           "maxSize": 5242880,
-          "arrayPaths": ["ASYCUDA.Item"],
+          "arrayPaths": [
+            "ASYCUDA.Item",
+            "ASYCUDA.Item.Tarification.Supplementary_unit",
+            "ASYCUDA.NSW.Supporting_documents.Document"
+          ],
           "persistDocument": false,
           "writeBase": "parent",
           "writeTo": [
-            { "from": "ASYCUDA.Identification.Office_segment.Customs_clearance_office_code", "to": "identification.officeCode", "as": "string" },
-            { "from": "ASYCUDA.Identification.Type.Type_of_declaration", "to": "identification.declarationType", "as": "string" },
-            { "from": "ASYCUDA.Identification.Type.Declaration_gen_procedure_code", "to": "identification.generalProcedureCode", "as": "string" },
-            { "from": "ASYCUDA.Declarant.Declarant_code", "to": "traders.declarant.code", "as": "string" },
-            { "from": "ASYCUDA.General_information.Country.Country_first_destination", "to": "generalInfo.countryOfFirstDestination", "as": "string" },
-            { "from": "ASYCUDA.General_information.Country.Export.Export_country_code", "to": "generalInfo.exportCountryCode", "as": "string" },
-            { "from": "ASYCUDA.General_information.Country.Destination.Destination_country_code", "to": "generalInfo.destinationCountryCode", "as": "string" },
-            { "from": "ASYCUDA.Transport.Means_of_transport.Departure_arrival_information.Identity", "to": "transport.vesselName", "as": "string" },
-            { "from": "ASYCUDA.Transport.Means_of_transport.Departure_arrival_information.Nationality", "to": "transport.transportNationality", "as": "string" },
-            { "from": "ASYCUDA.Transport.Means_of_transport.Border_information.Identity", "to": "transport.voyageNo", "as": "string" },
-            { "from": "ASYCUDA.Transport.Means_of_transport.Border_information.Nationality", "to": "transport.voyageNationality", "as": "string" },
-            { "from": "ASYCUDA.Transport.Means_of_transport.Border_information.Mode", "to": "transport.modeOfTransport", "as": "string" },
-            { "from": "ASYCUDA.Transport.Container_flag", "to": "transport.containerized", "as": "boolean" },
-            { "from": "ASYCUDA.Transport.Delivery_terms.Code", "to": "transport.deliveryTermsCode", "as": "string" },
-            { "from": "ASYCUDA.Transport.Delivery_terms.Place", "to": "transport.deliveryTermsPlace", "as": "string" },
-            { "from": "ASYCUDA.Transport.Border_office.Code", "to": "transport.borderOfficeCode", "as": "string" },
-            { "from": "ASYCUDA.Financial.Bank.Code", "to": "financial.bankCode", "as": "string" },
-            { "from": "ASYCUDA.Financial.Bank.Reference", "to": "financial.bankReference", "as": "string" },
-            { "from": "ASYCUDA.Financial.Terms.Code", "to": "financial.paymentTermsCode", "as": "string" },
-            { "from": "ASYCUDA.Financial.Total_invoice", "to": "valuation.totalAmountInvoiced.amount", "as": "number" },
-            { "from": "ASYCUDA.Valuation.Gs_Invoice.Currency_code", "to": "valuation.totalAmountInvoiced.currencyCode", "as": "string" },
-            { "from": "ASYCUDA.Property.Nbers.Total_number_of_packages", "to": "packages.totalPackages", "as": "number" },
+            {
+              "from": "ASYCUDA.Identification.Office_segment.Customs_clearance_office_code",
+              "to": "identification.officeCode",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.Identification.Type.Type_of_declaration",
+              "to": "identification.declarationType",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.Identification.Type.Declaration_gen_procedure_code",
+              "to": "identification.generalProcedureCode",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.Identification.Manifest_reference_number",
+              "to": "identification.manifestRegNumber",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.Declarant.Declarant_code",
+              "to": "traders.declarant.code",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.General_information.Country.Country_first_destination",
+              "to": "generalInfo.countryOfFirstDestination",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.General_information.Country.Export.Export_country_code",
+              "to": "generalInfo.exportCountryCode",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.General_information.Country.Destination.Destination_country_code",
+              "to": "generalInfo.destinationCountryCode",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.General_information.CAP",
+              "to": "containerCount",
+              "as": "number"
+            },
+            {
+              "from": "ASYCUDA.Transport.Means_of_transport.Departure_arrival_information.Identity",
+              "to": "transport.vesselName",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.Transport.Means_of_transport.Departure_arrival_information.Nationality",
+              "to": "transport.transportNationality",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.Transport.Means_of_transport.Border_information.Identity",
+              "to": "transport.voyageNo",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.Transport.Means_of_transport.Border_information.Nationality",
+              "to": "transport.voyageNationality",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.Transport.Means_of_transport.Border_information.Mode",
+              "to": "transport.modeOfTransport",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.Transport.Container_flag",
+              "to": "transport.containerized",
+              "as": "boolean"
+            },
+            {
+              "from": "ASYCUDA.Transport.Delivery_terms.Code",
+              "to": "transport.deliveryTermsCode",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.Transport.Delivery_terms.Place",
+              "to": "transport.deliveryTermsPlace",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.Transport.Border_office.Code",
+              "to": "transport.borderOfficeCode",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.Transport.Place_of_loading.Code",
+              "to": "transport.placeOfDischargeCode",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.Warehouse.Identification",
+              "to": "transport.warehouseCode",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.Warehouse.Delay",
+              "to": "transport.warehouseDelay",
+              "as": "number"
+            },
+            {
+              "from": "ASYCUDA.Financial.Deffered_payment_reference",
+              "to": "financial.deferredPayment",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.Financial.Bank.Code",
+              "to": "financial.bankCode",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.Financial.Bank.Reference",
+              "to": "financial.bankReference",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.Financial.Terms.Code",
+              "to": "financial.paymentTermsCode",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.Valuation.Gs_Invoice.Amount_foreign_currency",
+              "to": "valuation.totalAmountInvoiced.amount",
+              "as": "number"
+            },
+            {
+              "from": "ASYCUDA.Financial.Total_invoice",
+              "to": "valuation.totalAmountInvoiced.amount",
+              "as": "number"
+            },
+            {
+              "from": "ASYCUDA.Valuation.Gs_Invoice.Currency_code",
+              "to": "valuation.totalAmountInvoiced.currencyCode",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.Valuation.Gs_external_freight.Amount_foreign_currency",
+              "to": "valuation.externalFreight.amount",
+              "as": "number"
+            },
+            {
+              "from": "ASYCUDA.Valuation.Gs_external_freight.Currency_code",
+              "to": "valuation.externalFreight.currencyCode",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.Valuation.Gs_insurance.Amount_foreign_currency",
+              "to": "valuation.insurance.amount",
+              "as": "number"
+            },
+            {
+              "from": "ASYCUDA.Valuation.Gs_insurance.Currency_code",
+              "to": "valuation.insurance.currencyCode",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.Valuation.Gs_other_cost.Amount_foreign_currency",
+              "to": "valuation.otherCosts.amount",
+              "as": "number"
+            },
+            {
+              "from": "ASYCUDA.Valuation.Gs_other_cost.Currency_code",
+              "to": "valuation.otherCosts.currencyCode",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.Valuation.Gs_internal_freight.Amount_foreign_currency",
+              "to": "valuation.internalFreight.amount",
+              "as": "number"
+            },
+            {
+              "from": "ASYCUDA.Valuation.Gs_internal_freight.Currency_code",
+              "to": "valuation.internalFreight.currencyCode",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.Valuation.Gs_deduction.Amount_foreign_currency",
+              "to": "valuation.deductions.amount",
+              "as": "number"
+            },
+            {
+              "from": "ASYCUDA.Valuation.Gs_deduction.Currency_code",
+              "to": "valuation.deductions.currencyCode",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.Property.Nbers.Total_number_of_packages",
+              "to": "packages.totalPackages",
+              "as": "number"
+            },
+            {
+              "from": "ASYCUDA.NSW.Declaration_mode",
+              "to": "identification.declarationMode",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.Traders.Exporter.Exporter_code",
+              "to": "traders.exporter.code",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.NSW.Exporter.Name",
+              "to": "traders.exporter.name",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.NSW.Exporter.Address",
+              "to": "traders.exporter.address",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.NSW.Exporter.Country_code",
+              "to": "traders.exporter.countryCode",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.Traders.Consignee.Consignee_name",
+              "to": "traders.consignee.name",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.NSW.Consignee.Address",
+              "to": "traders.consignee.address",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.NSW.Consignee.Country_code",
+              "to": "traders.consignee.countryCode",
+              "as": "string"
+            },
+            {
+              "from": "ASYCUDA.NSW.Remittance.Amount",
+              "to": "financial.remittanceAmount",
+              "as": "number"
+            },
+            {
+              "from": "ASYCUDA.NSW.Remittance.Currency_code",
+              "to": "financial.remittanceCurrencyCode",
+              "as": "string"
+            },
             {
               "from": "ASYCUDA.Item",
               "to": "items",
               "writeTo": [
-                { "from": "Packages.Number_of_packages", "to": "packages.quantity", "as": "number" },
-                { "from": "Packages.Kind_of_packages_code", "to": "packages.kindCode", "as": "string" },
-                { "from": "Tarification.HScode.Commodity_code", "to": "tarification.hsCode", "as": "string" },
-                { "from": "Tarification.Preference_code", "to": "tarification.preferenceCode", "as": "string" },
-                { "from": "Tarification.Extended_customs_procedure", "to": "tarification.extendedProcedureCode", "as": "string" },
-                { "from": "Tarification.National_customs_procedure", "to": "tarification.nationalProcedureCode", "as": "string" },
-                { "from": "Goods_description.Country_of_origin_code", "to": "goodsDescription.originCountryCode", "as": "string" },
-                { "from": "Goods_description.Description_of_goods", "to": "goodsDescription.description", "as": "string" },
-                { "from": "Goods_description.Commercial_Description", "to": "goodsDescription.commercialDescription", "as": "string" },
-                { "from": "Valuation_item.Weight_itm.Gross_weight_itm", "to": "valuation.grossWeight", "as": "number" },
-                { "from": "Valuation_item.Weight_itm.Net_weight_itm", "to": "valuation.netWeight", "as": "number" },
-                { "from": "Valuation_item.Item_Invoice.Amount_foreign_currency", "to": "valuation.invoiceAmount.amount", "as": "number" },
-                { "from": "Valuation_item.Item_Invoice.Currency_code", "to": "valuation.invoiceAmount.currencyCode", "as": "string" }
+                {
+                  "from": "Packages.Number_of_packages",
+                  "to": "packages.quantity",
+                  "as": "number"
+                },
+                {
+                  "from": "Packages.Kind_of_packages_code",
+                  "to": "packages.kindCode",
+                  "as": "string"
+                },
+                {
+                  "from": "Packages.Marks1_of_packages",
+                  "to": "marksAndNumbers",
+                  "as": "string"
+                },
+                {
+                  "to": "marksAndNumbers",
+                  "inputs": {
+                    "marks_one": "Packages.Marks1_of_packages",
+                    "marks_two": "Packages.Marks2_of_packages"
+                  },
+                  "formula": "CONCATENATE(marks_one,\" | \",marks_two)"
+                },
+                {
+                  "from": "Tarification.HScode.Commodity_code",
+                  "to": "tarification.hsCode",
+                  "as": "string"
+                },
+                {
+                  "from": "Tarification.Preference_code",
+                  "to": "tarification.preferenceCode",
+                  "as": "string"
+                },
+                {
+                  "from": "Tarification.Extended_customs_procedure",
+                  "to": "tarification.extendedProcedureCode",
+                  "as": "string"
+                },
+                {
+                  "from": "Tarification.National_customs_procedure",
+                  "to": "tarification.nationalProcedureCode",
+                  "as": "string"
+                },
+                {
+                  "from": "Tarification.Supplementary_unit.0.Suppplementary_unit_code",
+                  "to": "tarification.supplementaryUnit.code",
+                  "as": "string"
+                },
+                {
+                  "from": "Tarification.Supplementary_unit.0.Suppplementary_unit_quantity",
+                  "to": "tarification.supplementaryUnit.quantity",
+                  "as": "number"
+                },
+                {
+                  "from": "Goods_description.Country_of_origin_code",
+                  "to": "goodsDescription.originCountryCode",
+                  "as": "string"
+                },
+                {
+                  "from": "Goods_description.Description_of_goods",
+                  "to": "goodsDescription.description",
+                  "as": "string"
+                },
+                {
+                  "from": "Goods_description.Commercial_Description",
+                  "to": "goodsDescription.commercialDescription",
+                  "as": "string"
+                },
+                {
+                  "from": "NSW.Commercial_description_2",
+                  "to": "goodsDescription.commercialDescription1",
+                  "as": "string"
+                },
+                {
+                  "from": "Valuation_item.Weight_itm.Gross_weight_itm",
+                  "to": "valuation.grossWeight",
+                  "as": "number"
+                },
+                {
+                  "from": "Valuation_item.Weight_itm.Net_weight_itm",
+                  "to": "valuation.netWeight",
+                  "as": "number"
+                },
+                {
+                  "from": "Valuation_item.Item_Invoice.Amount_foreign_currency",
+                  "to": "valuation.invoiceAmount.amount",
+                  "as": "number"
+                },
+                {
+                  "from": "Valuation_item.Item_Invoice.Currency_code",
+                  "to": "valuation.invoiceAmount.currencyCode",
+                  "as": "string"
+                }
+              ]
+            },
+            {
+              "from": "ASYCUDA.NSW.Supporting_documents.Document",
+              "to": "supportingDocuments.metaDocuments",
+              "writeTo": [
+                {
+                  "from": "Item_number",
+                  "to": "itemSequence",
+                  "as": "string"
+                },
+                {
+                  "from": "Code",
+                  "to": "documentCode",
+                  "as": "string"
+                },
+                {
+                  "from": "Reference",
+                  "to": "documentId",
+                  "as": "string"
+                },
+                {
+                  "from": "Date",
+                  "to": "dateAsString",
+                  "as": "string"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "export_cusdec_xml": {
+        "type": "object",
+        "title": "Download CusDec XML",
+        "description": "Download this declaration as XML, including the fields entered by hand, to import it again later.",
+        "x-xml-export": {
+          "rootElement": "ASYCUDA",
+          "declaration": {
+            "standalone": "no"
+          },
+          "fileName": "cusdec-{today(YYYYMMDD)}.xml",
+          "writeTo": [
+            {
+              "from": "identification.officeCode",
+              "to": "Identification.Office_segment.Customs_clearance_office_code",
+              "as": "string"
+            },
+            {
+              "from": "identification.declarationType",
+              "to": "Identification.Type.Type_of_declaration",
+              "as": "string"
+            },
+            {
+              "from": "identification.generalProcedureCode",
+              "to": "Identification.Type.Declaration_gen_procedure_code",
+              "as": "string"
+            },
+            {
+              "from": "identification.manifestRegNumber",
+              "to": "Identification.Manifest_reference_number",
+              "as": "string"
+            },
+            {
+              "from": "traders.declarant.code",
+              "to": "Declarant.Declarant_code",
+              "as": "string"
+            },
+            {
+              "from": "generalInfo.countryOfFirstDestination",
+              "to": "General_information.Country.Country_first_destination",
+              "as": "string"
+            },
+            {
+              "from": "generalInfo.exportCountryCode",
+              "to": "General_information.Country.Export.Export_country_code",
+              "as": "string"
+            },
+            {
+              "from": "generalInfo.destinationCountryCode",
+              "to": "General_information.Country.Destination.Destination_country_code",
+              "as": "string"
+            },
+            {
+              "from": "containerCount",
+              "to": "General_information.CAP",
+              "as": "number"
+            },
+            {
+              "from": "transport.vesselName",
+              "to": "Transport.Means_of_transport.Departure_arrival_information.Identity",
+              "as": "string"
+            },
+            {
+              "from": "transport.transportNationality",
+              "to": "Transport.Means_of_transport.Departure_arrival_information.Nationality",
+              "as": "string"
+            },
+            {
+              "from": "transport.voyageNo",
+              "to": "Transport.Means_of_transport.Border_information.Identity",
+              "as": "string"
+            },
+            {
+              "from": "transport.voyageNationality",
+              "to": "Transport.Means_of_transport.Border_information.Nationality",
+              "as": "string"
+            },
+            {
+              "from": "transport.modeOfTransport",
+              "to": "Transport.Means_of_transport.Border_information.Mode",
+              "as": "string"
+            },
+            {
+              "from": "transport.containerized",
+              "to": "Transport.Container_flag",
+              "as": "boolean"
+            },
+            {
+              "from": "transport.deliveryTermsCode",
+              "to": "Transport.Delivery_terms.Code",
+              "as": "string"
+            },
+            {
+              "from": "transport.deliveryTermsPlace",
+              "to": "Transport.Delivery_terms.Place",
+              "as": "string"
+            },
+            {
+              "from": "transport.borderOfficeCode",
+              "to": "Transport.Border_office.Code",
+              "as": "string"
+            },
+            {
+              "from": "transport.placeOfDischargeCode",
+              "to": "Transport.Place_of_loading.Code",
+              "as": "string"
+            },
+            {
+              "from": "transport.warehouseCode",
+              "to": "Warehouse.Identification",
+              "as": "string"
+            },
+            {
+              "from": "transport.warehouseDelay",
+              "to": "Warehouse.Delay",
+              "as": "number"
+            },
+            {
+              "from": "financial.deferredPayment",
+              "to": "Financial.Deffered_payment_reference",
+              "as": "string"
+            },
+            {
+              "from": "financial.bankCode",
+              "to": "Financial.Bank.Code",
+              "as": "string"
+            },
+            {
+              "from": "financial.bankReference",
+              "to": "Financial.Bank.Reference",
+              "as": "string"
+            },
+            {
+              "from": "financial.paymentTermsCode",
+              "to": "Financial.Terms.Code",
+              "as": "string"
+            },
+            {
+              "from": "valuation.totalAmountInvoiced.amount",
+              "to": "Valuation.Gs_Invoice.Amount_foreign_currency",
+              "as": "number"
+            },
+            {
+              "from": "valuation.totalAmountInvoiced.amount",
+              "to": "Financial.Total_invoice",
+              "as": "number"
+            },
+            {
+              "from": "valuation.totalAmountInvoiced.currencyCode",
+              "to": "Valuation.Gs_Invoice.Currency_code",
+              "as": "string"
+            },
+            {
+              "from": "valuation.externalFreight.amount",
+              "to": "Valuation.Gs_external_freight.Amount_foreign_currency",
+              "as": "number"
+            },
+            {
+              "from": "valuation.externalFreight.currencyCode",
+              "to": "Valuation.Gs_external_freight.Currency_code",
+              "as": "string"
+            },
+            {
+              "from": "valuation.insurance.amount",
+              "to": "Valuation.Gs_insurance.Amount_foreign_currency",
+              "as": "number"
+            },
+            {
+              "from": "valuation.insurance.currencyCode",
+              "to": "Valuation.Gs_insurance.Currency_code",
+              "as": "string"
+            },
+            {
+              "from": "valuation.otherCosts.amount",
+              "to": "Valuation.Gs_other_cost.Amount_foreign_currency",
+              "as": "number"
+            },
+            {
+              "from": "valuation.otherCosts.currencyCode",
+              "to": "Valuation.Gs_other_cost.Currency_code",
+              "as": "string"
+            },
+            {
+              "from": "valuation.internalFreight.amount",
+              "to": "Valuation.Gs_internal_freight.Amount_foreign_currency",
+              "as": "number"
+            },
+            {
+              "from": "valuation.internalFreight.currencyCode",
+              "to": "Valuation.Gs_internal_freight.Currency_code",
+              "as": "string"
+            },
+            {
+              "from": "valuation.deductions.amount",
+              "to": "Valuation.Gs_deduction.Amount_foreign_currency",
+              "as": "number"
+            },
+            {
+              "from": "valuation.deductions.currencyCode",
+              "to": "Valuation.Gs_deduction.Currency_code",
+              "as": "string"
+            },
+            {
+              "from": "packages.totalPackages",
+              "to": "Property.Nbers.Total_number_of_packages",
+              "as": "number"
+            },
+            {
+              "from": "identification.declarationMode",
+              "to": "NSW.Declaration_mode",
+              "as": "string"
+            },
+            {
+              "from": "traders.exporter.code",
+              "to": "Traders.Exporter.Exporter_code",
+              "as": "string"
+            },
+            {
+              "from": "traders.exporter.name",
+              "to": "NSW.Exporter.Name",
+              "as": "string"
+            },
+            {
+              "from": "traders.exporter.address",
+              "to": "NSW.Exporter.Address",
+              "as": "string"
+            },
+            {
+              "from": "traders.exporter.countryCode",
+              "to": "NSW.Exporter.Country_code",
+              "as": "string"
+            },
+            {
+              "from": "traders.consignee.name",
+              "to": "Traders.Consignee.Consignee_name",
+              "as": "string"
+            },
+            {
+              "from": "traders.consignee.address",
+              "to": "NSW.Consignee.Address",
+              "as": "string"
+            },
+            {
+              "from": "traders.consignee.countryCode",
+              "to": "NSW.Consignee.Country_code",
+              "as": "string"
+            },
+            {
+              "from": "financial.remittanceAmount",
+              "to": "NSW.Remittance.Amount",
+              "as": "number"
+            },
+            {
+              "from": "financial.remittanceCurrencyCode",
+              "to": "NSW.Remittance.Currency_code",
+              "as": "string"
+            },
+            {
+              "from": "items",
+              "to": "Item",
+              "writeTo": [
+                {
+                  "from": "packages.quantity",
+                  "to": "Packages.Number_of_packages",
+                  "as": "number"
+                },
+                {
+                  "from": "packages.kindCode",
+                  "to": "Packages.Kind_of_packages_code",
+                  "as": "string"
+                },
+                {
+                  "from": "marksAndNumbers",
+                  "to": "Packages.Marks1_of_packages",
+                  "as": "string"
+                },
+                {
+                  "from": "tarification.hsCode",
+                  "to": "Tarification.HScode.Commodity_code",
+                  "as": "string"
+                },
+                {
+                  "from": "tarification.preferenceCode",
+                  "to": "Tarification.Preference_code",
+                  "as": "string"
+                },
+                {
+                  "from": "tarification.extendedProcedureCode",
+                  "to": "Tarification.Extended_customs_procedure",
+                  "as": "string"
+                },
+                {
+                  "from": "tarification.nationalProcedureCode",
+                  "to": "Tarification.National_customs_procedure",
+                  "as": "string"
+                },
+                {
+                  "from": "tarification.supplementaryUnit.code",
+                  "to": "Tarification.Supplementary_unit.Suppplementary_unit_code",
+                  "as": "string"
+                },
+                {
+                  "from": "tarification.supplementaryUnit.quantity",
+                  "to": "Tarification.Supplementary_unit.Suppplementary_unit_quantity",
+                  "as": "number"
+                },
+                {
+                  "from": "goodsDescription.originCountryCode",
+                  "to": "Goods_description.Country_of_origin_code",
+                  "as": "string"
+                },
+                {
+                  "from": "goodsDescription.description",
+                  "to": "Goods_description.Description_of_goods",
+                  "as": "string"
+                },
+                {
+                  "from": "goodsDescription.commercialDescription",
+                  "to": "Goods_description.Commercial_Description",
+                  "as": "string"
+                },
+                {
+                  "from": "goodsDescription.commercialDescription1",
+                  "to": "NSW.Commercial_description_2",
+                  "as": "string"
+                },
+                {
+                  "from": "valuation.grossWeight",
+                  "to": "Valuation_item.Weight_itm.Gross_weight_itm",
+                  "as": "number"
+                },
+                {
+                  "from": "valuation.netWeight",
+                  "to": "Valuation_item.Weight_itm.Net_weight_itm",
+                  "as": "number"
+                },
+                {
+                  "from": "valuation.invoiceAmount.amount",
+                  "to": "Valuation_item.Item_Invoice.Amount_foreign_currency",
+                  "as": "number"
+                },
+                {
+                  "from": "valuation.invoiceAmount.currencyCode",
+                  "to": "Valuation_item.Item_Invoice.Currency_code",
+                  "as": "string"
+                }
+              ]
+            },
+            {
+              "from": "supportingDocuments.metaDocuments",
+              "to": "NSW.Supporting_documents.Document",
+              "writeTo": [
+                {
+                  "from": "itemSequence",
+                  "to": "Item_number",
+                  "as": "string"
+                },
+                {
+                  "from": "documentCode",
+                  "to": "Code",
+                  "as": "string"
+                },
+                {
+                  "from": "documentId",
+                  "to": "Reference",
+                  "as": "string"
+                },
+                {
+                  "from": "dateAsString",
+                  "to": "Date",
+                  "as": "string"
+                }
               ]
             }
           ]
@@ -997,6 +1706,10 @@
           {
             "type": "Control",
             "scope": "#/properties/import_cusdec_xml"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/export_cusdec_xml"
           },
           {
             "type": "Control",
