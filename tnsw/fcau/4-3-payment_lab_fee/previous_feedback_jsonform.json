@@ -1,4 +1,4 @@
 {
   "id": "fcau-pay-lab-fee--previous-feedback",
-  "template": "{{if .paymentreviewerform.payment_feedback}}\n### Review History\n\nComments from the previous review round. Your latest receipt is now with the FCAU officer.\n\n> **Officer Comments**: {{.paymentreviewerform.payment_feedback}}\n{{end}}"
+  "template": "{{if .previous_review.feedback}}\n### Review History\n\nComments from the previous review round. Your latest receipt is now with the FCAU officer.\n\n> **Officer Comments**: {{.previous_review.feedback}}\n{{end}}"
 }
