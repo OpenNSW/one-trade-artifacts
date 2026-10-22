@@ -972,7 +972,11 @@
                     "scope": "#/properties/whatsapp_number"
                   }
                 ]
-              }
+              },
+              "display": "cards",
+              "itemLabel": "Kernel Product",
+              "summary": "{product_type} · HS {hs_code}",
+              "summaryDetail": "{manufacturer_name} · {quantity_weight_kg} kg · Labels {cda_label_start_number}–{cda_label_end_number}"
             }
           }
         ]

@@ -73,7 +73,13 @@
         "elements": [
           {
             "type": "Control",
-            "scope": "#/properties/lines"
+            "scope": "#/properties/lines",
+            "options": {
+              "display": "cards",
+              "itemLabel": "Sundry Service",
+              "summary": "{serviceId} · {containerNo}",
+              "summaryDetail": "Qty {quantity}"
+            }
           }
         ]
       },

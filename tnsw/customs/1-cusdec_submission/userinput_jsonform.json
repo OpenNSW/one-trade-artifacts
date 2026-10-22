@@ -2202,7 +2202,10 @@
                     ]
                   }
                 ]
-              }
+              },
+              "display": "cards",
+              "summary": "{documentCode} · {documentId}",
+              "summaryDetail": "Item {itemSequence} · {dateAsString}"
             }
           }
         ]

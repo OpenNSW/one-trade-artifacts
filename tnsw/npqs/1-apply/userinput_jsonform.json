@@ -1066,7 +1066,11 @@
                         }
                       }
                     ]
-                  }
+                  },
+                  "display": "cards",
+                  "itemLabel": "Transport",
+                  "summary": "{transport_mode} · {transport_name}",
+                  "summaryDetail": "{transport_number}"
                 }
               }
             ]
@@ -1230,7 +1234,13 @@
         "elements": [
           {
             "type": "Control",
-            "scope": "#/properties/attachments"
+            "scope": "#/properties/attachments",
+            "options": {
+              "display": "cards",
+              "itemLabel": "Attachment",
+              "summary": "{attachment_description}",
+              "summaryDetail": "{file_type}"
+            }
           }
         ]
       }
