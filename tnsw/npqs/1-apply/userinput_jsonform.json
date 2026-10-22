@@ -216,8 +216,7 @@
       "estimated_shipment_date": {
         "type": "string",
         "format": "date",
-        "title": "Estimated Shipment Date",
-        "notBefore": "today"
+        "title": "Estimated Shipment Date"
       },
       "transport_details": {
         "type": "array",
@@ -1306,11 +1305,11 @@
           {
             "type": "Control",
             "scope": "#/properties/attachments",
+            "label": false,
             "options": {
               "display": "cards",
-              "showTitle": false,
               "itemLabel": "Attachment",
-              "itemOrdinal": "word",
+              "itemNumber": "word",
               "addLabel": "Add Attachment",
               "emptyLabel": "No attachments have been added yet.",
               "summary": "{attachment_description}",
