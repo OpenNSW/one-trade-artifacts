@@ -138,10 +138,7 @@
       "consignee_name",
       "consignee_address",
       "commodities",
-      "intended_export_date",
-      "lc_number",
-      "container_numbers",
-      "vessel_name"
+      "intended_export_date"
     ]
   },
   "uiSchema": {

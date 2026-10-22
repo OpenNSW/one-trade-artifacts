@@ -1,7 +1,7 @@
 {
   "id": "fcau-apply-health-cert-flow",
   "name": "Apply for Health Certificate",
-  "version": 7,
+  "version": 8,
   "nodes": [
     {
       "id": "start",
@@ -22,9 +22,9 @@
         "consignee_address": "userform.consignee_address",
         "commodities": "userform.commodities",
         "intended_export_date": "userform.intended_export_date",
-        "lc_number": "userform.lc_number",
-        "container_numbers": "userform.container_numbers",
-        "vessel_name": "userform.vessel_name",
+        "lc_number?": "userform.lc_number",
+        "container_numbers?": "userform.container_numbers",
+        "vessel_name?": "userform.vessel_name",
         "other_supporting_documents?": "userform.other_supporting_documents"
       }
     },
