@@ -105,6 +105,7 @@
       "importing_country": {
         "type": "object",
         "title": "Name of Importing Country",
+        "example": { "value": "LK", "label": "Sri Lanka" },
         "x-search": {
           "service": "static-data",
           "mode": "large-searchable-list",
@@ -115,15 +116,33 @@
           }
         },
         "properties": {
-          "value": { "type": "string", "minLength": 1 },
-          "label": { "type": "string" }
+          "value": { "type": "string", "minLength": 1, "example": "LK" },
+          "label": { "type": "string", "example": "Sri Lanka" }
         },
         "required": ["value"]
       },
       "transit_countries": {
-        "type": "string",
-        "title": "Transit Countries (if required)",
-        "example": "Angola"
+        "type": "array",
+        "title": "Transit Countries",
+        "example": [],
+        "items": {
+          "type": "object",
+          "title": "Transit Country",
+          "x-search": {
+            "service": "static-data",
+            "mode": "large-searchable-list",
+            "displayTemplate": "{name}",
+            "params": {
+              "id": "npqs-apply-phyto-cert--importing-countries",
+              "version": "1"
+            }
+          },
+          "properties": {
+            "value": { "type": "string", "minLength": 1 },
+            "label": { "type": "string" }
+          },
+          "required": ["value"]
+        }
       },
       "exporter_name": {
         "type": "string",
@@ -505,6 +524,7 @@
             },
             "packages_count": {
               "type": "integer",
+              "minimum": 0,
               "title": "Number of Packages",
               "exclusiveMinimum": 0,
               "example": 25
@@ -602,20 +622,19 @@
               },
               "required": ["value"]
             },
-            "packages_in_bulk": {
-              "type": "boolean",
-              "title": "In Bulk",
-              "default": false
-            },
-            "packages_free_text_enabled": {
-              "type": "boolean",
-              "title": "Free Text Package Details",
-              "default": false
+            "package_arrangement": {
+              "type": "string",
+              "title": "Package Arrangement",
+              "oneOf": [
+                { "const": "package", "title": "Package" },
+                { "const": "free_text", "title": "Free Text" },
+                { "const": "bulk", "title": "Bulk" }
+              ],
+              "default": "package"
             },
             "packages_free_text": {
               "type": "string",
-              "title": "Free Text Package Description",
-              "example": "Packed in standard wooden crates"
+              "title": "Free Text Package Description"
             },
             "origin_country": {
               "type": "object",
@@ -647,8 +666,38 @@
             "id",
             "commodity_common_name",
             "commodity_botanical_name",
-            "quantity_net_weight",
-            "packages_count"
+            "quantity_net_weight"
+          ],
+          "allOf": [
+            {
+              "if": {
+                "properties": { "package_arrangement": { "const": "package" } },
+                "required": ["package_arrangement"]
+              },
+              "then": {
+                "required": ["packages_count", "packages_description"],
+                "properties": {
+                  "packages_description": {
+                    "type": "object",
+                    "required": ["value"],
+                    "properties": { "value": { "type": "string", "minLength": 1 } }
+                  },
+                  "packages_count": { "type": "integer", "minimum": 0 }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": { "package_arrangement": { "const": "free_text" } },
+                "required": ["package_arrangement"]
+              },
+              "then": {
+                "required": ["packages_free_text"],
+                "properties": {
+                  "packages_free_text": { "type": "string", "minLength": 1 }
+                }
+              }
+            }
           ]
         },
         "example": [
@@ -665,9 +714,9 @@
             "quantity_net_weight_unit": { "value": "KGM", "label": "kilogram (kg)" },
             "quantity_gross_weight": 280.0,
             "quantity_gross_weight_unit": { "value": "KGM", "label": "kilogram (kg)" },
-            "packages_type": "CT",
+            "packages_description": { "value": "CT", "label": "CT" },
             "packages_count": 50,
-            "packages_in_bulk": false,
+            "package_arrangement": "package",
             "origin_country": { "value": "LK", "label": "Sri Lanka" },
             "origin_area": "Nuwara Eliya"
           },
@@ -684,9 +733,9 @@
             "quantity_net_weight_unit": { "value": "KGM", "label": "kilogram (kg)" },
             "quantity_gross_weight": 540.0,
             "quantity_gross_weight_unit": { "value": "KGM", "label": "kilogram (kg)" },
-            "packages_type": "BX",
+            "packages_description": { "value": "BX", "label": "BX" },
             "packages_count": 80,
-            "packages_in_bulk": false,
+            "package_arrangement": "package",
             "origin_country": { "value": "LK", "label": "Sri Lanka" },
             "origin_area": "Gampaha District"
           },
@@ -703,9 +752,9 @@
             "quantity_net_weight_unit": { "value": "KGM", "label": "kilogram (kg)" },
             "quantity_gross_weight": 4500.0,
             "quantity_gross_weight_unit": { "value": "KGM", "label": "kilogram (kg)" },
-            "packages_type": "PK",
+            "packages_description": { "value": "PK", "label": "Package" },
             "packages_count": 12,
-            "packages_in_bulk": false,
+            "package_arrangement": "package",
             "origin_country": { "value": "LK", "label": "Sri Lanka" },
             "origin_area": "Kalutara District"
           },
@@ -722,9 +771,9 @@
             "quantity_net_weight_unit": { "value": "KGM", "label": "kilogram (kg)" },
             "quantity_gross_weight": 5100.0,
             "quantity_gross_weight_unit": { "value": "KGM", "label": "kilogram (kg)" },
-            "packages_type": "PL",
+            "packages_description": { "value": "PX", "label": "Pallet" },
             "packages_count": 200,
-            "packages_in_bulk": false,
+            "package_arrangement": "package",
             "origin_country": { "value": "LK", "label": "Sri Lanka" },
             "origin_area": "Kurunegala District"
           }
@@ -742,8 +791,10 @@
       },
       "proposed_inspection_time": {
         "type": "string",
-        "format": "time",
-        "title": "Proposed Inspection Time"
+        "title": "Proposed Inspection Time",
+        "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$",
+        "description": "Enter time as HH:MM or HH:MM:SS (24-hour).",
+        "example": "14:30"
       },
       "place_of_inspection": {
         "type": "string",
@@ -1144,23 +1195,41 @@
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/packages_count"
+                    "scope": "#/properties/package_arrangement",
+                    "options": { "format": "radio" }
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/packages_description"
+                    "scope": "#/properties/packages_count",
+                    "rule": {
+                      "effect": "SHOW",
+                      "condition": {
+                        "scope": "#/properties/package_arrangement",
+                        "schema": { "const": "package" }
+                      }
+                    }
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/packages_in_bulk"
+                    "scope": "#/properties/packages_description",
+                    "rule": {
+                      "effect": "SHOW",
+                      "condition": {
+                        "scope": "#/properties/package_arrangement",
+                        "schema": { "const": "package" }
+                      }
+                    }
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/packages_free_text_enabled"
-                  },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/packages_free_text"
+                    "scope": "#/properties/packages_free_text",
+                    "rule": {
+                      "effect": "SHOW",
+                      "condition": {
+                        "scope": "#/properties/package_arrangement",
+                        "schema": { "const": "free_text" }
+                      }
+                    }
                   },
                   {
                     "type": "Control",
