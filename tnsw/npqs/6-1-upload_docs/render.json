@@ -25,7 +25,6 @@
     },
     "submission_form": {
       "templateId": "npqs-upload-docs--trader-form",
-      "title": "Upload Consignment Documents",
       "projector": "FORM",
       "dataKey": "traderinput",
       "visibleWhen": {

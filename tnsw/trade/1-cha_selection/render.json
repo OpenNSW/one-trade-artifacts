@@ -11,7 +11,6 @@
   "sections": {
     "workspace": {
       "templateId": "trade-cha-selection--form",
-      "title": "Initialize Consignment",
       "projector": "FORM",
       "dataKey": "traderinput",
       "visibleWhen": {
