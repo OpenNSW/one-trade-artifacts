@@ -1,0 +1,42 @@
+{
+  "id": "customs-cusdec-amended",
+  "name": "Customs Declaration Amended",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START",
+      "name": "Start"
+    },
+    {
+      "id": "customs_amended_review",
+      "type": "TASK",
+      "name": "[Customs] Review Amended Declaration",
+      "task_template_id": "customs-cusdec-amended-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "cusdec": "cusdec",
+        "duties?": "duties",
+        "cusdec_number": "cusdec_number",
+        "amended_at": "amended_at"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END",
+      "name": "Amendment Acknowledged"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_start",
+      "source_id": "start",
+      "target_id": "customs_amended_review"
+    },
+    {
+      "id": "e_end",
+      "source_id": "customs_amended_review",
+      "target_id": "end"
+    }
+  ]
+}

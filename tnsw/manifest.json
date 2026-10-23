@@ -3725,6 +3725,48 @@
       "kind": "generic_template",
       "version": "",
       "path": "npqs/6-1-upload_docs/confirmation_markdown.json"
+    },
+    {
+      "id": "customs-cusdec-amended",
+      "kind": "workflow",
+      "version": "",
+      "path": "customs/cusdec_amended_workflow.json"
+    },
+    {
+      "id": "customs-cusdec-amended-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "customs/9-cusdec_amended/workflow.json"
+    },
+    {
+      "id": "customs-cusdec-amended-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "customs/9-cusdec_amended/task_template.json"
+    },
+    {
+      "id": "customs-cusdec-amended-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/9-cusdec_amended/render.json"
+    },
+    {
+      "id": "customs-cusdec-amended--acknowledge",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "customs/9-cusdec_amended/acknowledge.json"
+    },
+    {
+      "id": "customs-cusdec-amended--summary",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/9-cusdec_amended/summary_jsonform.json"
+    },
+    {
+      "id": "customs-cusdec-amended--declaration",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/9-cusdec_amended/declaration_jsonform.json"
     }
   ]
 }
