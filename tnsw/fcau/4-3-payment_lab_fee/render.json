@@ -71,7 +71,7 @@
         "states": [
           "QUEUED_EXTERNALLY"
         ],
-        "requireDataKey": "paymentreviewerform"
+        "requireDataKey": "previous_review"
       }
     }
   },

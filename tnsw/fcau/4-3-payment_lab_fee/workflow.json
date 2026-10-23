@@ -1,7 +1,7 @@
 {
   "id": "fcau-pay-lab-fee-flow",
   "name": "Pay Lab Test Fee",
-  "version": 3,
+  "version": 4,
   "nodes": [
     {
       "id": "start",
@@ -28,7 +28,9 @@
         "lab_receipt": "lab_receipt",
         "reference_number?": "submission.reference_number",
         "lab_receipt?": "submission.lab_receipt",
-        "agency_token?": "replyToken"
+        "agency_token?": "replyToken",
+        "payment_review_outcome?": "previous_review.outcome",
+        "payment_feedback?": "previous_review.feedback"
       },
       "output_mapping": {
         "payment_review_outcome": "payment_review_outcome",
