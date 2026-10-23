@@ -207,7 +207,7 @@ class Checker:
             return {"key": f"the file {step.get('task_type')} {step.get('id')} generates"}
         if step.get("task_type") == "EXTERNAL_REVIEW":
             # Until an OGA's cutover, a deployment may run its legacy service or
-            # its agency (<agency>-v2): the step can get either one's callback.
+            # its agency (<agency>/): the step can get either one's callback.
             code = (step.get("plugin_properties") or {}).get("task_code")
             out = {}
             for agency in self.agencies:

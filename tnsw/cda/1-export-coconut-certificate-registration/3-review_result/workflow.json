@@ -1,7 +1,6 @@
 {
   "id": "cda-review-result-flow",
   "name": "CDA Review and Result",
-  "version": 2,
   "nodes": [
     {
       "id": "start",

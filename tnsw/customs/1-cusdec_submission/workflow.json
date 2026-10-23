@@ -1,7 +1,6 @@
 {
   "id": "customs-cusdec-apply-flow",
   "name": "Submit & Review Customs Declaration",
-  "version": 8,
   "nodes": [
     {
       "id": "start",

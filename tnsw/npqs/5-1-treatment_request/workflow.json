@@ -1,7 +1,6 @@
 {
   "id": "npqs-treatment-request",
   "name": "Submit & Approve Treatment Request",
-  "version": 4,
   "nodes": [
     {
       "id": "start",

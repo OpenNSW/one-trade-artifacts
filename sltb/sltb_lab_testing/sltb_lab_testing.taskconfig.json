@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "sltb_lab_testing",
+  "workflow": "sltb_lab_testing",
+  "meta": {
+    "title": "Lab Testing & Results",
+    "description": "Record the laboratory test results for the tea sample."
+  }
+}

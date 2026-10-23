@@ -1,7 +1,6 @@
 {
   "id": "slpa-gate-pass-flow",
   "name": "Issue SLPA Container Gate Pass",
-  "version": 6,
   "nodes": [
     {
       "id": "start",

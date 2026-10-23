@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "sltb_sample_draw",
+  "workflow": "sltb_sample_draw",
+  "meta": {
+    "title": "Record Warehouse Sample Draw",
+    "description": "Record the completion of the warehouse sample draw and assign a sample number."
+  }
+}

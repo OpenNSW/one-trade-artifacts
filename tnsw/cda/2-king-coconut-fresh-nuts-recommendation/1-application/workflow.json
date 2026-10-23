@@ -1,7 +1,6 @@
 {
   "id": "cda-kcfn-apply-flow",
   "name": "Submit Application & Container Inspection",
-  "version": 8,
   "nodes": [
     {
       "id": "start",

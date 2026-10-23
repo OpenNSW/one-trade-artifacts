@@ -1,7 +1,6 @@
 {
   "id": "fcau-apply-health-cert-flow",
   "name": "Apply for Health Certificate",
-  "version": 8,
   "nodes": [
     {
       "id": "start",

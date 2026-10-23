@@ -1,7 +1,6 @@
 {
   "id": "npqs-visual-system-inspection",
   "name": "Visual Inspection Through System",
-  "version": 2,
   "nodes": [
     {
       "id": "start",

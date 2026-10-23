@@ -1,7 +1,6 @@
 {
   "id": "npqs-certificate-status",
   "name": "NPQS Certificate Status & Next Action",
-  "version": 2,
   "nodes": [
     {
       "id": "start",

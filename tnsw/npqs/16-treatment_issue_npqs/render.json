@@ -1,5 +1,5 @@
 {
-  "id": "npqs-v3-treatment-issue:render",
+  "id": "npqs-treatment-issue:render",
   "type": "REVIEW",
   "title": "[NPQS] NPQS Treatment Certificate",
   "read": {
@@ -15,7 +15,7 @@
   ],
   "sections": {
     "status_message": {
-      "templateId": "npqs-v3-treatment-issue--status",
+      "templateId": "npqs-treatment-issue--status",
       "title": "Treatment at NPQS",
       "projector": "MARKDOWN"
     }

@@ -1,7 +1,6 @@
 {
-  "id": "npqs-v3-provider-cert-upload",
+  "id": "npqs-provider-cert-upload",
   "name": "Upload Treatment Provider Certificate",
-  "version": 1,
   "nodes": [
     {
       "id": "start",
@@ -10,7 +9,7 @@
     {
       "id": "trader_upload",
       "type": "TASK",
-      "task_template_id": "npqs-v3-provider-cert-upload--user-input",
+      "task_template_id": "npqs-provider-cert-upload--user-input",
       "input_mapping": {
         "commodities": "commodities",
         "reference_number": "reference_number",

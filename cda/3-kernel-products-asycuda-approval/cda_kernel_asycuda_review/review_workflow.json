@@ -1,0 +1,96 @@
+{
+  "id": "cda-kernel-asycuda-review--review-workflow",
+  "name": "CDA ASYCUDA Approval Review \u2014 Kernel Products \u2014 Officer Review",
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "userform",
+      "type": "TASK",
+      "task_template_id": "cda-kernel-asycuda-review--officer-review",
+      "input_mapping": {
+        "submission?": "submission",
+        "reviewform.rejection_reason?": "previous_rejection_reason"
+      },
+      "output_mapping": {
+        "review_outcome": "reviewform.review_outcome",
+        "rejection_reason?": "reviewform.rejection_reason",
+        "asycuda_approval_confirmed?": "reviewform.asycuda_approval_confirmed"
+      }
+    },
+    {
+      "id": "decision_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "request_info",
+      "type": "TASK",
+      "task_template_id": "cda-kernel-asycuda-review--request-info",
+      "input_mapping": {
+        "callbackToken": "replyToken",
+        "reviewform.review_outcome": "payload.review_outcome",
+        "reviewform.rejection_reason?": "payload.rejection_reason",
+        "submission?": "submission",
+        "reviewform": "reviewform"
+      },
+      "output_mapping": {
+        "submission": "submission",
+        "callbackToken": "callbackToken"
+      }
+    },
+    {
+      "id": "api_call",
+      "type": "TASK",
+      "task_template_id": "cda-kernel-asycuda-review--notify-decision",
+      "input_mapping": {
+        "callbackToken": "callbackToken",
+        "reviewform?": "reviewform",
+        "submission?": "submission",
+        "taskId": "taskId",
+        "reviewform.review_outcome": "payload.command",
+        "reviewform": "payload.payload"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "userform"
+    },
+    {
+      "id": "e2",
+      "source_id": "userform",
+      "target_id": "decision_gateway"
+    },
+    {
+      "id": "e_needs_info",
+      "source_id": "decision_gateway",
+      "target_id": "request_info",
+      "condition": "reviewform.review_outcome == 'needs_more_info'"
+    },
+    {
+      "id": "e_resubmitted",
+      "source_id": "request_info",
+      "target_id": "userform"
+    },
+    {
+      "id": "e_approve",
+      "source_id": "decision_gateway",
+      "target_id": "api_call",
+      "condition": "reviewform.review_outcome == 'approve'"
+    },
+    {
+      "id": "e3",
+      "source_id": "api_call",
+      "target_id": "end"
+    }
+  ]
+}

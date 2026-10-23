@@ -1,7 +1,6 @@
 {
   "id": "customs-cdn-branch-flow",
   "name": "Create CDN (one container)",
-  "version": 1,
   "nodes": [
     {
       "id": "start",

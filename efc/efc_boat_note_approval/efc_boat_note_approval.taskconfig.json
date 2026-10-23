@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "efc_boat_note_approval",
+  "workflow": "efc_boat_note_approval",
+  "meta": {
+    "title": "Boat Note Approval",
+    "description": "Officer reviews the submitted Boat Note details and container specifications for final loading approval."
+  }
+}

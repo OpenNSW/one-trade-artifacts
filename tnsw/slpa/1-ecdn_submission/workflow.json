@@ -1,7 +1,6 @@
 {
   "id": "slpa-ecdn-submission-flow",
   "name": "Submit ECDN to SLPA CMS",
-  "version": 4,
   "nodes": [
     {
       "id": "start",

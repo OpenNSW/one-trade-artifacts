@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "sltb_sample_schedule",
+  "workflow": "sltb_sample_schedule",
+  "meta": {
+    "title": "Review Pickup Schedule",
+    "description": "Review the trader's suggested warehouse pickup date and assign a Tea Inspector."
+  }
+}

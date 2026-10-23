@@ -1,7 +1,6 @@
 {
   "id": "fcau-pay-post-wh-lab-fee-flow",
   "name": "Pay Post-Warehouse Lab Test Fee",
-  "version": 4,
   "nodes": [
     {
       "id": "start",

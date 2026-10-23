@@ -1,7 +1,6 @@
 {
   "id": "npqs-draw-sample",
   "name": "Draw or Collect Sample",
-  "version": 3,
   "nodes": [
     {
       "id": "start",

@@ -1,5 +1,5 @@
 {
-  "id": "npqs-v3-provider-cert-upload-supervised--trader-form",
+  "id": "npqs-provider-cert-upload-supervised--trader-form",
   "title": "Upload Treatment Provider Certificate and Supervision Report",
   "schema": {
     "type": "object",

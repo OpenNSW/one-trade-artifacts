@@ -1,7 +1,6 @@
 {
   "id": "cda-kcfn-issue-letter-flow",
   "name": "CDA Officer Issues Recommendation Letter",
-  "version": 1,
   "nodes": [
     {
       "id": "start",

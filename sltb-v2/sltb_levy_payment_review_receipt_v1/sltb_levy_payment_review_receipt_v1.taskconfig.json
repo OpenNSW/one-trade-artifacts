@@ -1,9 +1,0 @@
-{
-  "schemaVersion": 2,
-  "taskCode": "sltb_levy_payment_review_receipt_v1",
-  "workflow": "sltb_levy_payment_review_receipt_v1",
-  "meta": {
-    "title": "SLTB Levy Payment Receipt Verification",
-    "description": "Officer verifies the payment receipt uploaded by the trader for SLTB levy payment."
-  }
-}

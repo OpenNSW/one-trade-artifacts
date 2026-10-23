@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "fcau-warehouse-scheduling--review",
+  "workflow": "fcau-warehouse-scheduling--review",
+  "meta": {
+    "title": "Warehouse Inspection Scheduling Review",
+    "description": "Officer accepts the trader's proposed warehouse inspection date or suggests a different date."
+  }
+}

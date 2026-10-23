@@ -1,7 +1,6 @@
 {
   "id": "sltb-record-sample-draw-flow",
   "name": "Officer Records Sample Draw",
-  "version": 2,
   "nodes": [
     { "id": "start", "type": "START" },
     {

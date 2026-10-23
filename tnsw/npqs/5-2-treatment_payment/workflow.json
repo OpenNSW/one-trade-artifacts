@@ -1,7 +1,6 @@
 {
   "id": "npqs-pay-for-treatment",
   "name": "Pay for Treatment",
-  "version": 1,
   "nodes": [
     {
       "id": "start",

@@ -1,7 +1,6 @@
 {
   "id": "sltb-lab-testing-flow",
   "name": "Lab Testing & Results",
-  "version": 2,
   "nodes": [
     { "id": "start", "type": "START" },
     {

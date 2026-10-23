@@ -1,7 +1,6 @@
 {
   "id": "slpa-approval-flow",
   "name": "Track the SLPA Service Order Approval",
-  "version": 1,
   "nodes": [
     {
       "id": "start",

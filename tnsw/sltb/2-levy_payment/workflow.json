@@ -1,7 +1,6 @@
 {
   "id": "sltb-pay-levy-flow",
   "name": "Pay SLTB Levy",
-  "version": 5,
   "nodes": [
     {
       "id": "start",

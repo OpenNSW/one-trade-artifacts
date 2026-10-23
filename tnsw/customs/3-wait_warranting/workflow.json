@@ -1,7 +1,6 @@
 {
   "id": "customs-wait-warranting-flow",
   "name": "Wait on CusDec Warranting",
-  "version": 1,
   "nodes": [
     {
       "id": "start",

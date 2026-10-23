@@ -3,7 +3,7 @@
   "task_type": "USER_INPUT",
   "output_namespace": "payment_method",
   "plugin_properties": {
-    "task_code": "fcau_app_fee_select_method_v1"
+    "task_code": "fcau_app_fee_select_method"
   },
   "extensions": [
     {

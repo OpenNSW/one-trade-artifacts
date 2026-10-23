@@ -1,7 +1,6 @@
 {
   "id": "trade-prepare-split-items-flow",
   "name": "Prepare HS Code Split Items",
-  "version": 1,
   "nodes": [
     {
       "id": "start",

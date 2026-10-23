@@ -42,11 +42,11 @@ jobs:
           aws s3 sync . "s3://${{ vars.R2_BUCKET_DEV }}" \
             --endpoint-url "https://${{ vars.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com" \
             --exclude "*" \
-            --include "cda-v2/*" \
-            --include "efc-v2/*" \
-            --include "fcau-v2/*" \
-            --include "npqs-v2/*" \
-            --include "sltb-v2/*" \
+            --include "cda/*" \
+            --include "efc/*" \
+            --include "fcau/*" \
+            --include "npqs/*" \
+            --include "sltb/*" \
             --include "tnsw/*" \
             --delete \
             ${{ inputs.dryrun && '--dryrun' || '' }}

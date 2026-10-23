@@ -1,7 +1,6 @@
 {
   "id": "customs-wait-cdn-ack-flow",
   "name": "Wait on CDN Ack",
-  "version": 1,
   "nodes": [
     {
       "id": "start",

@@ -1,7 +1,6 @@
 {
   "id": "customs-create-cdn-flow",
   "name": "Create CDN",
-  "version": 5,
   "nodes": [
     {
       "id": "start",

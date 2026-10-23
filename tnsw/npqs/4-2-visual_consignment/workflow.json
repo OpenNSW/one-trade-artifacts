@@ -1,7 +1,6 @@
 {
   "id": "npqs-visual-consignment-flow",
   "name": "Consignment Visual Inspection Flow",
-  "version": 2,
   "nodes": [
     {
       "id": "start",

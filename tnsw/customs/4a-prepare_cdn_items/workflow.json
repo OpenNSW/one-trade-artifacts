@@ -1,7 +1,6 @@
 {
   "id": "customs-prepare-cdn-items-flow",
   "name": "Prepare CDN Split Items",
-  "version": 1,
   "nodes": [
     { "id": "start", "type": "START" },
     {

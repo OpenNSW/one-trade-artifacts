@@ -1,7 +1,6 @@
 {
   "id": "slpa-invoice-flow",
   "name": "Settle the SLPA Invoice",
-  "version": 6,
   "nodes": [
     {
       "id": "start",

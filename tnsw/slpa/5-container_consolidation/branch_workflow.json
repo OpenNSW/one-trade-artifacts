@@ -1,7 +1,6 @@
 {
   "id": "slpa-container-branch",
   "name": "Consolidate and Gate Pass (one container)",
-  "version": 2,
   "nodes": [
     {
       "id": "start",

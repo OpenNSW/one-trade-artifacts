@@ -6,7 +6,7 @@
     "officer_jsonforms_id": "sltb-lab-decision--officer-form",
     "service_id": "sltb",
     "path": "/api/v1/inject",
-    "task_code": "sltb_lab_decision_v1"
+    "task_code": "sltb_lab_decision"
   },
   "extensions": [
     {

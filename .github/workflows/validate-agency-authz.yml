@@ -7,7 +7,12 @@ on:
     branches: [main]
     paths:
       - "tnsw/**"
-      - "*-v2/**"
+      - "*/manifest.json"
+      - "cda/**"
+      - "efc/**"
+      - "fcau/**"
+      - "npqs/**"
+      - "sltb/**"
       - ".github/scripts/check_agency_authz.py"
       - ".github/workflows/validate-agency-authz.yml"
 

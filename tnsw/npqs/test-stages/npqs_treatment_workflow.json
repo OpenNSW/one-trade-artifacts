@@ -1,7 +1,6 @@
 {
-  "id": "npqs-v3-test-treatment-reg",
+  "id": "npqs-test-treatment-reg",
   "name": "NPQS v3 Test: Treatment Only",
-  "version": 3,
   "nodes": [
     {
       "id": "start",
@@ -92,7 +91,7 @@
       "id": "n3_5_treatment_final_review",
       "name": "Review Treatment Documents and Record Results (Per Item)",
       "type": "TASK",
-      "task_template_id": "npqs-v3-treatment-final-review",
+      "task_template_id": "npqs-treatment-final-review",
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
@@ -140,7 +139,7 @@
       "id": "n3_3_treatment_cert_issue",
       "name": "Issue NPQS Treatment Certificate",
       "type": "TASK",
-      "task_template_id": "npqs-v3-treatment-issue",
+      "task_template_id": "npqs-treatment-issue",
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
@@ -155,7 +154,7 @@
       "id": "n3_3b_treatment_issue_supervised",
       "name": "Issue NPQS Treatment Certificate and Supervision Report",
       "type": "TASK",
-      "task_template_id": "npqs-v3-treatment-issue-supervised",
+      "task_template_id": "npqs-treatment-issue-supervised",
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
@@ -200,7 +199,7 @@
       "id": "n3_4_treatment_upload_certs",
       "name": "Upload Treatment Provider Certificate",
       "type": "TASK",
-      "task_template_id": "npqs-v3-provider-cert-upload",
+      "task_template_id": "npqs-provider-cert-upload",
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
@@ -214,7 +213,7 @@
       "id": "n3_4b_treatment_upload_supervised",
       "name": "Upload Treatment Provider Certificate and Supervision Report",
       "type": "TASK",
-      "task_template_id": "npqs-v3-provider-cert-upload-supervised",
+      "task_template_id": "npqs-provider-cert-upload-supervised",
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",

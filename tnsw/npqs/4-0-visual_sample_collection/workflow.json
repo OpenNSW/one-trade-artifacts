@@ -1,7 +1,6 @@
 {
   "id": "npqs-visual-sample-collection",
   "name": "Collect Sample for Visual Inspection",
-  "version": 2,
   "nodes": [
     {
       "id": "start",

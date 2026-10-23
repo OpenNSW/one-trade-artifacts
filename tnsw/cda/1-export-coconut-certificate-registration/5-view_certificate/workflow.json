@@ -1,7 +1,6 @@
 {
   "id": "cda-view-new-certificate-flow",
   "name": "View New Certificate",
-  "version": 2,
   "nodes": [
     {
       "id": "start",

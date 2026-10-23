@@ -1,7 +1,6 @@
 {
   "id": "trade-export-v1",
   "name": "Single-Window Trade Export Process",
-  "version": 3,
   "nodes": [
     {
       "id": "start",

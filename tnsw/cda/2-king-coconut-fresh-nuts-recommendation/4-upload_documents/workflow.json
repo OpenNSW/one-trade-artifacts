@@ -1,7 +1,6 @@
 {
   "id": "cda-kcfn-upload-docs-flow",
   "name": "Submit Necessary Documents & ASYCUDA Verification",
-  "version": 2,
   "nodes": [
     {
       "id": "start",

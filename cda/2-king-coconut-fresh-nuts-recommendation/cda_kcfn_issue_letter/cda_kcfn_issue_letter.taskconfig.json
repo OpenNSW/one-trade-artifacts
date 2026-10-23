@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "cda_kcfn_issue_letter",
+  "workflow": "cda_kcfn_issue_letter",
+  "meta": {
+    "title": "CDA Officer Recommendation Letter Issuance",
+    "description": "Officer issues the recommendation letter after document review and payment of the recommendation report fee.",
+    "category": "CDA"
+  }
+}

@@ -1,7 +1,6 @@
 {
   "id": "fcau-pay-app-fee-flow",
   "name": "Pay Application Fee",
-  "version": 1,
   "nodes": [
     {
       "id": "start",

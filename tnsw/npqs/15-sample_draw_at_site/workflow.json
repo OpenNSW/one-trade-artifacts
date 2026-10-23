@@ -1,7 +1,6 @@
 {
-  "id": "npqs-v3-sample-draw-at-site",
+  "id": "npqs-sample-draw-at-site",
   "name": "Draw Sample at Site",
-  "version": 1,
   "nodes": [
     {
       "id": "start",

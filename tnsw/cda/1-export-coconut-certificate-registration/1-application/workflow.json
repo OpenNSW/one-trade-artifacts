@@ -1,7 +1,6 @@
 {
   "id": "cda-apply-coconut-cert-flow",
   "name": "Apply for Export Coconut Certificate",
-  "version": 8,
   "nodes": [
     {
       "id": "start",

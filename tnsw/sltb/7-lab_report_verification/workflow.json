@@ -1,7 +1,6 @@
 {
   "id": "sltb-lab-report-verification-flow",
   "name": "Lab Test Report Verification",
-  "version": 1,
   "nodes": [
     {
       "id": "start",

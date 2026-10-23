@@ -1,7 +1,6 @@
 {
   "id": "sltb-final-decision-flow",
   "name": "Final Application Decision",
-  "version": 2,
   "nodes": [
     {
       "id": "start",

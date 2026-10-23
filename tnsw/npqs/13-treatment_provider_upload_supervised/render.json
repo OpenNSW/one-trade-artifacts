@@ -1,5 +1,5 @@
 {
-  "id": "npqs-v3-provider-cert-upload-supervised:render",
+  "id": "npqs-provider-cert-upload-supervised:render",
   "type": "APPLICATION",
   "title": "[NPQS] Upload Treatment Provider Certificate and Supervision Report",
   "read": {
@@ -15,7 +15,7 @@
   ],
   "sections": {
     "status_message": {
-      "templateId": "npqs-v3-provider-cert-upload-supervised--status",
+      "templateId": "npqs-provider-cert-upload-supervised--status",
       "title": "Upload Instructions",
       "projector": "MARKDOWN",
       "visibleWhen": {
@@ -25,7 +25,7 @@
       }
     },
     "submission_form": {
-      "templateId": "npqs-v3-provider-cert-upload-supervised--trader-form",
+      "templateId": "npqs-provider-cert-upload-supervised--trader-form",
       "title": "Upload Treatment Provider Certificate and Supervision Report",
       "projector": "FORM",
       "dataKey": "traderinput",

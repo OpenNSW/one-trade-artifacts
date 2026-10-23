@@ -1,7 +1,6 @@
 {
   "id": "sltb-dropoff-flow",
   "name": "Sample Drop-off at SLTB",
-  "version": 1,
   "nodes": [
     { "id": "start", "type": "START" },
     {

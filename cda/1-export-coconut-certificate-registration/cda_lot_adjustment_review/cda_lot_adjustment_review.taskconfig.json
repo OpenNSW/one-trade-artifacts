@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "cda_lot_adjustment_review",
+  "workflow": "cda_lot_adjustment_review",
+  "meta": {
+    "title": "CDA Officer Lot Adjustment Review",
+    "description": "Officer reviews the trader's request to remove specific lots and uploads the revised certificate if approved.",
+    "category": "CDA"
+  }
+}

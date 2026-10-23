@@ -1,7 +1,6 @@
 {
   "id": "cda-kcfn-payment-flow",
   "name": "Pay Recommendation Report Fee",
-  "version": 2,
   "nodes": [
     {
       "id": "start",

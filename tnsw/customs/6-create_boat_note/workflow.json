@@ -1,7 +1,6 @@
 {
   "id": "customs-create-boat-note-flow",
   "name": "Create Boat Note",
-  "version": 5,
   "nodes": [
     {
       "id": "start",

@@ -1,7 +1,6 @@
 {
   "id": "slpa-ecdn-submission",
   "name": "SLPA Electronic Cargo Declaration Note (ECDN)",
-  "version": 2,
   "nodes": [
     {
       "id": "start",

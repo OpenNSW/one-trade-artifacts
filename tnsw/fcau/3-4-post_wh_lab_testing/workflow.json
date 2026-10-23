@@ -1,7 +1,6 @@
 {
   "id": "fcau-post-wh-lab-testing-flow",
   "name": "Wait on Post-Warehouse Lab Results",
-  "version": 2,
   "nodes": [
     {
       "id": "start",

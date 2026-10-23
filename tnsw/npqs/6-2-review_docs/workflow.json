@@ -1,7 +1,6 @@
 {
   "id": "npqs-review-docs",
   "name": "Review Relevant Documents",
-  "version": 2,
   "nodes": [
     {
       "id": "start",

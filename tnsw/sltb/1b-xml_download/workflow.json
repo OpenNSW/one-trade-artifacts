@@ -1,7 +1,6 @@
 {
   "id": "sltb-xml-download-flow",
   "name": "XML Download Acknowledgement",
-  "version": 1,
   "nodes": [
     {
       "id": "start",

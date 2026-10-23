@@ -1,7 +1,6 @@
 {
   "id": "slpa-sundry-order-flow",
   "name": "Raise SLPA Sundry Order",
-  "version": 1,
   "nodes": [
     {
       "id": "start",

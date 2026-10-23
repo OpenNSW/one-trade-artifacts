@@ -1,7 +1,6 @@
 {
   "id": "npqs-visual2-decision",
   "name": "Visual Inspection 2 Decision",
-  "version": 1,
   "nodes": [
     {
       "id": "start",

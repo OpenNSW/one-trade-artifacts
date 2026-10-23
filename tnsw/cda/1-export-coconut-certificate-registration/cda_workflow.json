@@ -1,7 +1,6 @@
 {
   "id": "cda-certificate-reg",
   "name": "CDA Export Coconut Certificate Registration",
-  "version": 2,
   "nodes": [
     {
       "id": "start",

@@ -1,7 +1,6 @@
 {
   "id": "cda-kernel-asycuda-approval-flow",
   "name": "Submit ASYCUDA Approval Application for Kernel Products",
-  "version": 7,
   "nodes": [
     {
       "id": "start",

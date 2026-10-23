@@ -1,7 +1,6 @@
 {
   "id": "slpa-consolidation-flow",
   "name": "Consolidate One SLPA Container",
-  "version": 6,
   "nodes": [
     {
       "id": "start",
