@@ -14,6 +14,11 @@
       "properties": {
         "PENDING_USER": { "submit": ["trader", "cha"], "save_as_draft": ["trader", "cha"] }
       }
+    },
+    {
+      "id": "payload_schema",
+      "phase": "PRE_RESUME",
+      "properties": { "form": "fcau-apply-health-cert--user-form" }
     }
   ]
 }

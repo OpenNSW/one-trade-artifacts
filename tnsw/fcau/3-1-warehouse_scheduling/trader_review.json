@@ -13,6 +13,11 @@
       "properties": {
         "PENDING_TRADER_DATE_REVIEW": { "submit": ["trader", "cha"] }
       }
+    },
+    {
+      "id": "payload_schema",
+      "phase": "PRE_RESUME",
+      "properties": { "form": "fcau-warehouse-scheduling--trader-review-form" }
     }
   ]
 }
