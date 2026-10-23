@@ -26,7 +26,6 @@
     },
     "submission_form": {
       "templateId": "npqs-provider-cert-upload-supervised--trader-form",
-      "title": "Upload Treatment Provider Certificate and Supervision Report",
       "projector": "FORM",
       "dataKey": "traderinput",
       "handles": [

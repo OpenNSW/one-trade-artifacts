@@ -53,7 +53,6 @@
     },
     "workspace": {
       "templateId": "cda-lot-adjustment-trader--user-form",
-      "title": "Application for Alteration of Bag Details",
       "projector": "FORM",
       "dataKey": "adjustmentform",
       "visibleWhen": {

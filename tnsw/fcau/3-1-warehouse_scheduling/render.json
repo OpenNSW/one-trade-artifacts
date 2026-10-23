@@ -22,7 +22,6 @@
     "user_input": {
       "id": "workspace",
       "templateId": "fcau-warehouse-scheduling--form",
-      "title": "Warehouse Inspection Scheduling",
       "projector": "FORM",
       "dataKey": "traderinput",
       "visibleWhen": {
