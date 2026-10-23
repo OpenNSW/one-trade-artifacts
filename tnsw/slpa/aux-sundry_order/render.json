@@ -28,7 +28,7 @@
       "dataKey": "services_error",
       "visibleWhen": {
         "states": [
-          "PENDING_USER"
+          "PENDING_SERVICES_RETRY"
         ],
         "requireDataKey": "services_error"
       }
@@ -64,11 +64,11 @@
       "templateId": "slpa-sundry--services-refresh-form",
       "title": "Sundry Services",
       "projector": "FORM",
+      "dataKey": "services_retry",
       "visibleWhen": {
         "states": [
-          "PENDING_USER"
-        ],
-        "requireDataKey": "services_error"
+          "PENDING_SERVICES_RETRY"
+        ]
       },
       "handles": [
         {
@@ -81,6 +81,13 @@
   },
   "states": {
     "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    },
+    "PENDING_SERVICES_RETRY": {
       "actions": [
         {
           "command": "submit"

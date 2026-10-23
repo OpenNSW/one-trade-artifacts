@@ -1,0 +1,18 @@
+{
+  "id": "slpa-sundry--services-retry",
+  "task_type": "USER_INPUT",
+  "output_namespace": "services_retry",
+  "plugin_properties": {
+    "user_jsonforms_id": "slpa-sundry--services-refresh-form",
+    "status_override": "PENDING_SERVICES_RETRY"
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "PENDING_SERVICES_RETRY": { "submit": ["trader", "cha"] }
+      }
+    }
+  ]
+}

@@ -3637,6 +3637,12 @@
       "path": "slpa/aux-sundry_order/userinput_jsonform.json"
     },
     {
+      "id": "slpa-sundry--services-retry",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "slpa/aux-sundry_order/services_retry.json"
+    },
+    {
       "id": "slpa-sundry--create",
       "kind": "subtask_template",
       "version": "",
