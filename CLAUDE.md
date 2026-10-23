@@ -179,8 +179,8 @@ See `tnsw/fcau/3-2-warehouse_inspection/workflow.json` or
 - IDs are kebab-case and scoped by agency/flow, e.g. `sltb-schedule-pickup-flow`,
   `npqs-draw-sample--officer-draw`.
 - Ids, task codes, folders and file names carry no version (`_v1`, `-v3`): this repo
-  holds only the current state of each artifact. The one exception is `trade-export-v1`,
-  the trade workflow's id, which nsw-srilanka names in its code and data.
+  holds only the current state of each artifact. nsw-srilanka names the trade workflow,
+  `trade-export`, as its default consignment flow, so renaming it needs a change there too.
 - `manifest.json` files list `{id, kind, version, path}` rows under `artifacts` — adding
   a new artifact file means also adding an entry to the relevant `manifest.json`. List
   each id, kind and version once per manifest: the registry keeps only the last of two

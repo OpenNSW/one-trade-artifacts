@@ -1,5 +1,5 @@
 {
-  "id": "trade-export-v1",
+  "id": "trade-export",
   "name": "Single-Window Trade Export Process",
   "nodes": [
     {

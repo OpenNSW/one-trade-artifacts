@@ -133,7 +133,7 @@
       "path": "trade/3-prepare_split_items/task_template.json"
     },
     {
-      "id": "trade-export-v1",
+      "id": "trade-export",
       "kind": "workflow",
       "version": "",
       "path": "trade/trade_workflow.json"
