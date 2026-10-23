@@ -1,12 +1,8 @@
 name: Validate task roles
 
+# Every pull request runs it, as branch protection requires its result.
 on:
   pull_request:
-    paths:
-      - "tnsw/**"
-      - "*-v2/**"
-      - ".github/scripts/check_agency_authz.py"
-      - ".github/workflows/validate-agency-authz.yml"
   push:
     branches: [main]
     paths:
@@ -20,6 +16,9 @@ permissions:
 
 jobs:
   validate:
+    # A name of its own: other workflows' jobs are called validate too, and branch
+    # protection requires a check by name.
+    name: Every task declares who may act and read
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
