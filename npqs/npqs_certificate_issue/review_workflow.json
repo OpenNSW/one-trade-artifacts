@@ -124,7 +124,7 @@
       "id": "e_ephyto",
       "source_id": "reference_type_split",
       "target_id": "generate_ephyto_reference",
-      "condition": "submission.ephyto_required == true && submission.certificate_type != 're-export'"
+      "condition": "submission.ephyto_required == true && submission.certificate_type in [nil, 'export']"
     },
     {
       "id": "e_replacement",
@@ -136,7 +136,7 @@
       "id": "e_no_generated_reference",
       "source_id": "reference_type_split",
       "target_id": "userform",
-      "condition": "submission.ephyto_required != true && submission.certificate_type != 're-export'"
+      "condition": "submission.ephyto_required != true && submission.certificate_type in [nil, 'export']"
     },
     {
       "id": "e_both_to_form",

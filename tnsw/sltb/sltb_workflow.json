@@ -255,7 +255,7 @@
       "id": "e_sample_lab_dec",
       "source_id": "sltb_4_sample_gateway",
       "target_id": "sltb_4_lab_decision",
-      "condition": "sltb.collection_method != 'none'"
+      "condition": "sltb.collection_method in [nil, 'pickup', 'dropoff']"
     },
     { "id": "e_lab_dec_split", "source_id": "sltb_4_lab_decision", "target_id": "sltb_4_lab_required_gateway" },
     {

@@ -163,6 +163,14 @@ namespaced per step's `output_namespace` (e.g. `schedule.visit_date`,
 Gateway edge `condition` strings reference these namespaced fields (e.g.
 `sltb.collection_method == 'pickup'`).
 
+Write each condition on a form value as a match on the values it accepts, never as a
+catch-all: `item.treatment_result in [nil, 'pass']`, not `item.treatment_result != 'fail'`.
+An exclusive or batch split takes the first edge whose condition holds and parks the
+flow when none does, so a value no form offers (a renamed or new option) parks instead
+of silently taking the catch-all edge. List `nil` with the values when a missing field
+must take that edge too. Boolean flags (`cig.accepted != true`) and loops back to the
+same step (`cda.payment_status != 'success'` → pay again) can stay as they are.
+
 A `TASK` node's `input_mapping` can combine a whole-namespace mapping
 (`"userform": "submission"`) with one or more dotted single-field additions into that
 *same* destination object (`"reference_number": "submission.reference_number"`) — these

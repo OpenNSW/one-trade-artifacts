@@ -201,7 +201,7 @@
       "id": "e_lab_split_to_draw",
       "source_id": "gw_lab_split",
       "target_id": "n4_0_draw_sample",
-      "condition": "item.inspection_type == 'lab' && item.lab_sample_method != 'drawn_at_site'"
+      "condition": "item.inspection_type == 'lab' && item.lab_sample_method in [nil, 'drop_off_npqs', 'drop_off_pqs']"
     },
     {
       "id": "e_lab_split_to_officer_draw",
@@ -218,7 +218,7 @@
       "id": "e_lab_split_to_join_bypass",
       "source_id": "gw_lab_split",
       "target_id": "gw_lab_join",
-      "condition": "item.inspection_type != 'lab'"
+      "condition": "item.inspection_type in [nil, 'visual']"
     },
     {
       "id": "e_draw_to_lab_check",
@@ -234,7 +234,7 @@
       "id": "e_lab_fail_resubmit",
       "source_id": "lab_result_split",
       "target_id": "n4_0b_lab_resubmit_draw",
-      "condition": "item.sample_test_result == 'fail_resubmit' && item.lab_sample_method != 'drawn_at_site'"
+      "condition": "item.sample_test_result == 'fail_resubmit' && item.lab_sample_method in [nil, 'drop_off_npqs', 'drop_off_pqs']"
     },
     {
       "id": "e_lab_fail_resubmit_drawn",

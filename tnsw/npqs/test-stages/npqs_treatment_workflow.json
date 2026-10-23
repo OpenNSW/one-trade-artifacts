@@ -283,7 +283,7 @@
       "id": "e_treat_split_to_req",
       "source_id": "gw_treatment_split",
       "target_id": "n3_treatment_request",
-      "condition": "item.treatment_required == true && item.sample_test_result not in ['fail_final', 'fail_resubmit'] && item.visual_result != 'fail'"
+      "condition": "item.treatment_required == true && item.sample_test_result in [nil, 'pass'] && item.visual_result in [nil, 'pass']"
     },
     {
       "id": "e_treat_split_to_join_bypass",
