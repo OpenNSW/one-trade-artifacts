@@ -259,19 +259,19 @@
       "id": "e_vis_split_to_consign",
       "source_id": "gw_visual_split",
       "target_id": "n_visual_consignment_flow",
-      "condition": "item.inspection_type == 'visual' && item.visual_approach == 'consignment' && item.sample_test_result not in ['fail_final', 'fail_resubmit']"
+      "condition": "item.inspection_type == 'visual' && item.visual_approach == 'consignment' && item.sample_test_result in [nil, 'pass']"
     },
     {
       "id": "e_vis_split_to_sample",
       "source_id": "gw_visual_split",
       "target_id": "n_visual_sample_collect",
-      "condition": "item.inspection_type == 'visual' && item.visual_approach == 'sample' && item.visual_sample_method != 'drawn_at_site' && item.sample_test_result not in ['fail_final', 'fail_resubmit']"
+      "condition": "item.inspection_type == 'visual' && item.visual_approach == 'sample' && item.visual_sample_method in [nil, 'drop_off'] && item.sample_test_result in [nil, 'pass']"
     },
     {
       "id": "e_vis_split_to_sample_drawn",
       "source_id": "gw_visual_split",
       "target_id": "n_visual_sample_officer_draw",
-      "condition": "item.inspection_type == 'visual' && item.visual_approach == 'sample' && item.visual_sample_method == 'drawn_at_site' && item.sample_test_result not in ['fail_final', 'fail_resubmit']"
+      "condition": "item.inspection_type == 'visual' && item.visual_approach == 'sample' && item.visual_sample_method == 'drawn_at_site' && item.sample_test_result in [nil, 'pass']"
     },
     {
       "id": "e_vis_sample_drawn_to_inspection",
@@ -287,13 +287,13 @@
       "id": "e_vis_split_to_system",
       "source_id": "gw_visual_split",
       "target_id": "n5_0_visual_inspection",
-      "condition": "item.inspection_type == 'visual' && item.visual_approach == 'system' && item.sample_test_result not in ['fail_final', 'fail_resubmit']"
+      "condition": "item.inspection_type == 'visual' && item.visual_approach == 'system' && item.sample_test_result in [nil, 'pass']"
     },
     {
       "id": "e_vis_split_to_join_bypass",
       "source_id": "gw_visual_split",
       "target_id": "gw_visual_join",
-      "condition": "item.inspection_type != 'visual' || item.sample_test_result in ['fail_final', 'fail_resubmit']"
+      "condition": "item.inspection_type in [nil, 'lab'] || item.sample_test_result in ['fail_final', 'fail_resubmit']"
     },
     {
       "id": "e_vis_consign_to_split",

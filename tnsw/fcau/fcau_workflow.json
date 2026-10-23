@@ -425,7 +425,7 @@
       "id": "e_visual_other",
       "source_id": "fcau_gw_visual_result_split",
       "target_id": "fcau_gw_visual_result_join",
-      "condition": "item.visual_referral != 'lab'"
+      "condition": "item.visual_referral in [nil, 'not_required', 'warehouse']"
     },
     {
       "id": "e_escalated_fee_to_results",
@@ -462,7 +462,7 @@
       "id": "e_warehouse_split_bypass",
       "source_id": "fcau_gw_warehouse_split",
       "target_id": "fcau_gw_warehouse_join",
-      "condition": "item.inspection_type != 'warehouse' && item.visual_referral != 'warehouse' && item.lab_referral != 'warehouse'"
+      "condition": "item.inspection_type in [nil, 'lab', 'visual'] && item.visual_referral in [nil, 'lab', 'not_required'] && item.lab_referral in [nil, 'not_required']"
     },
     {
       "id": "e_schedule_to_inspect",
@@ -484,7 +484,7 @@
       "id": "e_post_wh_other",
       "source_id": "fcau_gw_post_wh_split",
       "target_id": "fcau_gw_post_wh_join",
-      "condition": "item.warehouse_referral != 'lab'"
+      "condition": "item.warehouse_referral in [nil, 'not_required']"
     },
     {
       "id": "e_post_wh_fee_to_results",

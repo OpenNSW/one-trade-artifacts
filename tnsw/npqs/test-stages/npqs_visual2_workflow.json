@@ -139,7 +139,7 @@
       "id": "e_visual2_split_to_decision",
       "source_id": "gw_visual2_split",
       "target_id": "n_visual2_decision",
-      "condition": "item.sample_test_result not in ['fail_final', 'fail_resubmit'] && item.visual_result != 'fail' && item.treatment_result != 'fail'"
+      "condition": "item.sample_test_result in [nil, 'pass'] && item.visual_result in [nil, 'pass'] && item.treatment_result in [nil, 'pass']"
     },
     {
       "id": "e_visual2_split_to_join_bypass",

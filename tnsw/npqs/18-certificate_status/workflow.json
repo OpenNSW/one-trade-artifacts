@@ -117,7 +117,7 @@
       "id": "e_check_again",
       "source_id": "gw_action",
       "target_id": "refresh",
-      "condition": "action.action != 'withdraw' && action.action != 'complete'"
+      "condition": "action.action in [nil, 'refresh']"
     },
     {
       "id": "e_choose_gw",
@@ -139,7 +139,7 @@
       "id": "e_rejected",
       "source_id": "gw_decision",
       "target_id": "refresh",
-      "condition": "withdrawal.decision != 'accept'"
+      "condition": "withdrawal.decision in [nil, 'reject']"
     },
     {
       "id": "e_hub_gw",

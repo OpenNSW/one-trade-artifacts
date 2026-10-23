@@ -86,7 +86,7 @@
       "id": "e_decided",
       "source_id": "decision_gateway",
       "target_id": "api_call",
-      "condition": "reviewform.review_outcome != 'needs_more_info'"
+      "condition": "reviewform.review_outcome in [nil, 'approve', 'reject']"
     },
     {
       "id": "e3",
