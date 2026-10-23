@@ -27,8 +27,39 @@
         "title": "Decision Remarks / Comments",
         "description": "Provide detail about the approval.",
         "example": "All quality checks passed. Blend sheet approved."
+      },
+      "asycuda_approval_confirmed": {
+        "type": "boolean",
+        "title": "I have logged into the ASYCUDA System and pressed the green check (✓) button to approve this consignment",
+        "description": "Login to ASYCUDA and press the green check button for this consignment before approving here.",
+        "default": false,
+        "example": true
       }
-    }
+    },
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "final_decision_outcome": {
+              "const": "approve"
+            }
+          },
+          "required": [
+            "final_decision_outcome"
+          ]
+        },
+        "then": {
+          "required": [
+            "asycuda_approval_confirmed"
+          ],
+          "properties": {
+            "asycuda_approval_confirmed": {
+              "const": true
+            }
+          }
+        }
+      }
+    ]
   },
   "uiSchema": {
     "type": "VerticalLayout",
@@ -54,6 +85,10 @@
         "options": {
           "multiLine": true
         }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/asycuda_approval_confirmed"
       }
     ]
   }
