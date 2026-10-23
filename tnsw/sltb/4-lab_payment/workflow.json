@@ -20,7 +20,8 @@
       "type": "TASK",
       "task_template_id": "sltb-pay-lab-fee--payment",
       "input_mapping": {
-        "selected_method": "selected_method"
+        "selected_method": "selected_method",
+        "lab_fee_amount": "amount"
       },
       "output_mapping": {
         "payment_status": "payment_status",

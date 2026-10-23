@@ -16,6 +16,7 @@
       },
       "output_mapping": {
         "test_result": "reviewform.test_result",
+        "lab_fee_amount?": "reviewform.lab_fee_amount",
         "test_date": "reviewform.test_date",
         "test_report_ref?": "reviewform.test_report_ref",
         "test_notes?": "reviewform.test_notes",
