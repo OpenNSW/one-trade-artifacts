@@ -26,8 +26,7 @@
       "input_mapping": {
         "sundryform?": "sundryform",
         "so.error?": "so.error",
-        "services?": "services",
-        "services_error?": "services_error"
+        "services?": "services"
       },
       "output_mapping": {
         "parentInvoiceNo?": "sundryform.parentInvoiceNo",
@@ -39,6 +38,14 @@
       "id": "services_check",
       "type": "GATEWAY",
       "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "services_retry",
+      "type": "TASK",
+      "task_template_id": "slpa-sundry--services-retry",
+      "input_mapping": {
+        "services_error?": "services_error"
+      }
     },
     {
       "id": "create_order",
@@ -81,24 +88,29 @@
     {
       "id": "e_fetched",
       "source_id": "fetch_services",
-      "target_id": "sundry_selection"
-    },
-    {
-      "id": "e2",
-      "source_id": "sundry_selection",
       "target_id": "services_check"
     },
     {
       "id": "e_services_listed",
       "source_id": "services_check",
-      "target_id": "create_order",
+      "target_id": "sundry_selection",
       "condition": "services.fetched == true"
     },
     {
-      "id": "e_look_again",
+      "id": "e_services_missing",
       "source_id": "services_check",
-      "target_id": "fetch_services",
+      "target_id": "services_retry",
       "condition": "services.fetched != true"
+    },
+    {
+      "id": "e_look_again",
+      "source_id": "services_retry",
+      "target_id": "fetch_services"
+    },
+    {
+      "id": "e2",
+      "source_id": "sundry_selection",
+      "target_id": "create_order"
     },
     {
       "id": "e_check",
