@@ -13,7 +13,7 @@
       "id": "authz",
       "phase": "PRE_RESUME",
       "properties": {
-        "QUEUED_EXTERNALLY": { "pass": ["sltb"] }
+        "QUEUED_EXTERNALLY": { "pass": ["sltb"], "fail": ["sltb"] }
       }
     }
   ]

@@ -14,8 +14,16 @@
         "type": "string",
         "title": "Test Result",
         "oneOf": [
-          { "const": "pass", "title": "Pass — Sample meets SLTB quality standards" }
+          { "const": "pass", "title": "Pass — Sample meets SLTB quality standards" },
+          { "const": "fail", "title": "Fail — Sample does not meet SLTB quality standards" }
         ]
+      },
+      "lab_fee_amount": {
+        "type": "number",
+        "title": "Lab Test Fee for Failed Sample (LKR)",
+        "exclusiveMinimum": 0,
+        "example": 5000,
+        "description": "Enter the lab test fee the trader must pay for the failed sample."
       },
       "test_date": {
         "type": "string",
@@ -39,7 +47,16 @@
         "title": "Testing Notes / Comments (Optional)",
         "example": "Moisture content and grade within acceptable SLTB standards."
       }
-    }
+    },
+    "allOf": [
+      {
+        "if": {
+          "properties": { "test_result": { "const": "fail" } },
+          "required": ["test_result"]
+        },
+        "then": { "required": ["lab_fee_amount"] }
+      }
+    ]
   },
   "uiSchema": {
     "type": "VerticalLayout",
@@ -56,6 +73,17 @@
         }
       },
       { "type": "Control", "scope": "#/properties/test_result" },
+      {
+        "type": "Control",
+        "scope": "#/properties/lab_fee_amount",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/test_result",
+            "schema": { "const": "fail" }
+          }
+        }
+      },
       { "type": "Control", "scope": "#/properties/test_date" },
       { "type": "Control", "scope": "#/properties/test_report_file" },
       { "type": "Control", "scope": "#/properties/test_report_ref" },
