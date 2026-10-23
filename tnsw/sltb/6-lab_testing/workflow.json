@@ -13,6 +13,7 @@
       },
       "output_mapping": {
         "test_result": "result.test_result",
+        "lab_fee_amount?": "result.lab_fee_amount",
         "test_date": "result.test_date",
         "test_report_file": "result.test_report_file",
         "test_report_ref?": "result.test_report_ref",

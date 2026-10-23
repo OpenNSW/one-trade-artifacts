@@ -1,7 +1,7 @@
 {
   "id": "sltb-lab-testing-flow:render",
   "type": "APPLICATION",
-  "title": "[SLTB 6] Lab Testing & Results",
+  "title": "[SLTB 5] Lab Testing & Results",
   "read": {
     "roles": [
       "trader",

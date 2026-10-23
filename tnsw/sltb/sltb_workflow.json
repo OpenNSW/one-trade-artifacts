@@ -129,20 +129,9 @@
       "name": "Lab Testing Required?"
     },
     {
-      "id": "sltb_5_pay_lab_fee",
+      "id": "sltb_5_lab_testing",
       "type": "TASK",
-      "name": "[SLTB 5] Pay Lab Test Fee via GovPay",
-      "task_template_id": "sltb-pay-lab-fee-flow",
-      "lane": "Trader/CHA & SLTB Officer",
-      "input_mapping": {},
-      "output_mapping": {
-        "payment_status": "sltb.lab_payment_outcome"
-      }
-    },
-    {
-      "id": "sltb_6_lab_testing",
-      "type": "TASK",
-      "name": "[SLTB 6] Lab Testing & Results",
+      "name": "[SLTB 5] Lab Testing & Results",
       "task_template_id": "sltb-lab-testing-flow",
       "lane": "SLTB Officer",
       "input_mapping": {
@@ -150,8 +139,34 @@
       },
       "output_mapping": {
         "result.test_result": "sltb.lab_test_result",
+        "result.lab_fee_amount?": "sltb.lab_fee_amount",
         "result.test_report_file": "sltb.lab_test_report_file"
       }
+    },
+    {
+      "id": "sltb_5_lab_result_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Lab Test Passed?"
+    },
+    {
+      "id": "sltb_6_pay_lab_fee",
+      "type": "TASK",
+      "name": "[SLTB 6] Pay Lab Test Fee via GovPay",
+      "task_template_id": "sltb-pay-lab-fee-flow",
+      "lane": "Trader/CHA & SLTB Officer",
+      "input_mapping": {
+        "sltb.lab_fee_amount": "lab_fee_amount"
+      },
+      "output_mapping": {
+        "payment_status": "sltb.lab_payment_outcome"
+      }
+    },
+    {
+      "id": "sltb_5_lab_result_join",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_JOIN",
+      "name": "Join Lab Test Result"
     },
     {
       "id": "sltb_7_lab_report_verification",
@@ -267,11 +282,24 @@
     {
       "id": "e_yes_lab",
       "source_id": "sltb_4_lab_required_gateway",
-      "target_id": "sltb_5_pay_lab_fee",
+      "target_id": "sltb_5_lab_testing",
       "condition": "sltb.lab_testing_required == 'yes'"
     },
-    { "id": "e_lab_fee_testing", "source_id": "sltb_5_pay_lab_fee", "target_id": "sltb_6_lab_testing" },
-    { "id": "e_testing_report", "source_id": "sltb_6_lab_testing", "target_id": "sltb_7_lab_report_verification" },
+    { "id": "e_testing_result_gw", "source_id": "sltb_5_lab_testing", "target_id": "sltb_5_lab_result_gateway" },
+    {
+      "id": "e_result_pass",
+      "source_id": "sltb_5_lab_result_gateway",
+      "target_id": "sltb_5_lab_result_join",
+      "condition": "sltb.lab_test_result == 'pass'"
+    },
+    {
+      "id": "e_result_fail",
+      "source_id": "sltb_5_lab_result_gateway",
+      "target_id": "sltb_6_pay_lab_fee",
+      "condition": "sltb.lab_test_result == 'fail'"
+    },
+    { "id": "e_lab_fee_join", "source_id": "sltb_6_pay_lab_fee", "target_id": "sltb_5_lab_result_join" },
+    { "id": "e_result_join_report", "source_id": "sltb_5_lab_result_join", "target_id": "sltb_7_lab_report_verification" },
     { "id": "e_report_join", "source_id": "sltb_7_lab_report_verification", "target_id": "sltb_lab_join" },
     { "id": "e_lab_join_final", "source_id": "sltb_lab_join", "target_id": "sltb_8_final_decision" },
     { "id": "e_final_end", "source_id": "sltb_8_final_decision", "target_id": "end_success" }
