@@ -1,4 +1,4 @@
 {
   "id": "sltb-xml-download--cusdec-notice",
-  "template": "> **Temporary:** the CusDec will appear here once it is wired to this workflow.\n>\n> Until then, only the blend sheet is available in this step."
+  "template": "> **Temporary:** the CusDec below is empty until it is wired to this workflow.\n>\n> Once it is wired, this section will appear only when the CusDec data has arrived."
 }

@@ -133,6 +133,12 @@
       "path": "sltb_xml_download_v1/officer_review_jsonform.json"
     },
     {
+      "id": "sltb-xml-download--cusdec-view-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_xml_download_v1/cusdec_view_jsonform.json"
+    },
+    {
       "id": "sltb-xml-download--submission-view",
       "kind": "generic_template",
       "version": "",

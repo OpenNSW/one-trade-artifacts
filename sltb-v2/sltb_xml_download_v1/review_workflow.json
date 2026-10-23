@@ -12,7 +12,8 @@
       "type": "TASK",
       "task_template_id": "sltb-xml-download--officer-review",
       "input_mapping": {
-        "submission?": "submission"
+        "submission?": "submission",
+        "submission.cusdec?": "cusdec"
       },
       "output_mapping": {
         "__command": "command"
