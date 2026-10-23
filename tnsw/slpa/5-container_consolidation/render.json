@@ -63,6 +63,7 @@
       "templateId": "slpa-consolidation--refresh-form",
       "title": "Pre-advised Containers",
       "projector": "FORM",
+      "dataKey": "consolidationform",
       "visibleWhen": {
         "states": [
           "PENDING_USER"
