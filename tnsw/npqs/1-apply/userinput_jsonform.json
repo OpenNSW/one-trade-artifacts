@@ -216,8 +216,7 @@
       "estimated_shipment_date": {
         "type": "string",
         "format": "date",
-        "title": "Estimated Shipment Date",
-        "formatMinimum": "today"
+        "title": "Estimated Shipment Date"
       },
       "transport_details": {
         "type": "array",
