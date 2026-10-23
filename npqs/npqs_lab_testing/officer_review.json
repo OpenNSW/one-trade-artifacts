@@ -16,6 +16,11 @@
           ]
         }
       }
+    },
+    {
+      "id": "payload_schema",
+      "phase": "PRE_RESUME",
+      "properties": { "form": "npqs-lab-testing--officer-form" }
     }
   ]
 }

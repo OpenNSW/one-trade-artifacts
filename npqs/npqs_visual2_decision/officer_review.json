@@ -16,6 +16,11 @@
           ]
         }
       }
+    },
+    {
+      "id": "payload_schema",
+      "phase": "PRE_RESUME",
+      "properties": { "form": "npqs-visual2-decision--officer-form" }
     }
   ]
 }
