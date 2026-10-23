@@ -6,7 +6,7 @@
     "properties": {
       "hs_codes": {
         "type": "array",
-        "title": "Select HS Codes",
+        "title": "HS Codes",
         "items": {
           "type": "string",
           "oneOf": [
@@ -569,7 +569,10 @@
     "elements": [
       {
         "type": "Control",
-        "scope": "#/properties/hs_codes"
+        "scope": "#/properties/hs_codes",
+        "options": {
+          "itemLabel": "HS Code"
+        }
       }
     ]
   }

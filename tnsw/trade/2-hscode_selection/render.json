@@ -34,7 +34,6 @@
     },
     "workspace": {
       "templateId": "trade-hscode-selection--form",
-      "title": "Select HS Codes",
       "projector": "FORM",
       "dataKey": "traderinput",
       "visibleWhen": {
