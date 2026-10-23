@@ -1,0 +1,633 @@
+{
+  "id": "customs-cdn-amended--cdn",
+  "title": "Amended Cargo Dispatch Note",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "properties": {
+        "type": "object",
+        "title": "Properties",
+        "properties": {
+          "submitter": {
+            "type": "string",
+            "title": "Submitter / Channel",
+            "readOnly": true
+          },
+          "nswId": {
+            "type": "string",
+            "title": "NSW ID",
+            "readOnly": true
+          }
+        }
+      },
+      "status": {
+        "type": "string",
+        "title": "Dispatch Note Status",
+        "readOnly": true
+      },
+      "officeCode": {
+        "type": "string",
+        "title": "Customs Office Code",
+        "readOnly": true,
+        "description": "UNCUOTAB."
+      },
+      "shipper": {
+        "type": "object",
+        "title": "Shipper",
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Shipper Code",
+            "readOnly": true,
+            "description": "UNCMPTAB."
+          },
+          "name": {
+            "type": "string",
+            "title": "Shipper Name",
+            "readOnly": true
+          },
+          "address": {
+            "type": "string",
+            "title": "Shipper Address",
+            "readOnly": true
+          },
+          "countryCode": {
+            "type": "string",
+            "title": "Country Code",
+            "readOnly": true,
+            "description": "UNCTYTAB."
+          }
+        }
+      },
+      "consignee": {
+        "type": "object",
+        "title": "Consignee",
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Consignee Code",
+            "readOnly": true,
+            "description": "UNCMPTAB."
+          },
+          "name": {
+            "type": "string",
+            "title": "Consignee Name",
+            "readOnly": true
+          },
+          "address": {
+            "type": "string",
+            "title": "Consignee Address",
+            "readOnly": true
+          },
+          "countryCode": {
+            "type": "string",
+            "title": "Country Code",
+            "readOnly": true,
+            "description": "UNCTYTAB."
+          }
+        }
+      },
+      "voyageNumber": {
+        "type": "string",
+        "title": "Voyage No",
+        "readOnly": true
+      },
+      "voyageDateAsString": {
+        "type": "string",
+        "title": "Voyage Date",
+        "readOnly": true
+      },
+      "vessel": {
+        "type": "string",
+        "title": "Vessel",
+        "readOnly": true
+      },
+      "vesselOpCode": {
+        "type": "string",
+        "title": "Vessel Op. Code",
+        "readOnly": true
+      },
+      "contOpCode": {
+        "type": "string",
+        "title": "Cont. Op. Code",
+        "readOnly": true
+      },
+      "driverName": {
+        "type": "string",
+        "title": "Name of the Driver",
+        "readOnly": true
+      },
+      "lorryRegNo": {
+        "type": "string",
+        "title": "Lorry Reg. No",
+        "readOnly": true
+      },
+      "trailerRegNo": {
+        "type": "string",
+        "title": "Trailer Reg. No",
+        "readOnly": true
+      },
+      "locationOfGoods": {
+        "type": "string",
+        "title": "Location of Goods",
+        "readOnly": true,
+        "description": "UNSHDTAB."
+      },
+      "placeOfLoading": {
+        "type": "string",
+        "title": "Port of Loading",
+        "readOnly": true,
+        "description": "UNLOCTAB."
+      },
+      "placeOfDischarge": {
+        "type": "string",
+        "title": "Port of Discharge",
+        "readOnly": true,
+        "description": "UNLOCTAB."
+      },
+      "goodsDescription": {
+        "type": "string",
+        "title": "Description of Goods",
+        "readOnly": true
+      },
+      "packageNumber": {
+        "type": "number",
+        "title": "Number of Packages",
+        "readOnly": true
+      },
+      "packageType": {
+        "type": "string",
+        "title": "Kind of Packages",
+        "readOnly": true
+      },
+      "grossWeight": {
+        "type": "number",
+        "title": "Gross Weight (Kg)",
+        "readOnly": true
+      },
+      "volume": {
+        "type": "number",
+        "title": "Cube (m³)",
+        "readOnly": true
+      },
+      "bol": {
+        "type": "string",
+        "title": "SN (B/L) No",
+        "readOnly": true
+      },
+      "tempRequired": {
+        "type": "number",
+        "title": "Reefer Temperature Required (°C)",
+        "readOnly": true
+      },
+      "containerNumber": {
+        "type": "string",
+        "title": "Container No",
+        "readOnly": true
+      },
+      "containerType": {
+        "type": "string",
+        "title": "Type of Container",
+        "readOnly": true
+      },
+      "sealNo": {
+        "type": "string",
+        "title": "Seal No",
+        "readOnly": true
+      },
+      "containerMark": {
+        "type": "string",
+        "title": "Marks & Numbers",
+        "readOnly": true
+      },
+      "cusDecRefs": {
+        "type": "array",
+        "title": "Linked Declarations",
+        "items": {
+          "type": "object",
+          "properties": {
+            "office": {
+              "type": "string",
+              "title": "Office",
+              "readOnly": true
+            },
+            "year": {
+              "type": "string",
+              "title": "Year",
+              "readOnly": true
+            },
+            "serial": {
+              "type": "string",
+              "title": "Serial",
+              "readOnly": true
+            },
+            "number": {
+              "type": "number",
+              "title": "Number",
+              "readOnly": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Group",
+        "label": "Dispatch Note",
+        "elements": [
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/officeCode",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/status",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/properties/properties/submitter",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/properties/properties/nswId",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "label": "Shipper & Consignee",
+        "elements": [
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/shipper/properties/id",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/shipper/properties/name",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/shipper/properties/address",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/shipper/properties/countryCode",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/consignee/properties/id",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/consignee/properties/name",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/consignee/properties/address",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/consignee/properties/countryCode",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "label": "Voyage & Transport",
+        "elements": [
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/voyageNumber",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/voyageDateAsString",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/vessel",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/vesselOpCode",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/contOpCode",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/locationOfGoods",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/placeOfLoading",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/placeOfDischarge",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/lorryRegNo",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/trailerRegNo",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/driverName",
+            "options": {
+              "readonly": true
+            }
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "label": "Goods & Packaging",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/goodsDescription",
+            "options": {
+              "readonly": true
+            }
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/packageNumber",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/packageType",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/grossWeight",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/volume",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/bol",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/tempRequired",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "label": "Container",
+        "elements": [
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/containerNumber",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/containerType",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/sealNo",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/containerMark",
+                "options": {
+                  "readonly": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "label": "Linked Declarations",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/cusDecRefs",
+            "options": {
+              "readonly": true,
+              "detail": {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/office",
+                    "options": {
+                      "readonly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/year",
+                    "options": {
+                      "readonly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/serial",
+                    "options": {
+                      "readonly": true
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/number",
+                    "options": {
+                      "readonly": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -3767,6 +3767,48 @@
       "kind": "generic_template",
       "version": "",
       "path": "customs/9-cusdec_amended/declaration_jsonform.json"
+    },
+    {
+      "id": "customs-cdn-amended",
+      "kind": "workflow",
+      "version": "",
+      "path": "customs/cdn_amended_workflow.json"
+    },
+    {
+      "id": "customs-cdn-amended-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "customs/11-cdn_amended/workflow.json"
+    },
+    {
+      "id": "customs-cdn-amended-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "customs/11-cdn_amended/task_template.json"
+    },
+    {
+      "id": "customs-cdn-amended-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/11-cdn_amended/render.json"
+    },
+    {
+      "id": "customs-cdn-amended--acknowledge",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "customs/11-cdn_amended/acknowledge.json"
+    },
+    {
+      "id": "customs-cdn-amended--summary",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/11-cdn_amended/summary_jsonform.json"
+    },
+    {
+      "id": "customs-cdn-amended--cdn",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/11-cdn_amended/cdn_jsonform.json"
     }
   ]
 }

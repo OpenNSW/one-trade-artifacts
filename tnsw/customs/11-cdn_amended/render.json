@@ -1,0 +1,56 @@
+{
+  "id": "customs-cdn-amended-flow:render",
+  "type": "REVIEW",
+  "title": "[Customs] Cargo Dispatch Note Amended",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
+  "sections": {
+    "summary": {
+      "templateId": "customs-cdn-amended--summary",
+      "title": "Cargo Dispatch Note Amended",
+      "projector": "MARKDOWN"
+    },
+    "cdn": {
+      "templateId": "customs-cdn-amended--cdn",
+      "title": "Amended Cargo Dispatch Note",
+      "projector": "FORM",
+      "dataKey": "cdn",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Acknowledge Amendment",
+          "element": "primary_action"
+        }
+      ],
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ]
+      }
+    },
+    "cdn_acknowledged": {
+      "templateId": "customs-cdn-amended--cdn",
+      "title": "Amended Cargo Dispatch Note",
+      "projector": "FORM",
+      "dataKey": "cdn",
+      "visibleWhen": {
+        "states": [
+          "COMPLETED"
+        ]
+      }
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}
