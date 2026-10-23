@@ -10,6 +10,11 @@
       "properties": {
         "PENDING_USER": { "submit": ["trader", "cha"] }
       }
+    },
+    {
+      "id": "payload_schema",
+      "phase": "PRE_RESUME",
+      "properties": { "form": "fcau-pay-lab-fee--upload-form" }
     }
   ]
 }

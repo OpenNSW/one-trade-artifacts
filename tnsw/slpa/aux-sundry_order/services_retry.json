@@ -13,6 +13,11 @@
       "properties": {
         "PENDING_SERVICES_RETRY": { "submit": ["trader", "cha"] }
       }
+    },
+    {
+      "id": "payload_schema",
+      "phase": "PRE_RESUME",
+      "properties": { "form": "slpa-sundry--services-refresh-form" }
     }
   ]
 }

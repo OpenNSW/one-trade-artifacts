@@ -16,6 +16,11 @@
       "properties": {
         "PENDING_USER": { "save_as_draft": ["trader", "cha"], "submit": ["trader", "cha"] }
       }
+    },
+    {
+      "id": "payload_schema",
+      "phase": "PRE_RESUME",
+      "properties": { "form": "sltb-submit-blendsheet--user-form" }
     }
   ]
 }

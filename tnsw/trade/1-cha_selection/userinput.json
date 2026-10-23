@@ -20,6 +20,11 @@
         "channel": "email",
         "template_id": "trade-cha-selection--notification"
       }
+    },
+    {
+      "id": "payload_schema",
+      "phase": "PRE_RESUME",
+      "properties": { "form": "trade-cha-selection--form" }
     }
   ]
 }
