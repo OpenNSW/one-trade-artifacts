@@ -14,9 +14,9 @@ import json
 import sys
 from pathlib import Path
 
-# An EXTERNAL_REVIEW step's service_id names the agency; its tasks live in <service_id>-v2/.
+# An EXTERNAL_REVIEW step's service_id names the agency; its tasks live in <service_id>/.
 AGENCIES = {"cda", "efc", "fcau", "npqs", "sltb"}
-AGENCY_DIRS = {f"{a}-v2" for a in AGENCIES}
+AGENCY_DIRS = AGENCIES
 
 
 def load_json(path):
@@ -111,7 +111,7 @@ def check_duplicate_ids_within_manifest(index, report):
 
 def check_external_review_linkage(manifests, index, root, report):
     """Every EXTERNAL_REVIEW subtask_template's plugin_properties.{service_id,task_code}
-    must resolve to a task_config in that agency's own <service_id>-v2/ manifest,
+    must resolve to a task_config in that agency's own <service_id>/ manifest,
     and that task_config's `workflow` must resolve to a workflow there."""
     tnsw_mpath, tnsw_mdir = manifests.get("tnsw", (None, None))
     if tnsw_mdir is None:
@@ -131,7 +131,7 @@ def check_external_review_linkage(manifests, index, root, report):
         service_id = props.get("service_id")
         task_code = props.get("task_code")
         where = a["path"]
-        label = f"{service_id}-v2"
+        label = service_id
         if label not in manifests:
             report.error(f"[{where}] EXTERNAL_REVIEW service_id {service_id!r} has no {label}/manifest.json")
             continue

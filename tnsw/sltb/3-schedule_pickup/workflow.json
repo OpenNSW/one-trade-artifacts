@@ -1,7 +1,6 @@
 {
   "id": "sltb-schedule-pickup-flow",
   "name": "Schedule Warehouse Pickup",
-  "version": 4,
   "nodes": [
     { "id": "start", "type": "START" },
     {

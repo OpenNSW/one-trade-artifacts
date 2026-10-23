@@ -1,7 +1,6 @@
 {
   "id": "npqs-ephyto-upload",
   "name": "Upload to IPPC ePhyto Hub",
-  "version": 13,
   "nodes": [
     {
       "id": "start",

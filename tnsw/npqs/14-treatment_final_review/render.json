@@ -1,5 +1,5 @@
 {
-  "id": "npqs-v3-treatment-final-review:render",
+  "id": "npqs-treatment-final-review:render",
   "type": "REVIEW",
   "title": "[NPQS] Treatment Review",
   "read": {
@@ -16,7 +16,7 @@
   ],
   "sections": {
     "assessment_outcome": {
-      "templateId": "npqs-v3-treatment-final-review--status",
+      "templateId": "npqs-treatment-final-review--status",
       "title": "Treatment Results",
       "projector": "MARKDOWN",
       "visibleWhen": {
@@ -24,7 +24,7 @@
       }
     },
     "status_message": {
-      "templateId": "npqs-v3-treatment-final-review--status",
+      "templateId": "npqs-treatment-final-review--status",
       "title": "Treatment Review Status",
       "projector": "MARKDOWN",
       "visibleWhen": {

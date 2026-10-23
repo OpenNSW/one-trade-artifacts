@@ -1,7 +1,6 @@
 {
   "id": "fcau-pay-lab-fee-flow",
   "name": "Pay Lab Test Fee",
-  "version": 4,
   "nodes": [
     {
       "id": "start",

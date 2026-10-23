@@ -1,7 +1,6 @@
 {
   "id": "cda-asycuda-green-check-flow",
   "name": "CDA ASYCUDA Green Check",
-  "version": 1,
   "nodes": [
     {
       "id": "start",

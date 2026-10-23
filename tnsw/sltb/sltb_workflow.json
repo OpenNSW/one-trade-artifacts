@@ -1,7 +1,6 @@
 {
   "id": "sltb-blendsheet-approval",
   "name": "SLTB Tea Blendsheet Approval & Sample Collection Flow",
-  "version": 5,
   "nodes": [
     { "id": "start", "type": "START", "name": "Start" },
     {

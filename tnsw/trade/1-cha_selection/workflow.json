@@ -1,7 +1,6 @@
 {
   "id": "trade-cha-selection-flow",
   "name": "Customs House Agent (CHA) Selection",
-  "version": 1,
   "nodes": [
     {
       "id": "start",

@@ -1,0 +1,96 @@
+{
+  "id": "efc-boat-note-approval--review-workflow",
+  "name": "EFC Boat Note Approval — Officer Review",
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "userform",
+      "type": "TASK",
+      "task_template_id": "efc-boat-note-approval--officer-review",
+      "input_mapping": {
+        "submission?": "submission",
+        "reviewform.remarks?": "previous_remarks"
+      },
+      "output_mapping": {
+        "approval_status": "reviewform.approval_status",
+        "approved_boat_note_file?": "reviewform.approved_boat_note_file",
+        "remarks?": "reviewform.remarks"
+      }
+    },
+    {
+      "id": "decision_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "request_info",
+      "type": "TASK",
+      "task_template_id": "efc-boat-note-approval--request-info",
+      "input_mapping": {
+        "callbackToken": "replyToken",
+        "reviewform.approval_status": "payload.approval_status",
+        "reviewform.remarks?": "payload.remarks",
+        "submission?": "submission",
+        "reviewform": "reviewform"
+      },
+      "output_mapping": {
+        "submission": "submission",
+        "callbackToken": "callbackToken"
+      }
+    },
+    {
+      "id": "api_call",
+      "type": "TASK",
+      "task_template_id": "efc-boat-note-approval--notify-decision",
+      "input_mapping": {
+        "callbackToken": "callbackToken",
+        "reviewform?": "reviewform",
+        "submission?": "submission",
+        "taskId": "taskId",
+        "reviewform.approval_status": "payload.command",
+        "reviewform": "payload.payload"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "userform"
+    },
+    {
+      "id": "e2",
+      "source_id": "userform",
+      "target_id": "decision_gateway"
+    },
+    {
+      "id": "e_needs_info",
+      "source_id": "decision_gateway",
+      "target_id": "request_info",
+      "condition": "reviewform.approval_status == 'needs_more_info'"
+    },
+    {
+      "id": "e_resubmitted",
+      "source_id": "request_info",
+      "target_id": "userform"
+    },
+    {
+      "id": "e_approve",
+      "source_id": "decision_gateway",
+      "target_id": "api_call",
+      "condition": "reviewform.approval_status == 'approved'"
+    },
+    {
+      "id": "e3",
+      "source_id": "api_call",
+      "target_id": "end"
+    }
+  ]
+}

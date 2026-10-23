@@ -1,7 +1,6 @@
 {
   "id": "trade-persist-cha-flow",
   "name": "Persist Selected CHA",
-  "version": 1,
   "nodes": [
     { "id": "start", "type": "START" },
     {

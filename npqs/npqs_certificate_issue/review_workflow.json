@@ -1,0 +1,189 @@
+{
+  "id": "npqs-certificate-issue--review-workflow",
+  "name": "NPQS Certificate Issuance — Officer Review",
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "reference_type_split",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "generate_both_references",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-issue--generate-both-references",
+      "input_mapping": {},
+      "output_mapping": {
+        "refid.ephyto_reference_number": "reviewform.ephyto_reference_number",
+        "refid.replacement_reference_number": "reviewform.replacement_reference_number"
+      }
+    },
+    {
+      "id": "generate_ephyto_reference",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-issue--generate-ephyto-reference",
+      "input_mapping": {},
+      "output_mapping": {
+        "refid.ephyto_reference_number": "reviewform.ephyto_reference_number"
+      }
+    },
+    {
+      "id": "generate_replacement_reference",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-issue--generate-replacement-reference",
+      "input_mapping": {},
+      "output_mapping": {
+        "refid.replacement_reference_number": "reviewform.replacement_reference_number"
+      }
+    },
+    {
+      "id": "userform",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-issue--officer-review",
+      "input_mapping": {
+        "submission?": "submission",
+        "submission.certificate_items?": "reviewform.certificate_items",
+        "submission.certificate_type?": "reviewform.certificate_type",
+        "reviewform.replacement_reference_number?": "reviewform.replacement_reference_number",
+        "submission.ephyto_required?": "reviewform.ephyto_required",
+        "reviewform.ephyto_reference_number?": "reviewform.ephyto_reference_number"
+      },
+      "output_mapping": {
+        "__command": "command",
+        "certificate_id": "reviewform.certificate_id",
+        "certificate_url?": "reviewform.certificate_url",
+        "comments?": "reviewform.comments",
+        "certificate_items?": "reviewform.certificate_items"
+      }
+    },
+    {
+      "id": "gw_ephyto",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "generate_certificate",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-issue--generate-certificate",
+      "input_mapping": {
+        "submission": "application",
+        "reviewform.certificate_id": "certificate_number",
+        "reviewform.certificate_items?": "items"
+      },
+      "output_mapping": {
+        "certificate_document.key": "signing_certificate_key"
+      }
+    },
+    {
+      "id": "sign_certificate",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-issue--sign-certificate",
+      "input_mapping": {
+        "submission?": "submission",
+        "reviewform": "reviewform",
+        "signing_certificate_key": "signing_certificate_key"
+      },
+      "output_mapping": {
+        "certificate_url": "signed_certificate.certificate_url"
+      }
+    },
+    {
+      "id": "api_call",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-issue--notify-decision",
+      "input_mapping": {
+        "callbackToken": "callbackToken",
+        "reviewform?": "reviewform",
+        "submission?": "submission",
+        "taskId": "taskId",
+        "command": "payload.command",
+        "reviewform": "payload.payload"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "reference_type_split"
+    },
+    {
+      "id": "e_both",
+      "source_id": "reference_type_split",
+      "target_id": "generate_both_references",
+      "condition": "submission.ephyto_required == true && submission.certificate_type == 're-export'"
+    },
+    {
+      "id": "e_ephyto",
+      "source_id": "reference_type_split",
+      "target_id": "generate_ephyto_reference",
+      "condition": "submission.ephyto_required == true && submission.certificate_type != 're-export'"
+    },
+    {
+      "id": "e_replacement",
+      "source_id": "reference_type_split",
+      "target_id": "generate_replacement_reference",
+      "condition": "submission.ephyto_required != true && submission.certificate_type == 're-export'"
+    },
+    {
+      "id": "e_no_generated_reference",
+      "source_id": "reference_type_split",
+      "target_id": "userform",
+      "condition": "submission.ephyto_required != true && submission.certificate_type != 're-export'"
+    },
+    {
+      "id": "e_both_to_form",
+      "source_id": "generate_both_references",
+      "target_id": "userform"
+    },
+    {
+      "id": "e_ephyto_to_form",
+      "source_id": "generate_ephyto_reference",
+      "target_id": "userform"
+    },
+    {
+      "id": "e_replacement_to_form",
+      "source_id": "generate_replacement_reference",
+      "target_id": "userform"
+    },
+    {
+      "id": "e_form_to_api",
+      "source_id": "userform",
+      "target_id": "gw_ephyto"
+    },
+    {
+      "id": "e_sign_ephyto",
+      "source_id": "gw_ephyto",
+      "target_id": "generate_certificate",
+      "condition": "submission.ephyto_required == true"
+    },
+    {
+      "id": "e_not_ephyto",
+      "source_id": "gw_ephyto",
+      "target_id": "api_call",
+      "condition": "submission.ephyto_required != true"
+    },
+    {
+      "id": "e_generated",
+      "source_id": "generate_certificate",
+      "target_id": "sign_certificate"
+    },
+    {
+      "id": "e_signed",
+      "source_id": "sign_certificate",
+      "target_id": "api_call"
+    },
+    {
+      "id": "e_api_to_end",
+      "source_id": "api_call",
+      "target_id": "end"
+    }
+  ]
+}

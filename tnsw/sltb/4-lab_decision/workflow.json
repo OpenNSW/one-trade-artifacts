@@ -1,7 +1,6 @@
 {
   "id": "sltb-lab-decision-flow",
   "name": "Officer Lab Testing Decision",
-  "version": 1,
   "nodes": [
     { "id": "start", "type": "START" },
     {

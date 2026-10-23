@@ -1,0 +1,57 @@
+{
+  "id": "npqs-treatment-issue-supervised--review:render",
+  "type": "APPLICATION",
+  "title": "NPQS NPQS Treatment Certificate and Supervision Report",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  },
+  "files": [
+    "payload.payload.supervision_report_url",
+    "payload.payload.treatment_certificate_url",
+    "reviewform.supervision_report_url",
+    "reviewform.treatment_certificate_url",
+    "submission.attachments[*].attachment_file_url"
+  ],
+  "sections": {
+    "submission_view": {
+      "templateId": "npqs-apply-phyto-cert--officer-view-form",
+      "title": "Submitted Application",
+      "projector": "FORM",
+      "dataKey": "submission"
+    },
+    "review_form": {
+      "templateId": "npqs-treatment-issue-supervised--officer-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Review",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "status_message": {
+      "templateId": "npqs-treatment-issue-supervised--submission-view",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "id": "npqs-v3-treatment-final-review--officer-review",
+  "id": "npqs-treatment-final-review--officer-review",
   "task_type": "EXTERNAL_REVIEW",
   "output_namespace": "reviewerform",
   "plugin_properties": {

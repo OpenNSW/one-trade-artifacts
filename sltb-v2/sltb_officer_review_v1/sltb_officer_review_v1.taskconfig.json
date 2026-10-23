@@ -1,9 +1,0 @@
-{
-  "schemaVersion": 2,
-  "taskCode": "sltb_officer_review_v1",
-  "workflow": "sltb_officer_review_v1",
-  "meta": {
-    "title": "SLTB Blend Sheet Review",
-    "description": "Officer review of the submitted tea blend sheet and levy assessment."
-  }
-}

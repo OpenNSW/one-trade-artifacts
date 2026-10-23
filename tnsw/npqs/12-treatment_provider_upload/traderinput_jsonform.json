@@ -1,5 +1,5 @@
 {
-  "id": "npqs-v3-provider-cert-upload--trader-form",
+  "id": "npqs-provider-cert-upload--trader-form",
   "title": "Upload Treatment Provider Certificate",
   "schema": {
     "type": "object",

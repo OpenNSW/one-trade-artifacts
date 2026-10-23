@@ -1,9 +1,0 @@
-{
-  "schemaVersion": 2,
-  "taskCode": "sltb_final_decision_v1",
-  "workflow": "sltb_final_decision_v1",
-  "meta": {
-    "title": "SLTB Final Decision",
-    "description": "Final review and approval of the blend sheet application by the SLTB officer."
-  }
-}

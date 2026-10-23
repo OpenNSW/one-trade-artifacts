@@ -1,7 +1,6 @@
 {
   "id": "sltb-pay-lab-fee-flow",
   "name": "Pay Lab Test Fee",
-  "version": 2,
   "nodes": [
     {
       "id": "start",

@@ -1,6 +1,6 @@
 ---
 name: nsw-trade-flows
-description: Trace, edit, and validate the tnsw ↔ agency artifact pairs in this repo (Sri Lanka NSW trade workflow JSON configs) before opening a PR. Use when explaining an end-to-end certificate/approval flow, adding or editing a step/task/officer form under tnsw/<agency>/ or an <agency>-v2/ folder, tracing how an EXTERNAL_REVIEW subtask_template's task_code links to an agency task_config, or checking manifest consistency prior to a pull request.
+description: Trace, edit, and validate the tnsw ↔ agency artifact pairs in this repo (Sri Lanka NSW trade workflow JSON configs) before opening a PR. Use when explaining an end-to-end certificate/approval flow, adding or editing a step/task/officer form under tnsw/<agency>/ or an <agency>/ folder, tracing how an EXTERNAL_REVIEW subtask_template's task_code links to an agency task_config, or checking manifest consistency prior to a pull request.
 ---
 
 # NSW trade-flow artifacts
@@ -22,8 +22,8 @@ for `tnsw/npqs/1-apply/`:
 2. That id resolves (via `tnsw/manifest.json`) to `reviewerinput.json`, a
    `subtask_template` with `task_type: "EXTERNAL_REVIEW"` and
    `plugin_properties: { service_id: "npqs", task_code: "npqs_application_review" }`.
-3. `service_id` names the agency, whose tasks live in `<service_id>-v2/`:
-   `npqs-v2/manifest.json` has a `task_config` with id
+3. `service_id` names the agency, whose tasks live in `<service_id>/`:
+   `npqs/manifest.json` has a `task_config` with id
    `npqs_application_review`
    (`npqs_application_review/npqs_application_review.taskconfig.json`, whose
    `taskCode` field repeats the id). The NPQS service loads it by that id
@@ -45,7 +45,7 @@ for `tnsw/npqs/1-apply/`:
 
 **To trace any flow**, walk this same chain: macro workflow → step
 `workflow.json` → step's `subtask_template` files → (for any
-`EXTERNAL_REVIEW`) the `<service_id>-v2/` task_config whose id is that `task_code` →
+`EXTERNAL_REVIEW`) the `<service_id>/` task_config whose id is that `task_code` →
 its task folder's workflow, forms and `render.json`. Do this before answering
 "what happens when an officer does X" or "where does field Y come from" — the
 answer is almost always split across both halves.
@@ -70,8 +70,8 @@ answer is almost always split across both halves.
   than one certificate/approval process nests *both* halves one level
   deeper, under one folder per process:
   `tnsw/<agency>/<process-slug>/<agency>_workflow.json` + its step folders,
-  and `<agency>-v2/<process-slug>/<task folder>/` for that process's
-  agency-side tasks. `tnsw/manifest.json` and `<agency>-v2/manifest.json`
+  and `<agency>/<process-slug>/<task folder>/` for that process's
+  agency-side tasks. `tnsw/manifest.json` and `<agency>/manifest.json`
   stay put either way — only the artifact `path`s inside them gain the
   `<process-slug>/` segment. CDA is the only agency nested so far
   (`1-export-coconut-certificate-registration/`,
@@ -150,13 +150,13 @@ the 3 above if it's actually one of these:**
 ## Making a change
 
 - **Editing a form** (`*_jsonform.json`): find every path its id resolves to
-  with `grep -rn '"<the-id>"' tnsw/manifest.json <agency>-v2/manifest.json`,
+  with `grep -rn '"<the-id>"' tnsw/manifest.json <agency>/manifest.json`,
   not just the one you happened to open. Each manifest lists an id once (the
   registry keeps only the last of two rows), and the same id in `tnsw/` is
   the trader's side, which may legitimately differ.
 - **Adding a new artifact file**: it does nothing until it's registered.
   Add an entry to `tnsw/manifest.json` (tnsw-side files) or the relevant
-  `<agency>-v2/manifest.json` (agency-side files) — there is no per-agency
+  `<agency>/manifest.json` (agency-side files) — there is no per-agency
   manifest under `tnsw/<agency>/`, only the one shared `tnsw/manifest.json`.
 - **Adding a new step**: first match it against the 3 shapes above and pick
   the closest existing folder of that shape as your template — copy its
@@ -164,7 +164,7 @@ the 3 above if it's actually one of these:**
   `userinput_jsonform.json`, and (for the review-loop shape)
   `reviewerinput.json` (`EXTERNAL_REVIEW`, with `service_id`/`task_code`) +
   its `reviewerinput_jsonform.json`, verbatim, then rename. Then add the
-  matching officer task folder under `<agency>-v2/` (copy the closest
+  matching officer task folder under `<agency>/` (copy the closest
   existing task folder: taskconfig, workflow, templates, forms,
   `render.json`), and wire the new step into the macro
   `<agency>_workflow.json` with a `TASK` node and gateway edges as needed.
@@ -198,14 +198,14 @@ root:
 python3 .claude/skills/nsw-trade-flows/scripts/validate_artifacts.py --root .
 ```
 
-It checks, across `tnsw/manifest.json` and every `<agency>-v2/manifest.json`:
+It checks, across `tnsw/manifest.json` and every `<agency>/manifest.json`:
 
 - every manifest entry's `path` points to a file that exists;
 - every `*.json` file under a manifest's tree is actually registered in it;
 - no id is listed twice *for the same artifact kind* within one manifest
   (only the last row would load);
 - every `EXTERNAL_REVIEW` subtask_template's `service_id` + `task_code`
-  resolves to a real `task_config` in `<service_id>-v2/manifest.json`, and
+  resolves to a real `task_config` in `<service_id>/manifest.json`, and
   that task_config's `workflow` resolves to a workflow in the same manifest;
 - every workflow node's `type`/`gateway_type` is one core's `workflow/dsl.go`
   defines, every `TASK` node's `task_template_id` resolves, and every edge's

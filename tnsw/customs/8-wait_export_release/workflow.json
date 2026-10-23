@@ -1,7 +1,6 @@
 {
   "id": "customs-wait-export-release-flow",
   "name": "Wait on Export Release",
-  "version": 1,
   "nodes": [
     {
       "id": "start",

@@ -1,7 +1,6 @@
 {
   "id": "npqs-lab-testing",
   "name": "Laboratory Testing",
-  "version": 2,
   "nodes": [
     {
       "id": "start",

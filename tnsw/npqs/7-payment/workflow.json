@@ -1,7 +1,6 @@
 {
   "id": "npqs-pay-certificate-fee",
   "name": "Pay for Phytosanitary Certificate",
-  "version": 1,
   "nodes": [
     {
       "id": "start",

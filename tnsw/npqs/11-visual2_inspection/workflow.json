@@ -1,7 +1,6 @@
 {
   "id": "npqs-visual2-inspection-flow",
   "name": "Visual Inspection 2 Flow",
-  "version": 1,
   "nodes": [
     {
       "id": "start",

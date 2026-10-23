@@ -1,7 +1,6 @@
 {
   "id": "cda-kernel-asycuda-approval",
   "name": "CDA ASYCUDA Approval for Kernel Products",
-  "version": 1,
   "nodes": [
     {
       "id": "start",

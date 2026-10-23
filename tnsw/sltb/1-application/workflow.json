@@ -1,7 +1,6 @@
 {
   "id": "sltb-submit-blendsheet-flow",
   "name": "Submit and Review Blend Sheet",
-  "version": 10,
   "nodes": [
     {
       "id": "start",

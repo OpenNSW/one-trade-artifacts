@@ -1,7 +1,6 @@
 {
   "id": "slpa-service-order-flow",
   "name": "Raise SLPA Export Service Order",
-  "version": 2,
   "nodes": [
     {
       "id": "start",

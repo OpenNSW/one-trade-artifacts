@@ -1,7 +1,6 @@
 {
   "id": "npqs-visual-sample-inspection",
   "name": "Visual Sample Inspection",
-  "version": 2,
   "nodes": [
     {
       "id": "start",

@@ -1,7 +1,6 @@
 {
   "id": "fcau-warehouse-inspection-flow",
   "name": "Warehouse Visual Inspection",
-  "version": 1,
   "nodes": [
     {
       "id": "start",

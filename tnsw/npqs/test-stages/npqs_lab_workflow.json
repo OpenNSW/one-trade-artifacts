@@ -1,7 +1,6 @@
 {
-  "id": "npqs-v3-test-lab-reg",
+  "id": "npqs-test-lab-reg",
   "name": "NPQS v3 Test: Lab Test Only",
-  "version": 3,
   "nodes": [
     {
       "id": "start",
@@ -59,7 +58,7 @@
       "id": "n4_0_officer_draw_at_site",
       "name": "Draw the Sample at the Trader's Site",
       "type": "TASK",
-      "task_template_id": "npqs-v3-sample-draw-at-site",
+      "task_template_id": "npqs-sample-draw-at-site",
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
@@ -129,7 +128,7 @@
       "id": "n4_0c_lab_resubmit_officer_draw",
       "name": "Draw the Second Sample at the Trader's Site (Per Item)",
       "type": "TASK",
-      "task_template_id": "npqs-v3-sample-draw-at-site",
+      "task_template_id": "npqs-sample-draw-at-site",
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",

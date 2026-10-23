@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "fcau_warehouse_inspection",
+  "workflow": "fcau_warehouse_inspection",
+  "meta": {
+    "title": "FCAU Warehouse Visual Inspection",
+    "description": "Officer records the outcome of the visual inspection conducted at the warehouse."
+  }
+}

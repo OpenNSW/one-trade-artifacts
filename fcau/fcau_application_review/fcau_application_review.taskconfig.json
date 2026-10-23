@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "fcau_application_review",
+  "workflow": "fcau_application_review",
+  "meta": {
+    "title": "FCAU Application Review",
+    "description": "Officer review of an FCAU Health Certificate application."
+  }
+}

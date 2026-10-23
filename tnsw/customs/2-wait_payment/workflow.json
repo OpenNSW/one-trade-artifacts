@@ -1,7 +1,6 @@
 {
   "id": "customs-wait-payment-flow",
   "name": "Wait on Payment",
-  "version": 1,
   "nodes": [
     {
       "id": "start",

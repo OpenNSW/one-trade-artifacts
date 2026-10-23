@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Check that every task says who may act on it and who may read it.
 
-A deployment is the trader-facing NSW (tnsw/) or one agency (<agency>-v2/). In each:
+A deployment is the trader-facing NSW (tnsw/) or one agency (<agency>/). In each:
 
   * every step that waits for a caller (USER_INPUT, EXTERNAL_REVIEW, PAYMENT) carries a
     PRE_RESUME `authz` extension: state -> command -> the logical names allowed to run
@@ -73,7 +73,7 @@ class Deployment:
 
     def __init__(self, root, folder):
         self.folder = folder
-        self.service = folder.removesuffix("-v2")
+        self.service = folder
         self.names = NAMES[TNSW if folder == TNSW else "agency"]
         self.paths = defaultdict(dict)
         for artifact in json.loads((root / folder / "manifest.json").read_text())["artifacts"]:
@@ -280,10 +280,10 @@ def expected_rule(deployment, deployments, step, renders, owners):
         return offered(renders, waits_in(step)) | ({draft} if draft else set()), None, []
     service = props(step).get("service_id")
     if step["task_type"] == "EXTERNAL_REVIEW" and deployment.folder == TNSW:
-        agency = deployments.get(f"{service}-v2")
+        agency = deployments.get(service)
         task_code = props(step).get("task_code")
         if agency is None or not agency.has("task_config", task_code):
-            return set(), [service], [f"its task_code {task_code!r} is not a task_config of {service}-v2"]
+            return set(), [service], [f"its task_code {task_code!r} is not a task_config of {service}/"]
         if service not in deployment.names["clients"]:
             return set(), [service], [f"its service_id {service!r} is not a client of the tnsw catalog"]
         return agency_sends(agency, task_code), [service], []
@@ -382,9 +382,10 @@ def check_deployment(deployment, deployments):
 
 def main():
     root = Path(sys.argv[1] if len(sys.argv) > 1 else ".")
-    folders = [TNSW] + sorted(m.parent.name for m in root.glob("*-v2/manifest.json"))
+    # Every top-level folder with a manifest is a deployment: tnsw/ and one per agency.
+    folders = [TNSW] + sorted(m.parent.name for m in root.glob("*/manifest.json") if m.parent.name != TNSW)
     if not (root / TNSW / "manifest.json").exists() or len(folders) == 1:
-        sys.exit("need tnsw/manifest.json and at least one *-v2/manifest.json")
+        sys.exit("need tnsw/manifest.json and at least one agency manifest.json")
     deployments = {folder: Deployment(root, folder) for folder in folders}
 
     all_problems, tasks, steps = [], 0, 0

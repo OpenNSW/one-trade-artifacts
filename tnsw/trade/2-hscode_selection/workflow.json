@@ -1,7 +1,6 @@
 {
   "id": "trade-hscode-selection-flow",
   "name": "HS Code Selection",
-  "version": 1,
   "nodes": [
     {
       "id": "start",

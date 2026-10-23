@@ -1,5 +1,5 @@
 {
-  "id": "npqs-v3-sample-draw-at-site:render",
+  "id": "npqs-sample-draw-at-site:render",
   "type": "REVIEW",
   "title": "[NPQS] Sample Drawn at Your Site",
   "read": {
@@ -14,7 +14,7 @@
   ],
   "sections": {
     "status_message": {
-      "templateId": "npqs-v3-sample-draw-at-site--status",
+      "templateId": "npqs-sample-draw-at-site--status",
       "title": "Sample Collection",
       "projector": "MARKDOWN"
     }

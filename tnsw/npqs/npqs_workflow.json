@@ -1,7 +1,6 @@
 {
-  "id": "npqs-v3-export-phytosanitary-reg",
+  "id": "npqs-export-phytosanitary-reg",
   "name": "NPQS Export Consignment & Phytosanitary Registration (Linear Stages)",
-  "version": 10,
   "nodes": [
     {
       "id": "start",
@@ -63,7 +62,7 @@
       "id": "n4_0_officer_draw_at_site",
       "name": "Draw the Sample at the Trader's Site",
       "type": "TASK",
-      "task_template_id": "npqs-v3-sample-draw-at-site",
+      "task_template_id": "npqs-sample-draw-at-site",
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
@@ -133,7 +132,7 @@
       "id": "n4_0c_lab_resubmit_officer_draw",
       "name": "Draw the Second Sample at the Trader's Site (Per Item)",
       "type": "TASK",
-      "task_template_id": "npqs-v3-sample-draw-at-site",
+      "task_template_id": "npqs-sample-draw-at-site",
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
@@ -176,7 +175,7 @@
       "id": "n_visual_sample_officer_draw",
       "name": "Draw the Visual Inspection Sample at the Trader's Site",
       "type": "TASK",
-      "task_template_id": "npqs-v3-sample-draw-at-site",
+      "task_template_id": "npqs-sample-draw-at-site",
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
@@ -398,7 +397,7 @@
       "id": "n3_5_treatment_final_review",
       "name": "Review Treatment Documents and Record Results (Per Item)",
       "type": "TASK",
-      "task_template_id": "npqs-v3-treatment-final-review",
+      "task_template_id": "npqs-treatment-final-review",
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
@@ -446,7 +445,7 @@
       "id": "n3_3_treatment_cert_issue",
       "name": "Issue NPQS Treatment Certificate",
       "type": "TASK",
-      "task_template_id": "npqs-v3-treatment-issue",
+      "task_template_id": "npqs-treatment-issue",
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
@@ -461,7 +460,7 @@
       "id": "n3_3b_treatment_issue_supervised",
       "name": "Issue NPQS Treatment Certificate and Supervision Report",
       "type": "TASK",
-      "task_template_id": "npqs-v3-treatment-issue-supervised",
+      "task_template_id": "npqs-treatment-issue-supervised",
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
@@ -506,7 +505,7 @@
       "id": "n3_4_treatment_upload_certs",
       "name": "Upload Treatment Provider Certificate",
       "type": "TASK",
-      "task_template_id": "npqs-v3-provider-cert-upload",
+      "task_template_id": "npqs-provider-cert-upload",
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
@@ -520,7 +519,7 @@
       "id": "n3_4b_treatment_upload_supervised",
       "name": "Upload Treatment Provider Certificate and Supervision Report",
       "type": "TASK",
-      "task_template_id": "npqs-v3-provider-cert-upload-supervised",
+      "task_template_id": "npqs-provider-cert-upload-supervised",
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",

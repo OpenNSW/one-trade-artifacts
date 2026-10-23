@@ -1,7 +1,6 @@
 {
-  "id": "npqs-v3-treatment-final-review",
+  "id": "npqs-treatment-final-review",
   "name": "Treatment Review",
-  "version": 2,
   "nodes": [
     {
       "id": "start",
@@ -10,7 +9,7 @@
     {
       "id": "officer_review",
       "type": "TASK",
-      "task_template_id": "npqs-v3-treatment-final-review--officer-review",
+      "task_template_id": "npqs-treatment-final-review--officer-review",
       "input_mapping": {
         "commodities": "commodities",
         "reference_number?": "reference_number",

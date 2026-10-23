@@ -1,7 +1,6 @@
 {
   "id": "slpa-container-prepare-flow",
   "name": "Prepare SLPA Container Branches",
-  "version": 1,
   "nodes": [
     {
       "id": "start",

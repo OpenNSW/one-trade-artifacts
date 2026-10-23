@@ -1,7 +1,6 @@
 {
   "id": "fcau-issue-certificate-flow",
   "name": "Issue Health Certificate",
-  "version": 2,
   "nodes": [
     {
       "id": "start",

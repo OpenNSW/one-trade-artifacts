@@ -1,7 +1,6 @@
 {
   "id": "npqs-apply-phyto-cert",
   "name": "Apply for Phytosanitary Certificate",
-  "version": 7,
   "nodes": [
     {
       "id": "start",

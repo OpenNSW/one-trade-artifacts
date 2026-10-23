@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "fcau_post_wh_lab_fee_review",
+  "workflow": "fcau_post_wh_lab_fee_review",
+  "meta": {
+    "title": "FCAU Post-Warehouse Lab Test Fee Payment Review",
+    "description": "Officer reviews the post-warehouse laboratory test fee payment receipt uploaded by the trader."
+  }
+}

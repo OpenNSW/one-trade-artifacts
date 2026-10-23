@@ -1,7 +1,6 @@
 {
   "id": "fcau-sample-collection-flow",
   "name": "Submit, Receive and Number Sample",
-  "version": 2,
   "nodes": [
     {
       "id": "start",

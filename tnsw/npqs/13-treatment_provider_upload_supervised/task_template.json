@@ -1,6 +1,6 @@
 {
-  "id": "npqs-v3-provider-cert-upload-supervised",
+  "id": "npqs-provider-cert-upload-supervised",
   "type": "APPLICATION",
-  "workflow_id": "npqs-v3-provider-cert-upload-supervised",
-  "render_config_id": "npqs-v3-provider-cert-upload-supervised:render"
+  "workflow_id": "npqs-provider-cert-upload-supervised",
+  "render_config_id": "npqs-provider-cert-upload-supervised:render"
 }

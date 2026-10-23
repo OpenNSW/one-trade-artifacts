@@ -1,0 +1,58 @@
+{
+  "id": "fcau-visual-assessment--review-workflow",
+  "name": "FCAU Visual Sample Assessment — Officer Review",
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "userform",
+      "type": "TASK",
+      "task_template_id": "fcau-visual-assessment--officer-review",
+      "input_mapping": {
+        "submission?": "submission",
+        "submission.items?": "reviewform.items"
+      },
+      "output_mapping": {
+        "__command": "command",
+        "items": "reviewform.items",
+        "comments?": "reviewform.comments"
+      }
+    },
+    {
+      "id": "api_call",
+      "type": "TASK",
+      "task_template_id": "fcau-visual-assessment--notify-decision",
+      "input_mapping": {
+        "callbackToken": "callbackToken",
+        "reviewform?": "reviewform",
+        "submission?": "submission",
+        "taskId": "taskId",
+        "command": "payload.command",
+        "reviewform": "payload.payload"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "userform"
+    },
+    {
+      "id": "e2",
+      "source_id": "userform",
+      "target_id": "api_call"
+    },
+    {
+      "id": "e3",
+      "source_id": "api_call",
+      "target_id": "end"
+    }
+  ]
+}

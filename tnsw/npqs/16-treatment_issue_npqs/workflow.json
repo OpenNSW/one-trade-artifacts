@@ -1,7 +1,6 @@
 {
-  "id": "npqs-v3-treatment-issue",
+  "id": "npqs-treatment-issue",
   "name": "NPQS Treatment Certificate",
-  "version": 1,
   "nodes": [
     {
       "id": "start",
@@ -10,7 +9,7 @@
     {
       "id": "officer_issue",
       "type": "TASK",
-      "task_template_id": "npqs-v3-treatment-issue--officer-review",
+      "task_template_id": "npqs-treatment-issue--officer-review",
       "input_mapping": {
         "commodities": "commodities",
         "reference_number?": "reference_number",

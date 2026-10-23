@@ -1,0 +1,38 @@
+{
+  "id": "fcau_visual_assessment",
+  "name": "FCAU Visual Sample Assessment",
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "review_application",
+      "type": "TASK",
+      "task_template_id": "fcau-visual-assessment--review",
+      "input_mapping": {
+        "callbackToken": "callbackToken",
+        "notification?": "submission",
+        "taskId": "taskId",
+        "taskCode": "taskCode",
+        "consignmentId": "consignmentId"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "review_application"
+    },
+    {
+      "id": "e2",
+      "source_id": "review_application",
+      "target_id": "end"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
-  "id": "npqs-v3-treatment-issue",
+  "id": "npqs-treatment-issue",
   "type": "REVIEW",
-  "workflow_id": "npqs-v3-treatment-issue",
-  "render_config_id": "npqs-v3-treatment-issue:render"
+  "workflow_id": "npqs-treatment-issue",
+  "render_config_id": "npqs-treatment-issue:render"
 }

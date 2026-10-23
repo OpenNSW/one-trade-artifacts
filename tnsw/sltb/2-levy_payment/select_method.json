@@ -4,7 +4,7 @@
   "output_namespace": "payment_method",
   "plugin_properties": {
     "user_jsonforms_id": "sltb-pay-levy--select-method-form",
-    "task_code": "sltb_levy_payment_select_method_v1"
+    "task_code": "sltb_levy_payment_select_method"
   },
   "extensions": [
     {

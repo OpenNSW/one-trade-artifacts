@@ -1,7 +1,6 @@
 {
   "id": "cda-kcfn-recommendation-letter",
   "name": "CDA Recommendation Letter for King Coconut and Fresh Nuts Exports",
-  "version": 2,
   "nodes": [
     {
       "id": "start",

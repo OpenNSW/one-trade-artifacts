@@ -1,7 +1,6 @@
 {
   "id": "fcau-warehouse-scheduling-flow",
   "name": "Warehouse Inspection Scheduling",
-  "version": 6,
   "nodes": [
     {
       "id": "start",

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "fcau_lab_test",
+  "workflow": "fcau_lab_test",
+  "meta": {
+    "title": "FCAU Lab Testing",
+    "description": "Officer records and reviews laboratory test results for the consignment."
+  }
+}

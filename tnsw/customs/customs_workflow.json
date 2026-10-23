@@ -1,7 +1,6 @@
 {
   "id": "customs-workflow",
   "name": "Customs Declaration & Clearance Process",
-  "version": 3,
   "nodes": [
     {
       "id": "start",

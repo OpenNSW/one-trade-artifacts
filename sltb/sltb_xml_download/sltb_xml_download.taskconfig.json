@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "sltb_xml_download",
+  "workflow": "sltb_xml_download",
+  "meta": {
+    "title": "SLTB XML Download",
+    "description": "Officer acknowledgement and download of the blend sheet and CusDec XML after the application is approved."
+  }
+}

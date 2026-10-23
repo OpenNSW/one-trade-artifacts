@@ -1,7 +1,6 @@
 {
   "id": "slpa-sundry-payment",
   "name": "SLPA Sundry Payment",
-  "version": 1,
   "nodes": [
     {
       "id": "start",

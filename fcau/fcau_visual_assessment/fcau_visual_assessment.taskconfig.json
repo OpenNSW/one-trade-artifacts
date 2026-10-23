@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "fcau_visual_assessment",
+  "workflow": "fcau_visual_assessment",
+  "meta": {
+    "title": "FCAU Visual Sample Assessment",
+    "description": "Officer physical sample inspection outcome recording."
+  }
+}

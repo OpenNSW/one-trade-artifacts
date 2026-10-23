@@ -1,0 +1,88 @@
+{
+  "artifacts": [
+    {
+      "id": "efc_boat_note_approval",
+      "kind": "task_config",
+      "version": "",
+      "path": "efc_boat_note_approval/efc_boat_note_approval.taskconfig.json"
+    },
+    {
+      "id": "efc_boat_note_approval",
+      "kind": "workflow",
+      "version": "",
+      "path": "efc_boat_note_approval/workflow.json"
+    },
+    {
+      "id": "efc-boat-note-approval--review",
+      "kind": "task_template",
+      "version": "",
+      "path": "efc_boat_note_approval/task_template.json"
+    },
+    {
+      "id": "efc-boat-note-approval--review-workflow",
+      "kind": "workflow",
+      "version": "",
+      "path": "efc_boat_note_approval/review_workflow.json"
+    },
+    {
+      "id": "efc-boat-note-approval--review:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "efc_boat_note_approval/render.json"
+    },
+    {
+      "id": "efc-boat-note-approval--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "efc_boat_note_approval/officer_review.json"
+    },
+    {
+      "id": "efc-boat-note-approval--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "efc_boat_note_approval/officer_review_jsonform.json"
+    },
+    {
+      "id": "efc-boat-note-approval--notify-decision",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "efc_boat_note_approval/notify_decision.json"
+    },
+    {
+      "id": "efc-boat-note-approval--request-info",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "efc_boat_note_approval/request_info.json"
+    },
+    {
+      "id": "efc-boat-note-approval--previous-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "efc_boat_note_approval/previous_review_markdown.json"
+    },
+    {
+      "id": "efc-boat-note-approval--awaiting-resubmission",
+      "kind": "generic_template",
+      "version": "",
+      "path": "efc_boat_note_approval/awaiting_resubmission_markdown.json"
+    },
+    {
+      "id": "efc-boat-note-approval--submission-view",
+      "kind": "generic_template",
+      "version": "",
+      "path": "efc_boat_note_approval/submission_view_markdown.json"
+    },
+    {
+      "id": "efc-boat-note-approval--boat-note-document",
+      "kind": "generic_template",
+      "version": "",
+      "path": "efc_boat_note_approval/boat_note_document_markdown.json"
+    },
+    {
+      "id": "efc-boat-note--user-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "efc_boat_note_approval/userinput_jsonform.json"
+    }
+  ]
+}

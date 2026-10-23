@@ -1,7 +1,6 @@
 {
   "id": "npqs-upload-docs",
   "name": "Upload Relevant Documents",
-  "version": 2,
   "nodes": [
     {
       "id": "start",

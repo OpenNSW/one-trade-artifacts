@@ -1,0 +1,113 @@
+{
+  "id": "cda-officer-verification--review-workflow",
+  "name": "CDA Coconut Certificate Verification \u2014 Officer Review",
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "generate_application_ref",
+      "type": "TASK",
+      "task_template_id": "cda-officer-verification--generate-application-ref",
+      "input_mapping": {
+        "submission.application_ref?": "application_ref",
+        "submission.cert_type": "cert_type"
+      },
+      "output_mapping": {
+        "refid.application_ref": "reviewform.application_ref"
+      }
+    },
+    {
+      "id": "userform",
+      "type": "TASK",
+      "task_template_id": "cda-officer-verification--officer-review",
+      "input_mapping": {
+        "submission?": "submission",
+        "reviewform.application_ref": "reviewform.application_ref",
+        "reviewform.rejection_reason?": "previous_rejection_reason"
+      },
+      "output_mapping": {
+        "verification_outcome": "reviewform.verification_outcome",
+        "rejection_reason?": "reviewform.rejection_reason"
+      }
+    },
+    {
+      "id": "decision_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "request_info",
+      "type": "TASK",
+      "task_template_id": "cda-officer-verification--request-info",
+      "input_mapping": {
+        "callbackToken": "replyToken",
+        "reviewform.verification_outcome": "payload.verification_outcome",
+        "reviewform.rejection_reason?": "payload.rejection_reason",
+        "submission?": "submission",
+        "reviewform": "reviewform"
+      },
+      "output_mapping": {
+        "submission": "submission",
+        "callbackToken": "callbackToken"
+      }
+    },
+    {
+      "id": "api_call",
+      "type": "TASK",
+      "task_template_id": "cda-officer-verification--notify-decision",
+      "input_mapping": {
+        "callbackToken": "callbackToken",
+        "reviewform?": "reviewform",
+        "submission?": "submission",
+        "taskId": "taskId",
+        "reviewform.verification_outcome": "payload.command",
+        "reviewform": "payload.payload"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "generate_application_ref"
+    },
+    {
+      "id": "e2",
+      "source_id": "generate_application_ref",
+      "target_id": "userform"
+    },
+    {
+      "id": "e3",
+      "source_id": "userform",
+      "target_id": "decision_gateway"
+    },
+    {
+      "id": "e_needs_info",
+      "source_id": "decision_gateway",
+      "target_id": "request_info",
+      "condition": "reviewform.verification_outcome == 'needs_more_info'"
+    },
+    {
+      "id": "e_resubmitted",
+      "source_id": "request_info",
+      "target_id": "userform"
+    },
+    {
+      "id": "e_approve",
+      "source_id": "decision_gateway",
+      "target_id": "api_call",
+      "condition": "reviewform.verification_outcome == 'approve'"
+    },
+    {
+      "id": "e4",
+      "source_id": "api_call",
+      "target_id": "end"
+    }
+  ]
+}

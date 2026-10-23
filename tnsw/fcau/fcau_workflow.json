@@ -1,7 +1,6 @@
 {
   "id": "fcau-health-certificate-reg",
   "name": "FCAU Export Consignment & Health Certificate Registration",
-  "version": 23,
   "nodes": [
     {
       "id": "start",

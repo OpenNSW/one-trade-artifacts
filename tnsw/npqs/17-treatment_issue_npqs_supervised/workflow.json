@@ -1,7 +1,6 @@
 {
-  "id": "npqs-v3-treatment-issue-supervised",
+  "id": "npqs-treatment-issue-supervised",
   "name": "NPQS Treatment Certificate and Supervision Report",
-  "version": 1,
   "nodes": [
     {
       "id": "start",
@@ -10,7 +9,7 @@
     {
       "id": "officer_issue",
       "type": "TASK",
-      "task_template_id": "npqs-v3-treatment-issue-supervised--officer-review",
+      "task_template_id": "npqs-treatment-issue-supervised--officer-review",
       "input_mapping": {
         "commodities": "commodities",
         "reference_number?": "reference_number",

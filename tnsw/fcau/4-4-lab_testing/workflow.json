@@ -1,7 +1,6 @@
 {
   "id": "fcau-lab-testing-flow",
   "name": "Laboratory Sample Testing",
-  "version": 1,
   "nodes": [
     {
       "id": "start",

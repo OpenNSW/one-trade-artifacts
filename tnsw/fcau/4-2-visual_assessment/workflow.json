@@ -1,7 +1,6 @@
 {
   "id": "fcau-visual-assessment-flow",
   "name": "Manual Sample Assessment",
-  "version": 2,
   "nodes": [
     {
       "id": "start",

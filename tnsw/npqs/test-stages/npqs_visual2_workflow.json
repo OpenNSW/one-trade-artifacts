@@ -1,7 +1,6 @@
 {
-  "id": "npqs-v3-test-visual2-reg",
+  "id": "npqs-test-visual2-reg",
   "name": "NPQS v3 Test: Visual Inspection 2 Only",
-  "version": 1,
   "nodes": [
     {
       "id": "start",

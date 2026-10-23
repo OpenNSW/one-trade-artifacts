@@ -1,7 +1,6 @@
 {
   "id": "cda-pay-app-fee-flow",
   "name": "Pay CDA Application Fee",
-  "version": 2,
   "nodes": [
     {
       "id": "start",

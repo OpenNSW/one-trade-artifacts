@@ -6,7 +6,7 @@
     "officer_jsonforms_id": "cda-kcfn-issue-letter--officer-form",
     "service_id": "cda",
     "path": "/api/v1/inject",
-    "task_code": "cda_kcfn_issue_letter_v1"
+    "task_code": "cda_kcfn_issue_letter"
   },
   "extensions": [
     {

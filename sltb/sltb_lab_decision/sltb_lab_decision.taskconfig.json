@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "sltb_lab_decision",
+  "workflow": "sltb_lab_decision",
+  "meta": {
+    "title": "Lab Testing Decision",
+    "description": "Determine whether laboratory testing is required for the submitted tea sample."
+  }
+}

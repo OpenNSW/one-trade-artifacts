@@ -1,7 +1,6 @@
 {
   "id": "customs-collect-cdn-results-flow",
   "name": "Collect CDN Results",
-  "version": 1,
   "nodes": [
     {
       "id": "start",
