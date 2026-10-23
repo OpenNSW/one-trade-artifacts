@@ -1,5 +1,14 @@
 {
   "id": "customs-cusdec-amended--acknowledge",
   "task_type": "USER_INPUT",
-  "output_namespace": "acknowledgement"
+  "output_namespace": "acknowledgement",
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "PENDING_USER": { "submit": ["trader", "cha"] }
+      }
+    }
+  ]
 }

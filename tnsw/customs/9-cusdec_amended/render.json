@@ -2,6 +2,12 @@
   "id": "customs-cusdec-amended-flow:render",
   "type": "REVIEW",
   "title": "[Customs] Declaration Amended",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
   "sections": {
     "summary": {
       "templateId": "customs-cusdec-amended--summary",
