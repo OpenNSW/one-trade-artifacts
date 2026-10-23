@@ -8,7 +8,8 @@
     ]
   },
   "files": [
-    "submission.cusdec_draft_xml"
+    "submission.cusdec_draft_xml",
+    "cusdec.supportingDocuments.scannedDocuments[*].fileBase64"
   ],
   "sections": {
     "review_form": {
@@ -39,6 +40,12 @@
           "PENDING_USER"
         ]
       }
+    },
+    "cusdec_view": {
+      "templateId": "sltb-xml-download--cusdec-view-form",
+      "title": "CusDec",
+      "projector": "FORM",
+      "dataKey": "cusdec"
     },
     "status_message": {
       "templateId": "sltb-xml-download--submission-view",
