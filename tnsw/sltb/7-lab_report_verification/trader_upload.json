@@ -12,6 +12,11 @@
       "properties": {
         "PENDING_USER": { "submit": ["trader", "cha"] }
       }
+    },
+    {
+      "id": "payload_schema",
+      "phase": "PRE_RESUME",
+      "properties": { "form": "sltb-lab-report-verification--upload-form" }
     }
   ]
 }
