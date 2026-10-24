@@ -255,7 +255,6 @@
         "type": "Control",
         "scope": "#/properties/items",
         "options": {
-          "readonly": true,
           "detail": {
             "type": "VerticalLayout",
             "elements": [
@@ -264,17 +263,11 @@
                 "elements": [
                   {
                     "type": "Control",
-                    "scope": "#/properties/id",
-                    "options": {
-                      "readonly": true
-                    }
+                    "scope": "#/properties/id"
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/description_of_food",
-                    "options": {
-                      "readonly": true
-                    }
+                    "scope": "#/properties/description_of_food"
                   }
                 ]
               },
@@ -283,24 +276,15 @@
                 "elements": [
                   {
                     "type": "Control",
-                    "scope": "#/properties/visual_result",
-                    "options": {
-                      "readonly": true
-                    }
+                    "scope": "#/properties/visual_result"
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/lab_result",
-                    "options": {
-                      "readonly": true
-                    }
+                    "scope": "#/properties/lab_result"
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/warehouse_result",
-                    "options": {
-                      "readonly": true
-                    }
+                    "scope": "#/properties/warehouse_result"
                   }
                 ]
               },
