@@ -37,17 +37,20 @@
           "properties": {
             "id": {
               "type": "string",
-              "title": "Item ID"
+              "title": "Item ID",
+              "readOnly": true
             },
             "commodity_common_name": {
               "type": "object",
               "title": "Common Name",
               "properties": {
                 "value": {
-                  "type": "string"
+                  "type": "string",
+                  "readOnly": true
                 },
                 "label": {
-                  "type": "string"
+                  "type": "string",
+                  "readOnly": true
                 }
               },
               "required": [
@@ -128,17 +131,11 @@
                 "elements": [
                   {
                     "type": "Control",
-                    "scope": "#/properties/id",
-                    "options": {
-                      "readOnly": true
-                    }
+                    "scope": "#/properties/id"
                   },
                   {
                     "type": "Control",
                     "scope": "#/properties/commodity_common_name/properties/label",
-                    "options": {
-                      "readOnly": true
-                    },
                     "label": "Common Name"
                   },
                   {

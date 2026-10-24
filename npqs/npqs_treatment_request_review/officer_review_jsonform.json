@@ -32,17 +32,20 @@
           "properties": {
             "id": {
               "type": "string",
-              "title": "Item ID"
+              "title": "Item ID",
+              "readOnly": true
             },
             "commodity_common_name": {
               "type": "object",
               "title": "Commodity Name",
               "properties": {
                 "value": {
-                  "type": "string"
+                  "type": "string",
+                  "readOnly": true
                 },
                 "label": {
-                  "type": "string"
+                  "type": "string",
+                  "readOnly": true
                 }
               },
               "required": [
@@ -59,7 +62,8 @@
             },
             "treatment_type": {
               "type": "string",
-              "title": "Treatment Type Requested"
+              "title": "Treatment Type Requested",
+              "readOnly": true
             },
             "treatment_provider": {
               "type": "string",
@@ -132,25 +136,16 @@
                 "elements": [
                   {
                     "type": "Control",
-                    "scope": "#/properties/id",
-                    "options": {
-                      "readOnly": true
-                    }
+                    "scope": "#/properties/id"
                   },
                   {
                     "type": "Control",
                     "scope": "#/properties/commodity_common_name/properties/label",
-                    "options": {
-                      "readOnly": true
-                    },
                     "label": "Commodity Name"
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/treatment_type",
-                    "options": {
-                      "readOnly": true
-                    }
+                    "scope": "#/properties/treatment_type"
                   }
                 ]
               },
