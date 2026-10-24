@@ -21,8 +21,7 @@
       "type": "TASK",
       "task_template_id": "customs-prepare-cdn-items--transform",
       "input_mapping": {
-        "container_count": "container_count",
-        "latest_container_count": "latest_container_count",
+        "latest_container_count": "container_count",
         "cusdec_ref?": "cusdec_ref"
       },
       "output_mapping": {
