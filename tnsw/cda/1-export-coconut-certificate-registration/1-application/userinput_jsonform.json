@@ -194,11 +194,15 @@
       "port_of_discharge": {
         "type": "string",
         "title": "Port of Discharge",
+        "pattern": "^[A-Za-z][A-Za-z .,'-]*$",
+        "description": "Letters, spaces and . , ' - only.",
         "example": "Port of Rotterdam"
       },
       "final_destination": {
         "type": "string",
         "title": "Final Destination",
+        "pattern": "^[A-Za-z][A-Za-z .,'-]*$",
+        "description": "Letters, spaces and . , ' - only.",
         "example": "Rotterdam, Netherlands"
       },
       "buyer_name": {
