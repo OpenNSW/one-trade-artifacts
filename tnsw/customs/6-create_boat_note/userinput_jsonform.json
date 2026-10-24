@@ -63,7 +63,7 @@
         "type": "array",
         "title": "Containers",
         "minItems": 1,
-        "description": "One entry per container, seeded from the dispatch notes already registered. Add, remove, and the CDN number are locked so the list cannot disagree with those notes.",
+        "description": "One entry per container, seeded from the Cargo Dispatch Notes Sri Lanka Customs holds against the declaration, leaving out cancelled ones. Add, remove, and the CDN number are locked so the list cannot disagree with those notes.",
         "items": {
           "type": "object",
           "properties": {

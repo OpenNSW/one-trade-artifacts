@@ -1,0 +1,8 @@
+{
+  "id": "customs-prefill-boat-note--prefill",
+  "task_type": "CUSTOMS_BOAT_NOTE_PREFILL",
+  "output_namespace": "boat_note_prefill",
+  "plugin_properties": {
+    "service_id": "customs-asycuda"
+  }
+}

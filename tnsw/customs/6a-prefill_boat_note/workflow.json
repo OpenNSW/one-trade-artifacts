@@ -1,0 +1,26 @@
+{
+  "id": "customs-prefill-boat-note-flow",
+  "name": "Prefill Boat Note",
+  "nodes": [
+    { "id": "start", "type": "START" },
+    {
+      "id": "prefill_boat_note",
+      "type": "TASK",
+      "task_template_id": "customs-prefill-boat-note--prefill",
+      "input_mapping": {
+        "cusdec_ref?": "cusdec_ref",
+        "userform?": "userform",
+        "containers": "containers"
+      },
+      "output_mapping": {
+        "boat_note_prefill.userform": "boat_note_prefill.userform",
+        "boat_note_prefill.retrieved": "boat_note_prefill.retrieved"
+      }
+    },
+    { "id": "end", "type": "END" }
+  ],
+  "edges": [
+    { "id": "e1", "source_id": "start", "target_id": "prefill_boat_note" },
+    { "id": "e2", "source_id": "prefill_boat_note", "target_id": "end" }
+  ]
+}

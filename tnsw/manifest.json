@@ -2569,6 +2569,30 @@
       "path": "customs/5-wait_cdn_ack/task_template.json"
     },
     {
+      "id": "customs-prefill-boat-note-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/6a-prefill_boat_note/render.json"
+    },
+    {
+      "id": "customs-prefill-boat-note--prefill",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "customs/6a-prefill_boat_note/prefill.json"
+    },
+    {
+      "id": "customs-prefill-boat-note-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "customs/6a-prefill_boat_note/workflow.json"
+    },
+    {
+      "id": "customs-prefill-boat-note-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "customs/6a-prefill_boat_note/task_template.json"
+    },
+    {
       "id": "customs-create-boat-note-flow:render",
       "kind": "generic_template",
       "version": "",
