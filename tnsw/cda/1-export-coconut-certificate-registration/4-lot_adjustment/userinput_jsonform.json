@@ -79,9 +79,6 @@
       {
         "type": "Control",
         "scope": "#/properties/exporter_details",
-        "options": {
-          "readonly": true
-        },
         "rule": {
           "effect": "SHOW",
           "condition": {
@@ -95,9 +92,6 @@
       {
         "type": "Control",
         "scope": "#/properties/cusdec_number",
-        "options": {
-          "readonly": true
-        },
         "rule": {
           "effect": "SHOW",
           "condition": {

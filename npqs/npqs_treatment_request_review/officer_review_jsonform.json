@@ -32,17 +32,20 @@
           "properties": {
             "id": {
               "type": "string",
-              "title": "Item ID"
+              "title": "Item ID",
+              "readOnly": true
             },
             "commodity_common_name": {
               "type": "object",
               "title": "Commodity Name",
               "properties": {
                 "value": {
-                  "type": "string"
+                  "type": "string",
+                  "readOnly": true
                 },
                 "label": {
-                  "type": "string"
+                  "type": "string",
+                  "readOnly": true
                 }
               },
               "required": [
@@ -239,25 +242,16 @@
                 "elements": [
                   {
                     "type": "Control",
-                    "scope": "#/properties/id",
-                    "options": {
-                      "readOnly": true
-                    }
+                    "scope": "#/properties/id"
                   },
                   {
                     "type": "Control",
                     "scope": "#/properties/commodity_common_name/properties/label",
-                    "options": {
-                      "readOnly": true
-                    },
                     "label": "Commodity Name"
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/treatment_type",
-                    "options": {
-                      "readOnly": true
-                    }
+                    "scope": "#/properties/treatment_type"
                   }
                 ]
               },
@@ -266,17 +260,11 @@
                 "elements": [
                   {
                     "type": "Control",
-                    "scope": "#/properties/chemical_used",
-                    "options": {
-                      "readOnly": true
-                    }
+                    "scope": "#/properties/chemical_used"
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/treatment_duration",
-                    "options": {
-                      "readOnly": true
-                    }
+                    "scope": "#/properties/treatment_duration"
                   }
                 ]
               },
@@ -285,17 +273,11 @@
                 "elements": [
                   {
                     "type": "Control",
-                    "scope": "#/properties/treatment_temperature",
-                    "options": {
-                      "readOnly": true
-                    }
+                    "scope": "#/properties/treatment_temperature"
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/treatment_concentration",
-                    "options": {
-                      "readOnly": true
-                    }
+                    "scope": "#/properties/treatment_concentration"
                   }
                 ]
               },

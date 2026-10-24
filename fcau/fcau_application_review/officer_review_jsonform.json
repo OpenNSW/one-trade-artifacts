@@ -28,11 +28,13 @@
           "properties": {
             "id": {
               "type": "string",
-              "title": "Item ID"
+              "title": "Item ID",
+              "readOnly": true
             },
             "description_of_food": {
               "type": "string",
-              "title": "Description of consignment and quantity"
+              "title": "Description of consignment and quantity",
+              "readOnly": true
             },
             "inspection_type": {
               "type": "string",
@@ -140,17 +142,11 @@
                 "elements": [
                   {
                     "type": "Control",
-                    "scope": "#/properties/id",
-                    "options": {
-                      "readOnly": true
-                    }
+                    "scope": "#/properties/id"
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/description_of_food",
-                    "options": {
-                      "readOnly": true
-                    }
+                    "scope": "#/properties/description_of_food"
                   }
                 ]
               },
