@@ -697,15 +697,43 @@
                     },
                     {
                       "const": "7",
-                      "title": "Research"
-                    },
-                    {
-                      "const": "8",
                       "title": "Soil protection"
                     },
                     {
-                      "const": "9",
+                      "const": "8",
                       "title": "Sprouting for consumption"
+                    },
+                    {
+                      "const": "9",
+                      "title": "Growing media"
+                    },
+                    {
+                      "const": "10",
+                      "title": "Animal feed"
+                    },
+                    {
+                      "const": "11",
+                      "title": "Value addition"
+                    },
+                    {
+                      "const": "12",
+                      "title": "Weed control"
+                    },
+                    {
+                      "const": "13",
+                      "title": "Nutritional supplement"
+                    },
+                    {
+                      "const": "14",
+                      "title": "Medicinal purpose"
+                    },
+                    {
+                      "const": "15",
+                      "title": "Fertilizer / soil amendments"
+                    },
+                    {
+                      "const": "16",
+                      "title": "Packing materials"
                     }
                   ]
                 },
