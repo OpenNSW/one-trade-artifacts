@@ -70,6 +70,7 @@
       "task_template_id": "npqs-certificate-status--hub-withdraw",
       "input_mapping": {
         "userform": "userform",
+        "userform.date_of_inspection?": "date_of_inspection",
         "certificate_id": "certificate_id",
         "hub_destination?": "hub_destination",
         "certificate_items?": "certificate_items"

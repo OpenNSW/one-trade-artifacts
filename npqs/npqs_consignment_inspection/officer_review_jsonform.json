@@ -19,6 +19,12 @@
         ],
         "default": "pass"
       },
+      "date_of_inspection": {
+        "type": "string",
+        "format": "date",
+        "title": "Date of Inspection",
+        "description": "The date the consignment was inspected. The certificate and the ePhyto declare this date."
+      },
       "inspection_comments": {
         "type": "string",
         "title": "Inspection Notes",
@@ -95,7 +101,8 @@
       }
     },
     "required": [
-      "visual_result"
+      "visual_result",
+      "date_of_inspection"
     ]
   },
   "uiSchema": {
@@ -104,6 +111,10 @@
       {
         "type": "Control",
         "scope": "#/properties/visual_result"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/date_of_inspection"
       },
       {
         "type": "Control",
