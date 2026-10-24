@@ -42,9 +42,10 @@
         "example": "08011200"
       },
       "contract_number": {
-        "type": "integer",
+        "type": "string",
         "title": "Contract Number",
-        "example": 987654
+        "pattern": "^(\\+[0-9]{11}|[0-9]{10})$",
+        "example": "0771234567"
       },
       "lot_number": {
         "type": "string",
