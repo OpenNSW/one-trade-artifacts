@@ -12,7 +12,8 @@
           "properties": {
             "id": {
               "type": "string",
-              "title": "Item ID"
+              "title": "Item ID",
+              "readOnly": true
             },
             "commodity_common_name": {
               "type": "object",
@@ -36,7 +37,8 @@
                   "id": "npqs-apply-phyto-cert--commodity-common-names",
                   "version": "1"
                 }
-              }
+              },
+              "readOnly": true
             },
             "treatment_type": {
               "type": "string",
@@ -201,17 +203,11 @@
                 "elements": [
                   {
                     "type": "Control",
-                    "scope": "#/properties/id",
-                    "options": {
-                      "readOnly": true
-                    }
+                    "scope": "#/properties/id"
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/commodity_common_name",
-                    "options": {
-                      "readOnly": true
-                    }
+                    "scope": "#/properties/commodity_common_name"
                   },
                   {
                     "type": "Control",
