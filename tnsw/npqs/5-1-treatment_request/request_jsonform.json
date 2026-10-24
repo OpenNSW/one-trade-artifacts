@@ -131,8 +131,9 @@
             "chemical_used": {
               "type": "string",
               "title": "Chemical / Medium Used",
-              "description": "Leave empty when the treatment uses no chemical.",
+              "description": "Choose \"Not applicable\" when the treatment uses no chemical.",
               "oneOf": [
+                { "const": "Not applicable", "title": "Not applicable" },
                 { "const": "Methyl Bromide", "title": "Methyl Bromide" },
                 { "const": "Phosphine", "title": "Phosphine" },
                 { "const": "ECO2FUME", "title": "ECO2FUME" },
@@ -167,6 +168,7 @@
             "id": "item-1",
             "commodity_common_name": "Cut Rose Flowers",
             "treatment_type": "CD",
+            "chemical_used": "Not applicable",
             "treatment_duration": "48 hours",
             "treatment_temperature": "2\u00b0C",
             "treatment_concentration": "N/A"
