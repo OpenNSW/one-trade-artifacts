@@ -294,9 +294,6 @@
                   {
                     "type": "Control",
                     "scope": "#/properties/visual_referral",
-                    "options": {
-                      "readonly": true
-                    },
                     "rule": {
                       "effect": "SHOW",
                       "condition": {
@@ -314,9 +311,6 @@
                   {
                     "type": "Control",
                     "scope": "#/properties/lab_referral",
-                    "options": {
-                      "readonly": true
-                    },
                     "rule": {
                       "effect": "SHOW",
                       "condition": {
@@ -331,9 +325,6 @@
                   {
                     "type": "Control",
                     "scope": "#/properties/warehouse_referral",
-                    "options": {
-                      "readonly": true
-                    },
                     "rule": {
                       "effect": "SHOW",
                       "condition": {

@@ -336,9 +336,6 @@
       {
         "type": "Control",
         "scope": "#/properties/ephyto_reference_number",
-        "options": {
-          "readOnly": true
-        },
         "rule": {
           "effect": "SHOW",
           "condition": {
@@ -352,9 +349,6 @@
       {
         "type": "Control",
         "scope": "#/properties/replacement_reference_number",
-        "options": {
-          "readOnly": true
-        },
         "rule": {
           "effect": "SHOW",
           "condition": {

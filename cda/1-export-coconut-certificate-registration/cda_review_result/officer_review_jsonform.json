@@ -117,9 +117,6 @@
       {
         "type": "Control",
         "scope": "#/properties/physical_certificate_id",
-        "options": {
-          "readonly": true
-        },
         "rule": {
           "effect": "SHOW",
           "condition": {
@@ -152,9 +149,6 @@
       {
         "type": "Control",
         "scope": "#/properties/salmonella_certificate_id",
-        "options": {
-          "readonly": true
-        },
         "rule": {
           "effect": "SHOW",
           "condition": {
