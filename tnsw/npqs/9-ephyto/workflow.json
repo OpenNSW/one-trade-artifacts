@@ -35,6 +35,7 @@
       "task_template_id": "npqs-ephyto-upload--submit",
       "input_mapping": {
         "userform": "userform",
+        "userform.date_of_inspection?": "date_of_inspection",
         "certificate_id": "certificate_id",
         "officerinput.hub_destination": "hub_destination",
         "certificate_items?": "certificate_items",
