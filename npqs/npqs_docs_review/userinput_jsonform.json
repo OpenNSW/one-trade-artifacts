@@ -17,9 +17,15 @@
         "readOnly": true
       },
       "additional_file_url": {
-        "type": "string",
-        "format": "file",
+        "type": "array",
         "title": "Other Supporting Documents (Bill of Lading / Customs declaration)",
+        "items": {
+          "type": "string",
+          "format": "file"
+        },
+        "x-file": {
+          "maxFiles": 10
+        },
         "readOnly": true
       }
     }

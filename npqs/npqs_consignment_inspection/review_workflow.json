@@ -16,6 +16,7 @@
       },
       "output_mapping": {
         "visual_result": "reviewform.visual_result",
+        "date_of_inspection": "reviewform.date_of_inspection",
         "items": "reviewform.items"
       }
     },

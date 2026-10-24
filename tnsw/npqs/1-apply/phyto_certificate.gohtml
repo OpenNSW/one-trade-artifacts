@@ -134,7 +134,7 @@ Consignment re-inspected after treatment and found free from live pests.
 {{- if $app.vessel_name }} - {{ $app.vessel_name }}{{ end -}}
 {{- if $app.voyage_number }} - Voyage {{ $app.voyage_number }}{{ end -}}
 {{- end -}}</td>
-    <td>{{ $app.point_of_entry_port }}</td>
+    <td>{{ $app.point_of_entry_port }}{{ if $app.point_of_entry_country.label }}{{ if $app.point_of_entry_port }}, {{ end }}{{ $app.point_of_entry_country.label }}{{ end }}</td>
   </tr>
   {{- if $app.transit_countries }}
   <tr><th colspan="2">Transit Countries</th></tr>
@@ -192,7 +192,7 @@ Consignment re-inspected after treatment and found free from live pests.
   <tr><td colspan="3">
     <table class="plain"><tr>
       <td style="width:50%"><b>Import Permit Number:</b> {{ $app.import_permit_number }}</td>
-      <td><b>Date of Inspection:</b> {{ $app.proposed_inspection_date }}</td>
+      <td><b>Date of Inspection:</b> {{ $app.date_of_inspection }}</td>
     </tr></table>
     {{- if $app.disinfestation_treatment }}<div class="pre">{{ $app.disinfestation_treatment }}</div>{{ end }}
   </td></tr>

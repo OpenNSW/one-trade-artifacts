@@ -9,7 +9,7 @@
     ]
   },
   "files": [
-    "documents.additional_supporting_document.url",
+    "documents.additional_supporting_document.url[*]",
     "documents.commercial_invoice.url",
     "documents.packing_list.url",
     "userform.attachments[*].attachment_file_url"
