@@ -2491,6 +2491,12 @@
       "path": "customs/4a-prepare_cdn_items/render.json"
     },
     {
+      "id": "customs-prepare-cdn-items--cusdec-retrieve",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "customs/4a-prepare_cdn_items/retrieve.json"
+    },
+    {
       "id": "customs-prepare-cdn-items--transform",
       "kind": "subtask_template",
       "version": "",
