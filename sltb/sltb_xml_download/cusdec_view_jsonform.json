@@ -951,7 +951,7 @@
         "type": "Category",
         "label": "Declaration",
         "options": {
-          "description": "The CusDec for this application, shown read-only."
+          "description": "Import a CusDec XML to fill in the form, or enter the declaration by hand."
         },
         "elements": [
           {

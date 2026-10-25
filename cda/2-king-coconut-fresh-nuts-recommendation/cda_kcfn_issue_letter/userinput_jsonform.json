@@ -304,10 +304,14 @@
     ]
   },
   "uiSchema": {
-    "type": "VerticalLayout",
+    "type": "Categorization",
+    "options": {
+      "variant": "stepper"
+    },
     "elements": [
       {
-        "type": "HorizontalLayout",
+        "type": "Category",
+        "label": "Exporter",
         "elements": [
           {
             "type": "Control",
@@ -316,38 +320,35 @@
           {
             "type": "Control",
             "scope": "#/properties/company_name"
-          }
-        ]
-      },
-      {
-        "type": "HorizontalLayout",
-        "elements": [
-          {
-            "type": "Control",
-            "scope": "#/properties/cda_registration_no"
           },
           {
             "type": "Control",
-            "scope": "#/properties/destination_country"
+            "scope": "#/properties/cda_registration_no"
           }
         ]
       },
       {
-        "type": "HorizontalLayout",
+        "type": "Category",
+        "label": "Shipment",
         "elements": [
           {
-            "type": "Control",
-            "scope": "#/properties/destination_city"
+            "type": "Group",
+            "label": "Destination",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/destination_country"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/destination_city"
+              }
+            ]
           },
           {
             "type": "Control",
             "scope": "#/properties/vessel"
-          }
-        ]
-      },
-      {
-        "type": "HorizontalLayout",
-        "elements": [
+          },
           {
             "type": "Control",
             "scope": "#/properties/date_of_sailing"
@@ -355,12 +356,7 @@
           {
             "type": "Control",
             "scope": "#/properties/cargo_type"
-          }
-        ]
-      },
-      {
-        "type": "HorizontalLayout",
-        "elements": [
+          },
           {
             "type": "Control",
             "scope": "#/properties/port_of_loading"
@@ -372,7 +368,8 @@
         ]
       },
       {
-        "type": "HorizontalLayout",
+        "type": "Category",
+        "label": "Invoice and Buyer",
         "elements": [
           {
             "type": "Control",
@@ -381,41 +378,65 @@
           {
             "type": "Control",
             "scope": "#/properties/commercial_invoice_date"
-          }
-        ]
-      },
-      {
-        "type": "HorizontalLayout",
-        "elements": [
+          },
           {
             "type": "Control",
             "scope": "#/properties/filling_date"
           },
           {
-            "type": "Control",
-            "scope": "#/properties/buyer_name"
+            "type": "Group",
+            "label": "Buyer",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/buyer_name"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/buyer_country"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/buyer_city"
+              }
+            ]
           }
         ]
       },
       {
-        "type": "HorizontalLayout",
+        "type": "Category",
+        "label": "Container",
         "elements": [
           {
             "type": "Control",
-            "scope": "#/properties/buyer_country"
+            "scope": "#/properties/container_type"
           },
           {
             "type": "Control",
-            "scope": "#/properties/buyer_city"
+            "scope": "#/properties/container_number"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/inner_packing_type"
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/serial_no_from"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/serial_no_to"
+              }
+            ]
           }
         ]
       },
       {
-        "type": "Control",
-        "scope": "#/properties/container_type"
-      },
-      {
-        "type": "HorizontalLayout",
+        "type": "Category",
+        "label": "Nuts and Value",
         "elements": [
           {
             "type": "Control",
@@ -427,43 +448,12 @@
           },
           {
             "type": "Control",
-            "scope": "#/properties/container_number"
-          }
-        ]
-      },
-      {
-        "type": "Control",
-        "scope": "#/properties/inner_packing_type"
-      },
-      {
-        "type": "HorizontalLayout",
-        "elements": [
-          {
-            "type": "Control",
-            "scope": "#/properties/serial_no_from"
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/serial_no_to"
-          }
-        ]
-      },
-      {
-        "type": "HorizontalLayout",
-        "elements": [
-          {
-            "type": "Control",
             "scope": "#/properties/quantity_nuts"
           },
           {
             "type": "Control",
             "scope": "#/properties/total_net_weight"
-          }
-        ]
-      },
-      {
-        "type": "HorizontalLayout",
-        "elements": [
+          },
           {
             "type": "Control",
             "scope": "#/properties/total_fob"
@@ -475,12 +465,13 @@
         ]
       },
       {
-        "type": "Control",
-        "scope": "#/properties/location"
-      },
-      {
-        "type": "HorizontalLayout",
+        "type": "Category",
+        "label": "Inspection Venue",
         "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/location"
+          },
           {
             "type": "Control",
             "scope": "#/properties/stuffing_date"
@@ -488,25 +479,21 @@
           {
             "type": "Control",
             "scope": "#/properties/contact_person_at_venue"
-          }
-        ]
-      },
-      {
-        "type": "HorizontalLayout",
-        "elements": [
-          {
-            "type": "Control",
-            "scope": "#/properties/tel_no"
           },
           {
             "type": "Control",
-            "scope": "#/properties/applicant_name"
+            "scope": "#/properties/tel_no"
           }
         ]
       },
       {
-        "type": "HorizontalLayout",
+        "type": "Category",
+        "label": "Applicant",
         "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/applicant_name"
+          },
           {
             "type": "Control",
             "scope": "#/properties/applicant_designation"
@@ -514,12 +501,12 @@
           {
             "type": "Control",
             "scope": "#/properties/application_date"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/applicant_email"
           }
         ]
-      },
-      {
-        "type": "Control",
-        "scope": "#/properties/applicant_email"
       }
     ]
   }

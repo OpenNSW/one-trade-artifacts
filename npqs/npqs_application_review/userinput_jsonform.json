@@ -1626,53 +1626,41 @@
   },
   "uiSchema": {
     "type": "Categorization",
+    "options": {
+      "variant": "stepper"
+    },
     "elements": [
       {
         "type": "Category",
         "label": "General Info",
         "elements": [
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/certificate_type"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/shipment_value"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/certificate_type"
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/applicant_name"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/nppo_office_location/properties/label",
-                "options": {
-                  "readOnly": true
-                },
-                "label": "NPPO Office Location"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/shipment_value"
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/importing_country/properties/label",
-                "options": {
-                  "readOnly": true
-                },
-                "label": "Name of Importing Country"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/applicant_name"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/nppo_office_location/properties/label",
+            "options": {
+              "readOnly": true
+            },
+            "label": "NPPO Office Location"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/importing_country/properties/label",
+            "options": {
+              "readOnly": true
+            },
+            "label": "Name of Importing Country"
           },
           {
             "type": "Control",
@@ -1702,21 +1690,13 @@
         "label": "Consignment Details",
         "elements": [
           {
-            "type": "HorizontalLayout",
+            "type": "Group",
+            "label": "Exporter",
             "elements": [
               {
                 "type": "Control",
                 "scope": "#/properties/exporter_name"
               },
-              {
-                "type": "Control",
-                "scope": "#/properties/consignee_name"
-              }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
               {
                 "type": "Control",
                 "scope": "#/properties/exporter_address",
@@ -1726,19 +1706,24 @@
               },
               {
                 "type": "Control",
-                "scope": "#/properties/consignee_address",
-                "options": {
-                  "multiLine": true
-                }
+                "scope": "#/properties/exporter_country"
               }
             ]
           },
           {
-            "type": "HorizontalLayout",
+            "type": "Group",
+            "label": "Consignee",
             "elements": [
               {
                 "type": "Control",
-                "scope": "#/properties/exporter_country"
+                "scope": "#/properties/consignee_name"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/consignee_address",
+                "options": {
+                  "multiLine": true
+                }
               },
               {
                 "type": "Control",
@@ -1751,15 +1736,16 @@
             ]
           },
           {
-            "type": "Control",
-            "scope": "#/properties/distinguishing_marks",
-            "options": {
-              "multiLine": true
-            }
-          },
-          {
-            "type": "HorizontalLayout",
+            "type": "Group",
+            "label": "Shipment",
             "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/distinguishing_marks",
+                "options": {
+                  "multiLine": true
+                }
+              },
               {
                 "type": "Control",
                 "scope": "#/properties/point_of_entry_country/properties/label",
@@ -1771,12 +1757,7 @@
               {
                 "type": "Control",
                 "scope": "#/properties/point_of_entry_port"
-              }
-            ]
-          },
-          {
-            "type": "HorizontalLayout",
-            "elements": [
+              },
               {
                 "type": "Control",
                 "scope": "#/properties/seal_number"
@@ -1784,60 +1765,206 @@
               {
                 "type": "Control",
                 "scope": "#/properties/estimated_shipment_date"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/transport_details",
+                "options": {
+                  "detail": {
+                    "type": "VerticalLayout",
+                    "elements": [
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/transport_mode"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/transport_name",
+                        "rule": {
+                          "effect": "SHOW",
+                          "condition": {
+                            "scope": "#/properties/transport_mode",
+                            "schema": {
+                              "enum": [
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5",
+                                "6",
+                                "7",
+                                "8"
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/transport_number",
+                        "rule": {
+                          "effect": "SHOW",
+                          "condition": {
+                            "scope": "#/properties/transport_mode",
+                            "schema": {
+                              "enum": [
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5",
+                                "6",
+                                "7",
+                                "8"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "display": "cards",
+                  "itemLabel": "Transport",
+                  "summary": "{transport_mode} · {transport_name}",
+                  "summaryDetail": "{transport_number}"
+                }
               }
             ]
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/transport_details",
-            "options": {
-              "detail": {
-                "type": "VerticalLayout",
-                "elements": [
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/transport_mode",
-                    "options": { "readOnly": true }
-                  },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/transport_name",
-                    "options": { "readOnly": true },
-                    "rule": {
-                      "effect": "SHOW",
-                      "condition": {
-                        "scope": "#/properties/transport_mode",
-                        "schema": { "enum": ["1", "2", "3", "4", "5", "6", "7", "8"] }
-                      }
-                    }
-                  },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/transport_number",
-                    "options": { "readOnly": true },
-                    "rule": {
-                      "effect": "SHOW",
-                      "condition": {
-                        "scope": "#/properties/transport_mode",
-                        "schema": { "enum": ["1", "2", "3", "4", "5", "6", "7", "8"] }
-                      }
-                    }
-                  }
-                ]
-              },
-              "addable": false,
-              "removable": false
-            }
           }
         ]
       },
       {
         "type": "Category",
         "label": "Commodity Details",
+        "options": {
+          "description": "Add one item for each commodity in this consignment."
+        },
         "elements": [
           {
             "type": "Control",
-            "scope": "#/properties/commodities"
+            "scope": "#/properties/commodities",
+            "options": {
+              "errorMessage": "At least one commodity must be added before submitting the Phytosanitary Certificate application",
+              "detail": {
+                "type": "VerticalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/commodity_common_name",
+                    "options": {
+                      "placeholder": "Type to search commodities…"
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/commodity_botanical_name",
+                    "options": {
+                      "placeholder": "Type to search scientific names…"
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/commodity_language"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/commodity_description"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/commodity_plant_part"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/commodity_condition"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/commodity_intended_use"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/quantity_net_weight"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/quantity_net_weight_unit"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/quantity_gross_weight"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/quantity_gross_weight_unit"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/package_arrangement",
+                    "options": {
+                      "format": "radio"
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/packages_count",
+                    "rule": {
+                      "effect": "SHOW",
+                      "condition": {
+                        "scope": "#/properties/package_arrangement",
+                        "schema": {
+                          "const": "package"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/packages_description",
+                    "rule": {
+                      "effect": "SHOW",
+                      "condition": {
+                        "scope": "#/properties/package_arrangement",
+                        "schema": {
+                          "const": "package"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/packages_free_text",
+                    "rule": {
+                      "effect": "SHOW",
+                      "condition": {
+                        "scope": "#/properties/package_arrangement",
+                        "schema": {
+                          "const": "free_text"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/origin_country"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/origin_area"
+                  }
+                ]
+              },
+              "display": "cards",
+              "itemLabel": "Commodity",
+              "summary": "{commodity_common_name} · {quantity_net_weight} {quantity_net_weight_unit}",
+              "summaryDetail": "{packages_count} {packages_description} · {origin_country}",
+              "totals": [
+                {
+                  "field": "packages_count",
+                  "label": "{sum} packages"
+                }
+              ]
+            }
           },
           {
             "type": "Control",
@@ -1885,7 +2012,17 @@
         "elements": [
           {
             "type": "Control",
-            "scope": "#/properties/attachments"
+            "scope": "#/properties/attachments",
+            "label": false,
+            "options": {
+              "display": "cards",
+              "itemLabel": "Attachment",
+              "itemNumber": "word",
+              "addLabel": "Add Attachment",
+              "emptyLabel": "No attachments have been added yet.",
+              "summary": "{attachment_description}",
+              "summaryDetail": "{file_type}"
+            }
           }
         ]
       }
