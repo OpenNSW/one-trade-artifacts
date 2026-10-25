@@ -70,7 +70,8 @@
       "lane": "Trader/CHA",
       "input_mapping": {
         "customs.userform.containerCount": "container_count",
-        "customs.cusdec_number?": "cusdec_ref"
+        "customs.cusdec_number?": "cusdec_ref",
+        "customs.userform.traders?": "userform.traders"
       },
       "output_mapping": {
         "split_items": "customs.cdn_split_items"

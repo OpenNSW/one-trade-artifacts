@@ -56,9 +56,9 @@
       "contract_number": {
         "type": "string",
         "title": "Contract Number",
-        "pattern": "^[A-Za-z0-9]*$",
-        "description": "Letters and digits only.",
-        "example": "987654"
+        "pattern": "^(\\+[0-9]{11}|[0-9]{10})$",
+        "description": "10 digits, or + followed by 11 digits.",
+        "example": "0771234567"
       },
       "lot_number": {
         "type": "string",
@@ -194,11 +194,15 @@
       "port_of_discharge": {
         "type": "string",
         "title": "Port of Discharge",
+        "pattern": "^[A-Za-z][A-Za-z .,'-]*$",
+        "description": "Letters, spaces and . , ' - only.",
         "example": "Port of Rotterdam"
       },
       "final_destination": {
         "type": "string",
         "title": "Final Destination",
+        "pattern": "^[A-Za-z][A-Za-z .,'-]*$",
+        "description": "Letters, spaces and . , ' - only.",
         "example": "Rotterdam, Netherlands"
       },
       "buyer_name": {

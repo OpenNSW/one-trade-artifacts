@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "npqs_certificate_replacement",
+  "workflow": "npqs_certificate_replacement",
+  "meta": {
+    "title": "NPQS Certificate Replacement Request",
+    "description": "Officer accepts or rejects a trader's request to replace an issued phytosanitary certificate."
+  }
+}

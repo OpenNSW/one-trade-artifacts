@@ -835,6 +835,36 @@
       "path": "npqs/18-certificate_status/checking_markdown.json"
     },
     {
+      "id": "npqs-certificate-status--request-replacement",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/18-certificate_status/request_replacement.json"
+    },
+    {
+      "id": "npqs-certificate-status--replacement-note",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/18-certificate_status/replacement_note.json"
+    },
+    {
+      "id": "npqs-certificate-status--replacement-note-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/18-certificate_status/replacement_note_form.json"
+    },
+    {
+      "id": "npqs-certificate-status--replacement-note-msg",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/18-certificate_status/replacement_note_markdown.json"
+    },
+    {
+      "id": "npqs-certificate-status--amend-application-msg",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/18-certificate_status/amend_application_markdown.json"
+    },
+    {
       "id": "npqs-export-phytosanitary-reg",
       "kind": "workflow",
       "version": "",
@@ -2489,6 +2519,12 @@
       "kind": "generic_template",
       "version": "",
       "path": "customs/4a-prepare_cdn_items/render.json"
+    },
+    {
+      "id": "customs-prepare-cdn-items--cusdec-retrieve",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "customs/4a-prepare_cdn_items/retrieve.json"
     },
     {
       "id": "customs-prepare-cdn-items--transform",

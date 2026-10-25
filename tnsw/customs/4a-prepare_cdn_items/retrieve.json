@@ -1,0 +1,10 @@
+{
+  "id": "customs-prepare-cdn-items--cusdec-retrieve",
+  "task_type": "CUSTOMS_CUSDEC_RETRIEVE",
+  "output_namespace": "cusdec_latest",
+  "plugin_properties": {
+    "service_id": "customs-asycuda",
+    "path": "/api/declaration/v1/retrieve",
+    "result_field": "retrieved"
+  }
+}

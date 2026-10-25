@@ -17,6 +17,10 @@
             "title": "Withdraw the certificate"
           },
           {
+            "const": "replace",
+            "title": "Replace the certificate"
+          },
+          {
             "const": "refresh",
             "title": "Check the delivery status again"
           }
@@ -26,24 +30,46 @@
         "type": "string",
         "title": "Reason for withdrawal",
         "description": "Sent to the NPQS officer, who accepts or rejects the request."
+      },
+      "replacement_reason": {
+        "type": "string",
+        "title": "Reason for replacement",
+        "description": "Sent to the NPQS officer, who accepts or rejects the request."
       }
     },
     "required": [
       "action"
     ],
-    "if": {
-      "properties": {
-        "action": {
-          "const": "withdraw"
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "action": {
+              "const": "withdraw"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "withdrawal_reason"
+          ]
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "action": {
+              "const": "replace"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "replacement_reason"
+          ]
         }
       }
-    },
-    "then": {
-      "required": [
-        "action",
-        "withdrawal_reason"
-      ]
-    }
+    ]
   },
   "uiSchema": {
     "type": "VerticalLayout",
@@ -67,6 +93,22 @@
             "scope": "#/properties/action",
             "schema": {
               "const": "withdraw"
+            }
+          }
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/replacement_reason",
+        "options": {
+          "multi": true
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/action",
+            "schema": {
+              "const": "replace"
             }
           }
         }
