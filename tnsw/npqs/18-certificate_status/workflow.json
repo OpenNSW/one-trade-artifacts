@@ -33,7 +33,8 @@
       },
       "output_mapping": {
         "action": "action.action",
-        "withdrawal_reason?": "action.withdrawal_reason"
+        "withdrawal_reason?": "action.withdrawal_reason",
+        "replacement_reason?": "action.replacement_reason"
       }
     },
     {
