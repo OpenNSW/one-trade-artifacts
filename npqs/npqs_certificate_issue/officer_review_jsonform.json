@@ -12,17 +12,20 @@
           "properties": {
             "id": {
               "type": "string",
-              "title": "Item ID"
+              "title": "Item ID",
+              "readOnly": true
             },
             "commodity_common_name": {
               "type": "object",
               "title": "Commodity Name",
               "properties": {
                 "value": {
-                  "type": "string"
+                  "type": "string",
+                  "readOnly": true
                 },
                 "label": {
-                  "type": "string"
+                  "type": "string",
+                  "readOnly": true
                 }
               },
               "required": [
@@ -278,25 +281,16 @@
                 "elements": [
                   {
                     "type": "Control",
-                    "scope": "#/properties/id",
-                    "options": {
-                      "readOnly": true
-                    }
+                    "scope": "#/properties/id"
                   },
                   {
                     "type": "Control",
                     "scope": "#/properties/commodity_common_name/properties/label",
-                    "options": {
-                      "readOnly": true
-                    },
                     "label": "Commodity Name"
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/commodity_botanical_name",
-                    "options": {
-                      "readOnly": true
-                    }
+                    "scope": "#/properties/commodity_botanical_name"
                   }
                 ]
               },
@@ -305,31 +299,19 @@
                 "elements": [
                   {
                     "type": "Control",
-                    "scope": "#/properties/sample_test_result",
-                    "options": {
-                      "readOnly": true
-                    }
+                    "scope": "#/properties/sample_test_result"
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/visual_result",
-                    "options": {
-                      "readOnly": true
-                    }
+                    "scope": "#/properties/visual_result"
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/treatment_result",
-                    "options": {
-                      "readOnly": true
-                    }
+                    "scope": "#/properties/treatment_result"
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/visual2_result",
-                    "options": {
-                      "readOnly": true
-                    }
+                    "scope": "#/properties/visual2_result"
                   }
                 ]
               },
@@ -345,24 +327,15 @@
       },
       {
         "type": "Control",
-        "scope": "#/properties/certificate_type",
-        "options": {
-          "readOnly": true
-        }
+        "scope": "#/properties/certificate_type"
       },
       {
         "type": "Control",
-        "scope": "#/properties/ephyto_required",
-        "options": {
-          "readOnly": true
-        }
+        "scope": "#/properties/ephyto_required"
       },
       {
         "type": "Control",
         "scope": "#/properties/ephyto_reference_number",
-        "options": {
-          "readOnly": true
-        },
         "rule": {
           "effect": "SHOW",
           "condition": {
@@ -376,9 +349,6 @@
       {
         "type": "Control",
         "scope": "#/properties/replacement_reference_number",
-        "options": {
-          "readOnly": true
-        },
         "rule": {
           "effect": "SHOW",
           "condition": {
