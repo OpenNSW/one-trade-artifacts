@@ -15,7 +15,6 @@
       },
       "output_mapping": {
         "__command": "command",
-        "hub_destination": "reviewform.hub_destination",
         "send_application_documents?": "reviewform.send_application_documents",
         "send_treatment_certificate?": "reviewform.send_treatment_certificate",
         "send_supervision_report?": "reviewform.send_supervision_report",
