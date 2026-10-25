@@ -1,0 +1,40 @@
+{
+  "id": "npqs-certificate-reissue:render",
+  "type": "APPLICATION",
+  "title": "[NPQS] Replacement Certificate Issue",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
+  "files": [
+    "reviewerform.certificate_url",
+    "submission.attachments[*].attachment_file_url"
+  ],
+  "sections": {
+    "with_officer": {
+      "templateId": "npqs-certificate-status--with-officer-msg",
+      "title": "With the NPQS Officer",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "STARTING",
+          "STARTING_STEP",
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    },
+    "completed": {
+      "templateId": "npqs-certificate-reissue--completed-msg",
+      "title": "Outcome",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "COMPLETED"
+        ]
+      }
+    }
+  },
+  "states": {}
+}

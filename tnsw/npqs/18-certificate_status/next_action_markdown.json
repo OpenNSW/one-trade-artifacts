@@ -1,0 +1,4 @@
+{
+  "id": "npqs-certificate-status--next-action-msg",
+  "template": "{{ $kind := \"\" }}{{ with .action }}{{ $kind = .action }}{{ end }}{{ if eq $kind \"withdraw\" }}### Withdrawal Requested\n\nYou asked to withdraw certificate `{{ .certificate_id }}`. The request is now with the NPQS officer.{{ else if eq $kind \"replace\" }}### Replacement Requested\n\nYou asked to replace certificate `{{ .certificate_id }}`. The request is now with the NPQS officer.{{ else }}### Process Complete\n\nCertificate `{{ .certificate_id }}` stands as issued.{{ end }}"
+}

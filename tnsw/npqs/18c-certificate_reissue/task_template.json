@@ -1,0 +1,6 @@
+{
+  "id": "npqs-certificate-reissue",
+  "type": "APPLICATION",
+  "workflow_id": "npqs-certificate-reissue",
+  "render_config_id": "npqs-certificate-reissue:render"
+}

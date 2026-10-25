@@ -865,6 +865,108 @@
       "path": "npqs/18-certificate_status/amend_application_markdown.json"
     },
     {
+      "id": "npqs-certificate-status--next-action-msg",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/18-certificate_status/next_action_markdown.json"
+    },
+    {
+      "id": "npqs-certificate-withdrawal",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs/18a-certificate_withdrawal/task_template.json"
+    },
+    {
+      "id": "npqs-certificate-withdrawal",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs/18a-certificate_withdrawal/workflow.json"
+    },
+    {
+      "id": "npqs-certificate-withdrawal:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/18a-certificate_withdrawal/render.json"
+    },
+    {
+      "id": "npqs-certificate-withdrawal--completed-msg",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/18a-certificate_withdrawal/completed_markdown.json"
+    },
+    {
+      "id": "npqs-certificate-replacement-request",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs/18b-certificate_replacement_request/task_template.json"
+    },
+    {
+      "id": "npqs-certificate-replacement-request",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs/18b-certificate_replacement_request/workflow.json"
+    },
+    {
+      "id": "npqs-certificate-replacement-request:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/18b-certificate_replacement_request/render.json"
+    },
+    {
+      "id": "npqs-certificate-replacement-request--completed-msg",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/18b-certificate_replacement_request/completed_markdown.json"
+    },
+    {
+      "id": "npqs-certificate-reissue",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs/18c-certificate_reissue/task_template.json"
+    },
+    {
+      "id": "npqs-certificate-reissue",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs/18c-certificate_reissue/workflow.json"
+    },
+    {
+      "id": "npqs-certificate-reissue:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/18c-certificate_reissue/render.json"
+    },
+    {
+      "id": "npqs-certificate-reissue--completed-msg",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/18c-certificate_reissue/completed_markdown.json"
+    },
+    {
+      "id": "npqs-certificate-replacement-transmit",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs/18d-certificate_replacement_transmit/task_template.json"
+    },
+    {
+      "id": "npqs-certificate-replacement-transmit",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs/18d-certificate_replacement_transmit/workflow.json"
+    },
+    {
+      "id": "npqs-certificate-replacement-transmit:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/18d-certificate_replacement_transmit/render.json"
+    },
+    {
+      "id": "npqs-certificate-replacement-transmit--completed-msg",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/18d-certificate_replacement_transmit/completed_markdown.json"
+    },
+    {
       "id": "npqs-export-phytosanitary-reg",
       "kind": "workflow",
       "version": "",

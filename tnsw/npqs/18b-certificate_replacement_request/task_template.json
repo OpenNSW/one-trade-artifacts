@@ -1,0 +1,6 @@
+{
+  "id": "npqs-certificate-replacement-request",
+  "type": "APPLICATION",
+  "workflow_id": "npqs-certificate-replacement-request",
+  "render_config_id": "npqs-certificate-replacement-request:render"
+}

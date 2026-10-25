@@ -1,0 +1,115 @@
+{
+  "id": "npqs-certificate-replacement-request:render",
+  "type": "APPLICATION",
+  "title": "[NPQS] Certificate Replacement Request",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
+  "files": [
+    "userform.attachments[*].attachment_file_url"
+  ],
+  "sections": {
+    "with_officer": {
+      "templateId": "npqs-certificate-status--with-officer-msg",
+      "title": "With the NPQS Officer",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "STARTING",
+          "STARTING_STEP",
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    },
+    "amend_msg": {
+      "templateId": "npqs-certificate-status--amend-application-msg",
+      "title": "Replacement Certificate",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "userform"
+      }
+    },
+    "amend_form": {
+      "templateId": "npqs-apply-phyto-cert--user-form",
+      "title": "NPQS Application",
+      "projector": "FORM",
+      "dataKey": "userform",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "userform"
+      },
+      "handles": [
+        {
+          "command": "save_as_draft",
+          "label": "Save as Draft",
+          "element": "draft_action"
+        },
+        {
+          "command": "submit",
+          "label": "Continue",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "note_msg": {
+      "templateId": "npqs-certificate-status--replacement-note-msg",
+      "title": "Replacement Certificate",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "notes"
+      }
+    },
+    "note_form": {
+      "templateId": "npqs-certificate-status--replacement-note-form",
+      "title": "Replacement Note",
+      "projector": "FORM",
+      "dataKey": "notes",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "notes"
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Send to the NPQS Officer",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "completed": {
+      "templateId": "npqs-certificate-replacement-request--completed-msg",
+      "title": "Outcome",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "COMPLETED"
+        ]
+      }
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        },
+        {
+          "command": "save_as_draft"
+        }
+      ]
+    }
+  }
+}

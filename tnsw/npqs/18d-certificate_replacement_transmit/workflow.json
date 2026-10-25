@@ -1,0 +1,85 @@
+{
+  "id": "npqs-certificate-replacement-transmit",
+  "name": "Replacement Certificate Transmission",
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "transmit_replacement",
+      "type": "TASK",
+      "task_template_id": "npqs-ephyto-upload--officer-transmit",
+      "input_mapping": {
+        "reference_number": "reference_number",
+        "new_certificate_id": "certificate_id",
+        "reference_number?": "submission.reference_number",
+        "new_certificate_id?": "submission.certificate_id",
+        "certificate_id?": "submission.replaced_certificate_id",
+        "replacement_note?": "submission.replacement_note",
+        "replacement_hub_error?": "submission.previous_error"
+      },
+      "output_mapping": {
+        "send_application_documents?": "officerinput.send_application_documents",
+        "send_treatment_certificate?": "officerinput.send_treatment_certificate",
+        "send_supervision_report?": "officerinput.send_supervision_report",
+        "send_invoice?": "officerinput.send_invoice",
+        "send_packing_list?": "officerinput.send_packing_list",
+        "send_additional_document?": "officerinput.send_additional_document"
+      }
+    },
+    {
+      "id": "submit_replacement",
+      "type": "TASK",
+      "task_template_id": "npqs-ephyto-upload--submit",
+      "input_mapping": {
+        "userform": "userform",
+        "userform.date_of_inspection?": "date_of_inspection",
+        "new_certificate_id": "certificate_id",
+        "certificate_items?": "certificate_items",
+        "reference_number?": "reference_number",
+        "certificate_id": "replacement.replaced_number",
+        "replacement_note": "replacement.reason",
+        "treatment_certificate_url?": "documents.treatment_certificate.url",
+        "officerinput.send_treatment_certificate?": "documents.treatment_certificate.send",
+        "supervision_report_url?": "documents.treatment_supervision_report.url",
+        "officerinput.send_supervision_report?": "documents.treatment_supervision_report.send",
+        "invoice_file_url?": "documents.commercial_invoice.url",
+        "officerinput.send_invoice?": "documents.commercial_invoice.send",
+        "packing_list_file_url?": "documents.packing_list.url",
+        "officerinput.send_packing_list?": "documents.packing_list.send",
+        "additional_file_url?": "documents.additional_supporting_document.url",
+        "officerinput.send_additional_document?": "documents.additional_supporting_document.send",
+        "officerinput.send_application_documents?": "send_application_documents"
+      },
+      "output_mapping": {
+        "ephyto.submitted": "replacement_submitted",
+        "ephyto.error?": "replacement_hub_error",
+        "ephyto.tracking_number?": "ephyto.tracking_number",
+        "ephyto.tracking_info?": "ephyto.tracking_info",
+        "certificate_id": "certificate_id"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "transmit_replacement"
+    },
+    {
+      "id": "e2",
+      "source_id": "transmit_replacement",
+      "target_id": "submit_replacement"
+    },
+    {
+      "id": "e3",
+      "source_id": "submit_replacement",
+      "target_id": "end"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "id": "npqs-certificate-withdrawal",
+  "type": "APPLICATION",
+  "workflow_id": "npqs-certificate-withdrawal",
+  "render_config_id": "npqs-certificate-withdrawal:render"
+}

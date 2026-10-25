@@ -1,0 +1,124 @@
+{
+  "id": "npqs-certificate-replacement-request",
+  "name": "Certificate Replacement Request",
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "request_replacement",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-status--request-replacement",
+      "input_mapping": {
+        "certificate_id": "certificate_id",
+        "action?": "action",
+        "reference_number?": "submission.reference_number",
+        "certificate_id?": "submission.certificate_id",
+        "ephyto.tracking_number?": "submission.tracking_number",
+        "ephyto.tracking_info?": "submission.tracking_info",
+        "action.replacement_reason?": "submission.replacement_reason"
+      },
+      "output_mapping": {
+        "decision": "replacement.decision",
+        "remarks?": "replacement.remarks"
+      }
+    },
+    {
+      "id": "gw_replacement",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "amend_application",
+      "type": "TASK",
+      "task_template_id": "npqs-apply-phyto-cert--user-input",
+      "input_mapping": {
+        "userform?": "userform"
+      },
+      "output_mapping": {
+        "certificate_type": "userform.certificate_type",
+        "shipment_value": "userform.shipment_value",
+        "applicant_name": "userform.applicant_name",
+        "nppo_office_location": "userform.nppo_office_location",
+        "importing_country": "userform.importing_country",
+        "transit_countries?": "userform.transit_countries",
+        "exporter_name": "userform.exporter_name",
+        "exporter_address": "userform.exporter_address",
+        "exporter_country?": "userform.exporter_country",
+        "consignee_name": "userform.consignee_name",
+        "consignee_address": "userform.consignee_address",
+        "consignee_country": "userform.consignee_country",
+        "distinguishing_marks?": "userform.distinguishing_marks",
+        "point_of_entry_country?": "userform.point_of_entry_country",
+        "point_of_entry_port?": "userform.point_of_entry_port",
+        "seal_number?": "userform.seal_number",
+        "estimated_shipment_date?": "userform.estimated_shipment_date",
+        "transport_details?": "userform.transport_details",
+        "transport_mode?": "userform.transport_mode",
+        "vessel_name?": "userform.vessel_name",
+        "voyage_number?": "userform.voyage_number",
+        "commodities": "userform.commodities",
+        "origin_country?": "userform.origin_country",
+        "origin_area?": "userform.origin_area",
+        "import_permit_number?": "userform.import_permit_number",
+        "proposed_inspection_date?": "userform.proposed_inspection_date",
+        "proposed_inspection_time?": "userform.proposed_inspection_time",
+        "place_of_inspection?": "userform.place_of_inspection",
+        "additional_declaration?": "userform.additional_declaration",
+        "disinfestation_treatment?": "userform.disinfestation_treatment",
+        "attachments?": "userform.attachments"
+      }
+    },
+    {
+      "id": "replacement_note",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-status--replacement-note",
+      "input_mapping": {
+        "certificate_id": "certificate_id",
+        "action.replacement_reason?": "notes.note"
+      },
+      "output_mapping": {
+        "note": "replacement_note"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "request_replacement"
+    },
+    {
+      "id": "e2",
+      "source_id": "request_replacement",
+      "target_id": "gw_replacement"
+    },
+    {
+      "id": "e3",
+      "source_id": "gw_replacement",
+      "target_id": "amend_application",
+      "condition": "replacement.decision == 'accept'"
+    },
+    {
+      "id": "e4",
+      "source_id": "gw_replacement",
+      "target_id": "end",
+      "condition": "replacement.decision in [nil, 'reject']"
+    },
+    {
+      "id": "e5",
+      "source_id": "amend_application",
+      "target_id": "replacement_note"
+    },
+    {
+      "id": "e6",
+      "source_id": "replacement_note",
+      "target_id": "end"
+    }
+  ]
+}
