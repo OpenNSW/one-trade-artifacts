@@ -17,10 +17,17 @@
         "example": "https://nsw.gov.lk/storage/docs/packing-list-1029.pdf"
       },
       "additional_file_url": {
-        "type": "string",
-        "format": "file",
+        "type": "array",
         "title": "Other Supporting Documents (Bill of Lading / Customs declaration)",
-        "example": "https://nsw.gov.lk/storage/docs/customs-declaration-1029.pdf"
+        "description": "Attach any other supporting documents (up to 10 files).",
+        "items": {
+          "type": "string",
+          "format": "file"
+        },
+        "x-file": {
+          "maxFiles": 10
+        },
+        "example": ["https://nsw.gov.lk/storage/docs/customs-declaration-1029.pdf"]
       }
     },
     "required": [

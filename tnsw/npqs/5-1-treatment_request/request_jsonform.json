@@ -12,7 +12,8 @@
           "properties": {
             "id": {
               "type": "string",
-              "title": "Item ID"
+              "title": "Item ID",
+              "readOnly": true
             },
             "commodity_common_name": {
               "type": "object",
@@ -36,7 +37,8 @@
                   "id": "npqs-apply-phyto-cert--commodity-common-names",
                   "version": "1"
                 }
-              }
+              },
+              "readOnly": true
             },
             "treatment_type": {
               "type": "string",
@@ -131,7 +133,15 @@
             "chemical_used": {
               "type": "string",
               "title": "Chemical / Medium Used",
-              "example": "Methyl Bromide (CH3Br)"
+              "description": "Choose \"Not applicable\" when the treatment uses no chemical.",
+              "oneOf": [
+                { "const": "Not applicable", "title": "Not applicable" },
+                { "const": "Methyl Bromide", "title": "Methyl Bromide" },
+                { "const": "Phosphine", "title": "Phosphine" },
+                { "const": "ECO2FUME", "title": "ECO2FUME" },
+                { "const": "Carbon Dioxide", "title": "Carbon Dioxide" }
+              ],
+              "example": "Methyl Bromide"
             },
             "treatment_duration": {
               "type": "string",
@@ -160,7 +170,7 @@
             "id": "item-1",
             "commodity_common_name": "Cut Rose Flowers",
             "treatment_type": "CD",
-            "chemical_used": "N/A (Cold storage disinfestation)",
+            "chemical_used": "Not applicable",
             "treatment_duration": "48 hours",
             "treatment_temperature": "2\u00b0C",
             "treatment_concentration": "N/A"
@@ -169,7 +179,7 @@
             "id": "item-4",
             "commodity_common_name": "Coir Pith Block",
             "treatment_type": "FU",
-            "chemical_used": "Methyl Bromide (CH3Br)",
+            "chemical_used": "Methyl Bromide",
             "treatment_duration": "24 hours",
             "treatment_temperature": "21\u00b0C",
             "treatment_concentration": "48 g/m\u00b3"
@@ -201,17 +211,11 @@
                 "elements": [
                   {
                     "type": "Control",
-                    "scope": "#/properties/id",
-                    "options": {
-                      "readOnly": true
-                    }
+                    "scope": "#/properties/id"
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/commodity_common_name",
-                    "options": {
-                      "readOnly": true
-                    }
+                    "scope": "#/properties/commodity_common_name"
                   },
                   {
                     "type": "Control",

@@ -32,17 +32,20 @@
           "properties": {
             "id": {
               "type": "string",
-              "title": "Item ID"
+              "title": "Item ID",
+              "readOnly": true
             },
             "commodity_common_name": {
               "type": "object",
               "title": "Commodity Name",
               "properties": {
                 "value": {
-                  "type": "string"
+                  "type": "string",
+                  "readOnly": true
                 },
                 "label": {
-                  "type": "string"
+                  "type": "string",
+                  "readOnly": true
                 }
               },
               "required": [
@@ -59,7 +62,114 @@
             },
             "treatment_type": {
               "type": "string",
-              "title": "Treatment Type Requested"
+              "title": "Treatment Type Requested",
+              "readOnly": true,
+              "oneOf": [
+                {
+                  "const": "FU",
+                  "title": "Fumigation (FU)"
+                },
+                {
+                  "const": "CD",
+                  "title": "Cold Disinfestation (CD)"
+                },
+                {
+                  "const": "HT",
+                  "title": "Heat Treatment (HT)"
+                },
+                {
+                  "const": "KD",
+                  "title": "Kiln Drying (KD)"
+                },
+                {
+                  "const": "HW",
+                  "title": "Hot Water Treatment (HW)"
+                },
+                {
+                  "const": "CHT",
+                  "title": "Chemical Treatment (CHT)"
+                },
+                {
+                  "const": "TPT",
+                  "title": "Temperature Treatment (TPT)"
+                },
+                {
+                  "const": "RAT",
+                  "title": "Radiation Treatment (RAT)"
+                },
+                {
+                  "const": "DR",
+                  "title": "Dry Heat (DR)"
+                },
+                {
+                  "const": "MH",
+                  "title": "Moist Heat (MH)"
+                },
+                {
+                  "const": "VH",
+                  "title": "Vapour Heat (VH)"
+                },
+                {
+                  "const": "DH",
+                  "title": "Dielectric Heating (DH)"
+                },
+                {
+                  "const": "FG",
+                  "title": "Fungicide (FG)"
+                },
+                {
+                  "const": "IN",
+                  "title": "Insecticide (IN)"
+                },
+                {
+                  "const": "NE",
+                  "title": "Nematicide (NE)"
+                },
+                {
+                  "const": "OP",
+                  "title": "Other Pesticide (OP)"
+                },
+                {
+                  "const": "CPI",
+                  "title": "Chemical Pressure Impregnation (CPI)"
+                },
+                {
+                  "const": "SC",
+                  "title": "Seed Coating (SC)"
+                },
+                {
+                  "const": "DV",
+                  "title": "Devitalization (DV)"
+                },
+                {
+                  "const": "DB",
+                  "title": "Debarking (DB)"
+                },
+                {
+                  "const": "OTT",
+                  "title": "Other Treatment (OTT)"
+                }
+              ]
+            },
+            "chemical_used": {
+              "type": "string",
+              "title": "Chemical / Medium Used",
+              "readOnly": true
+            },
+            "treatment_duration": {
+              "type": "string",
+              "title": "Treatment Duration",
+              "readOnly": true
+            },
+            "treatment_temperature": {
+              "type": "string",
+              "title": "Target Temperature (°C)",
+              "readOnly": true
+            },
+            "treatment_concentration": {
+              "type": "string",
+              "title": "Chemical Concentration / Dosage",
+              "readOnly": true
             },
             "treatment_provider": {
               "type": "string",
@@ -132,25 +242,42 @@
                 "elements": [
                   {
                     "type": "Control",
-                    "scope": "#/properties/id",
-                    "options": {
-                      "readOnly": true
-                    }
+                    "scope": "#/properties/id"
                   },
                   {
                     "type": "Control",
                     "scope": "#/properties/commodity_common_name/properties/label",
-                    "options": {
-                      "readOnly": true
-                    },
                     "label": "Commodity Name"
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/treatment_type",
-                    "options": {
-                      "readOnly": true
-                    }
+                    "scope": "#/properties/treatment_type"
+                  }
+                ]
+              },
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/chemical_used"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/treatment_duration"
+                  }
+                ]
+              },
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/treatment_temperature"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/treatment_concentration"
                   }
                 ]
               },

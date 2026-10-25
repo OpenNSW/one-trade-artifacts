@@ -236,7 +236,8 @@
         "commodities": "commodities"
       },
       "output_mapping": {
-        "commodities": "commodities"
+        "commodities": "commodities",
+        "date_of_inspection": "npqs.date_of_inspection"
       }
     },
     {
@@ -271,7 +272,8 @@
         "commodities": "commodities"
       },
       "output_mapping": {
-        "commodities": "commodities"
+        "commodities": "commodities",
+        "date_of_inspection": "npqs.date_of_inspection"
       }
     },
     {
@@ -718,6 +720,7 @@
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
+        "npqs.date_of_inspection?": "userform.date_of_inspection",
         "npqs.ephyto_required?": "ephyto_required",
         "commodities?": "certificate_items"
       },
@@ -742,6 +745,7 @@
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
+        "npqs.date_of_inspection?": "userform.date_of_inspection",
         "npqs.certificate_items?": "certificate_items",
         "npqs.treatment_certificate_urls?": "treatment_certificate_url",
         "npqs.supervision_report_urls?": "supervision_report_url",
@@ -764,10 +768,17 @@
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
+        "npqs.date_of_inspection?": "userform.date_of_inspection",
         "npqs.ephyto_reference_number": "certificate_id",
         "npqs.certificate_items?": "certificate_items",
         "npqs.ephyto?": "ephyto",
-        "npqs.ephyto_hub_destination?": "hub_destination"
+        "npqs.ephyto_hub_destination?": "hub_destination",
+        "npqs.ephyto_required?": "ephyto_required",
+        "npqs.treatment_certificate_urls?": "treatment_certificate_url",
+        "npqs.supervision_report_urls?": "supervision_report_url",
+        "npqs.docs_traderinput.invoice_file_url?": "invoice_file_url",
+        "npqs.docs_traderinput.packing_list_file_url?": "packing_list_file_url",
+        "npqs.docs_traderinput.additional_file_url?": "additional_file_url"
       },
       "output_mapping": {
         "withdrawn?": "npqs.certificate_withdrawn"

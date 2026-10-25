@@ -43,17 +43,20 @@
           "properties": {
             "id": {
               "type": "string",
-              "title": "Item ID"
+              "title": "Item ID",
+              "readOnly": true
             },
             "commodity_common_name": {
               "type": "object",
               "title": "Commodity Name",
               "properties": {
                 "value": {
-                  "type": "string"
+                  "type": "string",
+                  "readOnly": true
                 },
                 "label": {
-                  "type": "string"
+                  "type": "string",
+                  "readOnly": true
                 }
               },
               "required": [
@@ -71,11 +74,13 @@
             },
             "commodity_botanical_name": {
               "type": "string",
-              "title": "Scientific Name"
+              "title": "Scientific Name",
+              "readOnly": true
             },
             "quantity_net_weight": {
               "type": "number",
-              "title": "Net Weight"
+              "title": "Net Weight",
+              "readOnly": true
             },
             "quantity_net_weight_unit": {
               "type": "object",
@@ -293,10 +298,7 @@
     "elements": [
       {
         "type": "Control",
-        "scope": "#/properties/reference_number",
-        "options": {
-          "readonly": true
-        }
+        "scope": "#/properties/reference_number"
       },
       {
         "type": "Control",
@@ -350,31 +352,19 @@
                   {
                     "type": "Control",
                     "scope": "#/properties/commodity_common_name/properties/label",
-                    "options": {
-                      "readOnly": true
-                    },
                     "label": "Commodity Name"
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/commodity_botanical_name",
-                    "options": {
-                      "readOnly": true
-                    }
+                    "scope": "#/properties/commodity_botanical_name"
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/id",
-                    "options": {
-                      "readOnly": true
-                    }
+                    "scope": "#/properties/id"
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/quantity_net_weight",
-                    "options": {
-                      "readOnly": true
-                    }
+                    "scope": "#/properties/quantity_net_weight"
                   }
                 ]
               },

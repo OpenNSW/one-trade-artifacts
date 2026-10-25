@@ -196,12 +196,22 @@
         "example": "EXP-NPQS-2026-A"
       },
       "point_of_entry_country": {
-        "type": "string",
+        "type": "object",
         "title": "Declared Point of Entry - Country",
-        "oneOf": [
-          { "const": "LK", "title": "Sri Lanka" }
-        ],
-        "default": "LK"
+        "x-search": {
+          "service": "static-data",
+          "mode": "large-searchable-list",
+          "displayTemplate": "{name}",
+          "params": {
+            "id": "npqs-apply-phyto-cert--importing-countries",
+            "version": "1"
+          }
+        },
+        "properties": {
+          "value": { "type": "string", "minLength": 1, "example": "GB" },
+          "label": { "type": "string", "example": "United Kingdom" }
+        },
+        "required": ["value"]
       },
       "point_of_entry_port": {
         "type": "string",
@@ -409,9 +419,16 @@
                     { "const": "4", "title": "Planting" },
                     { "const": "5", "title": "Processing" },
                     { "const": "6", "title": "Research" },
-                    { "const": "7", "title": "Research" },
-                    { "const": "8", "title": "Soil protection" },
-                    { "const": "9", "title": "Sprouting for consumption" }
+                    { "const": "7", "title": "Soil protection" },
+                    { "const": "8", "title": "Sprouting for consumption" },
+                    { "const": "9", "title": "Growing media" },
+                    { "const": "10", "title": "Animal feed" },
+                    { "const": "11", "title": "Value addition" },
+                    { "const": "12", "title": "Weed control" },
+                    { "const": "13", "title": "Nutritional supplement" },
+                    { "const": "14", "title": "Medicinal purpose" },
+                    { "const": "15", "title": "Fertilizer / soil amendments" },
+                    { "const": "16", "title": "Packing materials" }
                   ]
                 },
                 "label": { "type": "string" }
