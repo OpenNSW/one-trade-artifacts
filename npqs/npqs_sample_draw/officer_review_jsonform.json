@@ -31,10 +31,7 @@
     "elements": [
       {
         "type": "Control",
-        "scope": "#/properties/sample_number",
-        "options": {
-          "readonly": true
-        }
+        "scope": "#/properties/sample_number"
       },
       {
         "type": "Control",
