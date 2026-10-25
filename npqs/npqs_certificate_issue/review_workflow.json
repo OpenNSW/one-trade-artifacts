@@ -31,15 +31,6 @@
       }
     },
     {
-      "id": "generate_replacement_reference",
-      "type": "TASK",
-      "task_template_id": "npqs-certificate-issue--generate-replacement-reference",
-      "input_mapping": {},
-      "output_mapping": {
-        "refid.replacement_reference_number": "reviewform.replacement_reference_number"
-      }
-    },
-    {
       "id": "userform",
       "type": "TASK",
       "task_template_id": "npqs-certificate-issue--officer-review",
@@ -53,7 +44,6 @@
       },
       "output_mapping": {
         "__command": "command",
-        "certificate_id": "reviewform.certificate_id",
         "certificate_url?": "reviewform.certificate_url",
         "comments?": "reviewform.comments",
         "certificate_items?": "reviewform.certificate_items"
@@ -70,7 +60,7 @@
       "task_template_id": "npqs-certificate-issue--generate-certificate",
       "input_mapping": {
         "submission": "application",
-        "reviewform.certificate_id": "certificate_number",
+        "reviewform.ephyto_reference_number": "certificate_number",
         "reviewform.certificate_items?": "items"
       },
       "output_mapping": {
@@ -118,25 +108,13 @@
       "id": "e_both",
       "source_id": "reference_type_split",
       "target_id": "generate_both_references",
-      "condition": "submission.ephyto_required == true && submission.certificate_type == 're-export'"
+      "condition": "submission.certificate_type == 're-export'"
     },
     {
       "id": "e_ephyto",
       "source_id": "reference_type_split",
       "target_id": "generate_ephyto_reference",
-      "condition": "submission.ephyto_required == true && submission.certificate_type in [nil, 'export']"
-    },
-    {
-      "id": "e_replacement",
-      "source_id": "reference_type_split",
-      "target_id": "generate_replacement_reference",
-      "condition": "submission.ephyto_required != true && submission.certificate_type == 're-export'"
-    },
-    {
-      "id": "e_no_generated_reference",
-      "source_id": "reference_type_split",
-      "target_id": "userform",
-      "condition": "submission.ephyto_required != true && submission.certificate_type in [nil, 'export']"
+      "condition": "submission.certificate_type in [nil, 'export']"
     },
     {
       "id": "e_both_to_form",
@@ -146,11 +124,6 @@
     {
       "id": "e_ephyto_to_form",
       "source_id": "generate_ephyto_reference",
-      "target_id": "userform"
-    },
-    {
-      "id": "e_replacement_to_form",
-      "source_id": "generate_replacement_reference",
       "target_id": "userform"
     },
     {

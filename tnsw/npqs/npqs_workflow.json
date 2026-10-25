@@ -725,7 +725,6 @@
         "commodities?": "certificate_items"
       },
       "output_mapping": {
-        "certificate_id": "npqs.certificate_id",
         "certificate_items?": "npqs.certificate_items",
         "replacement_reference_number?": "npqs.replacement_reference_number",
         "ephyto_reference_number?": "npqs.ephyto_reference_number"

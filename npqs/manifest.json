@@ -961,12 +961,6 @@
       "path": "npqs_certificate_issue/officer_review.json"
     },
     {
-      "id": "npqs-certificate-issue--generate-replacement-reference",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs_certificate_issue/generate_replacement_reference.json"
-    },
-    {
       "id": "npqs-issue-certificate--officer-form",
       "kind": "generic_template",
       "version": "",

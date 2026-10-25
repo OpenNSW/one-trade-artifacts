@@ -18,7 +18,6 @@
         "certificate_items?": "submission.certificate_items"
       },
       "output_mapping": {
-        "certificate_id": "certificate_id",
         "certificate_url?": "certificate_url",
         "comments?": "comments",
         "replacement_reference_number?": "replacement_reference_number",
