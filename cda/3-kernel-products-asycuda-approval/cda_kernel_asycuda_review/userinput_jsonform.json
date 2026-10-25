@@ -873,34 +873,24 @@
             "type": "Control",
             "scope": "#/properties/exporter_name",
             "options": {
-              "placeholder": "Select the exporter\u2026"
+              "placeholder": "Select the exporter…"
             }
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/exporter_email"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/cusdec_number"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/exporter_email"
           },
           {
-            "type": "HorizontalLayout",
-            "elements": [
-              {
-                "type": "Control",
-                "scope": "#/properties/destination"
-              },
-              {
-                "type": "Control",
-                "scope": "#/properties/expected_export_date"
-              }
-            ]
+            "type": "Control",
+            "scope": "#/properties/cusdec_number"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/destination"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/expected_export_date"
           }
         ]
       },
@@ -916,43 +906,28 @@
                 "type": "VerticalLayout",
                 "elements": [
                   {
-                    "type": "HorizontalLayout",
-                    "elements": [
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/manufacturer_name"
-                      },
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/manufacturer_email"
-                      }
-                    ]
+                    "type": "Control",
+                    "scope": "#/properties/manufacturer_name"
                   },
                   {
-                    "type": "HorizontalLayout",
-                    "elements": [
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/product_type"
-                      },
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/hs_code"
-                      }
-                    ]
+                    "type": "Control",
+                    "scope": "#/properties/manufacturer_email"
                   },
                   {
-                    "type": "HorizontalLayout",
-                    "elements": [
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/quantity_weight_kg"
-                      },
-                      {
-                        "type": "Control",
-                        "scope": "#/properties/manufactured_date"
-                      }
-                    ]
+                    "type": "Control",
+                    "scope": "#/properties/product_type"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/hs_code"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/quantity_weight_kg"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/manufactured_date"
                   },
                   {
                     "type": "HorizontalLayout",
@@ -972,7 +947,11 @@
                     "scope": "#/properties/whatsapp_number"
                   }
                 ]
-              }
+              },
+              "display": "cards",
+              "itemLabel": "Product",
+              "summary": "{product_type} · {quantity_weight_kg} kg",
+              "summaryDetail": "{manufacturer_name} · HS {hs_code}"
             }
           }
         ]
