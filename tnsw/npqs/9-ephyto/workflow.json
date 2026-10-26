@@ -20,7 +20,6 @@
         "replacement_reference_number?": "replacement_reference_number"
       },
       "output_mapping": {
-        "hub_destination": "officerinput.hub_destination",
         "send_application_documents?": "officerinput.send_application_documents",
         "send_treatment_certificate?": "officerinput.send_treatment_certificate",
         "send_supervision_report?": "officerinput.send_supervision_report",
@@ -37,7 +36,6 @@
         "userform": "userform",
         "userform.date_of_inspection?": "date_of_inspection",
         "certificate_id": "certificate_id",
-        "officerinput.hub_destination": "hub_destination",
         "certificate_items?": "certificate_items",
         "officerinput.send_application_documents?": "send_application_documents",
         "treatment_certificate_url?": "documents.treatment_certificate.url",
