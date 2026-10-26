@@ -34,24 +34,24 @@
       "templateId": "cda-kcfn-apply--feedback",
       "title": "Officer Feedback & Deficiencies",
       "projector": "MARKDOWN",
-      "dataKey": "reviewerform.rejection_reason",
+      "dataKey": "rejection_reason",
       "visibleWhen": {
         "states": [
           "PENDING_USER"
         ],
-        "requireDataKey": "reviewerform.rejection_reason"
+        "requireDataKey": "rejection_reason"
       }
     },
     "review_history": {
       "templateId": "cda-kcfn-apply--previous-feedback",
       "title": "Review History",
       "projector": "MARKDOWN",
-      "dataKey": "reviewerform.rejection_reason",
+      "dataKey": "rejection_reason",
       "visibleWhen": {
         "states": [
           "QUEUED_EXTERNALLY"
         ],
-        "requireDataKey": "reviewerform.rejection_reason"
+        "requireDataKey": "rejection_reason"
       }
     },
     "user_form": {

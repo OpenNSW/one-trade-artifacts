@@ -68,6 +68,7 @@
       "type": "TASK",
       "task_template_id": "npqs-apply-phyto-cert--external-review",
       "input_mapping": {
+        "reviewerform?": "reviewerform",
         "userform?": "userform",
         "reviewerform.reference_number?": "submission.reference_number",
         "userform": "submission",

@@ -57,6 +57,7 @@
       "type": "TASK",
       "task_template_id": "cda-kcfn-inspection--officer-review",
       "input_mapping": {
+        "reviewerform.rejection_reason?": "rejection_reason",
         "userform?": "userform",
         "userform": "submission",
         "agency_token?": "replyToken"

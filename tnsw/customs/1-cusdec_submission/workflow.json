@@ -79,6 +79,7 @@
       "type": "TASK",
       "task_template_id": "customs-cusdec--external-review",
       "input_mapping": {
+        "reviewerform?": "reviewerform",
         "cig?": "cig",
         "userform?": "userform",
         "userform": "submission"
