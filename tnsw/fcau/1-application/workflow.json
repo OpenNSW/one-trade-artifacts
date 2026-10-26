@@ -32,6 +32,7 @@
       "type": "TASK",
       "task_template_id": "fcau-apply-health-cert--external-review",
       "input_mapping": {
+        "reviewerform?": "reviewerform",
         "userform?": "userform",
         "userform": "submission",
         "agency_token?": "replyToken"
