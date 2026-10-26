@@ -1,0 +1,45 @@
+name: Validate payload schemas
+
+on:
+  pull_request:
+    paths:
+      - "tnsw/**"
+      - "*/manifest.json"
+      - "cda/**"
+      - "efc/**"
+      - "fcau/**"
+      - "npqs/**"
+      - "sltb/**"
+      - ".github/scripts/check_agency_authz.py"
+      - ".github/scripts/check_payload_schema.py"
+      - ".github/workflows/validate-payload-schema.yml"
+  push:
+    branches: [main]
+    paths:
+      - "tnsw/**"
+      - "*/manifest.json"
+      - "cda/**"
+      - "efc/**"
+      - "fcau/**"
+      - "npqs/**"
+      - "sltb/**"
+      - ".github/scripts/check_agency_authz.py"
+      - ".github/scripts/check_payload_schema.py"
+      - ".github/workflows/validate-payload-schema.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Every form step names the form its render shows
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Check every form step names the form its render shows
+        run: python .github/scripts/check_payload_schema.py

@@ -221,6 +221,13 @@ See `tnsw/fcau/3-2-warehouse_inspection/workflow.json` or
   and `configs/agency/<agency>/catalog.json` in nsw-srilanka).
   `.github/scripts/check_agency_authz.py` works each step's rule out from the artifacts
   and fails CI on any difference.
+- A step a person fills in a form on lists a `payload_schema` extension
+  (`{"id": "payload_schema", "phase": "PRE_RESUME", "properties": {"form": "<form id>"}}`),
+  so the server checks the submission against that form's schema. `form` must be the form
+  the step's render shows, with a button, in the state the step waits in.
+  `.github/scripts/check_payload_schema.py` fails CI on a form step without it, a `form`
+  the render doesn't show, or the extension on a step no person completes. A step that
+  can't take it is listed, with the reason, in the script's `EXEMPT`.
 - **Drafts never go through the workflow.** A step that offers "Save as Draft"
   declares `"draft": {"command": "save_as_draft"}` on its `subtask_template`, and its
   render handle uses `"element": "draft_action"`. The portal saves it with

@@ -73,7 +73,6 @@
         "userform": "userform",
         "userform.date_of_inspection?": "date_of_inspection",
         "certificate_id": "certificate_id",
-        "hub_destination?": "hub_destination",
         "certificate_items?": "certificate_items",
         "action?": "action"
       },
@@ -194,7 +193,6 @@
         "replacement_hub_error?": "submission.previous_error"
       },
       "output_mapping": {
-        "hub_destination": "officerinput.hub_destination",
         "send_application_documents?": "officerinput.send_application_documents",
         "send_treatment_certificate?": "officerinput.send_treatment_certificate",
         "send_supervision_report?": "officerinput.send_supervision_report",
@@ -211,7 +209,6 @@
         "userform": "userform",
         "userform.date_of_inspection?": "date_of_inspection",
         "new_certificate_id": "certificate_id",
-        "officerinput.hub_destination": "hub_destination",
         "certificate_items?": "certificate_items",
         "reference_number?": "reference_number",
         "certificate_id": "replacement.replaced_number",
@@ -233,8 +230,7 @@
         "ephyto.error?": "replacement_hub_error",
         "ephyto.tracking_number?": "ephyto.tracking_number",
         "ephyto.tracking_info?": "ephyto.tracking_info",
-        "certificate_id": "certificate_id",
-        "hub_destination": "hub_destination"
+        "certificate_id": "certificate_id"
       }
     },
     {

@@ -4,17 +4,6 @@
   "schema": {
     "type": "object",
     "properties": {
-      "hub_destination": {
-        "type": "string",
-        "title": "Destination IPPC Hub Connection",
-        "oneOf": [
-          {
-            "const": "LK2",
-            "title": "Sri Lanka (LK2)"
-          }
-        ],
-        "default": "LK2"
-      },
       "send_application_documents": {
         "type": "boolean",
         "title": "Documents attached to the application",
@@ -51,18 +40,11 @@
         "description": "Uploaded at the supporting documents step. Sent with the certificate and listed on it as accompanying the consignment.",
         "default": true
       }
-    },
-    "required": [
-      "hub_destination"
-    ]
+    }
   },
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
-      {
-        "type": "Control",
-        "scope": "#/properties/hub_destination"
-      },
       {
         "type": "Group",
         "label": "Documents to Send with the Certificate",
