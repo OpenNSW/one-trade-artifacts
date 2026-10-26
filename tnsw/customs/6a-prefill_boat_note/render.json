@@ -1,0 +1,12 @@
+{
+  "id": "customs-prefill-boat-note-flow:render",
+  "type": "SYSTEM",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
+  "sections": {},
+  "states": {}
+}

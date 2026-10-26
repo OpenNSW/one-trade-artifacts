@@ -1,0 +1,31 @@
+{
+  "id": "cda-lot-adjustment--payment",
+  "task_type": "PAYMENT",
+  "output_namespace": "payment",
+  "plugin_properties": {
+    "org_id": "cda",
+    "service_id": "app_fee",
+    "amount": "604.75",
+    "currency": "LKR",
+    "reference": {
+      "issuer": "CDA",
+      "id_type": "fee_payment_ref",
+      "params": {
+        "exporterId": "/exporter_id"
+      },
+      "values": {
+        "mainCategory": "01",
+        "subCategory": "00002"
+      }
+    }
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "PENDING_PAYMENT": { "submit": ["system"] }
+      }
+    }
+  ]
+}

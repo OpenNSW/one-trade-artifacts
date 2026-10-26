@@ -1,0 +1,4 @@
+{
+  "id": "cda-lot-adjustment--payment-details",
+  "template": "### Amendment Fee\n\nUse this payment reference to pay the amendment fee via the GovPay option in your banking app.\n\n* **Reference Number**: `{{.reference_number}}`\n* **Amendment Fee**: **{{.amount}} {{.currency}}**"
+}

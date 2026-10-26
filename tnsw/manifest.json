@@ -2059,6 +2059,30 @@
       "path": "cda/1-export-coconut-certificate-registration/4-lot_adjustment/withdraw_review.json"
     },
     {
+      "id": "cda-lot-adjustment--select-method-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/4-lot_adjustment/select_method_jsonform.json"
+    },
+    {
+      "id": "cda-lot-adjustment--select-method",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/4-lot_adjustment/select_method.json"
+    },
+    {
+      "id": "cda-lot-adjustment--payment-details",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/4-lot_adjustment/payment_details_markdown.json"
+    },
+    {
+      "id": "cda-lot-adjustment--payment",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/4-lot_adjustment/payment.json"
+    },
+    {
       "id": "cda-lot-adjustment-flow",
       "kind": "workflow",
       "version": "",
@@ -2699,6 +2723,30 @@
       "kind": "task_template",
       "version": "",
       "path": "customs/5-wait_cdn_ack/task_template.json"
+    },
+    {
+      "id": "customs-prefill-boat-note-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/6a-prefill_boat_note/render.json"
+    },
+    {
+      "id": "customs-prefill-boat-note--prefill",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "customs/6a-prefill_boat_note/prefill.json"
+    },
+    {
+      "id": "customs-prefill-boat-note-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "customs/6a-prefill_boat_note/workflow.json"
+    },
+    {
+      "id": "customs-prefill-boat-note-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "customs/6a-prefill_boat_note/task_template.json"
     },
     {
       "id": "customs-create-boat-note-flow:render",
