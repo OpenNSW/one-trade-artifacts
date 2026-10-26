@@ -4,11 +4,25 @@
   "nodes": [
     { "id": "start", "type": "START" },
     {
+      "id": "retrieve_cusdec",
+      "type": "TASK",
+      "task_template_id": "customs-prepare-cdn-items--cusdec-retrieve",
+      "input_mapping": {
+        "cusdec_ref?": "cusdec_ref",
+        "userform?": "userform"
+      },
+      "output_mapping": {
+        "cusdec_latest.declaration?": "declaration",
+        "cusdec_latest.cdn_refs?": "cdn_refs"
+      }
+    },
+    {
       "id": "prefill_boat_note",
       "type": "TASK",
       "task_template_id": "customs-prefill-boat-note--prefill",
       "input_mapping": {
-        "cusdec_ref?": "cusdec_ref",
+        "declaration?": "declaration",
+        "cdn_refs?": "cdn_refs",
         "userform?": "userform",
         "containers": "containers"
       },
@@ -20,7 +34,8 @@
     { "id": "end", "type": "END" }
   ],
   "edges": [
-    { "id": "e1", "source_id": "start", "target_id": "prefill_boat_note" },
-    { "id": "e2", "source_id": "prefill_boat_note", "target_id": "end" }
+    { "id": "e1", "source_id": "start", "target_id": "retrieve_cusdec" },
+    { "id": "e2", "source_id": "retrieve_cusdec", "target_id": "prefill_boat_note" },
+    { "id": "e3", "source_id": "prefill_boat_note", "target_id": "end" }
   ]
 }
