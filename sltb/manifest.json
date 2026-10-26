@@ -145,12 +145,6 @@
       "path": "sltb_xml_download/submission_view_markdown.json"
     },
     {
-      "id": "sltb-xml-download--cusdec-notice",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb_xml_download/cusdec_notice_markdown.json"
-    },
-    {
       "id": "sltb_final_decision",
       "kind": "task_config",
       "version": "",
