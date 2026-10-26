@@ -135,13 +135,13 @@
       "id": "e_adjust_paid",
       "source_id": "choice_gateway",
       "target_id": "officer_review",
-      "condition": "adjustment_choice == 'request_lot_adjustment' && payment_status == 'success'"
+      "condition": "adjustment_choice == 'request_lot_adjustment' && $env?.payment_status == 'success'"
     },
     {
       "id": "e_adjust_pay",
       "source_id": "choice_gateway",
       "target_id": "select_amendment_method",
-      "condition": "adjustment_choice == 'request_lot_adjustment' && payment_status != 'success'"
+      "condition": "adjustment_choice == 'request_lot_adjustment' && $env?.payment_status != 'success'"
     },
     {
       "id": "e_method_to_pay",
@@ -157,13 +157,13 @@
       "id": "e_amendment_paid",
       "source_id": "gw_amendment_paid",
       "target_id": "officer_review",
-      "condition": "payment_status == 'success'"
+      "condition": "$env?.payment_status == 'success'"
     },
     {
       "id": "e_amendment_retry",
       "source_id": "gw_amendment_paid",
       "target_id": "select_amendment_method",
-      "condition": "payment_status != 'success'"
+      "condition": "$env?.payment_status != 'success'"
     },
     {
       "id": "e3",

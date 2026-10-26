@@ -1,6 +1,6 @@
 {
   "id": "cda-lot-adjustment--select-method-form",
-  "title": "Certificate Amendment Fee",
+  "title": "Amendment Fee",
   "schema": {
     "type": "object",
     "required": [
@@ -25,7 +25,7 @@
     "elements": [
       {
         "type": "Label",
-        "text": "A revised certificate requires the amendment fee of LKR 604.75. Select the payment method. The next screen shows the payment reference and how to pay."
+        "text": "A certificate amendment is charged only the amendment fee of LKR 604.75. The certificate charge of LKR 1814.25 is not charged again. Select the payment method. The next screen shows the payment reference and how to pay."
       },
       {
         "type": "Control",

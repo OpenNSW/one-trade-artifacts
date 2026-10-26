@@ -83,7 +83,7 @@
     },
     "amendment_method": {
       "templateId": "cda-lot-adjustment--select-method-form",
-      "title": "Certificate Amendment Fee",
+      "title": "Amendment Fee",
       "projector": "FORM",
       "dataKey": "payment_method",
       "visibleWhen": {
@@ -102,7 +102,7 @@
     },
     "amendment_payment_details": {
       "templateId": "cda-lot-adjustment--payment-details",
-      "title": "Certificate Amendment Fee",
+      "title": "Amendment Fee",
       "projector": "MARKDOWN",
       "dataKey": "payment",
       "visibleWhen": {

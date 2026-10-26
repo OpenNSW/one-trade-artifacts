@@ -1,4 +1,4 @@
 {
   "id": "cda-lot-adjustment--payment-details",
-  "template": "### Certificate Amendment Fee\n\nPay the amendment fee for the revised certificate. Use this payment reference with the GovPay option in your banking app.\n\n* **Reference Number**: `{{.reference_number}}`\n* **Amount**: **{{.amount}} {{.currency}}**\n\nThe CDA officer issues the revised certificate after this payment is confirmed. If the officer later asks for a correction, this fee is not charged again."
+  "template": "### Amendment Fee\n\nPay the amendment fee for the revised certificate. The certificate charge of LKR 1814.25 is not charged for an amendment. Use this payment reference with the GovPay option in your banking app.\n\n* **Reference Number**: `{{.reference_number}}`\n* **Amendment Fee**: **{{.amount}} {{.currency}}**\n\nThe CDA officer issues the revised certificate after this payment is confirmed. If the officer later asks for a correction, this fee is not charged again."
 }
