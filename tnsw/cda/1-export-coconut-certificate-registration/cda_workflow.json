@@ -97,7 +97,8 @@
         "cda.salmonella_certificate_file?": "salmonella_certificate_file",
         "cda.userform.cert_type?": "cert_type",
         "cda.adjustment_feedback?": "adjustment_feedback",
-        "cda.userform.exporter_details?": "exporter_details"
+        "cda.userform.exporter_details?": "exporter_details",
+        "_iter.input.company.data.agencies.cda.registration_number?": "exporter_id"
       },
       "output_mapping": {
         "adjustment_choice": "cda.adjustment_choice",

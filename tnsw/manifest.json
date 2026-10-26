@@ -2059,6 +2059,30 @@
       "path": "cda/1-export-coconut-certificate-registration/4-lot_adjustment/withdraw_review.json"
     },
     {
+      "id": "cda-lot-adjustment--select-method-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/4-lot_adjustment/select_method_jsonform.json"
+    },
+    {
+      "id": "cda-lot-adjustment--select-method",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/4-lot_adjustment/select_method.json"
+    },
+    {
+      "id": "cda-lot-adjustment--payment-details",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/4-lot_adjustment/payment_details_markdown.json"
+    },
+    {
+      "id": "cda-lot-adjustment--payment",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/4-lot_adjustment/payment.json"
+    },
+    {
       "id": "cda-lot-adjustment-flow",
       "kind": "workflow",
       "version": "",

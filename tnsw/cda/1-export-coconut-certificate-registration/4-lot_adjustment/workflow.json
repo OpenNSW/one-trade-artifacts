@@ -35,11 +35,43 @@
       "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
+      "id": "select_amendment_method",
+      "type": "TASK",
+      "task_template_id": "cda-lot-adjustment--select-method",
+      "input_mapping": {
+        "reference_number": "amendment_payment"
+      },
+      "output_mapping": {
+        "selected_method": "selected_method"
+      }
+    },
+    {
+      "id": "pay_amendment_fee",
+      "type": "TASK",
+      "task_template_id": "cda-lot-adjustment--payment",
+      "input_mapping": {
+        "reference_number": "reference_number",
+        "selected_method": "selected_method",
+        "exporter_id?": "exporter_id"
+      },
+      "output_mapping": {
+        "payment_status": "payment_status",
+        "payment_receipt_url?": "payment.payment_receipt_url",
+        "selected_method?": "payment.selected_method"
+      }
+    },
+    {
+      "id": "gw_amendment_paid",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
       "id": "officer_review",
       "type": "TASK",
       "task_template_id": "cda-lot-adjustment-officer--review",
       "input_mapping": {
         "reference_number": "submission.reference_number",
+        "reference_number?": "reference_number",
         "adjustment_choice": "submission.adjustment_choice",
         "exporter_details": "submission.exporter_details",
         "cusdec_number": "submission.cusdec_number",
@@ -100,10 +132,38 @@
       "condition": "adjustment_choice == 'complete_application'"
     },
     {
-      "id": "e_adjust",
+      "id": "e_adjust_paid",
       "source_id": "choice_gateway",
       "target_id": "officer_review",
-      "condition": "adjustment_choice == 'request_lot_adjustment'"
+      "condition": "adjustment_choice == 'request_lot_adjustment' && payment_status == 'success'"
+    },
+    {
+      "id": "e_adjust_pay",
+      "source_id": "choice_gateway",
+      "target_id": "select_amendment_method",
+      "condition": "adjustment_choice == 'request_lot_adjustment' && payment_status != 'success'"
+    },
+    {
+      "id": "e_method_to_pay",
+      "source_id": "select_amendment_method",
+      "target_id": "pay_amendment_fee"
+    },
+    {
+      "id": "e_pay_to_gw",
+      "source_id": "pay_amendment_fee",
+      "target_id": "gw_amendment_paid"
+    },
+    {
+      "id": "e_amendment_paid",
+      "source_id": "gw_amendment_paid",
+      "target_id": "officer_review",
+      "condition": "payment_status == 'success'"
+    },
+    {
+      "id": "e_amendment_retry",
+      "source_id": "gw_amendment_paid",
+      "target_id": "select_amendment_method",
+      "condition": "payment_status != 'success'"
     },
     {
       "id": "e3",
