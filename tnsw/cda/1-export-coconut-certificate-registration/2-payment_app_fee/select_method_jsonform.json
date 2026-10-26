@@ -25,7 +25,7 @@
     "elements": [
       {
         "type": "Label",
-        "text": "Please select the preferred payment method. The next screen will show you the payment amount and instructions for completing the payment."
+        "text": "The certificate charge is LKR 1814.25 for the Salmonella fee and the Physical Quality Certification. Select the payment method. The next screen shows the payment reference and how to pay."
       },
       {
         "type": "Control",

@@ -48,7 +48,8 @@
       "visibleWhen": {
         "states": [
           "PENDING_USER"
-        ]
+        ],
+        "requireDataKey": "reference_number"
       }
     },
     "workspace": {
@@ -58,7 +59,8 @@
       "visibleWhen": {
         "states": [
           "PENDING_USER"
-        ]
+        ],
+        "requireDataKey": "reference_number"
       },
       "handles": [
         {
@@ -75,6 +77,37 @@
       "visibleWhen": {
         "states": [
           "PENDING_USER"
+        ],
+        "requireDataKey": "reference_number"
+      }
+    },
+    "amendment_method": {
+      "templateId": "cda-lot-adjustment--select-method-form",
+      "title": "Amendment Fee",
+      "projector": "FORM",
+      "dataKey": "payment_method",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "amendment_payment"
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Proceed to Payment",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "amendment_payment_details": {
+      "templateId": "cda-lot-adjustment--payment-details",
+      "title": "Amendment Fee",
+      "projector": "MARKDOWN",
+      "dataKey": "payment",
+      "visibleWhen": {
+        "states": [
+          "PENDING_PAYMENT"
         ]
       }
     },
@@ -96,6 +129,9 @@
           "command": "submit"
         }
       ]
+    },
+    "PENDING_PAYMENT": {
+      "actions": []
     }
   }
 }

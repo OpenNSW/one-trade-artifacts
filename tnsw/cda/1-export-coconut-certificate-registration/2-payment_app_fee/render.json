@@ -1,7 +1,7 @@
 {
   "id": "cda-pay-app-fee-flow:render",
   "type": "PAYMENT",
-  "title": "[CDA] Pay Application Fee",
+  "title": "[CDA] Salmonella Fee and Physical Quality Certification",
   "read": {
     "roles": [
       "trader",
@@ -29,7 +29,7 @@
     },
     "payment_details": {
       "templateId": "cda-pay-app-fee--payment-details-markdown",
-      "title": "Application Fee Details",
+      "title": "Certificate Charge",
       "projector": "MARKDOWN",
       "dataKey": "payment",
       "visibleWhen": {
