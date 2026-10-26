@@ -33,208 +33,12 @@
       },
       "output_mapping": {
         "action": "action.action",
-        "withdrawal_reason?": "action.withdrawal_reason"
+        "withdrawal_reason?": "action.withdrawal_reason",
+        "replacement_reason?": "action.replacement_reason"
       }
     },
     {
       "id": "gw_action",
-      "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
-    },
-    {
-      "id": "request_withdrawal",
-      "type": "TASK",
-      "task_template_id": "npqs-certificate-status--request-withdrawal",
-      "input_mapping": {
-        "certificate_id": "certificate_id",
-        "action?": "action",
-        "reference_number?": "submission.reference_number",
-        "certificate_id?": "submission.certificate_id",
-        "ephyto.tracking_number?": "submission.tracking_number",
-        "ephyto.tracking_info?": "submission.tracking_info",
-        "action.withdrawal_reason?": "submission.withdrawal_reason",
-        "withdrawal_hub_error?": "submission.hub_error"
-      },
-      "output_mapping": {
-        "decision": "withdrawal.decision",
-        "remarks?": "withdrawal.remarks"
-      }
-    },
-    {
-      "id": "gw_decision",
-      "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
-    },
-    {
-      "id": "hub_withdraw",
-      "type": "TASK",
-      "task_template_id": "npqs-certificate-status--hub-withdraw",
-      "input_mapping": {
-        "userform": "userform",
-        "userform.date_of_inspection?": "date_of_inspection",
-        "certificate_id": "certificate_id",
-        "certificate_items?": "certificate_items",
-        "action?": "action"
-      },
-      "output_mapping": {
-        "hubwithdraw.withdrawn": "withdrawn",
-        "hubwithdraw.error?": "withdrawal_hub_error",
-        "hubwithdraw.tracking_number?": "withdrawal_tracking_number"
-      }
-    },
-    {
-      "id": "gw_withdrawn",
-      "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
-    },
-    {
-      "id": "request_replacement",
-      "type": "TASK",
-      "task_template_id": "npqs-certificate-status--request-replacement",
-      "input_mapping": {
-        "certificate_id": "certificate_id",
-        "action?": "action",
-        "reference_number?": "submission.reference_number",
-        "certificate_id?": "submission.certificate_id",
-        "ephyto.tracking_number?": "submission.tracking_number",
-        "ephyto.tracking_info?": "submission.tracking_info",
-        "action.replacement_reason?": "submission.replacement_reason"
-      },
-      "output_mapping": {
-        "decision": "replacement.decision",
-        "remarks?": "replacement.remarks"
-      }
-    },
-    {
-      "id": "gw_replacement",
-      "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
-    },
-    {
-      "id": "amend_application",
-      "type": "TASK",
-      "task_template_id": "npqs-apply-phyto-cert--user-input",
-      "input_mapping": {
-        "userform?": "userform"
-      },
-      "output_mapping": {
-        "certificate_type": "userform.certificate_type",
-        "shipment_value": "userform.shipment_value",
-        "applicant_name": "userform.applicant_name",
-        "nppo_office_location": "userform.nppo_office_location",
-        "importing_country": "userform.importing_country",
-        "transit_countries?": "userform.transit_countries",
-        "exporter_name": "userform.exporter_name",
-        "exporter_address": "userform.exporter_address",
-        "exporter_country?": "userform.exporter_country",
-        "consignee_name": "userform.consignee_name",
-        "consignee_address": "userform.consignee_address",
-        "consignee_country": "userform.consignee_country",
-        "distinguishing_marks?": "userform.distinguishing_marks",
-        "point_of_entry_country?": "userform.point_of_entry_country",
-        "point_of_entry_port?": "userform.point_of_entry_port",
-        "seal_number?": "userform.seal_number",
-        "estimated_shipment_date?": "userform.estimated_shipment_date",
-        "transport_details?": "userform.transport_details",
-        "transport_mode?": "userform.transport_mode",
-        "vessel_name?": "userform.vessel_name",
-        "voyage_number?": "userform.voyage_number",
-        "commodities": "userform.commodities",
-        "origin_country?": "userform.origin_country",
-        "origin_area?": "userform.origin_area",
-        "import_permit_number?": "userform.import_permit_number",
-        "proposed_inspection_date?": "userform.proposed_inspection_date",
-        "proposed_inspection_time?": "userform.proposed_inspection_time",
-        "place_of_inspection?": "userform.place_of_inspection",
-        "additional_declaration?": "userform.additional_declaration",
-        "disinfestation_treatment?": "userform.disinfestation_treatment",
-        "attachments?": "userform.attachments"
-      }
-    },
-    {
-      "id": "replacement_note",
-      "type": "TASK",
-      "task_template_id": "npqs-certificate-status--replacement-note",
-      "input_mapping": {
-        "certificate_id": "certificate_id",
-        "action.replacement_reason?": "notes.note"
-      },
-      "output_mapping": {
-        "note": "replacement_note"
-      }
-    },
-    {
-      "id": "reissue",
-      "type": "TASK",
-      "task_template_id": "npqs-issue-certificate--officer-review",
-      "input_mapping": {
-        "ephyto_required?": "submission.ephyto_required",
-        "reference_number?": "reference_number",
-        "reference_number": "submission.reference_number",
-        "userform": "submission",
-        "certificate_items?": "submission.certificate_items"
-      },
-      "output_mapping": {
-        "ephyto_reference_number": "new_certificate_id",
-        "certificate_items?": "certificate_items"
-      }
-    },
-    {
-      "id": "transmit_replacement",
-      "type": "TASK",
-      "task_template_id": "npqs-ephyto-upload--officer-transmit",
-      "input_mapping": {
-        "reference_number": "reference_number",
-        "new_certificate_id": "certificate_id",
-        "reference_number?": "submission.reference_number",
-        "new_certificate_id?": "submission.certificate_id",
-        "certificate_id?": "submission.replaced_certificate_id",
-        "replacement_note?": "submission.replacement_note",
-        "replacement_hub_error?": "submission.previous_error"
-      },
-      "output_mapping": {
-        "send_application_documents?": "officerinput.send_application_documents",
-        "send_treatment_certificate?": "officerinput.send_treatment_certificate",
-        "send_supervision_report?": "officerinput.send_supervision_report",
-        "send_invoice?": "officerinput.send_invoice",
-        "send_packing_list?": "officerinput.send_packing_list",
-        "send_additional_document?": "officerinput.send_additional_document"
-      }
-    },
-    {
-      "id": "submit_replacement",
-      "type": "TASK",
-      "task_template_id": "npqs-ephyto-upload--submit",
-      "input_mapping": {
-        "userform": "userform",
-        "userform.date_of_inspection?": "date_of_inspection",
-        "new_certificate_id": "certificate_id",
-        "certificate_items?": "certificate_items",
-        "reference_number?": "reference_number",
-        "certificate_id": "replacement.replaced_number",
-        "replacement_note": "replacement.reason",
-        "treatment_certificate_url?": "documents.treatment_certificate.url",
-        "officerinput.send_treatment_certificate?": "documents.treatment_certificate.send",
-        "supervision_report_url?": "documents.treatment_supervision_report.url",
-        "officerinput.send_supervision_report?": "documents.treatment_supervision_report.send",
-        "invoice_file_url?": "documents.commercial_invoice.url",
-        "officerinput.send_invoice?": "documents.commercial_invoice.send",
-        "packing_list_file_url?": "documents.packing_list.url",
-        "officerinput.send_packing_list?": "documents.packing_list.send",
-        "additional_file_url?": "documents.additional_supporting_document.url",
-        "officerinput.send_additional_document?": "documents.additional_supporting_document.send",
-        "officerinput.send_application_documents?": "send_application_documents"
-      },
-      "output_mapping": {
-        "ephyto.submitted": "replacement_submitted",
-        "ephyto.error?": "replacement_hub_error",
-        "ephyto.tracking_number?": "ephyto.tracking_number",
-        "ephyto.tracking_info?": "ephyto.tracking_info",
-        "certificate_id": "certificate_id"
-      }
-    },
-    {
-      "id": "gw_replaced",
       "type": "GATEWAY",
       "gateway_type": "EXCLUSIVE_SPLIT"
     },
@@ -245,131 +49,31 @@
   ],
   "edges": [
     {
-      "id": "e_start",
+      "id": "e1",
       "source_id": "start",
       "target_id": "refresh"
     },
     {
-      "id": "e_refresh_choose",
+      "id": "e2",
       "source_id": "refresh",
       "target_id": "choose"
     },
     {
-      "id": "e_withdraw",
-      "source_id": "gw_action",
-      "target_id": "request_withdrawal",
-      "condition": "action.action == 'withdraw'"
+      "id": "e3",
+      "source_id": "choose",
+      "target_id": "gw_action"
     },
     {
-      "id": "e_complete",
-      "source_id": "gw_action",
-      "target_id": "end",
-      "condition": "action.action == 'complete'"
-    },
-    {
-      "id": "e_check_again",
+      "id": "e4",
       "source_id": "gw_action",
       "target_id": "refresh",
       "condition": "action.action in [nil, 'refresh']"
     },
     {
-      "id": "e_choose_gw",
-      "source_id": "choose",
-      "target_id": "gw_action"
-    },
-    {
-      "id": "e_request_gw",
-      "source_id": "request_withdrawal",
-      "target_id": "gw_decision"
-    },
-    {
-      "id": "e_accepted",
-      "source_id": "gw_decision",
-      "target_id": "hub_withdraw",
-      "condition": "withdrawal.decision == 'accept'"
-    },
-    {
-      "id": "e_rejected",
-      "source_id": "gw_decision",
-      "target_id": "refresh",
-      "condition": "withdrawal.decision in [nil, 'reject']"
-    },
-    {
-      "id": "e_hub_gw",
-      "source_id": "hub_withdraw",
-      "target_id": "gw_withdrawn"
-    },
-    {
-      "id": "e_withdrawn",
-      "source_id": "gw_withdrawn",
-      "target_id": "end",
-      "condition": "withdrawn == true"
-    },
-    {
-      "id": "e_hub_refused",
-      "source_id": "gw_withdrawn",
-      "target_id": "request_withdrawal",
-      "condition": "withdrawn != true"
-    },
-    {
-      "id": "e_replace",
+      "id": "e5",
       "source_id": "gw_action",
-      "target_id": "request_replacement",
-      "condition": "action.action == 'replace'"
-    },
-    {
-      "id": "e_replacement_decided",
-      "source_id": "request_replacement",
-      "target_id": "gw_replacement"
-    },
-    {
-      "id": "e_replacement_accepted",
-      "source_id": "gw_replacement",
-      "target_id": "amend_application",
-      "condition": "replacement.decision == 'accept'"
-    },
-    {
-      "id": "e_replacement_rejected",
-      "source_id": "gw_replacement",
-      "target_id": "refresh",
-      "condition": "replacement.decision in [nil, 'reject']"
-    },
-    {
-      "id": "e_amended",
-      "source_id": "amend_application",
-      "target_id": "replacement_note"
-    },
-    {
-      "id": "e_noted",
-      "source_id": "replacement_note",
-      "target_id": "reissue"
-    },
-    {
-      "id": "e_reissued",
-      "source_id": "reissue",
-      "target_id": "transmit_replacement"
-    },
-    {
-      "id": "e_transmitted",
-      "source_id": "transmit_replacement",
-      "target_id": "submit_replacement"
-    },
-    {
-      "id": "e_replacement_submit_gw",
-      "source_id": "submit_replacement",
-      "target_id": "gw_replaced"
-    },
-    {
-      "id": "e_replaced",
-      "source_id": "gw_replaced",
-      "target_id": "refresh",
-      "condition": "replacement_submitted == true"
-    },
-    {
-      "id": "e_replacement_refused",
-      "source_id": "gw_replaced",
-      "target_id": "transmit_replacement",
-      "condition": "replacement_submitted != true"
+      "target_id": "end",
+      "condition": "action.action in ['complete', 'withdraw', 'replace']"
     }
   ]
 }

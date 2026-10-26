@@ -1,0 +1,4 @@
+{
+  "id": "npqs-certificate-replacement-request--completed-msg",
+  "template": "{{ if .notes }}### Replacement Note Sent\n\nYour amended application and note for replacing certificate `{{ .certificate_id }}` are with the NPQS officer, who issues the replacement certificate.{{ else }}### Replacement Request Rejected\n\nThe NPQS officer rejected your request to replace certificate `{{ .certificate_id }}`{{ with .replacementdecision }}{{ if .remarks }}: {{ .remarks }}{{ end }}{{ end }}. The certificate stands as issued.{{ end }}"
+}

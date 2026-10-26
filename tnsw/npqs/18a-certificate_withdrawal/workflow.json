@@ -1,0 +1,84 @@
+{
+  "id": "npqs-certificate-withdrawal",
+  "name": "Certificate Withdrawal",
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "request_withdrawal",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-status--request-withdrawal",
+      "input_mapping": {
+        "certificate_id": "certificate_id",
+        "action?": "action",
+        "reference_number?": "submission.reference_number",
+        "certificate_id?": "submission.certificate_id",
+        "ephyto.tracking_number?": "submission.tracking_number",
+        "ephyto.tracking_info?": "submission.tracking_info",
+        "action.withdrawal_reason?": "submission.withdrawal_reason",
+        "withdrawal_hub_error?": "submission.hub_error"
+      },
+      "output_mapping": {
+        "decision": "withdrawal.decision",
+        "remarks?": "withdrawal.remarks"
+      }
+    },
+    {
+      "id": "gw_decision",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "hub_withdraw",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-status--hub-withdraw",
+      "input_mapping": {
+        "userform": "userform",
+        "userform.date_of_inspection?": "date_of_inspection",
+        "certificate_id": "certificate_id",
+        "certificate_items?": "certificate_items",
+        "action?": "action"
+      },
+      "output_mapping": {
+        "hubwithdraw.withdrawn": "withdrawn",
+        "hubwithdraw.error?": "withdrawal_hub_error",
+        "hubwithdraw.tracking_number?": "withdrawal_tracking_number"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "request_withdrawal"
+    },
+    {
+      "id": "e2",
+      "source_id": "request_withdrawal",
+      "target_id": "gw_decision"
+    },
+    {
+      "id": "e3",
+      "source_id": "gw_decision",
+      "target_id": "hub_withdraw",
+      "condition": "withdrawal.decision == 'accept'"
+    },
+    {
+      "id": "e4",
+      "source_id": "gw_decision",
+      "target_id": "end",
+      "condition": "withdrawal.decision in [nil, 'reject']"
+    },
+    {
+      "id": "e5",
+      "source_id": "hub_withdraw",
+      "target_id": "end"
+    }
+  ]
+}

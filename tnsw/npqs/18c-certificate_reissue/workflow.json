@@ -1,0 +1,42 @@
+{
+  "id": "npqs-certificate-reissue",
+  "name": "Replacement Certificate Issue",
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "reissue",
+      "type": "TASK",
+      "task_template_id": "npqs-issue-certificate--officer-review",
+      "input_mapping": {
+        "ephyto_required?": "submission.ephyto_required",
+        "reference_number?": "reference_number",
+        "reference_number": "submission.reference_number",
+        "userform": "submission",
+        "certificate_items?": "submission.certificate_items"
+      },
+      "output_mapping": {
+        "ephyto_reference_number": "new_certificate_id",
+        "certificate_items?": "certificate_items"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "reissue"
+    },
+    {
+      "id": "e2",
+      "source_id": "reissue",
+      "target_id": "end"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "id": "npqs-certificate-replacement-transmit--completed-msg",
+  "template": "{{ $sent := false }}{{ with .ephyto }}{{ if .submitted }}{{ $sent = true }}{{ end }}{{ end }}{{ if $sent }}### Replacement Certificate Sent\n\nThe replacement certificate `{{ .certificate_id }}` was sent to the IPPC ePhyto Hub. Its delivery status appears in the next task.{{ else }}### Replacement Certificate Not Sent\n\nThe IPPC ePhyto Hub did not accept the replacement certificate{{ with .ephyto }}{{ if .error }}:\n\n> {{ .error }}{{ end }}{{ end }}\n\nIt goes back to the NPQS officer to send again.{{ end }}"
+}

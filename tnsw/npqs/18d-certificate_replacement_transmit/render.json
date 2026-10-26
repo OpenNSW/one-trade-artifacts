@@ -1,0 +1,43 @@
+{
+  "id": "npqs-certificate-replacement-transmit:render",
+  "type": "APPLICATION",
+  "title": "[NPQS] Replacement Certificate Transmission",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
+  "files": [
+    "documents.additional_supporting_document.url[*]",
+    "documents.commercial_invoice.url",
+    "documents.packing_list.url",
+    "userform.attachments[*].attachment_file_url"
+  ],
+  "sections": {
+    "with_officer": {
+      "templateId": "npqs-certificate-status--with-officer-msg",
+      "title": "With the NPQS Officer",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "STARTING",
+          "STARTING_STEP",
+          "QUEUED_EXTERNALLY",
+          "EPHYTO_SUBMITTED"
+        ]
+      }
+    },
+    "completed": {
+      "templateId": "npqs-certificate-replacement-transmit--completed-msg",
+      "title": "Outcome",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "COMPLETED"
+        ]
+      }
+    }
+  },
+  "states": {}
+}

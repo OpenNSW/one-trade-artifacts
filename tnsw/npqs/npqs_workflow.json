@@ -766,12 +766,104 @@
       "task_template_id": "npqs-certificate-status",
       "input_mapping": {
         "npqs.reference_number": "reference_number",
+        "npqs.ephyto_reference_number": "certificate_id",
+        "npqs.ephyto?": "ephyto",
+        "npqs.certificate_withdrawal?": "withdrawal",
+        "npqs.certificate_replacement?": "replacement"
+      },
+      "output_mapping": {
+        "action": "npqs.certificate_action",
+        "ephyto?": "npqs.ephyto"
+      }
+    },
+    {
+      "id": "gw_certificate_action",
+      "name": "Next Action",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "n10a_certificate_withdrawal",
+      "name": "Certificate Withdrawal",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-withdrawal",
+      "input_mapping": {
+        "npqs.ephyto_reference_number": "certificate_id",
+        "npqs.certificate_action": "action",
+        "npqs.reference_number": "reference_number",
+        "npqs.ephyto?": "ephyto",
+        "npqs.certificate_withdrawal_hub_error?": "withdrawal_hub_error",
         "npqs.userform": "userform",
         "npqs.date_of_inspection?": "userform.date_of_inspection",
+        "npqs.certificate_items?": "certificate_items"
+      },
+      "output_mapping": {
+        "withdrawal": "npqs.certificate_withdrawal",
+        "withdrawn?": "npqs.certificate_withdrawn",
+        "withdrawal_hub_error?": "npqs.certificate_withdrawal_hub_error"
+      }
+    },
+    {
+      "id": "gw_certificate_withdrawal",
+      "name": "Withdrawal Outcome",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "n10b_certificate_replacement_request",
+      "name": "Certificate Replacement Request",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-replacement-request",
+      "input_mapping": {
         "npqs.ephyto_reference_number": "certificate_id",
+        "npqs.certificate_action": "action",
+        "npqs.reference_number": "reference_number",
+        "npqs.ephyto?": "ephyto",
+        "npqs.userform": "userform"
+      },
+      "output_mapping": {
+        "replacement": "npqs.certificate_replacement",
+        "userform": "npqs.userform",
+        "replacement_note?": "npqs.certificate_replacement_note"
+      }
+    },
+    {
+      "id": "gw_certificate_replacement",
+      "name": "Replacement Decision",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "n10c_certificate_reissue",
+      "name": "Replacement Certificate Issue",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-reissue",
+      "input_mapping": {
+        "npqs.ephyto_required?": "ephyto_required",
+        "npqs.reference_number": "reference_number",
+        "npqs.userform": "userform",
+        "npqs.certificate_items?": "certificate_items"
+      },
+      "output_mapping": {
+        "new_certificate_id": "npqs.certificate_new_id",
+        "certificate_items?": "npqs.certificate_items"
+      }
+    },
+    {
+      "id": "n10d_certificate_replacement_transmit",
+      "name": "Replacement Certificate Transmission",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-replacement-transmit",
+      "input_mapping": {
+        "npqs.reference_number": "reference_number",
+        "npqs.certificate_new_id": "new_certificate_id",
+        "npqs.ephyto_reference_number": "certificate_id",
+        "npqs.certificate_replacement_note?": "replacement_note",
+        "npqs.certificate_replacement_hub_error?": "replacement_hub_error",
+        "npqs.userform": "userform",
+        "npqs.date_of_inspection?": "userform.date_of_inspection",
         "npqs.certificate_items?": "certificate_items",
         "npqs.ephyto?": "ephyto",
-        "npqs.ephyto_required?": "ephyto_required",
         "npqs.treatment_certificate_urls?": "treatment_certificate_url",
         "npqs.supervision_report_urls?": "supervision_report_url",
         "npqs.docs_traderinput.invoice_file_url?": "invoice_file_url",
@@ -779,12 +871,15 @@
         "npqs.docs_traderinput.additional_file_url?": "additional_file_url"
       },
       "output_mapping": {
-        "withdrawn?": "npqs.certificate_withdrawn"
+        "replacement_submitted": "npqs.certificate_replacement_submitted",
+        "replacement_hub_error?": "npqs.certificate_replacement_hub_error",
+        "ephyto?": "npqs.ephyto",
+        "certificate_id": "npqs.ephyto_reference_number"
       }
     },
     {
-      "id": "withdrawn_split",
-      "name": "Certificate Withdrawn?",
+      "id": "gw_certificate_replaced",
+      "name": "Replacement Sent",
       "type": "GATEWAY",
       "gateway_type": "EXCLUSIVE_SPLIT"
     },
@@ -1246,21 +1341,89 @@
       "target_id": "gw_treatment_split"
     },
     {
-      "id": "e_status_to_withdrawn_split",
+      "id": "e_status_action",
       "source_id": "n10_certificate_status",
-      "target_id": "withdrawn_split"
+      "target_id": "gw_certificate_action"
+    },
+    {
+      "id": "e_action_complete",
+      "source_id": "gw_certificate_action",
+      "target_id": "end_success",
+      "condition": "npqs.certificate_action.action == 'complete'"
+    },
+    {
+      "id": "e_action_withdraw",
+      "source_id": "gw_certificate_action",
+      "target_id": "n10a_certificate_withdrawal",
+      "condition": "npqs.certificate_action.action == 'withdraw'"
+    },
+    {
+      "id": "e_action_replace",
+      "source_id": "gw_certificate_action",
+      "target_id": "n10b_certificate_replacement_request",
+      "condition": "npqs.certificate_action.action == 'replace'"
+    },
+    {
+      "id": "e_withdrawal_outcome",
+      "source_id": "n10a_certificate_withdrawal",
+      "target_id": "gw_certificate_withdrawal"
     },
     {
       "id": "e_withdrawn",
-      "source_id": "withdrawn_split",
+      "source_id": "gw_certificate_withdrawal",
       "target_id": "end_withdrawn",
-      "condition": "npqs.certificate_withdrawn == true"
+      "condition": "npqs.certificate_withdrawal.decision == 'accept' && npqs.certificate_withdrawn == true"
     },
     {
-      "id": "e_not_withdrawn",
-      "source_id": "withdrawn_split",
-      "target_id": "end_success",
-      "condition": "npqs.certificate_withdrawn != true"
+      "id": "e_withdraw_again",
+      "source_id": "gw_certificate_withdrawal",
+      "target_id": "n10a_certificate_withdrawal",
+      "condition": "npqs.certificate_withdrawal.decision == 'accept' && npqs.certificate_withdrawn != true"
+    },
+    {
+      "id": "e_withdrawal_rejected",
+      "source_id": "gw_certificate_withdrawal",
+      "target_id": "n10_certificate_status",
+      "condition": "npqs.certificate_withdrawal.decision in [nil, 'reject']"
+    },
+    {
+      "id": "e_replacement_decision",
+      "source_id": "n10b_certificate_replacement_request",
+      "target_id": "gw_certificate_replacement"
+    },
+    {
+      "id": "e_replacement_accepted",
+      "source_id": "gw_certificate_replacement",
+      "target_id": "n10c_certificate_reissue",
+      "condition": "npqs.certificate_replacement.decision == 'accept'"
+    },
+    {
+      "id": "e_replacement_rejected",
+      "source_id": "gw_certificate_replacement",
+      "target_id": "n10_certificate_status",
+      "condition": "npqs.certificate_replacement.decision in [nil, 'reject']"
+    },
+    {
+      "id": "e_reissued",
+      "source_id": "n10c_certificate_reissue",
+      "target_id": "n10d_certificate_replacement_transmit"
+    },
+    {
+      "id": "e_replacement_sent",
+      "source_id": "n10d_certificate_replacement_transmit",
+      "target_id": "gw_certificate_replaced"
+    },
+    {
+      "id": "e_replaced",
+      "source_id": "gw_certificate_replaced",
+      "target_id": "n10_certificate_status",
+      "condition": "npqs.certificate_replacement_submitted == true"
+    },
+    {
+      "id": "e_send_again",
+      "source_id": "gw_certificate_replaced",
+      "target_id": "n10d_certificate_replacement_transmit",
+      "condition": "npqs.certificate_replacement_submitted != true"
     }
   ]
 }

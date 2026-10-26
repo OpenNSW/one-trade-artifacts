@@ -1,0 +1,40 @@
+{
+  "id": "npqs-certificate-withdrawal:render",
+  "type": "APPLICATION",
+  "title": "[NPQS] Certificate Withdrawal",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
+  "files": [
+    "userform.attachments[*].attachment_file_url"
+  ],
+  "sections": {
+    "with_officer": {
+      "templateId": "npqs-certificate-status--with-officer-msg",
+      "title": "With the NPQS Officer",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "STARTING",
+          "STARTING_STEP",
+          "QUEUED_EXTERNALLY",
+          "EPHYTO_WITHDRAWAL_SUBMITTED"
+        ]
+      }
+    },
+    "completed": {
+      "templateId": "npqs-certificate-withdrawal--completed-msg",
+      "title": "Outcome",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "COMPLETED"
+        ]
+      }
+    }
+  },
+  "states": {}
+}
