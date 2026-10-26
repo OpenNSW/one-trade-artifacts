@@ -207,11 +207,6 @@
           }
         }
       },
-      "certificate_id": {
-        "type": "string",
-        "title": "Phytosanitary Certificate Number",
-        "example": "PC-NPQS-2026-8092"
-      },
       "certificate_type": {
         "type": "string",
         "title": "Application Certificate Type",
@@ -241,14 +236,13 @@
       },
       "ephyto_reference_number": {
         "type": "string",
-        "title": "ePhyto Certificate Reference Number",
+        "title": "Phytosanitary Certificate Number",
         "readOnly": true,
         "example": "PCTSL-4FKU5794MV"
       }
     },
     "required": [
-      "certificate_items",
-      "certificate_id"
+      "certificate_items"
     ],
     "if": {
       "properties": {
@@ -358,10 +352,6 @@
             }
           }
         }
-      },
-      {
-        "type": "Control",
-        "scope": "#/properties/certificate_id"
       },
       {
         "type": "Control",

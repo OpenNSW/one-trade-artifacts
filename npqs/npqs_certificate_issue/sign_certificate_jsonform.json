@@ -3,7 +3,7 @@
   "schema": {
     "type": "object",
     "properties": {
-      "certificate_id": {
+      "ephyto_reference_number": {
         "type": "string",
         "title": "Phytosanitary Certificate Number",
         "readOnly": true
@@ -23,7 +23,7 @@
     "elements": [
       {
         "type": "Control",
-        "scope": "#/properties/certificate_id"
+        "scope": "#/properties/ephyto_reference_number"
       },
       {
         "type": "Control",

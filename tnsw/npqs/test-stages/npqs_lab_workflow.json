@@ -176,7 +176,6 @@
         "commodities?": "certificate_items"
       },
       "output_mapping": {
-        "certificate_id": "npqs.certificate_id",
         "certificate_items?": "npqs.certificate_items"
       }
     },
