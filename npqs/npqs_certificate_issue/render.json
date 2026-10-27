@@ -34,7 +34,7 @@
         }
       ]
     },
-    "shared_certificate": {
+    "issued_certificate": {
       "templateId": "npqs-certificate-issue--certificate-msg",
       "title": "Phytosanitary Certificate",
       "projector": "MARKDOWN",
