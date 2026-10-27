@@ -61,11 +61,11 @@
             "contact_email": {
               "type": "string",
               "format": "email",
-              "description": "Primary contact email on file for the company. Not yet in nsw-srilanka's configs/companies.example.json, so it resolves to nothing until company records carry it."
+              "description": "Primary contact email on file for the company, e.g. 'info@adam-pvt-ltd.lk' (nsw-srilanka's configs/companies.example.json). tnsw/trade/trade_workflow.json's trade_1_cha_selection, tnsw/slpa/slpa_workflow.json's slpa_1_0_ecdn and tnsw/cda/3-kernel-products-asycuda-approval/cda_workflow.json's cda_1_0_apply read it. A company record without it leaves those fields empty."
             },
             "address": {
               "type": "string",
-              "description": "The company's address on one line, e.g. 'No. 45, Galle Road, Colombo 03, Sri Lanka' (nsw-srilanka's configs/companies.example.json). The record also carries 'address2'–'address4', empty in every example company, which no mapping reads. tnsw/fcau/fcau_workflow.json's fcau_1_0_apply and tnsw/slpa/slpa_workflow.json's slpa_1_0_ecdn read it."
+              "description": "The company's address on one line, e.g. 'No. 45, Galle Road, Colombo 03, Sri Lanka' (nsw-srilanka's configs/companies.example.json). The record also carries 'address2'–'address4', empty in every example company, which no mapping reads. tnsw/fcau/fcau_workflow.json's fcau_1_0_apply, tnsw/customs/customs_workflow.json's customs_1_cusdec_submission and tnsw/slpa/slpa_workflow.json's slpa_1_0_ecdn read it."
             },
             "agencies": {
               "type": "object",
