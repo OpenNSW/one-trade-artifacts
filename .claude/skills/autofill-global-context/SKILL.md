@@ -32,8 +32,11 @@ Two variables are seeded by the runtime or the trade flow — not produced by an
 - **`traderCompany`** — `tnsw/trade/trade_workflow.json`'s own top-level seeded
   variable, present from that macro workflow's `start`. Its shape is
   `definitions.company` in `schemas/workflow-context.schema.json`.
-- **`cha`** — the CHA company chosen for the consignment, trimmed to `id`, `name` and
-  `data.{tin_no, tel, contact_email, address}` (see `definitions.cha` in the same file).
+- **`cha`** — the CHA company chosen for the consignment: its `id`, `name` and the `data`
+  fields listed in `tnsw/trade/1b-persist_cha/transform.json`'s
+  `plugin_properties.cha_data_fields` (see `definitions.cha` in the same file). It's an
+  allowlist, because a company's data also holds credentials: to read another CHA field,
+  add it to that list (and to `definitions.cha`), not just to a mapping.
   `trade_1b_persist_cha`'s `CHA_PERSIST_WRITER` outputs it once the choice is saved, and
   `trade_workflow.json` keeps it as `trade.cha`. A CHA is a company with `hasCha: true`, and a
   trader can choose its own, so it can equal `company`.

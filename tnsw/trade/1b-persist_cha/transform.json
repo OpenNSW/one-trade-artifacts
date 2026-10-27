@@ -1,5 +1,7 @@
 {
   "id": "trade-persist-cha--transform",
   "task_type": "CHA_PERSIST_WRITER",
-  "plugin_properties": {}
+  "plugin_properties": {
+    "cha_data_fields": ["tin_no", "tel", "contact_email", "address"]
+  }
 }
