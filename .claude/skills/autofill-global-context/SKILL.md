@@ -119,7 +119,7 @@ same real value, so each can drive its own destination:
 "input_mapping": {
   "_iter.input.company.name?": "applicant_name",
   "_iter.input.company.name": "exporter_name",
-  "_iter.input.company.address?": "exporter_address"
+  "_iter.input.company.data.address?": "exporter_address"
 }
 ```
 
@@ -199,11 +199,10 @@ For `tnsw/npqs/1-apply`'s `applicant_submission` node
   describes the consignment's registered company regardless of whether a trader or
   their CHA is the one typing into the form, so no initiator check was needed before
   wiring it.
-- `exporter_address` — **still sourceless in practice.** `schemas/workflow-context.schema.json`'s
-  `definitions.company.data` has no `address` field at all in the one confirmed real
-  payload seen so far (2026-09-08) — the `_iter.input.company.address?` mapping below
-  is left in place pending real address data, but currently reads nothing. Don't treat
-  it as a working example; re-verify against a real payload before relying on it.
+- `exporter_address` — from `_iter.input.company.data.address`. The address lives under
+  `data`, not at the top of the company; an earlier mapping read
+  `_iter.input.company.address` and quietly resolved to nothing. The record carries it
+  as a one-line `data.address` (see `definitions.company.data.address` in the schema).
 
 All three currently wired as:
 - Macro (`tnsw/npqs/npqs_workflow.json`, `n1_apply`):
@@ -211,7 +210,7 @@ All three currently wired as:
   "input_mapping": {
     "_iter.input.company.name?": "applicant_name",
     "_iter.input.company.name": "exporter_name",
-    "_iter.input.company.address?": "exporter_address"
+    "_iter.input.company.data.address?": "exporter_address"
   }
   ```
 - Step (`tnsw/npqs/1-apply/workflow.json`, `applicant_submission`) — destinations

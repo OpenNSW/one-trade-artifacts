@@ -13,7 +13,9 @@
       "name": "[CDA 1.0] Submit ASYCUDA Approval Application",
       "task_template_id": "cda-kernel-asycuda-approval-flow",
       "lane": "Trader/CHA",
-      "input_mapping": {},
+      "input_mapping": {
+        "_iter.input.company.data.contact_email?": "exporter_email"
+      },
       "output_mapping": {
         "userform.cusdec_number": "cda_kernel.reference_number",
         "userform": "cda_kernel.userform"

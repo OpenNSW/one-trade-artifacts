@@ -12,6 +12,9 @@
       "task_template_id": "slpa-ecdn--user-input",
       "input_mapping": {
         "cms.error?": "cms.error",
+        "shipperName?": "userform.shipperName",
+        "shipperAddress?": "userform.shipperAddress",
+        "email?": "userform.email",
         "userform?": "userform"
       },
       "output_mapping": {

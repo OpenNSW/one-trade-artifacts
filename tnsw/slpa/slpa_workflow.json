@@ -14,7 +14,10 @@
       "task_template_id": "slpa-ecdn-submission-flow",
       "lane": "Trader/CHA",
       "input_mapping": {
-        "_iter.input.company.data.slpacmsuser_key?": "client_key"
+        "_iter.input.company.data.slpacmsuser_key?": "client_key",
+        "_iter.input.company.name?": "shipperName",
+        "_iter.input.company.data.address?": "shipperAddress",
+        "_iter.input.company.data.contact_email?": "email"
       },
       "output_mapping": {
         "userform": "slpa.userform",
