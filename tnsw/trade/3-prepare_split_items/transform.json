@@ -26,7 +26,8 @@
         "customs-workflow"
       ],
       "cda-kernel-asycuda-approval": [
-        "cda-kernel-asycuda-approval"
+        "cda-kernel-asycuda-approval",
+        "customs-workflow"
       ],
       "sltb-blendsheet-approval": [
         "sltb-blendsheet-approval",
