@@ -15,7 +15,8 @@
       "lane": "Trader/CHA",
       "input_mapping": {
         "_iter.input.company.name?": "exporter_name",
-        "_iter.input.company.data.address?": "exporter_address"
+        "_iter.input.company.data.address?": "exporter_address",
+        "_iter.input.company.data.tin_no?": "exporter_code"
       },
       "output_mapping": {
         "reviewerform.review_outcome": "customs.cusdec_review_outcome",
