@@ -42,7 +42,7 @@
         "data": {
           "type": "object",
           "additionalProperties": false,
-          "description": "Registry attributes about the company. Note tnsw/npqs/npqs_workflow.json still maps '_iter.input.company.address?' (top level, not under 'data') to exporter_address, so it resolves to nothing; it should read 'data.address' below.",
+          "description": "Registry attributes about the company. The address is 'data.address' below, not a top-level company field.",
           "required": ["br_no"],
           "properties": {
             "br_no": {
