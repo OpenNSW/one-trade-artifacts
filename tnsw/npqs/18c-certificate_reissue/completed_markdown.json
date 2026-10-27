@@ -1,4 +1,4 @@
 {
   "id": "npqs-certificate-reissue--completed-msg",
-  "template": "### Replacement Certificate Issued\n\nThe NPQS officer issued the replacement certificate. It is sent to the IPPC ePhyto Hub next."
+  "template": "### Replacement Certificate Issued\n\nThe NPQS officer issued the replacement certificate. It is sent to the IPPC ePhyto Hub next.\n{{if .reviewerform.certificate_url}}\n#### [📄 Download Phytosanitary Certificate](files:{{.reviewerform.certificate_url}})\n{{end}}"
 }

@@ -1,0 +1,4 @@
+{
+  "id": "npqs-certificate-issue--certificate-msg",
+  "template": "### 📄 Phytosanitary Certificate\n\nThe certificate has been issued from the application. It has been shared with the trader.\n\n#### [📄 Download Certificate](files:{{.certificate_document.key}})"
+}

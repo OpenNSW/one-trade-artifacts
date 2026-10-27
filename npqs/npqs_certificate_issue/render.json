@@ -12,7 +12,6 @@
     "certificate_document.key",
     "payload.payload.certificate_url",
     "reviewform.certificate_url",
-    "signing_certificate_key",
     "submission.attachments[*].attachment_file_url"
   ],
   "sections": {
@@ -35,34 +34,13 @@
         }
       ]
     },
-    "signing_msg": {
-      "templateId": "npqs-certificate-issue--sign-msg",
-      "title": "Sign the Certificate",
+    "shared_certificate": {
+      "templateId": "npqs-certificate-issue--certificate-msg",
+      "title": "Phytosanitary Certificate",
       "projector": "MARKDOWN",
       "visibleWhen": {
-        "states": [
-          "PENDING_SIGNATURE"
-        ],
-        "requireDataKey": "signing_certificate_key"
+        "requireDataKey": "certificate_document"
       }
-    },
-    "signing_form": {
-      "templateId": "npqs-issue-certificate--sign-form",
-      "title": "Signed Certificate",
-      "projector": "FORM",
-      "dataKey": "reviewform",
-      "visibleWhen": {
-        "states": [
-          "PENDING_SIGNATURE"
-        ]
-      },
-      "handles": [
-        {
-          "command": "upload_signed",
-          "label": "Submit Signed Certificate",
-          "element": "primary_action"
-        }
-      ]
     },
     "status_message": {
       "templateId": "npqs-certificate-issue--submission-view",
@@ -80,13 +58,6 @@
       "actions": [
         {
           "command": "submit"
-        }
-      ]
-    },
-    "PENDING_SIGNATURE": {
-      "actions": [
-        {
-          "command": "upload_signed"
         }
       ]
     }
