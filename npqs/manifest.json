@@ -985,22 +985,10 @@
       "path": "npqs_certificate_issue/generate_certificate.json"
     },
     {
-      "id": "npqs-certificate-issue--sign-certificate",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs_certificate_issue/sign_certificate.json"
-    },
-    {
-      "id": "npqs-issue-certificate--sign-form",
+      "id": "npqs-certificate-issue--certificate-msg",
       "kind": "generic_template",
       "version": "",
-      "path": "npqs_certificate_issue/sign_certificate_jsonform.json"
-    },
-    {
-      "id": "npqs-certificate-issue--sign-msg",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_certificate_issue/sign_certificate_markdown.json"
+      "path": "npqs_certificate_issue/certificate_markdown.json"
     },
     {
       "id": "npqs-certificate-issue--generate-ephyto-reference",
