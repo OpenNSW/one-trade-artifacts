@@ -10,13 +10,13 @@
       "id": "authz",
       "phase": "PRE_RESUME",
       "properties": {
-        "PENDING_USER": { "submit": ["trader", "cha"] }
+        "PENDING_USER": { "submit": ["trader", "cha"], "cancel": ["system"] }
       }
     },
     {
       "id": "payload_schema",
       "phase": "PRE_RESUME",
-      "properties": { "form": "customs-cdn--user-form" }
+      "properties": { "form": "customs-cdn--user-form", "system_commands": ["cancel"] }
     }
   ]
 }

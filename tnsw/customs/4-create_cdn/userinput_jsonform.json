@@ -4,6 +4,14 @@
   "schema": {
     "type": "object",
     "properties": {
+      "cancelled": {
+        "description": "Set only when NSW withdraws this container's dispatch note; never submitted from the form.",
+        "not": {}
+      },
+      "cancellation_reason": {
+        "description": "Set only when NSW withdraws this container's dispatch note; never submitted from the form.",
+        "not": {}
+      },
       "officeCode": {
         "type": "string",
         "title": "Customs Office Code",

@@ -16,7 +16,9 @@ A step's rule must be exactly what the step needs: the one state the step waits 
 the commands it can be completed with there.
 
   * A USER_INPUT step: the commands its task's render config offers in that state, and
-    its draft command. It may name any of the deployment's roles.
+    its draft command. It may name any of the deployment's roles. Its system commands,
+    the ones its payload_schema extension lists as system_commands, are run by this
+    service's own code to end the step without the form: SYSTEM only.
   * A step this service's own code completes (a PAYMENT step, or a USER_INPUT step that
     waits in QUEUED_EXTERNALLY for a webhook): SYSTEM_COMMAND, for SYSTEM only.
   * A tnsw EXTERNAL_REVIEW step: what its agency's task sends back, for the agency's
@@ -138,6 +140,17 @@ def completed_by_system(step):
     if step["task_type"] == "PAYMENT":
         return True
     return step["task_type"] == "USER_INPUT" and waits_in(step) == "QUEUED_EXTERNALLY"
+
+
+def system_commands(step):
+    """The commands this service's own code runs on a USER_INPUT step to end it without
+    its form: those its payload_schema extension lists as system_commands."""
+    return {
+        command
+        for ext in step.get("extensions") or []
+        if ext.get("id") == "payload_schema"
+        for command in (ext.get("properties") or {}).get("system_commands") or []
+    }
 
 
 def offered(renders, state):
@@ -277,7 +290,7 @@ def expected_rule(deployment, deployments, step, renders, owners):
         return {SYSTEM_COMMAND}, [SYSTEM], []
     if step["task_type"] == "USER_INPUT":
         draft = (step.get("draft") or {}).get("command")
-        return offered(renders, waits_in(step)) | ({draft} if draft else set()), None, []
+        return offered(renders, waits_in(step)) | ({draft} if draft else set()) | system_commands(step), None, []
     service = props(step).get("service_id")
     if step["task_type"] == "EXTERNAL_REVIEW" and deployment.folder == TNSW:
         agency = deployments.get(service)
@@ -317,6 +330,9 @@ def check_step(deployment, deployments, step, renders, owners):
             where = f"step {step['id']}: {rule_state}/{command}"
             if not non_empty_names(names):
                 problems.append(f"{where} names no one")
+            elif command in system_commands(step):
+                if sorted(names) != [SYSTEM]:
+                    problems.append(f"{where} is a system command, so must name exactly {[SYSTEM]}, names {names}")
             elif only is not None and sorted(names) != sorted(only):
                 problems.append(f"{where} must name exactly {only}, names {names}")
             elif only is None and set(names) - deployment.names["roles"]:

@@ -22,6 +22,12 @@
       }
     },
     {
+      "id": "withdrawn_check",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Withdrawn by an Amendment?"
+    },
+    {
       "id": "wait_ack",
       "type": "TASK",
       "name": "Wait on CDN Acknowledgment",
@@ -48,7 +54,19 @@
     {
       "id": "e2",
       "source_id": "create_cdn",
-      "target_id": "wait_ack"
+      "target_id": "withdrawn_check"
+    },
+    {
+      "id": "e_withdrawn",
+      "source_id": "withdrawn_check",
+      "target_id": "end",
+      "condition": "userform.cancelled == true"
+    },
+    {
+      "id": "e_to_wait_ack",
+      "source_id": "withdrawn_check",
+      "target_id": "wait_ack",
+      "condition": "userform.cancelled != true"
     },
     {
       "id": "e3",
