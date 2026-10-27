@@ -13,7 +13,7 @@
       "input_mapping": {
         "container_no?": "gpform.container_no",
         "gpform?": "gpform",
-        "gp.error?": "gp.error",
+        "gp?": "gp",
         "cap_id?": "cap_id",
         "so_container_no?": "gpform.so_container_no",
         "gp.gate_pass_no?": "gpform.previous_gate_pass_no"
