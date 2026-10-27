@@ -78,7 +78,6 @@ Consignment re-inspected after treatment and found free from live pests.
   .certify { margin-top: 8pt; }
   .sign { margin-top: 18pt; }
   .sign td { border: 0; padding: 8pt 4pt 2pt; }
-  .sign td.blank { border-bottom: 1px solid #000; width: 32%; }
   .sign td.no-signature { font-style: italic; vertical-align: middle; }
   .liability { font-size: 8.5pt; margin-top: 10pt; }
   .hint { margin: 4mm auto; width: 210mm; padding: 2mm 3mm; border: 1px solid #999; background: #f4f4f4; font-size: 10pt; }
@@ -230,7 +229,7 @@ Consignment re-inspected after treatment and found free from live pests.
     <td rowspan="2" class="no-signature">This is a computer-generated document and no signature is required.</td>
   </tr>
   <tr>
-    <td>Date</td><td class="blank">{{ if .certificate_number }}{{ date .issue_date "2006-01-02" "02/01/2006" }}{{ end }}</td>
+    <td>Date</td><td>{{ if .certificate_number }}{{ date .issue_date "2006-01-02" "02/01/2006" }}{{ end }}</td>
   </tr>
 </table>
 
