@@ -8,6 +8,18 @@
       "name": "Start"
     },
     {
+      "id": "slpa_0_wait_cusdec",
+      "type": "SIGNALING",
+      "name": "Wait for the Assessed CusDec",
+      "signaling": {
+        "type": "WAIT",
+        "signal_name": "cusdec_assessed"
+      },
+      "output_mapping": {
+        "cusdec_number": "slpa.cusdec_number"
+      }
+    },
+    {
       "id": "slpa_1_0_ecdn",
       "type": "TASK",
       "name": "[SLPA 1.0] Submit ECDN",
@@ -17,7 +29,8 @@
         "_iter.input.company.data.slpacmsuser_key?": "client_key",
         "_iter.input.company.name?": "shipperName",
         "_iter.input.company.data.address?": "shipperAddress",
-        "_iter.input.company.data.contact_email?": "email"
+        "_iter.input.company.data.contact_email?": "email",
+        "slpa.cusdec_number": "userform.cusdecNo"
       },
       "output_mapping": {
         "userform": "slpa.userform",
@@ -117,6 +130,11 @@
     {
       "id": "e_start_to_ecdn",
       "source_id": "start",
+      "target_id": "slpa_0_wait_cusdec"
+    },
+    {
+      "id": "e_wait_to_ecdn",
+      "source_id": "slpa_0_wait_cusdec",
       "target_id": "slpa_1_0_ecdn"
     },
     {
