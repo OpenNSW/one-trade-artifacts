@@ -13,7 +13,10 @@
       "name": "[FCAU 1.0/1.1] Submit & Assess Application",
       "task_template_id": "fcau-apply-health-cert-flow",
       "lane": "FCAU Officer/NSW System",
-      "input_mapping": {},
+      "input_mapping": {
+        "_iter.input.company.name?": "exporter_name",
+        "_iter.input.company.data.address?": "exporter_address"
+      },
       "output_mapping": {
         "reviewerform.application_review_outcome": "fcau.application_review_outcome",
         "reviewerform.reference_number": "fcau.reference_number",
