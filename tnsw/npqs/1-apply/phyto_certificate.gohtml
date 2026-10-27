@@ -9,9 +9,11 @@
                          items to leave off (include_in_certificate: false)
                          and each item's inspection results. Absent on the
                          draft, which lists every commodity.
+    .issue_date          the date of issue the officer picks at issuance
+                         (YYYY-MM-DD). Printed only on the final certificate.
 
   The certificate carries no signature: a clause in place of the officer's
-  name and signature says none is required. The date is left blank.
+  name and signature says none is required.
 */ -}}
 
 {{- /*
@@ -228,7 +230,7 @@ Consignment re-inspected after treatment and found free from live pests.
     <td rowspan="2" class="no-signature">This is a computer-generated document and no signature is required.</td>
   </tr>
   <tr>
-    <td>Date</td><td class="blank"></td>
+    <td>Date</td><td class="blank">{{ if .certificate_number }}{{ date .issue_date "2006-01-02" "02/01/2006" }}{{ end }}</td>
   </tr>
 </table>
 

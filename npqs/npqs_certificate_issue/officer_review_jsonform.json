@@ -218,6 +218,12 @@
         "readOnly": true,
         "example": "PCTSL-4FKU5794MV"
       },
+      "issue_date": {
+        "type": "string",
+        "format": "date",
+        "title": "Date of Issue",
+        "example": "2026-10-27"
+      },
       "certificate_url": {
         "type": "string",
         "format": "file",
@@ -252,6 +258,11 @@
       },
       "required": [
         "ephyto_required"
+      ]
+    },
+    "then": {
+      "required": [
+        "issue_date"
       ]
     },
     "else": {
@@ -317,6 +328,19 @@
           },
           "addable": false,
           "removable": false
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/issue_date",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/ephyto_required",
+            "schema": {
+              "const": true
+            }
+          }
         }
       },
       {
