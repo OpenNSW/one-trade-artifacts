@@ -31,7 +31,9 @@
         "trade.cha_company_id": "cha_company_id",
         "trade.consignment_name": "consignment_name"
       },
-      "output_mapping": {}
+      "output_mapping": {
+        "cha?": "trade.cha"
+      }
     },
     {
       "id": "trade_2_hscode_selection",
@@ -54,7 +56,8 @@
       "lane": "Trader/CHA",
       "input_mapping": {
         "trade.hs_codes": "hs_codes",
-        "traderCompany?": "company"
+        "traderCompany?": "company",
+        "trade.cha?": "cha"
       },
       "output_mapping": {
         "split_items": "trade.split_items"

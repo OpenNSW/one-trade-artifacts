@@ -16,7 +16,8 @@
       "input_mapping": {
         "_iter.input.company.name?": "exporter_name",
         "_iter.input.company.data.address?": "exporter_address",
-        "_iter.input.company.data.tin_no?": "exporter_code"
+        "_iter.input.company.data.tin_no?": "exporter_code",
+        "_iter.input.cha.data.tin_no?": "declarant_code"
       },
       "output_mapping": {
         "reviewerform.review_outcome": "customs.cusdec_review_outcome",

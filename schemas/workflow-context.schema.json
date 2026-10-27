@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://opennsw.dev/schemas/workflow-context.schema.json",
   "title": "WorkflowSeedContext",
-  "description": "Reference definitions (not an artifact kind, no manifest entry, no single root object to validate) for context assumed to be available as independently-seeded workflow variables — never nested under one combined wrapper. 'company' (see definitions.company below) is seeded as tnsw/trade/trade_workflow.json's own top-level variable named 'traderCompany' (see trade_1_cha_selection's input_mapping); it crosses into tnsw/trade/3-prepare_split_items's build_split_items node as local var 'company', which HSCODE_SPLIT_BUILDER bakes into each split item; inside a SPLIT_TASK-spawned agency flow (e.g. tnsw/npqs/npqs_workflow.json's n1_apply) it's read back out at '_iter.input.company.<field>' — '_iter' being the current split-task iteration context and '.input' that item's own input payload. See .claude/skills/autofill-global-context/SKILL.md for how to wire a new field into a workflow.",
+  "description": "Reference definitions (not an artifact kind, no manifest entry, no single root object to validate) for context assumed to be available as independently-seeded workflow variables — never nested under one combined wrapper. 'company' (see definitions.company below) is seeded as tnsw/trade/trade_workflow.json's own top-level variable named 'traderCompany' (see trade_1_cha_selection's input_mapping); it crosses into tnsw/trade/3-prepare_split_items's build_split_items node as local var 'company', which HSCODE_SPLIT_BUILDER bakes into each split item; inside a SPLIT_TASK-spawned agency flow (e.g. tnsw/npqs/npqs_workflow.json's n1_apply) it's read back out at '_iter.input.company.<field>' — '_iter' being the current split-task iteration context and '.input' that item's own input payload. 'cha' (see definitions.cha) is read the same way at '_iter.input.cha.<field>'. See .claude/skills/autofill-global-context/SKILL.md for how to wire a new field into a workflow.",
   "definitions": {
     "company": {
       "type": "object",
@@ -52,7 +52,7 @@
             },
             "tin_no": {
               "type": "string",
-              "description": "Tax Identification Number, e.g. '134256789'."
+              "description": "Tax Identification Number, e.g. '134256789'. It is the Customs exporter code: tnsw/customs/customs_workflow.json's customs_1_cusdec_submission prefills the CusDec's exporter code (Box 2, traders.exporter.code) from it, as it does the declarant code from the CHA's."
             },
             "vat_no": {
               "type": "string",
@@ -105,31 +105,42 @@
     "cha": {
       "type": "object",
       "additionalProperties": false,
-      "description": "The Customs House Agent (CHA) firm an acting session belongs to — a separately-seeded variable from 'company' above, not a field on it. Null/absent when the acting user is not a CHA (e.g. a trader submitting directly) — every consumer must treat it as optional. Not yet wired into any input_mapping: tnsw/trade/trade_workflow.json is trader-initiated, so its 1-cha_selection step (where the trader picks a CHA) has no CHA in its own session to prefill from. Modeled here for a future CHA-initiated flow or CHA-facing view that needs it.",
-      "required": ["cha_company_id", "cha_name"],
+      "description": "The Customs House Agent (CHA) company chosen for the consignment, trimmed to what an agency form reads. It is a company record like 'company', so a CHA is a company with hasCha true, and a trader may choose its own. tnsw/trade's persist_cha_task (CHA_PERSIST_WRITER) outputs it once the choice is saved, tnsw/trade/trade_workflow.json keeps it as 'trade.cha', and HSCODE_SPLIT_BUILDER puts it in every split item's payload, so an agency flow reads it at '_iter.input.cha.<field>' (see tnsw/customs/customs_workflow.json's customs_1_cusdec_submission). Absent when no CHA was saved. The company's own data also holds credentials such as slpacmsuser_key, so only the fields below are copied.",
+      "required": ["id", "name", "data"],
       "properties": {
-        "cha_company_id": {
+        "id": {
           "type": "string",
           "minLength": 1,
-          "description": "Same id space as trade-cha-selection-flow's 'cha_company_id' field (tnsw/trade/1-cha_selection/userinput_jsonform.json) — this is the value that field's x-search resolves to, e.g. 'adam-pvt-ltd'."
+          "description": "The CHA company's id, the value trade-cha-selection-flow's 'cha_company_id' resolves to, e.g. 'adam-pvt-ltd'."
         },
-        "cha_name": {
+        "name": {
           "type": "string",
           "minLength": 1,
-          "description": "Display name of the CHA firm."
+          "description": "Display name of the CHA company."
         },
-        "cha_license_number": {
-          "type": "string",
-          "description": "Sri Lanka Customs CHA license number."
-        },
-        "contact_email": {
-          "type": "string",
-          "format": "email",
-          "description": "Primary contact email on file for the CHA firm."
-        },
-        "contact_phone": {
-          "type": "string",
-          "description": "Primary contact phone number on file for the CHA firm."
+        "data": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "The CHA company's details. A field its record lacks is left out.",
+          "properties": {
+            "tin_no": {
+              "type": "string",
+              "description": "The CHA company's TIN. Customs confirmed (#136) that the ASYCUDA declarantCode is the declarant company's TIN, not an individual CHA's number, so tnsw/customs/customs_workflow.json's customs_1_cusdec_submission prefills the CusDec's declarant code from it."
+            },
+            "tel": {
+              "type": "string",
+              "description": "Primary contact phone number on file for the CHA company."
+            },
+            "contact_email": {
+              "type": "string",
+              "format": "email",
+              "description": "Primary contact email on file for the CHA company."
+            },
+            "address": {
+              "type": "string",
+              "description": "The CHA company's address on one line."
+            }
+          }
         }
       }
     }
