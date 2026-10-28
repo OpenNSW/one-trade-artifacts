@@ -11,54 +11,6 @@
           "type": "string",
           "oneOf": [
             {
-              "const": "fcau-health-certificate-reg",
-              "title": "FCAU Health Certificate (FCAU Flow)"
-            },
-            {
-              "const": "npqs-export-phytosanitary-reg",
-              "title": "NPQS v3 Phyto Certificate (NPQS v3 Flow)"
-            },
-            {
-              "const": "npqs-test-lab-reg",
-              "title": "NPQS v3 Test: Lab Test Only"
-            },
-            {
-              "const": "npqs-test-visual1-reg",
-              "title": "NPQS v3 Test: Visual Inspection 1 Only"
-            },
-            {
-              "const": "npqs-test-treatment-reg",
-              "title": "NPQS v3 Test: Treatment Only"
-            },
-            {
-              "const": "npqs-test-visual2-reg",
-              "title": "NPQS v3 Test: Visual Inspection 2 Only"
-            },
-            {
-              "const": "cda-certificate-reg",
-              "title": "CDA Coconut Certificate (CDA Flow)"
-            },
-            {
-              "const": "cda-kernel-asycuda-approval",
-              "title": "CDA ASYCUDA Approval for Kernel Products (CDA Flow)"
-            },
-            {
-              "const": "sltb-blendsheet-approval",
-              "title": "SLTB Tea Export Blendsheet Approval (SLTB Flow)"
-            },
-            {
-              "const": "slpa-ecdn-submission",
-              "title": "SLPA Electronic Cargo Declaration Note (SLPA Flow)"
-            },
-            {
-              "const": "customs-workflow",
-              "title": "Customs Declaration & Clearance (Customs Flow)"
-            },
-            {
-              "const": "cda-kcfn-recommendation-letter",
-              "title": "King Coconut Fresh Nut (KCFN) Recommendation Letter (CDA Flow)"
-            },
-            {
               "const": "0902.30.11",
               "title": "0902.30.11 - Black Tea Bags, Flavoured (Up to 4g)"
             },
@@ -553,6 +505,10 @@
             {
               "const": "0604.90.00",
               "title": "0604.90.00 - Matured Leaves Based Products"
+            },
+            {
+              "const": "slpa-ecdn-submission",
+              "title": "SLPA Electronic Cargo Declaration Note (SLPA Flow)"
             }
           ]
         },
