@@ -7,17 +7,17 @@
       "exporter_name": {
         "type": "string",
         "title": "Exporter Name",
-        "description": "Filled automatically from the company profile"
+        "description": "Entered by the applicant. Prefilled from their company profile when it has a value."
       },
       "exporter_registration_number": {
         "type": "string",
         "title": "Exporter Registration Number",
-        "description": "Filled automatically from the company profile"
+        "description": "Entered by the applicant. Prefilled from their company profile when it has a value."
       },
       "exporter_address": {
         "type": "string",
         "title": "Exporter Address",
-        "description": "Filled automatically from the company profile"
+        "description": "Entered by the applicant. Prefilled from their company profile when it has a value."
       },
       "cusdec_number": {
         "type": "string",
