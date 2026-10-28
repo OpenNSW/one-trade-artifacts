@@ -11,11 +11,16 @@
       "type": "TASK",
       "task_template_id": "cda-apply-coconut-cert--user-input",
       "input_mapping": {
+        "exporter_name?": "userform.exporter_name",
+        "exporter_registration_number?": "userform.exporter_registration_number",
+        "exporter_address?": "userform.exporter_address",
         "rejection_reason?": "rejection_reason",
         "userform?": "userform"
       },
       "output_mapping": {
-        "exporter_details": "userform.exporter_details",
+        "exporter_name": "userform.exporter_name",
+        "exporter_registration_number": "userform.exporter_registration_number",
+        "exporter_address": "userform.exporter_address",
         "cusdec_number": "userform.cusdec_number",
         "relates_to_previous_approval": "userform.relates_to_previous_approval",
         "previous_cusdec_number?": "userform.previous_cusdec_number",
