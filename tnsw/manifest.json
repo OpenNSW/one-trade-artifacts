@@ -3995,6 +3995,48 @@
       "kind": "generic_template",
       "version": "",
       "path": "customs/11-cdn_amended/cdn_jsonform.json"
+    },
+    {
+      "id": "customs-cusdec-cancelled",
+      "kind": "workflow",
+      "version": "",
+      "path": "customs/cusdec_cancelled_workflow.json"
+    },
+    {
+      "id": "customs-cusdec-cancelled-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "customs/10-cusdec_cancelled/workflow.json"
+    },
+    {
+      "id": "customs-cusdec-cancelled-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "customs/10-cusdec_cancelled/task_template.json"
+    },
+    {
+      "id": "customs-cusdec-cancelled-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/10-cusdec_cancelled/render.json"
+    },
+    {
+      "id": "customs-cusdec-cancelled--acknowledge",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "customs/10-cusdec_cancelled/acknowledge.json"
+    },
+    {
+      "id": "customs-cusdec-cancelled--notice",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/10-cusdec_cancelled/notice_jsonform.json"
+    },
+    {
+      "id": "customs-cusdec-cancelled--acknowledge-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/10-cusdec_cancelled/acknowledge_jsonform.json"
     }
   ]
 }

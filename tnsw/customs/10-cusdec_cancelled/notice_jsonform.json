@@ -1,0 +1,4 @@
+{
+  "id": "customs-cusdec-cancelled--notice",
+  "template": "{{if .acknowledgement}}### Cancellation Acknowledged\n\nYou acknowledged that Sri Lanka Customs cancelled declaration `{{.cusdec_number}}` and that you can no longer proceed with it.\n{{else}}### Sri Lanka Customs Cancelled Your Declaration\n\nCustoms cancelled declaration `{{.cusdec_number}}` in ASYCUDA World on **{{.cancelled_at}}**. This CusDec is cancelled, so you can no longer proceed with it.\n\nContact Sri Lanka Customs if you were not expecting this cancellation. Acknowledge below to confirm you have seen it.\n{{end}}\n* **CusDec Number**: `{{.cusdec_number}}`\n* **Cancelled At**: {{.cancelled_at}}"
+}
