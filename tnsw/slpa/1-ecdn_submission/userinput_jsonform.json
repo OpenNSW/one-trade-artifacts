@@ -8,7 +8,7 @@
         "type": "string",
         "title": "Cusdec No",
         "pattern": "^[A-Za-z0-9/-]+$",
-        "description": "The number Sri Lanka Customs gave the declaration when it assessed it.",
+        "description": "The number Sri Lanka Customs gave the declaration when it assessed it. SLPA receives its serial letter and number (E1050).",
         "readOnly": true,
         "example": "CBEX1/2026/E/1050"
       },
@@ -21,6 +21,7 @@
       "cusdecOffice": {
         "type": "string",
         "title": "Cusdec Office",
+        "readOnly": true,
         "oneOf": [
           {
             "const": "BIBE1",
@@ -163,7 +164,7 @@
             "title": "GEME2"
           }
         ],
-        "description": "SLPA office code list."
+        "description": "The Customs office of the declaration. With the CusDec number and the year of the CusDec Date, it makes the serial SLPA receives (CBEX1E10502026)."
       },
       "cusdecSerLet": {
         "type": "string",

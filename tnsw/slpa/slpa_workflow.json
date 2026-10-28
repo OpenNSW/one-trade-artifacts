@@ -16,7 +16,8 @@
         "signal_name": "cusdec_assessed"
       },
       "output_mapping": {
-        "cusdec_number": "slpa.cusdec_number"
+        "cusdec_number": "slpa.cusdec_number",
+        "cusdec.identification.officeCode?": "slpa.cusdec_office"
       }
     },
     {
@@ -30,7 +31,8 @@
         "_iter.input.company.name?": "shipperName",
         "_iter.input.company.data.address?": "shipperAddress",
         "_iter.input.company.data.contact_email?": "email",
-        "slpa.cusdec_number": "userform.cusdecNo"
+        "slpa.cusdec_number": "userform.cusdecNo",
+        "slpa.cusdec_office?": "userform.cusdecOffice"
       },
       "output_mapping": {
         "userform": "slpa.userform",
