@@ -12,7 +12,7 @@
         "consignment_name": "consignment_name"
       },
       "output_mapping": {
-        "cha?": "cha"
+        "cha": "cha"
       }
     },
     { "id": "end", "type": "END" }

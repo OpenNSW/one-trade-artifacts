@@ -42,7 +42,7 @@ Two variables are seeded by the runtime or the trade flow — not produced by an
   trader can choose its own, so it can equal `company`.
 
 `traderCompany` only exists at `trade_workflow.json`'s own scope. `trade_3_prepare_split_items`
-receives it as local var `company` (`"traderCompany?": "company"` at the macro level),
+receives it as local var `company` (`"traderCompany": "company"` at the macro level),
 passes it into `3-prepare_split_items/workflow.json`'s `build_split_items` node
 (`HSCODE_SPLIT_BUILDER`), which bakes it into each entry of `trade.split_items`.
 `trade_4_trigger_flows` (`SPLIT_TASK`) then spawns one macro workflow per split item
@@ -61,8 +61,11 @@ level; don't assume any of them carries over unprefixed into the next.
 
 **`cha` is the CHA the trader picked, not the acting user's company.** It doesn't exist
 yet while `1-cha_selection` runs, so don't wire it into that step. It exists from
-`trade_1b_persist_cha` on, and only in agency flows spawned after that. Keep every
-mapping from it optional (`?`): a deployment without the backend change leaves it out.
+`trade_1b_persist_cha` on, and only in agency flows spawned after that. Inside the trade
+flow its hand-off is required (no `?`), like `company`'s: a backend that doesn't output it
+parks `trade_1b_persist_cha` rather than starting agency flows without it. In the agency
+flows, keep each field read optional (`_iter.input.cha.data.tin_no?`): the object is always
+there, but a company's record may lack any one field.
 The declarant code is the CHA company's TIN, not an individual's number (#136).
 
 ## What's safe to autofill — and what isn't
