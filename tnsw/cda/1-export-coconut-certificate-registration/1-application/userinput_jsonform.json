@@ -12,7 +12,7 @@
       "exporter_registration_number": {
         "type": "string",
         "title": "Exporter Registration Number",
-        "example": "CDA/REG/001"
+        "example": "0001"
       },
       "exporter_address": {
         "type": "string",
