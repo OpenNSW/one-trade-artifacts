@@ -47,7 +47,7 @@ passes it into `3-prepare_split_items/workflow.json`'s `build_split_items` node
 (`HSCODE_SPLIT_BUILDER`), which bakes it into each entry of `trade.split_items`.
 `trade_4_trigger_flows` (`SPLIT_TASK`) then spawns one macro workflow per split item
 (e.g. `tnsw/npqs/npqs_workflow.json`). `cha` travels the same way: `trade_3_prepare_split_items`
-maps `trade.cha?` to local var `cha`, and `build_split_items` bakes it into each payload.
+maps `trade.cha` to local var `cha`, and `build_split_items` bakes it into each payload.
 
 **Confirmed:** inside a `SPLIT_TASK`-spawned agency flow, company data is read back out
 at `_iter.input.company.<field>` — `_iter` is the current split-task iteration context,
