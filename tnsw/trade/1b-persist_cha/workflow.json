@@ -11,7 +11,9 @@
         "cha_company_id": "cha_company_id",
         "consignment_name": "consignment_name"
       },
-      "output_mapping": {}
+      "output_mapping": {
+        "cha": "cha"
+      }
     },
     { "id": "end", "type": "END" }
   ],

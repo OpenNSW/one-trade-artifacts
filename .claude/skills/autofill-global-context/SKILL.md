@@ -25,36 +25,48 @@ and don't try to "fix" it yourself — it's being tracked separately.
 
 ## What the seeded context is
 
-Two variables are assumed seeded by the runtime — not produced by any
+Two variables are seeded by the runtime or the trade flow — not produced by any
 `subtask_template`'s `output_namespace` the way every other namespace in this repo is
 (`trade.`, `userform.`, `reviewerform.`, ...):
 
 - **`traderCompany`** — `tnsw/trade/trade_workflow.json`'s own top-level seeded
   variable, present from that macro workflow's `start`. Its shape is
   `definitions.company` in `schemas/workflow-context.schema.json`.
-- **`cha`** — the CHA firm an acting session belongs to, if any (see `definitions.cha` in
-  the same file). Not currently wired anywhere — see the initiator note below.
+- **`cha`** — the CHA company chosen for the consignment: its `id`, `name` and the `data`
+  fields listed in `tnsw/trade/1b-persist_cha/transform.json`'s
+  `plugin_properties.cha_data_fields` (see `definitions.cha` in the same file). It's an
+  allowlist, because a company's data also holds credentials: to read another CHA field,
+  add it to that list (and to `definitions.cha`), not just to a mapping.
+  `trade_1b_persist_cha`'s `CHA_PERSIST_WRITER` outputs it once the choice is saved, and
+  `trade_workflow.json` keeps it as `trade.cha`. A CHA is a company with `hasCha: true`, and a
+  trader can choose its own, so it can equal `company`.
 
 `traderCompany` only exists at `trade_workflow.json`'s own scope. `trade_3_prepare_split_items`
-receives it as local var `company` (`"traderCompany?": "company"` at the macro level),
+receives it as local var `company` (`"traderCompany": "company"` at the macro level),
 passes it into `3-prepare_split_items/workflow.json`'s `build_split_items` node
 (`HSCODE_SPLIT_BUILDER`), which bakes it into each entry of `trade.split_items`.
 `trade_4_trigger_flows` (`SPLIT_TASK`) then spawns one macro workflow per split item
-(e.g. `tnsw/npqs/npqs_workflow.json`).
+(e.g. `tnsw/npqs/npqs_workflow.json`). `cha` travels the same way: `trade_3_prepare_split_items`
+maps `trade.cha` to local var `cha`, and `build_split_items` bakes it into each payload.
 
 **Confirmed:** inside a `SPLIT_TASK`-spawned agency flow, company data is read back out
 at `_iter.input.company.<field>` — `_iter` is the current split-task iteration context,
 `.input` is that split item's own input payload. `npqs_workflow.json`'s `n1_apply` reads
-it this way, e.g. `"_iter.input.company.name?": "applicant_name"`. This is *not* the same
+it this way, e.g. `"_iter.input.company.name?": "applicant_name"`. The CHA is read at
+`_iter.input.cha.<field>`, e.g. `"_iter.input.cha.data.tin_no?": "declarant_code"`
+(`customs_1_cusdec_submission`). This is *not* the same
 path as `traderCompany` at `trade_workflow.json`'s own scope, or plain `company` at
 `build_split_items`' own scope — each of those three names is only valid at its own
 level; don't assume any of them carries over unprefixed into the next.
 
-**Before assuming `cha` is populated for a given macro workflow, check who initiates
-it.** `tnsw/trade/trade_workflow.json` is trader-initiated — the trader is using
-`1-cha_selection` to *pick* a CHA, so there is no CHA in that session to begin with, and
-`cha.cha_company_id` must not be wired into that field. A CHA-initiated flow (if one
-exists) would be the opposite case.
+**`cha` is the CHA the trader picked, not the acting user's company.** It doesn't exist
+yet while `1-cha_selection` runs, so don't wire it into that step. It exists from
+`trade_1b_persist_cha` on, and only in agency flows spawned after that. Inside the trade
+flow its hand-off is required (no `?`), like `company`'s: a backend that doesn't output it
+parks `trade_1b_persist_cha` rather than starting agency flows without it. In the agency
+flows, keep each field read optional (`_iter.input.cha.data.tin_no?`): the object is always
+there, but a company's record may lack any one field.
+The declarant code is the CHA company's TIN, not an individual's number (#136).
 
 ## What's safe to autofill — and what isn't
 
