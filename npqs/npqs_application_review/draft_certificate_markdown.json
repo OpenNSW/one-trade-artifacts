@@ -1,4 +1,4 @@
 {
   "id": "npqs-application-review--draft-certificate",
-  "template": "{{if and (eq (print .reviewform.review_outcome) \"approve\") (not .reviewform.ephyto_required)}}\nThe Phytosanitary Certificate will be issued at Certificate Issuance once every required inspection is complete.\n{{else}}\nThis draft shows how the Phytosanitary Certificate will read, built from the application as the applicant last submitted it. It is not a certificate: it is issued, with its number, at Certificate Issuance once every required inspection is complete.\n\n#### [📄 Download Draft Phytosanitary Certificate](files:{{.submission.draft_certificate_key}})\n\nOpen it and use your browser's print option to print it or save it as a PDF.\n{{end}}"
+  "template": "This draft shows how the Phytosanitary Certificate will read, built from the application as the applicant last submitted it. It is not a certificate: it is issued, with its number, at Certificate Issuance once every required inspection is complete.\n\n#### [📄 Download Draft Phytosanitary Certificate](files:{{.submission.draft_certificate_key}})\n\nOpen it and use your browser's print option to print it or save it as a PDF."
 }

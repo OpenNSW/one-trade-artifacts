@@ -80,7 +80,7 @@
         "review_outcome": "reviewerform.review_outcome",
         "reference_number": "reviewerform.reference_number",
         "commodities": "reviewerform.commodities",
-        "ephyto_required?": "reviewerform.ephyto_required",
+        "ephyto_country?": "reviewerform.ephyto_country",
         "clarification_reason?": "reviewerform.clarification_reason",
         "callbackToken?": "agency_token"
       }

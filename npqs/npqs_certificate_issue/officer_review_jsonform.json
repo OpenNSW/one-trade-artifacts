@@ -224,23 +224,27 @@
         "title": "Date of Issue",
         "example": "2026-10-27"
       },
-      "certificate_url": {
-        "type": "string",
-        "format": "file",
-        "title": "Scanned Phytosanitary Certificate (PDF)",
-        "example": "https://nsw.gov.lk/storage/certs/phytosanitary-certificate-1029.pdf"
-      },
       "comments": {
         "type": "string",
         "title": "Officer Remarks",
         "example": "Issued phytosanitary certificate after validating treatment and visual inspection records."
       },
-      "ephyto_required": {
-        "type": "boolean",
-        "title": "ePhyto Required",
-        "readOnly": true
+      "ephyto_country": {
+        "type": "string",
+        "title": "Importing Country",
+        "readOnly": true,
+        "oneOf": [
+          {
+            "const": "ephyto",
+            "title": "ePhyto country: the certificate is sent through the IPPC ePhyto Hub"
+          },
+          {
+            "const": "non_ephyto",
+            "title": "Non-ePhyto country: the certificate is not sent through the IPPC ePhyto Hub"
+          }
+        ]
       },
-      "ephyto_reference_number": {
+      "certificate_number": {
         "type": "string",
         "title": "Phytosanitary Certificate Number",
         "readOnly": true,
@@ -248,28 +252,9 @@
       }
     },
     "required": [
-      "certificate_items"
-    ],
-    "if": {
-      "properties": {
-        "ephyto_required": {
-          "const": true
-        }
-      },
-      "required": [
-        "ephyto_required"
-      ]
-    },
-    "then": {
-      "required": [
-        "issue_date"
-      ]
-    },
-    "else": {
-      "required": [
-        "certificate_url"
-      ]
-    }
+      "certificate_items",
+      "issue_date"
+    ]
   },
   "uiSchema": {
     "type": "VerticalLayout",
@@ -332,16 +317,7 @@
       },
       {
         "type": "Control",
-        "scope": "#/properties/issue_date",
-        "rule": {
-          "effect": "SHOW",
-          "condition": {
-            "scope": "#/properties/ephyto_required",
-            "schema": {
-              "const": true
-            }
-          }
-        }
+        "scope": "#/properties/issue_date"
       },
       {
         "type": "Control",
@@ -349,20 +325,11 @@
       },
       {
         "type": "Control",
-        "scope": "#/properties/ephyto_required"
+        "scope": "#/properties/ephyto_country"
       },
       {
         "type": "Control",
-        "scope": "#/properties/ephyto_reference_number",
-        "rule": {
-          "effect": "SHOW",
-          "condition": {
-            "scope": "#/properties/ephyto_required",
-            "schema": {
-              "const": true
-            }
-          }
-        }
+        "scope": "#/properties/certificate_number"
       },
       {
         "type": "Control",
@@ -373,19 +340,6 @@
             "scope": "#/properties/certificate_type",
             "schema": {
               "const": "re-export"
-            }
-          }
-        }
-      },
-      {
-        "type": "Control",
-        "scope": "#/properties/certificate_url",
-        "rule": {
-          "effect": "HIDE",
-          "condition": {
-            "scope": "#/properties/ephyto_required",
-            "schema": {
-              "const": true
             }
           }
         }

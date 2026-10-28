@@ -31,7 +31,7 @@
       "output_mapping": {
         "review_outcome": "reviewform.review_outcome",
         "commodities": "reviewform.commodities",
-        "ephyto_required?": "reviewform.ephyto_required",
+        "ephyto_country?": "reviewform.ephyto_country",
         "clarification_reason?": "reviewform.clarification_reason"
       }
     },
@@ -49,7 +49,7 @@
         "reviewform.review_outcome": "payload.review_outcome",
         "reviewform.reference_number": "payload.reference_number",
         "reviewform.commodities": "payload.commodities",
-        "reviewform.ephyto_required?": "payload.ephyto_required",
+        "reviewform.ephyto_country?": "payload.ephyto_country",
         "reviewform.clarification_reason?": "payload.clarification_reason",
         "submission?": "submission",
         "reviewform": "reviewform"
