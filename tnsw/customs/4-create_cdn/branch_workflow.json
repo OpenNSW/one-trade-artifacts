@@ -14,7 +14,8 @@
       "lane": "Trader/CHA",
       "input_mapping": {
         "_iter.input.cusdec_ref": "cusdec_ref",
-        "_iter.input.container_label?": "container_label"
+        "_iter.input.container_label?": "container_label",
+        "_iter.input.shipper?": "shipper"
       },
       "output_mapping": {
         "userform": "userform",

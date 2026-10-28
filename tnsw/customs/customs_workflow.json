@@ -140,7 +140,10 @@
       "lane": "Trader/CHA",
       "input_mapping": {
         "customs.boat_note_prefill": "userform",
-        "customs.boat_note_prefill.containers": "containers"
+        "customs.boat_note_prefill.containers": "containers",
+        "_iter.input.cha?": "cha",
+        "_iter.input.cha.name?": "declarant_name",
+        "_iter.input.company.data.tin_no?": "exporter_code"
       },
       "output_mapping": {
         "userform": "customs.boat_note_userform",
