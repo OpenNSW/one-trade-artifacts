@@ -36,7 +36,7 @@
             },
             {
               "const": "cda-certificate-reg",
-              "title": "CDA Coconut Certificate (CDA Flow)"
+              "title": "CDA Coconut Certificate (CDA and Customs Flows)"
             },
             {
               "const": "cda-kernel-asycuda-approval",
