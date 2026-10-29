@@ -2,5 +2,11 @@
   "id": "npqs-provider-cert-upload",
   "type": "APPLICATION",
   "workflow_id": "npqs-provider-cert-upload",
-  "render_config_id": "npqs-provider-cert-upload:render"
+  "render_config_id": "npqs-provider-cert-upload:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }

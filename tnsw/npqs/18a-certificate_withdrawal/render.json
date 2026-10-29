@@ -2,12 +2,6 @@
   "id": "npqs-certificate-withdrawal:render",
   "type": "APPLICATION",
   "title": "[NPQS] Certificate Withdrawal",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "files": [
     "userform.attachments[*].attachment_file_url"
   ],

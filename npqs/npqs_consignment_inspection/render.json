@@ -2,11 +2,6 @@
   "id": "npqs-consignment-inspection--review:render",
   "type": "APPLICATION",
   "title": "NPQS Consignment Inspection",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "sections": {
     "submission_view": {
       "templateId": "npqs-visual-consignment--trader-schedule-form",

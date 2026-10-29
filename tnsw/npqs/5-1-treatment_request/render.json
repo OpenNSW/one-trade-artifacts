@@ -2,12 +2,6 @@
   "id": "npqs-treatment-request:render",
   "type": "APPLICATION",
   "title": "[NPQS] Treatment Request",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "files": [
     "submission.userform.attachments[*].attachment_file_url"
   ],

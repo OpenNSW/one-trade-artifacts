@@ -2,12 +2,6 @@
   "id": "trade-cha-selection-flow:render",
   "type": "APPLICATION",
   "title": "[Trade] Initialize Consignment",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "sections": {
     "workspace": {
       "templateId": "trade-cha-selection--form",

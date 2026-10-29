@@ -2,5 +2,10 @@
   "id": "npqs-certificate-replacement--review",
   "type": "APPLICATION",
   "workflow_id": "npqs-certificate-replacement--review-workflow",
-  "render_config_id": "npqs-certificate-replacement--review:render"
+  "render_config_id": "npqs-certificate-replacement--review:render",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  }
 }

@@ -2,12 +2,6 @@
   "id": "sltb-pay-levy-flow:render",
   "type": "PAYMENT",
   "title": "[SLTB] Pay SLTB Levy",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "files": [
     "payment.payment_slip",
     "payment_slip",

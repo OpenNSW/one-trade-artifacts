@@ -2,12 +2,6 @@
   "id": "slpa-consolidation-flow:render",
   "type": "APPLICATION",
   "title": "[SLPA] Container Consolidation",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "sections": {
     "working": {
       "templateId": "slpa-consolidation--status-message",

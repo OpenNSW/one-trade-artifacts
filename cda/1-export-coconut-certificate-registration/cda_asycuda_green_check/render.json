@@ -2,11 +2,6 @@
   "id": "cda-asycuda-green-check--review:render",
   "type": "APPLICATION",
   "title": "CDA ASYCUDA Green Check",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "files": [
     "submission.uploaded_dc_bags_details"
   ],

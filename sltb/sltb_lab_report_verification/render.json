@@ -2,11 +2,6 @@
   "id": "sltb-lab-report-verification--review:render",
   "type": "APPLICATION",
   "title": "Lab Test Report Verification",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "files": [
     "submission.lab_report_file",
     "submission.lab_test_report_file"

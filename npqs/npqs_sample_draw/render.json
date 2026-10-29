@@ -2,11 +2,6 @@
   "id": "npqs-sample-draw--review:render",
   "type": "APPLICATION",
   "title": "NPQS Draw Sample",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "files": [
     "submission.attachments[*].attachment_file_url"
   ],

@@ -2,5 +2,10 @@
   "id": "npqs-visual-sample-receive--review",
   "type": "APPLICATION",
   "workflow_id": "npqs-visual-sample-receive--review-workflow",
-  "render_config_id": "npqs-visual-sample-receive--review:render"
+  "render_config_id": "npqs-visual-sample-receive--review:render",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  }
 }

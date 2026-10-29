@@ -2,11 +2,6 @@
   "id": "cda-lot-adjustment-review--review:render",
   "type": "APPLICATION",
   "title": "CDA Officer Lot Adjustment Review",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "files": [
     "payload.payload.new_physical_certificate_file",
     "payload.payload.new_salmonella_certificate_file",

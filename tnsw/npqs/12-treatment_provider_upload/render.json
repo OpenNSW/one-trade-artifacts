@@ -2,12 +2,6 @@
   "id": "npqs-provider-cert-upload:render",
   "type": "APPLICATION",
   "title": "[NPQS] Upload Treatment Provider Certificate",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "files": [
     "traderinput.treatment_certificate_url",
     "userform.attachments[*].attachment_file_url"

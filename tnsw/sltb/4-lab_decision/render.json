@@ -2,12 +2,6 @@
   "id": "sltb-lab-decision-flow:render",
   "type": "APPLICATION",
   "title": "[SLTB 4] Lab Testing Decision",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "sections": {
     "status_message": {
       "templateId": "sltb-lab-decision--status",

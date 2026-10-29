@@ -2,12 +2,6 @@
   "id": "fcau-warehouse-scheduling-flow:render",
   "type": "APPLICATION",
   "title": "[FCAU] Warehouse Inspection Scheduling",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "sections": {
     "instructions": {
       "templateId": "fcau-warehouse-scheduling--instructions",

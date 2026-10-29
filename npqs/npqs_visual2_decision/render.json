@@ -2,11 +2,6 @@
   "id": "npqs-visual2-decision--review:render",
   "type": "APPLICATION",
   "title": "NPQS Visual Inspection 2 Decision",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "files": [
     "submission.attachments[*].attachment_file_url"
   ],

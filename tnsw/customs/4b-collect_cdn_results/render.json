@@ -1,12 +1,6 @@
 {
   "id": "customs-collect-cdn-results-flow:render",
   "type": "SYSTEM",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "sections": {},
   "states": {}
 }

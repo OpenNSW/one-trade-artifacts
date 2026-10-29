@@ -2,11 +2,6 @@
   "id": "sltb-levy-payment-confirm-pinpack--review:render",
   "type": "APPLICATION",
   "title": "SLTB PinPack Levy Deduction Confirmation",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "sections": {
     "submitted_info": {
       "templateId": "sltb-levy-payment-confirm-pinpack--submitted-info",

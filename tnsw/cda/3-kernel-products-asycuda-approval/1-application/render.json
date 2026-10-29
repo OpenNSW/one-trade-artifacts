@@ -2,12 +2,6 @@
   "id": "cda-kernel-asycuda-approval-flow:render",
   "type": "APPLICATION",
   "title": "[CDA] Submit ASYCUDA Approval Application",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "sections": {
     "approved_message": {
       "templateId": "cda-kernel-asycuda--approved-message",

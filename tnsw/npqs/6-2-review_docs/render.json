@@ -2,12 +2,6 @@
   "id": "npqs-review-docs:render",
   "type": "REVIEW",
   "title": "[NPQS] Review Consignment Documents",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "files": [
     "submission.additional_file_url[*]",
     "submission.invoice_file_url",

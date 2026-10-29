@@ -2,12 +2,6 @@
   "id": "fcau-lab-testing-flow:render",
   "type": "LAB_TEST",
   "title": "[FCAU] Laboratory Sample Testing",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "files": [
     "submission.commodities[*].analysis_certificates",
     "submission.commodities[*].other_declarations",

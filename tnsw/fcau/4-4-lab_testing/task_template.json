@@ -2,5 +2,11 @@
   "id": "fcau-lab-testing-flow",
   "type": "LAB_TEST",
   "workflow_id": "fcau-lab-testing-flow",
-  "render_config_id": "fcau-lab-testing-flow:render"
+  "render_config_id": "fcau-lab-testing-flow:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }

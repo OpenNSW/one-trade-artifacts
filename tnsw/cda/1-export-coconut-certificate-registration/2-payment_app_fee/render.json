@@ -2,12 +2,6 @@
   "id": "cda-pay-app-fee-flow:render",
   "type": "PAYMENT",
   "title": "[CDA] Salmonella Fee and Physical Quality Certification",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "sections": {
     "workspace": {
       "templateId": "cda-pay-app-fee--select-method-form",

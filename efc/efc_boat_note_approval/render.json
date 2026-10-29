@@ -2,11 +2,6 @@
   "id": "efc-boat-note-approval--review:render",
   "type": "APPLICATION",
   "title": "EFC Boat Note Approval",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "files": [
     "payload.payload.approved_boat_note_file",
     "reviewform.approved_boat_note_file",

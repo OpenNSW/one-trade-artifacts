@@ -2,5 +2,11 @@
   "id": "npqs-visual-consignment-flow",
   "type": "APPLICATION",
   "workflow_id": "npqs-visual-consignment-flow",
-  "render_config_id": "npqs-visual-consignment-flow:render"
+  "render_config_id": "npqs-visual-consignment-flow:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }

@@ -2,5 +2,11 @@
   "id": "fcau-pay-lab-fee-flow",
   "type": "PAYMENT",
   "workflow_id": "fcau-pay-lab-fee-flow",
-  "render_config_id": "fcau-pay-lab-fee-flow:render"
+  "render_config_id": "fcau-pay-lab-fee-flow:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }

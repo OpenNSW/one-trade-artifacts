@@ -2,5 +2,10 @@
   "id": "cda-officer-verification--review",
   "type": "APPLICATION",
   "workflow_id": "cda-officer-verification--review-workflow",
-  "render_config_id": "cda-officer-verification--review:render"
+  "render_config_id": "cda-officer-verification--review:render",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  }
 }

@@ -2,5 +2,10 @@
   "id": "npqs-visual2-decision--review",
   "type": "APPLICATION",
   "workflow_id": "npqs-visual2-decision--review-workflow",
-  "render_config_id": "npqs-visual2-decision--review:render"
+  "render_config_id": "npqs-visual2-decision--review:render",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  }
 }

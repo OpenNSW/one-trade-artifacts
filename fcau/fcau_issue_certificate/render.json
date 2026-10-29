@@ -2,11 +2,6 @@
   "id": "fcau-issue-certificate--review:render",
   "type": "APPLICATION",
   "title": "FCAU Health Certificate Issuance",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "files": [
     "payload.payload.certificate",
     "payload.payload.supporting_documents[*]",

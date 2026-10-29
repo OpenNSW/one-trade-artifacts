@@ -2,5 +2,11 @@
   "id": "npqs-review-docs",
   "type": "REVIEW",
   "workflow_id": "npqs-review-docs",
-  "render_config_id": "npqs-review-docs:render"
+  "render_config_id": "npqs-review-docs:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }

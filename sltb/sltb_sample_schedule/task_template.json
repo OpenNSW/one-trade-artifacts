@@ -2,5 +2,10 @@
   "id": "sltb-sample-schedule--review",
   "type": "APPLICATION",
   "workflow_id": "sltb-sample-schedule--review-workflow",
-  "render_config_id": "sltb-sample-schedule--review:render"
+  "render_config_id": "sltb-sample-schedule--review:render",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  }
 }

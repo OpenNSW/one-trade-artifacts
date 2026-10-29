@@ -2,11 +2,6 @@
   "id": "npqs-docs-review--review:render",
   "type": "APPLICATION",
   "title": "NPQS Documents Review",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "files": [
     "submission.additional_file_url[*]",
     "submission.invoice_file_url",

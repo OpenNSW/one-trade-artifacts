@@ -2,11 +2,6 @@
   "id": "sltb-xml-download--review:render",
   "type": "APPLICATION",
   "title": "SLTB XML Download",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "files": [
     "submission.cusdec_draft_xml",
     "cusdec.supportingDocuments.scannedDocuments[*].fileBase64",

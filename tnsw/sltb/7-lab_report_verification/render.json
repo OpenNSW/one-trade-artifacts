@@ -2,12 +2,6 @@
   "id": "sltb-lab-report-verification-flow:render",
   "type": "APPLICATION",
   "title": "[SLTB 7] Lab Test Report Verification",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "files": [
     "lab_test_report_file",
     "labreport.lab_report_file",

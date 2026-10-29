@@ -2,11 +2,6 @@
   "id": "npqs-certificate-withdrawal--review:render",
   "type": "APPLICATION",
   "title": "NPQS Certificate Withdrawal Request",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "sections": {
     "request_view": {
       "templateId": "npqs-certificate-withdrawal--request-view",

@@ -2,5 +2,11 @@
   "id": "npqs-treatment-issue",
   "type": "REVIEW",
   "workflow_id": "npqs-treatment-issue",
-  "render_config_id": "npqs-treatment-issue:render"
+  "render_config_id": "npqs-treatment-issue:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }

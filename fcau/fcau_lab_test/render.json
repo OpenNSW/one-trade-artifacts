@@ -2,11 +2,6 @@
   "id": "fcau-lab-test--review:render",
   "type": "APPLICATION",
   "title": "FCAU Lab Testing",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "files": [
     "submission.commodities[*].analysis_certificates",
     "submission.commodities[*].other_declarations",

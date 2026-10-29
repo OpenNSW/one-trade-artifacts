@@ -14,6 +14,7 @@
         "exporter_name?": "userform.exporter_name",
         "exporter_registration_number?": "userform.exporter_registration_number",
         "exporter_address?": "userform.exporter_address",
+        "contact_number?": "userform.contact_number",
         "rejection_reason?": "rejection_reason",
         "userform?": "userform"
       },
@@ -27,7 +28,7 @@
         "previous_certificate_number?": "userform.previous_certificate_number",
         "cancellation_reason?": "userform.cancellation_reason",
         "hs_code?": "userform.hs_code",
-        "contract_number?": "userform.contract_number",
+        "contact_number?": "userform.contact_number",
         "lot_number?": "userform.lot_number",
         "product_type": "userform.product_type",
         "dc_grades": "userform.dc_grades",

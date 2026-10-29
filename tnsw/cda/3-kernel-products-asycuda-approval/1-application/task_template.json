@@ -2,5 +2,11 @@
   "id": "cda-kernel-asycuda-approval-flow",
   "type": "APPLICATION",
   "workflow_id": "cda-kernel-asycuda-approval-flow",
-  "render_config_id": "cda-kernel-asycuda-approval-flow:render"
+  "render_config_id": "cda-kernel-asycuda-approval-flow:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }
