@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Check that every render config declares the files its task's data can hold.
+"""Check that every render config declares the files its task's data can hold,
+and that every file field states its x-file rules.
 
 nsw-srilanka only protects the values a render config lists under "files": it
 hands them out as file references, takes references back on submit, and sends
@@ -23,6 +24,16 @@ It reports, per render config:
   - a markdown link to a file that doesn't use the files: scheme (error);
   - a declared path no file reaches, or a files: link to one (warning:
     harmless, but likely stale).
+
+It also reports, per form, a file field (a "format": "file" string, or a list
+of them) whose x-file (error):
+  - doesn't state accept as text: the browser then falls back to its own
+    defaults, which the server can't check;
+  - lists in accept anything but extensions (".pdf"), "*" or "*/*": the
+    server checks a file by its value's extension, which names no type;
+  - on a list, doesn't set maxFiles above 1: the file control then keeps one
+    file and stores it as a single value, which the list refuses.
+Every form file is checked, as forms with the same id differ between bundles.
 
 Usage: python3 scripts/check_file_fields.py [--root DIR]
 Exits 1 when it finds an error.
@@ -162,6 +173,66 @@ class Scope:
 
     def form(self, form_id, all_forms):
         return self.forms.get(form_id) or all_forms.get(form_id)
+
+
+# An x-file accept entry the server can check: an extension, or any file.
+ACCEPT_ENTRY = re.compile(r"^(\.[A-Za-z0-9]+|\*|\*/\*)$")
+
+
+def x_file_errors(form, where):
+    """How the file fields of form, a form template, break the x-file rules."""
+    errors = []
+
+    def check(field, path, several):
+        x = field.get("x-file")
+        accept = x.get("accept") if isinstance(x, dict) else None
+        if not isinstance(accept, str):
+            errors.append(f"{where}: file field {path!r} states no x-file accept")
+        else:
+            wrong = [e for e in (e.strip() for e in accept.split(",")) if not ACCEPT_ENTRY.match(e)]
+            if wrong:
+                errors.append(f"{where}: file field {path!r} accepts {', '.join(map(repr, wrong))}; "
+                              f"list extensions (\".pdf\"), \"*\" or \"*/*\" only")
+        max_files = x.get("maxFiles") if isinstance(x, dict) else None
+        if several and not (isinstance(max_files, (int, float)) and not isinstance(max_files, bool) and max_files > 1):
+            errors.append(f"{where}: file list {path!r} sets no x-file maxFiles above 1")
+
+    def walk(schema, path):
+        if not isinstance(schema, dict):
+            return
+        items = schema.get("items")
+        if isinstance(items, dict) and items.get("format") == "file":
+            check(schema, path, True)
+            return
+        if schema.get("format") == "file":
+            check(schema, path, False)
+            return
+        for key in ("allOf", "anyOf", "oneOf"):
+            for sub in schema.get(key) or []:
+                walk(sub, path)
+        for key in ("then", "else"):
+            walk(schema.get(key), path)
+        for name, sub in (schema.get("properties") or {}).items():
+            walk(sub, f"{path}.{name}" if path else name)
+        if isinstance(items, dict):
+            walk(items, path + "[*]")
+
+    walk(form.get("schema"), "")
+    return errors
+
+
+def form_rule_errors(root):
+    """The x-file errors of every form file under root."""
+    errors = []
+    for p in sorted(glob.glob(os.path.join(root, "**", "*.json"), recursive=True)):
+        try:
+            with open(p) as f:
+                d = json.load(f)
+        except (OSError, ValueError):
+            continue
+        if isinstance(d, dict) and "schema" in d and "id" in d:
+            errors += x_file_errors(d, os.path.relpath(p, root))
+    return errors
 
 
 def legacy_review_forms(root):
@@ -389,6 +460,7 @@ class Checker:
                 link_errors, link_warnings = self.check_links(scope, render_id, render, where, declared_set | set(traced))
                 errors += link_errors
                 warnings += link_warnings
+        errors += form_rule_errors(self.root)
         return errors, warnings
 
     LINK = re.compile(r"\]\((files:)?\{\{\s*\.([A-Za-z0-9_.\-]*)\s*\}\}\)")
