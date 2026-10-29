@@ -12,7 +12,11 @@
       "task_template_id": "customs-boat-note--user-input",
       "input_mapping": {
         "boat_note_approval?": "boat_note_approval",
+        "cha.data.tel?": "userform.telephone_no",
+        "cha.name?": "userform.name_of_company_preparing_this_note",
         "containers": "userform.containers",
+        "declarant_name?": "userform.name_of_declarant",
+        "exporter_code?": "userform.exporters_registration_no",
         "userform?": "userform"
       },
       "output_mapping": {

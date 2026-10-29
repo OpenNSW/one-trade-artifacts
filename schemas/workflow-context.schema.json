@@ -52,7 +52,7 @@
             },
             "tin_no": {
               "type": "string",
-              "description": "Tax Identification Number, e.g. '134256789'. It is the Customs exporter code: tnsw/customs/customs_workflow.json's customs_1_cusdec_submission prefills the CusDec's exporter code (Box 2, traders.exporter.code) from it, as it does the declarant code from the CHA's."
+              "description": "Tax Identification Number, e.g. '134256789'. It is the Customs exporter code: tnsw/customs/customs_workflow.json's customs_1_cusdec_submission prefills the CusDec's exporter code (Box 2, traders.exporter.code) from it, as it does the declarant code from the CHA's. customs_6_create_boat_note falls back to it for the boat note's exporters_registration_no when Customs' prefill (the declared exporter's ID) has none."
             },
             "vat_no": {
               "type": "string",
@@ -61,11 +61,11 @@
             "contact_email": {
               "type": "string",
               "format": "email",
-              "description": "Primary contact email on file for the company, e.g. 'info@adam-pvt-ltd.lk' (nsw-srilanka's configs/companies.example.json). tnsw/trade/trade_workflow.json's trade_1_cha_selection, tnsw/slpa/slpa_workflow.json's slpa_1_0_ecdn and tnsw/cda/3-kernel-products-asycuda-approval/cda_workflow.json's cda_1_0_apply read it. A company record without it leaves those fields empty."
+              "description": "Primary contact email on file for the company, e.g. 'info@adam-pvt-ltd.lk' (nsw-srilanka's configs/companies.example.json). tnsw/trade/trade_workflow.json's trade_1_cha_selection, tnsw/slpa/slpa_workflow.json's slpa_1_0_ecdn, tnsw/cda/2-king-coconut-fresh-nuts-recommendation/cda_workflow.json's cda_kcfn_1_0_apply and tnsw/cda/3-kernel-products-asycuda-approval/cda_workflow.json's cda_1_0_apply read it. A company record without it leaves those fields empty."
             },
             "address": {
               "type": "string",
-              "description": "The company's address on one line, e.g. 'No. 45, Galle Road, Colombo 03, Sri Lanka' (nsw-srilanka's configs/companies.example.json). The record also carries 'address2'–'address4', empty in every example company, which no mapping reads. tnsw/fcau/fcau_workflow.json's fcau_1_0_apply, tnsw/customs/customs_workflow.json's customs_1_cusdec_submission and tnsw/slpa/slpa_workflow.json's slpa_1_0_ecdn read it."
+              "description": "The company's address on one line, e.g. 'No. 45, Galle Road, Colombo 03, Sri Lanka' (nsw-srilanka's configs/companies.example.json). The record also carries 'address2'–'address4', empty in every example company, which no mapping reads. tnsw/fcau/fcau_workflow.json's fcau_1_0_apply, tnsw/customs/customs_workflow.json's customs_1_cusdec_submission, tnsw/slpa/slpa_workflow.json's slpa_1_0_ecdn and tnsw/cda/1-export-coconut-certificate-registration/cda_workflow.json's cda_1_0_apply read it."
             },
             "agencies": {
               "type": "object",
@@ -80,7 +80,7 @@
                     "registration_number": {
                       "type": "string",
                       "pattern": "^[0-9]{4}$",
-                      "description": "This company's 4-digit CDA Exporter Identification Number. tnsw/cda/1-export-coconut-certificate-registration/cda_workflow.json's cda_2_0_pay_fee maps it to exporter_id, from which the PAYMENT step generates the CDA payment reference (refid format fee_payment_ref)."
+                      "description": "This company's 4-digit CDA Exporter Identification Number. Two CDA applications open with it filled: tnsw/cda/1-export-coconut-certificate-registration/cda_workflow.json's cda_1_0_apply (exporter_registration_number) and tnsw/cda/2-king-coconut-fresh-nuts-recommendation/cda_workflow.json's cda_kcfn_1_0_apply (cda_registration_no). Their payment steps, cda_2_0_pay_fee and cda_kcfn_2_0_payment, map it to exporter_id, from which the PAYMENT step generates the CDA payment reference (refid format fee_payment_ref)."
                     }
                   }
                 },
@@ -116,7 +116,7 @@
         "name": {
           "type": "string",
           "minLength": 1,
-          "description": "Display name of the CHA company."
+          "description": "Display name of the CHA company. tnsw/customs/customs_workflow.json's customs_6_create_boat_note prefills the boat note's name_of_company_preparing_this_note and name_of_declarant with it: the CHA prepares the note, and per #136 the declarant is the CHA company."
         },
         "data": {
           "type": "object",
@@ -129,7 +129,7 @@
             },
             "tel": {
               "type": "string",
-              "description": "Primary contact phone number on file for the CHA company."
+              "description": "Primary contact phone number on file for the CHA company. tnsw/customs/customs_workflow.json's customs_6_create_boat_note prefills the boat note's telephone_no with it."
             },
             "contact_email": {
               "type": "string",

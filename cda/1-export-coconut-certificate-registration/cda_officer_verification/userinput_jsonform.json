@@ -4,10 +4,20 @@
   "schema": {
     "type": "object",
     "properties": {
-      "exporter_details": {
+      "exporter_name": {
         "type": "string",
         "title": "Exporter Name",
-        "description": "Filled automatically from the company profile"
+        "description": "Entered by the applicant. Prefilled from their company profile when it has a value."
+      },
+      "exporter_registration_number": {
+        "type": "string",
+        "title": "Exporter Registration Number",
+        "description": "Entered by the applicant. Prefilled from their company profile when it has a value."
+      },
+      "exporter_address": {
+        "type": "string",
+        "title": "Exporter Address",
+        "description": "Entered by the applicant. Prefilled from their company profile when it has a value."
       },
       "cusdec_number": {
         "type": "string",
@@ -237,7 +247,9 @@
       }
     },
     "required": [
-      "exporter_details",
+      "exporter_name",
+      "exporter_registration_number",
+      "exporter_address",
       "cusdec_number",
       "relates_to_previous_approval",
       "product_type",
@@ -278,7 +290,20 @@
         "elements": [
           {
             "type": "Control",
-            "scope": "#/properties/exporter_details"
+            "scope": "#/properties/exporter_name"
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/exporter_registration_number"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/exporter_address"
+              }
+            ]
           },
           {
             "type": "Control",

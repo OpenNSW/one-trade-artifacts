@@ -26,6 +26,9 @@
       "task_template_id": "cda-apply-coconut-cert-flow",
       "lane": "Trader/CHA",
       "input_mapping": {
+        "_iter.input.company.name?": "exporter_name",
+        "_iter.input.company.data.agencies.cda.registration_number?": "exporter_registration_number",
+        "_iter.input.company.data.address?": "exporter_address",
         "cda.cusdec_number": "userform.cusdec_number"
       },
       "output_mapping": {
@@ -111,7 +114,7 @@
         "cda.salmonella_certificate_file?": "salmonella_certificate_file",
         "cda.userform.cert_type?": "cert_type",
         "cda.adjustment_feedback?": "adjustment_feedback",
-        "cda.userform.exporter_details?": "exporter_details",
+        "cda.userform.exporter_name?": "exporter_details",
         "_iter.input.company.data.agencies.cda.registration_number?": "exporter_id"
       },
       "output_mapping": {
