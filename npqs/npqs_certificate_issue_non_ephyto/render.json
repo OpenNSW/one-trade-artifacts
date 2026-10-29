@@ -29,14 +29,6 @@
         }
       ]
     },
-    "print_copy": {
-      "templateId": "npqs-certificate-issue-non-ephyto--print-copy-msg",
-      "title": "Phytosanitary Certificate",
-      "projector": "MARKDOWN",
-      "visibleWhen": {
-        "requireDataKey": "print_copy"
-      }
-    },
     "status_message": {
       "templateId": "npqs-certificate-issue--submission-view",
       "title": "Review Status",

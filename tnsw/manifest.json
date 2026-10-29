@@ -949,6 +949,12 @@
       "path": "npqs/18e-certificate_next_action/status_markdown.json"
     },
     {
+      "id": "npqs-certificate-next-action--completed-msg",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/18e-certificate_next_action/completed_markdown.json"
+    },
+    {
       "id": "npqs-certificate-withdrawal",
       "kind": "task_template",
       "version": "",

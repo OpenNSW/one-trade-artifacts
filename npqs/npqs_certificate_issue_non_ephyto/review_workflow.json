@@ -30,7 +30,6 @@
         "reviewform.certificate_items?": "items"
       },
       "output_mapping": {
-        "print_copy": "print_copy",
         "print_copy.key": "reviewform.print_copy_key"
       }
     },
@@ -40,7 +39,6 @@
       "task_template_id": "npqs-certificate-issue-non-ephyto--notify-decision",
       "input_mapping": {
         "callbackToken": "callbackToken",
-        "print_copy?": "print_copy",
         "reviewform?": "reviewform",
         "submission?": "submission",
         "taskId": "taskId",

@@ -1105,12 +1105,6 @@
       "path": "npqs_certificate_issue_non_ephyto/phyto_print_copy.gohtml"
     },
     {
-      "id": "npqs-certificate-issue-non-ephyto--print-copy-msg",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs_certificate_issue_non_ephyto/print_copy_markdown.json"
-    },
-    {
       "id": "npqs-certificate-issue-non-ephyto--notify-decision",
       "kind": "subtask_template",
       "version": "",
