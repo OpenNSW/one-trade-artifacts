@@ -21,7 +21,7 @@
         "userform": "npqs.userform",
         "reviewerform.review_outcome": "npqs.review_outcome",
         "reviewerform.commodities": "commodities",
-        "reviewerform.ephyto_required?": "npqs.ephyto_required"
+        "reviewerform.ephyto_country?": "npqs.ephyto_country"
       }
     },
     {
@@ -721,13 +721,13 @@
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
         "npqs.date_of_inspection?": "userform.date_of_inspection",
-        "npqs.ephyto_required?": "ephyto_required",
+        "npqs.ephyto_country?": "ephyto_country",
         "commodities?": "certificate_items"
       },
       "output_mapping": {
         "certificate_items?": "npqs.certificate_items",
         "replacement_reference_number?": "npqs.replacement_reference_number",
-        "ephyto_reference_number?": "npqs.ephyto_reference_number"
+        "certificate_number?": "npqs.certificate_number"
       }
     },
     {
@@ -752,7 +752,7 @@
         "npqs.docs_traderinput.packing_list_file_url?": "packing_list_file_url",
         "npqs.docs_traderinput.additional_file_url?": "additional_file_url",
         "npqs.replacement_reference_number?": "replacement_reference_number",
-        "npqs.ephyto_reference_number": "certificate_id"
+        "npqs.certificate_number": "certificate_id"
       },
       "output_mapping": {
         "ephyto?": "npqs.ephyto"
@@ -765,7 +765,7 @@
       "task_template_id": "npqs-certificate-status",
       "input_mapping": {
         "npqs.reference_number": "reference_number",
-        "npqs.ephyto_reference_number": "certificate_id",
+        "npqs.certificate_number": "certificate_id",
         "npqs.ephyto?": "ephyto",
         "npqs.certificate_withdrawal?": "withdrawal",
         "npqs.certificate_replacement?": "replacement"
@@ -787,7 +787,7 @@
       "type": "TASK",
       "task_template_id": "npqs-certificate-withdrawal",
       "input_mapping": {
-        "npqs.ephyto_reference_number": "certificate_id",
+        "npqs.certificate_number": "certificate_id",
         "npqs.certificate_action": "action",
         "npqs.reference_number": "reference_number",
         "npqs.ephyto?": "ephyto",
@@ -814,11 +814,12 @@
       "type": "TASK",
       "task_template_id": "npqs-certificate-replacement-request",
       "input_mapping": {
-        "npqs.ephyto_reference_number": "certificate_id",
+        "npqs.certificate_number": "certificate_id",
         "npqs.certificate_action": "action",
         "npqs.reference_number": "reference_number",
         "npqs.ephyto?": "ephyto",
-        "npqs.userform": "userform"
+        "npqs.userform": "userform",
+        "npqs.ephyto_country": "ephyto_country"
       },
       "output_mapping": {
         "replacement": "npqs.certificate_replacement",
@@ -838,10 +839,10 @@
       "type": "TASK",
       "task_template_id": "npqs-certificate-reissue",
       "input_mapping": {
-        "npqs.ephyto_required?": "ephyto_required",
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
-        "npqs.certificate_items?": "certificate_items"
+        "npqs.certificate_items?": "certificate_items",
+        "npqs.ephyto_country": "ephyto_country"
       },
       "output_mapping": {
         "new_certificate_id": "npqs.certificate_new_id",
@@ -856,7 +857,7 @@
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.certificate_new_id": "new_certificate_id",
-        "npqs.ephyto_reference_number": "certificate_id",
+        "npqs.certificate_number": "certificate_id",
         "npqs.certificate_replacement_note?": "replacement_note",
         "npqs.certificate_replacement_hub_error?": "replacement_hub_error",
         "npqs.userform": "userform",
@@ -873,7 +874,7 @@
         "replacement_submitted": "npqs.certificate_replacement_submitted",
         "replacement_hub_error?": "npqs.certificate_replacement_hub_error",
         "ephyto?": "npqs.ephyto",
-        "certificate_id": "npqs.ephyto_reference_number"
+        "certificate_id": "npqs.certificate_number"
       }
     },
     {
@@ -881,6 +882,68 @@
       "name": "Replacement Sent",
       "type": "GATEWAY",
       "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "n11_certificate_next_action",
+      "type": "TASK",
+      "name": "[NPQS 11] Keep or Replace the Certificate",
+      "task_template_id": "npqs-certificate-next-action",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "npqs.reference_number": "reference_number",
+        "npqs.certificate_number": "certificate_id",
+        "npqs.certificate_replacement?": "replacement"
+      },
+      "output_mapping": {
+        "action": "npqs.certificate_action"
+      }
+    },
+    {
+      "id": "gw_next_action",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Keep or Replace?"
+    },
+    {
+      "id": "n11b_certificate_replacement_request",
+      "type": "TASK",
+      "name": "[NPQS 11b] Request a Replacement Certificate",
+      "task_template_id": "npqs-certificate-replacement-request",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "npqs.certificate_number": "certificate_id",
+        "npqs.certificate_action": "action",
+        "npqs.reference_number": "reference_number",
+        "npqs.ephyto_country": "ephyto_country",
+        "npqs.userform": "userform"
+      },
+      "output_mapping": {
+        "replacement": "npqs.certificate_replacement",
+        "userform": "npqs.userform"
+      }
+    },
+    {
+      "id": "gw_next_action_replacement",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Replacement Accepted?"
+    },
+    {
+      "id": "n11c_certificate_reissue",
+      "type": "TASK",
+      "name": "[NPQS 11c] Issue the Replacement Certificate",
+      "task_template_id": "npqs-certificate-reissue",
+      "lane": "NPQS Officer",
+      "input_mapping": {
+        "npqs.ephyto_country": "ephyto_country",
+        "npqs.reference_number": "reference_number",
+        "npqs.userform": "userform",
+        "npqs.certificate_items?": "certificate_items"
+      },
+      "output_mapping": {
+        "new_certificate_id": "npqs.certificate_number",
+        "certificate_items?": "npqs.certificate_items"
+      }
     },
     {
       "id": "end_withdrawn",
@@ -1306,13 +1369,13 @@
       "id": "e_ephyto_true",
       "source_id": "ephyto_split",
       "target_id": "n9_0_ephyto_upload",
-      "condition": "npqs.ephyto_required == true"
+      "condition": "npqs.ephyto_country == 'ephyto'"
     },
     {
       "id": "e_ephyto_false",
       "source_id": "ephyto_split",
-      "target_id": "end_success",
-      "condition": "npqs.ephyto_required != true"
+      "target_id": "n11_certificate_next_action",
+      "condition": "npqs.ephyto_country == 'non_ephyto'"
     },
     {
       "id": "e_ephyto_upload_to_status",
@@ -1423,6 +1486,45 @@
       "source_id": "gw_certificate_replaced",
       "target_id": "n10d_certificate_replacement_transmit",
       "condition": "npqs.certificate_replacement_submitted != true"
+    },
+    {
+      "id": "e_next_action",
+      "source_id": "n11_certificate_next_action",
+      "target_id": "gw_next_action"
+    },
+    {
+      "id": "e_next_action_complete",
+      "source_id": "gw_next_action",
+      "target_id": "end_success",
+      "condition": "npqs.certificate_action.action == 'complete'"
+    },
+    {
+      "id": "e_next_action_replace",
+      "source_id": "gw_next_action",
+      "target_id": "n11b_certificate_replacement_request",
+      "condition": "npqs.certificate_action.action == 'replace'"
+    },
+    {
+      "id": "e_next_action_replacement_decision",
+      "source_id": "n11b_certificate_replacement_request",
+      "target_id": "gw_next_action_replacement"
+    },
+    {
+      "id": "e_next_action_replacement_accepted",
+      "source_id": "gw_next_action_replacement",
+      "target_id": "n11c_certificate_reissue",
+      "condition": "npqs.certificate_replacement.decision == 'accept'"
+    },
+    {
+      "id": "e_next_action_replacement_rejected",
+      "source_id": "gw_next_action_replacement",
+      "target_id": "n11_certificate_next_action",
+      "condition": "npqs.certificate_replacement.decision in [nil, 'reject']"
+    },
+    {
+      "id": "e_next_action_reissued",
+      "source_id": "n11c_certificate_reissue",
+      "target_id": "n11_certificate_next_action"
     }
   ]
 }

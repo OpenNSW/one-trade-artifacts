@@ -1,4 +1,4 @@
 {
   "id": "npqs-certificate-reissue--completed-msg",
-  "template": "### Replacement Certificate Issued\n\nThe NPQS officer issued the replacement certificate. It is sent to the IPPC ePhyto Hub next.\n{{if .reviewerform.certificate_url}}\n#### [📄 Download Phytosanitary Certificate](files:{{.reviewerform.certificate_url}})\n{{end}}"
+  "template": "### Replacement Certificate Issued\n\nThe NPQS officer issued the replacement certificate.{{if eq (print .submission.ephyto_country) \"non_ephyto\"}} The importing country is not an ePhyto country, so it is not sent through the IPPC ePhyto Hub.{{else}} It is sent to the IPPC ePhyto Hub next.{{end}}\n{{if .reviewerform.certificate_url}}\n#### [📄 Download Phytosanitary Certificate](files:{{.reviewerform.certificate_url}})\n{{end}}"
 }
