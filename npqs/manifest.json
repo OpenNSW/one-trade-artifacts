@@ -1117,6 +1117,60 @@
       "path": "npqs_certificate_issue_non_ephyto/notify_decision.json"
     },
     {
+      "id": "npqs_certificate_signed_upload",
+      "kind": "task_config",
+      "version": "",
+      "path": "npqs_certificate_signed_upload/npqs_certificate_signed_upload.taskconfig.json"
+    },
+    {
+      "id": "npqs_certificate_signed_upload",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_certificate_signed_upload/workflow.json"
+    },
+    {
+      "id": "npqs-certificate-signed-upload--review",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs_certificate_signed_upload/task_template.json"
+    },
+    {
+      "id": "npqs-certificate-signed-upload--review-workflow",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_certificate_signed_upload/review_workflow.json"
+    },
+    {
+      "id": "npqs-certificate-signed-upload--review:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_certificate_signed_upload/render.json"
+    },
+    {
+      "id": "npqs-certificate-signed-upload--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_certificate_signed_upload/officer_review.json"
+    },
+    {
+      "id": "npqs-certificate-signed-upload--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_certificate_signed_upload/officer_review_jsonform.json"
+    },
+    {
+      "id": "npqs-certificate-signed-upload--print-copy-msg",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_certificate_signed_upload/print_copy_markdown.json"
+    },
+    {
+      "id": "npqs-certificate-signed-upload--notify-decision",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_certificate_signed_upload/notify_decision.json"
+    },
+    {
       "id": "npqs_ephyto_transmit",
       "kind": "task_config",
       "version": "",
