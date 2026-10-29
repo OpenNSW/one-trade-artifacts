@@ -12,14 +12,14 @@
       "company_name": {
         "type": "string",
         "title": "Company Name",
-        "description": "Populated via a Google Apps Script API call. Free text until that integration is wired in.",
+        "description": "Entered by the applicant. Prefilled from their company profile when it has a value.",
         "example": "Lanka Fresh Nuts (Pvt) Ltd"
       },
       "cda_registration_no": {
         "type": "string",
         "title": "CDA Registration No (Marketing Division)",
-        "description": "Populated via a Google Apps Script API call. Free text until that integration is wired in.",
-        "example": "CDA/MKT/REG/0001"
+        "description": "Entered by the applicant. Prefilled from their company profile when it has a value.",
+        "example": "0001"
       },
       "destination_country": {
         "type": "string",

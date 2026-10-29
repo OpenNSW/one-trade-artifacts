@@ -13,7 +13,11 @@
       "name": "[CDA-KCFN 1.0] Submit Application & Container Inspection",
       "task_template_id": "cda-kcfn-apply-flow",
       "lane": "Trader/CHA",
-      "input_mapping": {},
+      "input_mapping": {
+        "_iter.input.company?": "company",
+        "_iter.input.company.name?": "applicant_name",
+        "_iter.input.company.data.contact_email?": "applicant_email"
+      },
       "output_mapping": {
         "userform.commercial_invoice_no": "cda_kcfn.reference_number",
         "userform": "cda_kcfn.userform"

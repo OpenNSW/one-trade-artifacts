@@ -61,11 +61,11 @@
             "contact_email": {
               "type": "string",
               "format": "email",
-              "description": "Primary contact email on file for the company, e.g. 'info@adam-pvt-ltd.lk' (nsw-srilanka's configs/companies.example.json). tnsw/trade/trade_workflow.json's trade_1_cha_selection, tnsw/slpa/slpa_workflow.json's slpa_1_0_ecdn and tnsw/cda/3-kernel-products-asycuda-approval/cda_workflow.json's cda_1_0_apply read it. A company record without it leaves those fields empty."
+              "description": "Primary contact email on file for the company, e.g. 'info@adam-pvt-ltd.lk' (nsw-srilanka's configs/companies.example.json). tnsw/trade/trade_workflow.json's trade_1_cha_selection, tnsw/slpa/slpa_workflow.json's slpa_1_0_ecdn, tnsw/cda/2-king-coconut-fresh-nuts-recommendation/cda_workflow.json's cda_kcfn_1_0_apply and tnsw/cda/3-kernel-products-asycuda-approval/cda_workflow.json's cda_1_0_apply read it. A company record without it leaves those fields empty."
             },
             "address": {
               "type": "string",
-              "description": "The company's address on one line, e.g. 'No. 45, Galle Road, Colombo 03, Sri Lanka' (nsw-srilanka's configs/companies.example.json). The record also carries 'address2'–'address4', empty in every example company, which no mapping reads. tnsw/fcau/fcau_workflow.json's fcau_1_0_apply, tnsw/customs/customs_workflow.json's customs_1_cusdec_submission and tnsw/slpa/slpa_workflow.json's slpa_1_0_ecdn read it."
+              "description": "The company's address on one line, e.g. 'No. 45, Galle Road, Colombo 03, Sri Lanka' (nsw-srilanka's configs/companies.example.json). The record also carries 'address2'–'address4', empty in every example company, which no mapping reads. tnsw/fcau/fcau_workflow.json's fcau_1_0_apply, tnsw/customs/customs_workflow.json's customs_1_cusdec_submission, tnsw/slpa/slpa_workflow.json's slpa_1_0_ecdn and tnsw/cda/1-export-coconut-certificate-registration/cda_workflow.json's cda_1_0_apply read it."
             },
             "agencies": {
               "type": "object",
@@ -80,7 +80,7 @@
                     "registration_number": {
                       "type": "string",
                       "pattern": "^[0-9]{4}$",
-                      "description": "This company's 4-digit CDA Exporter Identification Number. tnsw/cda/1-export-coconut-certificate-registration/cda_workflow.json's cda_2_0_pay_fee maps it to exporter_id, from which the PAYMENT step generates the CDA payment reference (refid format fee_payment_ref)."
+                      "description": "This company's 4-digit CDA Exporter Identification Number. Two CDA applications open with it filled: tnsw/cda/1-export-coconut-certificate-registration/cda_workflow.json's cda_1_0_apply (exporter_registration_number) and tnsw/cda/2-king-coconut-fresh-nuts-recommendation/cda_workflow.json's cda_kcfn_1_0_apply (cda_registration_no). Their payment steps, cda_2_0_pay_fee and cda_kcfn_2_0_payment, map it to exporter_id, from which the PAYMENT step generates the CDA payment reference (refid format fee_payment_ref)."
                     }
                   }
                 },

@@ -11,6 +11,11 @@
       "type": "TASK",
       "task_template_id": "cda-kcfn-apply--user-input",
       "input_mapping": {
+        "applicant_email?": "userform.applicant_email",
+        "applicant_name?": "userform.applicant_name",
+        "company.data.agencies.cda.registration_number?": "userform.cda_registration_no",
+        "company.data.contact_email?": "userform.email",
+        "company.name?": "userform.company_name",
         "reviewerform.rejection_reason?": "rejection_reason",
         "userform?": "userform"
       },
