@@ -30,10 +30,20 @@
         "title": "Clarification Required (If sending back to trader)",
         "example": "Please specify the exact scientific name of the cut foliage."
       },
-      "ephyto_required": {
-        "type": "boolean",
-        "title": "IPPC ePhyto Hub Upload Required (for Consignment)",
-        "default": false
+      "ephyto_country": {
+        "type": "string",
+        "title": "Importing Country",
+        "description": "Whether the importing country exchanges phytosanitary certificates through the IPPC ePhyto Hub. Either way a certificate is issued; only an ePhyto country's is sent through the Hub.",
+        "oneOf": [
+          {
+            "const": "ephyto",
+            "title": "ePhyto country: the certificate is sent through the IPPC ePhyto Hub"
+          },
+          {
+            "const": "non_ephyto",
+            "title": "Non-ePhyto country: the certificate is not sent through the IPPC ePhyto Hub"
+          }
+        ]
       },
       "commodities": {
         "type": "array",
@@ -260,6 +270,9 @@
           ]
         },
         "then": {
+          "required": [
+            "ephyto_country"
+          ],
           "properties": {
             "commodities": {
               "type": "array",
@@ -319,7 +332,10 @@
       },
       {
         "type": "Control",
-        "scope": "#/properties/ephyto_required",
+        "scope": "#/properties/ephyto_country",
+        "options": {
+          "format": "radio"
+        },
         "rule": {
           "effect": "SHOW",
           "condition": {

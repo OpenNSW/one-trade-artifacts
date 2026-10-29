@@ -21,7 +21,7 @@
         "userform": "npqs.userform",
         "reviewerform.review_outcome": "npqs.review_outcome",
         "reviewerform.commodities": "commodities",
-        "reviewerform.ephyto_required?": "npqs.ephyto_required"
+        "reviewerform.ephyto_country?": "npqs.ephyto_country"
       }
     },
     {
@@ -230,7 +230,7 @@
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
-        "npqs.ephyto_required?": "ephyto_required",
+        "npqs.ephyto_country?": "ephyto_country",
         "commodities?": "certificate_items"
       },
       "output_mapping": {

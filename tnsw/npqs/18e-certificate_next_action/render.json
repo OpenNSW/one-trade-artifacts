@@ -1,0 +1,64 @@
+{
+  "id": "npqs-certificate-next-action:render",
+  "type": "APPLICATION",
+  "title": "[NPQS] Keep or Replace the Certificate",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  },
+  "files": [],
+  "sections": {
+    "status_msg": {
+      "templateId": "npqs-certificate-next-action--status-msg",
+      "title": "Phytosanitary Certificate",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ]
+      }
+    },
+    "action_form": {
+      "templateId": "npqs-certificate-next-action--action-form",
+      "title": "Next Action",
+      "projector": "FORM",
+      "dataKey": "action",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ]
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "completed": {
+      "templateId": "npqs-certificate-status--next-action-msg",
+      "title": "Next Action",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "COMPLETED"
+        ]
+      }
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        },
+        {
+          "command": "save_as_draft"
+        }
+      ]
+    }
+  }
+}

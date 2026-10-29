@@ -1,0 +1,75 @@
+{
+  "id": "npqs-certificate-next-action--action-form",
+  "title": "",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "action": {
+        "type": "string",
+        "title": "What would you like to do?",
+        "oneOf": [
+          {
+            "const": "complete",
+            "title": "Complete: keep the certificate and finish"
+          },
+          {
+            "const": "replace",
+            "title": "Replace the certificate"
+          }
+        ]
+      },
+      "replacement_reason": {
+        "type": "string",
+        "title": "Reason for replacement",
+        "description": "Sent to the NPQS officer, who accepts or rejects the request."
+      }
+    },
+    "required": [
+      "action"
+    ],
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "action": {
+              "const": "replace"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "replacement_reason"
+          ]
+        }
+      }
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/action",
+        "options": {
+          "format": "radio"
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/replacement_reason",
+        "options": {
+          "multi": true
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/action",
+            "schema": {
+              "const": "replace"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

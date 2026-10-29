@@ -17,7 +17,8 @@
         "certificate_id?": "submission.certificate_id",
         "ephyto.tracking_number?": "submission.tracking_number",
         "ephyto.tracking_info?": "submission.tracking_info",
-        "action.replacement_reason?": "submission.replacement_reason"
+        "action.replacement_reason?": "submission.replacement_reason",
+        "ephyto_country": "submission.ephyto_country"
       },
       "output_mapping": {
         "decision": "replacement.decision",
@@ -34,7 +35,10 @@
       "type": "TASK",
       "task_template_id": "npqs-apply-phyto-cert--user-input",
       "input_mapping": {
-        "userform?": "userform"
+        "userform?": "userform",
+        "certificate_id": "certificate_id",
+        "replacement?": "replacement",
+        "ephyto_country": "ephyto_country"
       },
       "output_mapping": {
         "certificate_type": "userform.certificate_type",
@@ -69,6 +73,12 @@
         "disinfestation_treatment?": "userform.disinfestation_treatment",
         "attachments?": "userform.attachments"
       }
+    },
+    {
+      "id": "gw_note",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Sent through the IPPC ePhyto Hub?"
     },
     {
       "id": "replacement_note",
@@ -113,7 +123,19 @@
     {
       "id": "e5",
       "source_id": "amend_application",
-      "target_id": "replacement_note"
+      "target_id": "gw_note"
+    },
+    {
+      "id": "e_note_for_hub",
+      "source_id": "gw_note",
+      "target_id": "replacement_note",
+      "condition": "ephyto_country == 'ephyto'"
+    },
+    {
+      "id": "e_no_note",
+      "source_id": "gw_note",
+      "target_id": "end",
+      "condition": "ephyto_country == 'non_ephyto'"
     },
     {
       "id": "e6",
