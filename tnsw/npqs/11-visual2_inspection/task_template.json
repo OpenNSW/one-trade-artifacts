@@ -2,5 +2,11 @@
   "id": "npqs-visual2-inspection-flow",
   "type": "APPLICATION",
   "workflow_id": "npqs-visual2-inspection-flow",
-  "render_config_id": "npqs-visual2-inspection-flow:render"
+  "render_config_id": "npqs-visual2-inspection-flow:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }

@@ -2,12 +2,6 @@
   "id": "slpa-sundry-order-flow:render",
   "type": "APPLICATION",
   "title": "[SLPA] Sundry Order",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "sections": {
     "order_refusal": {
       "templateId": "slpa-so--refusal",

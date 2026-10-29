@@ -6,11 +6,11 @@ A deployment is the trader-facing NSW (tnsw/) or one agency (<agency>/). In each
   * every step that waits for a caller (USER_INPUT, EXTERNAL_REVIEW, PAYMENT) carries a
     PRE_RESUME `authz` extension: state -> command -> the logical names allowed to run
     it, deny by default;
-  * every task's render config lists in `read.roles` the roles allowed to open it.
+  * every task template lists in `read.roles` the roles allowed to open its task.
 
 The backend checks a step only when it declares the extension, and lets every owning
-role read a render config with no `read` block, so a task that omits either is open to
-every caller who reaches it.
+role read a task whose template has no `read` block, so a task that omits either is open
+to every caller who reaches it.
 
 A step's rule must be exactly what the step needs: the one state the step waits in, and
 the commands it can be completed with there.
@@ -33,7 +33,7 @@ every value the variable can hold: the enum, const or oneOf (else the default) o
 form field that writes it, or, when it is a step's own command, the commands its render
 config offers.
 
-Every role a step's rule names must also be in its task's read.roles.
+Every role a step's rule names must also be in its task template's read.roles.
 
 The names are the logical names each deployment's catalog defines (NAMES), mirrored from
 nsw-srilanka: configs/catalog.example.json for tnsw, configs/agency/<agency>/catalog.json
@@ -355,9 +355,11 @@ def check_deployment(deployment, deployments):
             problems.append(f"{where}: render config {render_id!r} is not in the manifest")
             continue
         render = deployment.load("generic_template", render_id)
-        readers = (render.get("read") or {}).get("roles")
+        if "read" in render:
+            problems.append(f"{where}: render config {render_id} has a read block; read.roles belongs on the task template")
+        readers = (task.get("read") or {}).get("roles")
         if not non_empty_names(readers):
-            problems.append(f"{where}: render config {render_id} has no read.roles")
+            problems.append(f"{where}: has no read.roles")
             readers = []
         elif set(readers) - deployment.names["roles"]:
             problems.append(

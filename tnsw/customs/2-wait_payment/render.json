@@ -2,12 +2,6 @@
   "id": "customs-wait-payment-flow:render",
   "type": "REVIEW",
   "title": "[Customs] Duty Payment Settlement",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "files": [
     "submission.supportingDocuments.scannedDocuments[*].fileBase64"
   ],

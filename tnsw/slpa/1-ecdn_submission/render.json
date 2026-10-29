@@ -2,12 +2,6 @@
   "id": "slpa-ecdn-submission-flow:render",
   "type": "APPLICATION",
   "title": "[SLPA] Electronic Cargo Declaration Note (ECDN)",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "sections": {
     "cms_rejection": {
       "templateId": "slpa-ecdn--cms-rejection",

@@ -1,12 +1,6 @@
 {
   "id": "customs-prepare-cdn-items-flow:render",
   "type": "SYSTEM",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "sections": {},
   "states": {}
 }

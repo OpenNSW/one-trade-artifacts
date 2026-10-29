@@ -2,5 +2,11 @@
   "id": "npqs-apply-phyto-cert",
   "type": "APPLICATION",
   "workflow_id": "npqs-apply-phyto-cert",
-  "render_config_id": "npqs-apply-phyto-cert:render"
+  "render_config_id": "npqs-apply-phyto-cert:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }

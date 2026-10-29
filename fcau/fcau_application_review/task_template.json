@@ -2,5 +2,10 @@
   "id": "fcau-application-review--review",
   "type": "APPLICATION",
   "workflow_id": "fcau-application-review--review-workflow",
-  "render_config_id": "fcau-application-review--review:render"
+  "render_config_id": "fcau-application-review--review:render",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  }
 }

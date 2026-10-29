@@ -2,11 +2,6 @@
   "id": "npqs-ephyto-transmit--review:render",
   "type": "APPLICATION",
   "title": "NPQS IPPC ePhyto Hub Transmission",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "sections": {
     "certificate_view": {
       "templateId": "npqs-ephyto-transmit--certificate-view",

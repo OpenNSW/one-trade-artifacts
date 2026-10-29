@@ -2,11 +2,6 @@
   "id": "sltb-sample-ack-dropoff--review:render",
   "type": "APPLICATION",
   "title": "Acknowledge Sample Drop-off",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "sections": {
     "review_form": {
       "templateId": "sltb-dropoff--officer-ack-form",

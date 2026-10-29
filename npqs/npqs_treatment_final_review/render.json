@@ -2,11 +2,6 @@
   "id": "npqs-treatment-final-review--review:render",
   "type": "APPLICATION",
   "title": "NPQS Treatment Review",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "files": [
     "reviewform.supervision_report_urls[*]",
     "reviewform.treatment_certificate_urls[*]",

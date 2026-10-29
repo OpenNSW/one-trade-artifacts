@@ -2,5 +2,11 @@
   "id": "npqs-certificate-next-action",
   "type": "APPLICATION",
   "workflow_id": "npqs-certificate-next-action",
-  "render_config_id": "npqs-certificate-next-action:render"
+  "render_config_id": "npqs-certificate-next-action:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }

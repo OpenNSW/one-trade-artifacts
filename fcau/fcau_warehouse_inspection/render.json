@@ -2,11 +2,6 @@
   "id": "fcau-warehouse-inspection--review:render",
   "type": "APPLICATION",
   "title": "FCAU Warehouse Visual Inspection",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "files": [
     "submission.commodities[*].analysis_certificates",
     "submission.commodities[*].other_declarations",

@@ -2,11 +2,6 @@
   "id": "cda-kcfn-asycuda-verification--review:render",
   "type": "APPLICATION",
   "title": "CDA Officer ASYCUDA Green Check Verification",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "files": [
     "submission.additional_documents[*]",
     "submission.commercial_invoice",

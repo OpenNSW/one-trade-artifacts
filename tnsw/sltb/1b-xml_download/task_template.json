@@ -2,5 +2,11 @@
   "id": "sltb-xml-download-flow",
   "type": "APPLICATION",
   "workflow_id": "sltb-xml-download-flow",
-  "render_config_id": "sltb-xml-download-flow:render"
+  "render_config_id": "sltb-xml-download-flow:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }

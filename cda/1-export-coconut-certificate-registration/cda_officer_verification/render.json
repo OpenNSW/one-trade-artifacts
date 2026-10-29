@@ -2,11 +2,6 @@
   "id": "cda-officer-verification--review:render",
   "type": "APPLICATION",
   "title": "CDA Coconut Certificate Verification",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "files": [
     "submission.uploaded_dc_bags_details"
   ],

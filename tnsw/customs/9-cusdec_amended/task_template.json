@@ -2,5 +2,11 @@
   "id": "customs-cusdec-amended-flow",
   "type": "REVIEW",
   "workflow_id": "customs-cusdec-amended-flow",
-  "render_config_id": "customs-cusdec-amended-flow:render"
+  "render_config_id": "customs-cusdec-amended-flow:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }

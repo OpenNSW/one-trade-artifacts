@@ -2,5 +2,11 @@
   "id": "trade-cha-selection-flow",
   "type": "APPLICATION",
   "workflow_id": "trade-cha-selection-flow",
-  "render_config_id": "trade-cha-selection-flow:render"
+  "render_config_id": "trade-cha-selection-flow:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }

@@ -2,5 +2,11 @@
   "id": "cda-asycuda-green-check-flow",
   "type": "REVIEW",
   "workflow_id": "cda-asycuda-green-check-flow",
-  "render_config_id": "cda-asycuda-green-check-flow:render"
+  "render_config_id": "cda-asycuda-green-check-flow:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }

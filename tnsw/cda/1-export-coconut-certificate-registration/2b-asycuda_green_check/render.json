@@ -2,12 +2,6 @@
   "id": "cda-asycuda-green-check-flow:render",
   "type": "REVIEW",
   "title": "[CDA] ASYCUDA Green Check",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "files": [
     "submission.uploaded_dc_bags_details"
   ],

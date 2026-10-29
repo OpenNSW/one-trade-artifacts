@@ -2,11 +2,6 @@
   "id": "npqs-visual-system--review:render",
   "type": "APPLICATION",
   "title": "NPQS System Inspection",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "files": [
     "submission.attachments[*].attachment_file_url"
   ],

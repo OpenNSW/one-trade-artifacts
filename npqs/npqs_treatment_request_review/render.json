@@ -2,11 +2,6 @@
   "id": "npqs-treatment-request-review--review:render",
   "type": "APPLICATION",
   "title": "NPQS Treatment Request Review",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "files": [
     "submission.userform.attachments[*].attachment_file_url"
   ],

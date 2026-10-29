@@ -2,12 +2,6 @@
   "id": "npqs-visual2-decision:render",
   "type": "REVIEW",
   "title": "[NPQS] Visual Inspection 2 Decision",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "files": [
     "submission.attachments[*].attachment_file_url"
   ],

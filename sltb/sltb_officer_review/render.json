@@ -2,11 +2,6 @@
   "id": "sltb-officer-review--review:render",
   "type": "APPLICATION",
   "title": "SLTB Blend Sheet Review",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "files": [
     "submission.cusdec_draft_xml"
   ],

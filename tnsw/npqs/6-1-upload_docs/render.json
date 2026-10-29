@@ -2,12 +2,6 @@
   "id": "npqs-upload-docs:render",
   "type": "APPLICATION",
   "title": "[NPQS] Upload Consignment Documents",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "files": [
     "traderinput.additional_file_url[*]",
     "traderinput.invoice_file_url",

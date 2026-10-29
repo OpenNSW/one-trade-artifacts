@@ -2,5 +2,10 @@
   "id": "sltb-xml-download--review",
   "type": "APPLICATION",
   "workflow_id": "sltb-xml-download--review-workflow",
-  "render_config_id": "sltb-xml-download--review:render"
+  "render_config_id": "sltb-xml-download--review:render",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  }
 }

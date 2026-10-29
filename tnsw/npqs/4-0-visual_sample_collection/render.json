@@ -2,12 +2,6 @@
   "id": "npqs-visual-sample-collection:render",
   "type": "APPLICATION",
   "title": "[NPQS] Sample Collection for Visual Inspection",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "files": [
     "submission.attachments[*].attachment_file_url",
     "userform.attachments[*].attachment_file_url"

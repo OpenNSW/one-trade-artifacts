@@ -2,12 +2,6 @@
   "id": "sltb-lab-testing-flow:render",
   "type": "APPLICATION",
   "title": "[SLTB 5] Lab Testing & Results",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "files": ["result.test_report_file"],
   "sections": {
     "status_message": {

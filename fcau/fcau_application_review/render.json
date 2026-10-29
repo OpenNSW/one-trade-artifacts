@@ -2,11 +2,6 @@
   "id": "fcau-application-review--review:render",
   "type": "APPLICATION",
   "title": "FCAU Application Review",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "files": [
     "reviewform.commodities[*].analysis_certificates",
     "reviewform.commodities[*].other_declarations",

@@ -2,12 +2,6 @@
   "id": "customs-wait-warranting-flow:render",
   "type": "REVIEW",
   "title": "[Customs] CusDec Warranting Status",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "files": [
     "submission.supportingDocuments.scannedDocuments[*].fileBase64"
   ],

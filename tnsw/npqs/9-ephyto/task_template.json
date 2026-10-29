@@ -2,5 +2,11 @@
   "id": "npqs-ephyto-upload",
   "type": "APPLICATION",
   "workflow_id": "npqs-ephyto-upload",
-  "render_config_id": "npqs-ephyto-upload:render"
+  "render_config_id": "npqs-ephyto-upload:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }

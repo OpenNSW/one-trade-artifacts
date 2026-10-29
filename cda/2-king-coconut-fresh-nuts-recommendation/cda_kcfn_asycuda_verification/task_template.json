@@ -2,5 +2,10 @@
   "id": "cda-kcfn-asycuda-verification--review",
   "type": "APPLICATION",
   "workflow_id": "cda-kcfn-asycuda-verification--review-workflow",
-  "render_config_id": "cda-kcfn-asycuda-verification--review:render"
+  "render_config_id": "cda-kcfn-asycuda-verification--review:render",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  }
 }

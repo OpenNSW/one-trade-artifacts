@@ -2,12 +2,6 @@
   "id": "fcau-issue-certificate-flow:render",
   "type": "CERTIFICATE_ISSUANCE",
   "title": "[FCAU] Issue Health Certificate",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "files": [
     "officerform.certificate",
     "officerform.supporting_documents[*]",

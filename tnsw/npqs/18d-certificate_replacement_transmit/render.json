@@ -2,12 +2,6 @@
   "id": "npqs-certificate-replacement-transmit:render",
   "type": "APPLICATION",
   "title": "[NPQS] Replacement Certificate Transmission",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "files": [
     "documents.additional_supporting_document.url[*]",
     "documents.commercial_invoice.url",

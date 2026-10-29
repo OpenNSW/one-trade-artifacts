@@ -2,12 +2,6 @@
   "id": "sltb-dropoff-flow:render",
   "type": "APPLICATION",
   "title": "[SLTB 3A] Sample Drop-off at SLTB",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "sections": {
     "status_message": {
       "templateId": "sltb-dropoff--status",

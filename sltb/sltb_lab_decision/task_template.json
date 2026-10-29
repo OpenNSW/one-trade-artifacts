@@ -2,5 +2,10 @@
   "id": "sltb-lab-decision--review",
   "type": "APPLICATION",
   "workflow_id": "sltb-lab-decision--review-workflow",
-  "render_config_id": "sltb-lab-decision--review:render"
+  "render_config_id": "sltb-lab-decision--review:render",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  }
 }

@@ -2,11 +2,6 @@
   "id": "npqs-treatment-issue-supervised--review:render",
   "type": "APPLICATION",
   "title": "NPQS NPQS Treatment Certificate and Supervision Report",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "files": [
     "payload.payload.supervision_report_url",
     "payload.payload.treatment_certificate_url",

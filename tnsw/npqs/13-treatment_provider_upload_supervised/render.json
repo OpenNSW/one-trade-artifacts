@@ -2,12 +2,6 @@
   "id": "npqs-provider-cert-upload-supervised:render",
   "type": "APPLICATION",
   "title": "[NPQS] Upload Treatment Provider Certificate and Supervision Report",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "files": [
     "traderinput.supervision_report_url",
     "traderinput.treatment_certificate_url",

@@ -2,5 +2,10 @@
   "id": "npqs-application-review--review",
   "type": "APPLICATION",
   "workflow_id": "npqs-application-review--review-workflow",
-  "render_config_id": "npqs-application-review--review:render"
+  "render_config_id": "npqs-application-review--review:render",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  }
 }

@@ -2,11 +2,6 @@
   "id": "npqs-certificate-issue--review:render",
   "type": "APPLICATION",
   "title": "NPQS Certificate Issuance",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "files": [
     "application.attachments[*].attachment_file_url",
     "certificate_document.key",

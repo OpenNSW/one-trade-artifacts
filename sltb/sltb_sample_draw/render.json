@@ -2,11 +2,6 @@
   "id": "sltb-sample-draw--review:render",
   "type": "APPLICATION",
   "title": "Record Warehouse Sample Draw",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "sections": {
     "review_form": {
       "templateId": "sltb-record-sample-draw--officer-form",

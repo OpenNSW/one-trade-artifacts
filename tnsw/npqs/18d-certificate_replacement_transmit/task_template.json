@@ -2,5 +2,11 @@
   "id": "npqs-certificate-replacement-transmit",
   "type": "APPLICATION",
   "workflow_id": "npqs-certificate-replacement-transmit",
-  "render_config_id": "npqs-certificate-replacement-transmit:render"
+  "render_config_id": "npqs-certificate-replacement-transmit:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }

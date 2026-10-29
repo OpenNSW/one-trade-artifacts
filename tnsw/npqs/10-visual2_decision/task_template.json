@@ -2,5 +2,11 @@
   "id": "npqs-visual2-decision",
   "type": "REVIEW",
   "workflow_id": "npqs-visual2-decision",
-  "render_config_id": "npqs-visual2-decision:render"
+  "render_config_id": "npqs-visual2-decision:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }

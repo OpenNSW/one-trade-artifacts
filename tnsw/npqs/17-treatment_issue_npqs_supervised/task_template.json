@@ -2,5 +2,11 @@
   "id": "npqs-treatment-issue-supervised",
   "type": "REVIEW",
   "workflow_id": "npqs-treatment-issue-supervised",
-  "render_config_id": "npqs-treatment-issue-supervised:render"
+  "render_config_id": "npqs-treatment-issue-supervised:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }

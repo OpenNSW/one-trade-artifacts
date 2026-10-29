@@ -2,11 +2,6 @@
   "id": "npqs-treatment-issue--review:render",
   "type": "APPLICATION",
   "title": "NPQS NPQS Treatment Certificate",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "files": [
     "payload.payload.treatment_certificate_url",
     "reviewform.treatment_certificate_url",

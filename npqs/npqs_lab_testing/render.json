@@ -2,11 +2,6 @@
   "id": "npqs-lab-testing--review:render",
   "type": "APPLICATION",
   "title": "NPQS Lab Testing",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "files": [
     "payload.payload.lab_report_attachment_url",
     "reviewform.lab_report_attachment_url",

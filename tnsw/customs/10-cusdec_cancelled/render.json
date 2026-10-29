@@ -2,12 +2,6 @@
   "id": "customs-cusdec-cancelled-flow:render",
   "type": "REVIEW",
   "title": "[Customs] Declaration Cancelled",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "sections": {
     "notice": {
       "templateId": "customs-cusdec-cancelled--notice",
