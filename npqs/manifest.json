@@ -67,6 +67,12 @@
       "path": "npqs_application_review/generate_reference_number.json"
     },
     {
+      "id": "npqs-application-review--generate-draft-certificate",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_application_review/generate_draft_certificate.json"
+    },
+    {
       "id": "npqs-application-review--request-info",
       "kind": "subtask_template",
       "version": "",
