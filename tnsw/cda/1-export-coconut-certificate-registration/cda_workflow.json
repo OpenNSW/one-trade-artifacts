@@ -8,6 +8,18 @@
       "name": "Start"
     },
     {
+      "id": "cda_0_wait_cusdec",
+      "type": "SIGNALING",
+      "name": "Wait for the Assessed CusDec",
+      "signaling": {
+        "type": "WAIT",
+        "signal_name": "cusdec_assessed"
+      },
+      "output_mapping": {
+        "cusdec_number": "cda.cusdec_number"
+      }
+    },
+    {
       "id": "cda_1_0_apply",
       "type": "TASK",
       "name": "[CDA 1.0] Submit Application",
@@ -16,7 +28,8 @@
       "input_mapping": {
         "_iter.input.company.name?": "exporter_name",
         "_iter.input.company.data.agencies.cda.registration_number?": "exporter_registration_number",
-        "_iter.input.company.data.address?": "exporter_address"
+        "_iter.input.company.data.address?": "exporter_address",
+        "cda.cusdec_number": "userform.cusdec_number"
       },
       "output_mapping": {
         "userform.cusdec_number": "cda.reference_number",
@@ -141,6 +154,11 @@
     {
       "id": "e_start_to_apply",
       "source_id": "start",
+      "target_id": "cda_0_wait_cusdec"
+    },
+    {
+      "id": "e_wait_to_apply",
+      "source_id": "cda_0_wait_cusdec",
       "target_id": "cda_1_0_apply"
     },
     {

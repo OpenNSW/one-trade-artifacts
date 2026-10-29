@@ -17,7 +17,7 @@
       "task_template_id": "npqs-certificate-issue--generate-both-references",
       "input_mapping": {},
       "output_mapping": {
-        "refid.ephyto_reference_number": "reviewform.ephyto_reference_number",
+        "refid.certificate_number": "reviewform.certificate_number",
         "refid.replacement_reference_number": "reviewform.replacement_reference_number"
       }
     },
@@ -27,7 +27,7 @@
       "task_template_id": "npqs-certificate-issue--generate-ephyto-reference",
       "input_mapping": {},
       "output_mapping": {
-        "refid.ephyto_reference_number": "reviewform.ephyto_reference_number"
+        "refid.certificate_number": "reviewform.certificate_number"
       }
     },
     {
@@ -39,21 +39,15 @@
         "submission.certificate_items?": "reviewform.certificate_items",
         "submission.certificate_type?": "reviewform.certificate_type",
         "reviewform.replacement_reference_number?": "reviewform.replacement_reference_number",
-        "submission.ephyto_required?": "reviewform.ephyto_required",
-        "reviewform.ephyto_reference_number?": "reviewform.ephyto_reference_number"
+        "submission.ephyto_country?": "reviewform.ephyto_country",
+        "reviewform.certificate_number?": "reviewform.certificate_number"
       },
       "output_mapping": {
         "__command": "command",
-        "certificate_url?": "reviewform.certificate_url",
         "issue_date?": "reviewform.issue_date",
         "comments?": "reviewform.comments",
         "certificate_items?": "reviewform.certificate_items"
       }
-    },
-    {
-      "id": "gw_ephyto",
-      "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
       "id": "generate_certificate",
@@ -61,7 +55,7 @@
       "task_template_id": "npqs-certificate-issue--generate-certificate",
       "input_mapping": {
         "submission": "application",
-        "reviewform.ephyto_reference_number": "certificate_number",
+        "reviewform.certificate_number": "certificate_number",
         "reviewform.certificate_items?": "items",
         "reviewform.issue_date?": "issue_date"
       },
@@ -118,21 +112,9 @@
       "target_id": "userform"
     },
     {
-      "id": "e_form_to_api",
+      "id": "e_form_to_certificate",
       "source_id": "userform",
-      "target_id": "gw_ephyto"
-    },
-    {
-      "id": "e_sign_ephyto",
-      "source_id": "gw_ephyto",
-      "target_id": "generate_certificate",
-      "condition": "submission.ephyto_required == true"
-    },
-    {
-      "id": "e_not_ephyto",
-      "source_id": "gw_ephyto",
-      "target_id": "api_call",
-      "condition": "submission.ephyto_required != true"
+      "target_id": "generate_certificate"
     },
     {
       "id": "e_generated",

@@ -9,7 +9,8 @@
   },
   "files": [
     "submission.cusdec_draft_xml",
-    "cusdec.supportingDocuments.scannedDocuments[*].fileBase64"
+    "cusdec.supportingDocuments.scannedDocuments[*].fileBase64",
+    "submission.cusdec.supportingDocuments.scannedDocuments[*].fileBase64"
   ],
   "sections": {
     "review_form": {
@@ -31,21 +32,12 @@
       "projector": "FORM",
       "dataKey": "submission"
     },
-    "cusdec_notice": {
-      "templateId": "sltb-xml-download--cusdec-notice",
-      "title": "CusDec",
-      "projector": "MARKDOWN",
-      "visibleWhen": {
-        "states": [
-          "PENDING_USER"
-        ]
-      }
-    },
     "cusdec_view": {
       "templateId": "sltb-xml-download--cusdec-view-form",
       "title": "CusDec",
       "projector": "FORM",
-      "dataKey": "cusdec"
+      "dataKey": "cusdec",
+      "requireDataKey": "cusdec"
     },
     "status_message": {
       "templateId": "sltb-xml-download--submission-view",

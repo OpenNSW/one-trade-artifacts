@@ -27,6 +27,19 @@
       }
     },
     {
+      "id": "customs_1_emit_cusdec",
+      "type": "SIGNALING",
+      "name": "Share the Assessed CusDec",
+      "signaling": {
+        "type": "EMIT",
+        "signal_name": "cusdec_assessed"
+      },
+      "input_mapping": {
+        "customs.userform": "cusdec",
+        "customs.cusdec_number": "cusdec_number"
+      }
+    },
+    {
       "id": "customs_payment_check",
       "type": "GATEWAY",
       "gateway_type": "EXCLUSIVE_SPLIT",
@@ -185,8 +198,13 @@
       "target_id": "customs_1_cusdec_submission"
     },
     {
-      "id": "e_1_to_payment_check",
+      "id": "e_1_to_emit",
       "source_id": "customs_1_cusdec_submission",
+      "target_id": "customs_1_emit_cusdec"
+    },
+    {
+      "id": "e_emit_to_payment_check",
+      "source_id": "customs_1_emit_cusdec",
       "target_id": "customs_payment_check"
     },
     {
