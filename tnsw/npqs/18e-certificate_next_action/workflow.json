@@ -12,7 +12,7 @@
       "task_template_id": "npqs-certificate-next-action--choose",
       "input_mapping": {
         "reference_number": "reference_number",
-        "certificate_id": "certificate_id",
+        "certificate_url": "certificate_url",
         "replacement?": "replacement"
       },
       "output_mapping": {

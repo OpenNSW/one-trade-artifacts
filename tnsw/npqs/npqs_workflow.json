@@ -731,6 +731,35 @@
       }
     },
     {
+      "id": "n8b_issue_certificate_non_ephyto",
+      "name": "Prepare Phytosanitary Certificate for Printing (Non-ePhyto)",
+      "type": "TASK",
+      "task_template_id": "npqs-issue-certificate-non-ephyto",
+      "input_mapping": {
+        "npqs.reference_number": "reference_number",
+        "npqs.userform": "userform",
+        "commodities?": "certificate_items"
+      },
+      "output_mapping": {
+        "certificate_items?": "npqs.certificate_items",
+        "print_copy_key": "npqs.print_copy_key"
+      }
+    },
+    {
+      "id": "n8c_sign_certificate_non_ephyto",
+      "name": "Issue Signed Phytosanitary Certificate (Non-ePhyto)",
+      "type": "TASK",
+      "task_template_id": "npqs-sign-certificate-non-ephyto",
+      "input_mapping": {
+        "npqs.reference_number": "reference_number",
+        "npqs.userform": "userform",
+        "npqs.print_copy_key": "print_copy_key"
+      },
+      "output_mapping": {
+        "certificate_url": "npqs.certificate_url"
+      }
+    },
+    {
       "id": "ephyto_split",
       "name": "ePhyto Required?",
       "type": "GATEWAY",
@@ -891,7 +920,7 @@
       "lane": "Trader/CHA",
       "input_mapping": {
         "npqs.reference_number": "reference_number",
-        "npqs.certificate_number": "certificate_id",
+        "npqs.certificate_url": "certificate_url",
         "npqs.certificate_replacement?": "replacement"
       },
       "output_mapping": {
@@ -911,7 +940,6 @@
       "task_template_id": "npqs-certificate-replacement-request",
       "lane": "Trader/CHA",
       "input_mapping": {
-        "npqs.certificate_number": "certificate_id",
         "npqs.certificate_action": "action",
         "npqs.reference_number": "reference_number",
         "npqs.ephyto_country": "ephyto_country",
@@ -931,18 +959,17 @@
     {
       "id": "n11c_certificate_reissue",
       "type": "TASK",
-      "name": "[NPQS 11c] Issue the Replacement Certificate",
-      "task_template_id": "npqs-certificate-reissue",
+      "name": "[NPQS 11c] Prepare the Replacement Certificate for Printing",
+      "task_template_id": "npqs-issue-certificate-non-ephyto",
       "lane": "NPQS Officer",
       "input_mapping": {
-        "npqs.ephyto_country": "ephyto_country",
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
         "npqs.certificate_items?": "certificate_items"
       },
       "output_mapping": {
-        "new_certificate_id": "npqs.certificate_number",
-        "certificate_items?": "npqs.certificate_items"
+        "certificate_items?": "npqs.certificate_items",
+        "print_copy_key": "npqs.print_copy_key"
       }
     },
     {
@@ -1357,24 +1384,34 @@
     {
       "id": "e_payment_success",
       "source_id": "payment_split",
-      "target_id": "n8_0_issue_certificate",
+      "target_id": "ephyto_split",
       "condition": "npqs.payment_status == 'success'"
     },
     {
-      "id": "e_issue_to_ephyto_split",
+      "id": "e_issue_to_ephyto_upload",
       "source_id": "n8_0_issue_certificate",
-      "target_id": "ephyto_split"
+      "target_id": "n9_0_ephyto_upload"
+    },
+    {
+      "id": "e_issue_to_sign_non_ephyto",
+      "source_id": "n8b_issue_certificate_non_ephyto",
+      "target_id": "n8c_sign_certificate_non_ephyto"
+    },
+    {
+      "id": "e_signed_to_next_action",
+      "source_id": "n8c_sign_certificate_non_ephyto",
+      "target_id": "n11_certificate_next_action"
     },
     {
       "id": "e_ephyto_true",
       "source_id": "ephyto_split",
-      "target_id": "n9_0_ephyto_upload",
+      "target_id": "n8_0_issue_certificate",
       "condition": "npqs.ephyto_country == 'ephyto'"
     },
     {
       "id": "e_ephyto_false",
       "source_id": "ephyto_split",
-      "target_id": "n11_certificate_next_action",
+      "target_id": "n8b_issue_certificate_non_ephyto",
       "condition": "npqs.ephyto_country == 'non_ephyto'"
     },
     {
@@ -1524,7 +1561,7 @@
     {
       "id": "e_next_action_reissued",
       "source_id": "n11c_certificate_reissue",
-      "target_id": "n11_certificate_next_action"
+      "target_id": "n8c_sign_certificate_non_ephyto"
     }
   ]
 }
