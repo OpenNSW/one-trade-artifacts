@@ -35,7 +35,8 @@
         "type": "string",
         "format": "file",
         "title": "Lab Test Report (PDF)",
-        "description": "Upload the signed lab test report. The trader downloads it and submits it to the SLTB Export Division for verification."
+        "description": "Upload the signed lab test report. The trader downloads it and submits it to the SLTB Export Division for verification.",
+        "x-file": { "accept": ".pdf" }
       },
       "test_report_ref": {
         "type": "string",
