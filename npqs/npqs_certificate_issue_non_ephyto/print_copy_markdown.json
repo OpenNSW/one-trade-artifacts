@@ -1,0 +1,4 @@
+{
+  "id": "npqs-certificate-issue-non-ephyto--print-copy-msg",
+  "template": "### 📄 Print Copy of the Phytosanitary Certificate\n\nThe certificate's details have been laid out for the pre-printed Phytosanitary Certificate form. Next, print it on the form, sign it, and upload the signed certificate.\n\n#### [📄 Download Print Copy](files:{{.print_copy.key}})\n\nOpen it, load the pre-printed form in the printer, and print it at 100% scale with the browser's headers and footers turned off."
+}
