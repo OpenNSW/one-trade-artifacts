@@ -2,11 +2,6 @@
   "id": "npqs-visual-sample-draw--review:render",
   "type": "APPLICATION",
   "title": "NPQS Draw Sample (Visual Inspection)",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "files": [
     "submission.attachments[*].attachment_file_url"
   ],
