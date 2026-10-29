@@ -175,8 +175,13 @@ Consignment re-inspected after treatment and found free from live pests.
   </tr>
   <tr><th colspan="3">Number and Description of Packages</th></tr>
   <tr><td colspan="3">
-    {{- if $c.packages_free_text_enabled }}{{ $c.packages_free_text }}
-    {{- else if $c.packages_in_bulk }}In bulk
+    {{- if or (eq (print $c.package_arrangement) "free_text") $c.packages_free_text_enabled }}{{ $c.packages_free_text }}
+    {{- else if or (eq (print $c.package_arrangement) "bulk") $c.packages_in_bulk }}In bulk
+    {{- else if $c.packages -}}
+      {{- range $i, $p := $c.packages -}}
+        {{- if $i }}, {{ end -}}
+        {{- $p.count }} {{ if $p.type.label }}{{ $p.type.label }}{{ else }}{{ $p.type.value }}{{ end -}}
+      {{- end -}}
     {{- else }}{{ $c.packages_count }} {{ $c.packages_description.label }}{{ end -}}
   </td></tr>
   <tr><th colspan="3">ADDITIONAL DECLARATION</th></tr>
