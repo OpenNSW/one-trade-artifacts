@@ -12,7 +12,7 @@
           "format": "file"
         },
         "readOnly": true,
-        "x-file": { "accept": ".pdf" }
+        "x-file": { "accept": ".pdf", "maxFiles": 10 }
       },
       "commercial_invoice": {
         "type": "string",
