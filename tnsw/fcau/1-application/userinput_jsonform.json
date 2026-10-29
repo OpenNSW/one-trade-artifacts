@@ -130,7 +130,7 @@
         },
         "x-file": {
           "maxFiles": 10,
-          "accept": ".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx"
+          "accept": ".pdf,.jpg,.jpeg,.png,.xlsx"
         }
       }
     },

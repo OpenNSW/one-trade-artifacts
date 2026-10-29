@@ -45,9 +45,9 @@
         "type": "string",
         "format": "file",
         "title": "Details of Bags",
-        "description": "Download the DC BAGS DETAILS - NZ270 template below, fill it in, and upload the completed Excel sheet (.xlsx or .xls) here.",
+        "description": "Download the DC BAGS DETAILS - NZ270 template below, fill it in, and upload the completed Excel sheet (.xlsx) here.",
         "x-file": {
-          "accept": ".xlsx,.xls"
+          "accept": ".xlsx"
         }
       }
     },
