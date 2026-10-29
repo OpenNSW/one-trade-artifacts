@@ -7,8 +7,15 @@
       "officeCode": {
         "type": "string",
         "title": "Customs Office Code",
-        "example": "CBEX1",
-        "description": "Office of exit (UNCUOTAB). Annex B: officeCode."
+        "description": "Office of exit (UNCUOTAB). Annex B: officeCode. Export only for now; import office codes come later.",
+        "oneOf": [
+          {
+            "const": "CBEX1",
+            "title": "CBEX1"
+          }
+        ],
+        "default": "CBEX1",
+        "example": "CBEX1"
       },
       "cusdecRef": {
         "type": "string",
