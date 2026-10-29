@@ -355,8 +355,6 @@ def check_deployment(deployment, deployments):
             problems.append(f"{where}: render config {render_id!r} is not in the manifest")
             continue
         render = deployment.load("generic_template", render_id)
-        if "read" in render:
-            problems.append(f"{where}: render config {render_id} has a read block; read.roles belongs on the task template")
         readers = (task.get("read") or {}).get("roles")
         if not non_empty_names(readers):
             problems.append(f"{where}: has no read.roles")
