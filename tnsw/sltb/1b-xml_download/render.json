@@ -9,7 +9,8 @@
     ]
   },
   "files": [
-    "submission.cusdec_draft_xml"
+    "submission.cusdec_draft_xml",
+    "submission.cusdec.supportingDocuments.scannedDocuments[*].fileBase64"
   ],
   "sections": {
     "trader_status": {

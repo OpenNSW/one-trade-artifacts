@@ -12,7 +12,9 @@ task's steps, of the paths that can hold a file. Files start at form fields
 with "format": "file" (a step's submission), at an OGA's callback payload, or
 at a step that generates a file (HTML_DOCUMENT_GENERATOR, at its .key),
 and move through input_mapping and output_mapping ({source: destination}) at
-both workflow levels, and across TNSW and the agencies.
+both workflow levels, across TNSW and the agencies, and between the sibling
+branches of a split, from a SIGNALING EMIT's input_mapping into the payload to
+the output_mapping of a WAIT for the same signal_name.
 
 It reports, per render config:
   - a file path that isn't declared (error);
@@ -153,6 +155,7 @@ class Scope:
         self.files = defaultdict(dict)  # render config id -> {file path: origin}
         self.pushed = defaultdict(dict)  # TNSW task_code -> {path in pushed data: origin}
         self.callback = defaultdict(dict)  # agency taskCode -> {path in callback payload: origin}
+        self.signals = defaultdict(dict)  # signal_name -> {path in the EMIT payload: origin}
 
     def render_path(self, render_id):
         return self.path_of.get(("generic_template", render_id), render_id)
@@ -308,6 +311,9 @@ class Checker:
                         scope.vars[macro_id][key] = f"TNSW's push for {code} ({origin})"
                         changed = True
             for node in macro.get("nodes", []):
+                if node.get("type") == "SIGNALING":
+                    changed |= self.run_signal(scope, macro_id, node)
+                    continue
                 task = scope.tasks.get(node.get("task_template_id") or "")
                 if not task:
                     continue
@@ -321,6 +327,27 @@ class Checker:
                         scope.vars[target].setdefault(p, origin)
                     changed |= len(scope.vars[target]) != before
         return changed
+
+    def run_signal(self, scope, macro_id, node):
+        """An EMIT puts files in its signal's payload; a WAIT for it takes them out.
+
+        Signals travel only between the branches of one split, so within a scope.
+        """
+        signaling = node.get("signaling") or {}
+        name = signaling.get("signal_name")
+        if signaling.get("type") == "EMIT":
+            target = scope.signals[name]
+            moved = transfer(scope.vars[macro_id], node.get("input_mapping"))
+            moved = {p: f"{origin}, sent on signal {name}" for p, origin in moved.items()}
+        elif signaling.get("type") == "WAIT":
+            target = scope.vars[macro_id]
+            moved = transfer(scope.signals.get(name, {}), node.get("output_mapping"))
+        else:
+            return False
+        before = len(target)
+        for p, origin in moved.items():
+            target.setdefault(p, origin)
+        return len(target) != before
 
     def trace(self):
         scopes = [self.tnsw] + self.agencies

@@ -25,6 +25,18 @@
       "name": "Blend Sheet Reconcilable?"
     },
     {
+      "id": "sltb_1b_wait_cusdec",
+      "type": "SIGNALING",
+      "name": "Wait for the Assessed CusDec",
+      "signaling": {
+        "type": "WAIT",
+        "signal_name": "cusdec_assessed"
+      },
+      "output_mapping": {
+        "cusdec": "sltb.cusdec"
+      }
+    },
+    {
       "id": "sltb_1b_xml_download",
       "type": "TASK",
       "name": "[SLTB 1b] Acknowledge & Download XML",
@@ -233,9 +245,10 @@
     {
       "id": "e_review_approve",
       "source_id": "sltb_1_review_gateway",
-      "target_id": "sltb_1b_xml_download",
+      "target_id": "sltb_1b_wait_cusdec",
       "condition": "sltb.review_outcome == 'approve'"
     },
+    { "id": "e_wait_to_1b", "source_id": "sltb_1b_wait_cusdec", "target_id": "sltb_1b_xml_download" },
     { "id": "e_1b_to_levy", "source_id": "sltb_1b_xml_download", "target_id": "sltb_2_pay_levy" },
     { "id": "e_2_split", "source_id": "sltb_2_pay_levy", "target_id": "sltb_3_collection_split" },
     {
