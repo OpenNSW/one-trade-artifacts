@@ -228,7 +228,8 @@
         "type": "string",
         "format": "file",
         "title": "Scanned Phytosanitary Certificate (PDF)",
-        "example": "https://nsw.gov.lk/storage/certs/phytosanitary-certificate-1029.pdf"
+        "example": "https://nsw.gov.lk/storage/certs/phytosanitary-certificate-1029.pdf",
+        "x-file": { "accept": ".pdf" }
       },
       "comments": {
         "type": "string",

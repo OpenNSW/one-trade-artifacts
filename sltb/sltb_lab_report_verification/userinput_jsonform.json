@@ -8,7 +8,8 @@
         "type": "string",
         "format": "file",
         "title": "Lab Test Report issued by the SLTB laboratory",
-        "readOnly": true
+        "readOnly": true,
+        "x-file": { "accept": ".pdf" }
       },
       "report_feedback": {
         "type": "string",
@@ -19,7 +20,8 @@
         "type": "string",
         "format": "file",
         "title": "Lab Test Report (PDF)",
-        "description": "Upload the lab test report you downloaded above."
+        "description": "Upload the lab test report you downloaded above.",
+        "x-file": { "accept": ".pdf" }
       }
     },
     "required": [

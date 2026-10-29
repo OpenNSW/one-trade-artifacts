@@ -145,7 +145,8 @@
       "certificate": {
         "type": "string",
         "title": "Certificate File Upload (PDF)",
-        "format": "file"
+        "format": "file",
+        "x-file": { "accept": ".pdf" }
       },
       "supporting_documents": {
         "type": "array",

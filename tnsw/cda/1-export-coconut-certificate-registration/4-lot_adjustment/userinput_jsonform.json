@@ -38,7 +38,8 @@
         "type": "string",
         "format": "file",
         "title": "CUSDEC Document",
-        "description": "Upload the existing/active CUSDEC for this consignment. The CDA Officer will refer to it before re-issuing the certificate."
+        "description": "Upload the existing/active CUSDEC for this consignment. The CDA Officer will refer to it before re-issuing the certificate.",
+        "x-file": { "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp" }
       },
       "lots_to_remove": {
         "type": "string",

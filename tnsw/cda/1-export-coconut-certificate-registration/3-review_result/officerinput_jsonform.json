@@ -40,7 +40,8 @@
         "type": "string",
         "format": "file",
         "title": "Physical Quality Certificate File (PDF)",
-        "example": "https://cda.gov.lk/certs/PQC-P-1205-26.pdf"
+        "example": "https://cda.gov.lk/certs/PQC-P-1205-26.pdf",
+        "x-file": { "accept": ".pdf" }
       },
       "salmonella_certificate_id": {
         "type": "string",
@@ -53,7 +54,8 @@
         "type": "string",
         "format": "file",
         "title": "Salmonella Free Certificate File (PDF)",
-        "example": "https://cda.gov.lk/certs/PQC-S-1205-26.pdf"
+        "example": "https://cda.gov.lk/certs/PQC-S-1205-26.pdf",
+        "x-file": { "accept": ".pdf" }
       }
     },
     "required": [

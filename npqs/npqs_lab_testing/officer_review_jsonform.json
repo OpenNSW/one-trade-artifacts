@@ -27,7 +27,8 @@
         "type": "string",
         "format": "file",
         "title": "Uploaded Lab Test Report",
-        "example": "https://nsw.gov.lk/storage/reports/lab-report-2026.pdf"
+        "example": "https://nsw.gov.lk/storage/reports/lab-report-2026.pdf",
+        "x-file": { "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp" }
       },
       "lab_comments": {
         "type": "string",

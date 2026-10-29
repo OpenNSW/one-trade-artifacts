@@ -12,7 +12,8 @@
       "payment_slip": {
         "type": "string",
         "format": "file",
-        "title": "SLTB Counter Payment Slip (PDF/Image)"
+        "title": "SLTB Counter Payment Slip (PDF/Image)",
+        "x-file": { "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp" }
       }
     },
     "required": [

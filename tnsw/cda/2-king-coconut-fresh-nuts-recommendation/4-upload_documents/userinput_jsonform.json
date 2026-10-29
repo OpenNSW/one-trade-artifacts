@@ -8,13 +8,15 @@
         "type": "string",
         "format": "file",
         "title": "Commercial Invoice",
-        "example": "https://trader-uploads.example.gov.lk/CDA-KCFN-2026-00123-commercial-invoice.pdf"
+        "example": "https://trader-uploads.example.gov.lk/CDA-KCFN-2026-00123-commercial-invoice.pdf",
+        "x-file": { "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp" }
       },
       "packing_list": {
         "type": "string",
         "format": "file",
         "title": "Packing List",
-        "example": "https://trader-uploads.example.gov.lk/CDA-KCFN-2026-00123-packing-list.pdf"
+        "example": "https://trader-uploads.example.gov.lk/CDA-KCFN-2026-00123-packing-list.pdf",
+        "x-file": { "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp" }
       },
       "additional_documents": {
         "type": "array",

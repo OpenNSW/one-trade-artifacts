@@ -837,7 +837,8 @@
             "attachment_file_url": {
               "type": "string",
               "format": "file",
-              "title": "Document Attachment (max. size 12MB)"
+              "title": "Document Attachment (max. size 12MB)",
+              "x-file": { "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp" }
             },
             "attachment_description": {
               "type": "string",
