@@ -230,7 +230,7 @@ def form_rule_errors(root):
                 d = json.load(f)
         except (OSError, ValueError):
             continue
-        if isinstance(d, dict) and "schema" in d and "id" in d:
+        if isinstance(d, dict) and isinstance(d.get("schema"), dict):
             errors += x_file_errors(d, os.path.relpath(p, root))
     return errors
 
