@@ -1466,6 +1466,7 @@
             "id",
             "commodity_common_name",
             "commodity_botanical_name",
+            "commodity_description",
             "quantity_net_weight"
           ],
           "allOf": [
