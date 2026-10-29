@@ -197,21 +197,25 @@ def x_file_errors(form, where):
         if several and not (isinstance(max_files, (int, float)) and not isinstance(max_files, bool) and max_files > 1):
             errors.append(f"{where}: file list {path!r} sets no x-file maxFiles above 1")
 
-    def walk(schema, path):
-        if not isinstance(schema, dict):
-            return
-        items = schema.get("items")
-        if isinstance(items, dict) and items.get("format") == "file":
-            check(schema, path, True)
-            return
-        if schema.get("format") == "file":
-            check(schema, path, False)
-            return
+    def walk_branches(schema, path):
         for key in ("allOf", "anyOf", "oneOf"):
             for sub in schema.get(key) or []:
                 walk(sub, path)
         for key in ("then", "else"):
             walk(schema.get(key), path)
+
+    def walk(schema, path):
+        if not isinstance(schema, dict):
+            return
+        walk_branches(schema, path)
+        items = schema.get("items")
+        if isinstance(items, dict) and items.get("format") == "file":
+            check(schema, path, True)
+            walk_branches(items, path + "[*]")
+            return
+        if schema.get("format") == "file":
+            check(schema, path, False)
+            return
         for name, sub in (schema.get("properties") or {}).items():
             walk(sub, f"{path}.{name}" if path else name)
         if isinstance(items, dict):
