@@ -52,9 +52,9 @@
         "title": "HS CODE",
         "example": "08011200"
       },
-      "contract_number": {
+      "contact_number": {
         "type": "string",
-        "title": "Contract Number",
+        "title": "Contact Number",
         "pattern": "^(\\+[0-9]{11}|[0-9]{10})$",
         "description": "10 digits, or + followed by 11 digits.",
         "example": "0771234567"
@@ -326,7 +326,7 @@
           },
           {
             "type": "Control",
-            "scope": "#/properties/contract_number"
+            "scope": "#/properties/contact_number"
           },
           {
             "type": "Control",

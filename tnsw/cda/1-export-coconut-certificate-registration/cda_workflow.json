@@ -29,6 +29,7 @@
         "_iter.input.company.name?": "exporter_name",
         "_iter.input.company.data.agencies.cda.registration_number?": "exporter_registration_number",
         "_iter.input.company.data.address?": "exporter_address",
+        "_iter.input.company.data.tel?": "contact_number",
         "cda.cusdec_number": "userform.cusdec_number"
       },
       "output_mapping": {
