@@ -63,6 +63,10 @@
               "format": "email",
               "description": "Primary contact email on file for the company, e.g. 'info@adam-pvt-ltd.lk' (nsw-srilanka's configs/companies.example.json). tnsw/trade/trade_workflow.json's trade_1_cha_selection, tnsw/slpa/slpa_workflow.json's slpa_1_0_ecdn, tnsw/cda/2-king-coconut-fresh-nuts-recommendation/cda_workflow.json's cda_kcfn_1_0_apply and tnsw/cda/3-kernel-products-asycuda-approval/cda_workflow.json's cda_1_0_apply read it. A company record without it leaves those fields empty."
             },
+            "tel": {
+              "type": "string",
+              "description": "Primary contact phone number on file for the company, e.g. '+94112345010' (nsw-srilanka's configs/companies.example.json). tnsw/cda/1-export-coconut-certificate-registration/cda_workflow.json's cda_1_0_apply prefills the application's contact_number with it. A company record without it leaves that field empty."
+            },
             "address": {
               "type": "string",
               "description": "The company's address on one line, e.g. 'No. 45, Galle Road, Colombo 03, Sri Lanka' (nsw-srilanka's configs/companies.example.json). The record also carries 'address2'–'address4', empty in every example company, which no mapping reads. tnsw/fcau/fcau_workflow.json's fcau_1_0_apply, tnsw/customs/customs_workflow.json's customs_1_cusdec_submission, tnsw/slpa/slpa_workflow.json's slpa_1_0_ecdn and tnsw/cda/1-export-coconut-certificate-registration/cda_workflow.json's cda_1_0_apply read it."
