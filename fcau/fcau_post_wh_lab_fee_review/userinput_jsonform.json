@@ -7,7 +7,8 @@
       "lab_receipt": {
         "type": "string",
         "format": "file",
-        "title": "Payment Receipt (PDF/Image)"
+        "title": "Payment Receipt (PDF/Image)",
+        "x-file": { "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp" }
       }
     },
     "required": [

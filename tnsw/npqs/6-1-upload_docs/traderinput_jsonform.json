@@ -8,13 +8,15 @@
         "type": "string",
         "format": "file",
         "title": "Commercial Invoice (PDF/Image)",
-        "example": "https://nsw.gov.lk/storage/docs/invoice-1029.pdf"
+        "example": "https://nsw.gov.lk/storage/docs/invoice-1029.pdf",
+        "x-file": { "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp" }
       },
       "packing_list_file_url": {
         "type": "string",
         "format": "file",
         "title": "Packing List (PDF/Image)",
-        "example": "https://nsw.gov.lk/storage/docs/packing-list-1029.pdf"
+        "example": "https://nsw.gov.lk/storage/docs/packing-list-1029.pdf",
+        "x-file": { "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp" }
       },
       "additional_file_url": {
         "type": "array",
@@ -25,7 +27,8 @@
           "format": "file"
         },
         "x-file": {
-          "maxFiles": 10
+          "maxFiles": 10,
+          "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp"
         },
         "example": ["https://nsw.gov.lk/storage/docs/customs-declaration-1029.pdf"]
       }

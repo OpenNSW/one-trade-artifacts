@@ -8,7 +8,8 @@
         "type": "string",
         "format": "file",
         "title": "Treatment Provider's Certificate (PDF/Image)",
-        "example": "https://nsw.gov.lk/storage/certs/treatment-cert-1092.pdf"
+        "example": "https://nsw.gov.lk/storage/certs/treatment-cert-1092.pdf",
+        "x-file": { "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp" }
       },
       "upload_remarks": {
         "type": "string",

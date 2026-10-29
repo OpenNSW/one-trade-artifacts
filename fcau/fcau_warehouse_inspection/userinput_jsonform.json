@@ -81,12 +81,14 @@
             "analysis_certificates": {
               "type": "string",
               "format": "file",
-              "title": "Raw Materials & Product Analysis Certificates"
+              "title": "Raw Materials & Product Analysis Certificates",
+              "x-file": { "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp" }
             },
             "other_declarations": {
               "type": "string",
               "format": "file",
-              "title": "Any other Declarations"
+              "title": "Any other Declarations",
+              "x-file": { "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp" }
             }
           },
           "required": [
@@ -141,7 +143,7 @@
         },
         "x-file": {
           "maxFiles": 10,
-          "accept": ".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx"
+          "accept": ".pdf,.jpg,.jpeg,.png,.xlsx"
         }
       }
     },

@@ -38,15 +38,16 @@
         "type": "string",
         "format": "file",
         "title": "CUSDEC Document",
-        "description": "Upload the existing/active CUSDEC for this consignment. The CDA Officer will refer to it before re-issuing the certificate."
+        "description": "Upload the existing/active CUSDEC for this consignment. The CDA Officer will refer to it before re-issuing the certificate.",
+        "x-file": { "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp" }
       },
       "lots_to_remove": {
         "type": "string",
         "format": "file",
         "title": "Details of Bags",
-        "description": "Download the DC BAGS DETAILS - NZ270 template below, fill it in, and upload the completed Excel sheet (.xlsx or .xls) here.",
+        "description": "Download the DC BAGS DETAILS - NZ270 template below, fill it in, and upload the completed Excel sheet (.xlsx) here.",
         "x-file": {
-          "accept": ".xlsx,.xls"
+          "accept": ".xlsx"
         }
       }
     },

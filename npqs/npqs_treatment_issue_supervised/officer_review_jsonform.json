@@ -59,12 +59,14 @@
       "treatment_certificate_url": {
         "type": "string",
         "format": "file",
-        "title": "Treatment Certificate (PDF/Image)"
+        "title": "Treatment Certificate (PDF/Image)",
+        "x-file": { "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp" }
       },
       "supervision_report_url": {
         "type": "string",
         "format": "file",
-        "title": "Supervision Report (PDF/Image)"
+        "title": "Supervision Report (PDF/Image)",
+        "x-file": { "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp" }
       },
       "issue_comments": {
         "type": "string",
