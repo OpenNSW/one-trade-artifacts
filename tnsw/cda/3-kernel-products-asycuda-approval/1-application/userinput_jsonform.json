@@ -297,7 +297,9 @@
       "cusdec_number": {
         "type": "string",
         "title": "CusDec Number",
-        "example": "CUSDEC-2026-904821"
+        "description": "The number Sri Lanka Customs gave the declaration when it assessed it.",
+        "readOnly": true,
+        "example": "CBEX1/2026/E/48428"
       },
       "destination": {
         "type": "string",
