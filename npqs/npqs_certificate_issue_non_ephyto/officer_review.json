@@ -1,0 +1,26 @@
+{
+  "id": "npqs-certificate-issue-non-ephyto--officer-review",
+  "task_type": "USER_INPUT",
+  "output_namespace": "reviewform",
+  "plugin_properties": {
+    "user_jsonforms_id": "npqs-issue-certificate-non-ephyto--officer-form"
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "PENDING_USER": {
+          "submit": [
+            "officer"
+          ]
+        }
+      }
+    },
+    {
+      "id": "payload_schema",
+      "phase": "PRE_RESUME",
+      "properties": { "form": "npqs-issue-certificate-non-ephyto--officer-form" }
+    }
+  ]
+}

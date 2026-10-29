@@ -1,0 +1,60 @@
+{
+  "id": "npqs-certificate-issue-non-ephyto--review:render",
+  "type": "APPLICATION",
+  "title": "NPQS Certificate Issuance (Non-ePhyto)",
+  "files": [
+    "application.attachments[*].attachment_file_url",
+    "payload.payload.print_copy_key",
+    "print_copy.key",
+    "reviewform.print_copy_key",
+    "submission.attachments[*].attachment_file_url"
+  ],
+  "sections": {
+    "submission_view": {
+      "templateId": "npqs-apply-phyto-cert--officer-view-form",
+      "title": "Submitted Application",
+      "projector": "FORM",
+      "dataKey": "submission"
+    },
+    "review_form": {
+      "templateId": "npqs-issue-certificate-non-ephyto--officer-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Prepare Print Copy",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "print_copy": {
+      "templateId": "npqs-certificate-issue-non-ephyto--print-copy-msg",
+      "title": "Phytosanitary Certificate",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "requireDataKey": "print_copy"
+      }
+    },
+    "status_message": {
+      "templateId": "npqs-certificate-issue--submission-view",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}

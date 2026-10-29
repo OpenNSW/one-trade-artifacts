@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "npqs_certificate_issue_non_ephyto",
+  "workflow": "npqs_certificate_issue_non_ephyto",
+  "meta": {
+    "title": "NPQS Certificate Issuance (Non-ePhyto)",
+    "description": "Officer prepares the Phytosanitary Certificate for printing on the pre-printed certificate form."
+  }
+}

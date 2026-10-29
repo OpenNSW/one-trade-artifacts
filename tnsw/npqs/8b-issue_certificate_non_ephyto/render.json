@@ -1,0 +1,29 @@
+{
+  "id": "npqs-issue-certificate-non-ephyto:render",
+  "type": "REVIEW",
+  "title": "[NPQS] Phytosanitary Certificate",
+  "files": [
+    "reviewerform.print_copy_key",
+    "submission.attachments[*].attachment_file_url"
+  ],
+  "sections": {
+    "assessment_outcome": {
+      "templateId": "npqs-issue-certificate-non-ephyto--status",
+      "title": "Certificate Prepared",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "requireDataKey": "reviewerform"
+      }
+    },
+    "status_message": {
+      "templateId": "npqs-issue-certificate-non-ephyto--status",
+      "title": "Certificate Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    }
+  }
+}
