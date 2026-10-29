@@ -27,7 +27,8 @@
           "format": "file"
         },
         "x-file": {
-          "maxFiles": 10
+          "maxFiles": 10,
+          "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp"
         },
         "example": ["https://nsw.gov.lk/storage/docs/customs-declaration-1029.pdf"]
       }

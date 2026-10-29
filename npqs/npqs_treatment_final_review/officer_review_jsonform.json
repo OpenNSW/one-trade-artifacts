@@ -13,7 +13,8 @@
           "format": "file"
         },
         "x-file": {
-          "maxFiles": 50
+          "maxFiles": 50,
+          "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp"
         }
       },
       "supervision_report_urls": {
@@ -25,7 +26,8 @@
           "format": "file"
         },
         "x-file": {
-          "maxFiles": 50
+          "maxFiles": 50,
+          "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp"
         }
       },
       "items": {
