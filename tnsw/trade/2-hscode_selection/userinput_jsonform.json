@@ -36,15 +36,15 @@
             },
             {
               "const": "cda-certificate-reg",
-              "title": "CDA Coconut Certificate (CDA Flow)"
+              "title": "CDA Coconut Certificate (CDA and Customs Flows)"
             },
             {
               "const": "cda-kernel-asycuda-approval",
-              "title": "CDA ASYCUDA Approval for Kernel Products (CDA Flow)"
+              "title": "CDA ASYCUDA Approval for Kernel Products (CDA and Customs Flows)"
             },
             {
               "const": "sltb-blendsheet-approval",
-              "title": "SLTB Tea Export Blendsheet Approval (SLTB Flow)"
+              "title": "SLTB Tea Export Blendsheet Approval (SLTB and Customs Flows)"
             },
             {
               "const": "slpa-ecdn-submission",
