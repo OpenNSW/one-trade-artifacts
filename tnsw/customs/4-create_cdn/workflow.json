@@ -14,7 +14,7 @@
         "cusdec_ref": "userform.cusdecRef",
         "container_label?": "userform.containerLabel",
         "cig_cdn.error?": "cig_cdn.error",
-        "shipper?": "userform.shipper"
+        "prefill?": "userform"
       },
       "output_mapping": {
         "officeCode": "userform.officeCode",
