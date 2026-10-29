@@ -1,0 +1,43 @@
+{
+  "id": "npqs-visual-sample-draw-at-site",
+  "name": "Draw Visual Inspection Sample at Site",
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "officer_draw",
+      "type": "TASK",
+      "task_template_id": "npqs-visual-sample-draw--officer-draw",
+      "input_mapping": {
+        "commodities": "commodities",
+        "reference_number?": "reference_number",
+        "userform?": "userform",
+        "reference_number": "submission.reference_number",
+        "userform": "submission",
+        "commodities?": "submission.items"
+      },
+      "output_mapping": {
+        "sample_number": "sample_number",
+        "draw_date?": "draw_date"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "officer_draw"
+    },
+    {
+      "id": "e2",
+      "source_id": "officer_draw",
+      "target_id": "end"
+    }
+  ]
+}

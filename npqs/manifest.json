@@ -169,6 +169,48 @@
       "path": "npqs_sample_draw/submission_view_markdown.json"
     },
     {
+      "id": "npqs_visual_sample_draw",
+      "kind": "task_config",
+      "version": "",
+      "path": "npqs_visual_sample_draw/npqs_visual_sample_draw.taskconfig.json"
+    },
+    {
+      "id": "npqs_visual_sample_draw",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_visual_sample_draw/workflow.json"
+    },
+    {
+      "id": "npqs-visual-sample-draw--review",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs_visual_sample_draw/task_template.json"
+    },
+    {
+      "id": "npqs-visual-sample-draw--review-workflow",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_visual_sample_draw/review_workflow.json"
+    },
+    {
+      "id": "npqs-visual-sample-draw--review:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_visual_sample_draw/render.json"
+    },
+    {
+      "id": "npqs-visual-sample-draw--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_visual_sample_draw/officer_review.json"
+    },
+    {
+      "id": "npqs-visual-sample-draw--officer-draw-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_visual_sample_draw/officer_review_jsonform.json"
+    },
+    {
       "id": "npqs_sample_receive",
       "kind": "task_config",
       "version": "",
