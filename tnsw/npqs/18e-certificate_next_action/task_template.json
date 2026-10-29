@@ -1,0 +1,6 @@
+{
+  "id": "npqs-certificate-next-action",
+  "type": "APPLICATION",
+  "workflow_id": "npqs-certificate-next-action",
+  "render_config_id": "npqs-certificate-next-action:render"
+}

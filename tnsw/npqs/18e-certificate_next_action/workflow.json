@@ -1,0 +1,40 @@
+{
+  "id": "npqs-certificate-next-action",
+  "name": "Keep or Replace the Phytosanitary Certificate",
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "choose",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-next-action--choose",
+      "input_mapping": {
+        "reference_number": "reference_number",
+        "certificate_id": "certificate_id",
+        "replacement?": "replacement"
+      },
+      "output_mapping": {
+        "action": "action.action",
+        "replacement_reason?": "action.replacement_reason"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "choose"
+    },
+    {
+      "id": "e2",
+      "source_id": "choose",
+      "target_id": "end"
+    }
+  ]
+}

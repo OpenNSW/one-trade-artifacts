@@ -11,7 +11,7 @@
       "type": "TASK",
       "task_template_id": "npqs-issue-certificate--officer-review",
       "input_mapping": {
-        "ephyto_required?": "submission.ephyto_required",
+        "ephyto_country?": "submission.ephyto_country",
         "reference_number?": "reference_number",
         "reference_number": "submission.reference_number",
         "userform": "submission",
@@ -22,7 +22,7 @@
         "comments?": "comments",
         "replacement_reference_number?": "replacement_reference_number",
         "certificate_items?": "certificate_items",
-        "ephyto_reference_number?": "ephyto_reference_number"
+        "certificate_number?": "certificate_number"
       }
     },
     {

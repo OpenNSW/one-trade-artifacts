@@ -871,6 +871,42 @@
       "path": "npqs/18-certificate_status/next_action_markdown.json"
     },
     {
+      "id": "npqs-certificate-next-action",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs/18e-certificate_next_action/task_template.json"
+    },
+    {
+      "id": "npqs-certificate-next-action",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs/18e-certificate_next_action/workflow.json"
+    },
+    {
+      "id": "npqs-certificate-next-action:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/18e-certificate_next_action/render.json"
+    },
+    {
+      "id": "npqs-certificate-next-action--choose",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/18e-certificate_next_action/choose.json"
+    },
+    {
+      "id": "npqs-certificate-next-action--action-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/18e-certificate_next_action/action_form.json"
+    },
+    {
+      "id": "npqs-certificate-next-action--status-msg",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/18e-certificate_next_action/status_markdown.json"
+    },
+    {
       "id": "npqs-certificate-withdrawal",
       "kind": "task_template",
       "version": "",

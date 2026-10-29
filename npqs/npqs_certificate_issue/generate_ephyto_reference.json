@@ -5,7 +5,7 @@
   "plugin_properties": {
     "ids": [
       {
-        "path": "/ephyto_reference_number",
+        "path": "/certificate_number",
         "issuer": "NPQS",
         "id_type": "phytosanitary_certificate_ref"
       }
