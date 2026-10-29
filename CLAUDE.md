@@ -154,6 +154,15 @@ of `files` goes out as its raw storage key (see nsw-srilanka's `docs/WORKFLOW_GU
   `scripts/check_file_fields.py` traces every `"format": "file"` field through the
   workflows and fails on an undeclared file field, one declared in the wrong shape, or a
   file link without `files:`. Run it locally with `python3 scripts/check_file_fields.py`.
+- Every file field (a `"format": "file"` string, or a list of them) states its rules in
+  `x-file`, which the browser and the server both read: `accept`, listing extensions
+  (`".pdf,.png"`), or `"*"`/`"*/*"` for any file, never a type such as `application/pdf`
+  or `image/*` (the server checks a file by its value's extension); and, on a list,
+  `maxFiles` above 1 (without it the file control keeps one file). The same check fails
+  on a field without them. Offer only extensions the deployment accepts for upload
+  (nsw-srilanka's `storage.allowedUploadTypes`; this repo can't check that).
+  `x-spreadsheet` and `x-xml` aren't covered: their files are read in the browser and never
+  uploaded.
 
 ## Data flow between steps
 
