@@ -1,0 +1,26 @@
+{
+  "id": "npqs-certificate-signed-upload--officer-review",
+  "task_type": "USER_INPUT",
+  "output_namespace": "reviewform",
+  "plugin_properties": {
+    "user_jsonforms_id": "npqs-certificate-signed-upload--officer-form"
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "PENDING_USER": {
+          "submit": [
+            "officer"
+          ]
+        }
+      }
+    },
+    {
+      "id": "payload_schema",
+      "phase": "PRE_RESUME",
+      "properties": { "form": "npqs-certificate-signed-upload--officer-form" }
+    }
+  ]
+}

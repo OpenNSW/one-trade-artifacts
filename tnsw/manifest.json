@@ -733,6 +733,36 @@
       "path": "npqs/8b-issue_certificate_non_ephyto/status_markdown.json"
     },
     {
+      "id": "npqs-sign-certificate-non-ephyto--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/8c-sign_certificate_non_ephyto/officerinput.json"
+    },
+    {
+      "id": "npqs-sign-certificate-non-ephyto:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/8c-sign_certificate_non_ephyto/render.json"
+    },
+    {
+      "id": "npqs-sign-certificate-non-ephyto",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs/8c-sign_certificate_non_ephyto/workflow.json"
+    },
+    {
+      "id": "npqs-sign-certificate-non-ephyto",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs/8c-sign_certificate_non_ephyto/task_template.json"
+    },
+    {
+      "id": "npqs-sign-certificate-non-ephyto--status",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/8c-sign_certificate_non_ephyto/status_markdown.json"
+    },
+    {
       "id": "npqs-ephyto-upload:render",
       "kind": "generic_template",
       "version": "",

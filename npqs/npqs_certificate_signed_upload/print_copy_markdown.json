@@ -1,0 +1,4 @@
+{
+  "id": "npqs-certificate-signed-upload--print-copy-msg",
+  "template": "Print the certificate on the pre-printed Phytosanitary Certificate form, sign and stamp it, then scan it and upload the signed certificate below.\n\n#### [📄 Download Print Copy](files:{{.submission.print_copy_key}})\n\nOpen it, load the pre-printed form in the printer, and print it at 100% scale with the browser's headers and footers turned off."
+}
