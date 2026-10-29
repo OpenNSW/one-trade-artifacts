@@ -2,12 +2,6 @@
   "id": "npqs-treatment-issue-supervised:render",
   "type": "REVIEW",
   "title": "[NPQS] NPQS Treatment Certificate and Supervision Report",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "files": [
     "reviewerform.supervision_report_url",
     "reviewerform.treatment_certificate_url",

@@ -2,5 +2,11 @@
   "id": "customs-wait-export-release-flow",
   "type": "REVIEW",
   "workflow_id": "customs-wait-export-release-flow",
-  "render_config_id": "customs-wait-export-release-flow:render"
+  "render_config_id": "customs-wait-export-release-flow:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }

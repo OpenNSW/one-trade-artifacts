@@ -2,5 +2,10 @@
   "id": "sltb-levy-payment-confirm-pinpack--review",
   "type": "APPLICATION",
   "workflow_id": "sltb-levy-payment-confirm-pinpack--review-workflow",
-  "render_config_id": "sltb-levy-payment-confirm-pinpack--review:render"
+  "render_config_id": "sltb-levy-payment-confirm-pinpack--review:render",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  }
 }

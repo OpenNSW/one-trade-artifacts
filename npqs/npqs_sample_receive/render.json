@@ -2,11 +2,6 @@
   "id": "npqs-sample-receive--review:render",
   "type": "APPLICATION",
   "title": "NPQS Receive Sample",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "files": [
     "submission.attachments[*].attachment_file_url"
   ],

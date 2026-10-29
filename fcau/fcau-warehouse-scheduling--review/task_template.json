@@ -2,5 +2,10 @@
   "id": "fcau-warehouse-scheduling--review",
   "type": "APPLICATION",
   "workflow_id": "fcau-warehouse-scheduling--review-workflow",
-  "render_config_id": "fcau-warehouse-scheduling--review:render"
+  "render_config_id": "fcau-warehouse-scheduling--review:render",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  }
 }

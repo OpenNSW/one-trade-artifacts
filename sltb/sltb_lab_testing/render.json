@@ -2,11 +2,6 @@
   "id": "sltb-lab-testing--review:render",
   "type": "APPLICATION",
   "title": "Lab Testing & Results",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "files": [
     "payload.payload.test_report_file",
     "reviewform.test_report_file"

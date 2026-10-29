@@ -2,12 +2,6 @@
   "id": "slpa-gate-pass-flow:render",
   "type": "APPLICATION",
   "title": "[SLPA] Container Gate Pass",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "sections": {
     "refusal": {
       "templateId": "slpa-gp--refusal",

@@ -2,5 +2,11 @@
   "id": "npqs-provider-cert-upload-supervised",
   "type": "APPLICATION",
   "workflow_id": "npqs-provider-cert-upload-supervised",
-  "render_config_id": "npqs-provider-cert-upload-supervised:render"
+  "render_config_id": "npqs-provider-cert-upload-supervised:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }

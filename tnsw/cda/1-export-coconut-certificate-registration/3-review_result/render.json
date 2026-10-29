@@ -2,12 +2,6 @@
   "id": "cda-review-result-flow:render",
   "type": "REVIEW",
   "title": "[CDA] Officer Review & Certificate Issuance",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "files": [
     "reviewerform.physical_certificate_file",
     "reviewerform.salmonella_certificate_file",

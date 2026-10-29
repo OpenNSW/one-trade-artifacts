@@ -1,12 +1,6 @@
 {
   "id": "slpa-container-prepare-flow:render",
   "type": "SYSTEM",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "sections": {},
   "states": {}
 }

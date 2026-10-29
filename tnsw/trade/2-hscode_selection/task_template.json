@@ -2,5 +2,11 @@
   "id": "trade-hscode-selection-flow",
   "type": "APPLICATION",
   "workflow_id": "trade-hscode-selection-flow",
-  "render_config_id": "trade-hscode-selection-flow:render"
+  "render_config_id": "trade-hscode-selection-flow:render",
+  "read": {
+    "roles": [
+      "cha",
+      "trader"
+    ]
+  }
 }

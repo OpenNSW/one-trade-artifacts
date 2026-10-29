@@ -2,5 +2,10 @@
   "id": "npqs-lab-testing--review",
   "type": "APPLICATION",
   "workflow_id": "npqs-lab-testing--review-workflow",
-  "render_config_id": "npqs-lab-testing--review:render"
+  "render_config_id": "npqs-lab-testing--review:render",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  }
 }

@@ -2,5 +2,11 @@
   "id": "sltb-lab-report-verification-flow",
   "type": "APPLICATION",
   "workflow_id": "sltb-lab-report-verification-flow",
-  "render_config_id": "sltb-lab-report-verification-flow:render"
+  "render_config_id": "sltb-lab-report-verification-flow:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }

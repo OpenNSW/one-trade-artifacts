@@ -2,5 +2,10 @@
   "id": "fcau-post-wh-lab-fee-review--review",
   "type": "APPLICATION",
   "workflow_id": "fcau-post-wh-lab-fee-review--review-workflow",
-  "render_config_id": "fcau-post-wh-lab-fee-review--review:render"
+  "render_config_id": "fcau-post-wh-lab-fee-review--review:render",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  }
 }

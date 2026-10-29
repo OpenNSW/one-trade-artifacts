@@ -2,5 +2,10 @@
   "id": "npqs-treatment-issue--review",
   "type": "APPLICATION",
   "workflow_id": "npqs-treatment-issue--review-workflow",
-  "render_config_id": "npqs-treatment-issue--review:render"
+  "render_config_id": "npqs-treatment-issue--review:render",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  }
 }

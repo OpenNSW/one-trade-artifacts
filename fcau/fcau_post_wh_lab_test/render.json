@@ -2,11 +2,6 @@
   "id": "fcau-post-wh-lab-test--review:render",
   "type": "APPLICATION",
   "title": "FCAU Post-Warehouse Lab Test Results Submission",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "files": [
     "submission.commodities[*].analysis_certificates",
     "submission.commodities[*].other_declarations",

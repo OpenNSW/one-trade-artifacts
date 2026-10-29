@@ -2,11 +2,6 @@
   "id": "npqs-certificate-replacement--review:render",
   "type": "APPLICATION",
   "title": "NPQS Certificate Replacement Request",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "sections": {
     "request_view": {
       "templateId": "npqs-certificate-replacement--request-view",

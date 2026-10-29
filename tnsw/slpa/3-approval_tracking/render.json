@@ -2,12 +2,6 @@
   "id": "slpa-approval-flow:render",
   "type": "APPLICATION",
   "title": "[SLPA] Service Order Approval",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "sections": {
     "awaiting_decision": {
       "templateId": "slpa-approval--awaiting-message",

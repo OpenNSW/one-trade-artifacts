@@ -2,12 +2,6 @@
   "id": "npqs-certificate-next-action:render",
   "type": "APPLICATION",
   "title": "[NPQS] Keep or Replace the Certificate",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "files": [],
   "sections": {
     "status_msg": {

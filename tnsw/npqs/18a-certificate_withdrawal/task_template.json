@@ -2,5 +2,11 @@
   "id": "npqs-certificate-withdrawal",
   "type": "APPLICATION",
   "workflow_id": "npqs-certificate-withdrawal",
-  "render_config_id": "npqs-certificate-withdrawal:render"
+  "render_config_id": "npqs-certificate-withdrawal:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }

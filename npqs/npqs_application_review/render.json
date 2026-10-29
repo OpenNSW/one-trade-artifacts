@@ -2,11 +2,6 @@
   "id": "npqs-application-review--review:render",
   "type": "APPLICATION",
   "title": "NPQS Application Review",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "files": [
     "submission.attachments[*].attachment_file_url",
     "submission.draft_certificate_key"

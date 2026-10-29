@@ -2,5 +2,11 @@
   "id": "npqs-visual-sample-collection",
   "type": "APPLICATION",
   "workflow_id": "npqs-visual-sample-collection",
-  "render_config_id": "npqs-visual-sample-collection:render"
+  "render_config_id": "npqs-visual-sample-collection:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }

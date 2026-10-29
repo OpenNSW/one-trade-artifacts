@@ -224,7 +224,7 @@ See `tnsw/fcau/3-2-warehouse_inspection/workflow.json` or
     webhook: `"submit": ["system"]`. `system` is the name the backend's own code acts
     as; no request can.
 
-  Each task's render config carries `"read": {"roles": [...]}`, an ordered precedence
+  Each task's `task_template` carries `"read": {"roles": [...]}`, an ordered precedence
   list (`["trader", "cha"]` in `tnsw/`, `["officer"]` in an agency) that includes every
   role its steps let act. The names are the catalogs' (`configs/catalog.example.json`
   and `configs/agency/<agency>/catalog.json` in nsw-srilanka).

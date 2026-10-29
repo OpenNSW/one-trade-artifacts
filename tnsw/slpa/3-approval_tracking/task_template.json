@@ -2,5 +2,11 @@
   "id": "slpa-approval-flow",
   "type": "APPLICATION",
   "workflow_id": "slpa-approval-flow",
-  "render_config_id": "slpa-approval-flow:render"
+  "render_config_id": "slpa-approval-flow:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }

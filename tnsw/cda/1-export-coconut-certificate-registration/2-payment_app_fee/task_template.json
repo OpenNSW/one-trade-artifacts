@@ -2,5 +2,11 @@
   "id": "cda-pay-app-fee-flow",
   "type": "PAYMENT",
   "workflow_id": "cda-pay-app-fee-flow",
-  "render_config_id": "cda-pay-app-fee-flow:render"
+  "render_config_id": "cda-pay-app-fee-flow:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }

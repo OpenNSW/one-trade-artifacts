@@ -2,12 +2,6 @@
   "id": "npqs-certificate-reissue:render",
   "type": "APPLICATION",
   "title": "[NPQS] Replacement Certificate Issue",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "files": [
     "reviewerform.certificate_url",
     "submission.attachments[*].attachment_file_url"

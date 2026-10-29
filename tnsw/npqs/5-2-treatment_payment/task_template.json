@@ -2,5 +2,11 @@
   "id": "npqs-pay-for-treatment",
   "type": "PAYMENT",
   "workflow_id": "npqs-pay-for-treatment",
-  "render_config_id": "npqs-pay-for-treatment:render"
+  "render_config_id": "npqs-pay-for-treatment:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }

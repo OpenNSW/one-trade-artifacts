@@ -2,5 +2,11 @@
   "id": "customs-wait-warranting-flow",
   "type": "REVIEW",
   "workflow_id": "customs-wait-warranting-flow",
-  "render_config_id": "customs-wait-warranting-flow:render"
+  "render_config_id": "customs-wait-warranting-flow:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }

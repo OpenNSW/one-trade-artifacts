@@ -2,5 +2,11 @@
   "id": "fcau-pay-app-fee-flow",
   "type": "PAYMENT",
   "workflow_id": "fcau-pay-app-fee-flow",
-  "render_config_id": "fcau-pay-app-fee-flow:render"
+  "render_config_id": "fcau-pay-app-fee-flow:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }

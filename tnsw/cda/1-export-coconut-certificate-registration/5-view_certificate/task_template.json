@@ -2,5 +2,11 @@
   "id": "cda-view-new-certificate-flow",
   "type": "APPLICATION",
   "workflow_id": "cda-view-new-certificate-flow",
-  "render_config_id": "cda-view-new-certificate-flow:render"
+  "render_config_id": "cda-view-new-certificate-flow:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }

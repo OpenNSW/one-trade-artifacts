@@ -2,11 +2,6 @@
   "id": "cda-review-result--review:render",
   "type": "APPLICATION",
   "title": "CDA Application Review & Certification",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "files": [
     "payload.payload.physical_certificate_file",
     "payload.payload.salmonella_certificate_file",

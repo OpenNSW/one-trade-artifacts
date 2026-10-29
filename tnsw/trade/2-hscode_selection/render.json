@@ -2,12 +2,6 @@
   "id": "trade-hscode-selection-flow:render",
   "type": "APPLICATION",
   "title": "[Trade] Select HS Codes",
-  "read": {
-    "roles": [
-      "cha",
-      "trader"
-    ]
-  },
   "sections": {
     "instructions": {
       "templateId": "trade-hscode-selection--summary-markdown",

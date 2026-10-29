@@ -2,12 +2,6 @@
   "id": "npqs-issue-certificate:render",
   "type": "REVIEW",
   "title": "[NPQS] Phytosanitary Certificate",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "files": [
     "reviewerform.certificate_url",
     "submission.attachments[*].attachment_file_url"

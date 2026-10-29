@@ -2,5 +2,10 @@
   "id": "sltb-sample-ack-dropoff--review",
   "type": "APPLICATION",
   "workflow_id": "sltb-sample-ack-dropoff--review-workflow",
-  "render_config_id": "sltb-sample-ack-dropoff--review:render"
+  "render_config_id": "sltb-sample-ack-dropoff--review:render",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  }
 }

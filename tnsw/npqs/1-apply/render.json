@@ -2,12 +2,6 @@
   "id": "npqs-apply-phyto-cert:render",
   "type": "APPLICATION",
   "title": "[NPQS] Phytosanitary Certificate Application",
-  "read": {
-    "roles": [
-      "trader",
-      "cha"
-    ]
-  },
   "files": [
     "application.attachments[*].attachment_file_url",
     "draft_certificate.key",

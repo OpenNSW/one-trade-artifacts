@@ -2,5 +2,10 @@
   "id": "fcau-lab-test--review",
   "type": "APPLICATION",
   "workflow_id": "fcau-lab-test--review-workflow",
-  "render_config_id": "fcau-lab-test--review:render"
+  "render_config_id": "fcau-lab-test--review:render",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  }
 }

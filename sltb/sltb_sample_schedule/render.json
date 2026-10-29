@@ -2,11 +2,6 @@
   "id": "sltb-sample-schedule--review:render",
   "type": "APPLICATION",
   "title": "Review Pickup Schedule",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "sections": {
     "previous_review": {
       "templateId": "sltb-sample-schedule--previous-review",

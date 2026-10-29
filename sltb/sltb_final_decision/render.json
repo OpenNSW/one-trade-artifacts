@@ -2,11 +2,6 @@
   "id": "sltb-final-decision--review:render",
   "type": "APPLICATION",
   "title": "SLTB Final Decision",
-  "read": {
-    "roles": [
-      "officer"
-    ]
-  },
   "files": [
     "submission.cusdec_draft_xml"
   ],

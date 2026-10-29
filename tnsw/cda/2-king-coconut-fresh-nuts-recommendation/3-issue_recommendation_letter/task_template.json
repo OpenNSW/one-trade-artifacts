@@ -2,5 +2,11 @@
   "id": "cda-kcfn-issue-letter-flow",
   "type": "REVIEW",
   "workflow_id": "cda-kcfn-issue-letter-flow",
-  "render_config_id": "cda-kcfn-issue-letter-flow:render"
+  "render_config_id": "cda-kcfn-issue-letter-flow:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }

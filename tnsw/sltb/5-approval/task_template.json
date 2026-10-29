@@ -2,5 +2,11 @@
   "id": "sltb-final-decision-flow",
   "type": "APPLICATION",
   "workflow_id": "sltb-final-decision-flow",
-  "render_config_id": "sltb-final-decision-flow:render"
+  "render_config_id": "sltb-final-decision-flow:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
 }
