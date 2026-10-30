@@ -1221,9 +1221,23 @@
               }
             },
             "required": [
-              "amount",
-              "currencyCode"
-            ]
+              "amount"
+            ],
+            "if": {
+              "properties": {
+                "amount": {
+                  "const": 0
+                }
+              },
+              "required": [
+                "amount"
+              ]
+            },
+            "else": {
+              "required": [
+                "currencyCode"
+              ]
+            }
           },
           "externalFreight": {
             "type": "object",
@@ -1250,9 +1264,23 @@
               }
             },
             "required": [
-              "amount",
-              "currencyCode"
-            ]
+              "amount"
+            ],
+            "if": {
+              "properties": {
+                "amount": {
+                  "const": 0
+                }
+              },
+              "required": [
+                "amount"
+              ]
+            },
+            "else": {
+              "required": [
+                "currencyCode"
+              ]
+            }
           },
           "internalFreight": {
             "type": "object",
@@ -1279,9 +1307,23 @@
               }
             },
             "required": [
-              "amount",
-              "currencyCode"
-            ]
+              "amount"
+            ],
+            "if": {
+              "properties": {
+                "amount": {
+                  "const": 0
+                }
+              },
+              "required": [
+                "amount"
+              ]
+            },
+            "else": {
+              "required": [
+                "currencyCode"
+              ]
+            }
           },
           "insurance": {
             "type": "object",
@@ -1308,9 +1350,23 @@
               }
             },
             "required": [
-              "amount",
-              "currencyCode"
-            ]
+              "amount"
+            ],
+            "if": {
+              "properties": {
+                "amount": {
+                  "const": 0
+                }
+              },
+              "required": [
+                "amount"
+              ]
+            },
+            "else": {
+              "required": [
+                "currencyCode"
+              ]
+            }
           },
           "otherCosts": {
             "type": "object",
@@ -1337,9 +1393,23 @@
               }
             },
             "required": [
-              "amount",
-              "currencyCode"
-            ]
+              "amount"
+            ],
+            "if": {
+              "properties": {
+                "amount": {
+                  "const": 0
+                }
+              },
+              "required": [
+                "amount"
+              ]
+            },
+            "else": {
+              "required": [
+                "currencyCode"
+              ]
+            }
           },
           "deductions": {
             "type": "object",
@@ -1366,9 +1436,23 @@
               }
             },
             "required": [
-              "amount",
-              "currencyCode"
-            ]
+              "amount"
+            ],
+            "if": {
+              "properties": {
+                "amount": {
+                  "const": 0
+                }
+              },
+              "required": [
+                "amount"
+              ]
+            },
+            "else": {
+              "required": [
+                "currencyCode"
+              ]
+            }
           }
         },
         "required": [
@@ -1877,7 +1961,16 @@
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/valuation/properties/totalAmountInvoiced/properties/currencyCode"
+                    "scope": "#/properties/valuation/properties/totalAmountInvoiced/properties/currencyCode",
+                    "rule": {
+                      "effect": "HIDE",
+                      "condition": {
+                        "scope": "#/properties/valuation/properties/totalAmountInvoiced/properties/amount",
+                        "schema": {
+                          "const": 0
+                        }
+                      }
+                    }
                   }
                 ]
               }
@@ -1896,7 +1989,16 @@
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/valuation/properties/externalFreight/properties/currencyCode"
+                    "scope": "#/properties/valuation/properties/externalFreight/properties/currencyCode",
+                    "rule": {
+                      "effect": "HIDE",
+                      "condition": {
+                        "scope": "#/properties/valuation/properties/externalFreight/properties/amount",
+                        "schema": {
+                          "const": 0
+                        }
+                      }
+                    }
                   }
                 ]
               }
@@ -1915,7 +2017,16 @@
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/valuation/properties/insurance/properties/currencyCode"
+                    "scope": "#/properties/valuation/properties/insurance/properties/currencyCode",
+                    "rule": {
+                      "effect": "HIDE",
+                      "condition": {
+                        "scope": "#/properties/valuation/properties/insurance/properties/amount",
+                        "schema": {
+                          "const": 0
+                        }
+                      }
+                    }
                   }
                 ]
               }
@@ -1934,7 +2045,16 @@
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/valuation/properties/otherCosts/properties/currencyCode"
+                    "scope": "#/properties/valuation/properties/otherCosts/properties/currencyCode",
+                    "rule": {
+                      "effect": "HIDE",
+                      "condition": {
+                        "scope": "#/properties/valuation/properties/otherCosts/properties/amount",
+                        "schema": {
+                          "const": 0
+                        }
+                      }
+                    }
                   }
                 ]
               }
@@ -1953,7 +2073,16 @@
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/valuation/properties/internalFreight/properties/currencyCode"
+                    "scope": "#/properties/valuation/properties/internalFreight/properties/currencyCode",
+                    "rule": {
+                      "effect": "HIDE",
+                      "condition": {
+                        "scope": "#/properties/valuation/properties/internalFreight/properties/amount",
+                        "schema": {
+                          "const": 0
+                        }
+                      }
+                    }
                   }
                 ]
               }
@@ -1972,7 +2101,16 @@
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/valuation/properties/deductions/properties/currencyCode"
+                    "scope": "#/properties/valuation/properties/deductions/properties/currencyCode",
+                    "rule": {
+                      "effect": "HIDE",
+                      "condition": {
+                        "scope": "#/properties/valuation/properties/deductions/properties/amount",
+                        "schema": {
+                          "const": 0
+                        }
+                      }
+                    }
                   }
                 ]
               }
