@@ -14,7 +14,24 @@
         "userform": "submission"
       },
       "output_mapping": {
-        "ack_status": "ack_status"
+        "ack_status?": "ack_status",
+        "__command": "ack_action.command"
+      }
+    },
+    {
+      "id": "cancel_check",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "cancel_cdn",
+      "type": "TASK",
+      "task_template_id": "customs-wait-cdn-ack--cancel",
+      "input_mapping": {
+        "edge_id?": "edge_id"
+      },
+      "output_mapping": {
+        "cdn_cancel.ack_status": "ack_status"
       }
     },
     {
@@ -31,6 +48,23 @@
     {
       "id": "e2",
       "source_id": "wait_ack_task",
+      "target_id": "cancel_check"
+    },
+    {
+      "id": "e_acknowledged",
+      "source_id": "cancel_check",
+      "target_id": "end",
+      "condition": "ack_action.command == 'submit'"
+    },
+    {
+      "id": "e_cancelled_by_trader",
+      "source_id": "cancel_check",
+      "target_id": "cancel_cdn",
+      "condition": "ack_action.command == 'cancel'"
+    },
+    {
+      "id": "e_cancel_to_end",
+      "source_id": "cancel_cdn",
       "target_id": "end"
     }
   ]

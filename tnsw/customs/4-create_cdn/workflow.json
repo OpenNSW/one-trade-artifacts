@@ -17,14 +17,20 @@
         "prefill?": "userform"
       },
       "output_mapping": {
-        "officeCode": "userform.officeCode",
-        "shipper": "userform.shipper",
-        "consignee": "userform.consignee",
-        "transport": "userform.transport",
-        "goods": "userform.goods",
-        "container": "userform.container",
-        "cusdecRef": "userform.cusdecRef"
+        "officeCode?": "userform.officeCode",
+        "shipper?": "userform.shipper",
+        "consignee?": "userform.consignee",
+        "transport?": "userform.transport",
+        "goods?": "userform.goods",
+        "container?": "userform.container",
+        "cusdecRef?": "userform.cusdecRef",
+        "__command": "cdn_action.command"
       }
+    },
+    {
+      "id": "cancel_check",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
       "id": "cig_dispatch",
@@ -81,7 +87,19 @@
     {
       "id": "e2",
       "source_id": "applicant_submission",
-      "target_id": "cig_dispatch"
+      "target_id": "cancel_check"
+    },
+    {
+      "id": "e_cancelled_from_form",
+      "source_id": "cancel_check",
+      "target_id": "end",
+      "condition": "cdn_action.command == 'cancel'"
+    },
+    {
+      "id": "e_submitted",
+      "source_id": "cancel_check",
+      "target_id": "cig_dispatch",
+      "condition": "cdn_action.command == 'submit'"
     },
     {
       "id": "e_cig_check",

@@ -2839,6 +2839,18 @@
       "path": "customs/5-wait_cdn_ack/wait_ack.json"
     },
     {
+      "id": "customs-wait-cdn-ack--cancel",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "customs/5-wait_cdn_ack/cancel.json"
+    },
+    {
+      "id": "customs-wait-cdn-ack--cancel-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/5-wait_cdn_ack/cancel_form_jsonform.json"
+    },
+    {
       "id": "customs-wait-cdn-ack--instructions",
       "kind": "generic_template",
       "version": "",

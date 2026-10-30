@@ -35,6 +35,11 @@
           "command": "submit",
           "label": "Submit CDN Application",
           "element": "primary_action"
+        },
+        {
+          "command": "cancel",
+          "label": "Cancel CDN",
+          "element": "secondary_action"
         }
       ]
     }
@@ -44,6 +49,9 @@
       "actions": [
         {
           "command": "submit"
+        },
+        {
+          "command": "cancel"
         }
       ]
     }
