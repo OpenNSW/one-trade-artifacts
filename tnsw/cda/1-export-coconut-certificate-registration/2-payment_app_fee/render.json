@@ -94,7 +94,7 @@
         "states": [
           "QUEUED_EXTERNALLY"
         ],
-        "requireDataKey": "payment_reference"
+        "requireDataKey": "selected_payment_method"
       }
     }
   },
