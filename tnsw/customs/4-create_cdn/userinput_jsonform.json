@@ -4,6 +4,11 @@
   "schema": {
     "type": "object",
     "properties": {
+      "cancel_cdn": {
+        "type": "boolean",
+        "title": "Cancel this CDN",
+        "description": "Tick to cancel this container's Cargo Dispatch Note instead of sending it to Sri Lanka Customs. Submitting then ends this container's dispatch, and nothing is sent; the sections below need not be filled in."
+      },
       "officeCode": {
         "type": "string",
         "title": "Customs Office Code",
@@ -319,15 +324,27 @@
         "description": "The single container this dispatch note covers. Annex B carries one container per CDN."
       }
     },
-    "required": [
-      "officeCode",
-      "cusdecRef",
-      "shipper",
-      "consignee",
-      "transport",
-      "goods",
-      "container"
-    ]
+    "if": {
+      "properties": {
+        "cancel_cdn": {
+          "const": true
+        }
+      },
+      "required": [
+        "cancel_cdn"
+      ]
+    },
+    "else": {
+      "required": [
+        "officeCode",
+        "cusdecRef",
+        "shipper",
+        "consignee",
+        "transport",
+        "goods",
+        "container"
+      ]
+    }
   },
   "uiSchema": {
     "type": "Categorization",
@@ -339,6 +356,10 @@
         "type": "Category",
         "label": "Declaration and Container",
         "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/cancel_cdn"
+          },
           {
             "type": "Control",
             "scope": "#/properties/cusdecRef"

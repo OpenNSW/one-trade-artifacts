@@ -19,8 +19,7 @@
       },
       "output_mapping": {
         "userform": "userform",
-        "cig_cdn?": "cig_cdn",
-        "cdn_action": "cdn_action"
+        "cig_cdn?": "cig_cdn"
       }
     },
     {
@@ -63,13 +62,13 @@
       "id": "e_cancelled",
       "source_id": "cancelled_check",
       "target_id": "end",
-      "condition": "cdn_action.command == 'cancel'"
+      "condition": "userform.cancel_cdn == true"
     },
     {
       "id": "e_to_wait_ack",
       "source_id": "cancelled_check",
       "target_id": "wait_ack",
-      "condition": "cdn_action.command == 'submit'"
+      "condition": "userform.cancel_cdn != true"
     },
     {
       "id": "e3",
