@@ -1,0 +1,6 @@
+{
+  "id": "customs-additional-cdn--find",
+  "task_type": "CUSTOMS_CASE_DECLARATION",
+  "output_namespace": "declaration",
+  "plugin_properties": {}
+}

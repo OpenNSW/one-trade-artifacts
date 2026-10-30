@@ -1,0 +1,18 @@
+{
+  "id": "customs-additional-cdn-find-flow:render",
+  "type": "APPLICATION",
+  "title": "[Customs] Find the Declaration",
+  "sections": {
+    "found": {
+      "templateId": "customs-additional-cdn--found",
+      "title": "Declaration",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "COMPLETED"
+        ]
+      }
+    }
+  },
+  "states": {}
+}

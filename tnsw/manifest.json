@@ -2725,6 +2725,84 @@
       "path": "customs/4a-prepare_cdn_items/task_template.json"
     },
     {
+      "id": "customs-check-cdns-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "customs/4c-check_cdns/task_template.json"
+    },
+    {
+      "id": "customs-check-cdns-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "customs/4c-check_cdns/workflow.json"
+    },
+    {
+      "id": "customs-check-cdns-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/4c-check_cdns/render.json"
+    },
+    {
+      "id": "customs-check-cdns--check-again",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "customs/4c-check_cdns/check_again.json"
+    },
+    {
+      "id": "customs-check-cdns--check-again-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/4c-check_cdns/check_again_form_jsonform.json"
+    },
+    {
+      "id": "customs-check-cdns--missing",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/4c-check_cdns/missing_markdown.json"
+    },
+    {
+      "id": "customs-check-cdns--completed",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/4c-check_cdns/completed_markdown.json"
+    },
+    {
+      "id": "customs-additional-cdn",
+      "kind": "workflow",
+      "version": "",
+      "path": "customs/additional_cdn_workflow.json"
+    },
+    {
+      "id": "customs-additional-cdn-find-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "customs/12-additional_cdn/task_template.json"
+    },
+    {
+      "id": "customs-additional-cdn-find-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "customs/12-additional_cdn/workflow.json"
+    },
+    {
+      "id": "customs-additional-cdn-find-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/12-additional_cdn/render.json"
+    },
+    {
+      "id": "customs-additional-cdn--find",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "customs/12-additional_cdn/find.json"
+    },
+    {
+      "id": "customs-additional-cdn--found",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/12-additional_cdn/found_markdown.json"
+    },
+    {
       "id": "customs-collect-cdn-results-flow:render",
       "kind": "generic_template",
       "version": "",
