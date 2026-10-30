@@ -1,0 +1,11 @@
+{
+  "id": "npqs-payment-confirm--review",
+  "type": "APPLICATION",
+  "workflow_id": "npqs-payment-confirm--review-workflow",
+  "render_config_id": "npqs-payment-confirm--review:render",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  }
+}

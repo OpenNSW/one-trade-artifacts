@@ -1,0 +1,4 @@
+{
+  "id": "cda-payment-review-receipt--awaiting-resubmission",
+  "template": "Sent back to the applicant to upload the payment receipt again. Waiting for their resubmission.{{if .payment_feedback}}\n\n> **Your comments**: {{.payment_feedback}}{{end}}"
+}

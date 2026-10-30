@@ -1,0 +1,27 @@
+{
+  "id": "cda-kcfn-payment--confirm-payment",
+  "task_type": "EXTERNAL_REVIEW",
+  "output_namespace": "payment_confirmation",
+  "plugin_properties": {
+    "officer_jsonforms_id": "cda-kcfn-payment--confirm-form",
+    "service_id": "cda",
+    "path": "/api/v1/inject",
+    "task_code": "cda_kcfn_fee_confirm_payment"
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "QUEUED_EXTERNALLY": {
+          "success": [
+            "cda"
+          ],
+          "not_received": [
+            "cda"
+          ]
+        }
+      }
+    }
+  ]
+}

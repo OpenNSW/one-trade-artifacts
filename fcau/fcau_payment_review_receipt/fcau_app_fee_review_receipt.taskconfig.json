@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "fcau_app_fee_review_receipt",
+  "workflow": "fcau_payment_review_receipt",
+  "meta": {
+    "title": "FCAU Application Fee Receipt Verification",
+    "description": "Officer verifies the payment receipt the trader uploaded for the Application Fee (LKR 1500.00)."
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "npqs-pay-certificate-fee--upload-receipt",
+  "task_type": "USER_INPUT",
+  "output_namespace": "receipt",
+  "plugin_properties": {
+    "user_jsonforms_id": "npqs-payment--upload-form",
+    "status_override": "PENDING_SLIP_UPLOAD"
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "PENDING_SLIP_UPLOAD": {
+          "submit": [
+            "trader",
+            "cha"
+          ]
+        }
+      }
+    },
+    {
+      "id": "payload_schema",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "form": "npqs-payment--upload-form"
+      }
+    }
+  ]
+}

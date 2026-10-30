@@ -1,0 +1,22 @@
+{
+  "id": "cda-payment-review-receipt--request-info",
+  "task_type": "EXTERNAL_REVIEW",
+  "output_namespace": "resubmission",
+  "plugin_properties": {
+    "service_id": "tnsw",
+    "reply_command": "needs_more_info"
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "QUEUED_EXTERNALLY": {
+          "resubmit": [
+            "tnsw"
+          ]
+        }
+      }
+    }
+  ]
+}

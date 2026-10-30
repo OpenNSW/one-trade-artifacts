@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "cda_app_fee_confirm_payment",
+  "workflow": "cda_payment_confirm",
+  "meta": {
+    "title": "CDA Certificate Charge (Salmonella Fee and Physical Quality Certification) Payment Confirmation",
+    "description": "Officer confirms the trader has paid the Certificate Charge (Salmonella Fee and Physical Quality Certification) (LKR 1814.25) outside GovPay."
+  }
+}

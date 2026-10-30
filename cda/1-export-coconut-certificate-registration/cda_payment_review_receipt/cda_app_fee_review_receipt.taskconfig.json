@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "cda_app_fee_review_receipt",
+  "workflow": "cda_payment_review_receipt",
+  "meta": {
+    "title": "CDA Certificate Charge (Salmonella Fee and Physical Quality Certification) Receipt Verification",
+    "description": "Officer verifies the payment receipt the trader uploaded for the Certificate Charge (Salmonella Fee and Physical Quality Certification) (LKR 1814.25)."
+  }
+}

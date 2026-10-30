@@ -2,6 +2,10 @@
   "id": "cda-kcfn-payment-flow:render",
   "type": "PAYMENT",
   "title": "[CDA] Pay Recommendation Report Fee",
+  "files": [
+    "receipt.payment_slip",
+    "submission.payment_slip"
+  ],
   "sections": {
     "workspace": {
       "templateId": "cda-kcfn-payment--select-method-form",
@@ -42,6 +46,56 @@
           "COMPLETED"
         ]
       }
+    },
+    "payment_not_received": {
+      "templateId": "cda-kcfn-payment--not-received",
+      "title": "Payment Not Confirmed",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "payment_remarks"
+      }
+    },
+    "receipt_instructions": {
+      "templateId": "cda-kcfn-payment--receipt-instructions",
+      "title": "Bank Transfer Details",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_SLIP_UPLOAD"
+        ]
+      }
+    },
+    "upload_receipt": {
+      "templateId": "cda-kcfn-payment--upload-form",
+      "title": "Upload Payment Receipt",
+      "projector": "FORM",
+      "dataKey": "receipt",
+      "visibleWhen": {
+        "states": [
+          "PENDING_SLIP_UPLOAD"
+        ]
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Payment Receipt",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "awaiting_officer": {
+      "templateId": "cda-kcfn-payment--awaiting-officer",
+      "title": "Waiting for Officer",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ],
+        "requireDataKey": "payment_reference"
+      }
     }
   },
   "states": {
@@ -53,6 +107,16 @@
       ]
     },
     "PENDING_PAYMENT": {
+      "actions": []
+    },
+    "PENDING_SLIP_UPLOAD": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    },
+    "QUEUED_EXTERNALLY": {
       "actions": []
     }
   }

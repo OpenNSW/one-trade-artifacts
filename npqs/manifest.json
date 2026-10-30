@@ -1343,6 +1343,162 @@
       "kind": "generic_template",
       "version": "",
       "path": "npqs_certificate_replacement/decided_view_markdown.json"
+    },
+    {
+      "id": "npqs_payment_review_receipt",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_payment_review_receipt/workflow.json"
+    },
+    {
+      "id": "npqs-payment-review-receipt--review",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs_payment_review_receipt/task_template.json"
+    },
+    {
+      "id": "npqs-payment-review-receipt--review-workflow",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_payment_review_receipt/review_workflow.json"
+    },
+    {
+      "id": "npqs-payment-review-receipt--review:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_payment_review_receipt/render.json"
+    },
+    {
+      "id": "npqs-payment-review-receipt--notify-decision",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_payment_review_receipt/notify_decision.json"
+    },
+    {
+      "id": "npqs-payment-review-receipt--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_payment_review_receipt/officer_review.json"
+    },
+    {
+      "id": "npqs-payment-review-receipt--request-info",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_payment_review_receipt/request_info.json"
+    },
+    {
+      "id": "npqs-payment-review-receipt--previous-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_payment_review_receipt/previous_review_markdown.json"
+    },
+    {
+      "id": "npqs-payment-review-receipt--payment-details",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_payment_review_receipt/payment_details_markdown.json"
+    },
+    {
+      "id": "npqs-payment-review-receipt--awaiting-resubmission",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_payment_review_receipt/awaiting_resubmission_markdown.json"
+    },
+    {
+      "id": "npqs-payment-review-receipt--submission-view",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_payment_review_receipt/submission_view_markdown.json"
+    },
+    {
+      "id": "npqs-payment--review-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_payment_review_receipt/officer_review_jsonform.json"
+    },
+    {
+      "id": "npqs-payment--upload-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_payment_review_receipt/userinput_jsonform.json"
+    },
+    {
+      "id": "npqs_certificate_fee_review_receipt",
+      "kind": "task_config",
+      "version": "",
+      "path": "npqs_payment_review_receipt/npqs_certificate_fee_review_receipt.taskconfig.json"
+    },
+    {
+      "id": "npqs_treatment_fee_review_receipt",
+      "kind": "task_config",
+      "version": "",
+      "path": "npqs_payment_review_receipt/npqs_treatment_fee_review_receipt.taskconfig.json"
+    },
+    {
+      "id": "npqs_payment_confirm",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_payment_confirm/workflow.json"
+    },
+    {
+      "id": "npqs-payment-confirm--review",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs_payment_confirm/task_template.json"
+    },
+    {
+      "id": "npqs-payment-confirm--review-workflow",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs_payment_confirm/review_workflow.json"
+    },
+    {
+      "id": "npqs-payment-confirm--review:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_payment_confirm/render.json"
+    },
+    {
+      "id": "npqs-payment-confirm--notify-decision",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_payment_confirm/notify_decision.json"
+    },
+    {
+      "id": "npqs-payment-confirm--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_payment_confirm/officer_review.json"
+    },
+    {
+      "id": "npqs-payment-confirm--payment-details",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_payment_confirm/payment_details_markdown.json"
+    },
+    {
+      "id": "npqs-payment-confirm--submission-view",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_payment_confirm/submission_view_markdown.json"
+    },
+    {
+      "id": "npqs-payment--confirm-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_payment_confirm/officer_review_jsonform.json"
+    },
+    {
+      "id": "npqs_certificate_fee_confirm_payment",
+      "kind": "task_config",
+      "version": "",
+      "path": "npqs_payment_confirm/npqs_certificate_fee_confirm_payment.taskconfig.json"
+    },
+    {
+      "id": "npqs_treatment_fee_confirm_payment",
+      "kind": "task_config",
+      "version": "",
+      "path": "npqs_payment_confirm/npqs_treatment_fee_confirm_payment.taskconfig.json"
     }
   ]
 }

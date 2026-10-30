@@ -1,0 +1,28 @@
+{
+  "id": "cda-lot-adjustment--review-receipt",
+  "task_type": "EXTERNAL_REVIEW",
+  "output_namespace": "payment_review",
+  "plugin_properties": {
+    "officer_jsonforms_id": "cda-payment--review-form",
+    "service_id": "cda",
+    "path": "/api/v1/inject",
+    "task_code": "cda_amendment_fee_review_receipt",
+    "reply_command": "resubmit"
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "QUEUED_EXTERNALLY": {
+          "success": [
+            "cda"
+          ],
+          "needs_more_info": [
+            "cda"
+          ]
+        }
+      }
+    }
+  ]
+}

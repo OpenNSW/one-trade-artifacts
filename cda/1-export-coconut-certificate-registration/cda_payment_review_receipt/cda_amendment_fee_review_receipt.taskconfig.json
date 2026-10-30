@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "cda_amendment_fee_review_receipt",
+  "workflow": "cda_payment_review_receipt",
+  "meta": {
+    "title": "CDA Amendment Fee Receipt Verification",
+    "description": "Officer verifies the payment receipt the trader uploaded for the Amendment Fee (LKR 604.75)."
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "id": "npqs-pay-certificate-fee--not-received",
+  "template": "### Payment not confirmed\n\nThe NPQS officer could not confirm your payment. Please choose a payment method and try again.\n\n> **Officer remarks:** {{.payment_remarks}}"
+}

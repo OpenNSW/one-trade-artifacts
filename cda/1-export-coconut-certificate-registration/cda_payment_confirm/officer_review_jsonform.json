@@ -1,0 +1,68 @@
+{
+  "id": "cda-payment--confirm-form",
+  "title": "CDA Payment Confirmation",
+  "schema": {
+    "type": "object",
+    "required": [
+      "payment_status"
+    ],
+    "properties": {
+      "payment_status": {
+        "type": "string",
+        "title": "Payment Status",
+        "oneOf": [
+          {
+            "const": "success",
+            "title": "Confirm Payment Received"
+          },
+          {
+            "const": "not_received",
+            "title": "Payment Not Received"
+          }
+        ],
+        "default": "success"
+      },
+      "remarks": {
+        "type": "string",
+        "title": "Officer Remarks (Required if Payment Not Received)",
+        "example": "No payment was received against this reference."
+      }
+    },
+    "if": {
+      "properties": {
+        "payment_status": {
+          "const": "not_received"
+        }
+      },
+      "required": [
+        "payment_status"
+      ]
+    },
+    "then": {
+      "properties": {
+        "remarks": {
+          "minLength": 1
+        }
+      },
+      "required": [
+        "remarks"
+      ]
+    }
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/payment_status"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/remarks",
+        "options": {
+          "multiLine": true
+        }
+      }
+    ]
+  }
+}

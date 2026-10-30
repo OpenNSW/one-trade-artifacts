@@ -1,0 +1,14 @@
+{
+  "id": "sltb-pay-lab-fee--generate-reference",
+  "task_type": "REFID_GENERATOR",
+  "output_namespace": "refid",
+  "plugin_properties": {
+    "ids": [
+      {
+        "path": "/payment_reference",
+        "issuer": "SLTB",
+        "id_type": "lab_payment_ref"
+      }
+    ]
+  }
+}
