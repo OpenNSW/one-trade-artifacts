@@ -7,12 +7,15 @@
 
   Every position is in millimetres from the sheet's top-left corner, measured
   from a scan of the blank form. Which value goes in which box follows the
-  spreadsheet NPQS printed the form from (Print.xls); a box it printed NIL in
-  prints NIL here when there is no value for it.
+  spreadsheet NPQS printed the form from (Print.xls). Only Reg. No. and boxes
+  11 to 17 print NIL, when they have no value; every other box is left empty.
 
-    .application  the trader's application (userform)
-    .items        the officer's issuance list (certificate_items): the items
-                  to leave off (include_in_certificate: false)
+    .application             the trader's application (userform)
+    .items                   the officer's issuance list (certificate_items): the
+                             items to leave off (include_in_certificate: false)
+    .issue_date              the date of issue the officer enters (YYYY-MM-DD)
+    .registration_number     the Reg. No. the officer enters, if any
+    .additional_information  box 17's text the officer enters, if any
 */ -}}
 <!DOCTYPE html>
 <html lang="en">
@@ -60,8 +63,7 @@
 
 {{- /* 01. Name and address of exporter */}}
 <div class="f pre" style="left:24.7mm; top:10.5mm; width:78mm; height:26.5mm;">{{ $app.exporter_name }}
-{{ $app.exporter_address }}{{ with $app.exporter_country }}
-{{ . }}{{ end }}</div>
+{{ $app.exporter_address }}</div>
 
 {{- /* 03. Declared name and address of consignee */}}
 <div class="f pre" style="left:24.7mm; top:43mm; width:78mm; height:33.5mm;">{{ $app.consignee_name }}
@@ -88,24 +90,14 @@
 {{- if $app.voyage_number }} - Voyage {{ $app.voyage_number }}{{ end -}}
 {{- end -}}</div>
 
-{{- /* 06. Place of origin: each certificate item's country of origin */}}
-<div class="f" style="left:120.7mm; top:82mm; width:74mm; height:10mm;">
-{{- $first := true -}}
-{{- range $c := $app.commodities -}}
-{{- $included := true -}}
-{{- range $.items }}{{ if and (eq (print .id) (print $c.id)) (eq (print .include_in_certificate) "false") }}{{ $included = false }}{{ end }}{{ end -}}
-{{- if $included -}}
-{{- if not $first }}, {{ end }}{{ $first = false -}}
-{{- $c.origin_country.label }}{{ if $c.origin_area }} ({{ $c.origin_area }}){{ end -}}
-{{- end -}}
-{{- end -}}
-</div>
+{{- /* 06. Place of origin: the exporter's country, whose only option is LK */}}
+<div class="f" style="left:120.7mm; top:82mm; width:74mm; height:10mm;">{{ lookup $app.exporter_country "LK" "Sri Lanka" }}</div>
 
 {{- /* 07. Declared point of entry */}}
-<div class="f" style="left:24.7mm; top:97.2mm; width:78mm; height:8.5mm;">{{ $app.point_of_entry_port }}{{ if and $app.point_of_entry_port $app.point_of_entry_country.label }}, {{ end }}{{ $app.point_of_entry_country.label }}</div>
+<div class="f" style="left:24.7mm; top:97.2mm; width:78mm; height:9mm;">{{ $app.point_of_entry_port }}{{ if and $app.point_of_entry_port $app.point_of_entry_country.label }}, {{ end }}{{ $app.point_of_entry_country.label }}</div>
 
 {{- /* Reg. No. */}}
-<div class="f" style="left:120.7mm; top:97.2mm; width:74mm; height:8.5mm;">NIL</div>
+<div class="f" style="left:120.7mm; top:97.2mm; width:74mm; height:9mm;">{{ with .registration_number }}{{ . }}{{ else }}NIL{{ end }}</div>
 
 {{- /* 08. Description of packages, distinguishing marks and name of produce, and 09. Quantity declared, one row per certificate item */}}
 <div class="f" style="left:24.7mm; top:115mm; width:171.5mm; height:65.5mm;">
@@ -130,8 +122,8 @@
       <div>( {{ $c.commodity_botanical_name }} )</div>
     </td>
     <td class="qty">
-      {{- if not (zero $c.quantity_net_weight) }}{{ $c.quantity_net_weight }} {{ $c.quantity_net_weight_unit.label }}
-      {{- else if not (zero $c.quantity_gross_weight) }}{{ $c.quantity_gross_weight }} {{ $c.quantity_gross_weight_unit.label }}{{ end -}}
+      {{- if not (zero $c.quantity_net_weight) }}<div>Net {{ $c.quantity_net_weight }} {{ $c.quantity_net_weight_unit.label }}</div>{{ end }}
+      {{- if not (zero $c.quantity_gross_weight) }}<div>Gross {{ $c.quantity_gross_weight }} {{ $c.quantity_gross_weight_unit.label }}</div>{{ end -}}
     </td>
   </tr>
 {{- end }}
@@ -158,10 +150,13 @@
 <div class="f" style="left:79.5mm; top:260.5mm; width:24.5mm; height:9mm;">NIL</div>
 
 {{- /* 17. Additional information */}}
-<div class="f" style="left:24.7mm; top:274.5mm; width:78mm; height:13mm;">NIL</div>
+<div class="f pre" style="left:24.7mm; top:274.5mm; width:78mm; height:13mm;">{{ with .additional_information }}{{ . }}{{ else }}NIL{{ end }}</div>
 
 {{- /* 18. Place of issue */}}
 <div class="f" style="left:120.7mm; top:231.5mm; width:74mm; height:9mm;">{{ $app.nppo_office_location.label }}</div>
+
+{{- /* 18. Date of issue, just above the printed "Date" beside the signature */}}
+<div class="f" style="left:162.6mm; top:276mm; width:33mm; height:5mm;">{{ with .issue_date }}{{ date . "2006-01-02" "02/01/2006" }}{{ end }}</div>
 
 </div>
 </body>
