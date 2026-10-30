@@ -2,7 +2,9 @@
   "id": "npqs-certificate-next-action:render",
   "type": "APPLICATION",
   "title": "[NPQS] Keep or Replace the Certificate",
-  "files": [],
+  "files": [
+    "certificate_url"
+  ],
   "sections": {
     "status_msg": {
       "templateId": "npqs-certificate-next-action--status-msg",
@@ -33,7 +35,7 @@
       ]
     },
     "completed": {
-      "templateId": "npqs-certificate-status--next-action-msg",
+      "templateId": "npqs-certificate-next-action--completed-msg",
       "title": "Next Action",
       "projector": "MARKDOWN",
       "visibleWhen": {

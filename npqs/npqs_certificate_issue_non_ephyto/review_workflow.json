@@ -1,0 +1,82 @@
+{
+  "id": "npqs-certificate-issue-non-ephyto--review-workflow",
+  "name": "NPQS Certificate Issuance (Non-ePhyto) — Officer Review",
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "userform",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-issue-non-ephyto--officer-review",
+      "input_mapping": {
+        "submission?": "submission",
+        "submission.certificate_items?": "reviewform.certificate_items",
+        "submission.certificate_type?": "reviewform.certificate_type"
+      },
+      "output_mapping": {
+        "__command": "command",
+        "issue_date?": "reviewform.issue_date",
+        "registration_number?": "reviewform.registration_number",
+        "additional_information?": "reviewform.additional_information",
+        "comments?": "reviewform.comments",
+        "certificate_items?": "reviewform.certificate_items"
+      }
+    },
+    {
+      "id": "generate_print_copy",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-issue-non-ephyto--generate-print-copy",
+      "input_mapping": {
+        "submission": "application",
+        "reviewform.certificate_items?": "items",
+        "reviewform.issue_date?": "issue_date",
+        "reviewform.registration_number?": "registration_number",
+        "reviewform.additional_information?": "additional_information"
+      },
+      "output_mapping": {
+        "print_copy.key": "reviewform.print_copy_key"
+      }
+    },
+    {
+      "id": "api_call",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-issue-non-ephyto--notify-decision",
+      "input_mapping": {
+        "callbackToken": "callbackToken",
+        "reviewform?": "reviewform",
+        "submission?": "submission",
+        "taskId": "taskId",
+        "command": "payload.command",
+        "reviewform": "payload.payload"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "userform"
+    },
+    {
+      "id": "e_form_to_print_copy",
+      "source_id": "userform",
+      "target_id": "generate_print_copy"
+    },
+    {
+      "id": "e_generated",
+      "source_id": "generate_print_copy",
+      "target_id": "api_call"
+    },
+    {
+      "id": "e_api_to_end",
+      "source_id": "api_call",
+      "target_id": "end"
+    }
+  ]
+}

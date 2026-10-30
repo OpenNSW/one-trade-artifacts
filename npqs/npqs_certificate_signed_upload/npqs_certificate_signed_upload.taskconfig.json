@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "npqs_certificate_signed_upload",
+  "workflow": "npqs_certificate_signed_upload",
+  "meta": {
+    "title": "NPQS Signed Certificate Upload (Non-ePhyto)",
+    "description": "Officer prints the certificate on the pre-printed form, signs it and uploads the signed certificate."
+  }
+}

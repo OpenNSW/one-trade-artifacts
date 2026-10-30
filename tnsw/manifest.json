@@ -289,24 +289,6 @@
       "path": "npqs/1-apply/status_awaiting_jsonform.json"
     },
     {
-      "id": "npqs-phyto-certificate--html",
-      "kind": "html_template",
-      "version": "",
-      "path": "npqs/1-apply/phyto_certificate.gohtml"
-    },
-    {
-      "id": "npqs-apply-phyto-cert--draft-certificate",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs/1-apply/draft_certificate.json"
-    },
-    {
-      "id": "npqs-apply-phyto-cert--draft-certificate-msg",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs/1-apply/draft_certificate_markdown.json"
-    },
-    {
       "id": "npqs-apply-phyto-cert--previous-feedback",
       "kind": "generic_template",
       "version": "",
@@ -721,6 +703,66 @@
       "path": "npqs/8-issue_certificate/status_markdown.json"
     },
     {
+      "id": "npqs-issue-certificate-non-ephyto--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/8b-issue_certificate_non_ephyto/officerinput.json"
+    },
+    {
+      "id": "npqs-issue-certificate-non-ephyto:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/8b-issue_certificate_non_ephyto/render.json"
+    },
+    {
+      "id": "npqs-issue-certificate-non-ephyto",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs/8b-issue_certificate_non_ephyto/workflow.json"
+    },
+    {
+      "id": "npqs-issue-certificate-non-ephyto",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs/8b-issue_certificate_non_ephyto/task_template.json"
+    },
+    {
+      "id": "npqs-issue-certificate-non-ephyto--status",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/8b-issue_certificate_non_ephyto/status_markdown.json"
+    },
+    {
+      "id": "npqs-sign-certificate-non-ephyto--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/8c-sign_certificate_non_ephyto/officerinput.json"
+    },
+    {
+      "id": "npqs-sign-certificate-non-ephyto:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/8c-sign_certificate_non_ephyto/render.json"
+    },
+    {
+      "id": "npqs-sign-certificate-non-ephyto",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs/8c-sign_certificate_non_ephyto/workflow.json"
+    },
+    {
+      "id": "npqs-sign-certificate-non-ephyto",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs/8c-sign_certificate_non_ephyto/task_template.json"
+    },
+    {
+      "id": "npqs-sign-certificate-non-ephyto--status",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/8c-sign_certificate_non_ephyto/status_markdown.json"
+    },
+    {
       "id": "npqs-ephyto-upload:render",
       "kind": "generic_template",
       "version": "",
@@ -905,6 +947,12 @@
       "kind": "generic_template",
       "version": "",
       "path": "npqs/18e-certificate_next_action/status_markdown.json"
+    },
+    {
+      "id": "npqs-certificate-next-action--completed-msg",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/18e-certificate_next_action/completed_markdown.json"
     },
     {
       "id": "npqs-certificate-withdrawal",

@@ -3,8 +3,11 @@
   "type": "APPLICATION",
   "title": "NPQS Application Review",
   "files": [
-    "submission.attachments[*].attachment_file_url",
-    "submission.draft_certificate_key"
+    "application.attachments[*].attachment_file_url",
+    "draft_certificate.key",
+    "payload.payload.draft_certificate_key",
+    "reviewform.draft_certificate_key",
+    "submission.attachments[*].attachment_file_url"
   ],
   "sections": {
     "previous_review": {
@@ -24,7 +27,7 @@
       "title": "Draft Phytosanitary Certificate",
       "projector": "MARKDOWN",
       "visibleWhen": {
-        "requireDataKey": "submission"
+        "requireDataKey": "draft_certificate"
       }
     },
     "submission_view": {

@@ -1,0 +1,65 @@
+{
+  "id": "npqs-certificate-signed-upload--review:render",
+  "type": "APPLICATION",
+  "title": "NPQS Signed Certificate Upload (Non-ePhyto)",
+  "files": [
+    "payload.payload.certificate_url",
+    "reviewform.certificate_url",
+    "submission.attachments[*].attachment_file_url",
+    "submission.print_copy_key"
+  ],
+  "sections": {
+    "print_copy": {
+      "templateId": "npqs-certificate-signed-upload--print-copy-msg",
+      "title": "Print Copy of the Phytosanitary Certificate",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ]
+      }
+    },
+    "submission_view": {
+      "templateId": "npqs-apply-phyto-cert--officer-view-form",
+      "title": "Submitted Application",
+      "projector": "FORM",
+      "dataKey": "submission"
+    },
+    "upload_form": {
+      "templateId": "npqs-certificate-signed-upload--officer-form",
+      "title": "Signed Certificate",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Upload Signed Certificate",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "status_message": {
+      "templateId": "npqs-certificate-issue--submission-view",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    }
+  },
+  "layouts": {
+    "layout_1": ["print_copy", "upload_form", "submission_view", "status_message"]
+  },
+  "states": {
+    "PENDING_USER": {
+      "order": { "$ref": "#/layouts/layout_1" },
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}
