@@ -44,7 +44,8 @@
   * { box-sizing: border-box; }
   body { margin: 0; font-family: Arial, Helvetica, sans-serif; font-size: 10pt; line-height: 4.5mm; color: #000; }
   .sheet { position: relative; width: 210mm; height: 297mm; overflow: hidden; }
-  /* One box of the form. Text that doesn't fit is cut off at the box's edge rather than printed over the next box. */
+  /* One box of the form. Long text wraps; each box is a whole number of lines tall, so text that still
+     doesn't fit is dropped a whole line at a time at the box's edge, never cut through or printed over the next box. */
   .f { position: absolute; overflow: hidden; }
   .pre { white-space: pre-line; }
   /* 08 ends at the "Number of packages" column (151.9mm) and 09 starts at 167.4mm; the gap stays empty, as in Print.xls. */
@@ -91,19 +92,19 @@
 <div class="sheet">
 
 {{- /* 01. Name and address of exporter */}}
-<div class="f pre" style="left:24.7mm; top:10.5mm; width:78mm; height:26.5mm;">{{ $app.exporter_name }}
+<div class="f pre" style="left:24.7mm; top:10.5mm; width:78mm; height:27mm;">{{ $app.exporter_name }}
 {{ $app.exporter_address }}</div>
 
 {{- /* 03. Declared name and address of consignee */}}
-<div class="f pre" style="left:24.7mm; top:43mm; width:78mm; height:33.5mm;">{{ $app.consignee_name }}
+<div class="f pre" style="left:24.7mm; top:43mm; width:78mm; height:31.5mm;">{{ $app.consignee_name }}
 {{ $app.consignee_address }}{{ with $app.consignee_country.label }}
 {{ . }}{{ end }}</div>
 
 {{- /* 04. To: Plant Protection Organization(s) of */}}
-<div class="f" style="left:120.7mm; top:64.2mm; width:74mm; height:12.5mm;">{{ $app.importing_country.label }}</div>
+<div class="f" style="left:120.7mm; top:64.2mm; width:74mm; height:9mm;">{{ $app.importing_country.label }}</div>
 
 {{- /* 05. Declared means of conveyance */}}
-<div class="f" style="left:24.7mm; top:82mm; width:78mm; height:10mm;">{{- if and $app.transport_details (gt (len $app.transport_details) 0) -}}
+<div class="f" style="left:24.7mm; top:82mm; width:78mm; height:9mm;">{{- if and $app.transport_details (gt (len $app.transport_details) 0) -}}
 {{- range $i, $t := $app.transport_details -}}
 {{- if $i }}, {{ end -}}
 {{- $mode := print $t.transport_mode -}}
@@ -120,16 +121,16 @@
 {{- end -}}</div>
 
 {{- /* 06. Place of origin: the exporter's country, whose only option is LK */}}
-<div class="f" style="left:120.7mm; top:82mm; width:74mm; height:10mm;">{{ lookup $app.exporter_country "LK" "Sri Lanka" }}</div>
+<div class="f" style="left:120.7mm; top:82mm; width:74mm; height:9mm;">{{ lookup $app.exporter_country "LK" "Sri Lanka" }}</div>
 
 {{- /* 07. Declared point of entry */}}
-<div class="f" style="left:24.7mm; top:97.2mm; width:78mm; height:9mm;">{{ $app.point_of_entry_port }}{{ if and $app.point_of_entry_port $app.point_of_entry_country.label }}, {{ end }}{{ $app.point_of_entry_country.label }}</div>
+<div class="f" style="left:24.7mm; top:97.2mm; width:78mm; height:8.6mm; line-height:4.3mm;">{{ $app.point_of_entry_port }}{{ if and $app.point_of_entry_port $app.point_of_entry_country.label }}, {{ end }}{{ $app.point_of_entry_country.label }}</div>
 
 {{- /* Reg. No. */}}
-<div class="f" style="left:120.7mm; top:97.2mm; width:74mm; height:9mm;">{{ with .registration_number }}{{ . }}{{ else }}NIL{{ end }}</div>
+<div class="f" style="left:120.7mm; top:97.2mm; width:74mm; height:8.6mm; line-height:4.3mm;">{{ with .registration_number }}{{ . }}{{ else }}NIL{{ end }}</div>
 
 {{- /* 08. Description of packages, distinguishing marks and name of produce, and 09. Quantity declared, one row per certificate item */}}
-<div class="f" style="left:24.7mm; top:115mm; width:171.5mm; height:65.5mm;">
+<div class="f" style="left:24.7mm; top:115mm; width:171.5mm; height:63mm;">
 <table class="goods">
 {{- if $multi }}
   <tr>
@@ -195,13 +196,13 @@
 <div class="f pre" style="left:24.7mm; top:198.5mm; width:170mm; height:27mm;">{{ with $app.additional_declaration }}{{ . }}{{ else }}NIL{{ end }}</div>
 
 {{- /* 12. Treatment */}}
-<div class="f pre" style="left:24.7mm; top:236.8mm; width:78mm; height:6mm;">{{ with $app.disinfestation_treatment }}{{ . }}{{ else }}NIL{{ end }}</div>
+<div class="f pre" style="left:24.7mm; top:235.3mm; width:78mm; height:7.6mm; line-height:3.8mm;">{{ with $app.disinfestation_treatment }}{{ . }}{{ else }}NIL{{ end }}</div>
 
 {{- /* 13. Chemical (active ingredient) */}}
-<div class="f" style="left:24.7mm; top:248.3mm; width:37mm; height:7.5mm;">NIL</div>
+<div class="f" style="left:24.7mm; top:247.4mm; width:37mm; height:8.4mm; line-height:4.2mm;">NIL</div>
 
 {{- /* 14. Duration and temperature */}}
-<div class="f" style="left:79.5mm; top:248.3mm; width:24.5mm; height:7.5mm;">NIL</div>
+<div class="f" style="left:79.5mm; top:247.4mm; width:24.5mm; height:8.4mm; line-height:4.2mm;">NIL</div>
 
 {{- /* 15. Concentration */}}
 <div class="f" style="left:24.7mm; top:260.5mm; width:37mm; height:9mm;">NIL</div>
@@ -210,13 +211,13 @@
 <div class="f" style="left:79.5mm; top:260.5mm; width:24.5mm; height:9mm;">NIL</div>
 
 {{- /* 17. Additional information */}}
-<div class="f pre" style="left:24.7mm; top:274.5mm; width:78mm; height:13mm;">{{ with .additional_information }}{{ . }}{{ else }}NIL{{ end }}</div>
+<div class="f pre" style="left:24.7mm; top:274.5mm; width:78mm; height:12.9mm; line-height:4.3mm;">{{ with .additional_information }}{{ . }}{{ else }}NIL{{ end }}</div>
 
 {{- /* 18. Place of issue */}}
 <div class="f" style="left:120.7mm; top:231.5mm; width:74mm; height:9mm;">{{ $app.nppo_office_location.label }}</div>
 
 {{- /* 18. Date of issue, just above the printed "Date" beside the signature */}}
-<div class="f" style="left:162.6mm; top:276mm; width:33mm; height:5mm;">{{ with .issue_date }}{{ date . "2006-01-02" "02/01/2006" }}{{ end }}</div>
+<div class="f" style="left:162.6mm; top:276mm; width:33mm; height:4.5mm;">{{ with .issue_date }}{{ date . "2006-01-02" "02/01/2006" }}{{ end }}</div>
 
 </div>
 
