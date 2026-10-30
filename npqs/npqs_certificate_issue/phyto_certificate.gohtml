@@ -33,6 +33,112 @@ The consignment was treated under official supervision in accordance with the ph
 {{- define "statement_visual2" -}}
 Consignment re-inspected after treatment and found free from live pests.
 {{- end -}}
+
+{{- /*
+  One packages[] row as "N Name" / "N Names" for the certificate package line.
+  Friendlier bases for a few codes (ZB/PX/…); otherwise the UN Description.
+  count > 1 pluralizes the leading noun ("Drum, fibre" → "Drums, fibre").
+*/ -}}
+{{- define "package_combo" -}}
+{{- $count := .count -}}
+{{- $code := "" -}}{{- with .type }}{{ if .value }}{{ $code = print .value }}{{ end }}{{ end -}}
+{{- $label := "" -}}{{- with .type }}{{ if .label }}{{ $label = print .label }}{{ end }}{{ end -}}
+{{- $singular := lookup $code \
+  "ZB" "Large Bag" "PX" "Pallet" "JB" "Jumbo Bag" \
+  "GY" "Gunny Bag" -}}
+{{- if or (eq (print $singular) "") (eq (print $singular) $code) -}}
+  {{- $singular = lookup $code \
+  "1G" "Drum, fibre" "1D" "Drum, plywood" "1B" "Drum, aluminium" \
+  "ZB" "Bag, large" "XK" "Bag, paper, multi-wall, water resistant" "XJ" "Bag, paper, multi-wall" \
+  "XH" "Bag, textile, water resistant" "XG" "Bag, textile, sift proof" "XF" "Bag, textile, without inner coat/liner" \
+  "XD" "Bag, plastics film" "XC" "Bag, woven plastic, water resistant" "XB" "Bag, woven plastic, sift proof" \
+  "XA" "Bag, woven plastic, without inner coat/liner" "VY" "Bulk, solid, fine particles (“powders”)" "VI" "Vial" \
+  "VG" "Bulk, gas (at 1031 mbar and 15°C)" "UN" "Unit" "TT" "Bag, tote" \
+  "TC" "Tea-chest" "ST" "Sheet" "SS" "Case, steel" \
+  "SI" "Skid" "SH" "Sachet" "SA" "Sack" \
+  "RO" "Roll" "QR" "Box, plastic, expanded" "QQ" "Box, wooden, natural wood, with sift proof walls" \
+  "QP" "Box, wooden, natural wood, ordinary" "QJ" "Barrel, wooden, removable head" "QC" "Drum, aluminium, non-removable head" \
+  "PX" "Pallet" "PU" "Tray" "PT" "Pot" \
+  "PO" "Pouch" "PK" "Package" "PA" "Packet" \
+  "OK" "Block" "NT" "Net" "NA" "Not available" \
+  "MB" "Bag, multiply" "JT" "Jutebag" "JB" "Bag, jumbo" \
+  "GY" "Bag, gunny" "GB" "Bottle, gas" "FX" "Bag, flexible container" \
+  "FB" "Flexibag" "EF" "Case, with pallet base, cardboard" "EC" "Bag, plastic" \
+  "DR" "Drum" "CZ" "Canvas" "CW" "Cage, roll" \
+  "CV" "Cover" "CU" "Cup" "CT" "Carton" \
+  "CS" "Case" "CR" "Crate" "CN" "Container" \
+  "CL" "Coil" "CG" "Cage" "CF" "Coffer" \
+  "BX" "Box" "BS" "Bottle, non-protected, bulbous" "BQ" "Bottle, protected cylindrical" \
+  "BJ" "Bucket" "BI" "Bin" "BH" "Bunch" \
+  "BG" "Bag" "BE" "Bundle" "BA" "Barrel" \
+  "AJ" "Cone" "5M" "Bag, paper" "5L" "Bag, textile" \
+  "5H" "Bag, woven plastic" "4G" "Box, fibreboard" "4F" "Box, reconstituted wood" \
+  "4A" "Box, steel" "44" "Bag, polybag" "43" "Bag, super bulk" \
+  "2C" "Barrel, wooden" "1W" "Drum, wooden" -}}
+{{- end -}}
+{{- if or (eq (print $singular) "") (eq (print $singular) $code) -}}
+  {{- if $label }}{{ $singular = $label }}{{ else }}{{ $singular = $code }}{{ end -}}
+{{- end -}}
+{{- /* Friendlier wording when the row still holds the UN Description text. */ -}}
+{{- $singular = lookup $singular "Bag, large" "Large Bag" "Bag, jumbo" "Jumbo Bag" "Bag, gunny" "Gunny Bag" -}}
+{{- $name := $singular -}}
+{{- if and (ne (print $count) "1") (ne (print $count) "1.0") -}}
+  {{- $parts := split $singular ", " -}}
+  {{- if gt (len $parts) 1 -}}
+    {{- $noun := index $parts 0 -}}
+    {{- $pnoun := lookup $noun \
+  "Bag" "Bags" "Large Bag" "Large Bags" "Jumbo Bag" "Jumbo Bags" \
+  "Gunny Bag" "Gunny Bags" "Drum" "Drums" "Bulk" "Bulk" \
+  "Vial" "Vials" "Unit" "Units" "Tea-chest" "Tea-chests" \
+  "Sheet" "Sheets" "Case" "Cases" "Skid" "Skids" \
+  "Sachet" "Sachets" "Sack" "Sacks" "Roll" "Rolls" \
+  "Box" "Boxes" "Barrel" "Barrels" "Pallet" "Pallets" \
+  "Tray" "Trays" "Pot" "Pots" "Pouch" "Pouches" \
+  "Package" "Packages" "Packet" "Packets" "Block" "Blocks" \
+  "Net" "Nets" "Bottle" "Bottles" "Flexibag" "Flexibags" \
+  "Canvas" "Canvases" "Cage" "Cages" "Cover" "Covers" \
+  "Cup" "Cups" "Carton" "Cartons" "Crate" "Crates" \
+  "Container" "Containers" "Coil" "Coils" "Coffer" "Coffers" \
+  "Bunch" "Bunches" "Bundle" "Bundles" "Bin" "Bins" \
+  "Bucket" "Buckets" "Cone" "Cones" "Jutebag" "Jutebags" \
+  "Not available" "Not available" -}}
+    {{- if or (eq (print $pnoun) "") (eq (print $pnoun) $noun) -}}
+      {{- $pnoun = print $noun "s" -}}
+    {{- end -}}
+    {{- $rest := "" -}}
+    {{- range $i, $part := $parts -}}
+      {{- if gt $i 0 -}}
+        {{- if $rest }}{{ $rest = print $rest ", " $part }}{{ else }}{{ $rest = $part }}{{ end -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $name = print $pnoun ", " $rest -}}
+  {{- else -}}
+    {{- $pname := lookup $singular \
+  "Bag" "Bags" "Large Bag" "Large Bags" "Jumbo Bag" "Jumbo Bags" \
+  "Gunny Bag" "Gunny Bags" "Drum" "Drums" "Bulk" "Bulk" \
+  "Vial" "Vials" "Unit" "Units" "Tea-chest" "Tea-chests" \
+  "Sheet" "Sheets" "Case" "Cases" "Skid" "Skids" \
+  "Sachet" "Sachets" "Sack" "Sacks" "Roll" "Rolls" \
+  "Box" "Boxes" "Barrel" "Barrels" "Pallet" "Pallets" \
+  "Tray" "Trays" "Pot" "Pots" "Pouch" "Pouches" \
+  "Package" "Packages" "Packet" "Packets" "Block" "Blocks" \
+  "Net" "Nets" "Bottle" "Bottles" "Flexibag" "Flexibags" \
+  "Canvas" "Canvases" "Cage" "Cages" "Cover" "Covers" \
+  "Cup" "Cups" "Carton" "Cartons" "Crate" "Crates" \
+  "Container" "Containers" "Coil" "Coils" "Coffer" "Coffers" \
+  "Bunch" "Bunches" "Bundle" "Bundles" "Bin" "Bins" \
+  "Bucket" "Buckets" "Cone" "Cones" "Jutebag" "Jutebags" \
+  "Not available" "Not available" -}}
+    {{- if and (ne (print $pname) "") (ne (print $pname) $singular) -}}
+      {{- $name = $pname -}}
+    {{- else -}}
+      {{- $name = print $singular "s" -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $count }} {{ $name -}}
+{{- end -}}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -178,9 +284,9 @@ Consignment re-inspected after treatment and found free from live pests.
     {{- if or (eq (print $c.package_arrangement) "free_text") $c.packages_free_text_enabled }}{{ $c.packages_free_text }}
     {{- else if or (eq (print $c.package_arrangement) "bulk") $c.packages_in_bulk }}In bulk
     {{- else if $c.packages -}}
-      {{- range $i, $p := $c.packages -}}
-        {{- if $i }}, {{ end -}}
-        {{- $p.count }} {{ if $p.type.label }}{{ $p.type.label }}{{ else }}{{ $p.type.value }}{{ end -}}
+      Packaged with {{ range $i, $p := $c.packages -}}
+        {{- if $i }} + {{ end -}}
+        {{- template "package_combo" $p -}}
       {{- end -}}
     {{- else }}{{ $c.packages_count }} {{ $c.packages_description.label }}{{ end -}}
   </td></tr>
