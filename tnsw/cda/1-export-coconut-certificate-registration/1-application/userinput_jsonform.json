@@ -59,6 +59,11 @@
         "description": "10 digits, or + followed by 11 digits.",
         "example": "0771234567"
       },
+      "contract_number": {
+        "type": "string",
+        "title": "Contract Number",
+        "example": "CN-2026-0412"
+      },
       "lot_number": {
         "type": "string",
         "title": "Lot Number",
@@ -327,6 +332,10 @@
           {
             "type": "Control",
             "scope": "#/properties/contact_number"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/contract_number"
           },
           {
             "type": "Control",

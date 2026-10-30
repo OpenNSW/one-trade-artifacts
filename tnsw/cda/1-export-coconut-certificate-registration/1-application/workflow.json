@@ -29,6 +29,7 @@
         "cancellation_reason?": "userform.cancellation_reason",
         "hs_code?": "userform.hs_code",
         "contact_number?": "userform.contact_number",
+        "contract_number?": "userform.contract_number",
         "lot_number?": "userform.lot_number",
         "product_type": "userform.product_type",
         "dc_grades": "userform.dc_grades",
