@@ -212,6 +212,22 @@
         "title": "Application Certificate Type",
         "readOnly": true
       },
+      "issue_date": {
+        "type": "string",
+        "format": "date",
+        "title": "Date of Issue",
+        "example": "2026-10-27"
+      },
+      "registration_number": {
+        "type": "string",
+        "title": "Reg. No.",
+        "description": "Printed in the certificate's Reg. No. box; NIL when left empty."
+      },
+      "additional_information": {
+        "type": "string",
+        "title": "Additional Information",
+        "description": "Printed in box 17 of the certificate; NIL when left empty."
+      },
       "comments": {
         "type": "string",
         "title": "Officer Remarks",
@@ -219,7 +235,8 @@
       }
     },
     "required": [
-      "certificate_items"
+      "certificate_items",
+      "issue_date"
     ]
   },
   "uiSchema": {
@@ -279,6 +296,21 @@
           },
           "addable": false,
           "removable": false
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/issue_date"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/registration_number"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/additional_information",
+        "options": {
+          "multi": true
         }
       },
       {

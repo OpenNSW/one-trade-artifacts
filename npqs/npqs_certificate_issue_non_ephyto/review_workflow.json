@@ -17,6 +17,9 @@
       },
       "output_mapping": {
         "__command": "command",
+        "issue_date?": "reviewform.issue_date",
+        "registration_number?": "reviewform.registration_number",
+        "additional_information?": "reviewform.additional_information",
         "comments?": "reviewform.comments",
         "certificate_items?": "reviewform.certificate_items"
       }
@@ -27,7 +30,10 @@
       "task_template_id": "npqs-certificate-issue-non-ephyto--generate-print-copy",
       "input_mapping": {
         "submission": "application",
-        "reviewform.certificate_items?": "items"
+        "reviewform.certificate_items?": "items",
+        "reviewform.issue_date?": "issue_date",
+        "reviewform.registration_number?": "registration_number",
+        "reviewform.additional_information?": "additional_information"
       },
       "output_mapping": {
         "print_copy.key": "reviewform.print_copy_key"
