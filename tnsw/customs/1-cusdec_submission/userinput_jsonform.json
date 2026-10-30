@@ -292,8 +292,12 @@
                   "formula": "CONCATENATE(marks_one,\" | \",marks_two)"
                 },
                 {
-                  "from": "Tarification.HScode.Commodity_code",
                   "to": "tarification.hsCode",
+                  "inputs": {
+                    "hs_code": "Tarification.HScode.Commodity_code",
+                    "hs_precision": "Tarification.HScode.Precision_1"
+                  },
+                  "formula": "CONCATENATE(hs_code,hs_precision)",
                   "as": "string"
                 },
                 {
@@ -668,8 +672,19 @@
                   "as": "string"
                 },
                 {
-                  "from": "tarification.hsCode",
                   "to": "Tarification.HScode.Commodity_code",
+                  "inputs": {
+                    "hs_code": "tarification.hsCode"
+                  },
+                  "formula": "LEFT(hs_code,8)",
+                  "as": "string"
+                },
+                {
+                  "to": "Tarification.HScode.Precision_1",
+                  "inputs": {
+                    "hs_code": "tarification.hsCode"
+                  },
+                  "formula": "MID(hs_code,9,2)",
                   "as": "string"
                 },
                 {
