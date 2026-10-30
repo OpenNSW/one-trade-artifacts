@@ -36,8 +36,7 @@
       },
       "output_mapping": {
         "userform": "cdn_aux.userform",
-        "cig_cdn?": "cdn_aux.cig_cdn",
-        "cdn_action": "cdn_aux.cdn_action"
+        "cig_cdn?": "cdn_aux.cig_cdn"
       }
     },
     {
@@ -103,13 +102,13 @@
       "id": "e_cancelled",
       "source_id": "gw_cancelled",
       "target_id": "end",
-      "condition": "cdn_aux.cdn_action.command == 'cancel'"
+      "condition": "cdn_aux.userform.cancel_cdn == true"
     },
     {
       "id": "e_create_to_ack",
       "source_id": "gw_cancelled",
       "target_id": "customs_aux_cdn_3_wait_ack",
-      "condition": "cdn_aux.cdn_action.command == 'submit'"
+      "condition": "cdn_aux.userform.cancel_cdn != true"
     },
     {
       "id": "e_ack_to_end",

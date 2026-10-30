@@ -24,7 +24,7 @@
         "goods?": "userform.goods",
         "container?": "userform.container",
         "cusdecRef?": "userform.cusdecRef",
-        "__command": "cdn_action.command"
+        "cancel_cdn?": "userform.cancel_cdn"
       }
     },
     {
@@ -93,13 +93,13 @@
       "id": "e_cancelled_from_form",
       "source_id": "cancel_check",
       "target_id": "end",
-      "condition": "cdn_action.command == 'cancel'"
+      "condition": "userform.cancel_cdn == true"
     },
     {
       "id": "e_submitted",
       "source_id": "cancel_check",
       "target_id": "cig_dispatch",
-      "condition": "cdn_action.command == 'submit'"
+      "condition": "userform.cancel_cdn != true"
     },
     {
       "id": "e_cig_check",
