@@ -1471,12 +1471,6 @@
       "path": "fcau/2-payment_app_fee/upload_receipt_jsonform.json"
     },
     {
-      "id": "fcau-pay-app-fee--generate-reference",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "fcau/2-payment_app_fee/generate_reference.json"
-    },
-    {
       "id": "fcau-pay-app-fee--upload-receipt",
       "kind": "subtask_template",
       "version": "",
@@ -2071,12 +2065,6 @@
       "path": "cda/1-export-coconut-certificate-registration/2-payment_app_fee/upload_receipt_jsonform.json"
     },
     {
-      "id": "cda-pay-app-fee--generate-reference",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "cda/1-export-coconut-certificate-registration/2-payment_app_fee/generate_reference.json"
-    },
-    {
       "id": "cda-pay-app-fee--upload-receipt",
       "kind": "subtask_template",
       "version": "",
@@ -2291,12 +2279,6 @@
       "kind": "task_template",
       "version": "",
       "path": "cda/1-export-coconut-certificate-registration/4-lot_adjustment/task_template.json"
-    },
-    {
-      "id": "cda-lot-adjustment--generate-reference",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "cda/1-export-coconut-certificate-registration/4-lot_adjustment/generate_reference.json"
     },
     {
       "id": "cda-lot-adjustment--upload-receipt",
@@ -2573,12 +2555,6 @@
       "kind": "generic_template",
       "version": "",
       "path": "cda/2-king-coconut-fresh-nuts-recommendation/2-payment/upload_receipt_jsonform.json"
-    },
-    {
-      "id": "cda-kcfn-payment--generate-reference",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "cda/2-king-coconut-fresh-nuts-recommendation/2-payment/generate_reference.json"
     },
     {
       "id": "cda-kcfn-payment--upload-receipt",
@@ -3673,12 +3649,6 @@
       "path": "sltb/4-lab_payment/upload_receipt_jsonform.json"
     },
     {
-      "id": "sltb-pay-lab-fee--generate-reference",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "sltb/4-lab_payment/generate_reference.json"
-    },
-    {
       "id": "sltb-pay-lab-fee--upload-receipt",
       "kind": "subtask_template",
       "version": "",
@@ -4231,12 +4201,6 @@
       "path": "npqs/5-2-treatment_payment/payment_details_markdown.json"
     },
     {
-      "id": "npqs-pay-for-treatment--generate-reference",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs/5-2-treatment_payment/generate_reference.json"
-    },
-    {
       "id": "npqs-pay-for-treatment--upload-receipt",
       "kind": "subtask_template",
       "version": "",
@@ -4283,12 +4247,6 @@
       "kind": "generic_template",
       "version": "",
       "path": "npqs/7-payment/upload_receipt_jsonform.json"
-    },
-    {
-      "id": "npqs-pay-certificate-fee--generate-reference",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs/7-payment/generate_reference.json"
     },
     {
       "id": "npqs-pay-certificate-fee--upload-receipt",

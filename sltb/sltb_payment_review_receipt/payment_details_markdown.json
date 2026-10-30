@@ -1,4 +1,4 @@
 {
   "id": "sltb-payment-review-receipt--payment-details",
-  "template": "{{with .}}{{with .payment_reference}}**Payment reference:** `{{.}}`\n\n{{end}}{{with .reference_number}}**Application reference:** `{{.}}`{{end}}{{end}}"
+  "template": "{{with .}}{{with .reference_number}}**Application reference:** `{{.}}`{{end}}{{end}}"
 }

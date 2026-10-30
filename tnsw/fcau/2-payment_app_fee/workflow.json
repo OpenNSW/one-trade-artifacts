@@ -36,22 +36,10 @@
       "name": "Split on Payment Method"
     },
     {
-      "id": "generate_slip_reference_task",
-      "type": "TASK",
-      "task_template_id": "fcau-pay-app-fee--generate-reference",
-      "input_mapping": {
-        "payment_reference?": "payment_reference"
-      },
-      "output_mapping": {
-        "refid.payment_reference": "payment_reference"
-      }
-    },
-    {
       "id": "upload_receipt_task",
       "type": "TASK",
       "task_template_id": "fcau-pay-app-fee--upload-receipt",
       "input_mapping": {
-        "payment_reference": "payment_reference",
         "payment_feedback?": "payment_feedback"
       },
       "output_mapping": {
@@ -64,8 +52,7 @@
       "type": "TASK",
       "task_template_id": "fcau-pay-app-fee--review-receipt",
       "input_mapping": {
-        "payment_reference": "submission.payment_reference",
-        "payment_reference?": "payment_reference",
+        "selected_method": "selected_payment_method",
         "reference_number?": "submission.reference_number",
         "payment_slip": "submission.payment_slip",
         "payment_agency_token?": "replyToken",
@@ -84,23 +71,11 @@
       "name": "Receipt Verified?"
     },
     {
-      "id": "generate_confirm_reference_task",
-      "type": "TASK",
-      "task_template_id": "fcau-pay-app-fee--generate-reference",
-      "input_mapping": {
-        "payment_reference?": "payment_reference"
-      },
-      "output_mapping": {
-        "refid.payment_reference": "payment_reference"
-      }
-    },
-    {
       "id": "confirm_payment_task",
       "type": "TASK",
       "task_template_id": "fcau-pay-app-fee--confirm-payment",
       "input_mapping": {
-        "payment_reference": "submission.payment_reference",
-        "payment_reference?": "payment_reference",
+        "selected_method": "selected_payment_method",
         "reference_number?": "submission.reference_number"
       },
       "output_mapping": {
@@ -145,13 +120,8 @@
     {
       "id": "e_payment_slip",
       "source_id": "method_split",
-      "target_id": "generate_slip_reference_task",
+      "target_id": "upload_receipt_task",
       "condition": "selected_method == 'payment_slip'"
-    },
-    {
-      "id": "e_slip_upload",
-      "source_id": "generate_slip_reference_task",
-      "target_id": "upload_receipt_task"
     },
     {
       "id": "e_slip_review",
@@ -178,13 +148,8 @@
     {
       "id": "e_officer_confirm",
       "source_id": "method_split",
-      "target_id": "generate_confirm_reference_task",
+      "target_id": "confirm_payment_task",
       "condition": "selected_method == 'officer_confirm'"
-    },
-    {
-      "id": "e_confirm",
-      "source_id": "generate_confirm_reference_task",
-      "target_id": "confirm_payment_task"
     },
     {
       "id": "e_confirm_split",

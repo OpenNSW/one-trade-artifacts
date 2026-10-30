@@ -1,4 +1,4 @@
 {
   "id": "sltb-payment-confirm--payment-details",
-  "template": "The applicant has chosen to pay this fee directly to the SLTB. Confirm once the payment has been received.\n\n{{with .}}{{with .payment_reference}}**Payment reference:** `{{.}}`\n\n{{end}}{{with .reference_number}}**Application reference:** `{{.}}`{{end}}{{end}}"
+  "template": "The applicant has chosen to pay this fee directly to the SLTB. Confirm once the payment has been received.\n\n{{with .}}{{with .reference_number}}**Application reference:** `{{.}}`{{end}}{{end}}"
 }
