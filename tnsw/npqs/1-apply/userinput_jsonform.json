@@ -539,20 +539,28 @@
               },
               "required": ["value"]
             },
-            "packages_count": {
-              "type": "integer",
-              "minimum": 0,
-              "title": "Number of Packages",
-              "exclusiveMinimum": 0,
-              "example": 25
-            },
-            "packages_description": {
-              "type": "object",
-              "title": "Package Type",
-              "properties": {
-                "value": {
-                  "type": "string",
-                  "oneOf": [
+            "packages": {
+              "type": "array",
+              "title": "Packages",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "required": ["count", "type"],
+                "properties": {
+                  "count": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "exclusiveMinimum": 0,
+                    "title": "Number of Packages",
+                    "example": 25
+                  },
+                  "type": {
+                    "type": "object",
+                    "title": "Package Type",
+                    "properties": {
+                      "value": {
+                        "type": "string",
+                        "oneOf": [
                     { "const": "1G", "title": "Drum, fibre" },
                     { "const": "1D", "title": "Drum, plywood" },
                     { "const": "1B", "title": "Drum, aluminium" },
@@ -634,10 +642,13 @@
                     { "const": "2C", "title": "Barrel, wooden" },
                     { "const": "1W", "title": "Drum, wooden" }
                   ]
-                },
-                "label": { "type": "string" }
-              },
-              "required": ["value"]
+                      },
+                      "label": { "type": "string" }
+                    },
+                    "required": ["value"]
+                  }
+                }
+              }
             },
             "package_arrangement": {
               "type": "string",
@@ -693,14 +704,24 @@
                 "required": ["package_arrangement"]
               },
               "then": {
-                "required": ["packages_count", "packages_description"],
+                "required": ["packages"],
                 "properties": {
-                  "packages_description": {
-                    "type": "object",
-                    "required": ["value"],
-                    "properties": { "value": { "type": "string", "minLength": 1 } }
-                  },
-                  "packages_count": { "type": "integer", "minimum": 0 }
+                  "packages": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "object",
+                      "required": ["count", "type"],
+                      "properties": {
+                        "count": { "type": "integer", "minimum": 0, "exclusiveMinimum": 0 },
+                        "type": {
+                          "type": "object",
+                          "required": ["value"],
+                          "properties": { "value": { "type": "string", "minLength": 1 } }
+                        }
+                      }
+                    }
+                  }
                 }
               }
             },
@@ -732,8 +753,9 @@
             "quantity_net_weight_unit": { "value": "KGM", "label": "kilogram (kg)" },
             "quantity_gross_weight": 280.0,
             "quantity_gross_weight_unit": { "value": "KGM", "label": "kilogram (kg)" },
-            "packages_description": { "value": "CT", "label": "CT" },
-            "packages_count": 50,
+            "packages": [
+              { "count": 50, "type": { "value": "CT", "label": "CT" } }
+            ],
             "package_arrangement": "package",
             "origin_country": { "value": "LK", "label": "Sri Lanka" },
             "origin_area": "Nuwara Eliya"
@@ -751,8 +773,9 @@
             "quantity_net_weight_unit": { "value": "KGM", "label": "kilogram (kg)" },
             "quantity_gross_weight": 540.0,
             "quantity_gross_weight_unit": { "value": "KGM", "label": "kilogram (kg)" },
-            "packages_description": { "value": "BX", "label": "BX" },
-            "packages_count": 80,
+            "packages": [
+              { "count": 80, "type": { "value": "BX", "label": "BX" } }
+            ],
             "package_arrangement": "package",
             "origin_country": { "value": "LK", "label": "Sri Lanka" },
             "origin_area": "Gampaha District"
@@ -770,8 +793,9 @@
             "quantity_net_weight_unit": { "value": "KGM", "label": "kilogram (kg)" },
             "quantity_gross_weight": 4500.0,
             "quantity_gross_weight_unit": { "value": "KGM", "label": "kilogram (kg)" },
-            "packages_description": { "value": "PK", "label": "Package" },
-            "packages_count": 12,
+            "packages": [
+              { "count": 12, "type": { "value": "PK", "label": "Package" } }
+            ],
             "package_arrangement": "package",
             "origin_country": { "value": "LK", "label": "Sri Lanka" },
             "origin_area": "Kalutara District"
@@ -789,8 +813,9 @@
             "quantity_net_weight_unit": { "value": "KGM", "label": "kilogram (kg)" },
             "quantity_gross_weight": 5100.0,
             "quantity_gross_weight_unit": { "value": "KGM", "label": "kilogram (kg)" },
-            "packages_description": { "value": "PX", "label": "Pallet" },
-            "packages_count": 200,
+            "packages": [
+              { "count": 200, "type": { "value": "PX", "label": "Pallet" } }
+            ],
             "package_arrangement": "package",
             "origin_country": { "value": "LK", "label": "Sri Lanka" },
             "origin_area": "Kurunegala District"
@@ -1219,24 +1244,24 @@
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/packages_count",
+                    "scope": "#/properties/packages",
                     "rule": {
                       "effect": "SHOW",
                       "condition": {
                         "scope": "#/properties/package_arrangement",
                         "schema": { "const": "package" }
                       }
-                    }
-                  },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/packages_description",
-                    "rule": {
-                      "effect": "SHOW",
-                      "condition": {
-                        "scope": "#/properties/package_arrangement",
-                        "schema": { "const": "package" }
-                      }
+                    },
+                    "options": {
+                      "detail": {
+                        "type": "HorizontalLayout",
+                        "elements": [
+                          { "type": "Control", "scope": "#/properties/count" },
+                          { "type": "Control", "scope": "#/properties/type" }
+                        ]
+                      },
+                      "itemLabel": "Package",
+                      "summary": "{count} {type}"
                     }
                   },
                   {
@@ -1267,13 +1292,7 @@
               "display": "cards",
               "itemLabel": "Commodity",
               "summary": "{commodity_common_name} · {quantity_net_weight} {quantity_net_weight_unit}",
-              "summaryDetail": "{packages_count} {packages_description} · {origin_country}",
-              "totals": [
-                {
-                  "field": "packages_count",
-                  "label": "{sum} packages"
-                }
-              ]
+              "summaryDetail": "{origin_country}"
             }
           },
           {

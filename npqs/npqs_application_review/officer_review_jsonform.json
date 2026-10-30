@@ -107,9 +107,30 @@
                 "value"
               ]
             },
-            "packages_count": {
-              "type": "integer",
-              "title": "Packages"
+            "packages": {
+              "type": "array",
+              "title": "Packages",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "count": {
+                    "type": "integer",
+                    "title": "Number of Packages"
+                  },
+                  "type": {
+                    "type": "object",
+                    "title": "Package Type",
+                    "properties": {
+                      "value": {
+                        "type": "string"
+                      },
+                      "label": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
             },
             "inspection_type": {
               "type": "string",
@@ -199,11 +220,19 @@
               "value": "KGM",
               "label": "kilogram (kg)"
             },
-            "packages_count": 50,
             "inspection_type": "lab",
             "lab_sample_method": "drop_off_pqs",
             "visual_approach": "consignment",
-            "treatment_required": false
+            "treatment_required": false,
+            "packages": [
+              {
+                "count": 50,
+                "type": {
+                  "value": "CT",
+                  "label": "Carton"
+                }
+              }
+            ]
           },
           {
             "id": "item-2",
@@ -214,11 +243,19 @@
               "value": "KGM",
               "label": "kilogram (kg)"
             },
-            "packages_count": 80,
             "inspection_type": "visual",
             "lab_sample_method": "drop_off_pqs",
             "visual_approach": "consignment",
-            "treatment_required": false
+            "treatment_required": false,
+            "packages": [
+              {
+                "count": 80,
+                "type": {
+                  "value": "CT",
+                  "label": "Carton"
+                }
+              }
+            ]
           },
           {
             "id": "item-3",
@@ -229,11 +266,19 @@
               "value": "KGM",
               "label": "kilogram (kg)"
             },
-            "packages_count": 12,
             "inspection_type": "visual",
             "lab_sample_method": "drop_off_pqs",
             "visual_approach": "consignment",
-            "treatment_required": true
+            "treatment_required": true,
+            "packages": [
+              {
+                "count": 12,
+                "type": {
+                  "value": "CT",
+                  "label": "Carton"
+                }
+              }
+            ]
           },
           {
             "id": "item-4",
@@ -244,11 +289,19 @@
               "value": "KGM",
               "label": "kilogram (kg)"
             },
-            "packages_count": 200,
             "inspection_type": "visual",
             "lab_sample_method": "drop_off_pqs",
             "visual_approach": "consignment",
-            "treatment_required": false
+            "treatment_required": false,
+            "packages": [
+              {
+                "count": 200,
+                "type": {
+                  "value": "CT",
+                  "label": "Carton"
+                }
+              }
+            ]
           }
         ]
       }

@@ -795,7 +795,7 @@
                     },
                     {
                       "const": "MTQ",
-                      "title": "cubic metre (m\u00b3)"
+                      "title": "cubic metre (m³)"
                     },
                     {
                       "const": "LTR",
@@ -807,7 +807,7 @@
                     },
                     {
                       "const": "CMQ",
-                      "title": "cubic centimetre (cm\u00b3)"
+                      "title": "cubic centimetre (cm³)"
                     },
                     {
                       "const": "MLT",
@@ -819,7 +819,7 @@
                     },
                     {
                       "const": "FTQ",
-                      "title": "cubic foot (ft\u00b3)"
+                      "title": "cubic foot (ft³)"
                     },
                     {
                       "const": "GLI",
@@ -858,12 +858,12 @@
                       "title": "week (wk)"
                     },
                     {
-                      "const": "g/cm\u00b2",
-                      "title": "gram per square centimetre (g/cm\u00b2)"
+                      "const": "g/cm²",
+                      "title": "gram per square centimetre (g/cm²)"
                     },
                     {
-                      "const": "g/cm\u00b3",
-                      "title": "gram per cubic centimetre (g/cm\u00b3)"
+                      "const": "g/cm³",
+                      "title": "gram per cubic centimetre (g/cm³)"
                     },
                     {
                       "const": "GL",
@@ -875,23 +875,23 @@
                     },
                     {
                       "const": "GM",
-                      "title": "gram per square metre (g/m\u00b2)"
+                      "title": "gram per square metre (g/m²)"
                     },
                     {
-                      "const": "g/m\u00b3",
-                      "title": "gram per cubic metre (g/m\u00b3)"
+                      "const": "g/m³",
+                      "title": "gram per cubic metre (g/m³)"
                     },
                     {
                       "const": "KMQ",
-                      "title": "kilogram per cubic metre (kg/m\u00b3)"
+                      "title": "kilogram per cubic metre (kg/m³)"
                     },
                     {
                       "const": "CEL",
-                      "title": "degree Celsius (\u00b0C)"
+                      "title": "degree Celsius (°C)"
                     },
                     {
                       "const": "FAH",
-                      "title": "degree Fahrenheit (\u00b0F)"
+                      "title": "degree Fahrenheit (°F)"
                     }
                   ]
                 },
@@ -953,7 +953,7 @@
                     },
                     {
                       "const": "MTQ",
-                      "title": "cubic metre (m\u00b3)"
+                      "title": "cubic metre (m³)"
                     },
                     {
                       "const": "LTR",
@@ -965,7 +965,7 @@
                     },
                     {
                       "const": "CMQ",
-                      "title": "cubic centimetre (cm\u00b3)"
+                      "title": "cubic centimetre (cm³)"
                     },
                     {
                       "const": "MLT",
@@ -977,7 +977,7 @@
                     },
                     {
                       "const": "FTQ",
-                      "title": "cubic foot (ft\u00b3)"
+                      "title": "cubic foot (ft³)"
                     },
                     {
                       "const": "GLI",
@@ -1016,12 +1016,12 @@
                       "title": "week (wk)"
                     },
                     {
-                      "const": "g/cm\u00b2",
-                      "title": "gram per square centimetre (g/cm\u00b2)"
+                      "const": "g/cm²",
+                      "title": "gram per square centimetre (g/cm²)"
                     },
                     {
-                      "const": "g/cm\u00b3",
-                      "title": "gram per cubic centimetre (g/cm\u00b3)"
+                      "const": "g/cm³",
+                      "title": "gram per cubic centimetre (g/cm³)"
                     },
                     {
                       "const": "GL",
@@ -1033,23 +1033,23 @@
                     },
                     {
                       "const": "GM",
-                      "title": "gram per square metre (g/m\u00b2)"
+                      "title": "gram per square metre (g/m²)"
                     },
                     {
-                      "const": "g/m\u00b3",
-                      "title": "gram per cubic metre (g/m\u00b3)"
+                      "const": "g/m³",
+                      "title": "gram per cubic metre (g/m³)"
                     },
                     {
                       "const": "KMQ",
-                      "title": "kilogram per cubic metre (kg/m\u00b3)"
+                      "title": "kilogram per cubic metre (kg/m³)"
                     },
                     {
                       "const": "CEL",
-                      "title": "degree Celsius (\u00b0C)"
+                      "title": "degree Celsius (°C)"
                     },
                     {
                       "const": "FAH",
-                      "title": "degree Fahrenheit (\u00b0F)"
+                      "title": "degree Fahrenheit (°F)"
                     }
                   ]
                 },
@@ -1065,348 +1065,363 @@
                 "label": "kilogram (kg)"
               }
             },
-            "packages_count": {
-              "type": "integer",
-              "minimum": 0,
-              "title": "Number of Packages",
-              "example": 25
-            },
-            "packages_description": {
-              "type": "object",
-              "title": "Package Type",
-              "properties": {
-                "value": {
-                  "type": "string",
-                  "oneOf": [
-                    {
-                      "const": "1G",
-                      "title": "Drum, fibre"
-                    },
-                    {
-                      "const": "1D",
-                      "title": "Drum, plywood"
-                    },
-                    {
-                      "const": "1B",
-                      "title": "Drum, aluminium"
-                    },
-                    {
-                      "const": "ZB",
-                      "title": "Bag, large"
-                    },
-                    {
-                      "const": "XK",
-                      "title": "Bag, paper, multi-wall, water resistant"
-                    },
-                    {
-                      "const": "XJ",
-                      "title": "Bag, paper, multi-wall"
-                    },
-                    {
-                      "const": "XH",
-                      "title": "Bag, textile, water resistant"
-                    },
-                    {
-                      "const": "XG",
-                      "title": "Bag, textile, sift proof"
-                    },
-                    {
-                      "const": "XF",
-                      "title": "Bag, textile, without inner coat/liner"
-                    },
-                    {
-                      "const": "XD",
-                      "title": "Bag, plastics film"
-                    },
-                    {
-                      "const": "XC",
-                      "title": "Bag, woven plastic, water resistant"
-                    },
-                    {
-                      "const": "XB",
-                      "title": "Bag, woven plastic, sift proof"
-                    },
-                    {
-                      "const": "XA",
-                      "title": "Bag, woven plastic, without inner coat/liner"
-                    },
-                    {
-                      "const": "VY",
-                      "title": "Bulk, solid, fine particles (\u201cpowders\u201d)"
-                    },
-                    {
-                      "const": "VI",
-                      "title": "Vial"
-                    },
-                    {
-                      "const": "VG",
-                      "title": "Bulk, gas (at 1031 mbar and 15\u00b0C)"
-                    },
-                    {
-                      "const": "UN",
-                      "title": "Unit"
-                    },
-                    {
-                      "const": "TT",
-                      "title": "Bag, tote"
-                    },
-                    {
-                      "const": "TC",
-                      "title": "Tea-chest"
-                    },
-                    {
-                      "const": "ST",
-                      "title": "Sheet"
-                    },
-                    {
-                      "const": "SS",
-                      "title": "Case, steel"
-                    },
-                    {
-                      "const": "SI",
-                      "title": "Skid"
-                    },
-                    {
-                      "const": "SH",
-                      "title": "Sachet"
-                    },
-                    {
-                      "const": "SA",
-                      "title": "Sack"
-                    },
-                    {
-                      "const": "RO",
-                      "title": "Roll"
-                    },
-                    {
-                      "const": "QR",
-                      "title": "Box, plastic, expanded"
-                    },
-                    {
-                      "const": "QQ",
-                      "title": "Box, wooden, natural wood, with sift proof walls"
-                    },
-                    {
-                      "const": "QP",
-                      "title": "Box, wooden, natural wood, ordinary"
-                    },
-                    {
-                      "const": "QJ",
-                      "title": "Barrel, wooden, removable head"
-                    },
-                    {
-                      "const": "QC",
-                      "title": "Drum, aluminium, non-removable head"
-                    },
-                    {
-                      "const": "PX",
-                      "title": "Pallet"
-                    },
-                    {
-                      "const": "PU",
-                      "title": "Tray"
-                    },
-                    {
-                      "const": "PT",
-                      "title": "Pot"
-                    },
-                    {
-                      "const": "PO",
-                      "title": "Pouch"
-                    },
-                    {
-                      "const": "PK",
-                      "title": "Package"
-                    },
-                    {
-                      "const": "PA",
-                      "title": "Packet"
-                    },
-                    {
-                      "const": "OK",
-                      "title": "Block"
-                    },
-                    {
-                      "const": "NT",
-                      "title": "Net"
-                    },
-                    {
-                      "const": "NA",
-                      "title": "Not available"
-                    },
-                    {
-                      "const": "MB",
-                      "title": "Bag, multiply"
-                    },
-                    {
-                      "const": "JT",
-                      "title": "Jutebag"
-                    },
-                    {
-                      "const": "JB",
-                      "title": "Bag, jumbo"
-                    },
-                    {
-                      "const": "GY",
-                      "title": "Bag, gunny"
-                    },
-                    {
-                      "const": "GB",
-                      "title": "Bottle, gas"
-                    },
-                    {
-                      "const": "FX",
-                      "title": "Bag, flexible container"
-                    },
-                    {
-                      "const": "FB",
-                      "title": "Flexibag"
-                    },
-                    {
-                      "const": "EF",
-                      "title": "Case, with pallet base, cardboard"
-                    },
-                    {
-                      "const": "EC",
-                      "title": "Bag, plastic"
-                    },
-                    {
-                      "const": "DR",
-                      "title": "Drum"
-                    },
-                    {
-                      "const": "CZ",
-                      "title": "Canvas"
-                    },
-                    {
-                      "const": "CW",
-                      "title": "Cage, roll"
-                    },
-                    {
-                      "const": "CV",
-                      "title": "Cover"
-                    },
-                    {
-                      "const": "CU",
-                      "title": "Cup"
-                    },
-                    {
-                      "const": "CT",
-                      "title": "Carton"
-                    },
-                    {
-                      "const": "CS",
-                      "title": "Case"
-                    },
-                    {
-                      "const": "CR",
-                      "title": "Crate"
-                    },
-                    {
-                      "const": "CN",
-                      "title": "Container"
-                    },
-                    {
-                      "const": "CL",
-                      "title": "Coil"
-                    },
-                    {
-                      "const": "CG",
-                      "title": "Cage"
-                    },
-                    {
-                      "const": "CF",
-                      "title": "Coffer"
-                    },
-                    {
-                      "const": "BX",
-                      "title": "Box"
-                    },
-                    {
-                      "const": "BS",
-                      "title": "Bottle, non-protected, bulbous"
-                    },
-                    {
-                      "const": "BQ",
-                      "title": "Bottle, protected cylindrical"
-                    },
-                    {
-                      "const": "BJ",
-                      "title": "Bucket"
-                    },
-                    {
-                      "const": "BI",
-                      "title": "Bin"
-                    },
-                    {
-                      "const": "BH",
-                      "title": "Bunch"
-                    },
-                    {
-                      "const": "BG",
-                      "title": "Bag"
-                    },
-                    {
-                      "const": "BE",
-                      "title": "Bundle"
-                    },
-                    {
-                      "const": "BA",
-                      "title": "Barrel"
-                    },
-                    {
-                      "const": "AJ",
-                      "title": "Cone"
-                    },
-                    {
-                      "const": "5M",
-                      "title": "Bag, paper"
-                    },
-                    {
-                      "const": "5L",
-                      "title": "Bag, textile"
-                    },
-                    {
-                      "const": "5H",
-                      "title": "Bag, woven plastic"
-                    },
-                    {
-                      "const": "4G",
-                      "title": "Box, fibreboard"
-                    },
-                    {
-                      "const": "4F",
-                      "title": "Box, reconstituted wood"
-                    },
-                    {
-                      "const": "4A",
-                      "title": "Box, steel"
-                    },
-                    {
-                      "const": "44",
-                      "title": "Bag, polybag"
-                    },
-                    {
-                      "const": "43",
-                      "title": "Bag, super bulk"
-                    },
-                    {
-                      "const": "2C",
-                      "title": "Barrel, wooden"
-                    },
-                    {
-                      "const": "1W",
-                      "title": "Drum, wooden"
-                    }
-                  ]
-                },
-                "label": {
-                  "type": "string"
+            "packages": {
+              "type": "array",
+              "title": "Packages",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "required": [
+                  "count",
+                  "type"
+                ],
+                "properties": {
+                  "count": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "exclusiveMinimum": 0,
+                    "title": "Number of Packages",
+                    "example": 25
+                  },
+                  "type": {
+                    "type": "object",
+                    "title": "Package Type",
+                    "properties": {
+                      "value": {
+                        "type": "string",
+                        "oneOf": [
+                          {
+                            "const": "1G",
+                            "title": "Drum, fibre"
+                          },
+                          {
+                            "const": "1D",
+                            "title": "Drum, plywood"
+                          },
+                          {
+                            "const": "1B",
+                            "title": "Drum, aluminium"
+                          },
+                          {
+                            "const": "ZB",
+                            "title": "Bag, large"
+                          },
+                          {
+                            "const": "XK",
+                            "title": "Bag, paper, multi-wall, water resistant"
+                          },
+                          {
+                            "const": "XJ",
+                            "title": "Bag, paper, multi-wall"
+                          },
+                          {
+                            "const": "XH",
+                            "title": "Bag, textile, water resistant"
+                          },
+                          {
+                            "const": "XG",
+                            "title": "Bag, textile, sift proof"
+                          },
+                          {
+                            "const": "XF",
+                            "title": "Bag, textile, without inner coat/liner"
+                          },
+                          {
+                            "const": "XD",
+                            "title": "Bag, plastics film"
+                          },
+                          {
+                            "const": "XC",
+                            "title": "Bag, woven plastic, water resistant"
+                          },
+                          {
+                            "const": "XB",
+                            "title": "Bag, woven plastic, sift proof"
+                          },
+                          {
+                            "const": "XA",
+                            "title": "Bag, woven plastic, without inner coat/liner"
+                          },
+                          {
+                            "const": "VY",
+                            "title": "Bulk, solid, fine particles (“powders”)"
+                          },
+                          {
+                            "const": "VI",
+                            "title": "Vial"
+                          },
+                          {
+                            "const": "VG",
+                            "title": "Bulk, gas (at 1031 mbar and 15°C)"
+                          },
+                          {
+                            "const": "UN",
+                            "title": "Unit"
+                          },
+                          {
+                            "const": "TT",
+                            "title": "Bag, tote"
+                          },
+                          {
+                            "const": "TC",
+                            "title": "Tea-chest"
+                          },
+                          {
+                            "const": "ST",
+                            "title": "Sheet"
+                          },
+                          {
+                            "const": "SS",
+                            "title": "Case, steel"
+                          },
+                          {
+                            "const": "SI",
+                            "title": "Skid"
+                          },
+                          {
+                            "const": "SH",
+                            "title": "Sachet"
+                          },
+                          {
+                            "const": "SA",
+                            "title": "Sack"
+                          },
+                          {
+                            "const": "RO",
+                            "title": "Roll"
+                          },
+                          {
+                            "const": "QR",
+                            "title": "Box, plastic, expanded"
+                          },
+                          {
+                            "const": "QQ",
+                            "title": "Box, wooden, natural wood, with sift proof walls"
+                          },
+                          {
+                            "const": "QP",
+                            "title": "Box, wooden, natural wood, ordinary"
+                          },
+                          {
+                            "const": "QJ",
+                            "title": "Barrel, wooden, removable head"
+                          },
+                          {
+                            "const": "QC",
+                            "title": "Drum, aluminium, non-removable head"
+                          },
+                          {
+                            "const": "PX",
+                            "title": "Pallet"
+                          },
+                          {
+                            "const": "PU",
+                            "title": "Tray"
+                          },
+                          {
+                            "const": "PT",
+                            "title": "Pot"
+                          },
+                          {
+                            "const": "PO",
+                            "title": "Pouch"
+                          },
+                          {
+                            "const": "PK",
+                            "title": "Package"
+                          },
+                          {
+                            "const": "PA",
+                            "title": "Packet"
+                          },
+                          {
+                            "const": "OK",
+                            "title": "Block"
+                          },
+                          {
+                            "const": "NT",
+                            "title": "Net"
+                          },
+                          {
+                            "const": "NA",
+                            "title": "Not available"
+                          },
+                          {
+                            "const": "MB",
+                            "title": "Bag, multiply"
+                          },
+                          {
+                            "const": "JT",
+                            "title": "Jutebag"
+                          },
+                          {
+                            "const": "JB",
+                            "title": "Bag, jumbo"
+                          },
+                          {
+                            "const": "GY",
+                            "title": "Bag, gunny"
+                          },
+                          {
+                            "const": "GB",
+                            "title": "Bottle, gas"
+                          },
+                          {
+                            "const": "FX",
+                            "title": "Bag, flexible container"
+                          },
+                          {
+                            "const": "FB",
+                            "title": "Flexibag"
+                          },
+                          {
+                            "const": "EF",
+                            "title": "Case, with pallet base, cardboard"
+                          },
+                          {
+                            "const": "EC",
+                            "title": "Bag, plastic"
+                          },
+                          {
+                            "const": "DR",
+                            "title": "Drum"
+                          },
+                          {
+                            "const": "CZ",
+                            "title": "Canvas"
+                          },
+                          {
+                            "const": "CW",
+                            "title": "Cage, roll"
+                          },
+                          {
+                            "const": "CV",
+                            "title": "Cover"
+                          },
+                          {
+                            "const": "CU",
+                            "title": "Cup"
+                          },
+                          {
+                            "const": "CT",
+                            "title": "Carton"
+                          },
+                          {
+                            "const": "CS",
+                            "title": "Case"
+                          },
+                          {
+                            "const": "CR",
+                            "title": "Crate"
+                          },
+                          {
+                            "const": "CN",
+                            "title": "Container"
+                          },
+                          {
+                            "const": "CL",
+                            "title": "Coil"
+                          },
+                          {
+                            "const": "CG",
+                            "title": "Cage"
+                          },
+                          {
+                            "const": "CF",
+                            "title": "Coffer"
+                          },
+                          {
+                            "const": "BX",
+                            "title": "Box"
+                          },
+                          {
+                            "const": "BS",
+                            "title": "Bottle, non-protected, bulbous"
+                          },
+                          {
+                            "const": "BQ",
+                            "title": "Bottle, protected cylindrical"
+                          },
+                          {
+                            "const": "BJ",
+                            "title": "Bucket"
+                          },
+                          {
+                            "const": "BI",
+                            "title": "Bin"
+                          },
+                          {
+                            "const": "BH",
+                            "title": "Bunch"
+                          },
+                          {
+                            "const": "BG",
+                            "title": "Bag"
+                          },
+                          {
+                            "const": "BE",
+                            "title": "Bundle"
+                          },
+                          {
+                            "const": "BA",
+                            "title": "Barrel"
+                          },
+                          {
+                            "const": "AJ",
+                            "title": "Cone"
+                          },
+                          {
+                            "const": "5M",
+                            "title": "Bag, paper"
+                          },
+                          {
+                            "const": "5L",
+                            "title": "Bag, textile"
+                          },
+                          {
+                            "const": "5H",
+                            "title": "Bag, woven plastic"
+                          },
+                          {
+                            "const": "4G",
+                            "title": "Box, fibreboard"
+                          },
+                          {
+                            "const": "4F",
+                            "title": "Box, reconstituted wood"
+                          },
+                          {
+                            "const": "4A",
+                            "title": "Box, steel"
+                          },
+                          {
+                            "const": "44",
+                            "title": "Bag, polybag"
+                          },
+                          {
+                            "const": "43",
+                            "title": "Bag, super bulk"
+                          },
+                          {
+                            "const": "2C",
+                            "title": "Barrel, wooden"
+                          },
+                          {
+                            "const": "1W",
+                            "title": "Drum, wooden"
+                          }
+                        ]
+                      },
+                      "label": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "value"
+                    ]
+                  }
                 }
-              },
-              "required": [
-                "value"
-              ]
+              }
             },
             "package_arrangement": {
               "type": "string",
@@ -1483,17 +1498,38 @@
               },
               "then": {
                 "required": [
-                  "packages_count",
-                  "packages_description"
+                  "packages"
                 ],
                 "properties": {
-                  "packages_description": {
-                    "type": "string",
-                    "minLength": 1
-                  },
-                  "packages_count": {
-                    "type": "integer",
-                    "minimum": 0
+                  "packages": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "count",
+                        "type"
+                      ],
+                      "properties": {
+                        "count": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "exclusiveMinimum": 0
+                        },
+                        "type": {
+                          "type": "object",
+                          "required": [
+                            "value"
+                          ],
+                          "properties": {
+                            "value": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          }
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -1909,7 +1945,7 @@
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/packages_count",
+                    "scope": "#/properties/packages",
                     "rule": {
                       "effect": "SHOW",
                       "condition": {
@@ -1918,19 +1954,23 @@
                           "const": "package"
                         }
                       }
-                    }
-                  },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/packages_description",
-                    "rule": {
-                      "effect": "SHOW",
-                      "condition": {
-                        "scope": "#/properties/package_arrangement",
-                        "schema": {
-                          "const": "package"
-                        }
-                      }
+                    },
+                    "options": {
+                      "detail": {
+                        "type": "HorizontalLayout",
+                        "elements": [
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/count"
+                          },
+                          {
+                            "type": "Control",
+                            "scope": "#/properties/type"
+                          }
+                        ]
+                      },
+                      "itemLabel": "Package",
+                      "summary": "{count} {type}"
                     }
                   },
                   {
@@ -1959,13 +1999,7 @@
               "display": "cards",
               "itemLabel": "Commodity",
               "summary": "{commodity_common_name} · {quantity_net_weight} {quantity_net_weight_unit}",
-              "summaryDetail": "{packages_count} {packages_description} · {origin_country}",
-              "totals": [
-                {
-                  "field": "packages_count",
-                  "label": "{sum} packages"
-                }
-              ]
+              "summaryDetail": "{origin_country}"
             }
           },
           {
