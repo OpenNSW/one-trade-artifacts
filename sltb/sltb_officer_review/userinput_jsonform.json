@@ -57,7 +57,7 @@
                   { "from": "avg_rate_per_kg", "to": "Blend.Average_rate", "default": null },
                   { "from": "fob_avg", "to": "Blend.Average_FOB", "default": null },
                   { "from": "lion_logo_requested", "to": "Blend.Lion_logo", "map": { "yes": "1", "no": "0" }, "default": "0" },
-                  { "from": "quality_to_be_exported", "to": "Blend.Quantity_export", "default": null },
+                  { "from": "quantity_to_be_exported", "to": "Blend.Quantity_export", "default": null },
                   { "from": "grade_or_standard", "to": "Blend.Blend_grade", "default": null },
                   { "from": "date_of_blend", "to": "Blend.Blend_date", "as": "date", "format": "M/D/YY", "default": null },
                   {
@@ -165,7 +165,7 @@
               "title": "Blend No.",
               "example": "26/1386"
             },
-            "quality_to_be_exported": {
+            "quantity_to_be_exported": {
               "type": "number",
               "title": "Quantity to be Exported (KGs)",
               "example": 16128
@@ -362,7 +362,7 @@
             "exporter_registration_no",
             "exporter_tin",
             "cusdec_number",
-            "quality_to_be_exported",
+            "quantity_to_be_exported",
             "avg_rate_per_kg",
             "grade_or_standard",
             "fob_avg",
@@ -1376,7 +1376,7 @@
                     "type": "HorizontalLayout",
                     "elements": [
                       { "type": "Control", "scope": "#/properties/blend_no" },
-                      { "type": "Control", "scope": "#/properties/quality_to_be_exported" }
+                      { "type": "Control", "scope": "#/properties/quantity_to_be_exported" }
                     ]
                   },
                   {

@@ -38,7 +38,7 @@
                     "formula": "CONCATENATE(cusdec_office,\" \",cusdec_year,\" \",cusdec_serial,\" \",cusdec_no)"
                   },
                   { "from": "BLEND_SHEET.Blend.Blend_number", "to": "blend_no", "as": "string" },
-                  { "from": "BLEND_SHEET.Blend.Quantity_export", "to": "quality_to_be_exported", "as": "number" },
+                  { "from": "BLEND_SHEET.Blend.Quantity_export", "to": "quantity_to_be_exported", "as": "number" },
                   { "from": "BLEND_SHEET.Blend.Average_rate", "to": "avg_rate_per_kg", "as": "number" },
                   { "from": "BLEND_SHEET.Blend.Blend_grade", "to": "grade_or_standard", "as": "string" },
                   { "from": "BLEND_SHEET.Blend.Average_FOB", "to": "fob_avg", "as": "number" },
@@ -137,7 +137,7 @@
               "title": "Blend No.",
               "example": "26/1386"
             },
-            "quality_to_be_exported": {
+            "quantity_to_be_exported": {
               "type": "number",
               "title": "Quantity to be Exported (KGs)",
               "example": 16128
@@ -365,12 +365,12 @@
                     "path": "total",
                     "default": 0
                   },
-                  "quality_to_be_exported": {
-                    "path": "quality_to_be_exported",
+                  "quantity_to_be_exported": {
+                    "path": "quantity_to_be_exported",
                     "default": 0
                   }
                 },
-                "formula": "total_quantity - quality_to_be_exported",
+                "formula": "total_quantity - quantity_to_be_exported",
                 "decimals": 4
               }
             }
@@ -381,7 +381,7 @@
             "cusdec_number",
             "form",
             "blend_no",
-            "quality_to_be_exported",
+            "quantity_to_be_exported",
             "avg_rate_per_kg",
             "grade_or_standard",
             "fob_avg",
@@ -2257,7 +2257,7 @@
                     "type": "HorizontalLayout",
                     "elements": [
                       { "type": "Control", "scope": "#/properties/blend_no" },
-                      { "type": "Control", "scope": "#/properties/quality_to_be_exported" }
+                      { "type": "Control", "scope": "#/properties/quantity_to_be_exported" }
                     ]
                   },
                   {
@@ -2327,7 +2327,7 @@
           "display": "cards",
           "itemLabel": "Blend Sheet",
           "summary": "{blendsheet_no} · Blend {blend_no} · {grade_or_standard}",
-          "summaryDetail": "{quality_to_be_exported} kg to {private_treaty_to_be_exported} · CusDec {cusdec_number}"
+          "summaryDetail": "{quantity_to_be_exported} kg to {private_treaty_to_be_exported} · CusDec {cusdec_number}"
         }
       },
       {
