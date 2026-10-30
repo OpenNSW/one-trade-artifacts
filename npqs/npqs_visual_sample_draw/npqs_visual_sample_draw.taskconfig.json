@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "npqs_visual_sample_draw",
+  "workflow": "npqs_visual_sample_draw",
+  "meta": {
+    "title": "NPQS Draw Sample (Visual Inspection)",
+    "description": "Officer records drawing the sample at site for visual inspection."
+  }
+}

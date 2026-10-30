@@ -175,7 +175,7 @@
       "id": "n_visual_sample_officer_draw",
       "name": "Draw the Visual Inspection Sample at the Trader's Site",
       "type": "TASK",
-      "task_template_id": "npqs-sample-draw-at-site",
+      "task_template_id": "npqs-visual-sample-draw-at-site",
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",

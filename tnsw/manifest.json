@@ -1231,6 +1231,24 @@
       "path": "npqs/15-sample_draw_at_site/task_template.json"
     },
     {
+      "id": "npqs-visual-sample-draw-at-site",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs/4-0b-visual_sample_draw_at_site/workflow.json"
+    },
+    {
+      "id": "npqs-visual-sample-draw-at-site",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs/4-0b-visual_sample_draw_at_site/task_template.json"
+    },
+    {
+      "id": "npqs-visual-sample-draw--officer-draw",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/4-0b-visual_sample_draw_at_site/officer_draw.json"
+    },
+    {
       "id": "npqs-treatment-issue--officer-review",
       "kind": "subtask_template",
       "version": "",
