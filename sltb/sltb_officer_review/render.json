@@ -3,7 +3,7 @@
   "type": "APPLICATION",
   "title": "SLTB Blend Sheet Review",
   "files": [
-    "submission.cusdec_draft_xml"
+    "submission.cusdec_draft.supportingDocuments.scannedDocuments[*].fileBase64"
   ],
   "sections": {
     "previous_review": {

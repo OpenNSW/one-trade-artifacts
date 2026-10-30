@@ -3,8 +3,8 @@
   "type": "APPLICATION",
   "title": "[SLTB] Submit & Review Blend Sheet",
   "files": [
-    "userform.cusdec_draft_xml",
-    "submission.cusdec_draft_xml"
+    "userform.cusdec_draft.supportingDocuments.scannedDocuments[*].fileBase64",
+    "submission.cusdec_draft.supportingDocuments.scannedDocuments[*].fileBase64"
   ],
   "sections": {
     "status_message": {
