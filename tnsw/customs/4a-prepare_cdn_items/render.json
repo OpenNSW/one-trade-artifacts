@@ -1,6 +1,9 @@
 {
   "id": "customs-prepare-cdn-items-flow:render",
   "type": "SYSTEM",
+  "files": [
+    "userform.supportingDocuments.scannedDocuments[*].fileBase64"
+  ],
   "sections": {},
   "states": {}
 }
