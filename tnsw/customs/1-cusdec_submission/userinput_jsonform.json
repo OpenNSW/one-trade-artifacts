@@ -672,8 +672,19 @@
                   "as": "string"
                 },
                 {
-                  "from": "tarification.hsCode",
                   "to": "Tarification.HScode.Commodity_code",
+                  "inputs": {
+                    "hs_code": "tarification.hsCode"
+                  },
+                  "formula": "LEFT(hs_code,8)",
+                  "as": "string"
+                },
+                {
+                  "to": "Tarification.HScode.Precision_1",
+                  "inputs": {
+                    "hs_code": "tarification.hsCode"
+                  },
+                  "formula": "MID(hs_code,9,2)",
                   "as": "string"
                 },
                 {
