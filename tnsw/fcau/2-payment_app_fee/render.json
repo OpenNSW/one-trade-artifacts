@@ -2,6 +2,10 @@
   "id": "fcau-pay-app-fee-flow:render",
   "type": "PAYMENT",
   "title": "[FCAU] Pay Application Fee",
+  "files": [
+    "receipt.payment_slip",
+    "submission.payment_slip"
+  ],
   "sections": {
     "workspace": {
       "templateId": "fcau-pay-app-fee--select-method-form",
@@ -42,6 +46,56 @@
           "COMPLETED"
         ]
       }
+    },
+    "payment_not_received": {
+      "templateId": "fcau-pay-app-fee--not-received",
+      "title": "Payment Not Confirmed",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "payment_remarks"
+      }
+    },
+    "receipt_instructions": {
+      "templateId": "fcau-pay-app-fee--receipt-instructions",
+      "title": "Bank Transfer Details",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_SLIP_UPLOAD"
+        ]
+      }
+    },
+    "upload_receipt": {
+      "templateId": "fcau-payment--upload-form",
+      "title": "Upload Payment Receipt",
+      "projector": "FORM",
+      "dataKey": "receipt",
+      "visibleWhen": {
+        "states": [
+          "PENDING_SLIP_UPLOAD"
+        ]
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Payment Receipt",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "awaiting_officer": {
+      "templateId": "fcau-pay-app-fee--awaiting-officer",
+      "title": "Waiting for Officer",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ],
+        "requireDataKey": "payment_reference"
+      }
     }
   },
   "states": {
@@ -53,6 +107,16 @@
       ]
     },
     "PENDING_PAYMENT": {
+      "actions": []
+    },
+    "PENDING_SLIP_UPLOAD": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    },
+    "QUEUED_EXTERNALLY": {
       "actions": []
     }
   }

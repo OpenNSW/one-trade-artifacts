@@ -25,7 +25,9 @@ the commands it can be completed with there.
     to tnsw.
   * An agency step that waits for tnsw's reply: what tnsw sends it, for tnsw's client
     only. That is the reply commands of the tnsw steps that dispatch to its task, and the
-    values tnsw maps to the command of a callback to the agency.
+    values tnsw maps to the command of a callback to the agency. A callback counts for a
+    dispatch when it calls back on the variable the dispatch stores the agency's
+    callbackToken in, or when either side's token can't be traced.
 
 A value mapped to a callback's command is narrowed to the literals the callback node's
 incoming edges compare it with (==), when every incoming edge does. Otherwise it is
@@ -248,6 +250,25 @@ def agency_sends(agency, task_code):
     return commands
 
 
+def stored_token(node):
+    """The variable a dispatch node stores the other side's callbackToken in, or None."""
+    for source, target in (node.get("output_mapping") or {}).items():
+        if source.rstrip("?") == "callbackToken":
+            return target.rstrip("?")
+    return None
+
+
+def callback_token(node, step):
+    """The variable a callback node calls back on (its path's {placeholder}), or None."""
+    placeholder = re.search(r"\{(\w+)\}", props(step).get("path") or "")
+    if not placeholder:
+        return None
+    for source, target in (node.get("input_mapping") or {}).items():
+        if target.rstrip("?") == placeholder.group(1):
+            return source.rstrip("?")
+    return None
+
+
 def tnsw_sends(tnsw, service, task_codes):
     """The commands tnsw can send a step of the agency's tasks task_codes that waits for it."""
     commands = set()
@@ -255,17 +276,21 @@ def tnsw_sends(tnsw, service, task_codes):
         workflow = tnsw.load("workflow", workflow_id)
         steps = [(node, tnsw.step(node)) for node in workflow["nodes"]]
         dispatches = [
-            step for _, step in steps
+            (node, step) for node, step in steps
             if step.get("task_type") == "EXTERNAL_REVIEW"
             and props(step).get("service_id") == service
             and props(step).get("task_code") in task_codes
         ]
         if not dispatches:
             continue
-        commands |= {reply_command(step, service) for step in dispatches if reply_command(step, service)}
+        commands |= {reply_command(step, service) for _, step in dispatches if reply_command(step, service)}
+        tokens = {stored_token(node) for node, _ in dispatches}
         renders = tnsw.renders_for([workflow_id])
         for node, step in steps:
-            if calls_back(step, service):
+            if not calls_back(step, service):
+                continue
+            token = callback_token(node, step)
+            if None in tokens or token is None or token in tokens:
                 commands |= callback_commands(tnsw, workflow, renders, node)
     return commands
 

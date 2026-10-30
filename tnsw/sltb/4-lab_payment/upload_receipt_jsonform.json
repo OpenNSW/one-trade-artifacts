@@ -1,0 +1,40 @@
+{
+  "id": "sltb-payment--upload-form",
+  "title": "Upload SLTB Payment Receipt",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "payment_slip": {
+        "type": "string",
+        "format": "file",
+        "title": "Bank Transfer / Payment Receipt (PDF/Image)",
+        "x-file": {
+          "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp"
+        }
+      },
+      "remarks": {
+        "type": "string",
+        "title": "Remarks (Optional)"
+      }
+    },
+    "required": [
+      "payment_slip"
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/payment_slip"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/remarks",
+        "options": {
+          "multiLine": true
+        }
+      }
+    ]
+  }
+}

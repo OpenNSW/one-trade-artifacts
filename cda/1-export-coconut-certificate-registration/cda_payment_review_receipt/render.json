@@ -1,0 +1,92 @@
+{
+  "id": "cda-payment-review-receipt--review:render",
+  "type": "APPLICATION",
+  "title": "CDA Payment Receipt Verification",
+  "files": [
+    "submission.payment_slip"
+  ],
+  "sections": {
+    "previous_review": {
+      "templateId": "cda-payment-review-receipt--previous-review",
+      "title": "Previous Review",
+      "projector": "MARKDOWN",
+      "dataKey": "previous_payment_feedback",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "previous_payment_feedback"
+      }
+    },
+    "payment_details": {
+      "templateId": "cda-payment-review-receipt--payment-details",
+      "title": "Payment Details",
+      "projector": "MARKDOWN",
+      "dataKey": "submission"
+    },
+    "submission_view": {
+      "templateId": "cda-payment--upload-form",
+      "title": "Uploaded Payment Receipt",
+      "projector": "FORM",
+      "dataKey": "submission"
+    },
+    "review_form": {
+      "templateId": "cda-payment--review-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Review",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "status_message": {
+      "templateId": "cda-payment-review-receipt--submission-view",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ],
+        "requireDataKey": "callbackToken"
+      }
+    },
+    "awaiting_resubmission": {
+      "templateId": "cda-payment-review-receipt--awaiting-resubmission",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ],
+        "requireDataKey": "replyToken"
+      }
+    }
+  },
+  "layouts": {
+    "review": [
+      "previous_review",
+      "payment_details",
+      "submission_view",
+      "review_form",
+      "status_message",
+      "awaiting_resubmission"
+    ]
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ],
+      "order": {
+        "$ref": "#/layouts/review"
+      }
+    }
+  }
+}

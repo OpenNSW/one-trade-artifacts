@@ -10,7 +10,9 @@
       "id": "select_method_task",
       "type": "TASK",
       "task_template_id": "npqs-pay-for-treatment--select-method",
-      "input_mapping": {},
+      "input_mapping": {
+        "payment_remarks?": "payment_remarks"
+      },
       "output_mapping": {
         "selected_method": "selected_method"
       }
@@ -28,6 +30,97 @@
       }
     },
     {
+      "id": "method_split",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Split on Payment Method"
+    },
+    {
+      "id": "generate_slip_reference_task",
+      "type": "TASK",
+      "task_template_id": "npqs-pay-for-treatment--generate-reference",
+      "input_mapping": {
+        "payment_reference?": "payment_reference"
+      },
+      "output_mapping": {
+        "refid.payment_reference": "payment_reference"
+      }
+    },
+    {
+      "id": "upload_receipt_task",
+      "type": "TASK",
+      "task_template_id": "npqs-pay-for-treatment--upload-receipt",
+      "input_mapping": {
+        "payment_reference": "payment_reference",
+        "payment_feedback?": "payment_feedback"
+      },
+      "output_mapping": {
+        "payment_slip": "payment_slip",
+        "remarks?": "payment_slip_remarks"
+      }
+    },
+    {
+      "id": "review_receipt_task",
+      "type": "TASK",
+      "task_template_id": "npqs-pay-for-treatment--review-receipt",
+      "input_mapping": {
+        "payment_reference": "submission.payment_reference",
+        "payment_reference?": "payment_reference",
+        "reference_number?": "submission.reference_number",
+        "payment_slip": "submission.payment_slip",
+        "payment_agency_token?": "replyToken",
+        "payment_slip_remarks?": "submission.remarks"
+      },
+      "output_mapping": {
+        "payment_status": "payment_status",
+        "payment_feedback?": "payment_feedback",
+        "callbackToken?": "payment_agency_token"
+      }
+    },
+    {
+      "id": "receipt_review_split",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Receipt Verified?"
+    },
+    {
+      "id": "generate_confirm_reference_task",
+      "type": "TASK",
+      "task_template_id": "npqs-pay-for-treatment--generate-reference",
+      "input_mapping": {
+        "payment_reference?": "payment_reference"
+      },
+      "output_mapping": {
+        "refid.payment_reference": "payment_reference"
+      }
+    },
+    {
+      "id": "confirm_payment_task",
+      "type": "TASK",
+      "task_template_id": "npqs-pay-for-treatment--confirm-payment",
+      "input_mapping": {
+        "payment_reference": "submission.payment_reference",
+        "payment_reference?": "payment_reference",
+        "reference_number?": "submission.reference_number"
+      },
+      "output_mapping": {
+        "payment_status": "payment_status",
+        "remarks?": "payment_remarks"
+      }
+    },
+    {
+      "id": "confirm_split",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Payment Confirmed?"
+    },
+    {
+      "id": "method_join",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_JOIN",
+      "name": "Join Payment Method"
+    },
+    {
       "id": "end",
       "type": "END"
     }
@@ -41,12 +134,84 @@
     {
       "id": "e2",
       "source_id": "select_method_task",
-      "target_id": "pay_treatment_task"
+      "target_id": "method_split"
+    },
+    {
+      "id": "e_govpay",
+      "source_id": "method_split",
+      "target_id": "pay_treatment_task",
+      "condition": "selected_method == 'govpay'"
+    },
+    {
+      "id": "e_payment_slip",
+      "source_id": "method_split",
+      "target_id": "generate_slip_reference_task",
+      "condition": "selected_method == 'payment_slip'"
+    },
+    {
+      "id": "e_slip_upload",
+      "source_id": "generate_slip_reference_task",
+      "target_id": "upload_receipt_task"
+    },
+    {
+      "id": "e_slip_review",
+      "source_id": "upload_receipt_task",
+      "target_id": "review_receipt_task"
+    },
+    {
+      "id": "e_slip_review_split",
+      "source_id": "review_receipt_task",
+      "target_id": "receipt_review_split"
+    },
+    {
+      "id": "e_slip_needs_info",
+      "source_id": "receipt_review_split",
+      "target_id": "upload_receipt_task",
+      "condition": "payment_status == 'needs_more_info'"
+    },
+    {
+      "id": "e_slip_verified",
+      "source_id": "receipt_review_split",
+      "target_id": "method_join",
+      "condition": "payment_status == 'success'"
+    },
+    {
+      "id": "e_officer_confirm",
+      "source_id": "method_split",
+      "target_id": "generate_confirm_reference_task",
+      "condition": "selected_method == 'officer_confirm'"
+    },
+    {
+      "id": "e_confirm",
+      "source_id": "generate_confirm_reference_task",
+      "target_id": "confirm_payment_task"
+    },
+    {
+      "id": "e_confirm_split",
+      "source_id": "confirm_payment_task",
+      "target_id": "confirm_split"
+    },
+    {
+      "id": "e_confirm_not_received",
+      "source_id": "confirm_split",
+      "target_id": "select_method_task",
+      "condition": "payment_status == 'not_received'"
+    },
+    {
+      "id": "e_confirmed",
+      "source_id": "confirm_split",
+      "target_id": "method_join",
+      "condition": "payment_status == 'success'"
+    },
+    {
+      "id": "e_join_end",
+      "source_id": "method_join",
+      "target_id": "end"
     },
     {
       "id": "e3",
       "source_id": "pay_treatment_task",
-      "target_id": "end"
+      "target_id": "method_join"
     }
   ]
 }

@@ -1,0 +1,4 @@
+{
+  "id": "npqs-pay-for-treatment--receipt-instructions",
+  "template": "{{if .payment_feedback}}### Re-upload required\n\nThe NPQS officer has asked you to upload the payment receipt again.\n\n> **Reason:** {{.payment_feedback}}\n\n---\n\n{{end}}### Pay by Bank Transfer\n\nTransfer the Treatment Fee to the NPQS bank account, quoting the payment reference below, then upload the bank transfer receipt.\n\n* **Payment Reference**: `{{.payment_reference}}`\n* **Amount**: **4500.00 LKR**"
+}

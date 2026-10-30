@@ -1,0 +1,11 @@
+{
+  "id": "fcau-payment-confirm--review",
+  "type": "APPLICATION",
+  "workflow_id": "fcau-payment-confirm--review-workflow",
+  "render_config_id": "fcau-payment-confirm--review:render",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  }
+}

@@ -2,6 +2,10 @@
   "id": "npqs-pay-certificate-fee:render",
   "type": "PAYMENT",
   "title": "[NPQS] Pay Phytosanitary Certificate Fee",
+  "files": [
+    "receipt.payment_slip",
+    "submission.payment_slip"
+  ],
   "sections": {
     "payment_details": {
       "templateId": "npqs-pay-certificate-fee--payment-details-markdown",
@@ -9,7 +13,9 @@
       "projector": "MARKDOWN",
       "dataKey": "payment",
       "visibleWhen": {
-        "states": ["PENDING_PAYMENT"]
+        "states": [
+          "PENDING_PAYMENT"
+        ]
       }
     },
     "select_method": {
@@ -18,7 +24,9 @@
       "projector": "FORM",
       "dataKey": "payment_method",
       "visibleWhen": {
-        "states": ["PENDING_USER"]
+        "states": [
+          "PENDING_USER"
+        ]
       },
       "handles": [
         {
@@ -34,15 +42,81 @@
       "projector": "MARKDOWN",
       "dataKey": "payment",
       "visibleWhen": {
-        "states": ["COMPLETED"]
+        "states": [
+          "COMPLETED"
+        ]
+      }
+    },
+    "payment_not_received": {
+      "templateId": "npqs-pay-certificate-fee--not-received",
+      "title": "Payment Not Confirmed",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "payment_remarks"
+      }
+    },
+    "receipt_instructions": {
+      "templateId": "npqs-pay-certificate-fee--receipt-instructions",
+      "title": "Bank Transfer Details",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_SLIP_UPLOAD"
+        ]
+      }
+    },
+    "upload_receipt": {
+      "templateId": "npqs-payment--upload-form",
+      "title": "Upload Payment Receipt",
+      "projector": "FORM",
+      "dataKey": "receipt",
+      "visibleWhen": {
+        "states": [
+          "PENDING_SLIP_UPLOAD"
+        ]
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Payment Receipt",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "awaiting_officer": {
+      "templateId": "npqs-pay-certificate-fee--awaiting-officer",
+      "title": "Waiting for Officer",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ],
+        "requireDataKey": "payment_reference"
       }
     }
   },
   "states": {
     "PENDING_USER": {
-      "actions": [{ "command": "submit" }]
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
     },
     "PENDING_PAYMENT": {
+      "actions": []
+    },
+    "PENDING_SLIP_UPLOAD": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    },
+    "QUEUED_EXTERNALLY": {
       "actions": []
     }
   }

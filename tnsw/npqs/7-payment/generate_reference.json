@@ -1,0 +1,14 @@
+{
+  "id": "npqs-pay-certificate-fee--generate-reference",
+  "task_type": "REFID_GENERATOR",
+  "output_namespace": "refid",
+  "plugin_properties": {
+    "ids": [
+      {
+        "path": "/payment_reference",
+        "issuer": "NPQS",
+        "id_type": "npqs_payment_ref"
+      }
+    ]
+  }
+}

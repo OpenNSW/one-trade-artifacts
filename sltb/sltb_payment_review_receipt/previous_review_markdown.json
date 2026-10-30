@@ -1,0 +1,4 @@
+{
+  "id": "sltb-payment-review-receipt--previous-review",
+  "template": "{{if .}}\n### Previous Review\n\nYou asked the applicant to upload the payment receipt again. This is their resubmission.\n\n> **Your comments**: {{.}}\n{{end}}"
+}
