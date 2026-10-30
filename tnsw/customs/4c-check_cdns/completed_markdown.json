@@ -1,0 +1,4 @@
+{
+  "id": "customs-check-cdns--completed",
+  "template": "### Every Container Has a Cargo Dispatch Note\n\n{{with .cusdec_latest}}All **{{.container_count}}** containers of the declaration have a Cargo Dispatch Note registered with Sri Lanka Customs. {{end}}The boat note opens next."
+}

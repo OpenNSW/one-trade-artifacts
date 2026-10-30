@@ -1,0 +1,35 @@
+{
+  "id": "customs-additional-cdn-find-flow",
+  "name": "Find the Consignment's Declaration",
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "find",
+      "type": "TASK",
+      "task_template_id": "customs-additional-cdn--find",
+      "output_mapping": {
+        "declaration.found": "declaration.found",
+        "declaration.cusdec_ref?": "declaration.cusdec_ref"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "find"
+    },
+    {
+      "id": "e2",
+      "source_id": "find",
+      "target_id": "end"
+    }
+  ]
+}
