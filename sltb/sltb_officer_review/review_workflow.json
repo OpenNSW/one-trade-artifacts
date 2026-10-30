@@ -12,11 +12,13 @@
       "task_template_id": "sltb-officer-review--officer-review",
       "input_mapping": {
         "submission?": "submission",
+        "submission.blendsheet_data?": "reviewform.blendsheet_data",
         "reviewform.feedback?": "previous_feedback"
       },
       "output_mapping": {
         "review_outcome": "reviewform.review_outcome",
         "feedback?": "reviewform.feedback",
+        "blendsheet_data?": "reviewform.blendsheet_data",
         "levy_amount?": "reviewform.levy_amount",
         "collection_method?": "reviewform.collection_method"
       }

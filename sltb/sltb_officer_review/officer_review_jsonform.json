@@ -31,12 +31,61 @@
         "description": "Provide detail if resubmission is required.",
         "example": "Blendsheet figures don't reconcile with CUSDEC quantities. Please re-upload with corrected totals."
       },
+      "blendsheet_data": {
+        "type": "array",
+        "title": "Blend Sheet Levy",
+        "items": {
+          "type": "object",
+          "properties": {
+            "blend_no": {
+              "type": "string",
+              "title": "Blend No.",
+              "readOnly": true
+            },
+            "quantity_to_be_exported": {
+              "type": "number",
+              "title": "Quantity to be Exported (KGs)",
+              "readOnly": true
+            },
+            "levy_multiplier": {
+              "type": "number",
+              "title": "Levy Multiplier",
+              "exclusiveMinimum": 0,
+              "default": 3
+            },
+            "assessed_levy": {
+              "type": "number",
+              "title": "Assessed Levy (LKR)",
+              "description": "Assessed Levy = Quantity to be Exported × Levy Multiplier",
+              "readOnly": true,
+              "x-computed": {
+                "inputs": {
+                  "quantity_to_be_exported": "quantity_to_be_exported",
+                  "levy_multiplier": "levy_multiplier"
+                },
+                "formula": "quantity_to_be_exported * levy_multiplier",
+                "decimals": 2
+              }
+            }
+          }
+        }
+      },
       "levy_amount": {
         "type": "number",
         "title": "Assessed SLTB Levy (LKR)",
         "exclusiveMinimum": 0,
-        "example": 12500,
-        "description": "Enter the calculated levy fee for the blendsheet consignment."
+        "description": "Sum of each blend sheet's Assessed Levy.",
+        "readOnly": true,
+        "x-computed": {
+          "inputs": {
+            "total_levy": {
+              "path": "blendsheet_data.*.assessed_levy",
+              "aggregate": "sum"
+            }
+          },
+          "formula": "total_levy",
+          "decimals": 2
+        }
       },
       "collection_method": {
         "type": "string",
@@ -112,6 +161,42 @@
       {
         "type": "Control",
         "scope": "#/properties/collection_method",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/review_outcome",
+            "schema": {
+              "const": "approve"
+            }
+          }
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/blendsheet_data",
+        "options": {
+          "addable": false,
+          "removable": false,
+          "detail": {
+            "type": "VerticalLayout",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  { "type": "Control", "scope": "#/properties/blend_no" },
+                  { "type": "Control", "scope": "#/properties/quantity_to_be_exported" }
+                ]
+              },
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  { "type": "Control", "scope": "#/properties/levy_multiplier" },
+                  { "type": "Control", "scope": "#/properties/assessed_levy" }
+                ]
+              }
+            ]
+          }
+        },
         "rule": {
           "effect": "SHOW",
           "condition": {
