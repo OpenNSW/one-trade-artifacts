@@ -859,6 +859,24 @@
       "path": "sltb_payment_confirm/submission_view_markdown.json"
     },
     {
+      "id": "sltb-payment-confirm--request-info",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb_payment_confirm/request_info.json"
+    },
+    {
+      "id": "sltb-payment-confirm--previous-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_payment_confirm/previous_review_markdown.json"
+    },
+    {
+      "id": "sltb-payment-confirm--awaiting-resubmission",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_payment_confirm/awaiting_resubmission_markdown.json"
+    },
+    {
       "id": "sltb-payment--confirm-form",
       "kind": "generic_template",
       "version": "",

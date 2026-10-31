@@ -6,7 +6,8 @@
     "officer_jsonforms_id": "sltb-payment--confirm-form",
     "service_id": "sltb",
     "path": "/api/v1/inject",
-    "task_code": "sltb_lab_fee_confirm_payment"
+    "task_code": "sltb_lab_fee_confirm_payment",
+    "reply_command": "resubmit"
   },
   "extensions": [
     {

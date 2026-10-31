@@ -1,4 +1,4 @@
 {
   "id": "npqs-pay-for-treatment--not-received",
-  "template": "### Payment not confirmed\n\nThe NPQS officer could not confirm your payment. Please choose a payment method and try again.\n\n> **Officer remarks:** {{.payment_remarks}}"
+  "template": "### Payment not confirmed\n\nThe NPQS officer could not confirm your payment. Pay the fee at the NPQS counter, quoting your application reference, then notify the officer below.\n\n> **Officer remarks:** {{.payment_remarks}}"
 }

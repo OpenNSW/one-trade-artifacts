@@ -52,10 +52,28 @@
       "projector": "MARKDOWN",
       "visibleWhen": {
         "states": [
-          "PENDING_USER"
+          "PENDING_REPAYMENT"
         ],
         "requireDataKey": "payment_remarks"
       }
+    },
+    "pay_again": {
+      "templateId": "cda-kcfn-payment--pay-again-form",
+      "title": "Notify the Officer",
+      "projector": "FORM",
+      "dataKey": "repayment",
+      "visibleWhen": {
+        "states": [
+          "PENDING_REPAYMENT"
+        ]
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "I Have Paid — Notify the Officer",
+          "element": "primary_action"
+        }
+      ]
     },
     "receipt_instructions": {
       "templateId": "cda-kcfn-payment--receipt-instructions",
@@ -117,6 +135,13 @@
     },
     "QUEUED_EXTERNALLY": {
       "actions": []
+    },
+    "PENDING_REPAYMENT": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
     }
   }
 }

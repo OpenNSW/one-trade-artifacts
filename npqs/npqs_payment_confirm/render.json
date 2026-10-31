@@ -3,6 +3,18 @@
   "type": "APPLICATION",
   "title": "NPQS Payment Confirmation",
   "sections": {
+    "previous_review": {
+      "templateId": "npqs-payment-confirm--previous-review",
+      "title": "Previous Review",
+      "projector": "MARKDOWN",
+      "dataKey": "previous_remarks",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "previous_remarks"
+      }
+    },
     "payment_details": {
       "templateId": "npqs-payment-confirm--payment-details",
       "title": "Payment Details",
@@ -29,9 +41,31 @@
       "visibleWhen": {
         "states": [
           "QUEUED_EXTERNALLY"
-        ]
+        ],
+        "requireDataKey": "callbackToken"
+      }
+    },
+    "awaiting_resubmission": {
+      "templateId": "npqs-payment-confirm--awaiting-resubmission",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ],
+        "requireDataKey": "replyToken"
       }
     }
+  },
+  "layouts": {
+    "review": [
+      "previous_review",
+      "payment_details",
+      "review_form",
+      "status_message",
+      "awaiting_resubmission"
+    ]
   },
   "states": {
     "PENDING_USER": {
@@ -39,7 +73,10 @@
         {
           "command": "submit"
         }
-      ]
+      ],
+      "order": {
+        "$ref": "#/layouts/review"
+      }
     }
   }
 }

@@ -6,7 +6,8 @@
     "officer_jsonforms_id": "cda-payment--confirm-form",
     "service_id": "cda",
     "path": "/api/v1/inject",
-    "task_code": "cda_app_fee_confirm_payment"
+    "task_code": "cda_app_fee_confirm_payment",
+    "reply_command": "resubmit"
   },
   "extensions": [
     {

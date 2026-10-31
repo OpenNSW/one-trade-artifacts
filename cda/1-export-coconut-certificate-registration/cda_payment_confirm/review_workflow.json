@@ -11,11 +11,33 @@
       "type": "TASK",
       "task_template_id": "cda-payment-confirm--officer-review",
       "input_mapping": {
-        "submission?": "submission"
+        "submission?": "submission",
+        "reviewform.remarks?": "previous_remarks"
       },
       "output_mapping": {
         "payment_status": "reviewform.payment_status",
         "remarks?": "reviewform.remarks"
+      }
+    },
+    {
+      "id": "decision_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "request_info",
+      "type": "TASK",
+      "task_template_id": "cda-payment-confirm--request-info",
+      "input_mapping": {
+        "callbackToken": "replyToken",
+        "reviewform.payment_status": "payload.payment_status",
+        "reviewform.remarks?": "payload.remarks",
+        "submission?": "submission",
+        "reviewform": "reviewform"
+      },
+      "output_mapping": {
+        "submission": "submission",
+        "callbackToken": "callbackToken"
       }
     },
     {
@@ -45,7 +67,24 @@
     {
       "id": "e2",
       "source_id": "userform",
-      "target_id": "api_call"
+      "target_id": "decision_gateway"
+    },
+    {
+      "id": "e_not_received",
+      "source_id": "decision_gateway",
+      "target_id": "request_info",
+      "condition": "reviewform.payment_status == 'not_received'"
+    },
+    {
+      "id": "e_repaid",
+      "source_id": "request_info",
+      "target_id": "userform"
+    },
+    {
+      "id": "e_received",
+      "source_id": "decision_gateway",
+      "target_id": "api_call",
+      "condition": "reviewform.payment_status == 'success'"
     },
     {
       "id": "e3",

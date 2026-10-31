@@ -6,7 +6,8 @@
     "officer_jsonforms_id": "npqs-payment--confirm-form",
     "service_id": "npqs",
     "path": "/api/v1/inject",
-    "task_code": "npqs_certificate_fee_confirm_payment"
+    "task_code": "npqs_certificate_fee_confirm_payment",
+    "reply_command": "resubmit"
   },
   "extensions": [
     {
