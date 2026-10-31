@@ -237,6 +237,12 @@ See `tnsw/fcau/3-2-warehouse_inspection/workflow.json` or
   `.github/scripts/check_payload_schema.py` fails CI on a form step without it, a `form`
   the render doesn't show, or the extension on a step no person completes. A step that
   can't take it is listed, with the reason, in the script's `EXEMPT`.
+- An HTML document template (`html_template`, a `.gohtml` file) is static HTML in which a
+  value is only ever printed as element text, because the document is opened in the
+  browser from the file store's origin and the renderer's escaping is contextual. It has
+  no script, event handler, form, frame or `svg`, loads nothing from outside, and has no
+  `{{ }}` inside a tag or a `<style>` block.
+  `.github/scripts/check_html_templates.py` fails CI on any of them.
 - **Drafts never go through the workflow.** A step that offers "Save as Draft"
   declares `"draft": {"command": "save_as_draft"}` on its `subtask_template`, and its
   render handle uses `"element": "draft_action"`. The portal saves it with
