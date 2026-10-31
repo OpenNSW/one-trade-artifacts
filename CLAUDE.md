@@ -113,6 +113,9 @@ alone does not publish anything.
   to macro workflows (`*_workflow.json`) and step sub-workflows (`<step>/workflow.json`)
   — both use the same `kind: "workflow"`, there is no separate kind for the macro level.
 - `task_template` — binds a workflow id to a render config (`render_config_id`).
+  `"claimable": true` lets an officer claim the task, so the others see who is working
+  it (a hint, never a lock). Every agency (`<agency>/`) task template sets it; the
+  `tnsw/` ones leave it out, and without it the task has no claims.
 - `subtask_template` — a single node's behavior inside a step workflow: `task_type`
   (`USER_INPUT`, `EXTERNAL_REVIEW`, `PAYMENT`, `CHA_PERSIST_WRITER`,
   `HSCODE_SPLIT_BUILDER`, `CUSTOMS_CUSDEC_DISPATCH`, ...), `output_namespace`, and

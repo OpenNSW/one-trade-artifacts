@@ -3,6 +3,7 @@
   "type": "APPLICATION",
   "workflow_id": "fcau-lab-fee-payment-review--review-workflow",
   "render_config_id": "fcau-lab-fee-payment-review--review:render",
+  "claimable": true,
   "read": {
     "roles": [
       "officer"

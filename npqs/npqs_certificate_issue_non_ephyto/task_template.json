@@ -3,6 +3,7 @@
   "type": "APPLICATION",
   "workflow_id": "npqs-certificate-issue-non-ephyto--review-workflow",
   "render_config_id": "npqs-certificate-issue-non-ephyto--review:render",
+  "claimable": true,
   "read": {
     "roles": [
       "officer"

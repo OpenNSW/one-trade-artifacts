@@ -3,6 +3,7 @@
   "type": "APPLICATION",
   "workflow_id": "sltb-xml-download--review-workflow",
   "render_config_id": "sltb-xml-download--review:render",
+  "claimable": true,
   "read": {
     "roles": [
       "officer"
