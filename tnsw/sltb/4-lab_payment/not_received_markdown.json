@@ -1,0 +1,4 @@
+{
+  "id": "sltb-pay-lab-fee--not-received",
+  "template": "### Payment not confirmed\n\nThe SLTB officer could not confirm your payment. Pay the fee at the SLTB counter, quoting your application reference, then notify the officer below.\n\n> **Officer remarks:** {{.payment_remarks}}"
+}

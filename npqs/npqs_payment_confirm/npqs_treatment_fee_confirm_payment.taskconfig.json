@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "npqs_treatment_fee_confirm_payment",
+  "workflow": "npqs_payment_confirm",
+  "meta": {
+    "title": "NPQS Treatment Fee Payment Confirmation",
+    "description": "Officer confirms the trader has paid the Treatment Fee (LKR 4500.00) outside GovPay."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "npqs-payment-review-receipt--review",
+  "type": "APPLICATION",
+  "workflow_id": "npqs-payment-review-receipt--review-workflow",
+  "render_config_id": "npqs-payment-review-receipt--review:render",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  }
+}

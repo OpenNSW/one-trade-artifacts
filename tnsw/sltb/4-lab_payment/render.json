@@ -2,6 +2,10 @@
   "id": "sltb-pay-lab-fee-flow:render",
   "type": "PAYMENT",
   "title": "[SLTB] Pay Lab Test Fee",
+  "files": [
+    "receipt.payment_slip",
+    "submission.payment_slip"
+  ],
   "sections": {
     "workspace": {
       "templateId": "sltb-pay-lab-fee--select-method-form",
@@ -36,11 +40,78 @@
       "templateId": "sltb-pay-lab-fee--success-message",
       "title": "Payment Successful",
       "projector": "MARKDOWN",
-      "dataKey": "payment",
       "visibleWhen": {
         "states": [
           "COMPLETED"
         ]
+      }
+    },
+    "payment_not_received": {
+      "templateId": "sltb-pay-lab-fee--not-received",
+      "title": "Payment Not Confirmed",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_REPAYMENT"
+        ],
+        "requireDataKey": "payment_remarks"
+      }
+    },
+    "pay_again": {
+      "templateId": "sltb-pay-lab-fee--pay-again-form",
+      "title": "Notify the Officer",
+      "projector": "FORM",
+      "dataKey": "repayment",
+      "visibleWhen": {
+        "states": [
+          "PENDING_REPAYMENT"
+        ]
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "I Have Paid — Notify the Officer",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "receipt_instructions": {
+      "templateId": "sltb-pay-lab-fee--receipt-instructions",
+      "title": "Bank Transfer Details",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_SLIP_UPLOAD"
+        ]
+      }
+    },
+    "upload_receipt": {
+      "templateId": "sltb-payment--upload-form",
+      "title": "Upload Payment Receipt",
+      "projector": "FORM",
+      "dataKey": "receipt",
+      "visibleWhen": {
+        "states": [
+          "PENDING_SLIP_UPLOAD"
+        ]
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Payment Receipt",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "awaiting_officer": {
+      "templateId": "sltb-pay-lab-fee--awaiting-officer",
+      "title": "Waiting for Officer",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ],
+        "requireDataKey": "selected_payment_method"
       }
     }
   },
@@ -54,6 +125,23 @@
     },
     "PENDING_PAYMENT": {
       "actions": []
+    },
+    "PENDING_SLIP_UPLOAD": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    },
+    "QUEUED_EXTERNALLY": {
+      "actions": []
+    },
+    "PENDING_REPAYMENT": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
     }
   }
 }

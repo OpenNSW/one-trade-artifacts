@@ -1,0 +1,4 @@
+{
+  "id": "npqs-pay-certificate-fee--awaiting-officer",
+  "template": "{{if .submission.payment_slip}}### Waiting for the officer to verify your receipt\n\nYour payment receipt has been submitted. An NPQS officer will verify it.\n\n**Receipt File**: [View Uploaded Receipt](files:{{.submission.payment_slip}}){{else}}### Waiting for the officer to confirm your payment\n\nPay the Phytosanitary Certificate Fee directly to the NPQS, quoting your application reference. An NPQS officer will confirm the payment once it is received.{{end}}\n\n* **Amount**: 2000.00 LKR\n\nThis page will update automatically once the officer has reviewed the payment."
+}

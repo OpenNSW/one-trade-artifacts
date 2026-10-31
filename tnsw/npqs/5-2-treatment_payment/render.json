@@ -2,6 +2,10 @@
   "id": "npqs-pay-for-treatment:render",
   "type": "PAYMENT",
   "title": "[NPQS] Pay Treatment Fee",
+  "files": [
+    "receipt.payment_slip",
+    "submission.payment_slip"
+  ],
   "sections": {
     "workspace": {
       "templateId": "npqs-pay-for-treatment--select-method-form",
@@ -42,6 +46,74 @@
           "COMPLETED"
         ]
       }
+    },
+    "payment_not_received": {
+      "templateId": "npqs-pay-for-treatment--not-received",
+      "title": "Payment Not Confirmed",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_REPAYMENT"
+        ],
+        "requireDataKey": "payment_remarks"
+      }
+    },
+    "pay_again": {
+      "templateId": "npqs-pay-for-treatment--pay-again-form",
+      "title": "Notify the Officer",
+      "projector": "FORM",
+      "dataKey": "repayment",
+      "visibleWhen": {
+        "states": [
+          "PENDING_REPAYMENT"
+        ]
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "I Have Paid — Notify the Officer",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "receipt_instructions": {
+      "templateId": "npqs-pay-for-treatment--receipt-instructions",
+      "title": "Bank Transfer Details",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_SLIP_UPLOAD"
+        ]
+      }
+    },
+    "upload_receipt": {
+      "templateId": "npqs-payment--upload-form",
+      "title": "Upload Payment Receipt",
+      "projector": "FORM",
+      "dataKey": "receipt",
+      "visibleWhen": {
+        "states": [
+          "PENDING_SLIP_UPLOAD"
+        ]
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Payment Receipt",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "awaiting_officer": {
+      "templateId": "npqs-pay-for-treatment--awaiting-officer",
+      "title": "Waiting for Officer",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ],
+        "requireDataKey": "selected_payment_method"
+      }
     }
   },
   "states": {
@@ -54,6 +126,23 @@
     },
     "PENDING_PAYMENT": {
       "actions": []
+    },
+    "PENDING_SLIP_UPLOAD": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    },
+    "QUEUED_EXTERNALLY": {
+      "actions": []
+    },
+    "PENDING_REPAYMENT": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
     }
   }
 }

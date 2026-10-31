@@ -1,0 +1,82 @@
+{
+  "id": "cda-kcfn-payment-confirm--review:render",
+  "type": "APPLICATION",
+  "title": "CDA Payment Confirmation",
+  "sections": {
+    "previous_review": {
+      "templateId": "cda-kcfn-payment-confirm--previous-review",
+      "title": "Previous Review",
+      "projector": "MARKDOWN",
+      "dataKey": "previous_remarks",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "previous_remarks"
+      }
+    },
+    "payment_details": {
+      "templateId": "cda-kcfn-payment-confirm--payment-details",
+      "title": "Payment Details",
+      "projector": "MARKDOWN",
+      "dataKey": "submission"
+    },
+    "review_form": {
+      "templateId": "cda-kcfn-payment--confirm-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Review",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "status_message": {
+      "templateId": "cda-kcfn-payment-confirm--submission-view",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ],
+        "requireDataKey": "callbackToken"
+      }
+    },
+    "awaiting_resubmission": {
+      "templateId": "cda-kcfn-payment-confirm--awaiting-resubmission",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ],
+        "requireDataKey": "replyToken"
+      }
+    }
+  },
+  "layouts": {
+    "review": [
+      "previous_review",
+      "payment_details",
+      "review_form",
+      "status_message",
+      "awaiting_resubmission"
+    ]
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ],
+      "order": {
+        "$ref": "#/layouts/review"
+      }
+    }
+  }
+}

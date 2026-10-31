@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "sltb_lab_fee_review_receipt",
+  "workflow": "sltb_payment_review_receipt",
+  "meta": {
+    "title": "SLTB Lab Test Fee Receipt Verification",
+    "description": "Officer verifies the payment receipt the trader uploaded for the Lab Test Fee (LKR 5000.00)."
+  }
+}

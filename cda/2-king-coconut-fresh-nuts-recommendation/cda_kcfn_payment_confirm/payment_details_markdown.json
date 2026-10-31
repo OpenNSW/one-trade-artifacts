@@ -1,0 +1,4 @@
+{
+  "id": "cda-kcfn-payment-confirm--payment-details",
+  "template": "The applicant has chosen to pay this fee directly to the CDA. Confirm once the payment has been received.\n\n{{with .}}{{with .reference_number}}**Application reference:** `{{.}}`{{end}}{{end}}"
+}

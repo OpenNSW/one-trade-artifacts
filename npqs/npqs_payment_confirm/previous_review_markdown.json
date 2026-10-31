@@ -1,0 +1,4 @@
+{
+  "id": "npqs-payment-confirm--previous-review",
+  "template": "{{if .}}\n### Previous Review\n\nYou marked this payment as not received. The applicant says they have now paid at the counter.\n\n> **Your remarks**: {{.}}\n{{end}}"
+}

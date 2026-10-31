@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "cda_kcfn_fee_confirm_payment",
+  "workflow": "cda_kcfn_payment_confirm",
+  "meta": {
+    "title": "CDA Recommendation Report Fee Payment Confirmation",
+    "description": "Officer confirms the trader has paid the Recommendation Report Fee (LKR 1500.00) outside GovPay."
+  }
+}

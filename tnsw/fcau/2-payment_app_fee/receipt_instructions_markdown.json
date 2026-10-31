@@ -1,0 +1,4 @@
+{
+  "id": "fcau-pay-app-fee--receipt-instructions",
+  "template": "{{if .payment_feedback}}### Re-upload required\n\nThe FCAU officer has asked you to upload the payment receipt again.\n\n> **Reason:** {{.payment_feedback}}\n\n---\n\n{{end}}### Pay by Bank Transfer\n\nTransfer the Application Fee to the FCAU bank account, quoting your application reference, then upload the bank transfer receipt.\n\n* **Amount**: **1500.00 LKR**"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "npqs-pay-for-treatment--confirm-payment",
+  "task_type": "EXTERNAL_REVIEW",
+  "output_namespace": "payment_confirmation",
+  "plugin_properties": {
+    "officer_jsonforms_id": "npqs-payment--confirm-form",
+    "service_id": "npqs",
+    "path": "/api/v1/inject",
+    "task_code": "npqs_treatment_fee_confirm_payment",
+    "reply_command": "resubmit"
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "QUEUED_EXTERNALLY": {
+          "success": [
+            "npqs"
+          ],
+          "not_received": [
+            "npqs"
+          ]
+        }
+      }
+    }
+  ]
+}

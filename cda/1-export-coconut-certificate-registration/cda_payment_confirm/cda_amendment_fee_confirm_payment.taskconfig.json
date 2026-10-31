@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "cda_amendment_fee_confirm_payment",
+  "workflow": "cda_payment_confirm",
+  "meta": {
+    "title": "CDA Amendment Fee Payment Confirmation",
+    "description": "Officer confirms the trader has paid the Amendment Fee (LKR 604.75) outside GovPay."
+  }
+}

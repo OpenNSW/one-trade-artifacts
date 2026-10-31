@@ -1,0 +1,28 @@
+{
+  "id": "cda-kcfn-payment-confirm--officer-review",
+  "task_type": "USER_INPUT",
+  "output_namespace": "reviewform",
+  "plugin_properties": {
+    "user_jsonforms_id": "cda-kcfn-payment--confirm-form"
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "PENDING_USER": {
+          "submit": [
+            "officer"
+          ]
+        }
+      }
+    },
+    {
+      "id": "payload_schema",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "form": "cda-kcfn-payment--confirm-form"
+      }
+    }
+  ]
+}

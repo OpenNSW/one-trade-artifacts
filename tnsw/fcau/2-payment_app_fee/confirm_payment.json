@@ -1,0 +1,28 @@
+{
+  "id": "fcau-pay-app-fee--confirm-payment",
+  "task_type": "EXTERNAL_REVIEW",
+  "output_namespace": "payment_confirmation",
+  "plugin_properties": {
+    "officer_jsonforms_id": "fcau-payment--confirm-form",
+    "service_id": "fcau",
+    "path": "/api/v1/inject",
+    "task_code": "fcau_app_fee_confirm_payment",
+    "reply_command": "resubmit"
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "QUEUED_EXTERNALLY": {
+          "success": [
+            "fcau"
+          ],
+          "not_received": [
+            "fcau"
+          ]
+        }
+      }
+    }
+  ]
+}
