@@ -1,0 +1,31 @@
+name: Validate HTML templates
+
+# Every pull request runs it, as branch protection can require its result.
+on:
+  pull_request:
+  push:
+    branches: [main]
+    paths:
+      - "**/*.gohtml"
+      - "*/manifest.json"
+      - ".github/scripts/check_html_templates.py"
+      - ".github/workflows/validate-html-templates.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    # A name of its own: other workflows' jobs are called validate too, and branch
+    # protection requires a check by name.
+    name: HTML templates carry no active content
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Check HTML templates carry no active content
+        run: python .github/scripts/check_html_templates.py
