@@ -23,13 +23,18 @@
       "input_mapping": {
         "latest_container_count": "container_count",
         "cusdec_ref?": "cusdec_ref",
+        "userform.identification.officeCode?": "prefill.officeCode",
         "userform.traders.exporter.code?": "prefill.shipper.id",
         "userform.traders.exporter.name?": "prefill.shipper.name",
         "userform.traders.exporter.address?": "prefill.shipper.address",
         "userform.traders.exporter.countryCode?": "prefill.shipper.countryCode",
         "userform.traders.consignee.name?": "prefill.consignee.name",
         "userform.traders.consignee.address?": "prefill.consignee.address",
-        "userform.traders.consignee.countryCode?": "prefill.consignee.countryCode"
+        "userform.traders.consignee.countryCode?": "prefill.consignee.countryCode",
+        "userform.transport.voyageNo?": "prefill.transport.voyageNumber",
+        "userform.transport.vesselName?": "prefill.transport.vessel",
+        "userform.transport.placeOfDischargeCode?": "prefill.transport.placeOfDischarge",
+        "userform.packages.totalPackages?": "prefill.goods.packageNumber"
       },
       "output_mapping": {
         "split_items": "split_items"
