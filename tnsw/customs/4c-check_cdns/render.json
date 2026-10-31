@@ -1,0 +1,56 @@
+{
+  "id": "customs-check-cdns-flow:render",
+  "type": "APPLICATION",
+  "title": "[Customs] Check the Cargo Dispatch Notes",
+  "sections": {
+    "missing": {
+      "templateId": "customs-check-cdns--missing",
+      "title": "Cargo Dispatch Notes",
+      "projector": "MARKDOWN",
+      "dataKey": "cdn_check",
+      "visibleWhen": {
+        "states": [
+          "PENDING_CDNS"
+        ],
+        "requireDataKey": "cdn_check"
+      }
+    },
+    "check_again": {
+      "templateId": "customs-check-cdns--check-again-form",
+      "title": "Check Again",
+      "projector": "FORM",
+      "dataKey": "check",
+      "visibleWhen": {
+        "states": [
+          "PENDING_CDNS"
+        ]
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Check Again",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "completed": {
+      "templateId": "customs-check-cdns--completed",
+      "title": "Cargo Dispatch Notes",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "COMPLETED"
+        ]
+      }
+    }
+  },
+  "states": {
+    "PENDING_CDNS": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}
