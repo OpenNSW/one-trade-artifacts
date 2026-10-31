@@ -10,9 +10,7 @@
       "id": "select_method_task",
       "type": "TASK",
       "task_template_id": "cda-pay-app-fee--select-method",
-      "input_mapping": {
-        "payment_remarks?": "payment_remarks"
-      },
+      "input_mapping": {},
       "output_mapping": {
         "selected_method": "selected_method"
       }
@@ -79,11 +77,13 @@
       "task_template_id": "cda-pay-app-fee--confirm-payment",
       "input_mapping": {
         "selected_method": "selected_payment_method",
-        "reference_number?": "submission.reference_number"
+        "reference_number?": "submission.reference_number",
+        "confirm_agency_token?": "replyToken"
       },
       "output_mapping": {
         "payment_status": "payment_status",
-        "remarks?": "payment_remarks"
+        "remarks?": "payment_remarks",
+        "callbackToken?": "confirm_agency_token"
       }
     },
     {
@@ -91,6 +91,14 @@
       "type": "GATEWAY",
       "gateway_type": "EXCLUSIVE_SPLIT",
       "name": "Payment Confirmed?"
+    },
+    {
+      "id": "pay_again_task",
+      "type": "TASK",
+      "task_template_id": "cda-pay-app-fee--pay-again",
+      "input_mapping": {
+        "payment_remarks?": "payment_remarks"
+      }
     },
     {
       "id": "method_join",
@@ -162,8 +170,13 @@
     {
       "id": "e_confirm_not_received",
       "source_id": "confirm_split",
-      "target_id": "select_method_task",
+      "target_id": "pay_again_task",
       "condition": "payment_status == 'not_received'"
+    },
+    {
+      "id": "e_paid_again",
+      "source_id": "pay_again_task",
+      "target_id": "confirm_payment_task"
     },
     {
       "id": "e_confirmed",

@@ -1,0 +1,17 @@
+{
+  "id": "npqs-pay-certificate-fee--pay-again-form",
+  "title": "Notify the Officer",
+  "schema": {
+    "type": "object",
+    "properties": {}
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Label",
+        "text": "Once you have paid at the NPQS counter, notify the officer so they can confirm the payment again."
+      }
+    ]
+  }
+}

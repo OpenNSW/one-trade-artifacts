@@ -1,0 +1,4 @@
+{
+  "id": "sltb-payment-confirm--awaiting-resubmission",
+  "template": "Marked as not received. Waiting for the applicant to pay at the counter and notify you again.{{if .remarks}}\n\n> **Your remarks**: {{.remarks}}{{end}}"
+}

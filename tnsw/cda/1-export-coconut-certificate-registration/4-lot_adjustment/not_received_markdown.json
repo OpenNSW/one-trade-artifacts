@@ -1,4 +1,4 @@
 {
   "id": "cda-lot-adjustment--not-received",
-  "template": "### Payment not confirmed\n\nThe CDA officer could not confirm your payment. Please choose a payment method and try again.\n\n> **Officer remarks:** {{.payment_remarks}}"
+  "template": "### Payment not confirmed\n\nThe CDA officer could not confirm your payment. Pay the fee at the CDA counter, quoting your application reference, then notify the officer below.\n\n> **Officer remarks:** {{.payment_remarks}}"
 }

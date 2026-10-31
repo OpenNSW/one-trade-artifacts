@@ -715,6 +715,24 @@
       "path": "1-export-coconut-certificate-registration/cda_payment_confirm/submission_view_markdown.json"
     },
     {
+      "id": "cda-payment-confirm--request-info",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "1-export-coconut-certificate-registration/cda_payment_confirm/request_info.json"
+    },
+    {
+      "id": "cda-payment-confirm--previous-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "1-export-coconut-certificate-registration/cda_payment_confirm/previous_review_markdown.json"
+    },
+    {
+      "id": "cda-payment-confirm--awaiting-resubmission",
+      "kind": "generic_template",
+      "version": "",
+      "path": "1-export-coconut-certificate-registration/cda_payment_confirm/awaiting_resubmission_markdown.json"
+    },
+    {
       "id": "cda-payment--confirm-form",
       "kind": "generic_template",
       "version": "",
@@ -863,6 +881,24 @@
       "kind": "generic_template",
       "version": "",
       "path": "2-king-coconut-fresh-nuts-recommendation/cda_kcfn_payment_confirm/submission_view_markdown.json"
+    },
+    {
+      "id": "cda-kcfn-payment-confirm--request-info",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "2-king-coconut-fresh-nuts-recommendation/cda_kcfn_payment_confirm/request_info.json"
+    },
+    {
+      "id": "cda-kcfn-payment-confirm--previous-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "2-king-coconut-fresh-nuts-recommendation/cda_kcfn_payment_confirm/previous_review_markdown.json"
+    },
+    {
+      "id": "cda-kcfn-payment-confirm--awaiting-resubmission",
+      "kind": "generic_template",
+      "version": "",
+      "path": "2-king-coconut-fresh-nuts-recommendation/cda_kcfn_payment_confirm/awaiting_resubmission_markdown.json"
     },
     {
       "id": "cda-kcfn-payment--confirm-form",
