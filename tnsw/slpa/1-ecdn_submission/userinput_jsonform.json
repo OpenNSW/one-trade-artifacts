@@ -244,7 +244,7 @@
       },
       "packageNumber": {
         "type": "number",
-        "title": "Package Number",
+        "title": "Number of Packages",
         "example": 80
       },
       "packageType": {
@@ -352,11 +352,13 @@
       "volumeCBM": {
         "type": "number",
         "title": "Volume (CBM)",
+        "minimum": 0,
         "example": 32.5
       },
       "weightKg": {
         "type": "number",
         "title": "Weight (Kg.)",
+        "minimum": 0,
         "example": 16500.5
       },
       "goodsDescription": {
