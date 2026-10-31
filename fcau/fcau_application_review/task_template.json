@@ -3,6 +3,7 @@
   "type": "APPLICATION",
   "workflow_id": "fcau-application-review--review-workflow",
   "render_config_id": "fcau-application-review--review:render",
+  "claimable": true,
   "read": {
     "roles": [
       "officer"

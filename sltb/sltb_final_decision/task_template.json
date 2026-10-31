@@ -3,6 +3,7 @@
   "type": "APPLICATION",
   "workflow_id": "sltb-final-decision--review-workflow",
   "render_config_id": "sltb-final-decision--review:render",
+  "claimable": true,
   "read": {
     "roles": [
       "officer"

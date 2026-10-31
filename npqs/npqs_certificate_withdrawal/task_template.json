@@ -3,6 +3,7 @@
   "type": "APPLICATION",
   "workflow_id": "npqs-certificate-withdrawal--review-workflow",
   "render_config_id": "npqs-certificate-withdrawal--review:render",
+  "claimable": true,
   "read": {
     "roles": [
       "officer"

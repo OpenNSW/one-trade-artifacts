@@ -3,6 +3,7 @@
   "type": "APPLICATION",
   "workflow_id": "npqs-visual-system--review-workflow",
   "render_config_id": "npqs-visual-system--review:render",
+  "claimable": true,
   "read": {
     "roles": [
       "officer"

@@ -3,6 +3,7 @@
   "type": "APPLICATION",
   "workflow_id": "npqs-ephyto-transmit--review-workflow",
   "render_config_id": "npqs-ephyto-transmit--review:render",
+  "claimable": true,
   "read": {
     "roles": [
       "officer"
