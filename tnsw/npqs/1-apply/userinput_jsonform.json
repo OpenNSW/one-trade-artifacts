@@ -182,7 +182,8 @@
           "params": {
             "id": "npqs-apply-phyto-cert--importing-countries",
             "version": "1"
-          }
+          },
+          "defaultFrom": "importing_country"
         },
         "properties": {
           "value": { "type": "string", "minLength": 1, "example": "GB" },
