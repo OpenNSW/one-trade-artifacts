@@ -1,0 +1,42 @@
+{
+  "id": "npqs-issue-certificate-non-ephyto",
+  "name": "Prepare Phytosanitary Certificate for Printing (Non-ePhyto)",
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "officer_issue",
+      "type": "TASK",
+      "task_template_id": "npqs-issue-certificate-non-ephyto--officer-review",
+      "input_mapping": {
+        "reference_number?": "reference_number",
+        "reference_number": "submission.reference_number",
+        "userform": "submission",
+        "certificate_items?": "submission.certificate_items"
+      },
+      "output_mapping": {
+        "comments?": "comments",
+        "certificate_items?": "certificate_items",
+        "print_copy_key?": "print_copy_key"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "officer_issue"
+    },
+    {
+      "id": "e2",
+      "source_id": "officer_issue",
+      "target_id": "end"
+    }
+  ]
+}
