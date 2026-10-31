@@ -40,7 +40,6 @@
       "templateId": "cda-kcfn-payment--success-message",
       "title": "Payment Successful",
       "projector": "MARKDOWN",
-      "dataKey": "payment",
       "visibleWhen": {
         "states": [
           "COMPLETED"

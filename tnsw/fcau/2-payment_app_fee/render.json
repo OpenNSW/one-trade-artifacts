@@ -40,7 +40,6 @@
       "templateId": "fcau-pay-app-fee--success-message",
       "title": "Payment Successful",
       "projector": "MARKDOWN",
-      "dataKey": "payment",
       "visibleWhen": {
         "states": [
           "COMPLETED"

@@ -1,4 +1,4 @@
 {
   "id": "sltb-pay-lab-fee--success-message",
-  "template": "### Payment Successful\n\nYour SLTB Lab test fee payment has been successfully processed and verified.\n\n* **Reference Number**: {{.reference_number}}\n* **Amount Paid**: {{.currency}} {{.amount}}\n* **Status**: Completed\n\nNo further action is required for this step. Next, submit the lab test report to the SLTB Export Division for verification."
+  "template": "### Payment Successful\n\nYour SLTB Lab test fee payment has been successfully processed and verified.\n\n{{if and .payment .payment.amount}}* **Reference Number**: {{.payment.reference_number}}\n* **Amount Paid**: {{.payment.currency}} {{.payment.amount}}\n{{else}}{{with .lab_fee_amount}}* **Amount Paid**: LKR {{.}}\n{{end}}{{end}}* **Status**: Completed\n\nNo further action is required for this step. Next, submit the lab test report to the SLTB Export Division for verification."
 }
