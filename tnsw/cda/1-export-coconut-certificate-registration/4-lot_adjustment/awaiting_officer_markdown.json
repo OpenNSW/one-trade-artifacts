@@ -1,0 +1,4 @@
+{
+  "id": "cda-lot-adjustment--awaiting-officer",
+  "template": "{{if .submission.payment_slip}}### Waiting for the officer to verify your receipt\n\nYour payment receipt has been submitted. An CDA officer will verify it.\n\n**Receipt File**: [View Uploaded Receipt](files:{{.submission.payment_slip}}){{else}}### Waiting for the officer to confirm your payment\n\nPay the Amendment Fee directly to the CDA, quoting your application reference. An CDA officer will confirm the payment once it is received.{{end}}\n\n* **Amount**: 604.75 LKR\n\nThis page will update automatically once the officer has reviewed the payment."
+}

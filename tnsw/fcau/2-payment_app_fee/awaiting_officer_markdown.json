@@ -1,0 +1,4 @@
+{
+  "id": "fcau-pay-app-fee--awaiting-officer",
+  "template": "{{if .submission.payment_slip}}### Waiting for the officer to verify your receipt\n\nYour payment receipt has been submitted. An FCAU officer will verify it.\n\n**Receipt File**: [View Uploaded Receipt](files:{{.submission.payment_slip}}){{else}}### Waiting for the officer to confirm your payment\n\nPay the Application Fee directly to the FCAU, quoting your application reference. An FCAU officer will confirm the payment once it is received.{{end}}\n\n* **Amount**: 1500.00 LKR\n\nThis page will update automatically once the officer has reviewed the payment."
+}

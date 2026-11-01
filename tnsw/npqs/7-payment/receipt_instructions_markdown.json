@@ -1,0 +1,4 @@
+{
+  "id": "npqs-pay-certificate-fee--receipt-instructions",
+  "template": "{{if .payment_feedback}}### Re-upload required\n\nThe NPQS officer has asked you to upload the payment receipt again.\n\n> **Reason:** {{.payment_feedback}}\n\n---\n\n{{end}}### Pay by Bank Transfer\n\nTransfer the Phytosanitary Certificate Fee to the NPQS bank account, quoting your application reference, then upload the bank transfer receipt.\n\n* **Amount**: **2000.00 LKR**"
+}

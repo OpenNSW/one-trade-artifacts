@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "cda_kcfn_fee_review_receipt",
+  "workflow": "cda_kcfn_payment_review_receipt",
+  "meta": {
+    "title": "CDA Recommendation Report Fee Receipt Verification",
+    "description": "Officer verifies the payment receipt the trader uploaded for the Recommendation Report Fee (LKR 1500.00)."
+  }
+}

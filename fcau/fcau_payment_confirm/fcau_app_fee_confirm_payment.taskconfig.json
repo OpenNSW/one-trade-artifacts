@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "fcau_app_fee_confirm_payment",
+  "workflow": "fcau_payment_confirm",
+  "meta": {
+    "title": "FCAU Application Fee Payment Confirmation",
+    "description": "Officer confirms the trader has paid the Application Fee (LKR 1500.00) outside GovPay."
+  }
+}

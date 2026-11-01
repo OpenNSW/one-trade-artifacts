@@ -1,0 +1,4 @@
+{
+  "id": "fcau-payment-review-receipt--payment-details",
+  "template": "{{with .}}{{with .reference_number}}**Application reference:** `{{.}}`{{end}}{{end}}"
+}

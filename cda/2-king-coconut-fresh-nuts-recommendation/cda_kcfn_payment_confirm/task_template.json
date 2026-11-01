@@ -1,0 +1,11 @@
+{
+  "id": "cda-kcfn-payment-confirm--review",
+  "type": "APPLICATION",
+  "workflow_id": "cda-kcfn-payment-confirm--review-workflow",
+  "render_config_id": "cda-kcfn-payment-confirm--review:render",
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  }
+}
