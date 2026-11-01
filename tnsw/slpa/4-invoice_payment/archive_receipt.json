@@ -1,0 +1,9 @@
+{
+  "id": "slpa-invoice--archive-receipt",
+  "task_type": "REMOTE_FILE_ARCHIVER",
+  "output_namespace": "receipt_file",
+  "plugin_properties": {
+    "service_id": "slpa",
+    "filename": "slpa-payment-receipt"
+  }
+}

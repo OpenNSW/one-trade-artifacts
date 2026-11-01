@@ -45,6 +45,22 @@
       "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
+      "id": "archive_payment_slip",
+      "type": "TASK",
+      "task_template_id": "slpa-invoice--archive-payment-slip",
+      "input_mapping": {
+        "payment.payment_slip_url?": "source"
+      },
+      "output_mapping": {
+        "payment_slip_file?": "payment.payment_slip_file"
+      }
+    },
+    {
+      "id": "slip_paid_check",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
       "id": "await_payment",
       "type": "TASK",
       "task_template_id": "slpa-invoice--wait",
@@ -77,6 +93,17 @@
       "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
+      "id": "archive_receipt",
+      "type": "TASK",
+      "task_template_id": "slpa-invoice--archive-receipt",
+      "input_mapping": {
+        "payment.receipt_url?": "source"
+      },
+      "output_mapping": {
+        "receipt_file?": "payment.receipt_file"
+      }
+    },
+    {
       "id": "end",
       "type": "END"
     }
@@ -104,16 +131,27 @@
       "condition": "payment.issued != true"
     },
     {
-      "id": "e_already_paid",
+      "id": "e_issued",
       "source_id": "issued_check",
-      "target_id": "end",
+      "target_id": "archive_payment_slip",
+      "condition": "payment.issued == true"
+    },
+    {
+      "id": "e_slip_stored",
+      "source_id": "archive_payment_slip",
+      "target_id": "slip_paid_check"
+    },
+    {
+      "id": "e_already_paid",
+      "source_id": "slip_paid_check",
+      "target_id": "archive_receipt",
       "condition": "payment.paid == true"
     },
     {
-      "id": "e_issued",
-      "source_id": "issued_check",
+      "id": "e_await_payment",
+      "source_id": "slip_paid_check",
       "target_id": "await_payment",
-      "condition": "payment.issued == true"
+      "condition": "payment.paid != true"
     },
     {
       "id": "e_check",
@@ -123,8 +161,13 @@
     {
       "id": "e_paid",
       "source_id": "payment_check",
-      "target_id": "end",
+      "target_id": "archive_receipt",
       "condition": "payment.paid == true"
+    },
+    {
+      "id": "e_receipt_stored",
+      "source_id": "archive_receipt",
+      "target_id": "end"
     },
     {
       "id": "e_unpaid",
