@@ -3,6 +3,7 @@
   "type": "APPLICATION",
   "workflow_id": "npqs-lab-testing--review-workflow",
   "render_config_id": "npqs-lab-testing--review:render",
+  "claimable": true,
   "read": {
     "roles": [
       "officer"
