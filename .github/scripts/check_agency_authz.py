@@ -6,7 +6,9 @@ A deployment is the trader-facing NSW (tnsw/) or one agency (<agency>/). In each
   * every step that waits for a caller (USER_INPUT, EXTERNAL_REVIEW, PAYMENT) carries a
     PRE_RESUME `authz` extension: state -> command -> the logical names allowed to run
     it, deny by default;
-  * every task template lists in `read.roles` the roles allowed to open its task.
+  * every task template lists in `read.roles` the roles allowed to open its task;
+  * a task template's `claimable`, when it has one, is true or false. The backend turns
+    claims on only for true, and fails to serve the task for any value but a boolean.
 
 The backend checks a step only when it declares the extension, and lets every owning
 role read a task whose template has no `read` block, so a task that omits either is open
@@ -350,6 +352,8 @@ def check_deployment(deployment, deployments):
     for task_id in deployment.paths["task_template"]:
         task = deployment.load("task_template", task_id)
         where = f"task {task_id}"
+        if "claimable" in task and not isinstance(task["claimable"], bool):
+            problems.append(f"{where}: claimable is {task['claimable']!r}; it must be true or false")
         render_id = task.get("render_config_id")
         if not deployment.has("generic_template", render_id):
             problems.append(f"{where}: render config {render_id!r} is not in the manifest")
