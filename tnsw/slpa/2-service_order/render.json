@@ -3,6 +3,18 @@
   "type": "APPLICATION",
   "title": "[SLPA] Export Service Order",
   "sections": {
+    "previous_rejection": {
+      "templateId": "slpa-so--previous-rejection",
+      "title": "Previous Service Order",
+      "projector": "MARKDOWN",
+      "dataKey": "previous_order",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "previous_order"
+      }
+    },
     "order_refusal": {
       "templateId": "slpa-so--refusal",
       "title": "SLPA Service Order Errors",

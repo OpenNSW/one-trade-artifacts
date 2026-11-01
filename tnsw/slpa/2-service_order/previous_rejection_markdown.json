@@ -1,0 +1,4 @@
+{
+  "id": "slpa-so--previous-rejection",
+  "template": "{{if eq (print .decision) \"REJECTED\"}}### ❌ Previous Service Order Rejected\n\nSLPA rejected the previous service order for this declaration{{with .service_order_no}} (`{{.}}`){{end}}{{with .stage}}: {{.}}{{end}}.\n\nRaise a new service order below. It is raised against the same CusDec serial. Contact SLPA if you need the reason for the rejection.\n{{end}}"
+}

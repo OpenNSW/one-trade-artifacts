@@ -51,7 +51,10 @@
         "slpa.cusdec_serial?": "serviceform.cusdecNo",
         "slpa.userform.status?": "serviceform.cargoType",
         "slpa.userform.containers?": "serviceform.containers",
-        "slpa.userform.volumeCBM?": "serviceform.declaredVolumeCBM"
+        "slpa.userform.volumeCBM?": "serviceform.declaredVolumeCBM",
+        "slpa.approval?": "previous_order.decision",
+        "slpa.approval_stage?": "previous_order.stage",
+        "slpa.service_order_no?": "previous_order.service_order_no"
       },
       "output_mapping": {
         "so.service_order_no?": "slpa.service_order_no",
@@ -71,8 +74,15 @@
       },
       "output_mapping": {
         "decision.decision?": "slpa.approval",
-        "decision.invoice_no?": "slpa.invoice_no"
+        "decision.invoice_no?": "slpa.invoice_no",
+        "decision.stage?": "slpa.approval_stage"
       }
+    },
+    {
+      "id": "slpa_3_1_approval_check",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Service Order Approved?"
     },
     {
       "id": "slpa_4_0_invoice",
@@ -152,7 +162,19 @@
     {
       "id": "e_approval_to_invoice",
       "source_id": "slpa_3_0_approval",
-      "target_id": "slpa_4_0_invoice"
+      "target_id": "slpa_3_1_approval_check"
+    },
+    {
+      "id": "e_slpa_so_rejected",
+      "source_id": "slpa_3_1_approval_check",
+      "target_id": "slpa_2_0_service_order",
+      "condition": "slpa.approval == 'REJECTED'"
+    },
+    {
+      "id": "e_slpa_so_approved",
+      "source_id": "slpa_3_1_approval_check",
+      "target_id": "slpa_4_0_invoice",
+      "condition": "slpa.approval != 'REJECTED'"
     },
     {
       "id": "e_invoice_prepare",
