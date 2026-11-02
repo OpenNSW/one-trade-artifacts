@@ -51,11 +51,55 @@
                   "title": "Warehouse Inspection"
                 }
               ]
+            },
+            "lab_test_type": {
+              "type": "string",
+              "title": "Type of Test",
+              "oneOf": [
+                {
+                  "const": "aflatoxin",
+                  "title": "Aflatoxin Test"
+                }
+              ]
+            },
+            "proposed_lab": {
+              "type": "string",
+              "title": "Proposed Lab",
+              "oneOf": [
+                {
+                  "const": "sgs_lanka",
+                  "title": "SGS Lanka (Pvt) Limited"
+                },
+                {
+                  "const": "bureau_veritas",
+                  "title": "Bureau Veritas Sri Lanka"
+                }
+              ]
             }
           },
           "required": [
             "id",
             "inspection_type"
+          ],
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "inspection_type": {
+                    "const": "lab"
+                  }
+                },
+                "required": [
+                  "inspection_type"
+                ]
+              },
+              "then": {
+                "required": [
+                  "lab_test_type",
+                  "proposed_lab"
+                ]
+              }
+            }
           ]
         }
       },
@@ -160,6 +204,37 @@
                 "options": {
                   "format": "radio"
                 }
+              },
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/lab_test_type",
+                    "rule": {
+                      "effect": "SHOW",
+                      "condition": {
+                        "scope": "#/properties/inspection_type",
+                        "schema": {
+                          "const": "lab"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/proposed_lab",
+                    "rule": {
+                      "effect": "SHOW",
+                      "condition": {
+                        "scope": "#/properties/inspection_type",
+                        "schema": {
+                          "const": "lab"
+                        }
+                      }
+                    }
+                  }
+                ]
               }
             ]
           },
