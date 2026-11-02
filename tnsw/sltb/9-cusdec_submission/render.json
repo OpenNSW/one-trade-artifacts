@@ -74,6 +74,12 @@
         ],
         "requireDataKey": "reviewerform"
       }
+    },
+    "cusdec": {
+      "templateId": "customs-cusdec--user-form",
+      "title": "Submitted CusDec",
+      "projector": "FORM",
+      "dataKey": "userform"
     }
   },
   "states": {

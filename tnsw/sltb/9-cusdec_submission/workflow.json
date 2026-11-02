@@ -32,7 +32,8 @@
       "type": "TASK",
       "task_template_id": "sltb-cusdec-submission--refused",
       "input_mapping": {
-        "cig?": "cig"
+        "cig?": "cig",
+        "userform?": "userform"
       },
       "output_mapping": {
         "__command": "refused_command"
