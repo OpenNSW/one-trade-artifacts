@@ -7,6 +7,14 @@
       "type": "START"
     },
     {
+      "id": "case_containers",
+      "type": "TASK",
+      "task_template_id": "slpa-sundry--case-containers",
+      "output_mapping": {
+        "containers.containers?": "containers.containers"
+      }
+    },
+    {
       "id": "fetch_services",
       "type": "TASK",
       "task_template_id": "slpa-sundry--fetch-services",
@@ -26,7 +34,8 @@
       "input_mapping": {
         "sundryform?": "sundryform",
         "so.error?": "so.error",
-        "services?": "services"
+        "services?": "services",
+        "containers?": "containers"
       },
       "output_mapping": {
         "parentInvoiceNo?": "sundryform.parentInvoiceNo",
@@ -83,6 +92,11 @@
     {
       "id": "e1",
       "source_id": "start",
+      "target_id": "case_containers"
+    },
+    {
+      "id": "e_containers_listed",
+      "source_id": "case_containers",
       "target_id": "fetch_services"
     },
     {

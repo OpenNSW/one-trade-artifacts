@@ -4219,6 +4219,12 @@
       "path": "slpa/aux-sundry_order/submitted_message_jsonform.json"
     },
     {
+      "id": "slpa-sundry--case-containers",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "slpa/aux-sundry_order/case_containers.json"
+    },
+    {
       "id": "slpa-sundry--fetch-services",
       "kind": "subtask_template",
       "version": "",
