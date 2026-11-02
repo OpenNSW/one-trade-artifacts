@@ -71,7 +71,8 @@
       "input_mapping": {
         "consolidation?": "consolidation",
         "cap_container_no": "cap_container_no",
-        "consolidation.cap_containers": "cap_containers"
+        "consolidation.cap_containers": "cap_containers",
+        "so_container_no?": "so_container_no"
       },
       "output_mapping": {
         "cap_sqid": "cap_sqid",
