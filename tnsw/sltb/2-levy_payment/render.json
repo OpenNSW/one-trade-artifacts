@@ -1,13 +1,25 @@
 {
   "id": "sltb-pay-levy-flow:render",
   "type": "PAYMENT",
-  "title": "[SLTB] Pay SLTB Levy",
+  "title": "[SLTB 2] Pay SLTB Levy",
   "files": [
     "payment.payment_slip",
     "payment_slip",
     "submission.payment_slip"
   ],
   "sections": {
+    "payment_failed": {
+      "templateId": "sltb-pay-levy--payment-failed",
+      "title": "Payment Failed",
+      "projector": "MARKDOWN",
+      "dataKey": "payment",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "payment"
+      }
+    },
     "select_method": {
       "templateId": "sltb-pay-levy--select-method-form",
       "title": "Select Payment Method",
@@ -85,6 +97,35 @@
           "COMPLETED"
         ]
       }
+    },
+    "finpak_insufficient": {
+      "templateId": "sltb-pay-levy--finpak-insufficient",
+      "title": "Insufficient Funds",
+      "projector": "MARKDOWN",
+      "dataKey": "payment",
+      "visibleWhen": {
+        "states": [
+          "PENDING_REPAYMENT"
+        ]
+      }
+    },
+    "finpak_top_up": {
+      "templateId": "sltb-pay-levy--finpak-top-up-form",
+      "title": "Notify the Officer",
+      "projector": "FORM",
+      "dataKey": "topup",
+      "visibleWhen": {
+        "states": [
+          "PENDING_REPAYMENT"
+        ]
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "I Have Topped Up — Notify the Officer",
+          "element": "primary_action"
+        }
+      ]
     }
   },
   "states": {
@@ -108,6 +149,13 @@
     "PENDING_PAYMENT": {
       "actions": []
     },
-    "COMPLETED": {}
+    "COMPLETED": {},
+    "PENDING_REPAYMENT": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
   }
 }

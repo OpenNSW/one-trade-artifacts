@@ -79,72 +79,6 @@
       "path": "sltb_officer_review/userinput_jsonform.json"
     },
     {
-      "id": "sltb-officer-review--second-step-notice",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb_officer_review/second_step_notice_markdown.json"
-    },
-    {
-      "id": "sltb_xml_download",
-      "kind": "task_config",
-      "version": "",
-      "path": "sltb_xml_download/sltb_xml_download.taskconfig.json"
-    },
-    {
-      "id": "sltb_xml_download",
-      "kind": "workflow",
-      "version": "",
-      "path": "sltb_xml_download/workflow.json"
-    },
-    {
-      "id": "sltb-xml-download--review",
-      "kind": "task_template",
-      "version": "",
-      "path": "sltb_xml_download/task_template.json"
-    },
-    {
-      "id": "sltb-xml-download--review-workflow",
-      "kind": "workflow",
-      "version": "",
-      "path": "sltb_xml_download/review_workflow.json"
-    },
-    {
-      "id": "sltb-xml-download--review:render",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb_xml_download/render.json"
-    },
-    {
-      "id": "sltb-xml-download--notify-decision",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "sltb_xml_download/notify_decision.json"
-    },
-    {
-      "id": "sltb-xml-download--officer-review",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "sltb_xml_download/officer_review.json"
-    },
-    {
-      "id": "sltb-xml-download--officer-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb_xml_download/officer_review_jsonform.json"
-    },
-    {
-      "id": "sltb-xml-download--cusdec-view-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb_xml_download/cusdec_view_jsonform.json"
-    },
-    {
-      "id": "sltb-xml-download--submission-view",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb_xml_download/submission_view_markdown.json"
-    },
-    {
       "id": "sltb_final_decision",
       "kind": "task_config",
       "version": "",
@@ -283,84 +217,6 @@
       "path": "sltb_levy_payment_review_receipt/userinput_jsonform.json"
     },
     {
-      "id": "sltb-lab-report-verification--awaiting-resubmission",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb_lab_report_verification/awaiting_resubmission_markdown.json"
-    },
-    {
-      "id": "sltb-lab-report-verification--notify-decision",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "sltb_lab_report_verification/notify_decision.json"
-    },
-    {
-      "id": "sltb-lab-report-verification--officer-review",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "sltb_lab_report_verification/officer_review.json"
-    },
-    {
-      "id": "sltb-lab-report-verification--review-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb_lab_report_verification/officer_review_jsonform.json"
-    },
-    {
-      "id": "sltb-lab-report-verification--previous-review",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb_lab_report_verification/previous_review_markdown.json"
-    },
-    {
-      "id": "sltb-lab-report-verification--review:render",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb_lab_report_verification/render.json"
-    },
-    {
-      "id": "sltb-lab-report-verification--request-info",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "sltb_lab_report_verification/request_info.json"
-    },
-    {
-      "id": "sltb-lab-report-verification--review-workflow",
-      "kind": "workflow",
-      "version": "",
-      "path": "sltb_lab_report_verification/review_workflow.json"
-    },
-    {
-      "id": "sltb_lab_report_verification",
-      "kind": "task_config",
-      "version": "",
-      "path": "sltb_lab_report_verification/sltb_lab_report_verification.taskconfig.json"
-    },
-    {
-      "id": "sltb-lab-report-verification--submission-view",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb_lab_report_verification/submission_view_markdown.json"
-    },
-    {
-      "id": "sltb-lab-report-verification--review",
-      "kind": "task_template",
-      "version": "",
-      "path": "sltb_lab_report_verification/task_template.json"
-    },
-    {
-      "id": "sltb-lab-report-verification--upload-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb_lab_report_verification/userinput_jsonform.json"
-    },
-    {
-      "id": "sltb_lab_report_verification",
-      "kind": "workflow",
-      "version": "",
-      "path": "sltb_lab_report_verification/workflow.json"
-    },
-    {
       "id": "sltb_levy_payment_confirm_pinpack",
       "kind": "task_config",
       "version": "",
@@ -419,6 +275,24 @@
       "kind": "generic_template",
       "version": "",
       "path": "sltb_levy_payment_confirm_pinpack/submitted_info_markdown.json"
+    },
+    {
+      "id": "sltb-levy-payment-confirm-pinpack--awaiting-resubmission",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_levy_payment_confirm_pinpack/awaiting_resubmission_markdown.json"
+    },
+    {
+      "id": "sltb-levy-payment-confirm-pinpack--previous-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_levy_payment_confirm_pinpack/previous_review_markdown.json"
+    },
+    {
+      "id": "sltb-levy-payment-confirm-pinpack--request-info",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb_levy_payment_confirm_pinpack/request_info.json"
     },
     {
       "id": "sltb_sample_schedule",
@@ -673,6 +547,60 @@
       "path": "sltb_lab_decision/submission_view_markdown.json"
     },
     {
+      "id": "sltb-tasting-result--notify-decision",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb_tasting_result/notify_decision.json"
+    },
+    {
+      "id": "sltb-tasting-result--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb_tasting_result/officer_review.json"
+    },
+    {
+      "id": "sltb-tasting-result--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_tasting_result/officer_review_jsonform.json"
+    },
+    {
+      "id": "sltb-tasting-result--review:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_tasting_result/render.json"
+    },
+    {
+      "id": "sltb-tasting-result--review-workflow",
+      "kind": "workflow",
+      "version": "",
+      "path": "sltb_tasting_result/review_workflow.json"
+    },
+    {
+      "id": "sltb_tasting_result",
+      "kind": "task_config",
+      "version": "",
+      "path": "sltb_tasting_result/sltb_tasting_result.taskconfig.json"
+    },
+    {
+      "id": "sltb-tasting-result--submission-view",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_tasting_result/submission_view_markdown.json"
+    },
+    {
+      "id": "sltb-tasting-result--review",
+      "kind": "task_template",
+      "version": "",
+      "path": "sltb_tasting_result/task_template.json"
+    },
+    {
+      "id": "sltb_tasting_result",
+      "kind": "workflow",
+      "version": "",
+      "path": "sltb_tasting_result/workflow.json"
+    },
+    {
       "id": "sltb_lab_testing",
       "kind": "task_config",
       "version": "",
@@ -859,24 +787,6 @@
       "path": "sltb_payment_confirm/submission_view_markdown.json"
     },
     {
-      "id": "sltb-payment-confirm--request-info",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "sltb_payment_confirm/request_info.json"
-    },
-    {
-      "id": "sltb-payment-confirm--previous-review",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb_payment_confirm/previous_review_markdown.json"
-    },
-    {
-      "id": "sltb-payment-confirm--awaiting-resubmission",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb_payment_confirm/awaiting_resubmission_markdown.json"
-    },
-    {
       "id": "sltb-payment--confirm-form",
       "kind": "generic_template",
       "version": "",
@@ -887,6 +797,24 @@
       "kind": "task_config",
       "version": "",
       "path": "sltb_payment_confirm/sltb_lab_fee_confirm_payment.taskconfig.json"
+    },
+    {
+      "id": "sltb-payment-confirm--awaiting-resubmission",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_payment_confirm/awaiting_resubmission_markdown.json"
+    },
+    {
+      "id": "sltb-payment-confirm--previous-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_payment_confirm/previous_review_markdown.json"
+    },
+    {
+      "id": "sltb-payment-confirm--request-info",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb_payment_confirm/request_info.json"
     }
   ]
 }

@@ -1,18 +1,19 @@
 {
   "id": "sltb-lab-decision-flow",
-  "name": "Officer Lab Testing Decision",
+  "name": "Officer Tasting Decision",
   "nodes": [
     { "id": "start", "type": "START" },
     {
       "id": "officer_decide",
       "type": "TASK",
-      "name": "Decide if Lab Testing is Required",
+      "name": "Decide if Tasting is Required",
       "task_template_id": "sltb-lab-decision--officer",
       "input_mapping": {
-        "sample_number": "sample_number"
+        "userform": "submission"
       },
       "output_mapping": {
-        "lab_testing_required": "decision.lab_testing_required",
+        "tasting_required": "decision.tasting_required",
+        "collection_method?": "decision.collection_method",
         "decision_notes?": "decision.decision_notes"
       }
     },

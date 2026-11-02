@@ -15,10 +15,10 @@
       "phase": "PRE_RESUME",
       "properties": {
         "QUEUED_EXTERNALLY": {
-          "success": [
+          "deducted": [
             "sltb"
           ],
-          "not_received": [
+          "insufficient_funds": [
             "sltb"
           ]
         }

@@ -3,19 +3,50 @@
   "title": "Record Lab Test Results",
   "schema": {
     "type": "object",
-    "required": ["test_result", "test_date", "test_report_file"],
+    "required": ["lab_tests", "test_result", "test_date", "test_report_file"],
     "properties": {
       "sample_number": {
         "type": "string",
         "title": "Sample Number",
         "readOnly": true
       },
+      "lab_tests": {
+        "type": "array",
+        "title": "Lab Tests",
+        "description": "One entry per test. If any test fails, the sample fails.",
+        "minItems": 1,
+        "items": {
+          "type": "object",
+          "required": ["test_name", "result"],
+          "properties": {
+            "test_name": {
+              "type": "string",
+              "title": "Test",
+              "example": "Moisture Content"
+            },
+            "result": {
+              "type": "string",
+              "title": "Result",
+              "oneOf": [
+                { "const": "pass", "title": "Pass" },
+                { "const": "fail", "title": "Fail" }
+              ]
+            },
+            "remarks": {
+              "type": "string",
+              "title": "Remarks (Optional)",
+              "example": "5.8% — within the 7% limit."
+            }
+          }
+        }
+      },
       "test_result": {
         "type": "string",
-        "title": "Test Result",
+        "title": "Overall Result",
+        "description": "Fail if any test failed. A failed sample is charged the lab test fee and the application is rejected.",
         "oneOf": [
-          { "const": "pass", "title": "Pass — Sample meets SLTB quality standards" },
-          { "const": "fail", "title": "Fail — Sample does not meet SLTB quality standards" }
+          { "const": "pass", "title": "Pass — Every test passed" },
+          { "const": "fail", "title": "Fail — At least one test failed" }
         ]
       },
       "lab_fee_amount": {
@@ -35,7 +66,7 @@
         "type": "string",
         "format": "file",
         "title": "Lab Test Report (PDF)",
-        "description": "Upload the signed lab test report. The trader downloads it and submits it to the SLTB Export Division for verification.",
+        "description": "Upload the signed lab test report. The trader can download it.",
         "x-file": { "accept": ".pdf" }
       },
       "test_report_ref": {
@@ -56,6 +87,21 @@
           "required": ["test_result"]
         },
         "then": { "required": ["lab_fee_amount"] }
+      },
+      {
+        "if": {
+          "properties": {
+            "lab_tests": {
+              "contains": {
+                "properties": { "result": { "const": "fail" } },
+                "required": ["result"]
+              }
+            }
+          },
+          "required": ["lab_tests"]
+        },
+        "then": { "properties": { "test_result": { "const": "fail" } } },
+        "else": { "properties": { "test_result": { "const": "pass" } } }
       }
     ]
   },
@@ -73,6 +119,7 @@
           }
         }
       },
+      { "type": "Control", "scope": "#/properties/lab_tests" },
       { "type": "Control", "scope": "#/properties/test_result" },
       {
         "type": "Control",

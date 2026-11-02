@@ -1,7 +1,7 @@
 {
   "id": "sltb-final-decision-flow:render",
   "type": "APPLICATION",
-  "title": "[SLTB] Final Application Decision",
+  "title": "[SLTB 8] Final Application Decision",
   "files": [
     "submission.cusdec_draft.supportingDocuments.scannedDocuments[*].fileBase64"
   ],

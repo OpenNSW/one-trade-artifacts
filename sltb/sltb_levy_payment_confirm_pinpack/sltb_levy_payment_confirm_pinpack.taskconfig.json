@@ -3,7 +3,7 @@
   "taskCode": "sltb_levy_payment_confirm_pinpack",
   "workflow": "sltb_levy_payment_confirm_pinpack",
   "meta": {
-    "title": "SLTB PinPack Levy Deduction Confirmation",
-    "description": "Officer confirms that the SLTB levy has been deducted from the trader's pre-funded PinPack account."
+    "title": "SLTB Finpak Levy Deduction Confirmation",
+    "description": "Officer confirms that the SLTB levy has been deducted from the trader's pre-funded Finpak account."
   }
 }

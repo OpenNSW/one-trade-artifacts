@@ -1,6 +1,6 @@
 {
   "id": "sltb_payment_confirm",
-  "name": "SLTB Payment Confirmation",
+  "name": "SLTB Finpak Lab Test Fee Deduction",
   "nodes": [
     {
       "id": "start",

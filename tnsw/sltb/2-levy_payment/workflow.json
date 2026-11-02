@@ -39,6 +39,12 @@
       }
     },
     {
+      "id": "govpay-result-gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "GovPay Payment Succeeded?"
+    },
+    {
       "id": "generate-slip-reference-task",
       "type": "TASK",
       "task_template_id": "sltb-pay-levy--generate-reference",
@@ -101,11 +107,26 @@
       "task_template_id": "sltb-pay-levy--confirm-pinpack",
       "input_mapping": {
         "reference_number": "reference_number",
-        "levy_amount": "amount"
+        "levy_amount": "amount",
+        "finpak_agency_token?": "replyToken"
       },
       "output_mapping": {
-        "deduction_status": "payment.deduction_status"
+        "deduction_status": "payment.deduction_status",
+        "remarks?": "payment.finpak_remarks",
+        "callbackToken?": "finpak_agency_token"
       }
+    },
+    {
+      "id": "pinpack-result-gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Finpak Fee Deducted?"
+    },
+    {
+      "id": "finpak-top-up-task",
+      "type": "TASK",
+      "task_template_id": "sltb-pay-levy--finpak-top-up",
+      "input_mapping": {}
     },
     {
       "id": "join-gateway",
@@ -136,9 +157,21 @@
       "condition": "payment_method.selected_method == 'govpay'"
     },
     {
-      "id": "e-govpay-join",
+      "id": "e_govpay_result",
       "source_id": "pay-govpay-task",
-      "target_id": "join-gateway"
+      "target_id": "govpay-result-gateway"
+    },
+    {
+      "id": "e_govpay_success",
+      "source_id": "govpay-result-gateway",
+      "target_id": "join-gateway",
+      "condition": "payment.payment_status == 'success'"
+    },
+    {
+      "id": "e_govpay_failed",
+      "source_id": "govpay-result-gateway",
+      "target_id": "select-method-task",
+      "condition": "payment.payment_status == 'fail'"
     },
     {
       "id": "e-slip-reference",
@@ -187,12 +220,29 @@
     {
       "id": "e-pinpack-join",
       "source_id": "confirm-pinpack-task",
-      "target_id": "join-gateway"
+      "target_id": "pinpack-result-gateway"
+    },
+    {
+      "id": "e_pinpack_result_gateway_deducted",
+      "source_id": "pinpack-result-gateway",
+      "target_id": "join-gateway",
+      "condition": "payment.deduction_status == 'deducted'"
+    },
+    {
+      "id": "e_pinpack_result_gateway_insufficient",
+      "source_id": "pinpack-result-gateway",
+      "target_id": "finpak-top-up-task",
+      "condition": "payment.deduction_status == 'insufficient_funds'"
     },
     {
       "id": "e-join-end",
       "source_id": "join-gateway",
       "target_id": "end"
+    },
+    {
+      "id": "e_finpak_topped_up",
+      "source_id": "finpak-top-up-task",
+      "target_id": "confirm-pinpack-task"
     }
   ]
 }

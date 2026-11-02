@@ -17,18 +17,18 @@
           },
           {
             "const": "needs_more_info",
-            "title": "Request Resubmission (Needs More Info)"
+            "title": "Request Modifications (Blend Sheet or CusDec)"
           },
           {
             "const": "reject",
-            "title": "Reject Application (Blend Sheet Not Reconcilable)"
+            "title": "Reject Application"
           }
         ]
       },
       "feedback": {
         "type": "string",
         "title": "Officer Feedback & Deficiencies",
-        "description": "Provide detail if resubmission is required.",
+        "description": "Required when requesting modifications or rejecting the application.",
         "example": "Blendsheet figures don't reconcile with CUSDEC quantities. Please re-upload with corrected totals."
       },
       "levy_amount": {
@@ -37,25 +37,6 @@
         "exclusiveMinimum": 0,
         "example": 12500,
         "description": "Enter the calculated levy fee for the blendsheet consignment."
-      },
-      "collection_method": {
-        "type": "string",
-        "title": "Sample Collection Method",
-        "oneOf": [
-          {
-            "const": "none",
-            "title": "No Sample Required"
-          },
-          {
-            "const": "pickup",
-            "title": "Warehouse Pickup (Tea Inspector visits warehouse)"
-          },
-          {
-            "const": "dropoff",
-            "title": "Trader Drop-off (Trader delivers sample to SLTB Export Division)"
-          }
-        ],
-        "default": "pickup"
       }
     },
     "allOf": [
@@ -80,7 +61,7 @@
         "if": {
           "properties": {
             "review_outcome": {
-              "const": "reject"
+              "enum": ["needs_more_info", "reject"]
             }
           },
           "required": [
@@ -107,19 +88,6 @@
         "scope": "#/properties/feedback",
         "options": {
           "multiLine": true
-        }
-      },
-      {
-        "type": "Control",
-        "scope": "#/properties/collection_method",
-        "rule": {
-          "effect": "SHOW",
-          "condition": {
-            "scope": "#/properties/review_outcome",
-            "schema": {
-              "const": "approve"
-            }
-          }
         }
       },
       {

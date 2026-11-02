@@ -1,0 +1,4 @@
+{
+  "id": "sltb-pay-levy--payment-failed",
+  "template": "{{if eq .payment_status \"fail\"}}### ⚠️ Your GovPay payment did not go through\n\nNo levy has been taken. Choose a payment method below and pay the SLTB Levy again.{{end}}"
+}

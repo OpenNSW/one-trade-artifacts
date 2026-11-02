@@ -1,7 +1,7 @@
 {
   "id": "sltb-submit-blendsheet-flow:render",
   "type": "APPLICATION",
-  "title": "[SLTB] Submit & Review Blend Sheet",
+  "title": "[SLTB 1] Submit & Review Blend Sheet and CusDec",
   "files": [
     "userform.cusdec_draft.supportingDocuments.scannedDocuments[*].fileBase64",
     "submission.cusdec_draft.supportingDocuments.scannedDocuments[*].fileBase64"

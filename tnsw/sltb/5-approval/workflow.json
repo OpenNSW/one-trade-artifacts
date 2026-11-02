@@ -12,12 +12,11 @@
       "task_template_id": "sltb-final-decision--officer-review",
       "input_mapping": {
         "userform": "submission",
-        "sample_number?": "sample_number"
+        "sample_number?": "submission.sample_number"
       },
       "output_mapping": {
         "final_decision_outcome": "decision.final_decision_outcome",
-        "remarks?": "decision.remarks",
-        "asycuda_approval_confirmed?": "decision.asycuda_approval_confirmed"
+        "remarks?": "decision.remarks"
       }
     },
     {
