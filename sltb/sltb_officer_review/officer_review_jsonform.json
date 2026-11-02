@@ -63,7 +63,7 @@
                   "quantity_to_be_exported": "quantity_to_be_exported",
                   "levy_multiplier": "levy_multiplier"
                 },
-                "formula": "quantity_to_be_exported * levy_multiplier",
+                "formula": "ROUND(quantity_to_be_exported * levy_multiplier, 2)",
                 "decimals": 2
               }
             }
@@ -82,7 +82,7 @@
               "aggregate": "sum"
             }
           },
-          "formula": "total_levy",
+          "formula": "ROUND(total_levy, 2)",
           "decimals": 2
         }
       },
