@@ -3,6 +3,7 @@
   "type": "APPLICATION",
   "workflow_id": "fcau-warehouse-inspection--review-workflow",
   "render_config_id": "fcau-warehouse-inspection--review:render",
+  "claimable": true,
   "read": {
     "roles": [
       "officer"

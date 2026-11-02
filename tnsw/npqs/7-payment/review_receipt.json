@@ -1,0 +1,28 @@
+{
+  "id": "npqs-pay-certificate-fee--review-receipt",
+  "task_type": "EXTERNAL_REVIEW",
+  "output_namespace": "payment_review",
+  "plugin_properties": {
+    "officer_jsonforms_id": "npqs-payment--review-form",
+    "service_id": "npqs",
+    "path": "/api/v1/inject",
+    "task_code": "npqs_certificate_fee_review_receipt",
+    "reply_command": "resubmit"
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "QUEUED_EXTERNALLY": {
+          "success": [
+            "npqs"
+          ],
+          "needs_more_info": [
+            "npqs"
+          ]
+        }
+      }
+    }
+  ]
+}

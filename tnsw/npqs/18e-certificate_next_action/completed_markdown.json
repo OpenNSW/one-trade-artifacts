@@ -1,0 +1,4 @@
+{
+  "id": "npqs-certificate-next-action--completed-msg",
+  "template": "{{ $kind := \"\" }}{{ with .action }}{{ $kind = .action }}{{ end }}{{ if eq $kind \"replace\" }}### Replacement Requested\n\nYou asked to replace the certificate. The request is now with the NPQS officer.{{ else }}### Process Complete\n\nThe certificate stands as issued.\n\n#### [📄 Download Phytosanitary Certificate](files:{{ .certificate_url }}){{ end }}"
+}

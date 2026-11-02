@@ -7,6 +7,12 @@
       "type": "START"
     },
     {
+      "id": "gw_request",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Sent through the IPPC ePhyto Hub?"
+    },
+    {
       "id": "request_replacement",
       "type": "TASK",
       "task_template_id": "npqs-certificate-status--request-replacement",
@@ -26,6 +32,21 @@
       }
     },
     {
+      "id": "request_replacement_non_ephyto",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-status--request-replacement",
+      "input_mapping": {
+        "action?": "action",
+        "reference_number?": "submission.reference_number",
+        "action.replacement_reason?": "submission.replacement_reason",
+        "ephyto_country": "submission.ephyto_country"
+      },
+      "output_mapping": {
+        "decision": "replacement.decision",
+        "remarks?": "replacement.remarks"
+      }
+    },
+    {
       "id": "gw_replacement",
       "type": "GATEWAY",
       "gateway_type": "EXCLUSIVE_SPLIT"
@@ -36,7 +57,7 @@
       "task_template_id": "npqs-apply-phyto-cert--user-input",
       "input_mapping": {
         "userform?": "userform",
-        "certificate_id": "certificate_id",
+        "certificate_id?": "certificate_id",
         "replacement?": "replacement",
         "ephyto_country": "ephyto_country"
       },
@@ -101,11 +122,28 @@
     {
       "id": "e1",
       "source_id": "start",
-      "target_id": "request_replacement"
+      "target_id": "gw_request"
+    },
+    {
+      "id": "e_request_ephyto",
+      "source_id": "gw_request",
+      "target_id": "request_replacement",
+      "condition": "ephyto_country == 'ephyto'"
+    },
+    {
+      "id": "e_request_non_ephyto",
+      "source_id": "gw_request",
+      "target_id": "request_replacement_non_ephyto",
+      "condition": "ephyto_country == 'non_ephyto'"
     },
     {
       "id": "e2",
       "source_id": "request_replacement",
+      "target_id": "gw_replacement"
+    },
+    {
+      "id": "e2_non_ephyto",
+      "source_id": "request_replacement_non_ephyto",
       "target_id": "gw_replacement"
     },
     {

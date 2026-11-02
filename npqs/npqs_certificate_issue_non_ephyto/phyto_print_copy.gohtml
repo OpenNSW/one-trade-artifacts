@@ -1,0 +1,168 @@
+{{- /*
+  NPQS phytosanitary certificate for a non-ePhyto country: the values only,
+  placed to fall into the boxes of the Department of Agriculture's pre-printed
+  Phytosanitary Certificate form (A4). The officer prints it on the form, signs
+  it and stamps it; the form itself carries the labels, the lines and the
+  certificate's serial number.
+
+  Every position is in millimetres from the sheet's top-left corner, measured
+  from a scan of the blank form. Which value goes in which box follows the
+  spreadsheet NPQS printed the form from (Print.xls); a box it printed NIL in
+  prints NIL here when there is no value for it.
+
+    .application  the trader's application (userform)
+    .items        the officer's issuance list (certificate_items): the items
+                  to leave off (include_in_certificate: false)
+*/ -}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Phytosanitary Certificate Print Copy</title>
+<style>
+  /* No margins and no scaling: the boxes are measured from the sheet's edges. */
+  @page {
+    size: A4;
+    margin: 0;
+    /* Claiming the margin boxes keeps the browser's own date, title and URL lines off the sheet. */
+    @top-left { content: ""; }
+    @top-center { content: ""; }
+    @top-right { content: ""; }
+    @bottom-left { content: ""; }
+    @bottom-center { content: ""; }
+    @bottom-right { content: ""; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Arial, Helvetica, sans-serif; font-size: 10pt; line-height: 4.5mm; color: #000; }
+  .sheet { position: relative; width: 210mm; height: 297mm; overflow: hidden; }
+  /* One box of the form. Text that doesn't fit is cut off at the box's edge rather than printed over the next box. */
+  .f { position: absolute; overflow: hidden; }
+  .pre { white-space: pre-line; }
+  /* 08 ends at the "Number of packages" column (151.9mm) and 09 starts at 167.4mm; the gap stays empty, as in Print.xls. */
+  table.goods { width: 100%; border-collapse: collapse; table-layout: fixed; }
+  table.goods td { padding: 0; vertical-align: top; }
+  table.goods td.desc { width: 125.2mm; }
+  table.goods td.qty { width: 46.3mm; padding-left: 19.3mm; }
+  .hint { margin: 4mm auto; width: 210mm; padding: 2mm 3mm; border: 1px solid #999; background: #f4f4f4; font-size: 10pt; line-height: normal; }
+  @media screen {
+    body { background: #e5e5e5; padding-bottom: 8mm; }
+    .sheet { background: #fff; margin: 0 auto; box-shadow: 0 0 3mm rgba(0, 0, 0, 0.25); }
+  }
+  @media print {
+    .hint { display: none; }
+  }
+</style>
+</head>
+<body>
+<p class="hint">Load the pre-printed Phytosanitary Certificate form in the printer, then press Ctrl+P (&#8984;P on a Mac). Print at 100% scale (not "Fit to page") with the browser's headers and footers turned off.</p>
+{{- $app := .application }}
+<div class="sheet">
+
+{{- /* 01. Name and address of exporter */}}
+<div class="f pre" style="left:24.7mm; top:10.5mm; width:78mm; height:26.5mm;">{{ $app.exporter_name }}
+{{ $app.exporter_address }}{{ with $app.exporter_country }}
+{{ . }}{{ end }}</div>
+
+{{- /* 03. Declared name and address of consignee */}}
+<div class="f pre" style="left:24.7mm; top:43mm; width:78mm; height:33.5mm;">{{ $app.consignee_name }}
+{{ $app.consignee_address }}{{ with $app.consignee_country.label }}
+{{ . }}{{ end }}</div>
+
+{{- /* 04. To: Plant Protection Organization(s) of */}}
+<div class="f" style="left:120.7mm; top:64.2mm; width:74mm; height:12.5mm;">{{ $app.importing_country.label }}</div>
+
+{{- /* 05. Declared means of conveyance */}}
+<div class="f" style="left:24.7mm; top:82mm; width:78mm; height:10mm;">{{- if and $app.transport_details (gt (len $app.transport_details) 0) -}}
+{{- range $i, $t := $app.transport_details -}}
+{{- if $i }}, {{ end -}}
+{{- $mode := print $t.transport_mode -}}
+{{- lookup $mode "1" "Air transport" "2" "Mail" "3" "Maritime transport" "4" "Fixed transport installations" "5" "Inland water transport" "6" "Multimodal transport" "7" "Rail transport" "8" "Road transport" "9" "Transport mode not applicable" "10" "Transport mode not specified" -}}
+{{- if and (ne $mode "") (ne $mode "9") (ne $mode "10") -}}
+{{- if $t.transport_name }} - {{ $t.transport_name }}{{ end -}}
+{{- if $t.transport_number }} ({{ $t.transport_number }}){{ end -}}
+{{- end -}}
+{{- end -}}
+{{- else if $app.transport_mode -}}
+{{- with $app.transport_mode }}{{ .label }}{{ end -}}
+{{- if $app.vessel_name }} - {{ $app.vessel_name }}{{ end -}}
+{{- if $app.voyage_number }} - Voyage {{ $app.voyage_number }}{{ end -}}
+{{- end -}}</div>
+
+{{- /* 06. Place of origin: each certificate item's country of origin */}}
+<div class="f" style="left:120.7mm; top:82mm; width:74mm; height:10mm;">
+{{- $first := true -}}
+{{- range $c := $app.commodities -}}
+{{- $included := true -}}
+{{- range $.items }}{{ if and (eq (print .id) (print $c.id)) (eq (print .include_in_certificate) "false") }}{{ $included = false }}{{ end }}{{ end -}}
+{{- if $included -}}
+{{- if not $first }}, {{ end }}{{ $first = false -}}
+{{- $c.origin_country.label }}{{ if $c.origin_area }} ({{ $c.origin_area }}){{ end -}}
+{{- end -}}
+{{- end -}}
+</div>
+
+{{- /* 07. Declared point of entry */}}
+<div class="f" style="left:24.7mm; top:97.2mm; width:78mm; height:8.5mm;">{{ $app.point_of_entry_port }}{{ if and $app.point_of_entry_port $app.point_of_entry_country.label }}, {{ end }}{{ $app.point_of_entry_country.label }}</div>
+
+{{- /* Reg. No. */}}
+<div class="f" style="left:120.7mm; top:97.2mm; width:74mm; height:8.5mm;">NIL</div>
+
+{{- /* 08. Description of packages, distinguishing marks and name of produce, and 09. Quantity declared, one row per certificate item */}}
+<div class="f" style="left:24.7mm; top:115mm; width:171.5mm; height:65.5mm;">
+<table class="goods">
+{{- with $app.distinguishing_marks }}
+  <tr><td class="desc pre">{{ . }}</td><td class="qty"></td></tr>
+{{- end }}
+{{- range $c := $app.commodities }}
+{{- $included := true }}
+{{- range $.items }}{{ if and (eq (print .id) (print $c.id)) (eq (print .include_in_certificate) "false") }}{{ $included = false }}{{ end }}{{ end }}
+{{- if $included }}
+  <tr>
+    <td class="desc">
+      <div>
+        {{- if eq (print $c.package_arrangement) "free_text" }}{{ $c.packages_free_text }}
+        {{- else if eq (print $c.package_arrangement) "bulk" }}In bulk
+        {{- else }}
+          {{- range $i, $p := $c.packages }}{{ if $i }}, {{ end }}{{ $p.count }} {{ if $p.type.label }}{{ $p.type.label }}{{ else }}{{ $p.type.value }}{{ end }}{{ end }} containing
+        {{- end -}}
+      </div>
+      <div>{{ $c.commodity_common_name.label }}{{ if $c.commodity_description }}, {{ $c.commodity_description }}{{ end }}</div>
+      <div>( {{ $c.commodity_botanical_name }} )</div>
+    </td>
+    <td class="qty">
+      {{- if not (zero $c.quantity_net_weight) }}{{ $c.quantity_net_weight }} {{ $c.quantity_net_weight_unit.label }}
+      {{- else if not (zero $c.quantity_gross_weight) }}{{ $c.quantity_gross_weight }} {{ $c.quantity_gross_weight_unit.label }}{{ end -}}
+    </td>
+  </tr>
+{{- end }}
+{{- end }}
+</table>
+</div>
+
+{{- /* 11. Additional declaration */}}
+<div class="f pre" style="left:24.7mm; top:198.5mm; width:170mm; height:27mm;">{{ with $app.additional_declaration }}{{ . }}{{ else }}NIL{{ end }}</div>
+
+{{- /* 12. Treatment */}}
+<div class="f pre" style="left:24.7mm; top:236.8mm; width:78mm; height:6mm;">{{ with $app.disinfestation_treatment }}{{ . }}{{ else }}NIL{{ end }}</div>
+
+{{- /* 13. Chemical (active ingredient) */}}
+<div class="f" style="left:24.7mm; top:248.3mm; width:37mm; height:7.5mm;">NIL</div>
+
+{{- /* 14. Duration and temperature */}}
+<div class="f" style="left:79.5mm; top:248.3mm; width:24.5mm; height:7.5mm;">NIL</div>
+
+{{- /* 15. Concentration */}}
+<div class="f" style="left:24.7mm; top:260.5mm; width:37mm; height:9mm;">NIL</div>
+
+{{- /* 16. Date (of treatment) */}}
+<div class="f" style="left:79.5mm; top:260.5mm; width:24.5mm; height:9mm;">NIL</div>
+
+{{- /* 17. Additional information */}}
+<div class="f" style="left:24.7mm; top:274.5mm; width:78mm; height:13mm;">NIL</div>
+
+{{- /* 18. Place of issue */}}
+<div class="f" style="left:120.7mm; top:231.5mm; width:74mm; height:9mm;">{{ $app.nppo_office_location.label }}</div>
+
+</div>
+</body>
+</html>

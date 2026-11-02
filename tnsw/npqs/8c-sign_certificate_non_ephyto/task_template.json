@@ -1,0 +1,12 @@
+{
+  "id": "npqs-sign-certificate-non-ephyto",
+  "type": "REVIEW",
+  "workflow_id": "npqs-sign-certificate-non-ephyto",
+  "render_config_id": "npqs-sign-certificate-non-ephyto:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
+}

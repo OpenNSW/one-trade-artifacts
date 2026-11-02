@@ -1,0 +1,41 @@
+{
+  "id": "npqs-sign-certificate-non-ephyto",
+  "name": "Issue Signed Phytosanitary Certificate (Non-ePhyto)",
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "officer_sign",
+      "type": "TASK",
+      "task_template_id": "npqs-sign-certificate-non-ephyto--officer-review",
+      "input_mapping": {
+        "reference_number?": "reference_number",
+        "reference_number": "submission.reference_number",
+        "userform": "submission",
+        "print_copy_key": "submission.print_copy_key"
+      },
+      "output_mapping": {
+        "certificate_url": "certificate_url",
+        "comments?": "comments"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "officer_sign"
+    },
+    {
+      "id": "e2",
+      "source_id": "officer_sign",
+      "target_id": "end"
+    }
+  ]
+}

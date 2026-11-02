@@ -1,0 +1,294 @@
+{
+  "id": "npqs-issue-certificate-non-ephyto--officer-form",
+  "title": "Prepare the Phytosanitary Certificate for Printing",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "certificate_items": {
+        "type": "array",
+        "title": "Items To Include On This Certificate",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Item ID",
+              "readOnly": true
+            },
+            "commodity_common_name": {
+              "type": "object",
+              "title": "Commodity Name",
+              "properties": {
+                "value": {
+                  "type": "string",
+                  "readOnly": true
+                },
+                "label": {
+                  "type": "string",
+                  "readOnly": true
+                }
+              },
+              "required": [
+                "value"
+              ],
+              "x-search": {
+                "service": "static-data",
+                "mode": "large-searchable-list",
+                "displayTemplate": "{name}",
+                "params": {
+                  "id": "npqs-apply-phyto-cert--commodity-common-names",
+                  "version": "1"
+                }
+              }
+            },
+            "include_in_certificate": {
+              "type": "boolean",
+              "title": "Include on Certificate"
+            },
+            "sample_test_result": {
+              "type": "string",
+              "title": "Lab Test Result",
+              "readOnly": true,
+              "oneOf": [
+                {
+                  "const": "pass",
+                  "title": "Pass"
+                },
+                {
+                  "const": "fail_resubmit",
+                  "title": "Fail (resubmission allowed)"
+                },
+                {
+                  "const": "fail_final",
+                  "title": "Fail"
+                },
+                {
+                  "const": "skipped",
+                  "title": "Skipped"
+                }
+              ],
+              "default": "skipped"
+            },
+            "visual_result": {
+              "type": "string",
+              "title": "Visual Inspection 1 Result",
+              "readOnly": true,
+              "oneOf": [
+                {
+                  "const": "pass",
+                  "title": "Pass"
+                },
+                {
+                  "const": "fail",
+                  "title": "Fail"
+                },
+                {
+                  "const": "skipped",
+                  "title": "Skipped"
+                }
+              ],
+              "default": "skipped"
+            },
+            "treatment_result": {
+              "type": "string",
+              "title": "Treatment Result",
+              "readOnly": true,
+              "oneOf": [
+                {
+                  "const": "pass",
+                  "title": "Pass"
+                },
+                {
+                  "const": "fail",
+                  "title": "Fail"
+                },
+                {
+                  "const": "skipped",
+                  "title": "Skipped"
+                }
+              ],
+              "default": "skipped"
+            },
+            "visual2_result": {
+              "type": "string",
+              "title": "Visual Inspection 2 Result",
+              "readOnly": true,
+              "oneOf": [
+                {
+                  "const": "pass",
+                  "title": "Pass"
+                },
+                {
+                  "const": "fail",
+                  "title": "Fail"
+                },
+                {
+                  "const": "skipped",
+                  "title": "Skipped"
+                }
+              ],
+              "default": "skipped"
+            },
+            "commodity_botanical_name": {
+              "type": "string",
+              "title": "Botanical Name",
+              "readOnly": true
+            }
+          },
+          "required": [
+            "id"
+          ],
+          "if": {
+            "anyOf": [
+              {
+                "properties": {
+                  "sample_test_result": {
+                    "enum": [
+                      "fail_final",
+                      "fail_resubmit"
+                    ]
+                  }
+                },
+                "required": [
+                  "sample_test_result"
+                ]
+              },
+              {
+                "properties": {
+                  "visual_result": {
+                    "enum": [
+                      "fail"
+                    ]
+                  }
+                },
+                "required": [
+                  "visual_result"
+                ]
+              },
+              {
+                "properties": {
+                  "treatment_result": {
+                    "enum": [
+                      "fail"
+                    ]
+                  }
+                },
+                "required": [
+                  "treatment_result"
+                ]
+              },
+              {
+                "properties": {
+                  "visual2_result": {
+                    "enum": [
+                      "fail"
+                    ]
+                  }
+                },
+                "required": [
+                  "visual2_result"
+                ]
+              }
+            ]
+          },
+          "then": {
+            "properties": {
+              "include_in_certificate": {
+                "default": false
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "include_in_certificate": {
+                "default": true
+              }
+            }
+          }
+        }
+      },
+      "certificate_type": {
+        "type": "string",
+        "title": "Application Certificate Type",
+        "readOnly": true
+      },
+      "comments": {
+        "type": "string",
+        "title": "Officer Remarks",
+        "example": "Issued phytosanitary certificate after validating treatment and visual inspection records."
+      }
+    },
+    "required": [
+      "certificate_items"
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/certificate_items",
+        "options": {
+          "detail": {
+            "type": "VerticalLayout",
+            "elements": [
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/id"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/commodity_common_name/properties/label",
+                    "label": "Commodity Name"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/commodity_botanical_name"
+                  }
+                ]
+              },
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/sample_test_result"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/visual_result"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/treatment_result"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/visual2_result"
+                  }
+                ]
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/include_in_certificate"
+              }
+            ]
+          },
+          "addable": false,
+          "removable": false
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/certificate_type"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/comments"
+      }
+    ]
+  }
+}

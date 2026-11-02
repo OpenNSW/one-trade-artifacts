@@ -1,0 +1,77 @@
+{
+  "id": "cda-payment--review-form",
+  "title": "CDA Payment Receipt Verification",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "payment_status": {
+        "type": "string",
+        "title": "Verification Outcome",
+        "oneOf": [
+          {
+            "const": "success",
+            "title": "Confirm Payment Received"
+          },
+          {
+            "const": "needs_more_info",
+            "title": "Needs Re-upload / Clarification"
+          }
+        ],
+        "default": "success"
+      },
+      "payment_feedback": {
+        "type": "string",
+        "title": "Officer Comments / Reason for Re-upload (Required if Needs Re-upload)",
+        "example": "The receipt is illegible. Please upload a clear copy of the bank transfer receipt."
+      }
+    },
+    "required": [
+      "payment_status"
+    ],
+    "if": {
+      "properties": {
+        "payment_status": {
+          "const": "needs_more_info"
+        }
+      },
+      "required": [
+        "payment_status"
+      ]
+    },
+    "then": {
+      "properties": {
+        "payment_feedback": {
+          "minLength": 1
+        }
+      },
+      "required": [
+        "payment_feedback"
+      ]
+    }
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/payment_status"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/payment_feedback",
+        "options": {
+          "multiLine": true
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/payment_status",
+            "schema": {
+              "const": "needs_more_info"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

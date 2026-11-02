@@ -15,6 +15,14 @@
           {
             "const": "govpay",
             "title": "GovPay (Bank/ATM/Online) [Offline Instructions]"
+          },
+          {
+            "const": "payment_slip",
+            "title": "Bank Transfer (Upload Payment Receipt)"
+          },
+          {
+            "const": "officer_confirm",
+            "title": "Pay at the CDA Counter (Officer Confirms Payment)"
           }
         ]
       }

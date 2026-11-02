@@ -1,0 +1,9 @@
+{
+  "id": "npqs-certificate-issue-non-ephyto--generate-print-copy",
+  "task_type": "HTML_DOCUMENT_GENERATOR",
+  "output_namespace": "print_copy",
+  "plugin_properties": {
+    "template_id": "npqs-phyto-print-copy--html",
+    "filename": "phytosanitary-certificate-print-copy.html"
+  }
+}

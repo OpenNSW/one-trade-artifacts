@@ -60,11 +60,24 @@
       }
     },
     {
+      "id": "generate_draft_certificate",
+      "type": "TASK",
+      "task_template_id": "npqs-application-review--generate-draft-certificate",
+      "input_mapping": {
+        "submission": "application"
+      },
+      "output_mapping": {
+        "draft_certificate": "draft_certificate",
+        "draft_certificate.key": "reviewform.draft_certificate_key"
+      }
+    },
+    {
       "id": "api_call",
       "type": "TASK",
       "task_template_id": "npqs-application-review--notify-decision",
       "input_mapping": {
         "callbackToken": "callbackToken",
+        "draft_certificate?": "draft_certificate",
         "reviewform?": "reviewform",
         "submission?": "submission",
         "taskId": "taskId",
@@ -105,10 +118,21 @@
       "target_id": "userform"
     },
     {
-      "id": "e_approve",
+      "id": "e_approve_ephyto",
+      "source_id": "decision_gateway",
+      "target_id": "generate_draft_certificate",
+      "condition": "reviewform.review_outcome == 'approve' && reviewform.ephyto_country == 'ephyto'"
+    },
+    {
+      "id": "e_draft_generated",
+      "source_id": "generate_draft_certificate",
+      "target_id": "api_call"
+    },
+    {
+      "id": "e_approve_non_ephyto",
       "source_id": "decision_gateway",
       "target_id": "api_call",
-      "condition": "reviewform.review_outcome == 'approve'"
+      "condition": "reviewform.review_outcome == 'approve' && reviewform.ephyto_country == 'non_ephyto'"
     },
     {
       "id": "e3",

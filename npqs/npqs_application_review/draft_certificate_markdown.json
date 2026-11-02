@@ -1,4 +1,4 @@
 {
   "id": "npqs-application-review--draft-certificate",
-  "template": "This draft shows how the Phytosanitary Certificate will read, built from the application as the applicant last submitted it. It is not a certificate: it is issued, with its number, at Certificate Issuance once every required inspection is complete.\n\n#### [📄 Download Draft Phytosanitary Certificate](files:{{.submission.draft_certificate_key}})\n\nOpen it and use your browser's print option to print it or save it as a PDF."
+  "template": "This draft shows how the Phytosanitary Certificate will read, built from the application as approved. It is not a certificate: it is issued, with its number, at Certificate Issuance once every required inspection is complete.\n\n#### [📄 Download Draft Phytosanitary Certificate](files:{{.draft_certificate.key}})\n\nOpen it and use your browser's print option to print it or save it as a PDF."
 }

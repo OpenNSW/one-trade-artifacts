@@ -1,0 +1,37 @@
+{
+  "id": "npqs-certificate-signed-upload--officer-form",
+  "title": "Upload the Signed Phytosanitary Certificate",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "certificate_url": {
+        "type": "string",
+        "format": "file",
+        "title": "Signed Phytosanitary Certificate (PDF)",
+        "x-file": {
+          "accept": ".pdf"
+        }
+      },
+      "comments": {
+        "type": "string",
+        "title": "Officer Remarks"
+      }
+    },
+    "required": [
+      "certificate_url"
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/certificate_url"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/comments"
+      }
+    ]
+  }
+}

@@ -113,6 +113,11 @@ alone does not publish anything.
   to macro workflows (`*_workflow.json`) and step sub-workflows (`<step>/workflow.json`)
   — both use the same `kind: "workflow"`, there is no separate kind for the macro level.
 - `task_template` — binds a workflow id to a render config (`render_config_id`).
+  `"claimable": true` lets an officer claim the task, so the others see who is working
+  it (a hint, never a lock). Every agency (`<agency>/`) task template sets it; the
+  `tnsw/` ones leave it out, and without it the task has no claims. It must be a
+  boolean: the backend can't serve a task whose `claimable` is anything else, so
+  `.github/scripts/check_agency_authz.py` fails CI on one.
 - `subtask_template` — a single node's behavior inside a step workflow: `task_type`
   (`USER_INPUT`, `EXTERNAL_REVIEW`, `PAYMENT`, `CHA_PERSIST_WRITER`,
   `HSCODE_SPLIT_BUILDER`, `CUSTOMS_CUSDEC_DISPATCH`, ...), `output_namespace`, and
@@ -237,6 +242,12 @@ See `tnsw/fcau/3-2-warehouse_inspection/workflow.json` or
   `.github/scripts/check_payload_schema.py` fails CI on a form step without it, a `form`
   the render doesn't show, or the extension on a step no person completes. A step that
   can't take it is listed, with the reason, in the script's `EXEMPT`.
+- An HTML document template (`html_template`, a `.gohtml` file) is static HTML in which a
+  value is only ever printed as element text, because the document is opened in the
+  browser from the file store's origin and the renderer's escaping is contextual. It has
+  no script, event handler, form, frame or `svg`, loads nothing from outside, and has no
+  `{{ }}` inside a tag or a `<style>` block.
+  `.github/scripts/check_html_templates.py` fails CI on any of them.
 - **Drafts never go through the workflow.** A step that offers "Save as Draft"
   declares `"draft": {"command": "save_as_draft"}` on its `subtask_template`, and its
   render handle uses `"element": "draft_action"`. The portal saves it with

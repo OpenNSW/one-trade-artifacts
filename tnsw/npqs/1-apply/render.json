@@ -3,11 +3,8 @@
   "type": "APPLICATION",
   "title": "[NPQS] Phytosanitary Certificate Application",
   "files": [
-    "application.attachments[*].attachment_file_url",
-    "draft_certificate.key",
-    "draft_certificate_key",
+    "reviewerform.draft_certificate_key",
     "submission.attachments[*].attachment_file_url",
-    "submission.draft_certificate_key",
     "userform.attachments[*].attachment_file_url"
   ],
   "sections": {
@@ -36,15 +33,6 @@
       "visibleWhen": {
         "states": ["QUEUED_EXTERNALLY"],
         "requireDataKey": "reviewerform"
-      }
-    },
-    "status_draft_certificate": {
-      "templateId": "npqs-apply-phyto-cert--draft-certificate-msg",
-      "title": "Draft Phytosanitary Certificate",
-      "projector": "MARKDOWN",
-      "visibleWhen": {
-        "states": ["QUEUED_EXTERNALLY", "PENDING_USER", "COMPLETED"],
-        "requireDataKey": "draft_certificate_key"
       }
     },
     "submission_form": {

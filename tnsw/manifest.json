@@ -247,6 +247,12 @@
       "path": "customs/static-data/supporting_document_code_list.data.json"
     },
     {
+      "id": "customs-cusdec--scanned-document-codes",
+      "kind": "static_data",
+      "version": "1",
+      "path": "customs/static-data/scanned_document_code_list.data.json"
+    },
+    {
       "id": "customs-cusdec--currencies",
       "kind": "static_data",
       "version": "1",
@@ -287,24 +293,6 @@
       "kind": "generic_template",
       "version": "",
       "path": "npqs/1-apply/status_awaiting_jsonform.json"
-    },
-    {
-      "id": "npqs-phyto-certificate--html",
-      "kind": "html_template",
-      "version": "",
-      "path": "npqs/1-apply/phyto_certificate.gohtml"
-    },
-    {
-      "id": "npqs-apply-phyto-cert--draft-certificate",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "npqs/1-apply/draft_certificate.json"
-    },
-    {
-      "id": "npqs-apply-phyto-cert--draft-certificate-msg",
-      "kind": "generic_template",
-      "version": "",
-      "path": "npqs/1-apply/draft_certificate_markdown.json"
     },
     {
       "id": "npqs-apply-phyto-cert--previous-feedback",
@@ -721,6 +709,66 @@
       "path": "npqs/8-issue_certificate/status_markdown.json"
     },
     {
+      "id": "npqs-issue-certificate-non-ephyto--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/8b-issue_certificate_non_ephyto/officerinput.json"
+    },
+    {
+      "id": "npqs-issue-certificate-non-ephyto:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/8b-issue_certificate_non_ephyto/render.json"
+    },
+    {
+      "id": "npqs-issue-certificate-non-ephyto",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs/8b-issue_certificate_non_ephyto/workflow.json"
+    },
+    {
+      "id": "npqs-issue-certificate-non-ephyto",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs/8b-issue_certificate_non_ephyto/task_template.json"
+    },
+    {
+      "id": "npqs-issue-certificate-non-ephyto--status",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/8b-issue_certificate_non_ephyto/status_markdown.json"
+    },
+    {
+      "id": "npqs-sign-certificate-non-ephyto--officer-review",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/8c-sign_certificate_non_ephyto/officerinput.json"
+    },
+    {
+      "id": "npqs-sign-certificate-non-ephyto:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/8c-sign_certificate_non_ephyto/render.json"
+    },
+    {
+      "id": "npqs-sign-certificate-non-ephyto",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs/8c-sign_certificate_non_ephyto/workflow.json"
+    },
+    {
+      "id": "npqs-sign-certificate-non-ephyto",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs/8c-sign_certificate_non_ephyto/task_template.json"
+    },
+    {
+      "id": "npqs-sign-certificate-non-ephyto--status",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/8c-sign_certificate_non_ephyto/status_markdown.json"
+    },
+    {
       "id": "npqs-ephyto-upload:render",
       "kind": "generic_template",
       "version": "",
@@ -905,6 +953,12 @@
       "kind": "generic_template",
       "version": "",
       "path": "npqs/18e-certificate_next_action/status_markdown.json"
+    },
+    {
+      "id": "npqs-certificate-next-action--completed-msg",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/18e-certificate_next_action/completed_markdown.json"
     },
     {
       "id": "npqs-certificate-withdrawal",
@@ -1415,6 +1469,60 @@
       "kind": "task_template",
       "version": "",
       "path": "fcau/2-payment_app_fee/task_template.json"
+    },
+    {
+      "id": "fcau-payment--upload-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau/2-payment_app_fee/upload_receipt_jsonform.json"
+    },
+    {
+      "id": "fcau-pay-app-fee--upload-receipt",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "fcau/2-payment_app_fee/upload_receipt.json"
+    },
+    {
+      "id": "fcau-pay-app-fee--review-receipt",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "fcau/2-payment_app_fee/review_receipt.json"
+    },
+    {
+      "id": "fcau-pay-app-fee--confirm-payment",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "fcau/2-payment_app_fee/confirm_payment.json"
+    },
+    {
+      "id": "fcau-pay-app-fee--receipt-instructions",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau/2-payment_app_fee/receipt_instructions_markdown.json"
+    },
+    {
+      "id": "fcau-pay-app-fee--awaiting-officer",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau/2-payment_app_fee/awaiting_officer_markdown.json"
+    },
+    {
+      "id": "fcau-pay-app-fee--not-received",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau/2-payment_app_fee/not_received_markdown.json"
+    },
+    {
+      "id": "fcau-pay-app-fee--pay-again",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "fcau/2-payment_app_fee/pay_again.json"
+    },
+    {
+      "id": "fcau-pay-app-fee--pay-again-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau/2-payment_app_fee/pay_again_jsonform.json"
     },
     {
       "id": "fcau-warehouse-scheduling-flow:render",
@@ -1969,6 +2077,60 @@
       "path": "cda/1-export-coconut-certificate-registration/2-payment_app_fee/task_template.json"
     },
     {
+      "id": "cda-payment--upload-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/2-payment_app_fee/upload_receipt_jsonform.json"
+    },
+    {
+      "id": "cda-pay-app-fee--upload-receipt",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/2-payment_app_fee/upload_receipt.json"
+    },
+    {
+      "id": "cda-pay-app-fee--review-receipt",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/2-payment_app_fee/review_receipt.json"
+    },
+    {
+      "id": "cda-pay-app-fee--confirm-payment",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/2-payment_app_fee/confirm_payment.json"
+    },
+    {
+      "id": "cda-pay-app-fee--receipt-instructions",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/2-payment_app_fee/receipt_instructions_markdown.json"
+    },
+    {
+      "id": "cda-pay-app-fee--awaiting-officer",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/2-payment_app_fee/awaiting_officer_markdown.json"
+    },
+    {
+      "id": "cda-pay-app-fee--not-received",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/2-payment_app_fee/not_received_markdown.json"
+    },
+    {
+      "id": "cda-pay-app-fee--pay-again",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/2-payment_app_fee/pay_again.json"
+    },
+    {
+      "id": "cda-pay-app-fee--pay-again-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/2-payment_app_fee/pay_again_jsonform.json"
+    },
+    {
       "id": "cda-asycuda-green-check-flow:render",
       "kind": "generic_template",
       "version": "",
@@ -2147,6 +2309,54 @@
       "kind": "task_template",
       "version": "",
       "path": "cda/1-export-coconut-certificate-registration/4-lot_adjustment/task_template.json"
+    },
+    {
+      "id": "cda-lot-adjustment--upload-receipt",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/4-lot_adjustment/upload_receipt.json"
+    },
+    {
+      "id": "cda-lot-adjustment--review-receipt",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/4-lot_adjustment/review_receipt.json"
+    },
+    {
+      "id": "cda-lot-adjustment--confirm-payment",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/4-lot_adjustment/confirm_payment.json"
+    },
+    {
+      "id": "cda-lot-adjustment--receipt-instructions",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/4-lot_adjustment/receipt_instructions_markdown.json"
+    },
+    {
+      "id": "cda-lot-adjustment--awaiting-officer",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/4-lot_adjustment/awaiting_officer_markdown.json"
+    },
+    {
+      "id": "cda-lot-adjustment--not-received",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/4-lot_adjustment/not_received_markdown.json"
+    },
+    {
+      "id": "cda-lot-adjustment--pay-again",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/4-lot_adjustment/pay_again.json"
+    },
+    {
+      "id": "cda-lot-adjustment--pay-again-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/1-export-coconut-certificate-registration/4-lot_adjustment/pay_again_jsonform.json"
     },
     {
       "id": "cda-view-new-certificate-flow:render",
@@ -2381,6 +2591,60 @@
       "kind": "generic_template",
       "version": "",
       "path": "cda/2-king-coconut-fresh-nuts-recommendation/2-payment/render.json"
+    },
+    {
+      "id": "cda-kcfn-payment--upload-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/2-payment/upload_receipt_jsonform.json"
+    },
+    {
+      "id": "cda-kcfn-payment--upload-receipt",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/2-payment/upload_receipt.json"
+    },
+    {
+      "id": "cda-kcfn-payment--review-receipt",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/2-payment/review_receipt.json"
+    },
+    {
+      "id": "cda-kcfn-payment--confirm-payment",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/2-payment/confirm_payment.json"
+    },
+    {
+      "id": "cda-kcfn-payment--receipt-instructions",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/2-payment/receipt_instructions_markdown.json"
+    },
+    {
+      "id": "cda-kcfn-payment--awaiting-officer",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/2-payment/awaiting_officer_markdown.json"
+    },
+    {
+      "id": "cda-kcfn-payment--not-received",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/2-payment/not_received_markdown.json"
+    },
+    {
+      "id": "cda-kcfn-payment--pay-again",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/2-payment/pay_again.json"
+    },
+    {
+      "id": "cda-kcfn-payment--pay-again-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "cda/2-king-coconut-fresh-nuts-recommendation/2-payment/pay_again_jsonform.json"
     },
     {
       "id": "cda-kcfn-issue-letter-flow",
@@ -3433,6 +3697,60 @@
       "path": "sltb/4-lab_payment/task_template.json"
     },
     {
+      "id": "sltb-payment--upload-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/4-lab_payment/upload_receipt_jsonform.json"
+    },
+    {
+      "id": "sltb-pay-lab-fee--upload-receipt",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb/4-lab_payment/upload_receipt.json"
+    },
+    {
+      "id": "sltb-pay-lab-fee--review-receipt",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb/4-lab_payment/review_receipt.json"
+    },
+    {
+      "id": "sltb-pay-lab-fee--confirm-payment",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb/4-lab_payment/confirm_payment.json"
+    },
+    {
+      "id": "sltb-pay-lab-fee--receipt-instructions",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/4-lab_payment/receipt_instructions_markdown.json"
+    },
+    {
+      "id": "sltb-pay-lab-fee--awaiting-officer",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/4-lab_payment/awaiting_officer_markdown.json"
+    },
+    {
+      "id": "sltb-pay-lab-fee--not-received",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/4-lab_payment/not_received_markdown.json"
+    },
+    {
+      "id": "sltb-pay-lab-fee--pay-again",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb/4-lab_payment/pay_again.json"
+    },
+    {
+      "id": "sltb-pay-lab-fee--pay-again-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/4-lab_payment/pay_again_jsonform.json"
+    },
+    {
       "id": "sltb-final-decision-flow:render",
       "kind": "generic_template",
       "version": "",
@@ -3569,6 +3887,12 @@
       "kind": "generic_template",
       "version": "",
       "path": "slpa/2-service_order/order_rejection.json"
+    },
+    {
+      "id": "slpa-so--previous-rejection",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/2-service_order/previous_rejection_markdown.json"
     },
     {
       "id": "slpa-so--raised-message",
@@ -3949,10 +4273,112 @@
       "path": "npqs/5-2-treatment_payment/payment_details_markdown.json"
     },
     {
+      "id": "npqs-pay-for-treatment--upload-receipt",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/5-2-treatment_payment/upload_receipt.json"
+    },
+    {
+      "id": "npqs-pay-for-treatment--review-receipt",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/5-2-treatment_payment/review_receipt.json"
+    },
+    {
+      "id": "npqs-pay-for-treatment--confirm-payment",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/5-2-treatment_payment/confirm_payment.json"
+    },
+    {
+      "id": "npqs-pay-for-treatment--receipt-instructions",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/5-2-treatment_payment/receipt_instructions_markdown.json"
+    },
+    {
+      "id": "npqs-pay-for-treatment--awaiting-officer",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/5-2-treatment_payment/awaiting_officer_markdown.json"
+    },
+    {
+      "id": "npqs-pay-for-treatment--not-received",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/5-2-treatment_payment/not_received_markdown.json"
+    },
+    {
+      "id": "npqs-pay-for-treatment--pay-again",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/5-2-treatment_payment/pay_again.json"
+    },
+    {
+      "id": "npqs-pay-for-treatment--pay-again-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/5-2-treatment_payment/pay_again_jsonform.json"
+    },
+    {
       "id": "npqs-pay-certificate-fee--payment-details-markdown",
       "kind": "generic_template",
       "version": "",
       "path": "npqs/7-payment/payment_details_markdown.json"
+    },
+    {
+      "id": "npqs-payment--upload-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/7-payment/upload_receipt_jsonform.json"
+    },
+    {
+      "id": "npqs-pay-certificate-fee--upload-receipt",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/7-payment/upload_receipt.json"
+    },
+    {
+      "id": "npqs-pay-certificate-fee--review-receipt",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/7-payment/review_receipt.json"
+    },
+    {
+      "id": "npqs-pay-certificate-fee--confirm-payment",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/7-payment/confirm_payment.json"
+    },
+    {
+      "id": "npqs-pay-certificate-fee--receipt-instructions",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/7-payment/receipt_instructions_markdown.json"
+    },
+    {
+      "id": "npqs-pay-certificate-fee--awaiting-officer",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/7-payment/awaiting_officer_markdown.json"
+    },
+    {
+      "id": "npqs-pay-certificate-fee--not-received",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/7-payment/not_received_markdown.json"
+    },
+    {
+      "id": "npqs-pay-certificate-fee--pay-again",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/7-payment/pay_again.json"
+    },
+    {
+      "id": "npqs-pay-certificate-fee--pay-again-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/7-payment/pay_again_jsonform.json"
     },
     {
       "id": "npqs-treatment-request--items-summary",

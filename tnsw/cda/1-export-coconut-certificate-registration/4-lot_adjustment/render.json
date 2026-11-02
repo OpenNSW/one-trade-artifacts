@@ -8,9 +8,11 @@
     "adjustmentreviewerform.new_physical_certificate_file",
     "adjustmentreviewerform.new_salmonella_certificate_file",
     "physical_certificate_file",
+    "receipt.payment_slip",
     "salmonella_certificate_file",
     "submission.cusdec_document",
-    "submission.lots_to_remove"
+    "submission.lots_to_remove",
+    "submission.payment_slip"
   ],
   "sections": {
     "status_message": {
@@ -20,7 +22,8 @@
       "visibleWhen": {
         "states": [
           "QUEUED_EXTERNALLY"
-        ]
+        ],
+        "requireDataKey": "reference_number"
       }
     },
     "instructions": {
@@ -114,6 +117,74 @@
           "COMPLETED"
         ]
       }
+    },
+    "payment_not_received": {
+      "templateId": "cda-lot-adjustment--not-received",
+      "title": "Payment Not Confirmed",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_REPAYMENT"
+        ],
+        "requireDataKey": "payment_remarks"
+      }
+    },
+    "pay_again": {
+      "templateId": "cda-lot-adjustment--pay-again-form",
+      "title": "Notify the Officer",
+      "projector": "FORM",
+      "dataKey": "repayment",
+      "visibleWhen": {
+        "states": [
+          "PENDING_REPAYMENT"
+        ]
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "I Have Paid — Notify the Officer",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "receipt_instructions": {
+      "templateId": "cda-lot-adjustment--receipt-instructions",
+      "title": "Bank Transfer Details",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_SLIP_UPLOAD"
+        ]
+      }
+    },
+    "upload_receipt": {
+      "templateId": "cda-payment--upload-form",
+      "title": "Upload Payment Receipt",
+      "projector": "FORM",
+      "dataKey": "receipt",
+      "visibleWhen": {
+        "states": [
+          "PENDING_SLIP_UPLOAD"
+        ]
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Payment Receipt",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "awaiting_officer": {
+      "templateId": "cda-lot-adjustment--awaiting-officer",
+      "title": "Waiting for Officer",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ],
+        "requireDataKey": "selected_payment_method"
+      }
     }
   },
   "states": {
@@ -126,6 +197,23 @@
     },
     "PENDING_PAYMENT": {
       "actions": []
+    },
+    "PENDING_SLIP_UPLOAD": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    },
+    "QUEUED_EXTERNALLY": {
+      "actions": []
+    },
+    "PENDING_REPAYMENT": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
     }
   }
 }

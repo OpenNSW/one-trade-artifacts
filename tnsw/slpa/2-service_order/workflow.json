@@ -12,7 +12,8 @@
       "task_template_id": "slpa-so--user-input",
       "input_mapping": {
         "serviceform?": "serviceform",
-        "so.error?": "so.error"
+        "so.error?": "so.error",
+        "previous_order?": "previous_order"
       },
       "output_mapping": {
         "cusdecNo?": "serviceform.cusdecNo",

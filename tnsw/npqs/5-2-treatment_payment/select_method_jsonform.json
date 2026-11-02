@@ -8,7 +8,18 @@
         "type": "string",
         "title": "Payment Provider",
         "oneOf": [
-          { "const": "govpay", "title": "GovPay Sandbox (Mock checkout)" }
+          {
+            "const": "govpay",
+            "title": "GovPay Sandbox (Mock checkout)"
+          },
+          {
+            "const": "payment_slip",
+            "title": "Bank Transfer (Upload Payment Receipt)"
+          },
+          {
+            "const": "officer_confirm",
+            "title": "Pay at the NPQS Counter (Officer Confirms Payment)"
+          }
         ],
         "default": "govpay"
       }
