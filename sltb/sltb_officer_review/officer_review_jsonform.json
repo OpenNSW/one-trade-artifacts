@@ -45,6 +45,7 @@
             "quantity_to_be_exported": {
               "type": "number",
               "title": "Quantity to be Exported (KGs)",
+              "exclusiveMinimum": 0,
               "readOnly": true
             },
             "levy_multiplier": {

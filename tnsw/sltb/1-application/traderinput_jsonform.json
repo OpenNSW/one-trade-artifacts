@@ -140,6 +140,7 @@
             "quantity_to_be_exported": {
               "type": "number",
               "title": "Quantity to be Exported (KGs)",
+              "exclusiveMinimum": 0,
               "example": 16128
             },
             "avg_rate_per_kg": {
