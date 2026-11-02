@@ -21,7 +21,7 @@
       },
       "system_reference_id": {
         "type": "string",
-        "title": "Internal System Reference ID",
+        "title": "Internal System Reference",
         "example": "INT-NPQS-SYS-9302"
       },
       "comments": {
