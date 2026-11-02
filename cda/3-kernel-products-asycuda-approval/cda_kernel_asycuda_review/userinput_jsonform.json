@@ -834,9 +834,9 @@
               "example": "2026-08-01"
             },
             "whatsapp_number": {
-              "type": "number",
+              "type": "string",
               "title": "WhatsApp Number",
-              "example": 94771234567
+              "example": "+94771234567"
             }
           },
           "required": [
