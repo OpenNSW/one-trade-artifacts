@@ -174,7 +174,7 @@
       "id": "e_slpa_so_approved",
       "source_id": "slpa_3_1_approval_check",
       "target_id": "slpa_4_0_invoice",
-      "condition": "slpa.approval != 'REJECTED'"
+      "condition": "slpa.approval == 'APPROVED'"
     },
     {
       "id": "e_invoice_prepare",
