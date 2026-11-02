@@ -6,15 +6,17 @@
     "properties": {
       "officeCode": {
         "type": "string",
-        "title": "Customs Office Code",
-        "description": "Office of exit (UNCUOTAB). Annex B: officeCode. Export only for now; import office codes come later.",
-        "oneOf": [
-          {
-            "const": "CBEX1",
-            "title": "CBEX1"
+        "title": "4. Customs Office ( Box A )",
+        "description": "Office of exit, filled from the CusDec. Annex B: officeCode.",
+        "x-search": {
+          "service": "static-data",
+          "mode": "large-searchable-list",
+          "displayTemplate": "{name} ({id})",
+          "params": {
+            "id": "customs-cusdec--office-codes",
+            "version": "1"
           }
-        ],
-        "default": "CBEX1",
+        },
         "example": "CBEX1"
       },
       "cusdecRef": {
