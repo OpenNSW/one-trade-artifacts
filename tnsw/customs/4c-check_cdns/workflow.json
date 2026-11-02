@@ -1,0 +1,73 @@
+{
+  "id": "customs-check-cdns-flow",
+  "name": "Check Every Container Has a Cargo Dispatch Note",
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "retrieve_cusdec",
+      "type": "TASK",
+      "task_template_id": "customs-prepare-cdn-items--cusdec-retrieve",
+      "input_mapping": {
+        "cusdec_ref?": "cusdec_ref",
+        "userform?": "userform"
+      },
+      "output_mapping": {
+        "cusdec_latest.retrieved?": "cdn_check.retrieved",
+        "cusdec_latest.container_count?": "cdn_check.container_count",
+        "cusdec_latest.cdn_count?": "cdn_check.cdn_count",
+        "cusdec_latest.missing_cdn_count?": "cdn_check.missing_cdn_count",
+        "cusdec_latest.error?": "cdn_check.error"
+      }
+    },
+    {
+      "id": "cdn_check_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "check_again",
+      "type": "TASK",
+      "task_template_id": "customs-check-cdns--check-again",
+      "input_mapping": {
+        "cdn_check": "cdn_check",
+        "cusdec_ref?": "cusdec_ref"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "retrieve_cusdec"
+    },
+    {
+      "id": "e2",
+      "source_id": "retrieve_cusdec",
+      "target_id": "cdn_check_gateway"
+    },
+    {
+      "id": "e_every_container_covered",
+      "source_id": "cdn_check_gateway",
+      "target_id": "end",
+      "condition": "cdn_check.missing_cdn_count == 0"
+    },
+    {
+      "id": "e_containers_missing",
+      "source_id": "cdn_check_gateway",
+      "target_id": "check_again",
+      "condition": "cdn_check.missing_cdn_count != 0"
+    },
+    {
+      "id": "e_check_again",
+      "source_id": "check_again",
+      "target_id": "retrieve_cusdec"
+    }
+  ]
+}

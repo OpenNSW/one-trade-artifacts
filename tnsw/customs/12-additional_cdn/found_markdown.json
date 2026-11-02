@@ -1,0 +1,4 @@
+{
+  "id": "customs-additional-cdn--found",
+  "template": "{{with .declaration}}{{if .found}}### Raising a Cargo Dispatch Note\n\nA Cargo Dispatch Note is raised against declaration `{{.cusdec_ref}}`, for a container that has none. Fill it in at the next step.{{else}}### No Registered Declaration\n\nThis consignment has no declaration registered with Sri Lanka Customs, so a Cargo Dispatch Note cannot be raised for it.{{end}}{{end}}"
+}
