@@ -57,7 +57,8 @@
         "submission": "application",
         "reviewform.certificate_number": "certificate_number",
         "reviewform.certificate_items?": "items",
-        "reviewform.issue_date?": "issue_date"
+        "reviewform.issue_date?": "issue_date",
+        "submission.replaced_certificate?": "replaced_certificate"
       },
       "output_mapping": {
         "certificate_document": "certificate_document",

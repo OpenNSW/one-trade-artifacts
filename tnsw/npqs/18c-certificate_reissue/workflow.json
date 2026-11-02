@@ -15,10 +15,12 @@
         "reference_number?": "reference_number",
         "reference_number": "submission.reference_number",
         "userform": "submission",
-        "certificate_items?": "submission.certificate_items"
+        "certificate_items?": "submission.certificate_items",
+        "replaced_certificate": "submission.replaced_certificate"
       },
       "output_mapping": {
         "certificate_number": "new_certificate_id",
+        "issue_date": "new_certificate_issue_date",
         "certificate_items?": "certificate_items"
       }
     },
