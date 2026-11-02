@@ -13,7 +13,8 @@
       },
       "output_mapping": {
         "cusdec_latest.retrieved?": "cusdec_latest.retrieved",
-        "cusdec_latest.container_count": "latest_container_count"
+        "cusdec_latest.container_count": "latest_container_count",
+        "cusdec_latest.declaration?": "declaration"
       }
     },
     {
@@ -23,13 +24,18 @@
       "input_mapping": {
         "latest_container_count": "container_count",
         "cusdec_ref?": "cusdec_ref",
-        "userform.traders.exporter.code?": "prefill.shipper.id",
-        "userform.traders.exporter.name?": "prefill.shipper.name",
-        "userform.traders.exporter.address?": "prefill.shipper.address",
-        "userform.traders.exporter.countryCode?": "prefill.shipper.countryCode",
-        "userform.traders.consignee.name?": "prefill.consignee.name",
-        "userform.traders.consignee.address?": "prefill.consignee.address",
-        "userform.traders.consignee.countryCode?": "prefill.consignee.countryCode"
+        "declaration.baseGeneralSegment.officeCode?": "prefill.officeCode",
+        "declaration.baseGeneralSegment.exporter.id?": "prefill.shipper.id",
+        "declaration.baseGeneralSegment.exporter.name?": "prefill.shipper.name",
+        "declaration.baseGeneralSegment.exporter.address?": "prefill.shipper.address",
+        "declaration.baseGeneralSegment.exporter.countryCode?": "prefill.shipper.countryCode",
+        "declaration.baseGeneralSegment.importer.id?": "prefill.consignee.id",
+        "declaration.baseGeneralSegment.importer.name?": "prefill.consignee.name",
+        "declaration.baseGeneralSegment.importer.address?": "prefill.consignee.address",
+        "declaration.baseGeneralSegment.importer.countryCode?": "prefill.consignee.countryCode",
+        "declaration.generalSegment.transportVesselName?": "prefill.transport.vessel",
+        "declaration.generalSegment.transportVoyageName?": "prefill.transport.voyageNumber",
+        "declaration.generalSegment.placeOfDischarge?": "prefill.transport.placeOfDischarge"
       },
       "output_mapping": {
         "split_items": "split_items"
