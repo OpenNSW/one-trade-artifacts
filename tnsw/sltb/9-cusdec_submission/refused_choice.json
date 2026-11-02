@@ -1,0 +1,33 @@
+{
+  "id": "sltb-cusdec-submission--refused",
+  "task_type": "USER_INPUT",
+  "output_namespace": "refused",
+  "plugin_properties": {
+    "user_jsonforms_id": "sltb-cusdec-submission--refused-form"
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "PENDING_USER": {
+          "retry": [
+            "trader",
+            "cha"
+          ],
+          "amend": [
+            "trader",
+            "cha"
+          ]
+        }
+      }
+    },
+    {
+      "id": "payload_schema",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "form": "sltb-cusdec-submission--refused-form"
+      }
+    }
+  ]
+}

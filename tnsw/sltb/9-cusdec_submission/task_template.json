@@ -1,0 +1,12 @@
+{
+  "id": "sltb-cusdec-submission-flow",
+  "type": "APPLICATION",
+  "workflow_id": "sltb-cusdec-submission-flow",
+  "render_config_id": "sltb-cusdec-submission-flow:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
+}

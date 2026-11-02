@@ -1,6 +1,6 @@
 {
   "id": "sltb-blendsheet-approval",
-  "name": "SLTB Tea Blendsheet Approval & Sample Collection Flow",
+  "name": "Tea Export: SLTB Approval and Customs Clearance",
   "nodes": [
     { "id": "start", "type": "START", "name": "Start" },
     {
@@ -9,7 +9,11 @@
       "name": "[SLTB 1] Submit & Review Blend Sheet and CusDec",
       "task_template_id": "sltb-submit-blendsheet-flow",
       "lane": "Trader/CHA & SLTB Officer",
-      "input_mapping": {},
+      "input_mapping": {
+        "sltb.userform?": "userform",
+        "sltb.customs_feedback?": "customs_feedback",
+        "sltb.customs_error?": "customs_error"
+      },
       "output_mapping": {
         "reviewerform.review_outcome": "sltb.review_outcome",
         "reviewerform.levy_amount?": "sltb.levy_amount",
@@ -23,6 +27,12 @@
       "type": "GATEWAY",
       "gateway_type": "EXCLUSIVE_SPLIT",
       "name": "Application Approved?"
+    },
+    {
+      "id": "sltb_1_round_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "First Round or Amendment?"
     },
     {
       "id": "sltb_2_pay_levy",
@@ -195,9 +205,195 @@
       "name": "Final Approval Given?"
     },
     {
+      "id": "sltb_9_cusdec_submission",
+      "type": "TASK",
+      "name": "[SLTB 9] Submit the Approved CusDec to Customs",
+      "task_template_id": "sltb-cusdec-submission-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "sltb.cusdec": "userform"
+      },
+      "output_mapping": {
+        "reviewerform.review_outcome?": "customs.cusdec_review_outcome",
+        "reviewerform.cusdec_number?": "customs.cusdec_number",
+        "reviewerform.amount_to_pay?": "customs.amount_to_pay",
+        "userform": "customs.userform",
+        "reviewerform.rejection_reason?": "sltb.customs_feedback",
+        "cig.error?": "sltb.customs_error"
+      }
+    },
+    {
+      "id": "sltb_9_assessed_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Assessed by Customs?"
+    },
+    {
+      "id": "customs_1_emit_cusdec",
+      "type": "SIGNALING",
+      "name": "Share the Assessed CusDec",
+      "signaling": {
+        "type": "EMIT",
+        "signal_name": "cusdec_assessed"
+      },
+      "input_mapping": {
+        "customs.userform": "cusdec",
+        "customs.cusdec_number": "cusdec_number"
+      }
+    },
+    {
+      "id": "customs_payment_check",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Anything Left to Pay?"
+    },
+    {
+      "id": "customs_2_wait_payment",
+      "type": "TASK",
+      "name": "[Customs 2.0] Wait on Payment",
+      "task_template_id": "customs-wait-payment-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "customs.amount_to_pay": "amount_to_pay",
+        "customs.cusdec_number": "cusdec_number",
+        "customs.userform": "userform"
+      },
+      "output_mapping": {
+        "payment_status": "customs.payment_status"
+      }
+    },
+    {
+      "id": "customs_payment_join",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_JOIN",
+      "name": "Paid or Nothing Due"
+    },
+    {
+      "id": "customs_3_wait_warranting",
+      "type": "TASK",
+      "name": "[Customs 3.0] Wait on CusDec Warranting",
+      "task_template_id": "customs-wait-warranting-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "customs.cusdec_number": "cusdec_number",
+        "customs.userform": "userform"
+      },
+      "output_mapping": {
+        "warranting_status": "customs.warranting_status"
+      }
+    },
+    {
+      "id": "customs_4a_prepare_cdn_items",
+      "type": "TASK",
+      "name": "[Customs 4.0a] Prepare CDN Items",
+      "task_template_id": "customs-prepare-cdn-items-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "customs.userform.containerCount": "container_count",
+        "customs.cusdec_number?": "cusdec_ref",
+        "customs.userform.traders?": "userform.traders"
+      },
+      "output_mapping": {
+        "split_items": "customs.cdn_split_items"
+      }
+    },
+    {
+      "id": "customs_4_create_cdn",
+      "type": "SPLIT_TASK",
+      "name": "[Customs 4.0] Create CDNs",
+      "task_template_id": "customs-cdn-branch-flow",
+      "lane": "Trader/CHA",
+      "split_task": {
+        "mode": "SAME_TEMPLATE",
+        "items_variable": "customs.cdn_split_items",
+        "results_variable": "customs.cdn_results",
+        "failure_mode": "COLLECT_ALL"
+      }
+    },
+    {
+      "id": "customs_4b_collect_cdn_results",
+      "type": "TASK",
+      "name": "[Customs 4.0b] Collect CDN Results",
+      "task_template_id": "customs-collect-cdn-results-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "customs.cdn_results": "cdn_results"
+      },
+      "output_mapping": {
+        "cdn_userform": "customs.cdn_userform",
+        "cdn_number?": "customs.cdn_number",
+        "cdn_numbers": "customs.cdn_numbers",
+        "containers": "customs.containers"
+      }
+    },
+    {
+      "id": "customs_post_cdn_fork",
+      "type": "GATEWAY",
+      "gateway_type": "PARALLEL_SPLIT",
+      "name": "Boat Note and Export Release in Parallel"
+    },
+    {
+      "id": "customs_6a_prefill_boat_note",
+      "type": "TASK",
+      "name": "[Customs 6.0a] Prefill Boat Note",
+      "task_template_id": "customs-prefill-boat-note-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "customs.cusdec_number?": "cusdec_ref",
+        "customs.userform.traders?": "userform.traders",
+        "customs.containers": "containers"
+      },
+      "output_mapping": {
+        "boat_note_prefill.userform": "customs.boat_note_prefill"
+      }
+    },
+    {
+      "id": "customs_6_create_boat_note",
+      "type": "TASK",
+      "name": "[Customs 6.0] Create Boat Note",
+      "task_template_id": "customs-create-boat-note-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "customs.boat_note_prefill": "userform",
+        "customs.boat_note_prefill.containers": "containers",
+        "_iter.input.cha?": "cha",
+        "_iter.input.cha.name?": "declarant_name",
+        "_iter.input.company.data.tin_no?": "exporter_code"
+      },
+      "output_mapping": {
+        "userform": "customs.boat_note_userform",
+        "boat_note_document_key": "customs.boat_note_document_key",
+        "boat_note_approval.approval_status": "customs.boat_note_approval_status",
+        "boat_note_approval.approved_boat_note_file": "customs.approved_boat_note_file"
+      }
+    },
+    {
+      "id": "customs_8_wait_export_release",
+      "type": "TASK",
+      "name": "[Customs 8.0] Wait on Export Release",
+      "task_template_id": "customs-wait-export-release-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "customs.cusdec_number": "cusdec_number",
+        "customs.userform": "userform"
+      },
+      "output_mapping": {
+        "release_status": "customs.export_release_status"
+      }
+    },
+    {
+      "id": "customs_post_cdn_join",
+      "type": "GATEWAY",
+      "gateway_type": "PARALLEL_JOIN",
+      "name": "Boat Note Approved and Export Released",
+      "parallel_join": {
+        "gateway_node_id": "customs_post_cdn_fork"
+      }
+    },
+    {
       "id": "end_success",
       "type": "END",
-      "name": "Blend Sheet Application Approved",
+      "name": "Consignment Cleared by Customs",
       "end": { "outcome": "success" }
     },
     {
@@ -253,8 +449,20 @@
     {
       "id": "e_review_approve",
       "source_id": "sltb_1_review_gateway",
-      "target_id": "sltb_2_pay_levy",
+      "target_id": "sltb_1_round_gateway",
       "condition": "sltb.review_outcome == 'approve'"
+    },
+    {
+      "id": "e_first_round",
+      "source_id": "sltb_1_round_gateway",
+      "target_id": "sltb_2_pay_levy",
+      "condition": "customs.userform == nil"
+    },
+    {
+      "id": "e_amendment_round",
+      "source_id": "sltb_1_round_gateway",
+      "target_id": "sltb_approval_join",
+      "condition": "customs.userform != nil"
     },
     { "id": "e_levy_tasting", "source_id": "sltb_2_pay_levy", "target_id": "sltb_3_tasting_decision" },
     { "id": "e_tasting_gw", "source_id": "sltb_3_tasting_decision", "target_id": "sltb_3_tasting_gateway" },
@@ -324,14 +532,52 @@
     {
       "id": "e_final_approve",
       "source_id": "sltb_8_final_gateway",
-      "target_id": "end_success",
+      "target_id": "sltb_9_cusdec_submission",
       "condition": "sltb.final_decision_outcome == 'approve'"
+    },
+    { "id": "e_9_assessed_gw", "source_id": "sltb_9_cusdec_submission", "target_id": "sltb_9_assessed_gateway" },
+    {
+      "id": "e_assessed",
+      "source_id": "sltb_9_assessed_gateway",
+      "target_id": "customs_1_emit_cusdec",
+      "condition": "customs.cusdec_review_outcome == 'approve'"
+    },
+    {
+      "id": "e_amend",
+      "source_id": "sltb_9_assessed_gateway",
+      "target_id": "sltb_1_submit_blendsheet",
+      "condition": "customs.cusdec_review_outcome in [nil, 'needs_more_info']"
     },
     {
       "id": "e_final_reject",
       "source_id": "sltb_8_final_gateway",
       "target_id": "end_final_rejected",
       "condition": "sltb.final_decision_outcome == 'reject'"
-    }
+    },
+    { "id": "e_emit_to_payment_check", "source_id": "customs_1_emit_cusdec", "target_id": "customs_payment_check" },
+    {
+      "id": "e_payment_due",
+      "source_id": "customs_payment_check",
+      "target_id": "customs_2_wait_payment",
+      "condition": "customs.amount_to_pay > 0"
+    },
+    {
+      "id": "e_nothing_due",
+      "source_id": "customs_payment_check",
+      "target_id": "customs_payment_join",
+      "condition": "customs.amount_to_pay <= 0"
+    },
+    { "id": "e_2_to_join", "source_id": "customs_2_wait_payment", "target_id": "customs_payment_join" },
+    { "id": "e_join_to_3", "source_id": "customs_payment_join", "target_id": "customs_3_wait_warranting" },
+    { "id": "e_3_to_4a", "source_id": "customs_3_wait_warranting", "target_id": "customs_4a_prepare_cdn_items" },
+    { "id": "e_4a_to_4", "source_id": "customs_4a_prepare_cdn_items", "target_id": "customs_4_create_cdn" },
+    { "id": "e_4_to_4b", "source_id": "customs_4_create_cdn", "target_id": "customs_4b_collect_cdn_results" },
+    { "id": "e_4b_to_fork", "source_id": "customs_4b_collect_cdn_results", "target_id": "customs_post_cdn_fork" },
+    { "id": "e_fork_to_6", "source_id": "customs_post_cdn_fork", "target_id": "customs_6a_prefill_boat_note" },
+    { "id": "e_prefill_boat_note", "source_id": "customs_6a_prefill_boat_note", "target_id": "customs_6_create_boat_note" },
+    { "id": "e_fork_to_8", "source_id": "customs_post_cdn_fork", "target_id": "customs_8_wait_export_release" },
+    { "id": "e_6_to_join", "source_id": "customs_6_create_boat_note", "target_id": "customs_post_cdn_join" },
+    { "id": "e_8_to_join", "source_id": "customs_8_wait_export_release", "target_id": "customs_post_cdn_join" },
+    { "id": "e_join_to_end", "source_id": "customs_post_cdn_join", "target_id": "end_success" }
   ]
 }

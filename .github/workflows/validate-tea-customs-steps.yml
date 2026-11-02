@@ -1,0 +1,33 @@
+name: Validate the tea flow's Customs steps
+
+on:
+  pull_request:
+    paths:
+      - "tnsw/customs/customs_workflow.json"
+      - "tnsw/sltb/sltb_workflow.json"
+      - ".github/scripts/check_tea_customs_steps.py"
+      - ".github/workflows/validate-tea-customs-steps.yml"
+  push:
+    branches: [main]
+    paths:
+      - "tnsw/customs/customs_workflow.json"
+      - "tnsw/sltb/sltb_workflow.json"
+      - ".github/scripts/check_tea_customs_steps.py"
+      - ".github/workflows/validate-tea-customs-steps.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: The tea flow runs customs-workflow's Customs steps
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Check the tea flow runs customs-workflow's Customs steps
+        run: python .github/scripts/check_tea_customs_steps.py
