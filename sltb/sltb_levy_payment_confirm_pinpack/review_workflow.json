@@ -1,6 +1,6 @@
 {
   "id": "sltb-levy-payment-confirm-pinpack--review-workflow",
-  "name": "SLTB PinPack Levy Deduction Confirmation — Officer Review",
+  "name": "SLTB Finpak Levy Deduction Confirmation — Officer Review",
   "nodes": [
     {
       "id": "start",

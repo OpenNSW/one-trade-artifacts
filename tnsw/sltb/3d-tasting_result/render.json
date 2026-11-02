@@ -1,0 +1,24 @@
+{
+  "id": "sltb-tasting-result-flow:render",
+  "type": "APPLICATION",
+  "title": "[SLTB 5] Tasting Result",
+  "files": [
+    "submission.cusdec_draft.supportingDocuments.scannedDocuments[*].fileBase64"
+  ],
+  "sections": {
+    "status_message": {
+      "templateId": "sltb-tasting-result--status",
+      "title": "Tasting Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY",
+          "COMPLETED"
+        ]
+      }
+    }
+  },
+  "states": {
+    "COMPLETED": {}
+  }
+}

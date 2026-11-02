@@ -1,0 +1,12 @@
+{
+  "id": "sltb-tasting-result-flow",
+  "type": "APPLICATION",
+  "workflow_id": "sltb-tasting-result-flow",
+  "render_config_id": "sltb-tasting-result-flow:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
+}

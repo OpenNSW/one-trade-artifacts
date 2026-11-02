@@ -1,0 +1,48 @@
+{
+  "id": "sltb-tasting-result--review:render",
+  "type": "APPLICATION",
+  "title": "Tasting Result",
+  "files": [
+    "submission.cusdec_draft.supportingDocuments.scannedDocuments[*].fileBase64"
+  ],
+  "sections": {
+    "submission_view": {
+      "templateId": "sltb-submit-blendsheet--user-form",
+      "title": "Submitted Application",
+      "projector": "FORM",
+      "dataKey": "submission"
+    },
+    "review_form": {
+      "templateId": "sltb-tasting-result--officer-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Tasting Result",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "status_message": {
+      "templateId": "sltb-tasting-result--submission-view",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
+    }
+  }
+}

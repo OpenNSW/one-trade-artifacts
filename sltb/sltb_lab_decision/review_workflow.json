@@ -1,6 +1,6 @@
 {
   "id": "sltb-lab-decision--review-workflow",
-  "name": "Lab Testing Decision — Officer Review",
+  "name": "Tasting Decision — Officer Review",
   "nodes": [
     {
       "id": "start",
@@ -11,11 +11,11 @@
       "type": "TASK",
       "task_template_id": "sltb-lab-decision--officer-review",
       "input_mapping": {
-        "submission?": "submission",
-        "submission.sample_number?": "reviewform.sample_number"
+        "submission?": "submission"
       },
       "output_mapping": {
-        "lab_testing_required": "reviewform.lab_testing_required",
+        "tasting_required": "reviewform.tasting_required",
+        "collection_method?": "reviewform.collection_method",
         "decision_notes?": "reviewform.decision_notes"
       }
     },
@@ -28,7 +28,7 @@
         "reviewform?": "reviewform",
         "submission?": "submission",
         "taskId": "taskId",
-        "reviewform.lab_testing_required": "payload.command",
+        "reviewform.tasting_required": "payload.command",
         "reviewform": "payload.payload"
       }
     },

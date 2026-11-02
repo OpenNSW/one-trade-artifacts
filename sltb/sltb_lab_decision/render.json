@@ -1,8 +1,17 @@
 {
   "id": "sltb-lab-decision--review:render",
   "type": "APPLICATION",
-  "title": "Lab Testing Decision",
+  "title": "Tasting Decision",
+  "files": [
+    "submission.cusdec_draft.supportingDocuments.scannedDocuments[*].fileBase64"
+  ],
   "sections": {
+    "submission_view": {
+      "templateId": "sltb-submit-blendsheet--user-form",
+      "title": "Submitted Application",
+      "projector": "FORM",
+      "dataKey": "submission"
+    },
     "review_form": {
       "templateId": "sltb-lab-decision--officer-form",
       "title": "Officer Review",

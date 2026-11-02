@@ -1,20 +1,18 @@
 {
-  "id": "sltb-pay-lab-fee--pay-again",
+  "id": "sltb-tasting-result--officer-review",
   "task_type": "USER_INPUT",
-  "output_namespace": "repayment",
+  "output_namespace": "reviewform",
   "plugin_properties": {
-    "user_jsonforms_id": "sltb-pay-lab-fee--pay-again-form",
-    "status_override": "PENDING_REPAYMENT"
+    "user_jsonforms_id": "sltb-tasting-result--officer-form"
   },
   "extensions": [
     {
       "id": "authz",
       "phase": "PRE_RESUME",
       "properties": {
-        "PENDING_REPAYMENT": {
+        "PENDING_USER": {
           "submit": [
-            "trader",
-            "cha"
+            "officer"
           ]
         }
       }
@@ -23,7 +21,7 @@
       "id": "payload_schema",
       "phase": "PRE_RESUME",
       "properties": {
-        "form": "sltb-pay-lab-fee--pay-again-form"
+        "form": "sltb-tasting-result--officer-form"
       }
     }
   ]

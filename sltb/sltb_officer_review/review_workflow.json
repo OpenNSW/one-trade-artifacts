@@ -17,8 +17,7 @@
       "output_mapping": {
         "review_outcome": "reviewform.review_outcome",
         "feedback?": "reviewform.feedback",
-        "levy_amount?": "reviewform.levy_amount",
-        "collection_method?": "reviewform.collection_method"
+        "levy_amount?": "reviewform.levy_amount"
       }
     },
     {

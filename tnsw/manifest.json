@@ -3229,48 +3229,6 @@
       "path": "sltb/1-application/task_template.json"
     },
     {
-      "id": "sltb-xml-download-flow:render",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/1b-xml_download/render.json"
-    },
-    {
-      "id": "sltb-xml-download--officer-review",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "sltb/1b-xml_download/officer_review.json"
-    },
-    {
-      "id": "sltb-xml-download--officer-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/1b-xml_download/officer_review_jsonform.json"
-    },
-    {
-      "id": "sltb-xml-download--trader-view",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/1b-xml_download/trader_view_jsonform.json"
-    },
-    {
-      "id": "sltb-xml-download--trader-completed",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/1b-xml_download/trader_completed_jsonform.json"
-    },
-    {
-      "id": "sltb-xml-download-flow",
-      "kind": "workflow",
-      "version": "",
-      "path": "sltb/1b-xml_download/workflow.json"
-    },
-    {
-      "id": "sltb-xml-download-flow",
-      "kind": "task_template",
-      "version": "",
-      "path": "sltb/1b-xml_download/task_template.json"
-    },
-    {
       "id": "sltb-pay-levy-flow:render",
       "kind": "generic_template",
       "version": "",
@@ -3377,6 +3335,12 @@
       "kind": "task_template",
       "version": "",
       "path": "sltb/2-levy_payment/task_template.json"
+    },
+    {
+      "id": "sltb-pay-levy--payment-failed",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/2-levy_payment/payment_failed_markdown.json"
     },
     {
       "id": "sltb-schedule-pickup-flow:render",
@@ -3547,6 +3511,42 @@
       "path": "sltb/4-lab_decision/task_template.json"
     },
     {
+      "id": "sltb-tasting-result--officer",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb/3d-tasting_result/officer_tasting.json"
+    },
+    {
+      "id": "sltb-tasting-result--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/3d-tasting_result/officer_tasting_jsonform.json"
+    },
+    {
+      "id": "sltb-tasting-result-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/3d-tasting_result/render.json"
+    },
+    {
+      "id": "sltb-tasting-result--status",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/3d-tasting_result/status_message_jsonform.json"
+    },
+    {
+      "id": "sltb-tasting-result-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "sltb/3d-tasting_result/task_template.json"
+    },
+    {
+      "id": "sltb-tasting-result-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "sltb/3d-tasting_result/workflow.json"
+    },
+    {
       "id": "sltb-lab-testing-flow:render",
       "kind": "generic_template",
       "version": "",
@@ -3581,72 +3581,6 @@
       "kind": "task_template",
       "version": "",
       "path": "sltb/6-lab_testing/task_template.json"
-    },
-    {
-      "id": "sltb-lab-report-verification--completed",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/7-lab_report_verification/completed_markdown.json"
-    },
-    {
-      "id": "sltb-lab-report-verification--download-report",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/7-lab_report_verification/download_report_markdown.json"
-    },
-    {
-      "id": "sltb-lab-report-verification--officer-verify",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "sltb/7-lab_report_verification/officer_verify.json"
-    },
-    {
-      "id": "sltb-lab-report-verification--pending-verification",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/7-lab_report_verification/pending_verification_markdown.json"
-    },
-    {
-      "id": "sltb-lab-report-verification-flow:render",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/7-lab_report_verification/render.json"
-    },
-    {
-      "id": "sltb-lab-report-verification--reupload-reason",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/7-lab_report_verification/reupload_reason_markdown.json"
-    },
-    {
-      "id": "sltb-lab-report-verification--review-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/7-lab_report_verification/review_jsonform.json"
-    },
-    {
-      "id": "sltb-lab-report-verification-flow",
-      "kind": "task_template",
-      "version": "",
-      "path": "sltb/7-lab_report_verification/task_template.json"
-    },
-    {
-      "id": "sltb-lab-report-verification--trader-upload",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "sltb/7-lab_report_verification/trader_upload.json"
-    },
-    {
-      "id": "sltb-lab-report-verification--upload-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/7-lab_report_verification/trader_upload_jsonform.json"
-    },
-    {
-      "id": "sltb-lab-report-verification-flow",
-      "kind": "workflow",
-      "version": "",
-      "path": "sltb/7-lab_report_verification/workflow.json"
     },
     {
       "id": "sltb-pay-lab-fee-flow:render",
@@ -3733,22 +3667,10 @@
       "path": "sltb/4-lab_payment/awaiting_officer_markdown.json"
     },
     {
-      "id": "sltb-pay-lab-fee--not-received",
+      "id": "sltb-pay-lab-fee--payment-failed",
       "kind": "generic_template",
       "version": "",
-      "path": "sltb/4-lab_payment/not_received_markdown.json"
-    },
-    {
-      "id": "sltb-pay-lab-fee--pay-again",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "sltb/4-lab_payment/pay_again.json"
-    },
-    {
-      "id": "sltb-pay-lab-fee--pay-again-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/4-lab_payment/pay_again_jsonform.json"
+      "path": "sltb/4-lab_payment/payment_failed_markdown.json"
     },
     {
       "id": "sltb-final-decision-flow:render",

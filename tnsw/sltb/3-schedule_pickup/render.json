@@ -1,7 +1,7 @@
 {
   "id": "sltb-schedule-pickup-flow:render",
   "type": "APPLICATION",
-  "title": "[SLTB 3.1] Schedule Warehouse Pickup",
+  "title": "[SLTB 4B] Schedule Warehouse Pickup",
   "sections": {
     "status_message": {
       "templateId": "sltb-schedule-pickup--status",

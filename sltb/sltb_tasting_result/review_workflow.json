@@ -1,6 +1,6 @@
 {
-  "id": "sltb-xml-download--review-workflow",
-  "name": "SLTB XML Download: Officer Acknowledgement",
+  "id": "sltb-tasting-result--review-workflow",
+  "name": "Tasting Result — Officer Review",
   "nodes": [
     {
       "id": "start",
@@ -9,24 +9,28 @@
     {
       "id": "userform",
       "type": "TASK",
-      "task_template_id": "sltb-xml-download--officer-review",
+      "task_template_id": "sltb-tasting-result--officer-review",
       "input_mapping": {
         "submission?": "submission",
-        "submission.cusdec?": "cusdec"
+        "submission.sample_number?": "reviewform.sample_number"
       },
       "output_mapping": {
-        "__command": "command"
+        "tasting_outcome": "reviewform.tasting_outcome",
+        "tasting_date": "reviewform.tasting_date",
+        "tasting_notes?": "reviewform.tasting_notes"
       }
     },
     {
       "id": "api_call",
       "type": "TASK",
-      "task_template_id": "sltb-xml-download--notify-decision",
+      "task_template_id": "sltb-tasting-result--notify-decision",
       "input_mapping": {
         "callbackToken": "callbackToken",
+        "reviewform?": "reviewform",
         "submission?": "submission",
         "taskId": "taskId",
-        "command": "payload.command"
+        "reviewform.tasting_outcome": "payload.command",
+        "reviewform": "payload.payload"
       }
     },
     {

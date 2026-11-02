@@ -1,52 +1,32 @@
 {
   "id": "sltb-payment--confirm-form",
-  "title": "SLTB Payment Confirmation",
+  "title": "Finpak Account Lab Test Fee Deduction Confirmation",
   "schema": {
     "type": "object",
     "required": [
-      "payment_status"
+      "deduction_status"
     ],
     "properties": {
-      "payment_status": {
+      "deduction_status": {
         "type": "string",
-        "title": "Payment Status",
+        "title": "Finpak Deduction Status",
         "oneOf": [
           {
-            "const": "success",
-            "title": "Confirm Payment Received"
+            "const": "deducted",
+            "title": "Confirm Lab Test Fee Deducted from Finpak Account"
           },
           {
-            "const": "not_received",
-            "title": "Payment Not Received"
+            "const": "insufficient_funds",
+            "title": "Not Deducted — Insufficient Funds in the Finpak Account"
           }
         ],
-        "default": "success"
+        "default": "deducted"
       },
       "remarks": {
         "type": "string",
-        "title": "Officer Remarks (Required if Payment Not Received)",
-        "example": "No payment was received against this reference."
+        "title": "Officer Remarks (Optional)",
+        "example": "Lab test fee deducted from the Finpak account."
       }
-    },
-    "if": {
-      "properties": {
-        "payment_status": {
-          "const": "not_received"
-        }
-      },
-      "required": [
-        "payment_status"
-      ]
-    },
-    "then": {
-      "properties": {
-        "remarks": {
-          "minLength": 1
-        }
-      },
-      "required": [
-        "remarks"
-      ]
     }
   },
   "uiSchema": {
@@ -54,7 +34,7 @@
     "elements": [
       {
         "type": "Control",
-        "scope": "#/properties/payment_status"
+        "scope": "#/properties/deduction_status"
       },
       {
         "type": "Control",

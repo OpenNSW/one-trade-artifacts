@@ -15,7 +15,14 @@
       "id": "authz",
       "phase": "PRE_RESUME",
       "properties": {
-        "QUEUED_EXTERNALLY": { "deducted": ["sltb"] }
+        "QUEUED_EXTERNALLY": {
+          "deducted": [
+            "sltb"
+          ],
+          "insufficient_funds": [
+            "sltb"
+          ]
+        }
       }
     }
   ]

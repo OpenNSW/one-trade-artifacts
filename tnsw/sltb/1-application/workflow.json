@@ -46,7 +46,6 @@
         "review_outcome": "reviewerform.review_outcome",
         "feedback?": "rejection_reason",
         "levy_amount?": "reviewerform.levy_amount",
-        "collection_method?": "reviewerform.collection_method",
         "callbackToken?": "agency_token"
       }
     },

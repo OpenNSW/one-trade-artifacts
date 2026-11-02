@@ -19,21 +19,18 @@
           {
             "const": "approve",
             "title": "Approve the Blend Sheet Application"
+          },
+          {
+            "const": "reject",
+            "title": "Reject the Blend Sheet Application"
           }
         ]
       },
       "remarks": {
         "type": "string",
         "title": "Decision Remarks / Comments",
-        "description": "Provide detail about the approval.",
+        "description": "Required when rejecting the application.",
         "example": "All quality checks passed. Blend sheet approved."
-      },
-      "asycuda_approval_confirmed": {
-        "type": "boolean",
-        "title": "I have logged into the ASYCUDA System and pressed the green check (✓) button to approve this consignment",
-        "description": "Login to ASYCUDA and press the green check button for this consignment before approving here.",
-        "default": false,
-        "example": true
       }
     },
     "allOf": [
@@ -41,7 +38,7 @@
         "if": {
           "properties": {
             "final_decision_outcome": {
-              "const": "approve"
+              "const": "reject"
             }
           },
           "required": [
@@ -50,11 +47,11 @@
         },
         "then": {
           "required": [
-            "asycuda_approval_confirmed"
+            "remarks"
           ],
           "properties": {
-            "asycuda_approval_confirmed": {
-              "const": true
+            "remarks": {
+              "minLength": 1
             }
           }
         }
@@ -85,10 +82,6 @@
         "options": {
           "multiLine": true
         }
-      },
-      {
-        "type": "Control",
-        "scope": "#/properties/asycuda_approval_confirmed"
       }
     ]
   }

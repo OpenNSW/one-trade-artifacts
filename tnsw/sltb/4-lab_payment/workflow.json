@@ -30,6 +30,12 @@
       }
     },
     {
+      "id": "govpay_result_split",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "GovPay Payment Succeeded?"
+    },
+    {
       "id": "method_split",
       "type": "GATEWAY",
       "gateway_type": "EXCLUSIVE_SPLIT",
@@ -75,27 +81,18 @@
       "task_template_id": "sltb-pay-lab-fee--confirm-payment",
       "input_mapping": {
         "selected_method": "selected_payment_method",
-        "confirm_agency_token?": "replyToken"
+        "lab_fee_amount": "submission.amount"
       },
       "output_mapping": {
-        "payment_status": "payment_status",
-        "remarks?": "payment_remarks",
-        "callbackToken?": "confirm_agency_token"
+        "deduction_status": "payment_status",
+        "remarks?": "payment_remarks"
       }
     },
     {
-      "id": "confirm_split",
+      "id": "pinpack_result_split",
       "type": "GATEWAY",
       "gateway_type": "EXCLUSIVE_SPLIT",
-      "name": "Payment Confirmed?"
-    },
-    {
-      "id": "pay_again_task",
-      "type": "TASK",
-      "task_template_id": "sltb-pay-lab-fee--pay-again",
-      "input_mapping": {
-        "payment_remarks?": "payment_remarks"
-      }
+      "name": "Finpak Fee Deducted?"
     },
     {
       "id": "method_join",
@@ -154,32 +151,10 @@
       "condition": "payment_status == 'success'"
     },
     {
-      "id": "e_officer_confirm",
+      "id": "e_pinpack",
       "source_id": "method_split",
       "target_id": "confirm_payment_task",
-      "condition": "selected_method == 'officer_confirm'"
-    },
-    {
-      "id": "e_confirm_split",
-      "source_id": "confirm_payment_task",
-      "target_id": "confirm_split"
-    },
-    {
-      "id": "e_confirm_not_received",
-      "source_id": "confirm_split",
-      "target_id": "pay_again_task",
-      "condition": "payment_status == 'not_received'"
-    },
-    {
-      "id": "e_paid_again",
-      "source_id": "pay_again_task",
-      "target_id": "confirm_payment_task"
-    },
-    {
-      "id": "e_confirmed",
-      "source_id": "confirm_split",
-      "target_id": "method_join",
-      "condition": "payment_status == 'success'"
+      "condition": "selected_method == 'pinpack'"
     },
     {
       "id": "e_join_end",
@@ -187,9 +162,38 @@
       "target_id": "end"
     },
     {
-      "id": "e3",
+      "id": "e_pinpack_deducted",
+      "source_id": "confirm_payment_task",
+      "target_id": "pinpack_result_split"
+    },
+    {
+      "id": "e_pinpack_result_split_deducted",
+      "source_id": "pinpack_result_split",
+      "target_id": "method_join",
+      "condition": "payment_status == 'deducted'"
+    },
+    {
+      "id": "e_pinpack_result_split_insufficient",
+      "source_id": "pinpack_result_split",
+      "target_id": "select_method_task",
+      "condition": "payment_status == 'insufficient_funds'"
+    },
+    {
+      "id": "e_govpay_result",
       "source_id": "pay_lab_fee_task",
-      "target_id": "method_join"
+      "target_id": "govpay_result_split"
+    },
+    {
+      "id": "e_govpay_success",
+      "source_id": "govpay_result_split",
+      "target_id": "method_join",
+      "condition": "payment_status == 'success'"
+    },
+    {
+      "id": "e_govpay_failed",
+      "source_id": "govpay_result_split",
+      "target_id": "select_method_task",
+      "condition": "payment_status == 'fail'"
     }
   ]
 }

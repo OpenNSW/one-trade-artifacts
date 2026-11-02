@@ -1,13 +1,25 @@
 {
   "id": "sltb-pay-levy-flow:render",
   "type": "PAYMENT",
-  "title": "[SLTB] Pay SLTB Levy",
+  "title": "[SLTB 2] Pay SLTB Levy",
   "files": [
     "payment.payment_slip",
     "payment_slip",
     "submission.payment_slip"
   ],
   "sections": {
+    "payment_failed": {
+      "templateId": "sltb-pay-levy--payment-failed",
+      "title": "Payment Failed",
+      "projector": "MARKDOWN",
+      "dataKey": "payment",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "payment"
+      }
+    },
     "select_method": {
       "templateId": "sltb-pay-levy--select-method-form",
       "title": "Select Payment Method",

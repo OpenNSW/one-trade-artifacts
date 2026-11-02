@@ -1,6 +1,6 @@
 {
   "id": "sltb-pay-levy--confirm-pinpack-form",
-  "title": "PinPack Account Levy Deduction Confirmation",
+  "title": "Finpak Account Levy Deduction Confirmation",
   "schema": {
     "type": "object",
     "required": [
@@ -9,11 +9,15 @@
     "properties": {
       "deduction_status": {
         "type": "string",
-        "title": "PinPack Deduction Status",
+        "title": "Finpak Deduction Status",
         "oneOf": [
           {
             "const": "deducted",
-            "title": "Confirm Levy Deducted from PinPack Account"
+            "title": "Confirm Levy Deducted from Finpak Account"
+          },
+          {
+            "const": "insufficient_funds",
+            "title": "Not Deducted — Insufficient Funds in the Finpak Account"
           }
         ],
         "default": "deducted"

@@ -1,6 +1,6 @@
 {
-  "id": "sltb_lab_report_verification",
-  "name": "Lab Test Report Verification",
+  "id": "sltb_tasting_result",
+  "name": "Tasting Result",
   "nodes": [
     {
       "id": "start",
@@ -9,7 +9,7 @@
     {
       "id": "review_application",
       "type": "TASK",
-      "task_template_id": "sltb-lab-report-verification--review",
+      "task_template_id": "sltb-tasting-result--review",
       "input_mapping": {
         "callbackToken": "callbackToken",
         "notification?": "submission",

@@ -1,7 +1,7 @@
 {
   "id": "sltb-levy-payment-confirm-pinpack--review:render",
   "type": "APPLICATION",
-  "title": "SLTB PinPack Levy Deduction Confirmation",
+  "title": "SLTB Finpak Levy Deduction Confirmation",
   "sections": {
     "submitted_info": {
       "templateId": "sltb-levy-payment-confirm-pinpack--submitted-info",

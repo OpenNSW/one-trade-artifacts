@@ -1,6 +1,6 @@
 {
   "id": "sltb_levy_payment_confirm_pinpack",
-  "name": "SLTB PinPack Levy Deduction Confirmation",
+  "name": "SLTB Finpak Levy Deduction Confirmation",
   "nodes": [
     {
       "id": "start",
