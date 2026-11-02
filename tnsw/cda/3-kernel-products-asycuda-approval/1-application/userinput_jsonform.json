@@ -836,9 +836,11 @@
               "example": "2026-08-01"
             },
             "whatsapp_number": {
-              "type": "number",
+              "type": "string",
               "title": "WhatsApp Number",
-              "example": 94771234567
+              "pattern": "^(\\+[0-9]{11}|[0-9]{10})$",
+              "description": "10 digits, or + followed by 11 digits.",
+              "example": "+94771234567"
             }
           },
           "required": [

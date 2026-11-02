@@ -316,6 +316,8 @@
       "telephone_no": {
         "type": "string",
         "title": "Telephone No",
+        "pattern": "^\\+?[0-9][0-9 /-]*$",
+        "description": "Digits, with an optional leading +, spaces, / or -.",
         "example": "2906775/5"
       },
       "authorized_signatory": {

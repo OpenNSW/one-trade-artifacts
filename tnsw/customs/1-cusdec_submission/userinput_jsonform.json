@@ -150,11 +150,6 @@
               "as": "number"
             },
             {
-              "from": "ASYCUDA.Financial.Total_invoice",
-              "to": "valuation.totalAmountInvoiced.amount",
-              "as": "number"
-            },
-            {
               "from": "ASYCUDA.Valuation.Gs_Invoice.Currency_code",
               "to": "valuation.totalAmountInvoiced.currencyCode",
               "as": "string"
