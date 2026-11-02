@@ -8,7 +8,8 @@
     "service_id": "sltb",
     "path": "/api/v1/inject",
     "task_code": "sltb_levy_payment_confirm_pinpack",
-    "notification_template_id": "sltb-pay-levy--pinpack-notification-email"
+    "notification_template_id": "sltb-pay-levy--pinpack-notification-email",
+    "reply_command": "resubmit"
   },
   "extensions": [
     {

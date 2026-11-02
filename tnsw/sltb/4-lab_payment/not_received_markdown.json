@@ -1,0 +1,4 @@
+{
+  "id": "sltb-pay-lab-fee--not-received",
+  "template": "### Not enough funds in your Finpak account\n\nThe SLTB officer could not deduct the Lab Test Fee from your Finpak account. Top up the account, then notify the officer below.\n\n> **Officer remarks:** {{.payment_remarks}}"
+}

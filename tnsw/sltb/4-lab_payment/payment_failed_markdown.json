@@ -1,4 +1,4 @@
 {
   "id": "sltb-pay-lab-fee--payment-failed",
-  "template": "{{if eq .payment_status \"insufficient_funds\"}}### ⚠️ Your Finpak account did not have enough funds\n\nThe SLTB officer could not deduct the Lab Test Fee from your Finpak account. Top up the account, or choose another payment method below, and pay again.{{else if eq .payment_status \"fail\"}}### ⚠️ Your GovPay payment did not go through\n\nNo fee has been taken. Choose a payment method below and pay the Lab Test Fee again.{{end}}"
+  "template": "{{if eq .payment_status \"fail\"}}### ⚠️ Your GovPay payment did not go through\n\nNo fee has been taken. Choose a payment method below and pay the Lab Test Fee again.{{end}}"
 }

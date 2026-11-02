@@ -1,0 +1,4 @@
+{
+  "id": "sltb-pay-levy--finpak-insufficient",
+  "template": "### Not enough funds in your Finpak account\n\nThe SLTB officer could not deduct the SLTB Levy from your Finpak account. Top up the account, then notify the officer below.\n\n{{with .finpak_remarks}}> **Officer remarks:** {{.}}{{end}}"
+}

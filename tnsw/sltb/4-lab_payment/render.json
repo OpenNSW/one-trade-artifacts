@@ -95,6 +95,35 @@
         ],
         "requireDataKey": "selected_payment_method"
       }
+    },
+    "payment_not_received": {
+      "templateId": "sltb-pay-lab-fee--not-received",
+      "title": "Insufficient Funds",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_REPAYMENT"
+        ],
+        "requireDataKey": "payment_remarks"
+      }
+    },
+    "pay_again": {
+      "templateId": "sltb-pay-lab-fee--pay-again-form",
+      "title": "Notify the Officer",
+      "projector": "FORM",
+      "dataKey": "repayment",
+      "visibleWhen": {
+        "states": [
+          "PENDING_REPAYMENT"
+        ]
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "I Have Topped Up — Notify the Officer",
+          "element": "primary_action"
+        }
+      ]
     }
   },
   "states": {
@@ -117,6 +146,13 @@
     },
     "QUEUED_EXTERNALLY": {
       "actions": []
+    },
+    "PENDING_REPAYMENT": {
+      "actions": [
+        {
+          "command": "submit"
+        }
+      ]
     }
   }
 }

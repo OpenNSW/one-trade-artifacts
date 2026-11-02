@@ -1,4 +1,4 @@
 {
   "id": "sltb-pay-levy--payment-failed",
-  "template": "{{if eq .deduction_status \"insufficient_funds\"}}### ⚠️ Your Finpak account did not have enough funds\n\nThe SLTB officer could not deduct the SLTB Levy from your Finpak account. Top up the account, or choose another payment method below, and pay again.{{else if eq .payment_status \"fail\"}}### ⚠️ Your GovPay payment did not go through\n\nNo levy has been taken. Choose a payment method below and pay the SLTB Levy again.{{end}}"
+  "template": "{{if eq .payment_status \"fail\"}}### ⚠️ Your GovPay payment did not go through\n\nNo levy has been taken. Choose a payment method below and pay the SLTB Levy again.{{end}}"
 }

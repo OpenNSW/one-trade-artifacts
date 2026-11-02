@@ -277,6 +277,24 @@
       "path": "sltb_levy_payment_confirm_pinpack/submitted_info_markdown.json"
     },
     {
+      "id": "sltb-levy-payment-confirm-pinpack--awaiting-resubmission",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_levy_payment_confirm_pinpack/awaiting_resubmission_markdown.json"
+    },
+    {
+      "id": "sltb-levy-payment-confirm-pinpack--previous-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_levy_payment_confirm_pinpack/previous_review_markdown.json"
+    },
+    {
+      "id": "sltb-levy-payment-confirm-pinpack--request-info",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb_levy_payment_confirm_pinpack/request_info.json"
+    },
+    {
       "id": "sltb_sample_schedule",
       "kind": "task_config",
       "version": "",
@@ -779,6 +797,24 @@
       "kind": "task_config",
       "version": "",
       "path": "sltb_payment_confirm/sltb_lab_fee_confirm_payment.taskconfig.json"
+    },
+    {
+      "id": "sltb-payment-confirm--awaiting-resubmission",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_payment_confirm/awaiting_resubmission_markdown.json"
+    },
+    {
+      "id": "sltb-payment-confirm--previous-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_payment_confirm/previous_review_markdown.json"
+    },
+    {
+      "id": "sltb-payment-confirm--request-info",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb_payment_confirm/request_info.json"
     }
   ]
 }

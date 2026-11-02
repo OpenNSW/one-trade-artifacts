@@ -24,10 +24,34 @@
       },
       "remarks": {
         "type": "string",
-        "title": "Officer Remarks (Optional)",
+        "title": "Officer Remarks (Required if Funds are Insufficient)",
         "example": "Levy auto-deducted upon CusDec & Blend Sheet upload integration."
       }
-    }
+    },
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "deduction_status": {
+              "const": "insufficient_funds"
+            }
+          },
+          "required": [
+            "deduction_status"
+          ]
+        },
+        "then": {
+          "properties": {
+            "remarks": {
+              "minLength": 1
+            }
+          },
+          "required": [
+            "remarks"
+          ]
+        }
+      }
+    ]
   },
   "uiSchema": {
     "type": "VerticalLayout",

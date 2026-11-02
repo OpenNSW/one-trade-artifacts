@@ -1,0 +1,30 @@
+{
+  "id": "sltb-pay-levy--finpak-top-up",
+  "task_type": "USER_INPUT",
+  "output_namespace": "topup",
+  "plugin_properties": {
+    "user_jsonforms_id": "sltb-pay-levy--finpak-top-up-form",
+    "status_override": "PENDING_REPAYMENT"
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "PENDING_REPAYMENT": {
+          "submit": [
+            "trader",
+            "cha"
+          ]
+        }
+      }
+    },
+    {
+      "id": "payload_schema",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "form": "sltb-pay-levy--finpak-top-up-form"
+      }
+    }
+  ]
+}
