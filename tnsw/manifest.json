@@ -3883,6 +3883,12 @@
       "path": "slpa/2-service_order/order_rejection.json"
     },
     {
+      "id": "slpa-so--previous-rejection",
+      "kind": "generic_template",
+      "version": "",
+      "path": "slpa/2-service_order/previous_rejection_markdown.json"
+    },
+    {
       "id": "slpa-so--raised-message",
       "kind": "generic_template",
       "version": "",
