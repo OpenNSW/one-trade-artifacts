@@ -456,13 +456,13 @@
       "id": "e_first_round",
       "source_id": "sltb_1_round_gateway",
       "target_id": "sltb_2_pay_levy",
-      "condition": "customs.userform == nil"
+      "condition": "$env?.customs?.userform == nil"
     },
     {
       "id": "e_amendment_round",
       "source_id": "sltb_1_round_gateway",
       "target_id": "sltb_approval_join",
-      "condition": "customs.userform != nil"
+      "condition": "$env?.customs?.userform != nil"
     },
     { "id": "e_levy_tasting", "source_id": "sltb_2_pay_levy", "target_id": "sltb_3_tasting_decision" },
     { "id": "e_tasting_gw", "source_id": "sltb_3_tasting_decision", "target_id": "sltb_3_tasting_gateway" },
