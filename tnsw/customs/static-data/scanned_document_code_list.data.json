@@ -1,0 +1,492 @@
+{
+  "data": [
+    {
+      "const": "001",
+      "title": "Authorization letter of the company"
+    },
+    {
+      "const": "002",
+      "title": "Commercial Invoice"
+    },
+    {
+      "const": "003",
+      "title": "Delivery Order (DO)"
+    },
+    {
+      "const": "004",
+      "title": "Bill of Lading (BL)"
+    },
+    {
+      "const": "005",
+      "title": "Payment Confirmation (LC/TT/DP/etc)"
+    },
+    {
+      "const": "006",
+      "title": "Freight Receipt"
+    },
+    {
+      "const": "007",
+      "title": "Insurance Payment Receipt/Confirmation"
+    },
+    {
+      "const": "008",
+      "title": "Packing List"
+    },
+    {
+      "const": "009",
+      "title": "Working Sheets"
+    },
+    {
+      "const": "010",
+      "title": "Certificates of Origin"
+    },
+    {
+      "const": "011",
+      "title": "Load Port Survey Report"
+    },
+    {
+      "const": "012",
+      "title": "De Registration Certificate"
+    },
+    {
+      "const": "013",
+      "title": "Cancellation of First Registration"
+    },
+    {
+      "const": "014",
+      "title": "Pre Shipment Inspection Certificate"
+    },
+    {
+      "const": "015",
+      "title": "Emmission Standard and Safety Measures Certificate"
+    },
+    {
+      "const": "016",
+      "title": "Vehicle Permit"
+    },
+    {
+      "const": "017",
+      "title": "Carnet Certificate"
+    },
+    {
+      "const": "018",
+      "title": "Import Control License"
+    },
+    {
+      "const": "019",
+      "title": "Pro forma Invoice"
+    },
+    {
+      "const": "020",
+      "title": "Product Literature / Catalogues"
+    },
+    {
+      "const": "021",
+      "title": "Consumer Affairs Authority Registration Form for MRP"
+    },
+    {
+      "const": "022",
+      "title": "SLSI Certificate"
+    },
+    {
+      "const": "023",
+      "title": "Fumigation Certificates"
+    },
+    {
+      "const": "024",
+      "title": "TRC Approval"
+    },
+    {
+      "const": "025",
+      "title": "NMRA Approval"
+    },
+    {
+      "const": "026",
+      "title": "Defence Ministry Approval"
+    },
+    {
+      "const": "027",
+      "title": "Atomic Energy Authority Approval"
+    },
+    {
+      "const": "028",
+      "title": "Central Environmental Authority Approval"
+    },
+    {
+      "const": "029",
+      "title": "National Film Corporation Approval"
+    },
+    {
+      "const": "030",
+      "title": "Phytosanitary Certificate"
+    },
+    {
+      "const": "031",
+      "title": "Plant Quarantine Certificate / Approval"
+    },
+    {
+      "const": "032",
+      "title": "Animal Quarantine Certificate / Approval"
+    },
+    {
+      "const": "033",
+      "title": "Waiver Approval Letters under Section 19 of CO"
+    },
+    {
+      "const": "034",
+      "title": "Certificates for Preferential Rates"
+    },
+    {
+      "const": "035",
+      "title": "Approval for Concessions(As per the List of Concessions in Schedule A)"
+    },
+    {
+      "const": "036",
+      "title": "BOI Approvals for payment of taxes"
+    },
+    {
+      "const": "037",
+      "title": "Free Re-Importation Certificate"
+    },
+    {
+      "const": "038",
+      "title": "Advance Rulings Obtained"
+    },
+    {
+      "const": "039",
+      "title": "Previous Classification Advices Obtained"
+    },
+    {
+      "const": "040",
+      "title": "Forest Department Certificate"
+    },
+    {
+      "const": "041",
+      "title": "Archaeological Department Certificate"
+    },
+    {
+      "const": "042",
+      "title": "Agriculture Department Certificate"
+    },
+    {
+      "const": "043",
+      "title": "Fisheries Ministry Approvals"
+    },
+    {
+      "const": "044",
+      "title": "Drug Control Board Certificate"
+    },
+    {
+      "const": "045",
+      "title": "Diplomatic Cargo Clearance Certificate"
+    },
+    {
+      "const": "046",
+      "title": "Bill of Store"
+    },
+    {
+      "const": "047",
+      "title": "Bill of Sight"
+    },
+    {
+      "const": "048",
+      "title": "BOI Engineering Approval"
+    },
+    {
+      "const": "049",
+      "title": "BOI Environmental Approval"
+    },
+    {
+      "const": "050",
+      "title": "BOI Investment Approval"
+    },
+    {
+      "const": "051",
+      "title": "COCONUT DEVELOPMENT AUTHORITY"
+    },
+    {
+      "const": "052",
+      "title": "DEPARTMENT OF WILDLIFE CONSERVATION"
+    },
+    {
+      "const": "053",
+      "title": "FISHERIES & AQUATIC RESOURCES"
+    },
+    {
+      "const": "054",
+      "title": "GEOLOGICAL SURVEY & MINES BUREAU"
+    },
+    {
+      "const": "055",
+      "title": "MINISTRY OF AGRICULTURE"
+    },
+    {
+      "const": "056",
+      "title": "Remittance Declaration Form"
+    },
+    {
+      "const": "999",
+      "title": "Other"
+    },
+    {
+      "const": "AGRI",
+      "title": "Agriculture Department Certificate"
+    },
+    {
+      "const": "AGRM",
+      "title": "Agriculture Ministry"
+    },
+    {
+      "const": "APHD",
+      "title": "Animal Production & Health Department"
+    },
+    {
+      "const": "AQC",
+      "title": "Animal Quarantine Certificate / Approval"
+    },
+    {
+      "const": "ARCH",
+      "title": "Archaeological Department Certificate"
+    },
+    {
+      "const": "ATOM",
+      "title": "Atomic Energy Authority Approval"
+    },
+    {
+      "const": "BISI",
+      "title": "Bill of Sight"
+    },
+    {
+      "const": "BL",
+      "title": "Bill of Lading (BL)"
+    },
+    {
+      "const": "BOEN",
+      "title": "BOI Environmental Approval"
+    },
+    {
+      "const": "BOIE",
+      "title": "BOI Engineering Approval"
+    },
+    {
+      "const": "BOII",
+      "title": "BOI Investment Approval"
+    },
+    {
+      "const": "BOIT",
+      "title": "BOI Approvals for payment of taxes"
+    },
+    {
+      "const": "BOS",
+      "title": "Bill of Store"
+    },
+    {
+      "const": "CAAR",
+      "title": "Consumer Affairs Authority Registration Form for MRP"
+    },
+    {
+      "const": "CARN",
+      "title": "Carnet Certificate"
+    },
+    {
+      "const": "CDA",
+      "title": "COCONUT DEVELOPMENT AUTHORITY"
+    },
+    {
+      "const": "CEA",
+      "title": "Central Environmental Authority Approval"
+    },
+    {
+      "const": "CO",
+      "title": "Country of of Origin certificate"
+    },
+    {
+      "const": "CONS",
+      "title": "Concessions approvals (As per the List of Concessions in Schedule A)"
+    },
+    {
+      "const": "CUSD",
+      "title": "Signed CusDec ( cage 53 & 54 )"
+    },
+    {
+      "const": "DO",
+      "title": "Delivery Order (DO)"
+    },
+    {
+      "const": "DPL",
+      "title": "Diplomatic Cargo Clearance Certificate"
+    },
+    {
+      "const": "DRUG",
+      "title": "Drug Control Board Certificate"
+    },
+    {
+      "const": "DWC",
+      "title": "DEPARTMENT OF WILDLIFE CONSERVATION"
+    },
+    {
+      "const": "FISA",
+      "title": "Fisheries & Aquatic Resources"
+    },
+    {
+      "const": "FISH",
+      "title": "Fisheries Ministry Approvals"
+    },
+    {
+      "const": "FORE",
+      "title": "Forest Department Certificate"
+    },
+    {
+      "const": "FRIC",
+      "title": "Free Re-Importation Certificate"
+    },
+    {
+      "const": "FRT",
+      "title": "Freight Receipt"
+    },
+    {
+      "const": "FUMI",
+      "title": "Fumigation Certificates"
+    },
+    {
+      "const": "GEO",
+      "title": "Geological Survey & Mines Bureau"
+    },
+    {
+      "const": "ICL",
+      "title": "Import Control License"
+    },
+    {
+      "const": "INS",
+      "title": "Insurance Payment Receipt/Confirmation"
+    },
+    {
+      "const": "INSU",
+      "title": "Insurance Payment Receipt/Confirmation"
+    },
+    {
+      "const": "INV",
+      "title": "Commercial Invoice"
+    },
+    {
+      "const": "INVC",
+      "title": "Invoice Commercial"
+    },
+    {
+      "const": "INVP",
+      "title": "Pro forma Invoice"
+    },
+    {
+      "const": "LEFC",
+      "title": "Letter from company authorizing the CHA"
+    },
+    {
+      "const": "LIT",
+      "title": "Product Literature / Catalogues"
+    },
+    {
+      "const": "LITE",
+      "title": "Product Literature/ Catalogues"
+    },
+    {
+      "const": "LPSR",
+      "title": "Load Port Survey Report"
+    },
+    {
+      "const": "MOD",
+      "title": "Ministry Of Defence Approval"
+    },
+    {
+      "const": "NFCA",
+      "title": "National Film Corporation Approval"
+    },
+    {
+      "const": "NMRA",
+      "title": "NMRA Approval"
+    },
+    {
+      "const": "OTHR",
+      "title": "Other"
+    },
+    {
+      "const": "PCON",
+      "title": "Payment Confirmation (LC/TT/DP/etc)"
+    },
+    {
+      "const": "PHY",
+      "title": "Phytosanitary Certificate"
+    },
+    {
+      "const": "PLIS",
+      "title": "Packing List"
+    },
+    {
+      "const": "PQC",
+      "title": "Plant Quarantine Certificate / Approval"
+    },
+    {
+      "const": "PREF",
+      "title": "Preferential Rate Certificate"
+    },
+    {
+      "const": "PSIC",
+      "title": "Pre Shipment Inspection Certificate"
+    },
+    {
+      "const": "RUL",
+      "title": "Rulings Advanced"
+    },
+    {
+      "const": "RULA",
+      "title": "Rulings Advanced"
+    },
+    {
+      "const": "RULP",
+      "title": "Rulings Previous"
+    },
+    {
+      "const": "SLC",
+      "title": "Letter form Sri Lanka Customs"
+    },
+    {
+      "const": "SLSI",
+      "title": "SLSI Certificate"
+    },
+    {
+      "const": "TRCA",
+      "title": "TRC Approval"
+    },
+    {
+      "const": "VCFR",
+      "title": "Vehicle Cancellation of First Registration"
+    },
+    {
+      "const": "VDRC",
+      "title": "Vehicle De Registration Certificate"
+    },
+    {
+      "const": "VESS",
+      "title": "VEHICLE Emmission Standard and Safety Measures Certificate"
+    },
+    {
+      "const": "VPER",
+      "title": "Vehicle Permit"
+    },
+    {
+      "const": "WAIV",
+      "title": "Waiver Approval Letters under Section 19 of CO"
+    },
+    {
+      "const": "WAV",
+      "title": "Waiver Approval Letters under Section 19 of CO"
+    },
+    {
+      "const": "WORK",
+      "title": "Working Sheets"
+    },
+    {
+      "const": "WSH",
+      "title": "Working Sheets"
+    }
+  ]
+}

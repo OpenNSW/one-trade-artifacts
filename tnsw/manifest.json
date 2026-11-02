@@ -247,6 +247,12 @@
       "path": "customs/static-data/supporting_document_code_list.data.json"
     },
     {
+      "id": "customs-cusdec--scanned-document-codes",
+      "kind": "static_data",
+      "version": "1",
+      "path": "customs/static-data/scanned_document_code_list.data.json"
+    },
+    {
       "id": "customs-cusdec--currencies",
       "kind": "static_data",
       "version": "1",
