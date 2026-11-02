@@ -21,8 +21,6 @@
   NPQS form NPQS/094 "Attached sheet for the consignment", printed on plain
   paper; box 08 then refers to it.
 */ -}}
-{{- /* The NPQS logo on the attached sheet: an image URL,Empty prints no logo. */}}
-{{- $logoURL := "" }}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +55,8 @@
   .attach { break-before: page; padding: 22.5mm 19.5mm 20mm 25.4mm; font-family: "Times New Roman", Times, serif; font-size: 12pt; line-height: 1.35; }
   .attach .formno { position: absolute; top: 10mm; right: 19.5mm; border: 1px solid #000; padding: 1mm 3mm; font-family: Arial, Helvetica, sans-serif; font-size: 10pt; }
   .attach .org { display: flex; align-items: center; gap: 6mm; border-bottom: 1px solid #000; padding-bottom: 2mm; margin-bottom: 4mm; }
-  .attach .org img { width: 21.2mm; height: 21.2mm; }
+  /* The NPQS logo's place on the attached sheet; empty until the logo is added (see the .logo element). */
+  .attach .org .logo { flex: none; width: 21.2mm; height: 21.2mm; }
   .attach .org div { flex: 1; text-align: center; font-weight: bold; font-size: 14pt; }
   .attach .org small { display: block; font-size: 13pt; }
   .attach .title { width: 92.9mm; margin: 3mm auto 4mm; border: 1px solid #000; text-align: center; padding: 1mm; }
@@ -226,7 +225,10 @@
 <div class="sheet attach">
   <div class="formno">Form No: NPQS/094</div>
   <div class="org">
-    {{- with $logoURL }}<img src="{{ . }}" alt="NPQS">{{ end }}
+    {{- /* The logo: empty for now. To add it, give .attach .org .logo a background of the image as a data: URL
+         in the style block (background: url(data:image/png;base64,...) center / contain no-repeat;). The template
+         check allows an image only that way: no img src, and no value printed into an attribute. */}}
+    <span class="logo"></span>
     <div>National Plant Quarantine Service - Department of Agriculture<small>Canada Friendship Road, Katunayake, Sri Lanka</small></div>
   </div>
   <p>Ref No <span>:</span></p>
