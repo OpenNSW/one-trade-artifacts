@@ -71,6 +71,7 @@ Consignment re-inspected after treatment and found free from live pests.
   tr, .closing { break-inside: avoid; }
   .item-no { width: 18pt; text-align: center; font-weight: normal; }
   .item-no::before { content: counter(item); }
+  .replacement { margin-top: -1px; break-inside: avoid; }
   .small { font-size: 8.5pt; }
   .lines div { min-height: 1em; }
   .pre { white-space: pre-line; }
@@ -207,6 +208,16 @@ Consignment re-inspected after treatment and found free from live pests.
 {{- end }}
 {{- end }}
 </div>
+
+{{- with .replaced_certificate }}
+<table class="replacement">
+  <tr><th>REPLACEMENT CERTIFICATE</th></tr>
+  <tr><td>
+    <div>This certificate replaces and cancels phytosanitary certificate no. {{ .certificate_number }} issued on {{ date .issue_date "2006-01-02" "02/01/2006" }}.</div>
+    <div class="pre">Reason for replacement: {{ .replacement_note }}</div>
+  </td></tr>
+</table>
+{{- end }}
 
 <div class="closing">
 <div class="certify">
