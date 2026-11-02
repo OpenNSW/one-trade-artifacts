@@ -226,7 +226,8 @@
       "additional_information": {
         "type": "string",
         "title": "Additional Information",
-        "description": "Printed in box 17 of the certificate; NIL when left empty."
+        "description": "Printed in box 17 of the certificate, which holds three lines; NIL when left empty.",
+        "maxLength": 100
       },
       "comments": {
         "type": "string",

@@ -53,6 +53,11 @@
   table.goods td.qty { width: 46.3mm; padding-left: 19.3mm; }
   /* The attached sheet (NPQS/094): plain A4, with the Word form's margins. */
   .attach { break-before: page; padding: 22.5mm 19.5mm 20mm 25.4mm; font-family: "Times New Roman", Times, serif; font-size: 12pt; line-height: 1.35; }
+  /* Unlike the certificate page, the attached sheet grows with its rows and carries on over as many pages as
+     they need, each page keeping the sheet's margins and the table's heading row. */
+  .attach { height: auto; min-height: 297mm; overflow: visible; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .attach thead { display: table-header-group; }
+  .attach tr { break-inside: avoid; }
   .attach .formno { position: absolute; top: 10mm; right: 19.5mm; border: 1px solid #000; padding: 1mm 3mm; font-family: Arial, Helvetica, sans-serif; font-size: 10pt; }
   .attach .org { display: flex; align-items: center; gap: 6mm; border-bottom: 1px solid #000; padding-bottom: 2mm; margin-bottom: 4mm; }
   /* The NPQS logo's place on the attached sheet; empty until the logo is added (see the .logo element). */
@@ -238,7 +243,7 @@
   <p>Attach sheet for Phytosanitary Certificate No:</p>
   <p>Date of issue: <span>{{ with .issue_date }}{{ date . "2006-01-02" "02/01/2006" }}{{ end }}</span></p>
   <table>
-    <tr><th>Description</th><th class="num">MC'S</th><th class="num">KGS</th></tr>
+    <thead><tr><th>Description</th><th class="num">MC'S</th><th class="num">KGS</th></tr></thead>
     {{- range $c := $app.commodities }}
     {{- $included := true }}
 {{- range $.items }}{{ if and (eq (print .id) (print $c.id)) (eq (print .include_in_certificate) "false") }}{{ $included = false }}{{ end }}{{ end }}
