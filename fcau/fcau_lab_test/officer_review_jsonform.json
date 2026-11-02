@@ -21,6 +21,32 @@
               "title": "Description of consignment and quantity",
               "readOnly": true
             },
+            "lab_test_type": {
+              "type": "string",
+              "title": "Type of Test",
+              "readOnly": true,
+              "oneOf": [
+                {
+                  "const": "aflatoxin",
+                  "title": "Aflatoxin Test"
+                }
+              ]
+            },
+            "proposed_lab": {
+              "type": "string",
+              "title": "Proposed Lab",
+              "readOnly": true,
+              "oneOf": [
+                {
+                  "const": "sgs_lanka",
+                  "title": "SGS Lanka (Pvt) Limited"
+                },
+                {
+                  "const": "bureau_veritas",
+                  "title": "Bureau Veritas Sri Lanka"
+                }
+              ]
+            },
             "lab_result": {
               "type": "string",
               "title": "Microbiology & Pesticide Clearance",
@@ -82,6 +108,19 @@
                   {
                     "type": "Control",
                     "scope": "#/properties/description_of_food"
+                  }
+                ]
+              },
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/lab_test_type"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/proposed_lab"
                   }
                 ]
               },
