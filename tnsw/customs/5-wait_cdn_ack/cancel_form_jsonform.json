@@ -4,10 +4,24 @@
   "description": "Ends this container's dispatch in the Single Window. The CDN stays registered in ASYCUDA World until Customs cancels it there.",
   "schema": {
     "type": "object",
-    "properties": {}
+    "properties": {
+      "cancel_cdn": {
+        "type": "boolean",
+        "title": "Cancel this CDN",
+        "const": true
+      }
+    },
+    "required": [
+      "cancel_cdn"
+    ]
   },
   "uiSchema": {
     "type": "VerticalLayout",
-    "elements": []
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/cancel_cdn"
+      }
+    ]
   }
 }

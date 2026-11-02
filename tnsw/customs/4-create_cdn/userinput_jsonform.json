@@ -63,13 +63,7 @@
             },
             "example": "LK"
           }
-        },
-        "required": [
-          "id",
-          "name",
-          "address",
-          "countryCode"
-        ]
+        }
       },
       "consignee": {
         "type": "object",
@@ -105,13 +99,7 @@
             },
             "example": "MY"
           }
-        },
-        "required": [
-          "id",
-          "name",
-          "address",
-          "countryCode"
-        ]
+        }
       },
       "transport": {
         "type": "object",
@@ -208,20 +196,7 @@
             },
             "example": "CFS1"
           }
-        },
-        "required": [
-          "voyageNumber",
-          "voyageDate",
-          "vessel",
-          "vesselOpCode",
-          "contOpCode",
-          "placeOfDischarge",
-          "placeOfLoading",
-          "lorryRegNo",
-          "trailerRegNo",
-          "driverName",
-          "locationOfGoods"
-        ]
+        }
       },
       "goods": {
         "type": "object",
@@ -272,13 +247,7 @@
             "title": "24. Reefer Temperature Required (°C)",
             "example": 4
           }
-        },
-        "required": [
-          "description",
-          "packageNumber",
-          "packageType",
-          "grossWeight"
-        ]
+        }
       },
       "container": {
         "type": "object",
@@ -315,12 +284,6 @@
             "example": "MSCU-849201-9"
           }
         },
-        "required": [
-          "number",
-          "type",
-          "sealNo",
-          "mark"
-        ],
         "description": "The single container this dispatch note covers. Annex B carries one container per CDN."
       }
     },
@@ -343,7 +306,56 @@
         "transport",
         "goods",
         "container"
-      ]
+      ],
+      "properties": {
+        "shipper": {
+          "required": [
+            "id",
+            "name",
+            "address",
+            "countryCode"
+          ]
+        },
+        "consignee": {
+          "required": [
+            "id",
+            "name",
+            "address",
+            "countryCode"
+          ]
+        },
+        "transport": {
+          "required": [
+            "voyageNumber",
+            "voyageDate",
+            "vessel",
+            "vesselOpCode",
+            "contOpCode",
+            "placeOfDischarge",
+            "placeOfLoading",
+            "lorryRegNo",
+            "trailerRegNo",
+            "driverName",
+            "locationOfGoods"
+          ]
+        },
+        "goods": {
+          "required": [
+            "description",
+            "packageNumber",
+            "packageType",
+            "grossWeight"
+          ]
+        },
+        "container": {
+          "required": [
+            "number",
+            "type",
+            "sealNo",
+            "mark"
+          ]
+        }
+      }
     }
   },
   "uiSchema": {
