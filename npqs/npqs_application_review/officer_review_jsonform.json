@@ -143,6 +143,10 @@
                 {
                   "const": "visual",
                   "title": "Visual Inspection"
+                },
+                {
+                  "const": "none",
+                  "title": "None (Treatment Only)"
                 }
               ]
             },
@@ -208,6 +212,27 @@
           "required": [
             "id",
             "commodity_common_name"
+          ],
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "inspection_type": {
+                    "const": "none"
+                  }
+                },
+                "required": [
+                  "inspection_type"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "treatment_required": {
+                    "const": true
+                  }
+                }
+              }
+            }
           ]
         },
         "example": [

@@ -1043,6 +1043,12 @@
       "condition": "item.inspection_type == 'visual' && item.visual_approach == 'system'"
     },
     {
+      "id": "e_route_to_treatment_only",
+      "source_id": "route_split",
+      "target_id": "gw_treatment_split",
+      "condition": "item.inspection_type == 'none'"
+    },
+    {
       "id": "e_officer_draw_to_lab_testing",
       "source_id": "n4_0_officer_draw_at_site",
       "target_id": "n2_1_lab_testing"
