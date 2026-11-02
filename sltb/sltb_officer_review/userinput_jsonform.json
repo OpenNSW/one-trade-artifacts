@@ -22,7 +22,7 @@
                 "fileName": "{blend_no}.xml",
                 "writeBase": "parent",
                 "writeTo": [
-                  { "from": "source_blend_sheet_id", "to": "@_id", "default": null },
+                  { "from": "blendsheet_no", "to": "@_id", "default": 0 },
                   { "to": "Blend_type", "formula": "\"\"" },
                   { "from": "private_treaty_to_be_exported", "to": "Country", "default": null },
                   { "from": "exporter_registration_no", "to": "Exporter.registration_number", "default": null },
@@ -69,7 +69,11 @@
                       { "from": "BR_code", "to": "BR_code" },
                       { "from": "LOT_number", "to": "LOT_number" },
                       { "from": "Invoice_number", "to": "Invoice_number" },
-                      { "from": "Garden_mark", "to": "Garden_mark" },
+                      {
+                        "inputs": { "garden_mark": "Garden_mark" },
+                        "formula": "TRIM(garden_mark)",
+                        "to": "Garden_mark"
+                      },
                       { "from": "Sale_grade", "to": "Sale_grade" },
                       { "from": "Sale_rate", "to": "Sale_rate" },
                       { "from": "Sale_quantity", "to": "Sale_quantity" },
@@ -109,7 +113,7 @@
                   { "from": "warehouse_address", "to": "Sample.Sample_Warehouse", "default": null },
                   { "from": "remarks", "to": "Sample.Remarks", "default": { "null": null } },
                   { "from": "blend_gain_determined", "to": "Total.Blend_gain", "default": { "null": null } },
-                  { "from": "flavors", "to": "Total.Flavor", "default": { "null": null } },
+                  { "from": "flavors", "to": "Total.Flavor", "default": 0 },
                   { "from": "total", "to": "Total.Total", "default": null },
                   { "from": "avg_value_per_kg", "to": "Total.Average_value", "default": null },
                   { "from": "quantity_to_be_shipped_imported", "to": "Total.Ship_import", "default": { "null": null } },
@@ -228,7 +232,7 @@
                 {
                   "id": "average_value_per_kg",
                   "label": "Average Value Per KG (Total Value ÷ Total Quantity)",
-                  "expression": "=SUM(J2:J10000)/SUM(I2:I10000)"
+                  "expression": "=ROUND(SUM(J2:J10000)/SUM(I2:I10000), 2)"
                 },
                 { "id": "total_sales_quantity", "label": "Total Sales Quantity (KG)", "expression": "=SUM(I2:I10000)" },
                 { "id": "total_sales_value", "label": "Total Sales Value (LKR)", "expression": "=SUM(J2:J10000)" }

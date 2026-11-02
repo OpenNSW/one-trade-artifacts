@@ -199,7 +199,7 @@
                 {
                   "id": "average_value_per_kg",
                   "label": "Average Value Per KG (Total Value ÷ Total Quantity)",
-                  "expression": "=SUM(J2:J10000)/SUM(I2:I10000)"
+                  "expression": "=ROUND(SUM(J2:J10000)/SUM(I2:I10000), 2)"
                 },
                 { "id": "total_sales_quantity", "label": "Total Sales Quantity (KG)", "expression": "=SUM(I2:I10000)" },
                 { "id": "total_sales_value", "label": "Total Sales Value (LKR)", "expression": "=SUM(J2:J10000)" }
