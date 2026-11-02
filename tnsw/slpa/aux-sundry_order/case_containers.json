@@ -4,7 +4,9 @@
   "output_namespace": "containers",
   "plugin_properties": {
     "registration_template_id": "slpa-ecdn-submission-flow",
-    "consolidation_template_id": "slpa-consolidation-flow",
-    "gate_pass_template_id": "slpa-gate-pass-flow"
+    "pairing_template_ids": [
+      "slpa-consolidation-flow",
+      "slpa-gate-pass-flow"
+    ]
   }
 }
