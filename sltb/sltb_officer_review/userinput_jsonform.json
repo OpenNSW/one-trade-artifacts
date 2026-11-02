@@ -22,7 +22,7 @@
                 "fileName": "{blend_no}.xml",
                 "writeBase": "parent",
                 "writeTo": [
-                  { "inputs": { "blendsheet_no": "blendsheet_no" }, "formula": "SUBSTITUTE(blendsheet_no, \"/\", \"\")", "to": "@_id", "default": 0 },
+                  { "from": "blendsheet_no", "to": "@_id", "default": 0 },
                   { "to": "Blend_type", "formula": "\"\"" },
                   { "from": "private_treaty_to_be_exported", "to": "Country", "default": null },
                   { "from": "exporter_registration_no", "to": "Exporter.registration_number", "default": null },
@@ -80,7 +80,7 @@
                       { "from": "Sale_value", "to": "Sale_value" }
                     ]
                   },
-                  { "inputs": { "sale_average": "sales.derivations.average_value_per_kg.value" }, "formula": "ROUND(sale_average, 2)", "to": "Sale_Sum.Sale_total.SaleTotal_average", "default": { "null": null } },
+                  { "from": "sales.derivations.average_value_per_kg.value", "to": "Sale_Sum.Sale_total.SaleTotal_average", "default": { "null": null } },
                   { "from": "sales.derivations.total_sales_quantity.value", "to": "Sale_Sum.Sale_total.SaleTotal_quantity", "default": { "null": null } },
                   { "from": "sales.derivations.total_sales_value.value", "to": "Sale_Sum.Sale_total.SaleTotal_value", "default": { "null": null } },
                   {
