@@ -4,6 +4,95 @@
   "schema": {
     "type": "object",
     "properties": {
+      "import_application_xml": {
+        "type": "object",
+        "title": "Import Application XML",
+        "description": "Upload an application XML to fill this form automatically. Also accepts a file from Download Application XML. Files to upload still need to be attached by hand. Values can be corrected afterwards.",
+        "x-xml": {
+          "accept": ".xml,text/xml,application/xml",
+          "maxSize": 5242880,
+          "arrayPaths": [
+            "CDA_COCONUT_CERT.dc_grades"
+          ],
+          "persistDocument": false,
+          "writeTo": [
+            { "from": "CDA_COCONUT_CERT.exporter_name", "to": "exporter_name", "as": "string" },
+            { "from": "CDA_COCONUT_CERT.exporter_registration_number", "to": "exporter_registration_number", "as": "string" },
+            { "from": "CDA_COCONUT_CERT.exporter_address", "to": "exporter_address", "as": "string" },
+            { "from": "CDA_COCONUT_CERT.relates_to_previous_approval", "to": "relates_to_previous_approval", "as": "boolean" },
+            { "from": "CDA_COCONUT_CERT.previous_cusdec_number", "to": "previous_cusdec_number", "as": "string" },
+            { "from": "CDA_COCONUT_CERT.previous_certificate_number", "to": "previous_certificate_number", "as": "string" },
+            { "from": "CDA_COCONUT_CERT.cancellation_reason", "to": "cancellation_reason", "as": "string" },
+            { "from": "CDA_COCONUT_CERT.hs_code", "to": "hs_code", "as": "string" },
+            { "from": "CDA_COCONUT_CERT.contact_number", "to": "contact_number", "as": "string" },
+            { "from": "CDA_COCONUT_CERT.contract_number", "to": "contract_number", "as": "string" },
+            { "from": "CDA_COCONUT_CERT.lot_number", "to": "lot_number", "as": "string" },
+            { "from": "CDA_COCONUT_CERT.product_type", "to": "product_type", "as": "string" },
+            {
+              "from": "CDA_COCONUT_CERT.dc_grades", "to": "dc_grades",
+              "writeTo": [
+                { "from": "dc_grade", "to": "dc_grade", "as": "string" },
+                { "from": "number_of_bags", "to": "number_of_bags", "as": "number" },
+                { "from": "weight_of_bag", "to": "weight_of_bag", "as": "number" },
+                { "from": "total_weight", "to": "total_weight", "as": "number" }
+              ]
+            },
+            { "from": "CDA_COCONUT_CERT.date_of_containerization", "to": "date_of_containerization", "as": "date" },
+            { "from": "CDA_COCONUT_CERT.vessel_name", "to": "vessel_name", "as": "string" },
+            { "from": "CDA_COCONUT_CERT.container_number", "to": "container_number", "as": "string" },
+            { "from": "CDA_COCONUT_CERT.date_of_sailing", "to": "date_of_sailing", "as": "date" },
+            { "from": "CDA_COCONUT_CERT.port_of_discharge", "to": "port_of_discharge", "as": "string" },
+            { "from": "CDA_COCONUT_CERT.final_destination", "to": "final_destination", "as": "string" },
+            { "from": "CDA_COCONUT_CERT.buyer_name", "to": "buyer_name", "as": "string" },
+            { "from": "CDA_COCONUT_CERT.container_filling_status", "to": "container_filling_status", "as": "string" },
+            { "from": "CDA_COCONUT_CERT.balance_material_nature", "to": "balance_material_nature", "as": "string" },
+            { "from": "CDA_COCONUT_CERT.cert_type", "to": "cert_type", "as": "string" }
+          ]
+        }
+      },
+      "export_application_xml": {
+        "type": "object",
+        "title": "Download Application XML",
+        "description": "Download this application as XML, to fill it in again later through Import Application XML.",
+        "x-xml-export": {
+          "rootElement": "CDA_COCONUT_CERT",
+          "declaration": { "standalone": "no" },
+          "fileName": "cda-coconut-cert-{today(YYYYMMDD)}.xml",
+          "writeTo": [
+            { "from": "exporter_name", "to": "exporter_name", "as": "string" },
+            { "from": "exporter_registration_number", "to": "exporter_registration_number", "as": "string" },
+            { "from": "exporter_address", "to": "exporter_address", "as": "string" },
+            { "from": "relates_to_previous_approval", "to": "relates_to_previous_approval", "as": "boolean" },
+            { "from": "previous_cusdec_number", "to": "previous_cusdec_number", "as": "string" },
+            { "from": "previous_certificate_number", "to": "previous_certificate_number", "as": "string" },
+            { "from": "cancellation_reason", "to": "cancellation_reason", "as": "string" },
+            { "from": "hs_code", "to": "hs_code", "as": "string" },
+            { "from": "contact_number", "to": "contact_number", "as": "string" },
+            { "from": "contract_number", "to": "contract_number", "as": "string" },
+            { "from": "lot_number", "to": "lot_number", "as": "string" },
+            { "from": "product_type", "to": "product_type", "as": "string" },
+            {
+              "from": "dc_grades", "to": "dc_grades",
+              "writeTo": [
+                { "from": "dc_grade", "to": "dc_grade", "as": "string" },
+                { "from": "number_of_bags", "to": "number_of_bags", "as": "number" },
+                { "from": "weight_of_bag", "to": "weight_of_bag", "as": "number" },
+                { "from": "total_weight", "to": "total_weight", "as": "number" }
+              ]
+            },
+            { "from": "date_of_containerization", "to": "date_of_containerization", "as": "date" },
+            { "from": "vessel_name", "to": "vessel_name", "as": "string" },
+            { "from": "container_number", "to": "container_number", "as": "string" },
+            { "from": "date_of_sailing", "to": "date_of_sailing", "as": "date" },
+            { "from": "port_of_discharge", "to": "port_of_discharge", "as": "string" },
+            { "from": "final_destination", "to": "final_destination", "as": "string" },
+            { "from": "buyer_name", "to": "buyer_name", "as": "string" },
+            { "from": "container_filling_status", "to": "container_filling_status", "as": "string" },
+            { "from": "balance_material_nature", "to": "balance_material_nature", "as": "string" },
+            { "from": "cert_type", "to": "cert_type", "as": "string" }
+          ]
+        }
+      },
       "exporter_name": {
         "type": "string",
         "title": "Exporter Name",
@@ -304,6 +393,14 @@
         "type": "Category",
         "label": "Exporter and Consignment",
         "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/import_application_xml"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/export_application_xml"
+          },
           {
             "type": "Control",
             "scope": "#/properties/exporter_name"
