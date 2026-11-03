@@ -49,6 +49,7 @@
       "type": "TASK",
       "task_template_id": "slpa-invoice--archive-payment-slip",
       "input_mapping": {
+        "payment?": "payment",
         "payment.payment_slip_url?": "payment_slip_url"
       },
       "output_mapping": {
