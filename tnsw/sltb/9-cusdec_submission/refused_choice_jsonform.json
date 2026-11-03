@@ -1,0 +1,17 @@
+{
+  "id": "sltb-cusdec-submission--refused-form",
+  "title": "Retry or Amend",
+  "schema": {
+    "type": "object",
+    "properties": {}
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Label",
+        "text": "The CusDec is locked as SLTB approved it, so it can't be edited here. If the problem looks temporary, retry the submission. Otherwise, send the application back to amend the blend sheets or CusDec; SLTB approves the amendment before it is submitted again."
+      }
+    ]
+  }
+}

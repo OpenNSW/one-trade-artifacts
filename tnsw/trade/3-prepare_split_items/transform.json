@@ -911,6 +911,11 @@
         "customs-workflow",
         "slpa-ecdn-submission"
       ]
+    },
+    "replaces": {
+      "sltb-blendsheet-approval": [
+        "customs-workflow"
+      ]
     }
   }
 }

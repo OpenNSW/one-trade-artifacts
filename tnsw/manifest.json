@@ -3823,6 +3823,48 @@
       "path": "sltb/5-approval/task_template.json"
     },
     {
+      "id": "sltb-cusdec-submission--outcome",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/9-cusdec_submission/outcome_markdown.json"
+    },
+    {
+      "id": "sltb-cusdec-submission--refused",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb/9-cusdec_submission/refused_choice.json"
+    },
+    {
+      "id": "sltb-cusdec-submission--refused-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/9-cusdec_submission/refused_choice_jsonform.json"
+    },
+    {
+      "id": "sltb-cusdec-submission-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/9-cusdec_submission/render.json"
+    },
+    {
+      "id": "sltb-cusdec-submission-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "sltb/9-cusdec_submission/task_template.json"
+    },
+    {
+      "id": "sltb-cusdec-submission--waiting",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/9-cusdec_submission/waiting_markdown.json"
+    },
+    {
+      "id": "sltb-cusdec-submission-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "sltb/9-cusdec_submission/workflow.json"
+    },
+    {
       "id": "sltb-blendsheet-approval",
       "kind": "workflow",
       "version": "",

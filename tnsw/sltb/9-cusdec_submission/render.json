@@ -1,0 +1,98 @@
+{
+  "id": "sltb-cusdec-submission-flow:render",
+  "type": "APPLICATION",
+  "title": "[SLTB 9] Submit the CusDec to Customs",
+  "files": [
+    "payload.supportingDocuments.scannedDocuments[*].fileBase64",
+    "submission.supportingDocuments.scannedDocuments[*].fileBase64",
+    "userform.supportingDocuments.scannedDocuments[*].fileBase64"
+  ],
+  "sections": {
+    "cig_rejection": {
+      "templateId": "customs-cusdec--cig-rejection",
+      "title": "Customs Could Not Accept the CusDec",
+      "projector": "MARKDOWN",
+      "dataKey": "cig",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "cig"
+      }
+    },
+    "refused_choice": {
+      "templateId": "sltb-cusdec-submission--refused-form",
+      "title": "Retry or Amend",
+      "projector": "FORM",
+      "dataKey": "refused",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ]
+      },
+      "handles": [
+        {
+          "command": "retry",
+          "label": "Retry Submission",
+          "element": "primary_action"
+        },
+        {
+          "command": "amend",
+          "label": "Send Back for Amendment",
+          "element": "secondary_action"
+        }
+      ]
+    },
+    "waiting": {
+      "templateId": "sltb-cusdec-submission--waiting",
+      "title": "Customs Assessment",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      }
+    },
+    "outcome": {
+      "templateId": "sltb-cusdec-submission--outcome",
+      "title": "Customs Assessment",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "COMPLETED"
+        ]
+      }
+    },
+    "assessment_outcome": {
+      "templateId": "customs-cusdec--trader-results",
+      "title": "Assessment Details",
+      "projector": "MARKDOWN",
+      "dataKey": "reviewerform",
+      "visibleWhen": {
+        "states": [
+          "COMPLETED"
+        ],
+        "requireDataKey": "reviewerform"
+      }
+    },
+    "cusdec": {
+      "templateId": "customs-cusdec--user-form",
+      "title": "Submitted CusDec",
+      "projector": "FORM",
+      "dataKey": "userform"
+    }
+  },
+  "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "retry"
+        },
+        {
+          "command": "amend"
+        }
+      ]
+    },
+    "COMPLETED": {}
+  }
+}
