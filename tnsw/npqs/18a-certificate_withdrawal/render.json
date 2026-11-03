@@ -5,7 +5,8 @@
   "files": [
     "submission.application.attachments[*].attachment_file_url",
     "userform.attachments[*].attachment_file_url",
-    "withdrawaldecision.withdrawn_certificate_url"
+    "withdrawaldecision.withdrawn_certificate_url",
+    "withdrawn_certificate_url"
   ],
   "sections": {
     "with_officer": {

@@ -25,7 +25,8 @@
       },
       "output_mapping": {
         "decision": "withdrawal.decision",
-        "remarks?": "withdrawal.remarks"
+        "remarks?": "withdrawal.remarks",
+        "withdrawn_certificate_url?": "withdrawn_certificate_url"
       }
     },
     {
@@ -42,7 +43,8 @@
         "userform.date_of_inspection?": "date_of_inspection",
         "certificate_id": "certificate_id",
         "certificate_items?": "certificate_items",
-        "action?": "action"
+        "action?": "action",
+        "withdrawn_certificate_url?": "withdrawn_certificate_url"
       },
       "output_mapping": {
         "hubwithdraw.withdrawn": "withdrawn",
