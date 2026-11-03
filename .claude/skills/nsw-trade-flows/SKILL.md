@@ -1,6 +1,6 @@
 ---
 name: nsw-trade-flows
-description: Trace, edit, and validate the tnsw ↔ agency artifact pairs in this repo (Sri Lanka NSW trade workflow JSON configs) before opening a PR. Use when explaining an end-to-end certificate/approval flow, adding or editing a step/task/officer form under tnsw/<agency>/ or an <agency>/ folder, tracing how an EXTERNAL_REVIEW subtask_template's task_code links to an agency task_config, or checking manifest consistency prior to a pull request.
+description: Trace, edit, and validate the tnsw ↔ agency artifact pairs in this repo (Sri Lanka NSW trade workflow JSON configs) before opening a PR. Use when explaining an end-to-end certificate/approval flow, adding or editing a step/task/officer form under tnsw/<agency>/ or an <agency>/ folder, tracing how an EXTERNAL_REVIEW subtask_template's service_workflow_id links to the agency workflow it starts, or checking manifest consistency prior to a pull request.
 ---
 
 # NSW trade-flow artifacts
@@ -14,22 +14,21 @@ a checker.
 ## Mental model, restated as a trace
 
 `tnsw` is the orchestrator. It never renders an officer's screen itself — it
-hands a `task_code` to an agency's own backend service and waits. Concretely,
+starts a workflow on an agency's own backend service and waits. Concretely,
 for `tnsw/npqs/1-apply/`:
 
 1. `workflow.json` (kind `workflow`) has a `TASK` node `officer_review` whose
    `task_template_id` is `npqs-apply-phyto-cert--external-review`.
 2. That id resolves (via `tnsw/manifest.json`) to `reviewerinput.json`, a
    `subtask_template` with `task_type: "EXTERNAL_REVIEW"` and
-   `plugin_properties: { service_id: "npqs", task_code: "npqs_application_review" }`.
+   `plugin_properties: { service_id: "npqs", service_workflow_id: "npqs_application_review", path: "/api/v1/internal/cases/{caseId}/flows" }`.
 3. `service_id` names the agency, whose tasks live in `<service_id>/`:
-   `npqs/manifest.json` has a `task_config` with id
-   `npqs_application_review`
-   (`npqs_application_review/npqs_application_review.taskconfig.json`, whose
-   `taskCode` field repeats the id). The NPQS service loads it by that id
-   and creates the officer's task from it when TNSW injects the case.
-4. The taskconfig's `workflow` names the workflow in that same task folder
-   (`workflow.json` → `task_template.json` → `review_workflow.json`). Its
+   `npqs/manifest.json` has a `workflow` with id `npqs_application_review`
+   (`npqs_application_review/workflow.json`). TNSW starts it on the NPQS
+   service, on the consignment's case; the service starts only the
+   workflows its `flows.clients` (nsw-srilanka's agency config) lists.
+4. That workflow (`workflow.json` → `task_template.json` →
+   `review_workflow.json`) is the officer's task. Its
    steps are the officer's own: here, generate a reference number, the
    officer's review form (`officer_review.json` +
    `officer_review_jsonform.json`), then a gateway on its `review_outcome`.
@@ -45,8 +44,8 @@ for `tnsw/npqs/1-apply/`:
 
 **To trace any flow**, walk this same chain: macro workflow → step
 `workflow.json` → step's `subtask_template` files → (for any
-`EXTERNAL_REVIEW`) the `<service_id>/` task_config whose id is that `task_code` →
-its task folder's workflow, forms and `render.json`. Do this before answering
+`EXTERNAL_REVIEW`) the `<service_id>/` workflow its `service_workflow_id` names →
+its task folder's templates, forms and `render.json`. Do this before answering
 "what happens when an officer does X" or "where does field Y come from" — the
 answer is almost always split across both halves.
 
@@ -162,11 +161,11 @@ the 3 above if it's actually one of these:**
   the closest existing folder of that shape as your template — copy its
   `workflow.json`, `task_template.json`, `userinput.json` +
   `userinput_jsonform.json`, and (for the review-loop shape)
-  `reviewerinput.json` (`EXTERNAL_REVIEW`, with `service_id`/`task_code`) +
+  `reviewerinput.json` (`EXTERNAL_REVIEW`, with `service_id`/`service_workflow_id`) +
   its `reviewerinput_jsonform.json`, verbatim, then rename. Then add the
   matching officer task folder under `<agency>/` (copy the closest
-  existing task folder: taskconfig, workflow, templates, forms,
-  `render.json`), and wire the new step into the macro
+  existing task folder: workflow, templates, forms, `render.json`, and
+  list the workflow in the agency's `flows.clients` in nsw-srilanka), and wire the new step into the macro
   `<agency>_workflow.json` with a `TASK` node and gateway edges as needed.
 - **Giving the officer one extra field the trader doesn't submit** (e.g. a
   value an earlier step already pushed to the macro workflow, and the
@@ -204,9 +203,8 @@ It checks, across `tnsw/manifest.json` and every `<agency>/manifest.json`:
 - every `*.json` file under a manifest's tree is actually registered in it;
 - no id is listed twice *for the same artifact kind* within one manifest
   (only the last row would load);
-- every `EXTERNAL_REVIEW` subtask_template's `service_id` + `task_code`
-  resolves to a real `task_config` in `<service_id>/manifest.json`, and
-  that task_config's `workflow` resolves to a workflow in the same manifest;
+- every `EXTERNAL_REVIEW` subtask_template's `service_id` +
+  `service_workflow_id` resolves to a workflow in `<service_id>/manifest.json`;
 - every workflow node's `type`/`gateway_type` is one core's `workflow/dsl.go`
   defines, every `TASK` node's `task_template_id` resolves, and every edge's
   `source_id`/`target_id` names a real node in that workflow;

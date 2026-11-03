@@ -110,9 +110,10 @@ def check_duplicate_ids_within_manifest(index, report):
 
 
 def check_external_review_linkage(manifests, index, root, report):
-    """Every EXTERNAL_REVIEW subtask_template's plugin_properties.{service_id,task_code}
-    must resolve to a task_config in that agency's own <service_id>/ manifest,
-    and that task_config's `workflow` must resolve to a workflow there."""
+    """Every EXTERNAL_REVIEW subtask_template's plugin_properties.{service_id,
+    service_workflow_id} must resolve to a workflow in that agency's own <service_id>/
+    manifest: the flow the step starts on the agency (which the agency's flows.clients
+    in nsw-srilanka must list)."""
     tnsw_mpath, tnsw_mdir = manifests.get("tnsw", (None, None))
     if tnsw_mdir is None:
         report.error("tnsw/manifest.json not found; cannot check EXTERNAL_REVIEW linkage")
@@ -129,28 +130,17 @@ def check_external_review_linkage(manifests, index, root, report):
             continue
         props = sub.get("plugin_properties", {})
         service_id = props.get("service_id")
-        task_code = props.get("task_code")
+        workflow_id = props.get("service_workflow_id")
         where = a["path"]
         label = service_id
         if label not in manifests:
             report.error(f"[{where}] EXTERNAL_REVIEW service_id {service_id!r} has no {label}/manifest.json")
             continue
         agency_by_id = index.get(label, {})
-        matches = [entries for aid, entries in agency_by_id.items() if aid == task_code]
-        task_configs = [
-            (p, k) for entries in matches for (p, k) in entries if k == "task_config"
-        ]
-        if not task_configs:
-            report.error(f"[{where}] task_code {task_code!r} not found as a task_config in {label}/manifest.json")
-            continue
-        task_config_path, _ = task_configs[0]
-        tc = load_json(task_config_path)
-        workflow_id = tc.get("workflow")
         workflow_ids = {aid for aid, entries in agency_by_id.items() for _p, k in entries if k == "workflow"}
         if workflow_id not in workflow_ids:
             report.error(
-                f"[{task_config_path.relative_to(root)}] workflow {workflow_id!r} "
-                f"not found as a workflow in {label}/manifest.json"
+                f"[{where}] service_workflow_id {workflow_id!r} not found as a workflow in {label}/manifest.json"
             )
 
 
