@@ -1,9 +1,0 @@
-{
-  "id": "slpa-gp--archive-gate-pass",
-  "task_type": "REMOTE_FILE_ARCHIVER",
-  "output_namespace": "gate_pass_file",
-  "plugin_properties": {
-    "service_id": "slpa",
-    "filename": "slpa-gate-pass"
-  }
-}

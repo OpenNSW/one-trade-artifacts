@@ -4,6 +4,8 @@
   "output_namespace": "payment_slip_file",
   "plugin_properties": {
     "service_id": "slpa",
-    "filename": "slpa-payment-slip"
+    "source_input": "payment_slip_url",
+    "mime_type": "application/pdf",
+    "filename": "slpa-payment-slip.pdf"
   }
 }
