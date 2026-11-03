@@ -1126,6 +1126,7 @@
           "modeOfTransport",
           "containerized",
           "deliveryTermsCode",
+          "deliveryTermsPlace",
           "borderOfficeCode",
           "placeOfDischargeCode"
         ]
@@ -1612,7 +1613,8 @@
               "required": [
                 "originCountryCode",
                 "description",
-                "commercialDescription"
+                "commercialDescription",
+                "commercialDescription1"
               ]
             },
             "marksAndNumbers": {
