@@ -46,36 +46,10 @@
               "title": "Net Weight",
               "readOnly": true
             },
-            "quantity_net_weight_unit": {
-              "type": "object",
-              "title": "Net Weight Unit",
-              "readOnly": true,
-              "properties": {
-                "value": {
-                  "type": "string"
-                },
-                "label": {
-                  "type": "string"
-                }
-              }
-            },
             "quantity_gross_weight": {
               "type": "number",
               "title": "Gross Weight",
               "readOnly": true
-            },
-            "quantity_gross_weight_unit": {
-              "type": "object",
-              "title": "Gross Weight Unit",
-              "readOnly": true,
-              "properties": {
-                "value": {
-                  "type": "string"
-                },
-                "label": {
-                  "type": "string"
-                }
-              }
             },
             "include_in_certificate": {
               "type": "boolean",
@@ -568,17 +542,7 @@
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/quantity_net_weight_unit/properties/label",
-                    "label": "Net Weight Unit"
-                  },
-                  {
-                    "type": "Control",
                     "scope": "#/properties/quantity_gross_weight"
-                  },
-                  {
-                    "type": "Control",
-                    "scope": "#/properties/quantity_gross_weight_unit/properties/label",
-                    "label": "Gross Weight Unit"
                   }
                 ]
               },
