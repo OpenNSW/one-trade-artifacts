@@ -1126,7 +1126,6 @@
           "modeOfTransport",
           "containerized",
           "deliveryTermsCode",
-          "deliveryTermsPlace",
           "borderOfficeCode",
           "placeOfDischargeCode"
         ]
