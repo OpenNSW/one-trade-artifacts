@@ -7,6 +7,14 @@
       "type": "START"
     },
     {
+      "id": "confirm_submit",
+      "type": "TASK",
+      "task_template_id": "sltb-cusdec-submission--confirm",
+      "input_mapping": {
+        "userform?": "userform"
+      }
+    },
+    {
       "id": "cig_dispatch",
       "type": "TASK",
       "task_template_id": "customs-cusdec--cig-dispatch",
@@ -70,6 +78,11 @@
     {
       "id": "e_start",
       "source_id": "start",
+      "target_id": "confirm_submit"
+    },
+    {
+      "id": "e_confirmed",
+      "source_id": "confirm_submit",
       "target_id": "cig_dispatch"
     },
     {

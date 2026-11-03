@@ -1,4 +1,0 @@
-{
-  "id": "sltb-levy-payment-confirm-pinpack--awaiting-resubmission",
-  "template": "Marked as insufficient funds. Waiting for the applicant to top up their Finpak account and notify you again.{{if .remarks}}\n\n> **Your remarks**: {{.remarks}}{{end}}"
-}

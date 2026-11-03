@@ -1,0 +1,4 @@
+{
+  "id": "sltb-final-decision--lab-results",
+  "template": "{{if .lab_tests}}**Overall lab result**: {{.lab_test_result}}\n\n{{with .lab_tests}}{{range .}}* Blend sheet `{{.blendsheet_no}}`: **{{.result}}**{{with .remarks}} — {{.}}{{end}}{{with .report_file}} — [Lab result](files:{{.}}){{end}}\n{{end}}{{end}}{{if eq .lab_test_result \"partial\"}}\nSome blend sheets failed lab testing. To have them removed from the CusDec, request changes and list them in your remarks.\n{{end}}{{else}}No lab testing was done for this application.{{end}}"
+}

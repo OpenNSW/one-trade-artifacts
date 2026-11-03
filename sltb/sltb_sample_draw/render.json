@@ -3,6 +3,12 @@
   "type": "APPLICATION",
   "title": "Record Warehouse Sample Draw",
   "sections": {
+    "pickup_details": {
+      "templateId": "sltb-sample-draw--pickup-details",
+      "title": "Suggested Pickup",
+      "projector": "MARKDOWN",
+      "dataKey": "submission"
+    },
     "review_form": {
       "templateId": "sltb-record-sample-draw--officer-form",
       "title": "Officer Review",

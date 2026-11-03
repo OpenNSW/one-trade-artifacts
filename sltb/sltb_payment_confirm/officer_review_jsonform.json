@@ -1,43 +1,42 @@
 {
   "id": "sltb-payment--confirm-form",
-  "title": "Finpak Account Lab Test Fee Deduction Confirmation",
+  "title": "SLTB Lab Test Fee Payment at the SLTB Office",
   "schema": {
     "type": "object",
     "required": [
-      "deduction_status"
+      "receipt_status"
     ],
     "properties": {
-      "deduction_status": {
+      "receipt_status": {
         "type": "string",
-        "title": "Finpak Deduction Status",
+        "title": "Payment Status",
         "oneOf": [
           {
-            "const": "deducted",
-            "title": "Confirm Lab Test Fee Deducted from Finpak Account"
+            "const": "received",
+            "title": "Received — the Lab Test Fee was paid at the SLTB office"
           },
           {
-            "const": "insufficient_funds",
-            "title": "Not Deducted — Insufficient Funds in the Finpak Account"
+            "const": "not_received",
+            "title": "Not Received — the Lab Test Fee has not been paid at the SLTB office"
           }
-        ],
-        "default": "deducted"
+        ]
       },
       "remarks": {
         "type": "string",
-        "title": "Officer Remarks (Required if Funds are Insufficient)",
-        "example": "Lab test fee deducted from the Finpak account."
+        "title": "Officer Remarks (Required if Not Received)",
+        "example": "No payment received at the counter against this reference."
       }
     },
     "allOf": [
       {
         "if": {
           "properties": {
-            "deduction_status": {
-              "const": "insufficient_funds"
+            "receipt_status": {
+              "const": "not_received"
             }
           },
           "required": [
-            "deduction_status"
+            "receipt_status"
           ]
         },
         "then": {
@@ -58,7 +57,7 @@
     "elements": [
       {
         "type": "Control",
-        "scope": "#/properties/deduction_status"
+        "scope": "#/properties/receipt_status"
       },
       {
         "type": "Control",

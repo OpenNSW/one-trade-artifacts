@@ -3397,22 +3397,16 @@
       "path": "sltb/2-levy_payment/review_receipt_jsonform.json"
     },
     {
-      "id": "sltb-pay-levy--confirm-pinpack",
+      "id": "sltb-pay-levy--confirm-office",
       "kind": "subtask_template",
       "version": "",
-      "path": "sltb/2-levy_payment/confirm_pinpack.json"
+      "path": "sltb/2-levy_payment/confirm_office.json"
     },
     {
-      "id": "sltb-pay-levy--confirm-pinpack-form",
+      "id": "sltb-pay-levy--confirm-office-form",
       "kind": "generic_template",
       "version": "",
-      "path": "sltb/2-levy_payment/confirm_pinpack_jsonform.json"
-    },
-    {
-      "id": "sltb-pay-levy--pinpack-notification-email",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/2-levy_payment/pinpack_notification_email.json"
+      "path": "sltb/2-levy_payment/confirm_office_jsonform.json"
     },
     {
       "id": "sltb-pay-levy-flow",
@@ -3433,82 +3427,22 @@
       "path": "sltb/2-levy_payment/payment_failed_markdown.json"
     },
     {
-      "id": "sltb-pay-levy--finpak-insufficient",
+      "id": "sltb-pay-levy--not-received",
       "kind": "generic_template",
       "version": "",
-      "path": "sltb/2-levy_payment/finpak_insufficient_markdown.json"
+      "path": "sltb/2-levy_payment/not_received_markdown.json"
     },
     {
-      "id": "sltb-pay-levy--finpak-top-up",
+      "id": "sltb-pay-levy--notify-paid",
       "kind": "subtask_template",
       "version": "",
-      "path": "sltb/2-levy_payment/finpak_top_up.json"
+      "path": "sltb/2-levy_payment/notify_paid.json"
     },
     {
-      "id": "sltb-pay-levy--finpak-top-up-form",
+      "id": "sltb-pay-levy--notify-paid-form",
       "kind": "generic_template",
       "version": "",
-      "path": "sltb/2-levy_payment/finpak_top_up_jsonform.json"
-    },
-    {
-      "id": "sltb-schedule-pickup-flow:render",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/3-schedule_pickup/render.json"
-    },
-    {
-      "id": "sltb-schedule-pickup--status",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/3-schedule_pickup/status_message_jsonform.json"
-    },
-    {
-      "id": "sltb-schedule-pickup--status-awaiting",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/3-schedule_pickup/status_awaiting_jsonform.json"
-    },
-    {
-      "id": "sltb-schedule-pickup--suggest",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "sltb/3-schedule_pickup/trader_suggest.json"
-    },
-    {
-      "id": "sltb-schedule-pickup--suggest-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/3-schedule_pickup/trader_suggest_jsonform.json"
-    },
-    {
-      "id": "sltb-schedule-pickup--officer-review",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "sltb/3-schedule_pickup/officer_review.json"
-    },
-    {
-      "id": "sltb-schedule-pickup--close-review",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "sltb/3-schedule_pickup/close_review.json"
-    },
-    {
-      "id": "sltb-schedule-pickup--officer-review-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/3-schedule_pickup/officer_review_jsonform.json"
-    },
-    {
-      "id": "sltb-schedule-pickup-flow",
-      "kind": "workflow",
-      "version": "",
-      "path": "sltb/3-schedule_pickup/workflow.json"
-    },
-    {
-      "id": "sltb-schedule-pickup-flow",
-      "kind": "task_template",
-      "version": "",
-      "path": "sltb/3-schedule_pickup/task_template.json"
+      "path": "sltb/2-levy_payment/notify_paid_jsonform.json"
     },
     {
       "id": "sltb-dropoff-flow:render",
@@ -3835,6 +3769,18 @@
       "path": "sltb/5-approval/task_template.json"
     },
     {
+      "id": "sltb-final-decision--trader-amend",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb/5-approval/trader_amend.json"
+    },
+    {
+      "id": "sltb-final-decision--changes-requested",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/5-approval/changes_requested_markdown.json"
+    },
+    {
       "id": "sltb-cusdec-submission--outcome",
       "kind": "generic_template",
       "version": "",
@@ -3875,6 +3821,24 @@
       "kind": "workflow",
       "version": "",
       "path": "sltb/9-cusdec_submission/workflow.json"
+    },
+    {
+      "id": "sltb-cusdec-submission--confirm",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb/9-cusdec_submission/confirm_submit.json"
+    },
+    {
+      "id": "sltb-cusdec-submission--confirm-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/9-cusdec_submission/confirm_submit_jsonform.json"
+    },
+    {
+      "id": "sltb-cusdec-submission--confirm-intro",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/9-cusdec_submission/confirm_intro_markdown.json"
     },
     {
       "id": "sltb-blendsheet-approval",

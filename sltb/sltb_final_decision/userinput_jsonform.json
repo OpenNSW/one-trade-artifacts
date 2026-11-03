@@ -196,20 +196,20 @@
             "remarks": {
               "type": "string",
               "title": "Remarks",
-              "description": "Filled from the blend sheet XML when one is imported; otherwise enter manually.",
+              "description": "Add your preferred pickup time here if SLTB collects the sample (e.g. Pickup 09:00 AM - 12:00 PM). Filled from the blend sheet XML when one is imported; otherwise enter manually.",
               "example": "This is a sample remark for the blend sheet."
             },
             "sample_rediness_date": {
               "type": "string",
               "format": "date",
-              "title": "Sample Readiness Date",
-              "description": "Filled from the blend sheet XML when one is imported; otherwise enter manually.",
+              "title": "Sample Date (Suggested Pickup)",
+              "description": "The date the sample is ready, and the day you suggest for a Tea Inspector to draw it at the warehouse if SLTB collects it. Filled from the blend sheet XML when one is imported; otherwise enter manually.",
               "example": "2026-07-24"
             },
             "warehouse_address": {
               "type": "string",
               "title": "Warehouse Address",
-              "description": "Filled from the blend sheet XML when one is imported; otherwise enter manually.",
+              "description": "Where a Tea Inspector draws the sample if SLTB collects it from your warehouse. Filled from the blend sheet XML when one is imported; otherwise enter manually.",
               "example": "Quick Tea (Pvt) Ltd, 119, 119/1 Attampolawatte, Mabole, Wattala"
             },
             "blend_gain_determined": {
@@ -373,7 +373,7 @@
                         "elements": [
                           { "type": "Control", "scope": "#/properties/remarks" },
                           { "type": "Control", "scope": "#/properties/sample_rediness_date" },
-                          { "type": "Control", "scope": "#/properties/warehouse_address" }
+                          { "type": "Control", "scope": "#/properties/warehouse_address", "options": { "multiLine": true } }
                         ]
                       },
                       {

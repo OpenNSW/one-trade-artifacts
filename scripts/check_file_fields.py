@@ -468,17 +468,29 @@ class Checker:
         return errors, warnings
 
     LINK = re.compile(r"\]\((files:)?\{\{\s*\.([A-Za-z0-9_.\-]*)\s*\}\}\)")
-    # The block a {{.}} link sits in: {{with .x}} makes . the value of x,
-    # {{range .x}} each element of the list x.
-    BLOCK = re.compile(r"\{\{\s*(range|with)\s+\.([A-Za-z0-9_.\-]+)\s*\}\}")
+    # The blocks a link sits in: {{with .x}} makes . the value of x, {{range .x}}
+    # each element of the list x, relative to the . of the block around them;
+    # {{if}} keeps . as it is, and {{end}} closes the innermost block.
+    ACTION = re.compile(r"\{\{-?\s*(range|with|if|end)\b\s*(?:\.([A-Za-z0-9_.\-]+))?[^}]*\}\}")
 
     def block_path(self, before):
-        """The path . stands for at the end of before: the last block opened."""
-        blocks = self.BLOCK.findall(before)
-        if not blocks:
-            return None
-        kind, name = blocks[-1]
-        return name + "[*]" if kind == "range" else name
+        """The path . stands for at the end of before, or None for the top level."""
+        stack = []
+        for kind, name in self.ACTION.findall(before):
+            if kind == "end":
+                if stack:
+                    stack.pop()
+                continue
+            outer = stack[-1] if stack else None
+            if kind == "if" or (not name and kind == "with"):
+                stack.append(outer)
+                continue
+            path = ".".join(p for p in (outer, name) if p) or None
+            if path is None:
+                stack.append(None)
+                continue
+            stack.append(path + "[*]" if kind == "range" else path)
+        return stack[-1] if stack else None
 
     def check_links(self, scope, render_id, render, where, files):
         errors, warnings = [], []
@@ -488,11 +500,10 @@ class Checker:
                 continue
             text, data_key = template["template"], section.get("dataKey")
             for m in self.LINK.finditer(text):
-                rel = m.group(2)
+                block = self.block_path(text[: m.start()])
+                rel = ".".join(p for p in (block, m.group(2)) if p)
                 if not rel:
-                    rel = self.block_path(text[: m.start()])
-                    if not rel:
-                        continue
+                    continue
                 path = f"{data_key}.{rel}" if data_key else rel
                 link = m.group(0)
                 template_path = scope.path_of.get(("generic_template", section["templateId"]))

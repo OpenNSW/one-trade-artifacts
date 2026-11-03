@@ -21,8 +21,8 @@
             "title": "Payment Slip Upload"
           },
           {
-            "const": "pinpack",
-            "title": "Finpak System"
+            "const": "pay_at_office",
+            "title": "Pay at the SLTB Office"
           }
         ]
       }

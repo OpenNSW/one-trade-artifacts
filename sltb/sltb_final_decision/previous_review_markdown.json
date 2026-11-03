@@ -1,0 +1,4 @@
+{
+  "id": "sltb-final-decision--previous-review",
+  "template": "{{if .}}\n### Previous Review\n\nYou asked the applicant to change the CusDec or blend sheets. This is their resubmission.\n\n> **Your remarks**: {{.}}\n{{end}}"
+}

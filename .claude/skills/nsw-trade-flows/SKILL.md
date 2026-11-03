@@ -144,8 +144,8 @@ the 3 above if it's actually one of these:**
 - `npqs/4-2-visual_consignment` — two unconditional tasks chained, no gateway.
 - `npqs/9-ephyto` — `TIMER`-driven submit-and-poll loop (see the node
   vocabulary note above).
-- `sltb/3-schedule_pickup` — two-way negotiation with compound `&&`/`||`
-  edge conditions.
+- `sltb/5-approval` — the officer's `EXTERNAL_REVIEW` loops through a trader
+  `USER_INPUT` edit and back, replying on the same agency task.
 
 ## Making a change
 

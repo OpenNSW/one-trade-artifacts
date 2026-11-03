@@ -21,14 +21,13 @@
       "task_template_id": "sltb-sample-draw--officer-review",
       "input_mapping": {
         "submission?": "submission",
-        "reviewform.sample_number": "reviewform.sample_number",
-        "submission.scheduled_visit_date?": "reviewform.scheduled_visit_date",
-        "submission.inspector_name?": "reviewform.inspector_name"
+        "reviewform.sample_number": "reviewform.sample_number"
       },
       "output_mapping": {
         "__command": "command",
         "sample_number": "reviewform.sample_number",
         "draw_date": "reviewform.draw_date",
+        "inspector_name?": "reviewform.inspector_name",
         "draw_notes?": "reviewform.draw_notes"
       }
     },

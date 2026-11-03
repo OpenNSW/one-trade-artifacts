@@ -98,9 +98,9 @@
         ]
       }
     },
-    "finpak_insufficient": {
-      "templateId": "sltb-pay-levy--finpak-insufficient",
-      "title": "Insufficient Funds",
+    "not_received": {
+      "templateId": "sltb-pay-levy--not-received",
+      "title": "Payment Not Received",
       "projector": "MARKDOWN",
       "dataKey": "payment",
       "visibleWhen": {
@@ -109,11 +109,11 @@
         ]
       }
     },
-    "finpak_top_up": {
-      "templateId": "sltb-pay-levy--finpak-top-up-form",
+    "notify_paid": {
+      "templateId": "sltb-pay-levy--notify-paid-form",
       "title": "Notify the Officer",
       "projector": "FORM",
-      "dataKey": "topup",
+      "dataKey": "repayment",
       "visibleWhen": {
         "states": [
           "PENDING_REPAYMENT"
@@ -122,7 +122,7 @@
       "handles": [
         {
           "command": "submit",
-          "label": "I Have Topped Up — Notify the Officer",
+          "label": "I Have Paid — Notify the Officer",
           "element": "primary_action"
         }
       ]

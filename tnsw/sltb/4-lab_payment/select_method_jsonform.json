@@ -21,8 +21,8 @@
             "title": "Bank Transfer (Upload Payment Receipt)"
           },
           {
-            "const": "pinpack",
-            "title": "Finpak System (Deducted from your Finpak Account)"
+            "const": "pay_at_office",
+            "title": "Pay at the SLTB Office"
           }
         ]
       }

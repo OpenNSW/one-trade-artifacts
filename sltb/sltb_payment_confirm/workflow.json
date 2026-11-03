@@ -1,6 +1,6 @@
 {
   "id": "sltb_payment_confirm",
-  "name": "SLTB Finpak Lab Test Fee Deduction",
+  "name": "SLTB Lab Test Fee Payment at the Office",
   "nodes": [
     {
       "id": "start",

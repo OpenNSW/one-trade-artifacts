@@ -3,9 +3,45 @@
   "type": "APPLICATION",
   "title": "[SLTB 8] Final Application Decision",
   "files": [
-    "submission.cusdec_draft.supportingDocuments.scannedDocuments[*].fileBase64"
+    "userform.cusdec_draft.supportingDocuments.scannedDocuments[*].fileBase64",
+    "submission.cusdec_draft.supportingDocuments.scannedDocuments[*].fileBase64",
+    "submission.lab_tests[*].report_file",
+    "lab_tests[*].report_file"
   ],
   "sections": {
+    "changes_requested": {
+      "templateId": "sltb-final-decision--changes-requested",
+      "title": "Changes Requested",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ]
+      }
+    },
+    "user_form": {
+      "templateId": "sltb-submit-blendsheet--user-form",
+      "title": "SLTB Tea Blend Sheet Details",
+      "projector": "FORM",
+      "dataKey": "userform",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ]
+      },
+      "handles": [
+        {
+          "command": "save_as_draft",
+          "label": "Save as Draft",
+          "element": "draft_action"
+        },
+        {
+          "command": "submit",
+          "label": "Resubmit for Approval",
+          "element": "primary_action"
+        }
+      ]
+    },
     "trader_status": {
       "templateId": "sltb-final-decision--trader-view",
       "title": "Application Outcome",
@@ -29,6 +65,16 @@
     }
   },
   "states": {
+    "PENDING_USER": {
+      "actions": [
+        {
+          "command": "submit"
+        },
+        {
+          "command": "save_as_draft"
+        }
+      ]
+    },
     "COMPLETED": {}
   }
 }

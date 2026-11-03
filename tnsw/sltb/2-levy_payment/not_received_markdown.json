@@ -1,0 +1,4 @@
+{
+  "id": "sltb-pay-levy--not-received",
+  "template": "### Levy payment not received\n\nThe SLTB officer has not received your SLTB Levy payment at the SLTB office. Pay the levy at the SLTB office, then notify the officer below.\n\n{{with .office_remarks}}> **Officer remarks:** {{.}}{{end}}"
+}

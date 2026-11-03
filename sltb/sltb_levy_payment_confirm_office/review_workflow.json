@@ -1,0 +1,95 @@
+{
+  "id": "sltb-levy-payment-confirm-office--review-workflow",
+  "name": "SLTB Levy Payment at the Office — Officer Review",
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START"
+    },
+    {
+      "id": "userform",
+      "type": "TASK",
+      "task_template_id": "sltb-levy-payment-confirm-office--officer-review",
+      "input_mapping": {
+        "submission?": "submission",
+        "reviewform.remarks?": "previous_remarks"
+      },
+      "output_mapping": {
+        "receipt_status": "reviewform.receipt_status",
+        "remarks?": "reviewform.remarks"
+      }
+    },
+    {
+      "id": "decision_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "request_info",
+      "type": "TASK",
+      "task_template_id": "sltb-levy-payment-confirm-office--request-info",
+      "input_mapping": {
+        "callbackToken": "replyToken",
+        "reviewform.receipt_status": "payload.receipt_status",
+        "reviewform.remarks?": "payload.remarks",
+        "submission?": "submission",
+        "reviewform": "reviewform"
+      },
+      "output_mapping": {
+        "submission": "submission",
+        "callbackToken": "callbackToken"
+      }
+    },
+    {
+      "id": "api_call",
+      "type": "TASK",
+      "task_template_id": "sltb-levy-payment-confirm-office--notify-decision",
+      "input_mapping": {
+        "callbackToken": "callbackToken",
+        "reviewform?": "reviewform",
+        "submission?": "submission",
+        "taskId": "taskId",
+        "reviewform.receipt_status": "payload.command",
+        "reviewform": "payload.payload"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source_id": "start",
+      "target_id": "userform"
+    },
+    {
+      "id": "e2",
+      "source_id": "userform",
+      "target_id": "decision_gateway"
+    },
+    {
+      "id": "e_not_received",
+      "source_id": "decision_gateway",
+      "target_id": "request_info",
+      "condition": "reviewform.receipt_status == 'not_received'"
+    },
+    {
+      "id": "e_paid",
+      "source_id": "request_info",
+      "target_id": "userform"
+    },
+    {
+      "id": "e_received",
+      "source_id": "decision_gateway",
+      "target_id": "api_call",
+      "condition": "reviewform.receipt_status == 'received'"
+    },
+    {
+      "id": "e3",
+      "source_id": "api_call",
+      "target_id": "end"
+    }
+  ]
+}

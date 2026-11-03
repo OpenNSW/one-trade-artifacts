@@ -1,0 +1,36 @@
+{
+  "id": "sltb-final-decision--trader-amend",
+  "task_type": "USER_INPUT",
+  "output_namespace": "userform",
+  "plugin_properties": {
+    "user_jsonforms_id": "sltb-submit-blendsheet--user-form"
+  },
+  "draft": {
+    "command": "save_as_draft"
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "PENDING_USER": {
+          "save_as_draft": [
+            "trader",
+            "cha"
+          ],
+          "submit": [
+            "trader",
+            "cha"
+          ]
+        }
+      }
+    },
+    {
+      "id": "payload_schema",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "form": "sltb-submit-blendsheet--user-form"
+      }
+    }
+  ]
+}

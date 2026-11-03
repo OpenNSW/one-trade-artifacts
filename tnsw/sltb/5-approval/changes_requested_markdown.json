@@ -1,0 +1,4 @@
+{
+  "id": "sltb-final-decision--changes-requested",
+  "template": "### ✏️ SLTB Requested Changes\n\nThe SLTB officer reviewed your application for final approval and asked for changes. The blend sheets and CusDec are unlocked below: make the changes, then resubmit them for approval.\n\n{{with .decision.remarks}}> **Officer remarks**: {{.}}\n{{end}}{{with .lab_tests}}\n#### Lab Results\n\n{{range .}}* Blend sheet `{{.blendsheet_no}}`: **{{.result}}**{{with .remarks}} — {{.}}{{end}}{{with .report_file}} — [Download the lab result](files:{{.}}){{end}}\n{{end}}{{end}}"
+}
