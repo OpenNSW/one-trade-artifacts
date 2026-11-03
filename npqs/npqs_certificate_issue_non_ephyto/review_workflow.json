@@ -35,7 +35,7 @@
       "input_mapping": {
         "submission": "application",
         "reviewform.certificate_items?": "items",
-        "reviewform.treatment_items?": "treatment_items",
+        "submission.treatment_items?": "treatment_items",
         "reviewform.issue_date?": "issue_date",
         "reviewform.registration_number?": "registration_number",
         "reviewform.additional_information?": "additional_information",
