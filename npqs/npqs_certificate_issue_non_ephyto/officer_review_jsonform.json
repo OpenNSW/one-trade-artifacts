@@ -223,11 +223,159 @@
         "title": "Reg. No.",
         "description": "Printed in the certificate's Reg. No. box; NIL when left empty."
       },
+      "treatment_items": {
+        "type": "array",
+        "title": "Approved Treatments",
+        "description": "The treatment request as approved, carried for the print copy and not shown: the first treated item on the certificate prints in boxes 12 to 15, and the others are filled into Additional Information.",
+        "readOnly": true,
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Item ID"
+            },
+            "commodity_common_name": {
+              "type": "object",
+              "title": "Commodity Name",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              }
+            },
+            "treatment_type": {
+              "type": "string",
+              "title": "Treatment Type",
+              "oneOf": [
+                {
+                  "const": "FU",
+                  "title": "Fumigation (FU)"
+                },
+                {
+                  "const": "CD",
+                  "title": "Cold Disinfestation (CD)"
+                },
+                {
+                  "const": "HT",
+                  "title": "Heat Treatment (HT)"
+                },
+                {
+                  "const": "KD",
+                  "title": "Kiln Drying (KD)"
+                },
+                {
+                  "const": "HW",
+                  "title": "Hot Water Treatment (HW)"
+                },
+                {
+                  "const": "CHT",
+                  "title": "Chemical Treatment (CHT)"
+                },
+                {
+                  "const": "TPT",
+                  "title": "Temperature Treatment (TPT)"
+                },
+                {
+                  "const": "RAT",
+                  "title": "Radiation Treatment (RAT)"
+                },
+                {
+                  "const": "DR",
+                  "title": "Dry Heat (DR)"
+                },
+                {
+                  "const": "MH",
+                  "title": "Moist Heat (MH)"
+                },
+                {
+                  "const": "VH",
+                  "title": "Vapour Heat (VH)"
+                },
+                {
+                  "const": "DH",
+                  "title": "Dielectric Heating (DH)"
+                },
+                {
+                  "const": "FG",
+                  "title": "Fungicide (FG)"
+                },
+                {
+                  "const": "IN",
+                  "title": "Insecticide (IN)"
+                },
+                {
+                  "const": "NE",
+                  "title": "Nematicide (NE)"
+                },
+                {
+                  "const": "OP",
+                  "title": "Other Pesticide (OP)"
+                },
+                {
+                  "const": "CPI",
+                  "title": "Chemical Pressure Impregnation (CPI)"
+                },
+                {
+                  "const": "SC",
+                  "title": "Seed Coating (SC)"
+                },
+                {
+                  "const": "DV",
+                  "title": "Devitalization (DV)"
+                },
+                {
+                  "const": "DB",
+                  "title": "Debarking (DB)"
+                },
+                {
+                  "const": "OTT",
+                  "title": "Other Treatment (OTT)"
+                }
+              ]
+            },
+            "chemical_used": {
+              "type": "string",
+              "title": "Chemical / Medium Used"
+            },
+            "treatment_duration": {
+              "type": "string",
+              "title": "Treatment Duration"
+            },
+            "treatment_temperature": {
+              "type": "string",
+              "title": "Target Temperature (°C)"
+            },
+            "treatment_concentration": {
+              "type": "string",
+              "title": "Chemical Concentration / Dosage"
+            }
+          }
+        }
+      },
       "additional_information": {
         "type": "string",
         "title": "Additional Information",
-        "description": "Printed in box 17 of the certificate, which holds three lines; NIL when left empty.",
-        "maxLength": 100
+        "description": "Printed in box 17 of the certificate: at most 300 characters on 5 lines, smaller as it gets longer; NIL when left empty. Filled with the other treated items' treatments, which you can change or remove.",
+        "maxLength": 300,
+        "pattern": "^[^\\n]*(\\n[^\\n]*){0,4}$",
+        "x-text": {
+          "inputs": {
+            "other_treatments": {
+              "path": "treatment_items.*",
+              "aggregate": "join",
+              "where": "treatment_type",
+              "skip": 1,
+              "template": "{commodity_common_name.label}: {treatment_type} · {chemical_used} · {treatment_duration} · {treatment_temperature} °C · {treatment_concentration}",
+              "separator": "\n"
+            }
+          },
+          "template": "{other_treatments}",
+          "editable": true
+        }
       },
       "comments": {
         "type": "string",
