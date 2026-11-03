@@ -41,6 +41,42 @@
                 }
               }
             },
+            "quantity_net_weight": {
+              "type": "number",
+              "title": "Net Weight",
+              "readOnly": true
+            },
+            "quantity_net_weight_unit": {
+              "type": "object",
+              "title": "Net Weight Unit",
+              "readOnly": true,
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              }
+            },
+            "quantity_gross_weight": {
+              "type": "number",
+              "title": "Gross Weight",
+              "readOnly": true
+            },
+            "quantity_gross_weight_unit": {
+              "type": "object",
+              "title": "Gross Weight Unit",
+              "readOnly": true,
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              }
+            },
             "include_in_certificate": {
               "type": "boolean",
               "title": "Include on Certificate"
@@ -210,13 +246,11 @@
       "total_net_weight": {
         "type": "number",
         "title": "Total Net Weight",
-        "description": "The consignment's total net weight, printed in box 09.",
         "exclusiveMinimum": 0
       },
       "total_gross_weight": {
         "type": "number",
         "title": "Total Gross Weight",
-        "description": "The consignment's total gross weight, printed in box 09.",
         "exclusiveMinimum": 0
       },
       "total_weight_unit": {
@@ -382,13 +416,11 @@
       },
       "registration_number": {
         "type": "string",
-        "title": "Reg. No.",
-        "description": "Printed in the certificate's Reg. No. box; NIL when left empty."
+        "title": "Reg. No."
       },
       "treatment_items": {
         "type": "array",
         "title": "Approved Treatments",
-        "description": "The treatment request as approved, carried for the print copy and not shown: the first treated item on the certificate prints in boxes 12 to 15, and the others are filled into Additional Information.",
         "readOnly": true,
         "items": {
           "type": "object",
@@ -446,8 +478,8 @@
       "additional_information": {
         "type": "string",
         "title": "Additional Information",
-        "description": "Printed in box 17 of the certificate: at most 3 lines and 160 characters, which always fit the box. NIL when left empty. Filled with the other treated items' treatments, which you can change or remove.",
-        "maxLength": 160,
+        "description": "At most 3 lines and 230 characters.",
+        "maxLength": 230,
         "pattern": "^[^\\n]*(\\n[^\\n]*){0,2}$",
         "x-text": {
           "inputs": {
@@ -524,6 +556,29 @@
                   {
                     "type": "Control",
                     "scope": "#/properties/visual2_result"
+                  }
+                ]
+              },
+              {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/quantity_net_weight"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/quantity_net_weight_unit/properties/label",
+                    "label": "Net Weight Unit"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/quantity_gross_weight"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/quantity_gross_weight_unit/properties/label",
+                    "label": "Gross Weight Unit"
                   }
                 ]
               },

@@ -8,7 +8,8 @@
   Every position is in millimetres from the sheet's top-left corner, measured
   from a scan of the blank form. Which value goes in which box follows the
   spreadsheet NPQS printed the form from (Print.xls). Only Reg. No. and boxes
-  11 to 17 print NIL, when they have no value; every other box is left empty.
+  11 to 15 and 17 print NIL, when they have no value; every other box, 16 included,
+  is left empty.
 
     .application             the trader's application (userform)
     .items                   the officer's issuance list (certificate_items): the
@@ -51,9 +52,10 @@
      doesn't fit is dropped a whole line at a time at the box's edge, never cut through or printed over the next box. */
   .f { position: absolute; overflow: hidden; }
   .pre { white-space: pre-line; }
-  /* Box 17 (78 x 12.9mm): 4 rows at 8pt, or 5 at 6.5pt when the text needs more. */
+  /* Box 17 (78 x 12.9mm): 4 rows at 8pt, 5 at 6.5pt or 6 at 5.5pt, the largest the text fits in. */
   .info { left: 24.7mm; top: 274.5mm; width: 78mm; height: 12.9mm; line-height: 3.2mm; }
   .info.smaller { font-size: 6.5pt; line-height: 2.55mm; }
+  .info.smallest { font-size: 5.5pt; line-height: 2.15mm; }
   /* 08 ends at the "Number of packages" column (151.9mm) and 09 starts at 167.4mm; the gap stays empty, as in Print.xls. */
   table.goods { width: 100%; border-collapse: collapse; table-layout: fixed; }
   table.goods td { padding: 0; vertical-align: top; }
@@ -228,25 +230,30 @@
 {{- /* 15. Concentration */}}
 <div class="f" style="left:24.7mm; top:260.5mm; width:37mm; height:9mm;">{{ with $treated }}{{ with .treatment_concentration }}{{ . }}{{ else }}NIL{{ end }}{{ else }}NIL{{ end }}</div>
 
-{{- /* 16. Date (of treatment): nothing in the application records it */}}
-<div class="f" style="left:79.5mm; top:260.5mm; width:24.5mm; height:9mm;">NIL</div>
+{{- /* 16. Date (of treatment): nothing records it, so the box stays empty for the officer to fill by hand */}}
 
-{{- /* 17. Additional information. The form allows at most 3 lines and 160 characters, which always fit in
-     5 rows at 6.5pt, even in capitals. It prints at 8pt when its rows fit in 4 there: each line is taken to
-     wrap into one row per 42 characters (about 90% of a row of 8pt capitals, as wrapping breaks between
-     words). Templates have no arithmetic, so the rows are counted as the length of a string that gets one "x"
-     per row. len counts bytes, so a non-ASCII character counts more than once and only ever picks 6.5pt. */}}
-{{- $rows8 := "" }}
+{{- /* 17. Additional information. The form allows at most 3 lines and 230 characters, which always fit in
+     6 rows at 5.5pt, even in capitals. It prints at 8pt when its rows fit in 4 there, else at 6.5pt when they
+     fit in 5: each line is taken to wrap into one row per 42 characters at 8pt and 49 at 6.5pt (about 90% of
+     a row of capitals, as wrapping breaks between words). Templates have no arithmetic, so the rows are
+     counted as the length of a string that gets one "x" per row. len counts bytes, so a non-ASCII character
+     counts more than once and only ever picks a smaller size. */}}
+{{- $rows8 := "" }}{{ $rows65 := "" }}
 {{- with .additional_information }}
 {{- range $line := split . "\n" }}
 {{- $n := len $line }}
 {{- $rows8 = print $rows8 "x" }}
 {{- if gt $n 42 }}{{ $rows8 = print $rows8 "x" }}{{ end }}{{ if gt $n 84 }}{{ $rows8 = print $rows8 "x" }}{{ end }}
-{{- if gt $n 126 }}{{ $rows8 = print $rows8 "x" }}{{ end }}
+{{- if gt $n 126 }}{{ $rows8 = print $rows8 "x" }}{{ end }}{{ if gt $n 168 }}{{ $rows8 = print $rows8 "x" }}{{ end }}
+{{- if gt $n 210 }}{{ $rows8 = print $rows8 "x" }}{{ end }}
+{{- $rows65 = print $rows65 "x" }}
+{{- if gt $n 49 }}{{ $rows65 = print $rows65 "x" }}{{ end }}{{ if gt $n 98 }}{{ $rows65 = print $rows65 "x" }}{{ end }}
+{{- if gt $n 147 }}{{ $rows65 = print $rows65 "x" }}{{ end }}{{ if gt $n 196 }}{{ $rows65 = print $rows65 "x" }}{{ end }}
 {{- end }}
 {{- end }}
 {{- if le (len $rows8) 4 }}<div class="f pre info">
-{{- else }}<div class="f pre info smaller">{{ end }}
+{{- else if le (len $rows65) 5 }}<div class="f pre info smaller">
+{{- else }}<div class="f pre info smallest">{{ end }}
 {{- with .additional_information }}{{ . }}{{ else }}NIL{{ end }}</div>
 
 {{- /* 18. Place of issue: the left half of the box, clear of "Stamp of organization", on up to 3 lines */}}
