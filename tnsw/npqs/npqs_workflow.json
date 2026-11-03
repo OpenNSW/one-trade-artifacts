@@ -827,7 +827,8 @@
         "npqs.certificate_withdrawal_hub_error?": "withdrawal_hub_error",
         "npqs.userform": "userform",
         "npqs.date_of_inspection?": "userform.date_of_inspection",
-        "npqs.certificate_items?": "certificate_items"
+        "npqs.certificate_items?": "certificate_items",
+        "npqs.certificate_issue_date?": "issue_date"
       },
       "output_mapping": {
         "withdrawal": "npqs.certificate_withdrawal",

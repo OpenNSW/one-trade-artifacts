@@ -11,8 +11,9 @@
                          draft, which lists every commodity.
     .issue_date          the date of issue the officer picks at issuance
                          (YYYY-MM-DD). Printed only on the final certificate.
-    .withdrawn           true on the copy of a final certificate made once it
-                         has been withdrawn, which is marked WITHDRAWN.
+    .withdrawal          the NPQS officer's decision on a request to withdraw
+                         the certificate ("accept"). Given only on the copy
+                         made when they accept, which is marked WITHDRAWN.
 
   The certificate carries no signature: a clause in place of the officer's
   name and signature says none is required.
@@ -39,7 +40,7 @@ Consignment re-inspected after treatment and found free from live pests.
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>{{ if .certificate_number }}{{ if .withdrawn }}Withdrawn {{ end }}Phytosanitary Certificate {{ .certificate_number }}{{ else }}Draft Phytosanitary Certificate{{ end }}</title>
+<title>{{ if .certificate_number }}{{ if .withdrawal }}Withdrawn {{ end }}Phytosanitary Certificate {{ .certificate_number }}{{ else }}Draft Phytosanitary Certificate{{ end }}</title>
 <style>
   /* Printed onto A4: fixed margins, a page count in the bottom margin, and
      nothing split across a page break that can be kept whole. */
@@ -102,7 +103,7 @@ Consignment re-inspected after treatment and found free from live pests.
 {{- $app := .application }}
 {{- if not .certificate_number }}
 <div class="watermark">DRAFT</div>
-{{- else if .withdrawn }}
+{{- else if .withdrawal }}
 <div class="watermark long">WITHDRAWN</div>
 {{- end }}
 

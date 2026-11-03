@@ -18,7 +18,10 @@
         "ephyto.tracking_number?": "submission.tracking_number",
         "ephyto.tracking_info?": "submission.tracking_info",
         "action.withdrawal_reason?": "submission.withdrawal_reason",
-        "withdrawal_hub_error?": "submission.hub_error"
+        "withdrawal_hub_error?": "submission.hub_error",
+        "userform": "submission.application",
+        "certificate_items?": "submission.certificate_items",
+        "issue_date?": "submission.issue_date"
       },
       "output_mapping": {
         "decision": "withdrawal.decision",

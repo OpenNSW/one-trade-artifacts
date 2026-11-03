@@ -2,6 +2,13 @@
   "id": "npqs-certificate-withdrawal--review:render",
   "type": "APPLICATION",
   "title": "NPQS Certificate Withdrawal Request",
+  "files": [
+    "application.attachments[*].attachment_file_url",
+    "payload.payload.withdrawn_certificate_url",
+    "reviewform.withdrawn_certificate_url",
+    "submission.application.attachments[*].attachment_file_url",
+    "withdrawn_copy.key"
+  ],
   "sections": {
     "request_view": {
       "templateId": "npqs-certificate-withdrawal--request-view",
@@ -21,6 +28,14 @@
           "element": "primary_action"
         }
       ]
+    },
+    "withdrawn_copy": {
+      "templateId": "npqs-certificate-withdrawal--withdrawn-copy-view",
+      "title": "Withdrawn Certificate",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "requireDataKey": "withdrawn_copy"
+      }
     },
     "status_message": {
       "templateId": "npqs-certificate-withdrawal--decided-view",
