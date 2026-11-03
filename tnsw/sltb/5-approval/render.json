@@ -3,6 +3,7 @@
   "type": "APPLICATION",
   "title": "[SLTB 8] Final Application Decision",
   "files": [
+    "payload.supportingDocuments.scannedDocuments[*].fileBase64",
     "userform.cusdec_draft.supportingDocuments.scannedDocuments[*].fileBase64",
     "submission.cusdec_draft.supportingDocuments.scannedDocuments[*].fileBase64",
     "submission.lab_tests[*].report_file",
@@ -17,6 +18,18 @@
         "states": [
           "PENDING_USER"
         ]
+      }
+    },
+    "verify_result": {
+      "templateId": "customs-cusdec--verify-result",
+      "title": "CusDec Verification Result",
+      "projector": "MARKDOWN",
+      "dataKey": "verify",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "verify"
       }
     },
     "user_form": {
@@ -34,6 +47,11 @@
           "command": "save_as_draft",
           "label": "Save as Draft",
           "element": "draft_action"
+        },
+        {
+          "command": "verify",
+          "label": "Verify CusDec",
+          "element": "secondary_action"
         },
         {
           "command": "submit",
@@ -69,6 +87,9 @@
       "actions": [
         {
           "command": "submit"
+        },
+        {
+          "command": "verify"
         },
         {
           "command": "save_as_draft"
