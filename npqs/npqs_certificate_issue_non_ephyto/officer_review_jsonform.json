@@ -446,8 +446,9 @@
       "additional_information": {
         "type": "string",
         "title": "Additional Information",
-        "description": "Printed in box 17 of the certificate, smaller as it gets longer, in at most 5 rows; text beyond that is cut off, so check the print copy. NIL when left empty. Filled with the other treated items' treatments, which you can change or remove.",
-        "maxLength": 300,
+        "description": "Printed in box 17 of the certificate: at most 3 lines and 160 characters, which always fit the box. NIL when left empty. Filled with the other treated items' treatments, which you can change or remove.",
+        "maxLength": 160,
+        "pattern": "^[^\\n]*(\\n[^\\n]*){0,2}$",
         "x-text": {
           "inputs": {
             "other_treatments": {
@@ -456,7 +457,7 @@
               "where": "treatment_type",
               "skip": 1,
               "template": "{commodity_common_name.label}: {treatment_type.label} · {chemical_used} · {treatment_duration} · {treatment_temperature} · {treatment_concentration}",
-              "separator": "\n"
+              "separator": "; "
             }
           },
           "template": "{other_treatments}",

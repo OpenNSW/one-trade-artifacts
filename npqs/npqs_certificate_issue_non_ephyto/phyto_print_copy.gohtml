@@ -44,16 +44,16 @@
     @bottom-right { content: ""; }
   }
   * { box-sizing: border-box; }
-  body { margin: 0; font-family: Arial, Helvetica, sans-serif; font-size: 10pt; line-height: 4.5mm; color: #000; }
+  /* 8pt: a little larger than the form's own labels, whose capitals are about 1.6mm tall (8pt Arial's are 2mm). */
+  body { margin: 0; font-family: Arial, Helvetica, sans-serif; font-size: 8pt; line-height: 4.5mm; color: #000; }
   .sheet { position: relative; width: 210mm; height: 297mm; overflow: hidden; }
   /* One box of the form. Long text wraps; each box is a whole number of lines tall, so text that still
      doesn't fit is dropped a whole line at a time at the box's edge, never cut through or printed over the next box. */
   .f { position: absolute; overflow: hidden; }
   .pre { white-space: pre-line; }
-  /* Box 17 (78 x 12.9mm) takes smaller text as there is more of it: 3 lines at 10pt, 4 at 8pt, 5 at 6.5pt. */
-  .info { left: 24.7mm; top: 274.5mm; width: 78mm; height: 12.9mm; line-height: 4.3mm; }
-  .info.smaller { font-size: 8pt; line-height: 3.2mm; }
-  .info.smallest { font-size: 6.5pt; line-height: 2.55mm; }
+  /* Box 17 (78 x 12.9mm): 4 rows at 8pt, or 5 at 6.5pt when the text needs more. */
+  .info { left: 24.7mm; top: 274.5mm; width: 78mm; height: 12.9mm; line-height: 3.2mm; }
+  .info.smaller { font-size: 6.5pt; line-height: 2.55mm; }
   /* 08 ends at the "Number of packages" column (151.9mm) and 09 starts at 167.4mm; the gap stays empty, as in Print.xls. */
   table.goods { width: 100%; border-collapse: collapse; table-layout: fixed; }
   table.goods td { padding: 0; vertical-align: top; }
@@ -231,36 +231,26 @@
 {{- /* 16. Date (of treatment): nothing in the application records it */}}
 <div class="f" style="left:79.5mm; top:260.5mm; width:24.5mm; height:9mm;">NIL</div>
 
-{{- /* 17. Additional information, at the largest size its text fits in. Each line is estimated to wrap
-     into one row per 42 characters at 10pt, 54 at 8pt and 66 at 6.5pt (about 90% of what a row holds, as
-     wrapping breaks between words). Templates have no arithmetic, so the rows are counted as the length of
-     a string that gets one "x" per row. len counts bytes, so a non-ASCII character counts more than once
-     and only ever picks a smaller size. Text that needs more than 5 rows at 6.5pt is cut at the box's edge. */}}
-{{- $rows10 := "" }}{{ $rows8 := "" }}{{ $rows65 := "" }}
+{{- /* 17. Additional information. The form allows at most 3 lines and 160 characters, which always fit in
+     5 rows at 6.5pt, even in capitals. It prints at 8pt when its rows fit in 4 there: each line is taken to
+     wrap into one row per 42 characters (about 90% of a row of 8pt capitals, as wrapping breaks between
+     words). Templates have no arithmetic, so the rows are counted as the length of a string that gets one "x"
+     per row. len counts bytes, so a non-ASCII character counts more than once and only ever picks 6.5pt. */}}
+{{- $rows8 := "" }}
 {{- with .additional_information }}
 {{- range $line := split . "\n" }}
 {{- $n := len $line }}
-{{- $rows10 = print $rows10 "x" }}
-{{- if gt $n 42 }}{{ $rows10 = print $rows10 "x" }}{{ end }}{{ if gt $n 84 }}{{ $rows10 = print $rows10 "x" }}{{ end }}
-{{- if gt $n 126 }}{{ $rows10 = print $rows10 "x" }}{{ end }}{{ if gt $n 168 }}{{ $rows10 = print $rows10 "x" }}{{ end }}
-{{- if gt $n 210 }}{{ $rows10 = print $rows10 "x" }}{{ end }}{{ if gt $n 252 }}{{ $rows10 = print $rows10 "x" }}{{ end }}
-{{- if gt $n 294 }}{{ $rows10 = print $rows10 "x" }}{{ end }}
 {{- $rows8 = print $rows8 "x" }}
-{{- if gt $n 54 }}{{ $rows8 = print $rows8 "x" }}{{ end }}{{ if gt $n 108 }}{{ $rows8 = print $rows8 "x" }}{{ end }}
-{{- if gt $n 162 }}{{ $rows8 = print $rows8 "x" }}{{ end }}{{ if gt $n 216 }}{{ $rows8 = print $rows8 "x" }}{{ end }}
-{{- if gt $n 270 }}{{ $rows8 = print $rows8 "x" }}{{ end }}
-{{- $rows65 = print $rows65 "x" }}
-{{- if gt $n 66 }}{{ $rows65 = print $rows65 "x" }}{{ end }}{{ if gt $n 132 }}{{ $rows65 = print $rows65 "x" }}{{ end }}
-{{- if gt $n 198 }}{{ $rows65 = print $rows65 "x" }}{{ end }}{{ if gt $n 264 }}{{ $rows65 = print $rows65 "x" }}{{ end }}
+{{- if gt $n 42 }}{{ $rows8 = print $rows8 "x" }}{{ end }}{{ if gt $n 84 }}{{ $rows8 = print $rows8 "x" }}{{ end }}
+{{- if gt $n 126 }}{{ $rows8 = print $rows8 "x" }}{{ end }}
 {{- end }}
 {{- end }}
-{{- if le (len $rows10) 3 }}<div class="f pre info">
-{{- else if le (len $rows8) 4 }}<div class="f pre info smaller">
-{{- else }}<div class="f pre info smallest">{{ end }}
+{{- if le (len $rows8) 4 }}<div class="f pre info">
+{{- else }}<div class="f pre info smaller">{{ end }}
 {{- with .additional_information }}{{ . }}{{ else }}NIL{{ end }}</div>
 
-{{- /* 18. Place of issue */}}
-<div class="f" style="left:120.7mm; top:231.5mm; width:74mm; height:9mm;">{{ $app.nppo_office_location.label }}</div>
+{{- /* 18. Place of issue: the left half of the box, clear of "Stamp of organization", on up to 3 lines */}}
+<div class="f" style="left:120.7mm; top:231.5mm; width:37mm; height:13.5mm;">{{ $app.nppo_office_location.label }}</div>
 
 {{- /* 18. Date of issue, just above the printed "Date" beside the signature */}}
 <div class="f" style="left:162.6mm; top:276mm; width:33mm; height:4.5mm;">{{ with .issue_date }}{{ date . "2006-01-02" "02/01/2006" }}{{ end }}</div>
