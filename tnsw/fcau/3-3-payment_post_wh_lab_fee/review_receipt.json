@@ -6,8 +6,8 @@
     "officer_jsonforms_id": "fcau-pay-post-wh-lab-fee--review-form",
     "reviewer_jsonforms_id": "fcau-pay-post-wh-lab-fee--review-form",
     "service_id": "fcau",
-    "path": "/api/v1/inject",
-    "task_code": "fcau_post_wh_lab_fee_review",
+    "path": "/api/v1/internal/cases/{caseId}/flows",
+    "service_workflow_id": "fcau_post_wh_lab_fee_review",
     "reply_command": "resubmit"
   },
   "extensions": [

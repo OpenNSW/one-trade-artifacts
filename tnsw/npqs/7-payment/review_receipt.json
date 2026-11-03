@@ -5,8 +5,8 @@
   "plugin_properties": {
     "officer_jsonforms_id": "npqs-payment--review-form",
     "service_id": "npqs",
-    "path": "/api/v1/inject",
-    "task_code": "npqs_certificate_fee_review_receipt",
+    "path": "/api/v1/internal/cases/{caseId}/flows",
+    "service_workflow_id": "npqs_payment_review_receipt",
     "reply_command": "resubmit"
   },
   "extensions": [

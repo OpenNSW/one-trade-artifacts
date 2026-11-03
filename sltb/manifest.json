@@ -2,12 +2,6 @@
   "artifacts": [
     {
       "id": "sltb_officer_review",
-      "kind": "task_config",
-      "version": "",
-      "path": "sltb_officer_review/sltb_officer_review.taskconfig.json"
-    },
-    {
-      "id": "sltb_officer_review",
       "kind": "workflow",
       "version": "",
       "path": "sltb_officer_review/workflow.json"
@@ -77,12 +71,6 @@
       "kind": "generic_template",
       "version": "",
       "path": "sltb_officer_review/userinput_jsonform.json"
-    },
-    {
-      "id": "sltb_final_decision",
-      "kind": "task_config",
-      "version": "",
-      "path": "sltb_final_decision/sltb_final_decision.taskconfig.json"
     },
     {
       "id": "sltb_final_decision",
@@ -164,12 +152,6 @@
     },
     {
       "id": "sltb_levy_payment_review_receipt",
-      "kind": "task_config",
-      "version": "",
-      "path": "sltb_levy_payment_review_receipt/sltb_levy_payment_review_receipt.taskconfig.json"
-    },
-    {
-      "id": "sltb_levy_payment_review_receipt",
       "kind": "workflow",
       "version": "",
       "path": "sltb_levy_payment_review_receipt/workflow.json"
@@ -239,12 +221,6 @@
       "kind": "generic_template",
       "version": "",
       "path": "sltb_levy_payment_review_receipt/userinput_jsonform.json"
-    },
-    {
-      "id": "sltb_levy_payment_confirm_office",
-      "kind": "task_config",
-      "version": "",
-      "path": "sltb_levy_payment_confirm_office/sltb_levy_payment_confirm_office.taskconfig.json"
     },
     {
       "id": "sltb_levy_payment_confirm_office",
@@ -320,12 +296,6 @@
     },
     {
       "id": "sltb_sample_ack_dropoff",
-      "kind": "task_config",
-      "version": "",
-      "path": "sltb_sample_ack_dropoff/sltb_sample_ack_dropoff.taskconfig.json"
-    },
-    {
-      "id": "sltb_sample_ack_dropoff",
       "kind": "workflow",
       "version": "",
       "path": "sltb_sample_ack_dropoff/workflow.json"
@@ -377,12 +347,6 @@
       "kind": "generic_template",
       "version": "",
       "path": "sltb_sample_ack_dropoff/submission_view_markdown.json"
-    },
-    {
-      "id": "sltb_sample_draw",
-      "kind": "task_config",
-      "version": "",
-      "path": "sltb_sample_draw/sltb_sample_draw.taskconfig.json"
     },
     {
       "id": "sltb_sample_draw",
@@ -443,12 +407,6 @@
       "kind": "generic_template",
       "version": "",
       "path": "sltb_sample_draw/pickup_details_markdown.json"
-    },
-    {
-      "id": "sltb_lab_decision",
-      "kind": "task_config",
-      "version": "",
-      "path": "sltb_lab_decision/sltb_lab_decision.taskconfig.json"
     },
     {
       "id": "sltb_lab_decision",
@@ -529,12 +487,6 @@
       "path": "sltb_tasting_result/review_workflow.json"
     },
     {
-      "id": "sltb_tasting_result",
-      "kind": "task_config",
-      "version": "",
-      "path": "sltb_tasting_result/sltb_tasting_result.taskconfig.json"
-    },
-    {
       "id": "sltb-tasting-result--submission-view",
       "kind": "generic_template",
       "version": "",
@@ -551,12 +503,6 @@
       "kind": "workflow",
       "version": "",
       "path": "sltb_tasting_result/workflow.json"
-    },
-    {
-      "id": "sltb_lab_testing",
-      "kind": "task_config",
-      "version": "",
-      "path": "sltb_lab_testing/sltb_lab_testing.taskconfig.json"
     },
     {
       "id": "sltb_lab_testing",
@@ -691,12 +637,6 @@
       "path": "sltb_payment_review_receipt/userinput_jsonform.json"
     },
     {
-      "id": "sltb_lab_fee_review_receipt",
-      "kind": "task_config",
-      "version": "",
-      "path": "sltb_payment_review_receipt/sltb_lab_fee_review_receipt.taskconfig.json"
-    },
-    {
       "id": "sltb_payment_confirm",
       "kind": "workflow",
       "version": "",
@@ -749,12 +689,6 @@
       "kind": "generic_template",
       "version": "",
       "path": "sltb_payment_confirm/officer_review_jsonform.json"
-    },
-    {
-      "id": "sltb_lab_fee_confirm_payment",
-      "kind": "task_config",
-      "version": "",
-      "path": "sltb_payment_confirm/sltb_lab_fee_confirm_payment.taskconfig.json"
     },
     {
       "id": "sltb-payment-confirm--awaiting-resubmission",

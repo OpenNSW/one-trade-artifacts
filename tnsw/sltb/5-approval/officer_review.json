@@ -5,8 +5,8 @@
   "plugin_properties": {
     "officer_jsonforms_id": "sltb-final-decision--officer-form",
     "service_id": "sltb",
-    "path": "/api/v1/inject",
-    "task_code": "sltb_final_decision",
+    "path": "/api/v1/internal/cases/{caseId}/flows",
+    "service_workflow_id": "sltb_final_decision",
     "reply_command": "resubmit"
   },
   "extensions": [

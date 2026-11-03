@@ -2,12 +2,6 @@
   "artifacts": [
     {
       "id": "fcau_application_review",
-      "kind": "task_config",
-      "version": "",
-      "path": "fcau_application_review/fcau_application_review.taskconfig.json"
-    },
-    {
-      "id": "fcau_application_review",
       "kind": "workflow",
       "version": "",
       "path": "fcau_application_review/workflow.json"
@@ -80,12 +74,6 @@
     },
     {
       "id": "fcau_issue_certificate",
-      "kind": "task_config",
-      "version": "",
-      "path": "fcau_issue_certificate/fcau_issue_certificate.taskconfig.json"
-    },
-    {
-      "id": "fcau_issue_certificate",
       "kind": "workflow",
       "version": "",
       "path": "fcau_issue_certificate/workflow.json"
@@ -131,12 +119,6 @@
       "kind": "generic_template",
       "version": "",
       "path": "fcau_issue_certificate/submission_view_markdown.json"
-    },
-    {
-      "id": "fcau-warehouse-scheduling--review",
-      "kind": "task_config",
-      "version": "",
-      "path": "fcau-warehouse-scheduling--review/fcau-warehouse-scheduling--review.taskconfig.json"
     },
     {
       "id": "fcau-warehouse-scheduling--review",
@@ -218,12 +200,6 @@
     },
     {
       "id": "fcau_warehouse_inspection",
-      "kind": "task_config",
-      "version": "",
-      "path": "fcau_warehouse_inspection/fcau_warehouse_inspection.taskconfig.json"
-    },
-    {
-      "id": "fcau_warehouse_inspection",
       "kind": "workflow",
       "version": "",
       "path": "fcau_warehouse_inspection/workflow.json"
@@ -275,12 +251,6 @@
       "kind": "generic_template",
       "version": "",
       "path": "fcau_warehouse_inspection/userinput_jsonform.json"
-    },
-    {
-      "id": "fcau_post_wh_lab_fee_review",
-      "kind": "task_config",
-      "version": "",
-      "path": "fcau_post_wh_lab_fee_review/fcau_post_wh_lab_fee_review.taskconfig.json"
     },
     {
       "id": "fcau_post_wh_lab_fee_review",
@@ -356,12 +326,6 @@
     },
     {
       "id": "fcau_post_wh_lab_test",
-      "kind": "task_config",
-      "version": "",
-      "path": "fcau_post_wh_lab_test/fcau_post_wh_lab_test.taskconfig.json"
-    },
-    {
-      "id": "fcau_post_wh_lab_test",
       "kind": "workflow",
       "version": "",
       "path": "fcau_post_wh_lab_test/workflow.json"
@@ -407,12 +371,6 @@
       "kind": "generic_template",
       "version": "",
       "path": "fcau_post_wh_lab_test/submission_view_markdown.json"
-    },
-    {
-      "id": "fcau_sample_collection",
-      "kind": "task_config",
-      "version": "",
-      "path": "fcau_sample_collection/fcau_sample_collection.taskconfig.json"
     },
     {
       "id": "fcau_sample_collection",
@@ -464,12 +422,6 @@
     },
     {
       "id": "fcau_visual_assessment",
-      "kind": "task_config",
-      "version": "",
-      "path": "fcau_visual_assessment/fcau_visual_assessment.taskconfig.json"
-    },
-    {
-      "id": "fcau_visual_assessment",
       "kind": "workflow",
       "version": "",
       "path": "fcau_visual_assessment/workflow.json"
@@ -515,12 +467,6 @@
       "kind": "generic_template",
       "version": "",
       "path": "fcau_visual_assessment/submission_view_markdown.json"
-    },
-    {
-      "id": "fcau_lab_fee_payment_review",
-      "kind": "task_config",
-      "version": "",
-      "path": "fcau_lab_fee_payment_review/fcau_lab_fee_payment_review.taskconfig.json"
     },
     {
       "id": "fcau_lab_fee_payment_review",
@@ -593,12 +539,6 @@
       "kind": "generic_template",
       "version": "",
       "path": "fcau_lab_fee_payment_review/userinput_jsonform.json"
-    },
-    {
-      "id": "fcau_lab_test",
-      "kind": "task_config",
-      "version": "",
-      "path": "fcau_lab_test/fcau_lab_test.taskconfig.json"
     },
     {
       "id": "fcau_lab_test",
@@ -727,12 +667,6 @@
       "path": "fcau_payment_review_receipt/userinput_jsonform.json"
     },
     {
-      "id": "fcau_app_fee_review_receipt",
-      "kind": "task_config",
-      "version": "",
-      "path": "fcau_payment_review_receipt/fcau_app_fee_review_receipt.taskconfig.json"
-    },
-    {
       "id": "fcau_payment_confirm",
       "kind": "workflow",
       "version": "",
@@ -803,12 +737,6 @@
       "kind": "generic_template",
       "version": "",
       "path": "fcau_payment_confirm/officer_review_jsonform.json"
-    },
-    {
-      "id": "fcau_app_fee_confirm_payment",
-      "kind": "task_config",
-      "version": "",
-      "path": "fcau_payment_confirm/fcau_app_fee_confirm_payment.taskconfig.json"
     }
   ]
 }

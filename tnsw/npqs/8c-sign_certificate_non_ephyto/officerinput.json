@@ -4,8 +4,8 @@
   "output_namespace": "reviewerform",
   "plugin_properties": {
     "service_id": "npqs",
-    "path": "/api/v1/inject",
-    "task_code": "npqs_certificate_signed_upload"
+    "path": "/api/v1/internal/cases/{caseId}/flows",
+    "service_workflow_id": "npqs_certificate_signed_upload"
   },
   "extensions": [
     {

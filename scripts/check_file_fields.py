@@ -152,21 +152,22 @@ class Scope:
         self.workflows = self.by_kind["workflow"]
         task_workflows = {t.get("workflow_id") for t in self.tasks.values()}
         self.macros = {i: w for i, w in self.workflows.items() if i not in task_workflows}
-        # An agency's taskCode -> the workflow its inject starts, and back.
-        self.inject_code = {}
-        for config in self.by_kind["task_config"].values():
-            if isinstance(config, dict) and config.get("schemaVersion") == 2 and config.get("workflow"):
-                self.inject_code[config["workflow"]] = config["taskCode"]
-        self.codes_of_task = defaultdict(set)
-        for wf_id, code in self.inject_code.items():
-            for node in self.workflows.get(wf_id, {}).get("nodes", []):
-                if node.get("task_template_id") in self.tasks:
-                    self.codes_of_task[node["task_template_id"]].add(code)
+        # The workflows TNSW starts here (an agency's client flows), set by start_flows.
+        self.flows = set()
+        self.flows_of_task = defaultdict(set)
         self.vars = defaultdict(dict)  # workflow id -> {file path: origin}
         self.files = defaultdict(dict)  # render config id -> {file path: origin}
-        self.pushed = defaultdict(dict)  # TNSW task_code -> {path in pushed data: origin}
-        self.callback = defaultdict(dict)  # agency taskCode -> {path in callback payload: origin}
+        self.pushed = defaultdict(dict)  # agency workflow TNSW starts -> {path in pushed data: origin}
+        self.callback = defaultdict(dict)  # agency workflow TNSW starts -> {path in callback payload: origin}
         self.signals = defaultdict(dict)  # signal_name -> {path in the EMIT payload: origin}
+
+    def start_flows(self, flows):
+        """Make flows, the workflows TNSW starts here, this scope's client flows."""
+        self.flows = {f for f in flows if f in self.workflows}
+        for wf_id in self.flows:
+            for node in self.workflows[wf_id].get("nodes", []):
+                if node.get("task_template_id") in self.tasks:
+                    self.flows_of_task[node["task_template_id"]].add(wf_id)
 
     def render_path(self, render_id):
         return self.path_of.get(("generic_template", render_id), render_id)
@@ -239,17 +240,6 @@ def form_rule_errors(root):
     return errors
 
 
-def legacy_review_forms(root):
-    """Legacy OGA task configs: taskCode -> their review form, which their callback sends."""
-    out = {}
-    for p in glob.glob(os.path.join(root, "*", "**", "*.taskconfig.json"), recursive=True):
-        with open(p) as f:
-            d = json.load(f)
-        if isinstance(d, dict) and isinstance(d.get("forms"), dict) and d["forms"].get("review"):
-            out[d["taskCode"]] = (d["forms"]["review"], os.path.relpath(p, root))
-    return out
-
-
 def all_forms(root):
     out = {}
     for p in glob.glob(os.path.join(root, "**", "*.json"), recursive=True):
@@ -263,6 +253,17 @@ def all_forms(root):
     return out
 
 
+def started_on(tnsw, service):
+    """The workflows TNSW starts on the agency service: the service_workflow_id of each of
+    its EXTERNAL_REVIEW steps whose service_id it is."""
+    return {
+        (step.get("plugin_properties") or {}).get("service_workflow_id")
+        for step in tnsw.steps.values()
+        if isinstance(step, dict) and step.get("task_type") == "EXTERNAL_REVIEW"
+        and (step.get("plugin_properties") or {}).get("service_id") == service
+    } - {None}
+
+
 class Checker:
     def __init__(self, root):
         self.root = root
@@ -273,10 +274,10 @@ class Checker:
             if name == TNSW:
                 continue
             scope = Scope(root, name)
-            if scope.inject_code:  # runs as an agency: injected workflows
+            scope.start_flows(started_on(self.tnsw, name))
+            if scope.flows:  # runs as an agency: TNSW starts flows on it
                 self.agencies.append(scope)
         self.forms = all_forms(root)
-        self.legacy = legacy_review_forms(root)
 
     def submission_files(self, scope, step, render):
         """The file paths in what a step stores under its namespace, and where they come from."""
@@ -284,19 +285,13 @@ class Checker:
             # It stores a file it generates: {"key": <storage key>, ...}.
             return {"key": f"the file {step.get('task_type')} {step.get('id')} generates"}
         if step.get("task_type") == "EXTERNAL_REVIEW":
-            # Until an OGA's cutover, a deployment may run its legacy service or
-            # its agency (<agency>/): the step can get either one's callback.
-            code = (step.get("plugin_properties") or {}).get("task_code")
+            # It stores the callback from the flow it starts on the agency.
+            flow = (step.get("plugin_properties") or {}).get("service_workflow_id")
             out = {}
             for agency in self.agencies:
-                if code in agency.inject_code.values():
-                    for p, origin in agency.callback.get(code, {}).items():
+                if flow in agency.flows:
+                    for p, origin in agency.callback.get(flow, {}).items():
                         out.setdefault(p, origin)
-            if code in self.legacy:
-                form_id, config = self.legacy[code]
-                form = self.forms.get(form_id)
-                for p in form_files(form) if form else ():
-                    out.setdefault(p, f"the callback from {config}")
             return out
         form_ids = set()
         pp = step.get("plugin_properties") or {}
@@ -349,7 +344,7 @@ class Checker:
                     scope.files[render_id].setdefault(p, origin)
             props = step.get("plugin_properties") or {}
             if step.get("task_type") == "EXTERNAL_REVIEW":
-                code = props.get("task_code")
+                code = props.get("service_workflow_id")
                 # The engine nests mapped inputs, so a mapping to "submission"
                 # or to "submission.<field>" gives the step a "submission"
                 # input, and the push then sends only that.
@@ -367,7 +362,7 @@ class Checker:
                 changed |= len(scope.pushed[code]) != before
             if step.get("task_type") == "AUTH_API_CALL" and props.get("service_id") == TNSW:
                 body = {p[len("payload.payload."):]: o for p, o in inputs.items() if p.startswith("payload.payload.")}
-                for code in scope.codes_of_task.get(task_id, ()):
+                for code in scope.flows_of_task.get(task_id, ()):
                     before = len(scope.callback[code])
                     for p, origin in body.items():
                         scope.callback[code].setdefault(p, f"{scope.name}'s callback ({origin})")
@@ -377,9 +372,9 @@ class Checker:
     def run_macros(self, scope):
         changed = False
         for macro_id, macro in scope.macros.items():
-            if macro_id in scope.inject_code:
-                # An agency's injected workflow starts with TNSW's push in "notification".
-                code = scope.inject_code[macro_id]
+            if macro_id in scope.flows:
+                # A flow TNSW starts here begins with TNSW's push in "notification".
+                code = macro_id
                 for p, origin in self.tnsw.pushed.get(code, {}).items():
                     key = f"notification.{p}" if p else "notification"
                     if key not in scope.vars[macro_id]:
