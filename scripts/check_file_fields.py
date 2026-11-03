@@ -50,7 +50,7 @@ from collections import defaultdict
 TNSW = "tnsw"
 
 # Step types that store a file they generate, under {output_namespace}.key.
-GENERATED_FILE_STEPS = {"HTML_DOCUMENT_GENERATOR"}
+GENERATED_FILE_STEPS = {"HTML_DOCUMENT_GENERATOR", "REMOTE_FILE_ARCHIVER"}
 
 
 def load(root, path):
