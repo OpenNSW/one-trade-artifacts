@@ -1,12 +1,23 @@
 {
   "id": "sltb-pay-lab-fee-flow:render",
   "type": "PAYMENT",
-  "title": "[SLTB] Pay Lab Test Fee",
+  "title": "[SLTB 7] Pay Lab Test Fee",
   "files": [
     "receipt.payment_slip",
     "submission.payment_slip"
   ],
   "sections": {
+    "payment_failed": {
+      "templateId": "sltb-pay-lab-fee--payment-failed",
+      "title": "Payment Failed",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "payment_status"
+      }
+    },
     "workspace": {
       "templateId": "sltb-pay-lab-fee--select-method-form",
       "title": "Select Payment Gateway",
@@ -46,35 +57,6 @@
         ]
       }
     },
-    "payment_not_received": {
-      "templateId": "sltb-pay-lab-fee--not-received",
-      "title": "Payment Not Confirmed",
-      "projector": "MARKDOWN",
-      "visibleWhen": {
-        "states": [
-          "PENDING_REPAYMENT"
-        ],
-        "requireDataKey": "payment_remarks"
-      }
-    },
-    "pay_again": {
-      "templateId": "sltb-pay-lab-fee--pay-again-form",
-      "title": "Notify the Officer",
-      "projector": "FORM",
-      "dataKey": "repayment",
-      "visibleWhen": {
-        "states": [
-          "PENDING_REPAYMENT"
-        ]
-      },
-      "handles": [
-        {
-          "command": "submit",
-          "label": "I Have Paid — Notify the Officer",
-          "element": "primary_action"
-        }
-      ]
-    },
     "receipt_instructions": {
       "templateId": "sltb-pay-lab-fee--receipt-instructions",
       "title": "Bank Transfer Details",
@@ -113,6 +95,35 @@
         ],
         "requireDataKey": "selected_payment_method"
       }
+    },
+    "payment_not_received": {
+      "templateId": "sltb-pay-lab-fee--not-received",
+      "title": "Payment Not Received",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_REPAYMENT"
+        ],
+        "requireDataKey": "payment_remarks"
+      }
+    },
+    "pay_again": {
+      "templateId": "sltb-pay-lab-fee--pay-again-form",
+      "title": "Notify the Officer",
+      "projector": "FORM",
+      "dataKey": "repayment",
+      "visibleWhen": {
+        "states": [
+          "PENDING_REPAYMENT"
+        ]
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "I Have Paid — Notify the Officer",
+          "element": "primary_action"
+        }
+      ]
     }
   },
   "states": {

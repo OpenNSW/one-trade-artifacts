@@ -6,14 +6,25 @@
     "officer_jsonforms_id": "sltb-final-decision--officer-form",
     "service_id": "sltb",
     "path": "/api/v1/inject",
-    "task_code": "sltb_final_decision"
+    "task_code": "sltb_final_decision",
+    "reply_command": "resubmit"
   },
   "extensions": [
     {
       "id": "authz",
       "phase": "PRE_RESUME",
       "properties": {
-        "QUEUED_EXTERNALLY": { "approve": ["sltb"] }
+        "QUEUED_EXTERNALLY": {
+          "approve": [
+            "sltb"
+          ],
+          "needs_more_info": [
+            "sltb"
+          ],
+          "reject": [
+            "sltb"
+          ]
+        }
       }
     }
   ]

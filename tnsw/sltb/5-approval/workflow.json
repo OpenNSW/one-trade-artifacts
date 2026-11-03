@@ -12,12 +12,46 @@
       "task_template_id": "sltb-final-decision--officer-review",
       "input_mapping": {
         "userform": "submission",
-        "sample_number?": "sample_number"
+        "sample_number?": "submission.sample_number",
+        "lab_tests?": "submission.lab_tests",
+        "lab_test_result?": "submission.lab_test_result",
+        "agency_token?": "replyToken"
       },
       "output_mapping": {
         "final_decision_outcome": "decision.final_decision_outcome",
         "remarks?": "decision.remarks",
-        "asycuda_approval_confirmed?": "decision.asycuda_approval_confirmed"
+        "callbackToken?": "agency_token"
+      }
+    },
+    {
+      "id": "decision_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Changes Requested?"
+    },
+    {
+      "id": "trader_amend",
+      "type": "TASK",
+      "task_template_id": "sltb-final-decision--trader-amend",
+      "input_mapping": {
+        "userform?": "userform",
+        "decision?": "decision",
+        "lab_tests?": "lab_tests"
+      },
+      "output_mapping": {
+        "blendsheet_data": "userform.blendsheet_data",
+        "cusdec_draft": "userform.cusdec_draft"
+      }
+    },
+    {
+      "id": "generate_blendsheet_nos",
+      "type": "TASK",
+      "task_template_id": "sltb-submit-blendsheet--generate-blendsheet-nos",
+      "input_mapping": {
+        "userform.blendsheet_data": "blendsheet_data"
+      },
+      "output_mapping": {
+        "refid.blendsheet_data": "userform.blendsheet_data"
       }
     },
     {
@@ -34,7 +68,29 @@
     {
       "id": "e2",
       "source_id": "officer_decision_task",
-      "target_id": "end"
+      "target_id": "decision_gateway"
+    },
+    {
+      "id": "e_changes",
+      "source_id": "decision_gateway",
+      "target_id": "trader_amend",
+      "condition": "decision.final_decision_outcome == 'needs_more_info'"
+    },
+    {
+      "id": "e_amended",
+      "source_id": "trader_amend",
+      "target_id": "generate_blendsheet_nos"
+    },
+    {
+      "id": "e_renumbered",
+      "source_id": "generate_blendsheet_nos",
+      "target_id": "officer_decision_task"
+    },
+    {
+      "id": "e_decided",
+      "source_id": "decision_gateway",
+      "target_id": "end",
+      "condition": "decision.final_decision_outcome in ['approve', 'reject']"
     }
   ]
 }

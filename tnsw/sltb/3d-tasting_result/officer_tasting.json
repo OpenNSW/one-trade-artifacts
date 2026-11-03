@@ -1,0 +1,30 @@
+{
+  "id": "sltb-tasting-result--officer",
+  "task_type": "EXTERNAL_REVIEW",
+  "output_namespace": "tasting",
+  "plugin_properties": {
+    "officer_jsonforms_id": "sltb-tasting-result--officer-form",
+    "service_id": "sltb",
+    "path": "/api/v1/inject",
+    "task_code": "sltb_tasting_result"
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "QUEUED_EXTERNALLY": {
+          "approve": [
+            "sltb"
+          ],
+          "send_to_lab": [
+            "sltb"
+          ],
+          "reject": [
+            "sltb"
+          ]
+        }
+      }
+    }
+  ]
+}

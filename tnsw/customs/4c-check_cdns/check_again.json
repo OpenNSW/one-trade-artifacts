@@ -1,0 +1,30 @@
+{
+  "id": "customs-check-cdns--check-again",
+  "task_type": "USER_INPUT",
+  "output_namespace": "check",
+  "plugin_properties": {
+    "user_jsonforms_id": "customs-check-cdns--check-again-form",
+    "status_override": "PENDING_CDNS"
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "PENDING_CDNS": {
+          "submit": [
+            "trader",
+            "cha"
+          ]
+        }
+      }
+    },
+    {
+      "id": "payload_schema",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "form": "customs-check-cdns--check-again-form"
+      }
+    }
+  ]
+}

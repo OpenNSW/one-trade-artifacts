@@ -15,7 +15,7 @@
       "phase": "PRE_RESUME",
       "properties": {
         "QUEUED_EXTERNALLY": {
-          "success": [
+          "received": [
             "sltb"
           ],
           "not_received": [

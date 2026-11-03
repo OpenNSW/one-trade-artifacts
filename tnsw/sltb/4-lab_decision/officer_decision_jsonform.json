@@ -1,45 +1,58 @@
 {
   "id": "sltb-lab-decision--officer-form",
-  "title": "Lab Testing Decision",
+  "title": "Tasting Decision",
   "schema": {
     "type": "object",
-    "required": ["lab_testing_required"],
+    "required": ["tasting_required"],
     "properties": {
-      "sample_number": {
+      "tasting_required": {
         "type": "string",
-        "title": "Sample Number",
-        "readOnly": true
-      },
-      "lab_testing_required": {
-        "type": "string",
-        "title": "Lab Testing Decision",
+        "title": "Tasting Decision",
         "oneOf": [
-          { "const": "yes", "title": "Yes — Lab Testing Required" },
-          { "const": "no", "title": "No — Lab Testing Not Required" }
+          { "const": "yes", "title": "Yes — Draw a Sample for Tasting" },
+          { "const": "no", "title": "No — Tasting Not Required" }
         ]
+      },
+      "collection_method": {
+        "type": "string",
+        "title": "Sample Collection Method",
+        "oneOf": [
+          { "const": "pickup", "title": "Warehouse Pickup (Tea Inspector visits warehouse)" },
+          { "const": "dropoff", "title": "Trader Drop-off (Trader delivers sample to SLTB Export Division)" }
+        ],
+        "default": "pickup"
       },
       "decision_notes": {
         "type": "string",
         "title": "Decision Notes (Optional)",
         "example": "Random spot-check selected for quality verification."
       }
-    }
+    },
+    "allOf": [
+      {
+        "if": {
+          "properties": { "tasting_required": { "const": "yes" } },
+          "required": ["tasting_required"]
+        },
+        "then": { "required": ["collection_method"] }
+      }
+    ]
   },
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
+      { "type": "Control", "scope": "#/properties/tasting_required" },
       {
         "type": "Control",
-        "scope": "#/properties/sample_number",
+        "scope": "#/properties/collection_method",
         "rule": {
           "effect": "SHOW",
           "condition": {
-            "scope": "#/properties/sample_number",
-            "schema": { "type": "string", "minLength": 1 }
+            "scope": "#/properties/tasting_required",
+            "schema": { "const": "yes" }
           }
         }
       },
-      { "type": "Control", "scope": "#/properties/lab_testing_required" },
       {
         "type": "Control",
         "scope": "#/properties/decision_notes",

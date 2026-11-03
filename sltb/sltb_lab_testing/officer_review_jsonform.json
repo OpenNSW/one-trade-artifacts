@@ -3,45 +3,96 @@
   "title": "Record Lab Test Results",
   "schema": {
     "type": "object",
-    "required": ["test_result", "test_date", "test_report_file"],
+    "required": [
+      "lab_tests",
+      "test_result",
+      "test_date"
+    ],
     "properties": {
       "sample_number": {
         "type": "string",
         "title": "Sample Number",
         "readOnly": true
       },
+      "lab_tests": {
+        "type": "array",
+        "title": "Lab Results by Blend Sheet",
+        "description": "Each blend sheet is a sample. Add one entry per blend sheet tested.",
+        "minItems": 1,
+        "items": {
+          "type": "object",
+          "required": [
+            "blendsheet_no",
+            "result"
+          ],
+          "properties": {
+            "blendsheet_no": {
+              "type": "string",
+              "title": "Blend Sheet No.",
+              "example": "BS/2026/000123"
+            },
+            "result": {
+              "type": "string",
+              "title": "Result",
+              "oneOf": [
+                {
+                  "const": "pass",
+                  "title": "Pass"
+                },
+                {
+                  "const": "fail",
+                  "title": "Fail"
+                }
+              ]
+            },
+            "remarks": {
+              "type": "string",
+              "title": "Remarks (Optional)",
+              "example": "Moisture 5.8% — within the 7% limit."
+            },
+            "report_file": {
+              "type": "string",
+              "format": "file",
+              "title": "Lab Result (PDF, Optional)",
+              "description": "The signed lab result for this blend sheet. The trader can download it.",
+              "x-file": {
+                "accept": ".pdf"
+              }
+            }
+          }
+        }
+      },
       "test_result": {
         "type": "string",
-        "title": "Test Result",
+        "title": "Overall Result",
+        "description": "Pass if every blend sheet passed, Partial if some failed, Fail if all failed. The lab test fee is charged for any failed sample; if all fail, the application is rejected.",
         "oneOf": [
-          { "const": "pass", "title": "Pass — Sample meets SLTB quality standards" },
-          { "const": "fail", "title": "Fail — Sample does not meet SLTB quality standards" }
+          {
+            "const": "pass",
+            "title": "Pass — Every blend sheet passed"
+          },
+          {
+            "const": "partial",
+            "title": "Partial — Some blend sheets failed"
+          },
+          {
+            "const": "fail",
+            "title": "Fail — Every blend sheet failed"
+          }
         ]
       },
       "lab_fee_amount": {
         "type": "number",
-        "title": "Lab Test Fee for Failed Sample (LKR)",
+        "title": "Lab Test Fee for the Failed Samples (LKR)",
         "exclusiveMinimum": 0,
         "example": 5000,
-        "description": "Enter the lab test fee the trader must pay for the failed sample."
+        "description": "Enter the lab test fee the trader must pay for the failed samples."
       },
       "test_date": {
         "type": "string",
         "format": "date",
         "title": "Date of Testing",
         "example": "2026-07-05"
-      },
-      "test_report_file": {
-        "type": "string",
-        "format": "file",
-        "title": "Lab Test Report (PDF)",
-        "description": "Upload the signed lab test report. The trader downloads it and submits it to the SLTB Export Division for verification.",
-        "x-file": { "accept": ".pdf" }
-      },
-      "test_report_ref": {
-        "type": "string",
-        "title": "Lab Report Reference Number (Optional)",
-        "example": "SLTB-LAB-2026-00412"
       },
       "test_notes": {
         "type": "string",
@@ -52,10 +103,127 @@
     "allOf": [
       {
         "if": {
-          "properties": { "test_result": { "const": "fail" } },
-          "required": ["test_result"]
+          "properties": {
+            "test_result": {
+              "enum": [
+                "partial",
+                "fail"
+              ]
+            }
+          },
+          "required": [
+            "test_result"
+          ]
         },
-        "then": { "required": ["lab_fee_amount"] }
+        "then": {
+          "required": [
+            "lab_fee_amount"
+          ]
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "lab_tests": {
+              "allOf": [
+                {
+                  "contains": {
+                    "properties": {
+                      "result": {
+                        "const": "pass"
+                      }
+                    },
+                    "required": [
+                      "result"
+                    ]
+                  }
+                },
+                {
+                  "contains": {
+                    "properties": {
+                      "result": {
+                        "const": "fail"
+                      }
+                    },
+                    "required": [
+                      "result"
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          "required": [
+            "lab_tests"
+          ]
+        },
+        "then": {
+          "properties": {
+            "test_result": {
+              "const": "partial"
+            }
+          }
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "lab_tests": {
+              "not": {
+                "contains": {
+                  "properties": {
+                    "result": {
+                      "const": "fail"
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          },
+          "required": [
+            "lab_tests"
+          ]
+        },
+        "then": {
+          "properties": {
+            "test_result": {
+              "const": "pass"
+            }
+          }
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "lab_tests": {
+              "not": {
+                "contains": {
+                  "properties": {
+                    "result": {
+                      "const": "pass"
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          },
+          "required": [
+            "lab_tests"
+          ]
+        },
+        "then": {
+          "properties": {
+            "test_result": {
+              "const": "fail"
+            }
+          }
+        }
       }
     ]
   },
@@ -69,11 +237,21 @@
           "effect": "SHOW",
           "condition": {
             "scope": "#/properties/sample_number",
-            "schema": { "type": "string", "minLength": 1 }
+            "schema": {
+              "type": "string",
+              "minLength": 1
+            }
           }
         }
       },
-      { "type": "Control", "scope": "#/properties/test_result" },
+      {
+        "type": "Control",
+        "scope": "#/properties/lab_tests"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/test_result"
+      },
       {
         "type": "Control",
         "scope": "#/properties/lab_fee_amount",
@@ -81,17 +259,25 @@
           "effect": "SHOW",
           "condition": {
             "scope": "#/properties/test_result",
-            "schema": { "const": "fail" }
+            "schema": {
+              "enum": [
+                "partial",
+                "fail"
+              ]
+            }
           }
         }
       },
-      { "type": "Control", "scope": "#/properties/test_date" },
-      { "type": "Control", "scope": "#/properties/test_report_file" },
-      { "type": "Control", "scope": "#/properties/test_report_ref" },
+      {
+        "type": "Control",
+        "scope": "#/properties/test_date"
+      },
       {
         "type": "Control",
         "scope": "#/properties/test_notes",
-        "options": { "multiLine": true }
+        "options": {
+          "multiLine": true
+        }
       }
     ]
   }

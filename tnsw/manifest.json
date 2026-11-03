@@ -2989,6 +2989,84 @@
       "path": "customs/4a-prepare_cdn_items/task_template.json"
     },
     {
+      "id": "customs-check-cdns-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "customs/4c-check_cdns/task_template.json"
+    },
+    {
+      "id": "customs-check-cdns-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "customs/4c-check_cdns/workflow.json"
+    },
+    {
+      "id": "customs-check-cdns-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/4c-check_cdns/render.json"
+    },
+    {
+      "id": "customs-check-cdns--check-again",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "customs/4c-check_cdns/check_again.json"
+    },
+    {
+      "id": "customs-check-cdns--check-again-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/4c-check_cdns/check_again_form_jsonform.json"
+    },
+    {
+      "id": "customs-check-cdns--missing",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/4c-check_cdns/missing_markdown.json"
+    },
+    {
+      "id": "customs-check-cdns--completed",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/4c-check_cdns/completed_markdown.json"
+    },
+    {
+      "id": "customs-additional-cdn",
+      "kind": "workflow",
+      "version": "",
+      "path": "customs/additional_cdn_workflow.json"
+    },
+    {
+      "id": "customs-additional-cdn-find-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "customs/12-additional_cdn/task_template.json"
+    },
+    {
+      "id": "customs-additional-cdn-find-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "customs/12-additional_cdn/workflow.json"
+    },
+    {
+      "id": "customs-additional-cdn-find-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/12-additional_cdn/render.json"
+    },
+    {
+      "id": "customs-additional-cdn--find",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "customs/12-additional_cdn/find.json"
+    },
+    {
+      "id": "customs-additional-cdn--found",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/12-additional_cdn/found_markdown.json"
+    },
+    {
       "id": "customs-collect-cdn-results-flow:render",
       "kind": "generic_template",
       "version": "",
@@ -3023,6 +3101,18 @@
       "kind": "subtask_template",
       "version": "",
       "path": "customs/5-wait_cdn_ack/wait_ack.json"
+    },
+    {
+      "id": "customs-wait-cdn-ack--cancel",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "customs/5-wait_cdn_ack/cancel.json"
+    },
+    {
+      "id": "customs-wait-cdn-ack--cancel-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/5-wait_cdn_ack/cancel_form_jsonform.json"
     },
     {
       "id": "customs-wait-cdn-ack--instructions",
@@ -3229,48 +3319,6 @@
       "path": "sltb/1-application/task_template.json"
     },
     {
-      "id": "sltb-xml-download-flow:render",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/1b-xml_download/render.json"
-    },
-    {
-      "id": "sltb-xml-download--officer-review",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "sltb/1b-xml_download/officer_review.json"
-    },
-    {
-      "id": "sltb-xml-download--officer-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/1b-xml_download/officer_review_jsonform.json"
-    },
-    {
-      "id": "sltb-xml-download--trader-view",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/1b-xml_download/trader_view_jsonform.json"
-    },
-    {
-      "id": "sltb-xml-download--trader-completed",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/1b-xml_download/trader_completed_jsonform.json"
-    },
-    {
-      "id": "sltb-xml-download-flow",
-      "kind": "workflow",
-      "version": "",
-      "path": "sltb/1b-xml_download/workflow.json"
-    },
-    {
-      "id": "sltb-xml-download-flow",
-      "kind": "task_template",
-      "version": "",
-      "path": "sltb/1b-xml_download/task_template.json"
-    },
-    {
       "id": "sltb-pay-levy-flow:render",
       "kind": "generic_template",
       "version": "",
@@ -3349,22 +3397,16 @@
       "path": "sltb/2-levy_payment/review_receipt_jsonform.json"
     },
     {
-      "id": "sltb-pay-levy--confirm-pinpack",
+      "id": "sltb-pay-levy--confirm-office",
       "kind": "subtask_template",
       "version": "",
-      "path": "sltb/2-levy_payment/confirm_pinpack.json"
+      "path": "sltb/2-levy_payment/confirm_office.json"
     },
     {
-      "id": "sltb-pay-levy--confirm-pinpack-form",
+      "id": "sltb-pay-levy--confirm-office-form",
       "kind": "generic_template",
       "version": "",
-      "path": "sltb/2-levy_payment/confirm_pinpack_jsonform.json"
-    },
-    {
-      "id": "sltb-pay-levy--pinpack-notification-email",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/2-levy_payment/pinpack_notification_email.json"
+      "path": "sltb/2-levy_payment/confirm_office_jsonform.json"
     },
     {
       "id": "sltb-pay-levy-flow",
@@ -3379,64 +3421,28 @@
       "path": "sltb/2-levy_payment/task_template.json"
     },
     {
-      "id": "sltb-schedule-pickup-flow:render",
+      "id": "sltb-pay-levy--payment-failed",
       "kind": "generic_template",
       "version": "",
-      "path": "sltb/3-schedule_pickup/render.json"
+      "path": "sltb/2-levy_payment/payment_failed_markdown.json"
     },
     {
-      "id": "sltb-schedule-pickup--status",
+      "id": "sltb-pay-levy--not-received",
       "kind": "generic_template",
       "version": "",
-      "path": "sltb/3-schedule_pickup/status_message_jsonform.json"
+      "path": "sltb/2-levy_payment/not_received_markdown.json"
     },
     {
-      "id": "sltb-schedule-pickup--status-awaiting",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/3-schedule_pickup/status_awaiting_jsonform.json"
-    },
-    {
-      "id": "sltb-schedule-pickup--suggest",
+      "id": "sltb-pay-levy--notify-paid",
       "kind": "subtask_template",
       "version": "",
-      "path": "sltb/3-schedule_pickup/trader_suggest.json"
+      "path": "sltb/2-levy_payment/notify_paid.json"
     },
     {
-      "id": "sltb-schedule-pickup--suggest-form",
+      "id": "sltb-pay-levy--notify-paid-form",
       "kind": "generic_template",
       "version": "",
-      "path": "sltb/3-schedule_pickup/trader_suggest_jsonform.json"
-    },
-    {
-      "id": "sltb-schedule-pickup--officer-review",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "sltb/3-schedule_pickup/officer_review.json"
-    },
-    {
-      "id": "sltb-schedule-pickup--close-review",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "sltb/3-schedule_pickup/close_review.json"
-    },
-    {
-      "id": "sltb-schedule-pickup--officer-review-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/3-schedule_pickup/officer_review_jsonform.json"
-    },
-    {
-      "id": "sltb-schedule-pickup-flow",
-      "kind": "workflow",
-      "version": "",
-      "path": "sltb/3-schedule_pickup/workflow.json"
-    },
-    {
-      "id": "sltb-schedule-pickup-flow",
-      "kind": "task_template",
-      "version": "",
-      "path": "sltb/3-schedule_pickup/task_template.json"
+      "path": "sltb/2-levy_payment/notify_paid_jsonform.json"
     },
     {
       "id": "sltb-dropoff-flow:render",
@@ -3547,6 +3553,42 @@
       "path": "sltb/4-lab_decision/task_template.json"
     },
     {
+      "id": "sltb-tasting-result--officer",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb/3d-tasting_result/officer_tasting.json"
+    },
+    {
+      "id": "sltb-tasting-result--officer-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/3d-tasting_result/officer_tasting_jsonform.json"
+    },
+    {
+      "id": "sltb-tasting-result-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/3d-tasting_result/render.json"
+    },
+    {
+      "id": "sltb-tasting-result--status",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/3d-tasting_result/status_message_jsonform.json"
+    },
+    {
+      "id": "sltb-tasting-result-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "sltb/3d-tasting_result/task_template.json"
+    },
+    {
+      "id": "sltb-tasting-result-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "sltb/3d-tasting_result/workflow.json"
+    },
+    {
       "id": "sltb-lab-testing-flow:render",
       "kind": "generic_template",
       "version": "",
@@ -3581,72 +3623,6 @@
       "kind": "task_template",
       "version": "",
       "path": "sltb/6-lab_testing/task_template.json"
-    },
-    {
-      "id": "sltb-lab-report-verification--completed",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/7-lab_report_verification/completed_markdown.json"
-    },
-    {
-      "id": "sltb-lab-report-verification--download-report",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/7-lab_report_verification/download_report_markdown.json"
-    },
-    {
-      "id": "sltb-lab-report-verification--officer-verify",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "sltb/7-lab_report_verification/officer_verify.json"
-    },
-    {
-      "id": "sltb-lab-report-verification--pending-verification",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/7-lab_report_verification/pending_verification_markdown.json"
-    },
-    {
-      "id": "sltb-lab-report-verification-flow:render",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/7-lab_report_verification/render.json"
-    },
-    {
-      "id": "sltb-lab-report-verification--reupload-reason",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/7-lab_report_verification/reupload_reason_markdown.json"
-    },
-    {
-      "id": "sltb-lab-report-verification--review-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/7-lab_report_verification/review_jsonform.json"
-    },
-    {
-      "id": "sltb-lab-report-verification-flow",
-      "kind": "task_template",
-      "version": "",
-      "path": "sltb/7-lab_report_verification/task_template.json"
-    },
-    {
-      "id": "sltb-lab-report-verification--trader-upload",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "sltb/7-lab_report_verification/trader_upload.json"
-    },
-    {
-      "id": "sltb-lab-report-verification--upload-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb/7-lab_report_verification/trader_upload_jsonform.json"
-    },
-    {
-      "id": "sltb-lab-report-verification-flow",
-      "kind": "workflow",
-      "version": "",
-      "path": "sltb/7-lab_report_verification/workflow.json"
     },
     {
       "id": "sltb-pay-lab-fee-flow:render",
@@ -3733,6 +3709,12 @@
       "path": "sltb/4-lab_payment/awaiting_officer_markdown.json"
     },
     {
+      "id": "sltb-pay-lab-fee--payment-failed",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/4-lab_payment/payment_failed_markdown.json"
+    },
+    {
       "id": "sltb-pay-lab-fee--not-received",
       "kind": "generic_template",
       "version": "",
@@ -3785,6 +3767,78 @@
       "kind": "task_template",
       "version": "",
       "path": "sltb/5-approval/task_template.json"
+    },
+    {
+      "id": "sltb-final-decision--trader-amend",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb/5-approval/trader_amend.json"
+    },
+    {
+      "id": "sltb-final-decision--changes-requested",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/5-approval/changes_requested_markdown.json"
+    },
+    {
+      "id": "sltb-cusdec-submission--outcome",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/9-cusdec_submission/outcome_markdown.json"
+    },
+    {
+      "id": "sltb-cusdec-submission--refused",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb/9-cusdec_submission/refused_choice.json"
+    },
+    {
+      "id": "sltb-cusdec-submission--refused-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/9-cusdec_submission/refused_choice_jsonform.json"
+    },
+    {
+      "id": "sltb-cusdec-submission-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/9-cusdec_submission/render.json"
+    },
+    {
+      "id": "sltb-cusdec-submission-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "sltb/9-cusdec_submission/task_template.json"
+    },
+    {
+      "id": "sltb-cusdec-submission--waiting",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/9-cusdec_submission/waiting_markdown.json"
+    },
+    {
+      "id": "sltb-cusdec-submission-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "sltb/9-cusdec_submission/workflow.json"
+    },
+    {
+      "id": "sltb-cusdec-submission--confirm",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb/9-cusdec_submission/confirm_submit.json"
+    },
+    {
+      "id": "sltb-cusdec-submission--confirm-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/9-cusdec_submission/confirm_submit_jsonform.json"
+    },
+    {
+      "id": "sltb-cusdec-submission--confirm-intro",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb/9-cusdec_submission/confirm_intro_markdown.json"
     },
     {
       "id": "sltb-blendsheet-approval",
@@ -3965,6 +4019,12 @@
       "kind": "subtask_template",
       "version": "",
       "path": "slpa/4-invoice_payment/generate.json"
+    },
+    {
+      "id": "slpa-invoice--archive-payment-slip",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "slpa/4-invoice_payment/archive_payment_slip.json"
     },
     {
       "id": "slpa-invoice--request",
@@ -4217,6 +4277,12 @@
       "kind": "generic_template",
       "version": "",
       "path": "slpa/aux-sundry_order/submitted_message_jsonform.json"
+    },
+    {
+      "id": "slpa-sundry--case-containers",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "slpa/aux-sundry_order/case_containers.json"
     },
     {
       "id": "slpa-sundry--fetch-services",

@@ -1,0 +1,12 @@
+{
+  "id": "sltb-tasting-result--review",
+  "type": "APPLICATION",
+  "workflow_id": "sltb-tasting-result--review-workflow",
+  "render_config_id": "sltb-tasting-result--review:render",
+  "claimable": true,
+  "read": {
+    "roles": [
+      "officer"
+    ]
+  }
+}

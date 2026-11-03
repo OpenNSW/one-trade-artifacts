@@ -1,11 +1,12 @@
 {
   "id": "sltb-lab-decision-flow:render",
   "type": "APPLICATION",
-  "title": "[SLTB 4] Lab Testing Decision",
+  "title": "[SLTB 3] Tasting Decision",
+  "files": ["submission.cusdec_draft.supportingDocuments.scannedDocuments[*].fileBase64"],
   "sections": {
     "status_message": {
       "templateId": "sltb-lab-decision--status",
-      "title": "Lab Decision Status",
+      "title": "Tasting Decision Status",
       "projector": "MARKDOWN",
       "visibleWhen": {
         "states": ["QUEUED_EXTERNALLY", "COMPLETED"]

@@ -1,0 +1,4 @@
+{
+  "id": "sltb-sample-draw--pickup-details",
+  "template": "The applicant suggested these sample dates on the blend sheets. Draw the sample at the warehouse, then record the draw below.\n\n{{range .blendsheet_data}}* **{{with .blendsheet_no}}{{.}}{{else}}Blend sheet{{end}}**: {{.warehouse_address}} — {{.sample_rediness_date}}{{with .remarks}} ({{.}}){{end}}\n{{end}}"
+}

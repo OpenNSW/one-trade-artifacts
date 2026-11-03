@@ -1,0 +1,4 @@
+{
+  "id": "sltb-final-decision--awaiting-resubmission",
+  "template": "Sent back to the applicant to change the CusDec or blend sheets. Waiting for their resubmission.{{if .remarks}}\n\n> **Your remarks**: {{.remarks}}{{end}}"
+}

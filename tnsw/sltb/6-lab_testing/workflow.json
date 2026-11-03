@@ -2,28 +2,42 @@
   "id": "sltb-lab-testing-flow",
   "name": "Lab Testing & Results",
   "nodes": [
-    { "id": "start", "type": "START" },
+    {
+      "id": "start",
+      "type": "START"
+    },
     {
       "id": "officer_test",
       "type": "TASK",
       "name": "Record Lab Test Results",
       "task_template_id": "sltb-lab-testing--officer",
       "input_mapping": {
-        "sample_number": "sample_number"
+        "sample_number": "submission.sample_number",
+        "blendsheet_data": "submission.blendsheet_data"
       },
       "output_mapping": {
+        "lab_tests": "result.lab_tests",
         "test_result": "result.test_result",
         "lab_fee_amount?": "result.lab_fee_amount",
         "test_date": "result.test_date",
-        "test_report_file": "result.test_report_file",
-        "test_report_ref?": "result.test_report_ref",
         "test_notes?": "result.test_notes"
       }
     },
-    { "id": "end", "type": "END" }
+    {
+      "id": "end",
+      "type": "END"
+    }
   ],
   "edges": [
-    { "id": "e_start", "source_id": "start", "target_id": "officer_test" },
-    { "id": "e_test_end", "source_id": "officer_test", "target_id": "end" }
+    {
+      "id": "e_start",
+      "source_id": "start",
+      "target_id": "officer_test"
+    },
+    {
+      "id": "e_test_end",
+      "source_id": "officer_test",
+      "target_id": "end"
+    }
   ]
 }

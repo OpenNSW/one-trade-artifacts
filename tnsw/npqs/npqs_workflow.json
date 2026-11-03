@@ -727,7 +727,8 @@
       "output_mapping": {
         "certificate_items?": "npqs.certificate_items",
         "replacement_reference_number?": "npqs.replacement_reference_number",
-        "certificate_number?": "npqs.certificate_number"
+        "certificate_number?": "npqs.certificate_number",
+        "issue_date?": "npqs.certificate_issue_date"
       }
     },
     {
@@ -871,10 +872,14 @@
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
         "npqs.certificate_items?": "certificate_items",
-        "npqs.ephyto_country": "ephyto_country"
+        "npqs.ephyto_country": "ephyto_country",
+        "npqs.certificate_number": "replaced_certificate.certificate_number",
+        "npqs.certificate_issue_date": "replaced_certificate.issue_date",
+        "npqs.certificate_replacement_note": "replaced_certificate.replacement_note"
       },
       "output_mapping": {
         "new_certificate_id": "npqs.certificate_new_id",
+        "new_certificate_issue_date": "npqs.certificate_new_issue_date",
         "certificate_items?": "npqs.certificate_items"
       }
     },
@@ -886,6 +891,7 @@
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.certificate_new_id": "new_certificate_id",
+        "npqs.certificate_new_issue_date": "new_certificate_issue_date",
         "npqs.certificate_number": "certificate_id",
         "npqs.certificate_replacement_note?": "replacement_note",
         "npqs.certificate_replacement_hub_error?": "replacement_hub_error",
@@ -903,7 +909,8 @@
         "replacement_submitted": "npqs.certificate_replacement_submitted",
         "replacement_hub_error?": "npqs.certificate_replacement_hub_error",
         "ephyto?": "npqs.ephyto",
-        "certificate_id": "npqs.certificate_number"
+        "certificate_id": "npqs.certificate_number",
+        "new_certificate_issue_date": "npqs.certificate_issue_date"
       }
     },
     {
@@ -1034,6 +1041,12 @@
       "source_id": "route_split",
       "target_id": "n5_0_visual_inspection",
       "condition": "item.inspection_type == 'visual' && item.visual_approach == 'system'"
+    },
+    {
+      "id": "e_route_to_treatment_only",
+      "source_id": "route_split",
+      "target_id": "gw_treatment_split",
+      "condition": "item.inspection_type == 'none'"
     },
     {
       "id": "e_officer_draw_to_lab_testing",

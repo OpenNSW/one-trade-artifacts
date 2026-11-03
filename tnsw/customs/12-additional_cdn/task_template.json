@@ -1,0 +1,12 @@
+{
+  "id": "customs-additional-cdn-find-flow",
+  "type": "APPLICATION",
+  "workflow_id": "customs-additional-cdn-find-flow",
+  "render_config_id": "customs-additional-cdn-find-flow:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
+}

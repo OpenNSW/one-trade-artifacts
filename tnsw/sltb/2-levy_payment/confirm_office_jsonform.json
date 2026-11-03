@@ -1,0 +1,71 @@
+{
+  "id": "sltb-pay-levy--confirm-office-form",
+  "title": "SLTB Levy Payment at the SLTB Office",
+  "schema": {
+    "type": "object",
+    "required": [
+      "receipt_status"
+    ],
+    "properties": {
+      "receipt_status": {
+        "type": "string",
+        "title": "Payment Status",
+        "oneOf": [
+          {
+            "const": "received",
+            "title": "Received — the levy was paid at the SLTB office"
+          },
+          {
+            "const": "not_received",
+            "title": "Not Received — the levy has not been paid at the SLTB office"
+          }
+        ]
+      },
+      "remarks": {
+        "type": "string",
+        "title": "Officer Remarks (Required if Not Received)",
+        "example": "No payment received at the counter against this reference."
+      }
+    },
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "receipt_status": {
+              "const": "not_received"
+            }
+          },
+          "required": [
+            "receipt_status"
+          ]
+        },
+        "then": {
+          "properties": {
+            "remarks": {
+              "minLength": 1
+            }
+          },
+          "required": [
+            "remarks"
+          ]
+        }
+      }
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/receipt_status"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/remarks",
+        "options": {
+          "multiLine": true
+        }
+      }
+    ]
+  }
+}

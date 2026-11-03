@@ -13,7 +13,9 @@
       "input_mapping": {
         "reviewerform?": "reviewerform",
         "rejection_reason?": "rejection_reason",
-        "userform?": "userform"
+        "userform?": "userform",
+        "customs_feedback?": "customs_feedback",
+        "customs_error?": "customs_error"
       },
       "output_mapping": {
         "blendsheet_data": "userform.blendsheet_data",
@@ -46,7 +48,6 @@
         "review_outcome": "reviewerform.review_outcome",
         "feedback?": "rejection_reason",
         "levy_amount?": "reviewerform.levy_amount",
-        "collection_method?": "reviewerform.collection_method",
         "callbackToken?": "agency_token"
       }
     },

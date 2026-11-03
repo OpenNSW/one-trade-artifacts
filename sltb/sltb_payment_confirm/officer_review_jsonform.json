@@ -1,60 +1,63 @@
 {
   "id": "sltb-payment--confirm-form",
-  "title": "SLTB Payment Confirmation",
+  "title": "SLTB Lab Test Fee Payment at the SLTB Office",
   "schema": {
     "type": "object",
     "required": [
-      "payment_status"
+      "receipt_status"
     ],
     "properties": {
-      "payment_status": {
+      "receipt_status": {
         "type": "string",
         "title": "Payment Status",
         "oneOf": [
           {
-            "const": "success",
-            "title": "Confirm Payment Received"
+            "const": "received",
+            "title": "Received — the Lab Test Fee was paid at the SLTB office"
           },
           {
             "const": "not_received",
-            "title": "Payment Not Received"
+            "title": "Not Received — the Lab Test Fee has not been paid at the SLTB office"
           }
-        ],
-        "default": "success"
+        ]
       },
       "remarks": {
         "type": "string",
-        "title": "Officer Remarks (Required if Payment Not Received)",
-        "example": "No payment was received against this reference."
+        "title": "Officer Remarks (Required if Not Received)",
+        "example": "No payment received at the counter against this reference."
       }
     },
-    "if": {
-      "properties": {
-        "payment_status": {
-          "const": "not_received"
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "receipt_status": {
+              "const": "not_received"
+            }
+          },
+          "required": [
+            "receipt_status"
+          ]
+        },
+        "then": {
+          "properties": {
+            "remarks": {
+              "minLength": 1
+            }
+          },
+          "required": [
+            "remarks"
+          ]
         }
-      },
-      "required": [
-        "payment_status"
-      ]
-    },
-    "then": {
-      "properties": {
-        "remarks": {
-          "minLength": 1
-        }
-      },
-      "required": [
-        "remarks"
-      ]
-    }
+      }
+    ]
   },
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
       {
         "type": "Control",
-        "scope": "#/properties/payment_status"
+        "scope": "#/properties/receipt_status"
       },
       {
         "type": "Control",

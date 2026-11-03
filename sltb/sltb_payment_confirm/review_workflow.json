@@ -1,6 +1,6 @@
 {
   "id": "sltb-payment-confirm--review-workflow",
-  "name": "SLTB Payment Confirmation — Officer Review",
+  "name": "SLTB Lab Test Fee Payment at the Office — Officer Review",
   "nodes": [
     {
       "id": "start",
@@ -15,7 +15,7 @@
         "reviewform.remarks?": "previous_remarks"
       },
       "output_mapping": {
-        "payment_status": "reviewform.payment_status",
+        "receipt_status": "reviewform.receipt_status",
         "remarks?": "reviewform.remarks"
       }
     },
@@ -30,7 +30,7 @@
       "task_template_id": "sltb-payment-confirm--request-info",
       "input_mapping": {
         "callbackToken": "replyToken",
-        "reviewform.payment_status": "payload.payment_status",
+        "reviewform.receipt_status": "payload.receipt_status",
         "reviewform.remarks?": "payload.remarks",
         "submission?": "submission",
         "reviewform": "reviewform"
@@ -49,7 +49,7 @@
         "reviewform?": "reviewform",
         "submission?": "submission",
         "taskId": "taskId",
-        "reviewform.payment_status": "payload.command",
+        "reviewform.receipt_status": "payload.command",
         "reviewform": "payload.payload"
       }
     },
@@ -73,10 +73,10 @@
       "id": "e_not_received",
       "source_id": "decision_gateway",
       "target_id": "request_info",
-      "condition": "reviewform.payment_status == 'not_received'"
+      "condition": "reviewform.receipt_status == 'not_received'"
     },
     {
-      "id": "e_repaid",
+      "id": "e_paid",
       "source_id": "request_info",
       "target_id": "userform"
     },
@@ -84,7 +84,7 @@
       "id": "e_received",
       "source_id": "decision_gateway",
       "target_id": "api_call",
-      "condition": "reviewform.payment_status == 'success'"
+      "condition": "reviewform.receipt_status == 'received'"
     },
     {
       "id": "e3",

@@ -1,14 +1,17 @@
 {
   "id": "sltb-record-sample-draw-flow:render",
   "type": "APPLICATION",
-  "title": "[SLTB 3C] Officer Records Sample Draw",
+  "title": "[SLTB 4B] Sample Draw at the Warehouse",
   "sections": {
     "status_message": {
       "templateId": "sltb-record-sample-draw--status",
       "title": "Sample Draw Status",
       "projector": "MARKDOWN",
       "visibleWhen": {
-        "states": ["QUEUED_EXTERNALLY", "COMPLETED"]
+        "states": [
+          "QUEUED_EXTERNALLY",
+          "COMPLETED"
+        ]
       }
     }
   },

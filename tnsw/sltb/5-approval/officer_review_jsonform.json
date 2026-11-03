@@ -19,21 +19,22 @@
           {
             "const": "approve",
             "title": "Approve the Blend Sheet Application"
+          },
+          {
+            "const": "needs_more_info",
+            "title": "Request Changes to the CusDec or Blend Sheets"
+          },
+          {
+            "const": "reject",
+            "title": "Reject the Blend Sheet Application"
           }
         ]
       },
       "remarks": {
         "type": "string",
         "title": "Decision Remarks / Comments",
-        "description": "Provide detail about the approval.",
-        "example": "All quality checks passed. Blend sheet approved."
-      },
-      "asycuda_approval_confirmed": {
-        "type": "boolean",
-        "title": "I have logged into the ASYCUDA System and pressed the green check (✓) button to approve this consignment",
-        "description": "Login to ASYCUDA and press the green check button for this consignment before approving here.",
-        "default": false,
-        "example": true
+        "description": "Required when requesting changes or rejecting. Say which fields to fix; to have failed blend sheets removed, list them here.",
+        "example": "Remove blend sheet BS/2026/000124, which failed lab testing, and its CusDec item."
       }
     },
     "allOf": [
@@ -41,7 +42,10 @@
         "if": {
           "properties": {
             "final_decision_outcome": {
-              "const": "approve"
+              "enum": [
+                "needs_more_info",
+                "reject"
+              ]
             }
           },
           "required": [
@@ -50,11 +54,11 @@
         },
         "then": {
           "required": [
-            "asycuda_approval_confirmed"
+            "remarks"
           ],
           "properties": {
-            "asycuda_approval_confirmed": {
-              "const": true
+            "remarks": {
+              "minLength": 1
             }
           }
         }
@@ -71,7 +75,10 @@
           "effect": "SHOW",
           "condition": {
             "scope": "#/properties/sample_number",
-            "schema": { "type": "string", "minLength": 1 }
+            "schema": {
+              "type": "string",
+              "minLength": 1
+            }
           }
         }
       },
@@ -85,10 +92,6 @@
         "options": {
           "multiLine": true
         }
-      },
-      {
-        "type": "Control",
-        "scope": "#/properties/asycuda_approval_confirmed"
       }
     ]
   }

@@ -39,6 +39,12 @@
       }
     },
     {
+      "id": "govpay-result-gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "GovPay Payment Succeeded?"
+    },
+    {
       "id": "generate-slip-reference-task",
       "type": "TASK",
       "task_template_id": "sltb-pay-levy--generate-reference",
@@ -87,7 +93,7 @@
       "name": "Slip Verified?"
     },
     {
-      "id": "generate-pinpack-reference-task",
+      "id": "generate-office-reference-task",
       "type": "TASK",
       "task_template_id": "sltb-pay-levy--generate-reference",
       "input_mapping": {},
@@ -96,15 +102,32 @@
       }
     },
     {
-      "id": "confirm-pinpack-task",
+      "id": "confirm-office-task",
       "type": "TASK",
-      "task_template_id": "sltb-pay-levy--confirm-pinpack",
+      "task_template_id": "sltb-pay-levy--confirm-office",
       "input_mapping": {
-        "reference_number": "reference_number",
-        "levy_amount": "amount"
+        "reference_number": "submission.reference_number",
+        "levy_amount": "submission.amount",
+        "office_agency_token?": "replyToken"
       },
       "output_mapping": {
-        "deduction_status": "payment.deduction_status"
+        "receipt_status": "payment.receipt_status",
+        "remarks?": "payment.office_remarks",
+        "callbackToken?": "office_agency_token"
+      }
+    },
+    {
+      "id": "office-result-gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Payment Received at the Office?"
+    },
+    {
+      "id": "notify-paid-task",
+      "type": "TASK",
+      "task_template_id": "sltb-pay-levy--notify-paid",
+      "input_mapping": {
+        "payment.office_remarks?": "payment.office_remarks"
       }
     },
     {
@@ -136,9 +159,21 @@
       "condition": "payment_method.selected_method == 'govpay'"
     },
     {
-      "id": "e-govpay-join",
+      "id": "e_govpay_result",
       "source_id": "pay-govpay-task",
-      "target_id": "join-gateway"
+      "target_id": "govpay-result-gateway"
+    },
+    {
+      "id": "e_govpay_success",
+      "source_id": "govpay-result-gateway",
+      "target_id": "join-gateway",
+      "condition": "payment.payment_status == 'success'"
+    },
+    {
+      "id": "e_govpay_failed",
+      "source_id": "govpay-result-gateway",
+      "target_id": "select-method-task",
+      "condition": "payment.payment_status == 'fail'"
     },
     {
       "id": "e-slip-reference",
@@ -174,25 +209,42 @@
       "condition": "payment_review.payment_review_outcome == 'approve'"
     },
     {
-      "id": "e-pinpack-reference",
+      "id": "e-office-reference",
       "source_id": "method-split",
-      "target_id": "generate-pinpack-reference-task",
-      "condition": "payment_method.selected_method == 'pinpack'"
+      "target_id": "generate-office-reference-task",
+      "condition": "payment_method.selected_method == 'pay_at_office'"
     },
     {
-      "id": "e-pinpack",
-      "source_id": "generate-pinpack-reference-task",
-      "target_id": "confirm-pinpack-task"
+      "id": "e-office",
+      "source_id": "generate-office-reference-task",
+      "target_id": "confirm-office-task"
     },
     {
-      "id": "e-pinpack-join",
-      "source_id": "confirm-pinpack-task",
-      "target_id": "join-gateway"
+      "id": "e-office-result",
+      "source_id": "confirm-office-task",
+      "target_id": "office-result-gateway"
+    },
+    {
+      "id": "e_office_received",
+      "source_id": "office-result-gateway",
+      "target_id": "join-gateway",
+      "condition": "payment.receipt_status == 'received'"
+    },
+    {
+      "id": "e_office_not_received",
+      "source_id": "office-result-gateway",
+      "target_id": "notify-paid-task",
+      "condition": "payment.receipt_status == 'not_received'"
     },
     {
       "id": "e-join-end",
       "source_id": "join-gateway",
       "target_id": "end"
+    },
+    {
+      "id": "e_office_paid",
+      "source_id": "notify-paid-task",
+      "target_id": "confirm-office-task"
     }
   ]
 }

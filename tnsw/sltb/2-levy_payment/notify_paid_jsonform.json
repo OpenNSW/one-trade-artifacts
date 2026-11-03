@@ -1,0 +1,17 @@
+{
+  "id": "sltb-pay-levy--notify-paid-form",
+  "title": "Notify the Officer",
+  "schema": {
+    "type": "object",
+    "properties": {}
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Label",
+        "text": "Once you have paid the levy at the SLTB office, notify the officer so they can confirm it."
+      }
+    ]
+  }
+}

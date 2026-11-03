@@ -1,0 +1,4 @@
+{
+  "id": "sltb-cusdec-submission--outcome",
+  "template": "{{if eq .reviewerform.review_outcome \"approve\"}}### CusDec Assessed\n\nCustoms has assessed your CusDec. The consignment continues through the usual Customs steps.{{else}}### Sent Back for Amendment\n\nThe CusDec goes back to the SLTB application. Amend the blend sheets or CusDec there; SLTB approves the amendment before it is submitted to Customs again.\n{{with .reviewerform.rejection_reason}}\n> **Customs' reason**: {{.}}\n{{end}}{{with .cig.error}}\n> **Customs' system**: {{.}}\n{{end}}{{end}}"
+}

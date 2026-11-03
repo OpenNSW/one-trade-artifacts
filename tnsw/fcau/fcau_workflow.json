@@ -89,7 +89,8 @@
       "lane": "Trader/CHA",
       "input_mapping": {
         "fcau.reference_number": "reference_number",
-        "fcau.userform": "userform"
+        "fcau.userform": "userform",
+        "commodities": "commodities"
       },
       "output_mapping": {
         "payment_review_outcome": "fcau.lab_fee_payment_status"
@@ -147,7 +148,8 @@
       "lane": "Trader/CHA",
       "input_mapping": {
         "fcau.reference_number": "reference_number",
-        "fcau.userform": "userform"
+        "fcau.userform": "userform",
+        "commodities": "commodities"
       },
       "output_mapping": {
         "payment_review_outcome": "fcau.escalated_lab_fee_payment_status"

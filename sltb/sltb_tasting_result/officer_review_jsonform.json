@@ -1,0 +1,105 @@
+{
+  "id": "sltb-tasting-result--officer-form",
+  "title": "Record Tasting Result",
+  "schema": {
+    "type": "object",
+    "required": [
+      "tasting_outcome",
+      "tasting_date"
+    ],
+    "properties": {
+      "sample_number": {
+        "type": "string",
+        "title": "Sample Number",
+        "readOnly": true
+      },
+      "tasting_outcome": {
+        "type": "string",
+        "title": "Tasting Outcome",
+        "oneOf": [
+          {
+            "const": "approve",
+            "title": "Approve — Sample meets SLTB quality standards"
+          },
+          {
+            "const": "send_to_lab",
+            "title": "Send for Lab Testing"
+          },
+          {
+            "const": "reject",
+            "title": "Reject Application — Sample does not meet SLTB quality standards"
+          }
+        ]
+      },
+      "tasting_date": {
+        "type": "string",
+        "format": "date",
+        "title": "Date of Tasting",
+        "example": "2026-07-05"
+      },
+      "tasting_notes": {
+        "type": "string",
+        "title": "Tasting Notes (Required if Rejected)",
+        "example": "Liquor and infusion consistent with the declared grade."
+      }
+    },
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "tasting_outcome": {
+              "const": "reject"
+            }
+          },
+          "required": [
+            "tasting_outcome"
+          ]
+        },
+        "then": {
+          "properties": {
+            "tasting_notes": {
+              "minLength": 1
+            }
+          },
+          "required": [
+            "tasting_notes"
+          ]
+        }
+      }
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/sample_number",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/sample_number",
+            "schema": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/tasting_outcome"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/tasting_date"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/tasting_notes",
+        "options": {
+          "multiLine": true
+        }
+      }
+    ]
+  }
+}

@@ -3,12 +3,31 @@
   "type": "APPLICATION",
   "title": "SLTB Final Decision",
   "files": [
-    "submission.cusdec_draft.supportingDocuments.scannedDocuments[*].fileBase64"
+    "submission.cusdec_draft.supportingDocuments.scannedDocuments[*].fileBase64",
+    "submission.lab_tests[*].report_file"
   ],
   "sections": {
+    "previous_review": {
+      "templateId": "sltb-final-decision--previous-review",
+      "title": "Previous Review",
+      "projector": "MARKDOWN",
+      "dataKey": "previous_remarks",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "previous_remarks"
+      }
+    },
+    "lab_results": {
+      "templateId": "sltb-final-decision--lab-results",
+      "title": "Lab Results",
+      "projector": "MARKDOWN",
+      "dataKey": "submission"
+    },
     "submission_view": {
-      "templateId": "sltb-submit-blendsheet--user-form",
-      "title": "Submitted Application",
+      "templateId": "sltb-submit-blendsheet--officer-view-form",
+      "title": "Submitted Blend Sheets and CusDec",
       "projector": "FORM",
       "dataKey": "submission"
     },
@@ -32,7 +51,20 @@
       "visibleWhen": {
         "states": [
           "QUEUED_EXTERNALLY"
-        ]
+        ],
+        "requireDataKey": "callbackToken"
+      }
+    },
+    "awaiting_resubmission": {
+      "templateId": "sltb-final-decision--awaiting-resubmission",
+      "title": "Review Status",
+      "projector": "MARKDOWN",
+      "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ],
+        "requireDataKey": "replyToken"
       }
     }
   },
@@ -42,7 +74,20 @@
         {
           "command": "submit"
         }
-      ]
+      ],
+      "order": {
+        "$ref": "#/layouts/review"
+      }
     }
+  },
+  "layouts": {
+    "review": [
+      "previous_review",
+      "lab_results",
+      "submission_view",
+      "review_form",
+      "status_message",
+      "awaiting_resubmission"
+    ]
   }
 }

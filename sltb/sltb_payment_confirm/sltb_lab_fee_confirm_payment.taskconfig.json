@@ -3,7 +3,7 @@
   "taskCode": "sltb_lab_fee_confirm_payment",
   "workflow": "sltb_payment_confirm",
   "meta": {
-    "title": "SLTB Lab Test Fee Payment Confirmation",
-    "description": "Officer confirms the trader has paid the Lab Test Fee (LKR 5000.00) outside GovPay."
+    "title": "SLTB Lab Test Fee Payment at the Office",
+    "description": "Officer confirms that the trader has paid the Lab Test Fee at the SLTB office."
   }
 }

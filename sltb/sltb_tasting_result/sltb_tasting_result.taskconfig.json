@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "taskCode": "sltb_tasting_result",
+  "workflow": "sltb_tasting_result",
+  "meta": {
+    "title": "Tasting Result",
+    "description": "Record the tasting result for the tea sample: approve, send it for lab testing, or reject the application."
+  }
+}

@@ -1,6 +1,6 @@
 {
   "id": "sltb-record-sample-draw-flow",
-  "name": "Officer Records Sample Draw",
+  "name": "Sample Draw at the Warehouse",
   "nodes": [
     { "id": "start", "type": "START" },
     {
@@ -9,12 +9,12 @@
       "name": "Record Sample Draw & Assign Sample Number",
       "task_template_id": "sltb-record-sample-draw--officer",
       "input_mapping": {
-        "schedule.visit_date": "scheduled_visit_date",
-        "schedule.inspector_name?": "inspector_name"
+        "blendsheet_data": "submission.blendsheet_data"
       },
       "output_mapping": {
         "sample_number": "sample_number",
         "draw_date": "draw.draw_date",
+        "inspector_name?": "draw.inspector_name",
         "draw_notes?": "draw.draw_notes"
       }
     },

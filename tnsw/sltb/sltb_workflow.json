@@ -1,78 +1,84 @@
 {
   "id": "sltb-blendsheet-approval",
-  "name": "SLTB Tea Blendsheet Approval & Sample Collection Flow",
+  "name": "Tea Export: SLTB Approval and Customs Clearance",
   "nodes": [
     { "id": "start", "type": "START", "name": "Start" },
     {
       "id": "sltb_1_submit_blendsheet",
       "type": "TASK",
-      "name": "[SLTB 1] Submit & Review Blend Sheet",
+      "name": "[SLTB 1] Submit & Review Blend Sheet and CusDec",
       "task_template_id": "sltb-submit-blendsheet-flow",
       "lane": "Trader/CHA & SLTB Officer",
-      "input_mapping": {},
+      "input_mapping": {
+        "sltb.userform?": "userform",
+        "sltb.customs_feedback?": "customs_feedback",
+        "sltb.customs_error?": "customs_error"
+      },
       "output_mapping": {
         "reviewerform.review_outcome": "sltb.review_outcome",
         "reviewerform.levy_amount?": "sltb.levy_amount",
-        "reviewerform.collection_method?": "sltb.collection_method",
         "rejection_reason?": "sltb.rejection_reason",
-        "userform": "sltb.userform"
+        "userform": "sltb.userform",
+        "userform.cusdec_draft": "sltb.cusdec"
       }
     },
     {
       "id": "sltb_1_review_gateway",
       "type": "GATEWAY",
       "gateway_type": "EXCLUSIVE_SPLIT",
-      "name": "Blend Sheet Reconcilable?"
+      "name": "Application Approved?"
     },
     {
-      "id": "sltb_1b_wait_cusdec",
-      "type": "SIGNALING",
-      "name": "Wait for the Assessed CusDec",
-      "signaling": {
-        "type": "WAIT",
-        "signal_name": "cusdec_assessed"
-      },
-      "output_mapping": {
-        "cusdec": "sltb.cusdec"
-      }
-    },
-    {
-      "id": "sltb_1b_xml_download",
-      "type": "TASK",
-      "name": "[SLTB 1b] Acknowledge & Download XML",
-      "task_template_id": "sltb-xml-download-flow",
-      "lane": "SLTB Officer",
-      "input_mapping": {
-        "sltb.userform": "userform",
-        "sltb.cusdec?": "cusdec"
-      },
-      "output_mapping": {}
+      "id": "sltb_1_round_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "First Round or Amendment?"
     },
     {
       "id": "sltb_2_pay_levy",
       "type": "TASK",
       "name": "[SLTB 2] Pay SLTB Levy",
       "task_template_id": "sltb-pay-levy-flow",
-      "lane": "Trader/CHA & SLTB Officer",
+      "lane": "Trader/CHA",
       "input_mapping": {
         "sltb.levy_amount": "levy_amount"
       },
       "output_mapping": {
         "payment.payment_status?": "sltb.levy_payment_outcome",
         "payment_review.payment_review_outcome?": "sltb.levy_payment_outcome",
-        "payment.deduction_status?": "sltb.levy_payment_outcome"
+        "payment.receipt_status?": "sltb.levy_payment_outcome"
       }
     },
     {
-      "id": "sltb_3_collection_split",
+      "id": "sltb_3_tasting_decision",
+      "type": "TASK",
+      "name": "[SLTB 3] Officer: Tasting Decision",
+      "task_template_id": "sltb-lab-decision-flow",
+      "lane": "SLTB Officer",
+      "input_mapping": {
+        "sltb.userform": "userform"
+      },
+      "output_mapping": {
+        "decision.tasting_required": "sltb.tasting_required",
+        "decision.collection_method?": "sltb.collection_method"
+      }
+    },
+    {
+      "id": "sltb_3_tasting_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Tasting Required?"
+    },
+    {
+      "id": "sltb_4_collection_split",
       "type": "GATEWAY",
       "gateway_type": "EXCLUSIVE_SPLIT",
       "name": "Split on Collection Method"
     },
     {
-      "id": "sltb_3a_dropoff",
+      "id": "sltb_4a_dropoff",
       "type": "TASK",
-      "name": "[SLTB 3A] Sample Drop-off at SLTB",
+      "name": "[SLTB 4A] Sample Drop-off at SLTB",
       "task_template_id": "sltb-dropoff-flow",
       "lane": "Trader/CHA & SLTB Officer",
       "input_mapping": {},
@@ -81,92 +87,73 @@
       }
     },
     {
-      "id": "sltb_3b_schedule_pickup",
+      "id": "sltb_4c_record_sample_draw",
       "type": "TASK",
-      "name": "[SLTB 3B] Schedule Sample Draw at Warehouse",
-      "task_template_id": "sltb-schedule-pickup-flow",
-      "lane": "Trader/CHA & SLTB Officer",
-      "input_mapping": {},
-      "output_mapping": {
-        "schedule.visit_date": "sltb.schedule.visit_date",
-        "schedule.visit_time": "sltb.schedule.visit_time",
-        "schedule.inspector_name?": "sltb.schedule.inspector_name",
-        "schedule.contact_number?": "sltb.schedule.contact_number"
-      }
-    },
-    {
-      "id": "sltb_3c_record_sample_draw",
-      "type": "TASK",
-      "name": "[SLTB 3C] Officer Records Sample Draw",
+      "name": "[SLTB 4B] Sample Draw at the Warehouse",
       "task_template_id": "sltb-record-sample-draw-flow",
       "lane": "SLTB Officer",
       "input_mapping": {
-        "sltb.schedule.visit_date": "schedule.visit_date",
-        "sltb.schedule.visit_time": "schedule.visit_time",
-        "sltb.schedule.inspector_name?": "schedule.inspector_name"
+        "sltb.userform.blendsheet_data": "blendsheet_data"
       },
       "output_mapping": {
         "sample_number": "sltb.sample_number"
       }
     },
     {
-      "id": "sltb_3_collection_join",
+      "id": "sltb_4_collection_join",
       "type": "GATEWAY",
       "gateway_type": "EXCLUSIVE_JOIN",
       "name": "Join Collection Method"
     },
     {
-      "id": "sltb_4_sample_gateway",
-      "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT",
-      "name": "Lab Decision Required?"
-    },
-    {
-      "id": "sltb_4_lab_decision",
+      "id": "sltb_5_tasting_result",
       "type": "TASK",
-      "name": "[SLTB 4] Officer: Lab Testing Decision",
-      "task_template_id": "sltb-lab-decision-flow",
+      "name": "[SLTB 5] Officer: Tasting Result",
+      "task_template_id": "sltb-tasting-result-flow",
       "lane": "SLTB Officer",
       "input_mapping": {
+        "sltb.userform": "userform",
         "sltb.sample_number": "sample_number"
       },
       "output_mapping": {
-        "decision.lab_testing_required": "sltb.lab_testing_required"
+        "tasting.tasting_outcome": "sltb.tasting_outcome",
+        "tasting.tasting_notes?": "sltb.tasting_notes"
       }
     },
     {
-      "id": "sltb_4_lab_required_gateway",
+      "id": "sltb_5_tasting_result_gateway",
       "type": "GATEWAY",
       "gateway_type": "EXCLUSIVE_SPLIT",
-      "name": "Lab Testing Required?"
+      "name": "Tasting Outcome?"
     },
     {
-      "id": "sltb_5_lab_testing",
+      "id": "sltb_6_lab_testing",
       "type": "TASK",
-      "name": "[SLTB 5] Lab Testing & Results",
+      "name": "[SLTB 6] Lab Testing & Results",
       "task_template_id": "sltb-lab-testing-flow",
       "lane": "SLTB Officer",
       "input_mapping": {
-        "sltb.sample_number": "sample_number"
+        "sltb.sample_number": "sample_number",
+        "sltb.userform.blendsheet_data": "blendsheet_data"
       },
       "output_mapping": {
+        "result.lab_tests": "sltb.lab_tests",
         "result.test_result": "sltb.lab_test_result",
-        "result.lab_fee_amount?": "sltb.lab_fee_amount",
-        "result.test_report_file": "sltb.lab_test_report_file"
+        "result.lab_fee_amount?": "sltb.lab_fee_amount"
       }
     },
     {
-      "id": "sltb_5_lab_result_gateway",
+      "id": "sltb_6_lab_result_gateway",
       "type": "GATEWAY",
       "gateway_type": "EXCLUSIVE_SPLIT",
-      "name": "Lab Test Passed?"
+      "name": "Every Lab Sample Passed?"
     },
     {
-      "id": "sltb_6_pay_lab_fee",
+      "id": "sltb_7_pay_lab_fee",
       "type": "TASK",
-      "name": "[SLTB 6] Pay Lab Test Fee via GovPay",
+      "name": "[SLTB 7] Pay Lab Test Fee",
       "task_template_id": "sltb-pay-lab-fee-flow",
-      "lane": "Trader/CHA & SLTB Officer",
+      "lane": "Trader/CHA",
       "input_mapping": {
         "sltb.lab_fee_amount": "lab_fee_amount"
       },
@@ -175,31 +162,16 @@
       }
     },
     {
-      "id": "sltb_5_lab_result_join",
+      "id": "sltb_7_lab_fee_gateway",
       "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_JOIN",
-      "name": "Join Lab Test Result"
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Any Lab Sample Passed?"
     },
     {
-      "id": "sltb_7_lab_report_verification",
-      "type": "TASK",
-      "name": "[SLTB 7] Lab Test Report Verification",
-      "task_template_id": "sltb-lab-report-verification-flow",
-      "lane": "Trader/CHA & SLTB Officer",
-      "input_mapping": {
-        "sltb.sample_number?": "sample_number",
-        "sltb.lab_test_report_file": "lab_test_report_file"
-      },
-      "output_mapping": {
-        "labreport.lab_report_file": "sltb.lab_report_file",
-        "report_review.report_review_outcome": "sltb.lab_report_review_outcome"
-      }
-    },
-    {
-      "id": "sltb_lab_join",
+      "id": "sltb_approval_join",
       "type": "GATEWAY",
       "gateway_type": "EXCLUSIVE_JOIN",
-      "name": "Join Lab Testing"
+      "name": "Join for Final Approval"
     },
     {
       "id": "sltb_8_final_decision",
@@ -209,27 +181,264 @@
       "lane": "SLTB Officer",
       "input_mapping": {
         "sltb.sample_number?": "sample_number",
-        "sltb.userform": "userform"
+        "sltb.userform": "userform",
+        "sltb.lab_tests?": "lab_tests",
+        "sltb.lab_test_result?": "lab_test_result"
       },
       "output_mapping": {
         "decision.final_decision_outcome": "sltb.final_decision_outcome",
-        "decision.asycuda_approval_confirmed?": "sltb.asycuda_approval_confirmed"
+        "decision.remarks?": "sltb.final_decision_remarks",
+        "userform": "sltb.userform",
+        "userform.cusdec_draft": "sltb.cusdec"
+      }
+    },
+    {
+      "id": "sltb_8_final_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Final Approval Given?"
+    },
+    {
+      "id": "sltb_9_cusdec_submission",
+      "type": "TASK",
+      "name": "[SLTB 9] Submit the Approved CusDec to Customs",
+      "task_template_id": "sltb-cusdec-submission-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "sltb.cusdec": "userform"
+      },
+      "output_mapping": {
+        "reviewerform.review_outcome?": "customs.cusdec_review_outcome",
+        "reviewerform.cusdec_number?": "customs.cusdec_number",
+        "reviewerform.amount_to_pay?": "customs.amount_to_pay",
+        "userform": "customs.userform",
+        "reviewerform.rejection_reason?": "sltb.customs_feedback",
+        "cig.error?": "sltb.customs_error"
+      }
+    },
+    {
+      "id": "sltb_9_assessed_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Assessed by Customs?"
+    },
+    {
+      "id": "customs_1_emit_cusdec",
+      "type": "SIGNALING",
+      "name": "Share the Assessed CusDec",
+      "signaling": {
+        "type": "EMIT",
+        "signal_name": "cusdec_assessed"
+      },
+      "input_mapping": {
+        "customs.userform": "cusdec",
+        "customs.cusdec_number": "cusdec_number"
+      }
+    },
+    {
+      "id": "customs_payment_check",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Anything Left to Pay?"
+    },
+    {
+      "id": "customs_2_wait_payment",
+      "type": "TASK",
+      "name": "[Customs 2.0] Wait on Payment",
+      "task_template_id": "customs-wait-payment-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "customs.amount_to_pay": "amount_to_pay",
+        "customs.cusdec_number": "cusdec_number",
+        "customs.userform": "userform"
+      },
+      "output_mapping": {
+        "payment_status": "customs.payment_status"
+      }
+    },
+    {
+      "id": "customs_payment_join",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_JOIN",
+      "name": "Paid or Nothing Due"
+    },
+    {
+      "id": "customs_3_wait_warranting",
+      "type": "TASK",
+      "name": "[Customs 3.0] Wait on CusDec Warranting",
+      "task_template_id": "customs-wait-warranting-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "customs.cusdec_number": "cusdec_number",
+        "customs.userform": "userform"
+      },
+      "output_mapping": {
+        "warranting_status": "customs.warranting_status"
+      }
+    },
+    {
+      "id": "customs_4a_prepare_cdn_items",
+      "type": "TASK",
+      "name": "[Customs 4.0a] Prepare CDN Items",
+      "task_template_id": "customs-prepare-cdn-items-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "customs.userform.containerCount": "container_count",
+        "customs.cusdec_number?": "cusdec_ref",
+        "customs.userform.traders?": "userform.traders"
+      },
+      "output_mapping": {
+        "split_items": "customs.cdn_split_items"
+      }
+    },
+    {
+      "id": "customs_4_create_cdn",
+      "type": "SPLIT_TASK",
+      "name": "[Customs 4.0] Create CDNs",
+      "task_template_id": "customs-cdn-branch-flow",
+      "lane": "Trader/CHA",
+      "split_task": {
+        "mode": "SAME_TEMPLATE",
+        "items_variable": "customs.cdn_split_items",
+        "results_variable": "customs.cdn_results",
+        "failure_mode": "COLLECT_ALL"
+      }
+    },
+    {
+      "id": "customs_4b_collect_cdn_results",
+      "type": "TASK",
+      "name": "[Customs 4.0b] Collect CDN Results",
+      "task_template_id": "customs-collect-cdn-results-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "customs.cdn_results": "cdn_results"
+      },
+      "output_mapping": {
+        "cdn_userform": "customs.cdn_userform",
+        "cdn_number?": "customs.cdn_number",
+        "cdn_numbers": "customs.cdn_numbers",
+        "containers": "customs.containers"
+      }
+    },
+    {
+      "id": "customs_post_cdn_fork",
+      "type": "GATEWAY",
+      "gateway_type": "PARALLEL_SPLIT",
+      "name": "Boat Note and Export Release in Parallel"
+    },
+    {
+      "id": "customs_4c_check_cdns",
+      "type": "TASK",
+      "name": "[Customs 4.0c] Check Every Container Has a CDN",
+      "task_template_id": "customs-check-cdns-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "customs.cusdec_number?": "cusdec_ref",
+        "customs.userform.traders?": "userform.traders"
+      }
+    },
+    {
+      "id": "customs_6a_prefill_boat_note",
+      "type": "TASK",
+      "name": "[Customs 6.0a] Prefill Boat Note",
+      "task_template_id": "customs-prefill-boat-note-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "customs.cusdec_number?": "cusdec_ref",
+        "customs.userform.traders?": "userform.traders",
+        "customs.containers": "containers"
+      },
+      "output_mapping": {
+        "boat_note_prefill.userform": "customs.boat_note_prefill"
+      }
+    },
+    {
+      "id": "customs_6_create_boat_note",
+      "type": "TASK",
+      "name": "[Customs 6.0] Create Boat Note",
+      "task_template_id": "customs-create-boat-note-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "customs.boat_note_prefill": "userform",
+        "customs.boat_note_prefill.containers": "containers",
+        "_iter.input.cha?": "cha",
+        "_iter.input.cha.name?": "declarant_name",
+        "_iter.input.company.data.tin_no?": "exporter_code"
+      },
+      "output_mapping": {
+        "userform": "customs.boat_note_userform",
+        "boat_note_document_key": "customs.boat_note_document_key",
+        "boat_note_approval.approval_status": "customs.boat_note_approval_status",
+        "boat_note_approval.approved_boat_note_file": "customs.approved_boat_note_file"
+      }
+    },
+    {
+      "id": "customs_8_wait_export_release",
+      "type": "TASK",
+      "name": "[Customs 8.0] Wait on Export Release",
+      "task_template_id": "customs-wait-export-release-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "customs.cusdec_number": "cusdec_number",
+        "customs.userform": "userform"
+      },
+      "output_mapping": {
+        "release_status": "customs.export_release_status"
+      }
+    },
+    {
+      "id": "customs_post_cdn_join",
+      "type": "GATEWAY",
+      "gateway_type": "PARALLEL_JOIN",
+      "name": "Boat Note Approved and Export Released",
+      "parallel_join": {
+        "gateway_node_id": "customs_post_cdn_fork"
       }
     },
     {
       "id": "end_success",
       "type": "END",
-      "name": "Blend Sheet Application Approved",
+      "name": "Consignment Cleared by Customs",
       "end": { "outcome": "success" }
     },
     {
       "id": "end_rejected",
       "type": "END",
-      "name": "Application Rejected (Blend Sheet Not Reconcilable)",
+      "name": "Application Rejected on Review",
       "end": {
         "outcome": "rejected",
         "title": "Application Rejected",
-        "description": "An officer rejected this application during review. This application is closed — please submit a new application with a corrected blend sheet."
+        "description": "An officer rejected this application on review of the blend sheets and CusDec. This application is closed — please submit a new application."
+      }
+    },
+    {
+      "id": "end_tasting_rejected",
+      "type": "END",
+      "name": "Application Rejected on Tasting",
+      "end": {
+        "outcome": "rejected",
+        "title": "Application Rejected",
+        "description": "The tea sample did not pass tasting, and the application was rejected. This application is closed."
+      }
+    },
+    {
+      "id": "end_lab_rejected",
+      "type": "END",
+      "name": "Application Rejected on Lab Testing",
+      "end": {
+        "outcome": "rejected",
+        "title": "Application Rejected",
+        "description": "Every tea sample failed lab testing, and the application was rejected. This application is closed."
+      }
+    },
+    {
+      "id": "end_final_rejected",
+      "type": "END",
+      "name": "Application Rejected on Final Approval",
+      "end": {
+        "outcome": "rejected",
+        "title": "Application Rejected",
+        "description": "The application was rejected at final approval. This application is closed."
       }
     }
   ],
@@ -245,76 +454,147 @@
     {
       "id": "e_review_approve",
       "source_id": "sltb_1_review_gateway",
-      "target_id": "sltb_1b_wait_cusdec",
+      "target_id": "sltb_1_round_gateway",
       "condition": "sltb.review_outcome == 'approve'"
     },
-    { "id": "e_wait_to_1b", "source_id": "sltb_1b_wait_cusdec", "target_id": "sltb_1b_xml_download" },
-    { "id": "e_1b_to_levy", "source_id": "sltb_1b_xml_download", "target_id": "sltb_2_pay_levy" },
-    { "id": "e_2_split", "source_id": "sltb_2_pay_levy", "target_id": "sltb_3_collection_split" },
     {
-      "id": "e_split_none",
-      "source_id": "sltb_3_collection_split",
-      "target_id": "sltb_3_collection_join",
-      "condition": "sltb.collection_method == 'none'"
+      "id": "e_first_round",
+      "source_id": "sltb_1_round_gateway",
+      "target_id": "sltb_2_pay_levy",
+      "condition": "$env?.customs?.userform == nil"
+    },
+    {
+      "id": "e_amendment_round",
+      "source_id": "sltb_1_round_gateway",
+      "target_id": "sltb_approval_join",
+      "condition": "$env?.customs?.userform != nil"
+    },
+    { "id": "e_levy_tasting", "source_id": "sltb_2_pay_levy", "target_id": "sltb_3_tasting_decision" },
+    { "id": "e_tasting_gw", "source_id": "sltb_3_tasting_decision", "target_id": "sltb_3_tasting_gateway" },
+    {
+      "id": "e_no_tasting",
+      "source_id": "sltb_3_tasting_gateway",
+      "target_id": "sltb_approval_join",
+      "condition": "sltb.tasting_required == 'no'"
+    },
+    {
+      "id": "e_tasting",
+      "source_id": "sltb_3_tasting_gateway",
+      "target_id": "sltb_4_collection_split",
+      "condition": "sltb.tasting_required == 'yes'"
     },
     {
       "id": "e_split_dropoff",
-      "source_id": "sltb_3_collection_split",
-      "target_id": "sltb_3a_dropoff",
+      "source_id": "sltb_4_collection_split",
+      "target_id": "sltb_4a_dropoff",
       "condition": "sltb.collection_method == 'dropoff'"
     },
     {
       "id": "e_split_pickup",
-      "source_id": "sltb_3_collection_split",
-      "target_id": "sltb_3b_schedule_pickup",
+      "source_id": "sltb_4_collection_split",
+      "target_id": "sltb_4c_record_sample_draw",
       "condition": "sltb.collection_method == 'pickup'"
     },
-    { "id": "e_dropoff_join", "source_id": "sltb_3a_dropoff", "target_id": "sltb_3_collection_join" },
-    { "id": "e_3b_3c", "source_id": "sltb_3b_schedule_pickup", "target_id": "sltb_3c_record_sample_draw" },
-    { "id": "e_3c_join", "source_id": "sltb_3c_record_sample_draw", "target_id": "sltb_3_collection_join" },
-    { "id": "e_join_sample_gw", "source_id": "sltb_3_collection_join", "target_id": "sltb_4_sample_gateway" },
+    { "id": "e_dropoff_join", "source_id": "sltb_4a_dropoff", "target_id": "sltb_4_collection_join" },
+    { "id": "e_4c_join", "source_id": "sltb_4c_record_sample_draw", "target_id": "sltb_4_collection_join" },
+    { "id": "e_join_tasting_result", "source_id": "sltb_4_collection_join", "target_id": "sltb_5_tasting_result" },
+    { "id": "e_tasting_result_gw", "source_id": "sltb_5_tasting_result", "target_id": "sltb_5_tasting_result_gateway" },
     {
-      "id": "e_no_sample",
-      "source_id": "sltb_4_sample_gateway",
-      "target_id": "sltb_lab_join",
-      "condition": "sltb.collection_method == 'none'"
+      "id": "e_tasting_approve",
+      "source_id": "sltb_5_tasting_result_gateway",
+      "target_id": "sltb_approval_join",
+      "condition": "sltb.tasting_outcome == 'approve'"
     },
     {
-      "id": "e_sample_lab_dec",
-      "source_id": "sltb_4_sample_gateway",
-      "target_id": "sltb_4_lab_decision",
-      "condition": "sltb.collection_method in [nil, 'pickup', 'dropoff']"
-    },
-    { "id": "e_lab_dec_split", "source_id": "sltb_4_lab_decision", "target_id": "sltb_4_lab_required_gateway" },
-    {
-      "id": "e_no_lab",
-      "source_id": "sltb_4_lab_required_gateway",
-      "target_id": "sltb_lab_join",
-      "condition": "sltb.lab_testing_required == 'no'"
+      "id": "e_tasting_lab",
+      "source_id": "sltb_5_tasting_result_gateway",
+      "target_id": "sltb_6_lab_testing",
+      "condition": "sltb.tasting_outcome == 'send_to_lab'"
     },
     {
-      "id": "e_yes_lab",
-      "source_id": "sltb_4_lab_required_gateway",
-      "target_id": "sltb_5_lab_testing",
-      "condition": "sltb.lab_testing_required == 'yes'"
+      "id": "e_tasting_reject",
+      "source_id": "sltb_5_tasting_result_gateway",
+      "target_id": "end_tasting_rejected",
+      "condition": "sltb.tasting_outcome == 'reject'"
     },
-    { "id": "e_testing_result_gw", "source_id": "sltb_5_lab_testing", "target_id": "sltb_5_lab_result_gateway" },
+    { "id": "e_lab_result_gw", "source_id": "sltb_6_lab_testing", "target_id": "sltb_6_lab_result_gateway" },
     {
-      "id": "e_result_pass",
-      "source_id": "sltb_5_lab_result_gateway",
-      "target_id": "sltb_5_lab_result_join",
+      "id": "e_lab_pass",
+      "source_id": "sltb_6_lab_result_gateway",
+      "target_id": "sltb_approval_join",
       "condition": "sltb.lab_test_result == 'pass'"
     },
     {
-      "id": "e_result_fail",
-      "source_id": "sltb_5_lab_result_gateway",
-      "target_id": "sltb_6_pay_lab_fee",
+      "id": "e_lab_fail",
+      "source_id": "sltb_6_lab_result_gateway",
+      "target_id": "sltb_7_pay_lab_fee",
+      "condition": "sltb.lab_test_result in ['partial', 'fail']"
+    },
+    { "id": "e_lab_fee_gw", "source_id": "sltb_7_pay_lab_fee", "target_id": "sltb_7_lab_fee_gateway" },
+    {
+      "id": "e_lab_fee_partial",
+      "source_id": "sltb_7_lab_fee_gateway",
+      "target_id": "sltb_approval_join",
+      "condition": "sltb.lab_test_result == 'partial'"
+    },
+    {
+      "id": "e_lab_fee_rejected",
+      "source_id": "sltb_7_lab_fee_gateway",
+      "target_id": "end_lab_rejected",
       "condition": "sltb.lab_test_result == 'fail'"
     },
-    { "id": "e_lab_fee_join", "source_id": "sltb_6_pay_lab_fee", "target_id": "sltb_5_lab_result_join" },
-    { "id": "e_result_join_report", "source_id": "sltb_5_lab_result_join", "target_id": "sltb_7_lab_report_verification" },
-    { "id": "e_report_join", "source_id": "sltb_7_lab_report_verification", "target_id": "sltb_lab_join" },
-    { "id": "e_lab_join_final", "source_id": "sltb_lab_join", "target_id": "sltb_8_final_decision" },
-    { "id": "e_final_end", "source_id": "sltb_8_final_decision", "target_id": "end_success" }
+    { "id": "e_join_final", "source_id": "sltb_approval_join", "target_id": "sltb_8_final_decision" },
+    { "id": "e_final_gw", "source_id": "sltb_8_final_decision", "target_id": "sltb_8_final_gateway" },
+    {
+      "id": "e_final_approve",
+      "source_id": "sltb_8_final_gateway",
+      "target_id": "sltb_9_cusdec_submission",
+      "condition": "sltb.final_decision_outcome == 'approve'"
+    },
+    { "id": "e_9_assessed_gw", "source_id": "sltb_9_cusdec_submission", "target_id": "sltb_9_assessed_gateway" },
+    {
+      "id": "e_assessed",
+      "source_id": "sltb_9_assessed_gateway",
+      "target_id": "customs_1_emit_cusdec",
+      "condition": "customs.cusdec_review_outcome == 'approve'"
+    },
+    {
+      "id": "e_amend",
+      "source_id": "sltb_9_assessed_gateway",
+      "target_id": "sltb_1_submit_blendsheet",
+      "condition": "customs.cusdec_review_outcome in [nil, 'needs_more_info']"
+    },
+    {
+      "id": "e_final_reject",
+      "source_id": "sltb_8_final_gateway",
+      "target_id": "end_final_rejected",
+      "condition": "sltb.final_decision_outcome == 'reject'"
+    },
+    { "id": "e_emit_to_payment_check", "source_id": "customs_1_emit_cusdec", "target_id": "customs_payment_check" },
+    {
+      "id": "e_payment_due",
+      "source_id": "customs_payment_check",
+      "target_id": "customs_2_wait_payment",
+      "condition": "customs.amount_to_pay > 0"
+    },
+    {
+      "id": "e_nothing_due",
+      "source_id": "customs_payment_check",
+      "target_id": "customs_payment_join",
+      "condition": "customs.amount_to_pay <= 0"
+    },
+    { "id": "e_2_to_join", "source_id": "customs_2_wait_payment", "target_id": "customs_payment_join" },
+    { "id": "e_join_to_3", "source_id": "customs_payment_join", "target_id": "customs_3_wait_warranting" },
+    { "id": "e_3_to_4a", "source_id": "customs_3_wait_warranting", "target_id": "customs_4a_prepare_cdn_items" },
+    { "id": "e_4a_to_4", "source_id": "customs_4a_prepare_cdn_items", "target_id": "customs_4_create_cdn" },
+    { "id": "e_4_to_4b", "source_id": "customs_4_create_cdn", "target_id": "customs_4b_collect_cdn_results" },
+    { "id": "e_4b_to_fork", "source_id": "customs_4b_collect_cdn_results", "target_id": "customs_post_cdn_fork" },
+    { "id": "e_fork_to_6", "source_id": "customs_post_cdn_fork", "target_id": "customs_4c_check_cdns" },
+    { "id": "e_checked_cdns", "source_id": "customs_4c_check_cdns", "target_id": "customs_6a_prefill_boat_note" },
+    { "id": "e_prefill_boat_note", "source_id": "customs_6a_prefill_boat_note", "target_id": "customs_6_create_boat_note" },
+    { "id": "e_fork_to_8", "source_id": "customs_post_cdn_fork", "target_id": "customs_8_wait_export_release" },
+    { "id": "e_6_to_join", "source_id": "customs_6_create_boat_note", "target_id": "customs_post_cdn_join" },
+    { "id": "e_8_to_join", "source_id": "customs_8_wait_export_release", "target_id": "customs_post_cdn_join" },
+    { "id": "e_join_to_end", "source_id": "customs_post_cdn_join", "target_id": "end_success" }
   ]
 }

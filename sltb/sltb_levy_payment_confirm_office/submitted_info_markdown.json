@@ -1,0 +1,4 @@
+{
+  "id": "sltb-levy-payment-confirm-office--submitted-info",
+  "template": "The applicant has chosen to pay the SLTB Levy at the SLTB office. Confirm below once the payment is received.\n\n{{with .}}{{with .reference_number}}**Reference number:** {{.}}{{end}}\n\n{{with .amount}}**Amount:** {{printf \"%.2f\" .}}{{end}}{{end}}"
+}

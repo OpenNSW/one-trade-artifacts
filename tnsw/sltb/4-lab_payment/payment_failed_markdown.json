@@ -1,0 +1,4 @@
+{
+  "id": "sltb-pay-lab-fee--payment-failed",
+  "template": "{{if eq .payment_status \"fail\"}}### ⚠️ Your GovPay payment did not go through\n\nNo fee has been taken. Choose a payment method below and pay the Lab Test Fee again.{{end}}"
+}

@@ -49,7 +49,6 @@
                     "map": { "1": "yes", "0": "no" },
                     "default": "no"
                   },
-                  { "from": "BLEND_SHEET.@_id", "to": "source_blend_sheet_id", "as": "string" },
                   { "from": "BLEND_SHEET.Particulars_of_sale", "to": "sales.sheet" },
                   {
                     "from": "BLEND_SHEET.Particulars_of_import",
@@ -85,11 +84,6 @@
                   { "from": "BLEND_SHEET.Total.Ship_local", "to": "quantity_to_be_shipped_local", "as": "number" }
                 ]
               }
-            },
-            "source_blend_sheet_id": {
-              "type": "string",
-              "title": "Source Blend Sheet ID",
-              "description": "The id attribute of the imported blend sheet XML. Not shown on the form; written back when the blend sheet is exported."
             },
             "form": {
               "type": "string",
@@ -200,7 +194,7 @@
                 {
                   "id": "average_value_per_kg",
                   "label": "Average Value Per KG (Total Value ÷ Total Quantity)",
-                  "expression": "=SUM(J2:J10000)/SUM(I2:I10000)"
+                  "expression": "=ROUND(SUM(J2:J10000)/SUM(I2:I10000), 2)"
                 },
                 { "id": "total_sales_quantity", "label": "Total Sales Quantity (KG)", "expression": "=SUM(I2:I10000)" },
                 { "id": "total_sales_value", "label": "Total Sales Value (LKR)", "expression": "=SUM(J2:J10000)" }
@@ -287,20 +281,20 @@
             "remarks": {
               "type": "string",
               "title": "Remarks",
-              "description": "Filled from the blend sheet XML when one is imported; otherwise enter manually.",
+              "description": "Add your preferred pickup time here if SLTB collects the sample (e.g. Pickup 09:00 AM - 12:00 PM). Filled from the blend sheet XML when one is imported; otherwise enter manually.",
               "example": "This is a sample remark for the blend sheet."
             },
             "sample_rediness_date": {
               "type": "string",
               "format": "date",
-              "title": "Sample Readiness Date",
-              "description": "Filled from the blend sheet XML when one is imported; otherwise enter manually.",
+              "title": "Sample Date (Suggested Pickup)",
+              "description": "The date the sample is ready, and the day you suggest for a Tea Inspector to draw it at the warehouse if SLTB collects it. Filled from the blend sheet XML when one is imported; otherwise enter manually.",
               "example": "2026-07-24"
             },
             "warehouse_address": {
               "type": "string",
               "title": "Warehouse Address",
-              "description": "Filled from the blend sheet XML when one is imported; otherwise enter manually.",
+              "description": "Where a Tea Inspector draws the sample if SLTB collects it from your warehouse. Filled from the blend sheet XML when one is imported; otherwise enter manually.",
               "example": "Quick Tea (Pvt) Ltd, 119, 119/1 Attampolawatte, Mabole, Wattala"
             },
             "blend_gain_determined": {
@@ -388,6 +382,8 @@
             "fob_avg",
             "date_of_blend",
             "lion_logo_requested",
+            "sample_rediness_date",
+            "warehouse_address",
             "total_blend_balances_and_gain",
             "total",
             "blend_balance"
@@ -690,6 +686,14 @@
                         "marks_two": "Packages.Marks2_of_packages"
                       },
                       "formula": "CONCATENATE(marks_one,\" | \",marks_two)"
+                    },
+                    {
+                      "to": "tarification.hsCode",
+                      "inputs": {
+                        "hs_code": "Tarification.HScode.Commodity_code"
+                      },
+                      "formula": "CONCATENATE(hs_code,\"00\")",
+                      "as": "string"
                     },
                     {
                       "to": "tarification.hsCode",
@@ -2299,7 +2303,7 @@
                         "elements": [
                           { "type": "Control", "scope": "#/properties/remarks" },
                           { "type": "Control", "scope": "#/properties/sample_rediness_date" },
-                          { "type": "Control", "scope": "#/properties/warehouse_address" }
+                          { "type": "Control", "scope": "#/properties/warehouse_address", "options": { "multiLine": true } }
                         ]
                       },
                       {

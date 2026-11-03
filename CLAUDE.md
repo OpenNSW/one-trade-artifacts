@@ -198,7 +198,7 @@ See `tnsw/fcau/3-2-warehouse_inspection/workflow.json` or
 
 ## Conventions
 
-- IDs are kebab-case and scoped by agency/flow, e.g. `sltb-schedule-pickup-flow`,
+- IDs are kebab-case and scoped by agency/flow, e.g. `sltb-record-sample-draw-flow`,
   `npqs-draw-sample--officer-draw`.
 - Ids, task codes, folders and file names carry no version (`_v1`, `-v3`): this repo
   holds only the current state of each artifact. nsw-srilanka names the trade workflow,
