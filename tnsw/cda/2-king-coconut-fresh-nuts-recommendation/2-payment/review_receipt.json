@@ -5,8 +5,8 @@
   "plugin_properties": {
     "officer_jsonforms_id": "cda-kcfn-payment--review-form",
     "service_id": "cda",
-    "path": "/api/v1/inject",
-    "task_code": "cda_kcfn_fee_review_receipt",
+    "path": "/api/v1/internal/cases/{caseId}/flows",
+    "service_workflow_id": "cda_kcfn_payment_review_receipt",
     "reply_command": "resubmit"
   },
   "extensions": [

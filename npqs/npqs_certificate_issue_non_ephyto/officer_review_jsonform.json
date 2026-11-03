@@ -41,6 +41,16 @@
                 }
               }
             },
+            "quantity_net_weight": {
+              "type": "number",
+              "title": "Net Weight",
+              "readOnly": true
+            },
+            "quantity_gross_weight": {
+              "type": "number",
+              "title": "Gross Weight",
+              "readOnly": true
+            },
             "include_in_certificate": {
               "type": "boolean",
               "title": "Include on Certificate"
@@ -207,10 +217,258 @@
           }
         }
       },
+      "total_net_weight": {
+        "type": "number",
+        "title": "Total Net Weight",
+        "exclusiveMinimum": 0
+      },
+      "total_gross_weight": {
+        "type": "number",
+        "title": "Total Gross Weight",
+        "exclusiveMinimum": 0
+      },
+      "total_weight_unit": {
+        "type": "object",
+        "title": "Weight Unit",
+        "description": "The unit of both totals.",
+        "properties": {
+          "value": {
+            "type": "string",
+            "oneOf": [
+              {
+                "const": "DG",
+                "title": "decigram (dg)"
+              },
+              {
+                "const": "KGM",
+                "title": "kilogram (kg)"
+              },
+              {
+                "const": "GRM",
+                "title": "gram (g)"
+              },
+              {
+                "const": "TNE",
+                "title": "ton (t)"
+              },
+              {
+                "const": "MGM",
+                "title": "milligram (mg)"
+              },
+              {
+                "const": "KTN",
+                "title": "kilotonne (kt)"
+              },
+              {
+                "const": "LBR",
+                "title": "pound (lb)"
+              },
+              {
+                "const": "CWA",
+                "title": "hundred pound (cwt)"
+              },
+              {
+                "const": "MTQ",
+                "title": "cubic metre (m³)"
+              },
+              {
+                "const": "LTR",
+                "title": "litre (l)"
+              },
+              {
+                "const": "MAL",
+                "title": "megalitre (Ml)"
+              },
+              {
+                "const": "CMQ",
+                "title": "cubic centimetre (cm³)"
+              },
+              {
+                "const": "MLT",
+                "title": "millilitre (ml)"
+              },
+              {
+                "const": "K6",
+                "title": "kilolitre (kl)"
+              },
+              {
+                "const": "FTQ",
+                "title": "cubic foot (ft³)"
+              },
+              {
+                "const": "GLI",
+                "title": "gallon (gal)"
+              },
+              {
+                "const": "G24",
+                "title": "tablespoon (tablespoon)"
+              },
+              {
+                "const": "BLL",
+                "title": "barrel (barrel)"
+              },
+              {
+                "const": "HUR",
+                "title": "hour (h)"
+              },
+              {
+                "const": "DAY",
+                "title": "day (d)"
+              },
+              {
+                "const": "SEC",
+                "title": "Second (s)"
+              },
+              {
+                "const": "MIN",
+                "title": "minute (min)"
+              },
+              {
+                "const": "MON",
+                "title": "month (mo)"
+              },
+              {
+                "const": "WEE",
+                "title": "week (wk)"
+              },
+              {
+                "const": "g/cm²",
+                "title": "gram per square centimetre (g/cm²)"
+              },
+              {
+                "const": "g/cm³",
+                "title": "gram per cubic centimetre (g/cm³)"
+              },
+              {
+                "const": "GL",
+                "title": "gram per litre (g/l)"
+              },
+              {
+                "const": "GJ",
+                "title": "gram per millilitre (g/ml)"
+              },
+              {
+                "const": "GM",
+                "title": "gram per square metre (g/m²)"
+              },
+              {
+                "const": "g/m³",
+                "title": "gram per cubic metre (g/m³)"
+              },
+              {
+                "const": "KMQ",
+                "title": "kilogram per cubic metre (kg/m³)"
+              },
+              {
+                "const": "CEL",
+                "title": "degree Celsius (°C)"
+              },
+              {
+                "const": "FAH",
+                "title": "degree Fahrenheit (°F)"
+              }
+            ]
+          },
+          "label": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "value"
+        ]
+      },
       "certificate_type": {
         "type": "string",
         "title": "Application Certificate Type",
         "readOnly": true
+      },
+      "issue_date": {
+        "type": "string",
+        "format": "date",
+        "title": "Date of Issue",
+        "example": "2026-10-27"
+      },
+      "registration_number": {
+        "type": "string",
+        "title": "Reg. No."
+      },
+      "treatment_items": {
+        "type": "array",
+        "title": "Approved Treatments",
+        "readOnly": true,
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Item ID"
+            },
+            "commodity_common_name": {
+              "type": "object",
+              "title": "Commodity Name",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              }
+            },
+            "treatment_type": {
+              "type": "object",
+              "title": "Treatment Type",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "value"
+              ]
+            },
+            "chemical_used": {
+              "type": "string",
+              "title": "Chemical / Medium Used"
+            },
+            "treatment_duration": {
+              "type": "string",
+              "title": "Treatment Duration"
+            },
+            "treatment_temperature": {
+              "type": "string",
+              "title": "Target Temperature (°C)"
+            },
+            "treatment_concentration": {
+              "type": "string",
+              "title": "Chemical Concentration / Dosage"
+            }
+          }
+        }
+      },
+      "additional_information": {
+        "type": "string",
+        "title": "Additional Information",
+        "description": "At most 3 lines and 230 characters.",
+        "maxLength": 230,
+        "pattern": "^[^\\n]*(\\n[^\\n]*){0,2}$",
+        "x-text": {
+          "inputs": {
+            "other_treatments": {
+              "path": "treatment_items.*",
+              "aggregate": "join",
+              "where": "treatment_type",
+              "skip": 1,
+              "template": "{commodity_common_name.label}: {treatment_type.label} · {chemical_used} · {treatment_duration} · {treatment_temperature} · {treatment_concentration}",
+              "separator": "; "
+            }
+          },
+          "template": "{other_treatments}",
+          "editable": true
+        }
       },
       "comments": {
         "type": "string",
@@ -219,7 +477,11 @@
       }
     },
     "required": [
-      "certificate_items"
+      "certificate_items",
+      "total_net_weight",
+      "total_gross_weight",
+      "total_weight_unit",
+      "issue_date"
     ]
   },
   "uiSchema": {
@@ -272,6 +534,19 @@
                 ]
               },
               {
+                "type": "HorizontalLayout",
+                "elements": [
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/quantity_net_weight"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/quantity_gross_weight"
+                  }
+                ]
+              },
+              {
                 "type": "Control",
                 "scope": "#/properties/include_in_certificate"
               }
@@ -279,6 +554,38 @@
           },
           "addable": false,
           "removable": false
+        }
+      },
+      {
+        "type": "HorizontalLayout",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/total_net_weight"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/total_gross_weight"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/total_weight_unit"
+          }
+        ]
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/issue_date"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/registration_number"
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/additional_information",
+        "options": {
+          "multi": true
         }
       },
       {

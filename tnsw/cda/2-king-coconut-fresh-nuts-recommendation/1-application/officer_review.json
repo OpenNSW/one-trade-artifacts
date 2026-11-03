@@ -5,8 +5,8 @@
   "plugin_properties": {
     "officer_jsonforms_id": "cda-kcfn-inspection--officer-review-form",
     "service_id": "cda",
-    "path": "/api/v1/inject",
-    "task_code": "cda_kcfn_inspection_review",
+    "path": "/api/v1/internal/cases/{caseId}/flows",
+    "service_workflow_id": "cda_kcfn_inspection_review",
     "reply_command": "resubmit"
   },
   "extensions": [

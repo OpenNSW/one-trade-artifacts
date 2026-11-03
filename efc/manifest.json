@@ -2,12 +2,6 @@
   "artifacts": [
     {
       "id": "efc_boat_note_approval",
-      "kind": "task_config",
-      "version": "",
-      "path": "efc_boat_note_approval/efc_boat_note_approval.taskconfig.json"
-    },
-    {
-      "id": "efc_boat_note_approval",
       "kind": "workflow",
       "version": "",
       "path": "efc_boat_note_approval/workflow.json"

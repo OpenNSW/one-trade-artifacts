@@ -6,8 +6,8 @@
     "officer_jsonforms_id": "fcau-warehouse-scheduling--officer-form",
     "reviewer_jsonforms_id": "fcau-warehouse-scheduling--officer-form",
     "service_id": "fcau",
-    "path": "/api/v1/inject",
-    "task_code": "fcau-warehouse-scheduling--review",
+    "path": "/api/v1/internal/cases/{caseId}/flows",
+    "service_workflow_id": "fcau-warehouse-scheduling--review",
     "reply_command": "resubmit"
   },
   "extensions": [
