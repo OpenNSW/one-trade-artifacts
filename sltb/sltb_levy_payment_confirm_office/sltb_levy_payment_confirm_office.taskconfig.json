@@ -1,9 +1,0 @@
-{
-  "schemaVersion": 2,
-  "taskCode": "sltb_levy_payment_confirm_office",
-  "workflow": "sltb_levy_payment_confirm_office",
-  "meta": {
-    "title": "SLTB Levy Payment at the Office",
-    "description": "Officer confirms that the trader has paid the SLTB levy at the SLTB office."
-  }
-}

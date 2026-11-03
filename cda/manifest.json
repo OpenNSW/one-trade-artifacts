@@ -2,12 +2,6 @@
   "artifacts": [
     {
       "id": "cda_officer_verification",
-      "kind": "task_config",
-      "version": "",
-      "path": "1-export-coconut-certificate-registration/cda_officer_verification/cda_officer_verification.taskconfig.json"
-    },
-    {
-      "id": "cda_officer_verification",
       "kind": "workflow",
       "version": "",
       "path": "1-export-coconut-certificate-registration/cda_officer_verification/workflow.json"
@@ -83,12 +77,6 @@
       "kind": "generic_template",
       "version": "",
       "path": "1-export-coconut-certificate-registration/cda_officer_verification/userinput_jsonform.json"
-    },
-    {
-      "id": "cda_lot_adjustment_review",
-      "kind": "task_config",
-      "version": "",
-      "path": "1-export-coconut-certificate-registration/cda_lot_adjustment_review/cda_lot_adjustment_review.taskconfig.json"
     },
     {
       "id": "cda_lot_adjustment_review",
@@ -170,12 +158,6 @@
     },
     {
       "id": "cda_review_result",
-      "kind": "task_config",
-      "version": "",
-      "path": "1-export-coconut-certificate-registration/cda_review_result/cda_review_result.taskconfig.json"
-    },
-    {
-      "id": "cda_review_result",
       "kind": "workflow",
       "version": "",
       "path": "1-export-coconut-certificate-registration/cda_review_result/workflow.json"
@@ -248,12 +230,6 @@
     },
     {
       "id": "cda_asycuda_green_check",
-      "kind": "task_config",
-      "version": "",
-      "path": "1-export-coconut-certificate-registration/cda_asycuda_green_check/cda_asycuda_green_check.taskconfig.json"
-    },
-    {
-      "id": "cda_asycuda_green_check",
       "kind": "workflow",
       "version": "",
       "path": "1-export-coconut-certificate-registration/cda_asycuda_green_check/workflow.json"
@@ -299,12 +275,6 @@
       "kind": "generic_template",
       "version": "",
       "path": "1-export-coconut-certificate-registration/cda_asycuda_green_check/submission_view_markdown.json"
-    },
-    {
-      "id": "cda_kcfn_inspection_review",
-      "kind": "task_config",
-      "version": "",
-      "path": "2-king-coconut-fresh-nuts-recommendation/cda_kcfn_inspection_review/cda_kcfn_inspection_review.taskconfig.json"
     },
     {
       "id": "cda_kcfn_inspection_review",
@@ -380,12 +350,6 @@
     },
     {
       "id": "cda_kcfn_issue_letter",
-      "kind": "task_config",
-      "version": "",
-      "path": "2-king-coconut-fresh-nuts-recommendation/cda_kcfn_issue_letter/cda_kcfn_issue_letter.taskconfig.json"
-    },
-    {
-      "id": "cda_kcfn_issue_letter",
       "kind": "workflow",
       "version": "",
       "path": "2-king-coconut-fresh-nuts-recommendation/cda_kcfn_issue_letter/workflow.json"
@@ -440,12 +404,6 @@
     },
     {
       "id": "cda_kcfn_asycuda_verification",
-      "kind": "task_config",
-      "version": "",
-      "path": "2-king-coconut-fresh-nuts-recommendation/cda_kcfn_asycuda_verification/cda_kcfn_asycuda_verification.taskconfig.json"
-    },
-    {
-      "id": "cda_kcfn_asycuda_verification",
       "kind": "workflow",
       "version": "",
       "path": "2-king-coconut-fresh-nuts-recommendation/cda_kcfn_asycuda_verification/workflow.json"
@@ -497,12 +455,6 @@
       "kind": "generic_template",
       "version": "",
       "path": "2-king-coconut-fresh-nuts-recommendation/cda_kcfn_asycuda_verification/userinput_jsonform.json"
-    },
-    {
-      "id": "cda_kernel_asycuda_review",
-      "kind": "task_config",
-      "version": "",
-      "path": "3-kernel-products-asycuda-approval/cda_kernel_asycuda_review/cda_kernel_asycuda_review.taskconfig.json"
     },
     {
       "id": "cda_kernel_asycuda_review",
@@ -655,18 +607,6 @@
       "path": "1-export-coconut-certificate-registration/cda_payment_review_receipt/userinput_jsonform.json"
     },
     {
-      "id": "cda_app_fee_review_receipt",
-      "kind": "task_config",
-      "version": "",
-      "path": "1-export-coconut-certificate-registration/cda_payment_review_receipt/cda_app_fee_review_receipt.taskconfig.json"
-    },
-    {
-      "id": "cda_amendment_fee_review_receipt",
-      "kind": "task_config",
-      "version": "",
-      "path": "1-export-coconut-certificate-registration/cda_payment_review_receipt/cda_amendment_fee_review_receipt.taskconfig.json"
-    },
-    {
       "id": "cda_payment_confirm",
       "kind": "workflow",
       "version": "",
@@ -737,18 +677,6 @@
       "kind": "generic_template",
       "version": "",
       "path": "1-export-coconut-certificate-registration/cda_payment_confirm/officer_review_jsonform.json"
-    },
-    {
-      "id": "cda_app_fee_confirm_payment",
-      "kind": "task_config",
-      "version": "",
-      "path": "1-export-coconut-certificate-registration/cda_payment_confirm/cda_app_fee_confirm_payment.taskconfig.json"
-    },
-    {
-      "id": "cda_amendment_fee_confirm_payment",
-      "kind": "task_config",
-      "version": "",
-      "path": "1-export-coconut-certificate-registration/cda_payment_confirm/cda_amendment_fee_confirm_payment.taskconfig.json"
     },
     {
       "id": "cda_kcfn_payment_review_receipt",
@@ -829,12 +757,6 @@
       "path": "2-king-coconut-fresh-nuts-recommendation/cda_kcfn_payment_review_receipt/userinput_jsonform.json"
     },
     {
-      "id": "cda_kcfn_fee_review_receipt",
-      "kind": "task_config",
-      "version": "",
-      "path": "2-king-coconut-fresh-nuts-recommendation/cda_kcfn_payment_review_receipt/cda_kcfn_fee_review_receipt.taskconfig.json"
-    },
-    {
       "id": "cda_kcfn_payment_confirm",
       "kind": "workflow",
       "version": "",
@@ -905,12 +827,6 @@
       "kind": "generic_template",
       "version": "",
       "path": "2-king-coconut-fresh-nuts-recommendation/cda_kcfn_payment_confirm/officer_review_jsonform.json"
-    },
-    {
-      "id": "cda_kcfn_fee_confirm_payment",
-      "kind": "task_config",
-      "version": "",
-      "path": "2-king-coconut-fresh-nuts-recommendation/cda_kcfn_payment_confirm/cda_kcfn_fee_confirm_payment.taskconfig.json"
     }
   ]
 }

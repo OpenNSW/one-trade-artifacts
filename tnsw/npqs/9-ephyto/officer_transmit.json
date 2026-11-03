@@ -4,8 +4,8 @@
   "output_namespace": "officerinput",
   "plugin_properties": {
     "service_id": "npqs",
-    "path": "/api/v1/inject",
-    "task_code": "npqs_ephyto_transmit"
+    "path": "/api/v1/internal/cases/{caseId}/flows",
+    "service_workflow_id": "npqs_ephyto_transmit"
   },
   "extensions": [
     {

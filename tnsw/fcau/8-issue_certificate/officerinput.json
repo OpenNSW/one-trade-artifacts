@@ -5,8 +5,8 @@
   "plugin_properties": {
     "officer_jsonforms_id": "fcau-issue-certificate--officer-form",
     "service_id": "fcau",
-    "path": "/api/v1/inject",
-    "task_code": "fcau_issue_certificate"
+    "path": "/api/v1/internal/cases/{caseId}/flows",
+    "service_workflow_id": "fcau_issue_certificate"
   },
   "extensions": [
     {
