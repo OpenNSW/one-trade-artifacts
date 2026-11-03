@@ -1,9 +1,0 @@
-{
-  "schemaVersion": 2,
-  "taskCode": "sltb_lab_decision",
-  "workflow": "sltb_lab_decision",
-  "meta": {
-    "title": "Tasting Decision",
-    "description": "Decide whether a tea sample must be drawn for tasting, and how it is collected."
-  }
-}

@@ -5,8 +5,8 @@
   "plugin_properties": {
     "officer_jsonforms_id": "sltb-submit-blendsheet--officer-review-form",
     "service_id": "sltb",
-    "path": "/api/v1/inject",
-    "task_code": "sltb_officer_review",
+    "path": "/api/v1/internal/cases/{caseId}/flows",
+    "service_workflow_id": "sltb_officer_review",
     "reply_command": "resubmit"
   },
   "extensions": [

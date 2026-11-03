@@ -6,8 +6,8 @@
     "officer_jsonforms_id": "cda-lot-adjustment-officer--review-form",
     "reviewer_jsonforms_id": "cda-lot-adjustment-officer--review-form",
     "service_id": "cda",
-    "path": "/api/v1/inject",
-    "task_code": "cda_lot_adjustment_review",
+    "path": "/api/v1/internal/cases/{caseId}/flows",
+    "service_workflow_id": "cda_lot_adjustment_review",
     "reply_command": "resubmit"
   },
   "extensions": [

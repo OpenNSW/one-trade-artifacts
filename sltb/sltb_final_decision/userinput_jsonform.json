@@ -60,7 +60,7 @@
               "title": "Blend No.",
               "example": "26/1386"
             },
-            "quality_to_be_exported": {
+            "quantity_to_be_exported": {
               "type": "number",
               "title": "Quantity to be Exported (KGs)",
               "example": 16128
@@ -257,7 +257,7 @@
             "exporter_registration_no",
             "exporter_tin",
             "cusdec_number",
-            "quality_to_be_exported",
+            "quantity_to_be_exported",
             "avg_rate_per_kg",
             "grade_or_standard",
             "fob_avg",
@@ -327,7 +327,7 @@
                     "type": "HorizontalLayout",
                     "elements": [
                       { "type": "Control", "scope": "#/properties/blend_no" },
-                      { "type": "Control", "scope": "#/properties/quality_to_be_exported" }
+                      { "type": "Control", "scope": "#/properties/quantity_to_be_exported" }
                     ]
                   },
                   {

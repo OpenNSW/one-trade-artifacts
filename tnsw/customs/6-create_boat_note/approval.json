@@ -4,8 +4,8 @@
   "output_namespace": "boat_note_approval",
   "plugin_properties": {
     "service_id": "efc",
-    "path": "/api/v1/inject",
-    "task_code": "efc_boat_note_approval",
+    "path": "/api/v1/internal/cases/{caseId}/flows",
+    "service_workflow_id": "efc_boat_note_approval",
     "reply_command": "resubmit"
   },
   "extensions": [

@@ -4,8 +4,8 @@
   "output_namespace": "sample_delivery",
   "plugin_properties": {
     "service_id": "fcau",
-    "path": "/api/v1/inject",
-    "task_code": "fcau_sample_collection"
+    "path": "/api/v1/internal/cases/{caseId}/flows",
+    "service_workflow_id": "fcau_sample_collection"
   },
   "extensions": [
     {

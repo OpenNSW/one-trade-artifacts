@@ -5,8 +5,8 @@
   "plugin_properties": {
     "officer_jsonforms_id": "npqs-payment--confirm-form",
     "service_id": "npqs",
-    "path": "/api/v1/inject",
-    "task_code": "npqs_treatment_fee_confirm_payment",
+    "path": "/api/v1/internal/cases/{caseId}/flows",
+    "service_workflow_id": "npqs_payment_confirm",
     "reply_command": "resubmit"
   },
   "extensions": [

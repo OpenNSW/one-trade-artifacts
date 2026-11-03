@@ -239,9 +239,10 @@ def callback_commands(deployment, workflow, renders, node):
     return commands
 
 
-def agency_sends(agency, task_code):
-    """The commands an agency's task can send back to tnsw."""
-    workflow_ids = agency.workflows_from(agency.load("task_config", task_code)["workflow"])
+def agency_sends(agency, workflow_id):
+    """The commands the agency's flow workflow_id, the one a tnsw dispatch starts, can send
+    back to tnsw."""
+    workflow_ids = agency.workflows_from(workflow_id)
     renders = agency.renders_for(workflow_ids)
     commands = set()
     for workflow_id in workflow_ids:
@@ -274,8 +275,8 @@ def callback_token(node, step):
     return None
 
 
-def tnsw_sends(tnsw, service, task_codes):
-    """The commands tnsw can send a step of the agency's tasks task_codes that waits for it."""
+def tnsw_sends(tnsw, service, flows):
+    """The commands tnsw can send a step of the agency's flows (workflow ids) that waits for it."""
     commands = set()
     for workflow_id in tnsw.paths["workflow"]:
         workflow = tnsw.load("workflow", workflow_id)
@@ -284,7 +285,7 @@ def tnsw_sends(tnsw, service, task_codes):
             (node, step) for node, step in steps
             if step.get("task_type") == "EXTERNAL_REVIEW"
             and props(step).get("service_id") == service
-            and props(step).get("task_code") in task_codes
+            and props(step).get("service_workflow_id") in flows
         ]
         if not dispatches:
             continue
@@ -313,12 +314,12 @@ def expected_rule(deployment, deployments, step, renders, owners):
     service = props(step).get("service_id")
     if step["task_type"] == "EXTERNAL_REVIEW" and deployment.folder == TNSW:
         agency = deployments.get(service)
-        task_code = props(step).get("task_code")
-        if agency is None or not agency.has("task_config", task_code):
-            return set(), [service], [f"its task_code {task_code!r} is not a task_config of {service}/"]
+        workflow_id = props(step).get("service_workflow_id")
+        if agency is None or not agency.has("workflow", workflow_id):
+            return set(), [service], [f"its service_workflow_id {workflow_id!r} is not a workflow of {service}/"]
         if service not in deployment.names["clients"]:
             return set(), [service], [f"its service_id {service!r} is not a client of the tnsw catalog"]
-        return agency_sends(agency, task_code), [service], []
+        return agency_sends(agency, workflow_id), [service], []
     if step["task_type"] == "EXTERNAL_REVIEW" and service == TNSW:
         return tnsw_sends(deployments[TNSW], deployment.service, owners), [TNSW], []
     return set(), None, [f"no one is known to complete a {step['task_type']} step for {service!r}"]
@@ -373,13 +374,25 @@ def rule_roles(step, roles):
     return names
 
 
+def client_flows(deployments, service):
+    """The workflows tnsw starts on the agency service: the service_workflow_id of each tnsw
+    EXTERNAL_REVIEW step whose service_id it is."""
+    tnsw = deployments[TNSW]
+    flows = set()
+    for step_id in tnsw.paths["subtask_template"]:
+        step = tnsw.load("subtask_template", step_id)
+        if step.get("task_type") == "EXTERNAL_REVIEW" and props(step).get("service_id") == service:
+            flows.add(props(step).get("service_workflow_id"))
+    return flows - {None}
+
+
 def check_deployment(deployment, deployments):
     """Return the number of tasks and parking steps checked, and the problems found."""
-    owners = defaultdict(set)  # step id -> task_configs whose workflows run it
-    for task_code in deployment.paths["task_config"]:
-        for workflow_id in deployment.workflows_from(deployment.load("task_config", task_code)["workflow"]):
+    owners = defaultdict(set)  # step id -> the flows tnsw starts here whose workflows run it
+    for flow in client_flows(deployments, deployment.service):
+        for workflow_id in deployment.workflows_from(flow):
             for node in deployment.load("workflow", workflow_id)["nodes"]:
-                owners[node.get("task_template_id")].add(task_code)
+                owners[node.get("task_template_id")].add(flow)
 
     problems, step_renders = [], defaultdict(list)
     for task_id in deployment.paths["task_template"]:

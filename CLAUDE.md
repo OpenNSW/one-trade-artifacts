@@ -30,9 +30,9 @@ Each agency has artifacts in two places that must be read together, not independ
      node. Letter suffixes (`3a`/`3b`/`3c`) mark parallel/exclusive branches of the same
      numbered stage.
 2. **`<agency>/`** (top-level, e.g. `sltb/`) — owned by the agency's own backend
-   (nsw-srilanka in agency mode). One folder per officer task, each holding the task's
-   `*.taskconfig.json` and the workflow, templates and forms that drive it (see "The
-   agency shape" below), all indexed in `<agency>/manifest.json`.
+   (nsw-srilanka in agency mode). One folder per officer task, each holding the
+   workflow, templates and forms that drive it (see "The agency shape" below), all
+   indexed in `<agency>/manifest.json`.
 
 ### Agencies with more than one process
 
@@ -62,10 +62,11 @@ agency nested so far, on both sides (`tnsw/cda/` and `cda/`); `tnsw/customs/`,
 `<agency>/` folders remain flat until one of them needs a second process.
 
 The link between the two: a step's `EXTERNAL_REVIEW` subtask template
-(`tnsw/<agency>/<step>/officer_*.json`) names `service_id` + `task_code`. The agency
-service loads the `task_config` whose manifest id is that `task_code` from
-`<service_id>/` (its `taskCode` field repeats the id), and that taskconfig's
-`workflow` is the officer task the case is injected into. The forms on
+(`tnsw/<agency>/<step>/officer_*.json`) names `service_id` + `service_workflow_id`, and
+`"path": "/api/v1/internal/cases/{caseId}/flows"`. TNSW starts that workflow of
+`<service_id>/` on the agency, on the consignment's case, as the officer task. The
+agency starts only the workflows its `flows.clients` lists (in nsw-srilanka's
+`configs/agency/<agency>/config.yaml`), so a new one goes in that list too. The forms on
 each side are separate copies, and some share an id with a `tnsw/` form but differ from
 it, so change each side's copy on its own terms.
 
@@ -79,22 +80,21 @@ only, and wire its data through the officer's `EXTERNAL_REVIEW` `TASK` node's
 ## The agency shape
 
 The agency folders have the same shape as `tnsw/`: workflows, task templates, subtask
-templates and generic templates, plus a `task_config` binding each officer task to its
-workflow.
+templates and generic templates.
 
 What it looks like (as in `cda/`):
 
 - One folder per officer task, under a process folder when the agency has more than one
   process (`cda/<process-slug>/`), otherwise directly under `<agency>/`.
-- Each task folder is like a `tnsw/` step folder plus a taskconfig: its
-  `*.taskconfig.json` plus the `workflow.json`, `task_template`, `review_workflow`,
+- Each task folder is like a `tnsw/` step folder: the `workflow.json` TNSW starts
+  (its id is what TNSW's step names as `service_workflow_id`), `task_template`, `review_workflow`,
   `subtask_template`s, JSONForms, `render.json`, markdown view and notification template
   that drive that task. All are indexed in the agency's `<agency>/manifest.json`. A
   form several tasks share is kept in one task's folder and listed once; the others use
   it by id.
-- Taskconfigs are `schemaVersion: 2`: a `workflow` id binding plus `meta`, with no
-  inline `forms`/`behavior`/`permissions`. `schemas/taskconfig.schema.json` dispatches
-  on `schemaVersion` to `taskconfig.v1.schema.json` or `taskconfig.v2.schema.json`.
+- The workflow TNSW starts gets TNSW's input as its `notification` variable, and
+  `taskId` (TNSW's task), `consignmentId` (the case) and `callbackToken` (to call back
+  on), which its first `TASK` node maps.
 - `<agency>/manifest.json` entries intentionally omit `"loader": "local"`.
 
 **Whenever a new top-level folder is introduced (an `<agency>/` or anything else),
@@ -121,13 +121,11 @@ alone does not publish anything.
 - `subtask_template` — a single node's behavior inside a step workflow: `task_type`
   (`USER_INPUT`, `EXTERNAL_REVIEW`, `PAYMENT`, `CHA_PERSIST_WRITER`,
   `HSCODE_SPLIT_BUILDER`, `CUSTOMS_CUSDEC_DISPATCH`, ...), `output_namespace`, and
-  `plugin_properties` (for `EXTERNAL_REVIEW`: `service_id`, `path`, `task_code`,
-  `officer_jsonforms_id`).
+  `plugin_properties` (for `EXTERNAL_REVIEW`: `service_id`, `path`,
+  `service_workflow_id`, `officer_jsonforms_id`).
 - `generic_template` — a JSONForms schema+uiSchema (`*_jsonform.json`), a markdown
   template, or a `render.json` UI layout (sections, `visibleWhen` states, action
   `handles`).
-- `task_config` — an agency-side officer task definition (`<agency>/` only):
-  `schemaVersion: 2`, `taskCode`, the `workflow` id it runs, and `meta.title/description`.
 
 ### File fields (`render.json` `files`)
 
@@ -200,7 +198,7 @@ See `tnsw/fcau/3-2-warehouse_inspection/workflow.json` or
 
 - IDs are kebab-case and scoped by agency/flow, e.g. `sltb-record-sample-draw-flow`,
   `npqs-draw-sample--officer-draw`.
-- Ids, task codes, folders and file names carry no version (`_v1`, `-v3`): this repo
+- Ids, folders and file names carry no version (`_v1`, `-v3`): this repo
   holds only the current state of each artifact. nsw-srilanka names the trade workflow,
   `trade-export`, as its default consignment flow, so renaming it needs a change there too.
 - `manifest.json` files list `{id, kind, version, path}` rows under `artifacts` — adding
@@ -213,8 +211,8 @@ See `tnsw/fcau/3-2-warehouse_inspection/workflow.json` or
   artifacts — there is no per-agency manifest under `tnsw/<agency>/`.
 - Every task declares who may act on it and who may read it, in `tnsw/` and in each
   agency deployment (`cda/`, `efc/`, `fcau/`, `npqs/`, `sltb/`; an
-  agency has no per-case owner, so any role in its catalog owns every injected
-  workflow, and only the task narrows that). Each step that waits for a caller
+  agency's own OU owns each case TNSW starts a flow on, in the role its `flows.clients`
+  entry names, and the task narrows that). Each step that waits for a caller
   (`USER_INPUT`, `EXTERNAL_REVIEW`, `PAYMENT`) carries an `authz` extension for the one
   state it waits in, state → command → logical names, deny by default:
   `"extensions": [{"id": "authz", "phase": "PRE_RESUME", "properties": {"PENDING_USER": {"submit": ["trader", "cha"]}}}]`.
