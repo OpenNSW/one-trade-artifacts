@@ -6,6 +6,7 @@
     "properties": {
       "serial_number": {
         "type": "string",
+        "minLength": 1,
         "title": "Certificate Serial Number",
         "description": "The serial number printed on the pre-printed certificate form. Seen by NPQS only."
       },
