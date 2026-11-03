@@ -41,9 +41,20 @@
               }
             },
             "treatment_type": {
-              "type": "string",
+              "type": "object",
               "title": "Treatment Type",
-              "readOnly": true
+              "readOnly": true,
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "value"
+              ]
             },
             "chemical_used": {
               "type": "string",
@@ -195,7 +206,51 @@
             "type": "Control",
             "scope": "#/properties/treatment_items",
             "options": {
-              "readonly": true
+              "readonly": true,
+              "detail": {
+                "type": "VerticalLayout",
+                "elements": [
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/id"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/commodity_common_name"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/treatment_type/properties/label",
+                        "label": "Treatment Type"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "HorizontalLayout",
+                    "elements": [
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/chemical_used"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/treatment_duration"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/treatment_temperature"
+                      },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/treatment_concentration"
+                      }
+                    ]
+                  }
+                ]
+              }
             }
           }
         ]
