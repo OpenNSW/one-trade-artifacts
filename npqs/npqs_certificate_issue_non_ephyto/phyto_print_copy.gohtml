@@ -16,6 +16,8 @@
     .issue_date              the date of issue the officer enters (YYYY-MM-DD)
     .registration_number     the Reg. No. the officer enters, if any
     .additional_information  box 17's text the officer enters, if any
+    .treatment_items         the treatment request as approved, one row per treated
+                             item; empty when nothing was treated
 
   With more than one item on the certificate, the items go on a second page,
   NPQS form NPQS/094 "Attached sheet for the consignment", printed on plain
@@ -199,19 +201,33 @@
 {{- /* 11. Additional declaration */}}
 <div class="f pre" style="left:24.7mm; top:198.5mm; width:170mm; height:27mm;">{{ with $app.additional_declaration }}{{ . }}{{ else }}NIL{{ end }}</div>
 
-{{- /* 12. Treatment */}}
-<div class="f pre" style="left:24.7mm; top:235.3mm; width:78mm; height:7.6mm; line-height:3.8mm;">{{ with $app.disinfestation_treatment }}{{ . }}{{ else }}NIL{{ end }}</div>
+{{- /* Boxes 12 to 15 print the first treated item on the certificate, from the treatment request as approved;
+     the officer's Additional Information (box 17) is prefilled with the others. */}}
+{{- $treated := false }}
+{{- range $t := .treatment_items }}
+{{- if not $treated }}
+{{- $included := true }}
+{{- range $.items }}{{ if and (eq (print .id) (print $t.id)) (eq (print .include_in_certificate) "false") }}{{ $included = false }}{{ end }}{{ end }}
+{{- if $included }}{{ $treated = $t }}{{ end }}
+{{- end }}
+{{- end }}
+
+{{- /* 12. Treatment: the type's name as the trader picked it */}}
+<div class="f pre" style="left:24.7mm; top:235.3mm; width:78mm; height:7.6mm; line-height:3.8mm;">{{ $type := "" }}{{ with $treated }}{{ with .treatment_type }}{{ $type = .label }}{{ end }}{{ end }}{{ with $type }}{{ . }}{{ else }}NIL{{ end }}</div>
 
 {{- /* 13. Chemical (active ingredient) */}}
-<div class="f" style="left:24.7mm; top:247.4mm; width:37mm; height:8.4mm; line-height:4.2mm;">NIL</div>
+<div class="f" style="left:24.7mm; top:247.4mm; width:37mm; height:8.4mm; line-height:4.2mm;">{{ with $treated }}{{ with .chemical_used }}{{ . }}{{ else }}NIL{{ end }}{{ else }}NIL{{ end }}</div>
 
-{{- /* 14. Duration and temperature */}}
-<div class="f" style="left:79.5mm; top:247.4mm; width:24.5mm; height:8.4mm; line-height:4.2mm;">NIL</div>
+{{- /* 14. Duration and temperature, each on its own line */}}
+<div class="f" style="left:79.5mm; top:247.4mm; width:24.5mm; height:8.4mm; line-height:4.2mm;">
+  {{- with $treated }}{{ if or .treatment_duration .treatment_temperature }}{{ .treatment_duration }}
+  {{- if and .treatment_duration .treatment_temperature }}<br>{{ end }}{{ .treatment_temperature }}
+  {{- else }}NIL{{ end }}{{ else }}NIL{{ end }}</div>
 
 {{- /* 15. Concentration */}}
-<div class="f" style="left:24.7mm; top:260.5mm; width:37mm; height:9mm;">NIL</div>
+<div class="f" style="left:24.7mm; top:260.5mm; width:37mm; height:9mm;">{{ with $treated }}{{ with .treatment_concentration }}{{ . }}{{ else }}NIL{{ end }}{{ else }}NIL{{ end }}</div>
 
-{{- /* 16. Date (of treatment) */}}
+{{- /* 16. Date (of treatment): nothing in the application records it */}}
 <div class="f" style="left:79.5mm; top:260.5mm; width:24.5mm; height:9mm;">NIL</div>
 
 {{- /* 17. Additional information */}}
