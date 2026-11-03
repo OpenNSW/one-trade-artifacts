@@ -15,11 +15,33 @@
         "rejection_reason?": "rejection_reason",
         "userform?": "userform",
         "customs_feedback?": "customs_feedback",
-        "customs_error?": "customs_error"
+        "customs_error?": "customs_error",
+        "verify?": "verify"
       },
       "output_mapping": {
-        "blendsheet_data": "userform.blendsheet_data",
-        "cusdec_draft": "userform.cusdec_draft"
+        "__command": "command",
+        "blendsheet_data?": "userform.blendsheet_data",
+        "cusdec_draft?": "userform.cusdec_draft"
+      }
+    },
+    {
+      "id": "command_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Verify or Submit?"
+    },
+    {
+      "id": "cig_verify",
+      "type": "TASK",
+      "task_template_id": "customs-cusdec--cig-verify",
+      "input_mapping": {
+        "userform?": "userform",
+        "userform.cusdec_draft": "payload"
+      },
+      "output_mapping": {
+        "verify.verified": "verify.verified",
+        "verify.summary?": "verify.summary",
+        "verify.total?": "verify.total"
       }
     },
     {
@@ -70,7 +92,24 @@
     {
       "id": "e2",
       "source_id": "applicant_submission",
-      "target_id": "generate_blendsheet_nos"
+      "target_id": "command_gateway"
+    },
+    {
+      "id": "e_verify",
+      "source_id": "command_gateway",
+      "target_id": "cig_verify",
+      "condition": "command == 'verify'"
+    },
+    {
+      "id": "e_verified",
+      "source_id": "cig_verify",
+      "target_id": "applicant_submission"
+    },
+    {
+      "id": "e_submit",
+      "source_id": "command_gateway",
+      "target_id": "generate_blendsheet_nos",
+      "condition": "command == 'submit'"
     },
     {
       "id": "e_numbered",
