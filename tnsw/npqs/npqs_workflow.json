@@ -347,7 +347,8 @@
       },
       "output_mapping": {
         "npqs.treatment_certificate_urls": "npqs.treatment_certificate_urls",
-        "npqs.supervision_report_urls": "npqs.supervision_report_urls"
+        "npqs.supervision_report_urls": "npqs.supervision_report_urls",
+        "npqs.treatment_items": "npqs.treatment_items"
       }
     },
     {
@@ -739,7 +740,8 @@
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
-        "commodities?": "certificate_items"
+        "commodities?": "certificate_items",
+        "npqs.treatment_items?": "treatment_items"
       },
       "output_mapping": {
         "certificate_items?": "npqs.certificate_items",
@@ -972,7 +974,8 @@
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
-        "npqs.certificate_items?": "certificate_items"
+        "npqs.certificate_items?": "certificate_items",
+        "npqs.treatment_items?": "treatment_items"
       },
       "output_mapping": {
         "certificate_items?": "npqs.certificate_items",
