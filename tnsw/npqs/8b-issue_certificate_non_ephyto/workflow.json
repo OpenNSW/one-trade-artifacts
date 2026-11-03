@@ -14,7 +14,8 @@
         "reference_number?": "reference_number",
         "reference_number": "submission.reference_number",
         "userform": "submission",
-        "certificate_items?": "submission.certificate_items"
+        "certificate_items?": "submission.certificate_items",
+        "treatment_items?": "submission.treatment_items"
       },
       "output_mapping": {
         "comments?": "comments",

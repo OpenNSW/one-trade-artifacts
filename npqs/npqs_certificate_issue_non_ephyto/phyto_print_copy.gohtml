@@ -7,12 +7,24 @@
 
   Every position is in millimetres from the sheet's top-left corner, measured
   from a scan of the blank form. Which value goes in which box follows the
-  spreadsheet NPQS printed the form from (Print.xls); a box it printed NIL in
-  prints NIL here when there is no value for it.
+  spreadsheet NPQS printed the form from (Print.xls). Only Reg. No. and boxes
+  11 to 15 and 17 print NIL, when they have no value; every other box, 16 included,
+  is left empty.
 
-    .application  the trader's application (userform)
-    .items        the officer's issuance list (certificate_items): the items
-                  to leave off (include_in_certificate: false)
+    .application             the trader's application (userform)
+    .items                   the officer's issuance list (certificate_items): the
+                             items to leave off (include_in_certificate: false)
+    .issue_date              the date of issue the officer enters (YYYY-MM-DD)
+    .registration_number     the Reg. No. the officer enters, if any
+    .additional_information  box 17's text the officer enters, if any
+    .total_net_weight, .total_gross_weight, .total_weight_unit
+                             the consignment's totals the officer enters (box 09)
+    .treatment_items         the treatment request as approved, one row per treated
+                             item; empty when nothing was treated
+
+  With more than one item on the certificate, the items go on a second page,
+  NPQS form NPQS/094 "Attached sheet for the consignment", printed on plain
+  paper; box 08 then refers to it.
 */ -}}
 <!DOCTYPE html>
 <html lang="en">
@@ -33,20 +45,48 @@
     @bottom-right { content: ""; }
   }
   * { box-sizing: border-box; }
-  body { margin: 0; font-family: Arial, Helvetica, sans-serif; font-size: 10pt; line-height: 4.5mm; color: #000; }
+  /* 8pt: a little larger than the form's own labels, whose capitals are about 1.6mm tall (8pt Arial's are 2mm). */
+  body { margin: 0; font-family: Arial, Helvetica, sans-serif; font-size: 8pt; line-height: 4.5mm; color: #000; }
   .sheet { position: relative; width: 210mm; height: 297mm; overflow: hidden; }
-  /* One box of the form. Text that doesn't fit is cut off at the box's edge rather than printed over the next box. */
+  /* One box of the form. Long text wraps; each box is a whole number of lines tall, so text that still
+     doesn't fit is dropped a whole line at a time at the box's edge, never cut through or printed over the next box. */
   .f { position: absolute; overflow: hidden; }
   .pre { white-space: pre-line; }
+  /* Box 17 (78 x 12.2mm, starting 2.7mm below its label): 4 rows at 8pt, 5 at 6.5pt or 6 at 5.5pt, the largest the text fits in. */
+  .info { left: 24.7mm; top: 275.5mm; width: 78mm; height: 12.2mm; line-height: 3.05mm; }
+  .info.smaller { font-size: 6.5pt; line-height: 2.44mm; }
+  .info.smallest { font-size: 5.5pt; line-height: 2.03mm; }
   /* 08 ends at the "Number of packages" column (151.9mm) and 09 starts at 167.4mm; the gap stays empty, as in Print.xls. */
   table.goods { width: 100%; border-collapse: collapse; table-layout: fixed; }
   table.goods td { padding: 0; vertical-align: top; }
   table.goods td.desc { width: 125.2mm; }
   table.goods td.qty { width: 46.3mm; padding-left: 19.3mm; }
+  /* The attached sheet (NPQS/094): plain A4, with the Word form's margins. */
+  .attach { break-before: page; padding: 22.5mm 19.5mm 20mm 25.4mm; font-family: "Times New Roman", Times, serif; font-size: 12pt; line-height: 1.35; }
+  /* Unlike the certificate page, the attached sheet grows with its rows and carries on over as many pages as
+     they need, each page keeping the sheet's margins and the table's heading row. */
+  .attach { height: auto; min-height: 297mm; overflow: visible; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .attach thead { display: table-header-group; }
+  .attach tr { break-inside: avoid; }
+  .attach .formno { position: absolute; top: 10mm; right: 19.5mm; border: 1px solid #000; padding: 1mm 3mm; font-family: Arial, Helvetica, sans-serif; font-size: 10pt; }
+  .attach .org { display: flex; align-items: center; gap: 6mm; border-bottom: 1px solid #000; padding-bottom: 2mm; margin-bottom: 4mm; }
+  /* The NPQS logo's place on the attached sheet; empty until the logo is added (see the .logo element). */
+  .attach .org .logo { flex: none; width: 21.2mm; height: 21.2mm; }
+  .attach .org div { flex: 1; text-align: center; font-weight: bold; font-size: 14pt; }
+  .attach .org small { display: block; font-size: 13pt; }
+  .attach .title { width: 92.9mm; margin: 3mm auto 4mm; border: 1px solid #000; text-align: center; padding: 1mm; }
+  .attach p { margin: 0 0 2mm; font-weight: bold; }
+  .attach p span { font-weight: normal; }
+  .attach table { width: 100%; border-collapse: collapse; margin-top: 4mm; font-family: Arial, Helvetica, sans-serif; font-size: 9pt; }
+  .attach th { text-align: left; text-decoration: underline; padding: 1mm 2mm 2mm 0; }
+  .attach td { vertical-align: top; padding: 1mm 2mm 1mm 0; }
+  .attach th.num, .attach td.num { text-align: right; white-space: nowrap; }
+  .attach .foot { margin-top: 8mm; font-weight: bold; }
   .hint { margin: 4mm auto; width: 210mm; padding: 2mm 3mm; border: 1px solid #999; background: #f4f4f4; font-size: 10pt; line-height: normal; }
   @media screen {
     body { background: #e5e5e5; padding-bottom: 8mm; }
     .sheet { background: #fff; margin: 0 auto; box-shadow: 0 0 3mm rgba(0, 0, 0, 0.25); }
+    .attach { margin-top: 8mm; }
   }
   @media print {
     .hint { display: none; }
@@ -54,25 +94,31 @@
 </style>
 </head>
 <body>
-<p class="hint">Load the pre-printed Phytosanitary Certificate form in the printer, then press Ctrl+P (&#8984;P on a Mac). Print at 100% scale (not "Fit to page") with the browser's headers and footers turned off.</p>
+<p class="hint">Load the pre-printed Phytosanitary Certificate form in the printer, then press Ctrl+P (&#8984;P on a Mac). Print at 100% scale (not "Fit to page") with the browser's headers and footers turned off. When there is a second page (the attached sheet), print it on plain paper.</p>
 {{- $app := .application }}
+{{- /* More than one item on the certificate? Then the items go on the attached sheet. */}}
+{{- $seen := false }}{{ $multi := false }}
+{{- range $c := $app.commodities }}
+{{- $included := true }}
+{{- range $.items }}{{ if and (eq (print .id) (print $c.id)) (eq (print .include_in_certificate) "false") }}{{ $included = false }}{{ end }}{{ end }}
+{{- if $included }}{{ if $seen }}{{ $multi = true }}{{ end }}{{ $seen = true }}{{ end }}
+{{- end }}
 <div class="sheet">
 
 {{- /* 01. Name and address of exporter */}}
-<div class="f pre" style="left:24.7mm; top:10.5mm; width:78mm; height:26.5mm;">{{ $app.exporter_name }}
-{{ $app.exporter_address }}{{ with $app.exporter_country }}
-{{ . }}{{ end }}</div>
+<div class="f pre" style="left:24.7mm; top:10.5mm; width:78mm; height:27mm;">{{ $app.exporter_name }}
+{{ $app.exporter_address }}</div>
 
 {{- /* 03. Declared name and address of consignee */}}
-<div class="f pre" style="left:24.7mm; top:43mm; width:78mm; height:33.5mm;">{{ $app.consignee_name }}
+<div class="f pre" style="left:24.7mm; top:43mm; width:78mm; height:31.5mm;">{{ $app.consignee_name }}
 {{ $app.consignee_address }}{{ with $app.consignee_country.label }}
 {{ . }}{{ end }}</div>
 
 {{- /* 04. To: Plant Protection Organization(s) of */}}
-<div class="f" style="left:120.7mm; top:64.2mm; width:74mm; height:12.5mm;">{{ $app.importing_country.label }}</div>
+<div class="f" style="left:120.7mm; top:64.2mm; width:74mm; height:9mm;">{{ $app.importing_country.label }}</div>
 
 {{- /* 05. Declared means of conveyance */}}
-<div class="f" style="left:24.7mm; top:82mm; width:78mm; height:10mm;">{{- if and $app.transport_details (gt (len $app.transport_details) 0) -}}
+<div class="f" style="left:24.7mm; top:82mm; width:78mm; height:9mm;">{{- if and $app.transport_details (gt (len $app.transport_details) 0) -}}
 {{- range $i, $t := $app.transport_details -}}
 {{- if $i }}, {{ end -}}
 {{- $mode := print $t.transport_mode -}}
@@ -88,28 +134,43 @@
 {{- if $app.voyage_number }} - Voyage {{ $app.voyage_number }}{{ end -}}
 {{- end -}}</div>
 
-{{- /* 06. Place of origin: each certificate item's country of origin */}}
-<div class="f" style="left:120.7mm; top:82mm; width:74mm; height:10mm;">
-{{- $first := true -}}
-{{- range $c := $app.commodities -}}
-{{- $included := true -}}
-{{- range $.items }}{{ if and (eq (print .id) (print $c.id)) (eq (print .include_in_certificate) "false") }}{{ $included = false }}{{ end }}{{ end -}}
-{{- if $included -}}
-{{- if not $first }}, {{ end }}{{ $first = false -}}
-{{- $c.origin_country.label }}{{ if $c.origin_area }} ({{ $c.origin_area }}){{ end -}}
-{{- end -}}
-{{- end -}}
-</div>
+{{- /* 06. Place of origin: the exporter's country, whose only option is LK */}}
+<div class="f" style="left:120.7mm; top:82mm; width:74mm; height:9mm;">{{ lookup $app.exporter_country "LK" "Sri Lanka" }}</div>
 
 {{- /* 07. Declared point of entry */}}
-<div class="f" style="left:24.7mm; top:97.2mm; width:78mm; height:8.5mm;">{{ $app.point_of_entry_port }}{{ if and $app.point_of_entry_port $app.point_of_entry_country.label }}, {{ end }}{{ $app.point_of_entry_country.label }}</div>
+<div class="f" style="left:24.7mm; top:97.2mm; width:78mm; height:8.6mm; line-height:4.3mm;">{{ $app.point_of_entry_port }}{{ if and $app.point_of_entry_port $app.point_of_entry_country.label }}, {{ end }}{{ $app.point_of_entry_country.label }}</div>
 
 {{- /* Reg. No. */}}
-<div class="f" style="left:120.7mm; top:97.2mm; width:74mm; height:8.5mm;">NIL</div>
+<div class="f" style="left:120.7mm; top:97.2mm; width:74mm; height:8.6mm; line-height:4.3mm;">{{ with .registration_number }}{{ . }}{{ else }}NIL{{ end }}</div>
 
-{{- /* 08. Description of packages, distinguishing marks and name of produce, and 09. Quantity declared, one row per certificate item */}}
-<div class="f" style="left:24.7mm; top:115mm; width:171.5mm; height:65.5mm;">
+{{- /* 08. Description of packages, distinguishing marks and name of produce, one row per certificate item, and
+     09. Quantity declared: the consignment's total net and gross weight the officer enters, beside the item */}}
+<div class="f" style="left:24.7mm; top:115mm; width:171.5mm; height:63mm;">
 <table class="goods">
+{{- if $multi }}
+  <tr>
+    <td class="desc">
+      {{- /* Each item's botanical name once, then the marks and the reference to the attached sheet. */}}
+      {{- range $i, $c := $app.commodities }}
+      {{- $included := true }}
+{{- range $.items }}{{ if and (eq (print .id) (print $c.id)) (eq (print .include_in_certificate) "false") }}{{ $included = false }}{{ end }}{{ end }}
+      {{- $repeat := false }}
+      {{- range $j, $d := $app.commodities }}{{ if and (lt $j $i) (eq (print $d.commodity_botanical_name) (print $c.commodity_botanical_name)) }}
+        {{- $earlier := true }}
+        {{- range $.items }}{{ if and (eq (print .id) (print $d.id)) (eq (print .include_in_certificate) "false") }}{{ $earlier = false }}{{ end }}{{ end }}
+        {{- if $earlier }}{{ $repeat = true }}{{ end }}
+      {{- end }}{{ end }}
+      {{- if and $included (not $repeat) }}<div>{{ $c.commodity_botanical_name }}</div>{{ end }}
+      {{- end }}
+      {{- with $app.distinguishing_marks }}<div class="pre">{{ . }}</div>{{ end }}
+      <div>REFER THE ATTACHED SHEET</div>
+    </td>
+    <td class="qty">
+      {{- if not (zero $.total_net_weight) }}<div>Net {{ $.total_net_weight }}{{ with $.total_weight_unit }} {{ .label }}{{ end }}</div>{{ end }}
+      {{- if not (zero $.total_gross_weight) }}<div>Gross {{ $.total_gross_weight }}{{ with $.total_weight_unit }} {{ .label }}{{ end }}</div>{{ end }}
+    </td>
+  </tr>
+{{- else }}
 {{- with $app.distinguishing_marks }}
   <tr><td class="desc pre">{{ . }}</td><td class="qty"></td></tr>
 {{- end }}
@@ -130,10 +191,11 @@
       <div>( {{ $c.commodity_botanical_name }} )</div>
     </td>
     <td class="qty">
-      {{- if not (zero $c.quantity_net_weight) }}{{ $c.quantity_net_weight }} {{ $c.quantity_net_weight_unit.label }}
-      {{- else if not (zero $c.quantity_gross_weight) }}{{ $c.quantity_gross_weight }} {{ $c.quantity_gross_weight_unit.label }}{{ end -}}
+      {{- if not (zero $.total_net_weight) }}<div>Net {{ $.total_net_weight }}{{ with $.total_weight_unit }} {{ .label }}{{ end }}</div>{{ end }}
+      {{- if not (zero $.total_gross_weight) }}<div>Gross {{ $.total_gross_weight }}{{ with $.total_weight_unit }} {{ .label }}{{ end }}</div>{{ end }}
     </td>
   </tr>
+{{- end }}
 {{- end }}
 {{- end }}
 </table>
@@ -142,27 +204,103 @@
 {{- /* 11. Additional declaration */}}
 <div class="f pre" style="left:24.7mm; top:198.5mm; width:170mm; height:27mm;">{{ with $app.additional_declaration }}{{ . }}{{ else }}NIL{{ end }}</div>
 
-{{- /* 12. Treatment */}}
-<div class="f pre" style="left:24.7mm; top:236.8mm; width:78mm; height:6mm;">{{ with $app.disinfestation_treatment }}{{ . }}{{ else }}NIL{{ end }}</div>
+{{- /* Boxes 12 to 15 print the first treated item on the certificate, from the treatment request as approved;
+     the officer's Additional Information (box 17) is prefilled with the others. */}}
+{{- $treated := false }}
+{{- range $t := .treatment_items }}
+{{- if not $treated }}
+{{- $included := true }}
+{{- range $.items }}{{ if and (eq (print .id) (print $t.id)) (eq (print .include_in_certificate) "false") }}{{ $included = false }}{{ end }}{{ end }}
+{{- if $included }}{{ $treated = $t }}{{ end }}
+{{- end }}
+{{- end }}
+
+{{- /* 12. Treatment: the type's name as the trader picked it, on one line (the longest name takes about half of it) */}}
+<div class="f pre" style="left:24.7mm; top:237.5mm; width:78mm; height:4.5mm;">{{ $type := "" }}{{ with $treated }}{{ with .treatment_type }}{{ $type = .label }}{{ end }}{{ end }}{{ with $type }}{{ . }}{{ else }}NIL{{ end }}</div>
 
 {{- /* 13. Chemical (active ingredient) */}}
-<div class="f" style="left:24.7mm; top:248.3mm; width:37mm; height:7.5mm;">NIL</div>
+<div class="f" style="left:24.7mm; top:249mm; width:37mm; height:6.8mm; line-height:3.4mm;">{{ with $treated }}{{ with .chemical_used }}{{ . }}{{ else }}NIL{{ end }}{{ else }}NIL{{ end }}</div>
 
-{{- /* 14. Duration and temperature */}}
-<div class="f" style="left:79.5mm; top:248.3mm; width:24.5mm; height:7.5mm;">NIL</div>
+{{- /* 14. Duration and temperature, each on its own line */}}
+<div class="f" style="left:79.5mm; top:249mm; width:24.5mm; height:6.8mm; line-height:3.4mm;">
+  {{- with $treated }}{{ if or .treatment_duration .treatment_temperature }}{{ .treatment_duration }}
+  {{- if and .treatment_duration .treatment_temperature }}<br>{{ end }}{{ .treatment_temperature }}
+  {{- else }}NIL{{ end }}{{ else }}NIL{{ end }}</div>
 
 {{- /* 15. Concentration */}}
-<div class="f" style="left:24.7mm; top:260.5mm; width:37mm; height:9mm;">NIL</div>
+<div class="f" style="left:24.7mm; top:262mm; width:37mm; height:7.2mm; line-height:3.6mm;">{{ with $treated }}{{ with .treatment_concentration }}{{ . }}{{ else }}NIL{{ end }}{{ else }}NIL{{ end }}</div>
 
-{{- /* 16. Date (of treatment) */}}
-<div class="f" style="left:79.5mm; top:260.5mm; width:24.5mm; height:9mm;">NIL</div>
+{{- /* 16. Date (of treatment): nothing records it, so the box stays empty for the officer to fill by hand */}}
 
-{{- /* 17. Additional information */}}
-<div class="f" style="left:24.7mm; top:274.5mm; width:78mm; height:13mm;">NIL</div>
+{{- /* 17. Additional information. The form allows at most 3 lines and 230 characters, which always fit in
+     6 rows at 5.5pt, even in capitals. It prints at 8pt when its rows fit in 4 there, else at 6.5pt when they
+     fit in 5: each line is taken to wrap into one row per 42 characters at 8pt and 49 at 6.5pt (about 90% of
+     a row of capitals, as wrapping breaks between words). Templates have no arithmetic, so the rows are
+     counted as the length of a string that gets one "x" per row. len counts bytes, so a non-ASCII character
+     counts more than once and only ever picks a smaller size. */}}
+{{- $rows8 := "" }}{{ $rows65 := "" }}
+{{- with .additional_information }}
+{{- range $line := split . "\n" }}
+{{- $n := len $line }}
+{{- $rows8 = print $rows8 "x" }}
+{{- if gt $n 42 }}{{ $rows8 = print $rows8 "x" }}{{ end }}{{ if gt $n 84 }}{{ $rows8 = print $rows8 "x" }}{{ end }}
+{{- if gt $n 126 }}{{ $rows8 = print $rows8 "x" }}{{ end }}{{ if gt $n 168 }}{{ $rows8 = print $rows8 "x" }}{{ end }}
+{{- if gt $n 210 }}{{ $rows8 = print $rows8 "x" }}{{ end }}
+{{- $rows65 = print $rows65 "x" }}
+{{- if gt $n 49 }}{{ $rows65 = print $rows65 "x" }}{{ end }}{{ if gt $n 98 }}{{ $rows65 = print $rows65 "x" }}{{ end }}
+{{- if gt $n 147 }}{{ $rows65 = print $rows65 "x" }}{{ end }}{{ if gt $n 196 }}{{ $rows65 = print $rows65 "x" }}{{ end }}
+{{- end }}
+{{- end }}
+{{- if le (len $rows8) 4 }}<div class="f pre info">
+{{- else if le (len $rows65) 5 }}<div class="f pre info smaller">
+{{- else }}<div class="f pre info smallest">{{ end }}
+{{- with .additional_information }}{{ . }}{{ else }}NIL{{ end }}</div>
 
-{{- /* 18. Place of issue */}}
-<div class="f" style="left:120.7mm; top:231.5mm; width:74mm; height:9mm;">{{ $app.nppo_office_location.label }}</div>
+{{- /* 18. Place of issue: the left half of the box, clear of "Stamp of organization", on up to 3 lines */}}
+<div class="f" style="left:120.7mm; top:231.5mm; width:37mm; height:13.5mm;">{{ $app.nppo_office_location.label }}</div>
+
+{{- /* 18. Date of issue, just above the printed "Date" beside the signature */}}
+<div class="f" style="left:162.6mm; top:276mm; width:33mm; height:4.5mm;">{{ with .issue_date }}{{ date . "2006-01-02" "02/01/2006" }}{{ end }}</div>
 
 </div>
+
+{{- if $multi }}
+{{- /* Page 2: NPQS/094 "Attached sheet for the consignment", printed on plain paper, so it carries its own headings. */}}
+<div class="sheet attach">
+  <div class="formno">Form No: NPQS/094</div>
+  <div class="org">
+    {{- /* The logo: empty for now. To add it, give .attach .org .logo a background of the image as a data: URL
+         in the style block (background: url(data:image/png;base64,...) center / contain no-repeat;). The template
+         check allows an image only that way: no img src, and no value printed into an attribute. */}}
+    <span class="logo"></span>
+    <div>National Plant Quarantine Service - Department of Agriculture<small>Canada Friendship Road, Katunayake, Sri Lanka</small></div>
+  </div>
+  <p>Ref No <span>:</span></p>
+  <div class="title">Attached sheet for the consignment</div>
+  <p>From: Plant Protection Organization of Sri Lanka</p>
+  <p>To: Plant Protection Organization of <span>{{ $app.importing_country.label }}</span></p>
+  <p>Attach sheet for Phytosanitary Certificate No:</p>
+  <p>Date of issue: <span>{{ with .issue_date }}{{ date . "2006-01-02" "02/01/2006" }}{{ end }}</span></p>
+  <table>
+    <thead><tr><th>Description</th><th class="num">MC'S</th><th class="num">KGS</th></tr></thead>
+    {{- range $c := $app.commodities }}
+    {{- $included := true }}
+{{- range $.items }}{{ if and (eq (print .id) (print $c.id)) (eq (print .include_in_certificate) "false") }}{{ $included = false }}{{ end }}{{ end }}
+    {{- if $included }}
+    <tr>
+      <td>{{ $c.commodity_common_name.label }}{{ if $c.commodity_description }}, {{ $c.commodity_description }}{{ end }}</td>
+      <td class="num">
+        {{- if eq (print $c.package_arrangement) "free_text" }}{{ $c.packages_free_text }}
+        {{- else if eq (print $c.package_arrangement) "bulk" }}In bulk
+        {{- else }}{{ range $i, $p := $c.packages }}{{ if $i }}, {{ end }}{{ $p.count }} {{ if $p.type.label }}{{ $p.type.label }}{{ else }}{{ $p.type.value }}{{ end }}{{ end }}{{ end -}}
+      </td>
+      <td class="num">{{ if not (zero $c.quantity_net_weight) }}{{ $c.quantity_net_weight }} {{ $c.quantity_net_weight_unit.label }}{{ end }}</td>
+    </tr>
+    {{- end }}
+    {{- end }}
+  </table>
+  <p class="foot">National Plant Quarantine Service. E-mail: npqs@doa.gov.lk</p>
+</div>
+{{- end }}
 </body>
 </html>

@@ -61,94 +61,105 @@
               }
             },
             "treatment_type": {
-              "type": "string",
+              "type": "object",
               "title": "Treatment Type Requested",
               "readOnly": true,
-              "oneOf": [
-                {
-                  "const": "FU",
-                  "title": "Fumigation (FU)"
+              "properties": {
+                "value": {
+                  "type": "string",
+                  "oneOf": [
+                    {
+                      "const": "FU",
+                      "title": "Fumigation (FU)"
+                    },
+                    {
+                      "const": "CD",
+                      "title": "Cold Disinfestation (CD)"
+                    },
+                    {
+                      "const": "HT",
+                      "title": "Heat Treatment (HT)"
+                    },
+                    {
+                      "const": "KD",
+                      "title": "Kiln Drying (KD)"
+                    },
+                    {
+                      "const": "HW",
+                      "title": "Hot Water Treatment (HW)"
+                    },
+                    {
+                      "const": "CHT",
+                      "title": "Chemical Treatment (CHT)"
+                    },
+                    {
+                      "const": "TPT",
+                      "title": "Temperature Treatment (TPT)"
+                    },
+                    {
+                      "const": "RAT",
+                      "title": "Radiation Treatment (RAT)"
+                    },
+                    {
+                      "const": "DR",
+                      "title": "Dry Heat (DR)"
+                    },
+                    {
+                      "const": "MH",
+                      "title": "Moist Heat (MH)"
+                    },
+                    {
+                      "const": "VH",
+                      "title": "Vapour Heat (VH)"
+                    },
+                    {
+                      "const": "DH",
+                      "title": "Dielectric Heating (DH)"
+                    },
+                    {
+                      "const": "FG",
+                      "title": "Fungicide (FG)"
+                    },
+                    {
+                      "const": "IN",
+                      "title": "Insecticide (IN)"
+                    },
+                    {
+                      "const": "NE",
+                      "title": "Nematicide (NE)"
+                    },
+                    {
+                      "const": "OP",
+                      "title": "Other Pesticide (OP)"
+                    },
+                    {
+                      "const": "CPI",
+                      "title": "Chemical Pressure Impregnation (CPI)"
+                    },
+                    {
+                      "const": "SC",
+                      "title": "Seed Coating (SC)"
+                    },
+                    {
+                      "const": "DV",
+                      "title": "Devitalization (DV)"
+                    },
+                    {
+                      "const": "DB",
+                      "title": "Debarking (DB)"
+                    },
+                    {
+                      "const": "OTT",
+                      "title": "Other Treatment (OTT)"
+                    }
+                  ]
                 },
-                {
-                  "const": "CD",
-                  "title": "Cold Disinfestation (CD)"
-                },
-                {
-                  "const": "HT",
-                  "title": "Heat Treatment (HT)"
-                },
-                {
-                  "const": "KD",
-                  "title": "Kiln Drying (KD)"
-                },
-                {
-                  "const": "HW",
-                  "title": "Hot Water Treatment (HW)"
-                },
-                {
-                  "const": "CHT",
-                  "title": "Chemical Treatment (CHT)"
-                },
-                {
-                  "const": "TPT",
-                  "title": "Temperature Treatment (TPT)"
-                },
-                {
-                  "const": "RAT",
-                  "title": "Radiation Treatment (RAT)"
-                },
-                {
-                  "const": "DR",
-                  "title": "Dry Heat (DR)"
-                },
-                {
-                  "const": "MH",
-                  "title": "Moist Heat (MH)"
-                },
-                {
-                  "const": "VH",
-                  "title": "Vapour Heat (VH)"
-                },
-                {
-                  "const": "DH",
-                  "title": "Dielectric Heating (DH)"
-                },
-                {
-                  "const": "FG",
-                  "title": "Fungicide (FG)"
-                },
-                {
-                  "const": "IN",
-                  "title": "Insecticide (IN)"
-                },
-                {
-                  "const": "NE",
-                  "title": "Nematicide (NE)"
-                },
-                {
-                  "const": "OP",
-                  "title": "Other Pesticide (OP)"
-                },
-                {
-                  "const": "CPI",
-                  "title": "Chemical Pressure Impregnation (CPI)"
-                },
-                {
-                  "const": "SC",
-                  "title": "Seed Coating (SC)"
-                },
-                {
-                  "const": "DV",
-                  "title": "Devitalization (DV)"
-                },
-                {
-                  "const": "DB",
-                  "title": "Debarking (DB)"
-                },
-                {
-                  "const": "OTT",
-                  "title": "Other Treatment (OTT)"
+                "label": {
+                  "type": "string"
                 }
+              },
+              "required": [
+                "value"
               ]
             },
             "chemical_used": {
