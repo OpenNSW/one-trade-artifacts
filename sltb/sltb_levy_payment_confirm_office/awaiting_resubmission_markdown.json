@@ -1,0 +1,4 @@
+{
+  "id": "sltb-levy-payment-confirm-office--awaiting-resubmission",
+  "template": "Marked as not received. Waiting for the applicant to pay the levy at the SLTB office and notify you again.{{if .remarks}}\n\n> **Your remarks**: {{.remarks}}{{end}}"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "sltb-cusdec-submission--confirm",
+  "task_type": "USER_INPUT",
+  "output_namespace": "confirm",
+  "plugin_properties": {
+    "user_jsonforms_id": "sltb-cusdec-submission--confirm-form",
+    "status_override": "PENDING_SUBMISSION"
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "PENDING_SUBMISSION": {
+          "submit": [
+            "trader",
+            "cha"
+          ]
+        }
+      }
+    },
+    {
+      "id": "payload_schema",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "form": "sltb-cusdec-submission--confirm-form"
+      }
+    }
+  ]
+}

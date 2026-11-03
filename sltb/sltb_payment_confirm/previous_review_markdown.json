@@ -1,4 +1,4 @@
 {
   "id": "sltb-payment-confirm--previous-review",
-  "template": "{{if .}}\n### Previous Review\n\nYou marked this Finpak account as having insufficient funds. The applicant says they have now topped it up.\n\n> **Your remarks**: {{.}}\n{{end}}"
+  "template": "{{if .}}\n### Previous Review\n\nYou marked the Lab Test Fee as not received. The applicant says they have now paid it at the SLTB office.\n\n> **Your remarks**: {{.}}\n{{end}}"
 }

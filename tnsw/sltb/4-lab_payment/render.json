@@ -98,7 +98,7 @@
     },
     "payment_not_received": {
       "templateId": "sltb-pay-lab-fee--not-received",
-      "title": "Insufficient Funds",
+      "title": "Payment Not Received",
       "projector": "MARKDOWN",
       "visibleWhen": {
         "states": [
@@ -120,7 +120,7 @@
       "handles": [
         {
           "command": "submit",
-          "label": "I Have Topped Up — Notify the Officer",
+          "label": "I Have Paid — Notify the Officer",
           "element": "primary_action"
         }
       ]

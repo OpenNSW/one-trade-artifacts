@@ -1,0 +1,17 @@
+{
+  "id": "sltb-cusdec-submission--confirm-form",
+  "title": "Submit to Customs",
+  "schema": {
+    "type": "object",
+    "properties": {}
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Label",
+        "text": "Check the CusDec above. When you submit it, it is sent to Customs exactly as SLTB approved it."
+      }
+    ]
+  }
+}

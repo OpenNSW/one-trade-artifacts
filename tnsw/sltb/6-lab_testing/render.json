@@ -2,14 +2,19 @@
   "id": "sltb-lab-testing-flow:render",
   "type": "APPLICATION",
   "title": "[SLTB 6] Lab Testing & Results",
-  "files": ["result.test_report_file"],
+  "files": [
+    "result.lab_tests[*].report_file"
+  ],
   "sections": {
     "status_message": {
       "templateId": "sltb-lab-testing--status",
       "title": "Lab Testing Status",
       "projector": "MARKDOWN",
       "visibleWhen": {
-        "states": ["QUEUED_EXTERNALLY", "COMPLETED"]
+        "states": [
+          "QUEUED_EXTERNALLY",
+          "COMPLETED"
+        ]
       }
     }
   },

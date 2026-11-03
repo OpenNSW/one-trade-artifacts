@@ -1,0 +1,4 @@
+{
+  "id": "sltb-levy-payment-confirm-office--previous-review",
+  "template": "{{if .}}\n### Previous Review\n\nYou marked the levy as not received. The applicant says they have now paid it at the SLTB office.\n\n> **Your remarks**: {{.}}\n{{end}}"
+}

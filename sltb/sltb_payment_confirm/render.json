@@ -1,7 +1,7 @@
 {
   "id": "sltb-payment-confirm--review:render",
   "type": "APPLICATION",
-  "title": "SLTB Finpak Lab Test Fee Deduction Confirmation",
+  "title": "SLTB Lab Test Fee Payment at the Office",
   "sections": {
     "previous_review": {
       "templateId": "sltb-payment-confirm--previous-review",

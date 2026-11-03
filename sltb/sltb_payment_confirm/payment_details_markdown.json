@@ -1,4 +1,4 @@
 {
   "id": "sltb-payment-confirm--payment-details",
-  "template": "The applicant has chosen to pay the Lab Test Fee from their Finpak account. Deduct the fee, then confirm it below.\n\n{{with .}}{{with .amount}}**Amount:** LKR {{.}}{{end}}{{end}}"
+  "template": "The applicant has chosen to pay the Lab Test Fee at the SLTB office. Confirm below once the payment is received.\n\n{{with .}}{{with .amount}}**Amount:** LKR {{.}}{{end}}{{end}}"
 }

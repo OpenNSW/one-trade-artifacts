@@ -21,6 +21,10 @@
             "title": "Approve the Blend Sheet Application"
           },
           {
+            "const": "needs_more_info",
+            "title": "Request Changes to the CusDec or Blend Sheets"
+          },
+          {
             "const": "reject",
             "title": "Reject the Blend Sheet Application"
           }
@@ -29,8 +33,8 @@
       "remarks": {
         "type": "string",
         "title": "Decision Remarks / Comments",
-        "description": "Required when rejecting the application.",
-        "example": "All quality checks passed. Blend sheet approved."
+        "description": "Required when requesting changes or rejecting. Say which fields to fix; to have failed blend sheets removed, list them here.",
+        "example": "Remove blend sheet BS/2026/000124, which failed lab testing, and its CusDec item."
       }
     },
     "allOf": [
@@ -38,7 +42,10 @@
         "if": {
           "properties": {
             "final_decision_outcome": {
-              "const": "reject"
+              "enum": [
+                "needs_more_info",
+                "reject"
+              ]
             }
           },
           "required": [
@@ -68,7 +75,10 @@
           "effect": "SHOW",
           "condition": {
             "scope": "#/properties/sample_number",
-            "schema": { "type": "string", "minLength": 1 }
+            "schema": {
+              "type": "string",
+              "minLength": 1
+            }
           }
         }
       },

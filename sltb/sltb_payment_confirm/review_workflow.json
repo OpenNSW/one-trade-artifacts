@@ -1,6 +1,6 @@
 {
   "id": "sltb-payment-confirm--review-workflow",
-  "name": "SLTB Finpak Lab Test Fee Deduction Confirmation — Officer Review",
+  "name": "SLTB Lab Test Fee Payment at the Office — Officer Review",
   "nodes": [
     {
       "id": "start",
@@ -15,7 +15,7 @@
         "reviewform.remarks?": "previous_remarks"
       },
       "output_mapping": {
-        "deduction_status": "reviewform.deduction_status",
+        "receipt_status": "reviewform.receipt_status",
         "remarks?": "reviewform.remarks"
       }
     },
@@ -30,7 +30,7 @@
       "task_template_id": "sltb-payment-confirm--request-info",
       "input_mapping": {
         "callbackToken": "replyToken",
-        "reviewform.deduction_status": "payload.payment_status",
+        "reviewform.receipt_status": "payload.receipt_status",
         "reviewform.remarks?": "payload.remarks",
         "submission?": "submission",
         "reviewform": "reviewform"
@@ -49,7 +49,7 @@
         "reviewform?": "reviewform",
         "submission?": "submission",
         "taskId": "taskId",
-        "reviewform.deduction_status": "payload.command",
+        "reviewform.receipt_status": "payload.command",
         "reviewform": "payload.payload"
       }
     },
@@ -70,21 +70,21 @@
       "target_id": "decision_gateway"
     },
     {
-      "id": "e_insufficient_funds",
+      "id": "e_not_received",
       "source_id": "decision_gateway",
       "target_id": "request_info",
-      "condition": "reviewform.deduction_status == 'insufficient_funds'"
+      "condition": "reviewform.receipt_status == 'not_received'"
     },
     {
-      "id": "e_topped_up",
+      "id": "e_paid",
       "source_id": "request_info",
       "target_id": "userform"
     },
     {
-      "id": "e_deducted",
+      "id": "e_received",
       "source_id": "decision_gateway",
       "target_id": "api_call",
-      "condition": "reviewform.deduction_status == 'deducted'"
+      "condition": "reviewform.receipt_status == 'received'"
     },
     {
       "id": "e3",

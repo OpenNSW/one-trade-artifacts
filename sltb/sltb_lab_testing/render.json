@@ -3,10 +3,16 @@
   "type": "APPLICATION",
   "title": "Lab Testing & Results",
   "files": [
-    "payload.payload.test_report_file",
-    "reviewform.test_report_file"
+    "payload.payload.lab_tests[*].report_file",
+    "reviewform.lab_tests[*].report_file"
   ],
   "sections": {
+    "blendsheets": {
+      "templateId": "sltb-lab-testing--blendsheets",
+      "title": "Blend Sheets",
+      "projector": "MARKDOWN",
+      "dataKey": "submission"
+    },
     "review_form": {
       "templateId": "sltb-lab-testing--officer-form",
       "title": "Officer Review",

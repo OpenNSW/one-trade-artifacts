@@ -318,8 +318,21 @@
             "warehouse_address": {
               "type": "string",
               "title": "Warehouse Address",
-              "description": "Filled from the blend sheet XML when one is imported; otherwise enter manually.",
+              "description": "Where a Tea Inspector draws the sample if SLTB collects it from your warehouse. Filled from the blend sheet XML when one is imported; otherwise enter manually.",
               "example": "Quick Tea (Pvt) Ltd, 119, 119/1 Attampolawatte, Mabole, Wattala"
+            },
+            "suggested_pickup_date": {
+              "type": "string",
+              "format": "date",
+              "title": "Suggested Pickup Date",
+              "description": "The business day you suggest for a Tea Inspector to draw the sample at the warehouse, if SLTB collects it.",
+              "example": "2026-07-28"
+            },
+            "suggested_pickup_time": {
+              "type": "string",
+              "title": "Suggested Pickup Time Range",
+              "description": "The hours you suggest for the visit (e.g. 09:00 AM - 12:00 PM).",
+              "example": "09:00 AM - 12:00 PM"
             },
             "blend_gain_determined": {
               "type": "number",
@@ -1426,7 +1439,9 @@
                         "elements": [
                           { "type": "Control", "scope": "#/properties/remarks" },
                           { "type": "Control", "scope": "#/properties/sample_rediness_date" },
-                          { "type": "Control", "scope": "#/properties/warehouse_address" }
+                          { "type": "Control", "scope": "#/properties/warehouse_address" },
+                          { "type": "Control", "scope": "#/properties/suggested_pickup_date" },
+                          { "type": "Control", "scope": "#/properties/suggested_pickup_time" }
                         ]
                       },
                       {

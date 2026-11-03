@@ -85,16 +85,16 @@
         "confirm_agency_token?": "replyToken"
       },
       "output_mapping": {
-        "deduction_status": "payment_status",
+        "receipt_status": "payment_status",
         "remarks?": "payment_remarks",
         "callbackToken?": "confirm_agency_token"
       }
     },
     {
-      "id": "pinpack_result_split",
+      "id": "office_result_split",
       "type": "GATEWAY",
       "gateway_type": "EXCLUSIVE_SPLIT",
-      "name": "Finpak Fee Deducted?"
+      "name": "Payment Received at the Office?"
     },
     {
       "id": "pay_again_task",
@@ -161,10 +161,10 @@
       "condition": "payment_status == 'success'"
     },
     {
-      "id": "e_pinpack",
+      "id": "e_pay_at_office",
       "source_id": "method_split",
       "target_id": "confirm_payment_task",
-      "condition": "selected_method == 'pinpack'"
+      "condition": "selected_method == 'pay_at_office'"
     },
     {
       "id": "e_join_end",
@@ -172,21 +172,21 @@
       "target_id": "end"
     },
     {
-      "id": "e_pinpack_deducted",
+      "id": "e_office_result",
       "source_id": "confirm_payment_task",
-      "target_id": "pinpack_result_split"
+      "target_id": "office_result_split"
     },
     {
-      "id": "e_pinpack_result_split_deducted",
-      "source_id": "pinpack_result_split",
+      "id": "e_office_received",
+      "source_id": "office_result_split",
       "target_id": "method_join",
-      "condition": "payment_status == 'deducted'"
+      "condition": "payment_status == 'received'"
     },
     {
-      "id": "e_pinpack_result_split_insufficient",
-      "source_id": "pinpack_result_split",
+      "id": "e_office_not_received",
+      "source_id": "office_result_split",
       "target_id": "pay_again_task",
-      "condition": "payment_status == 'insufficient_funds'"
+      "condition": "payment_status == 'not_received'"
     },
     {
       "id": "e_govpay_result",
@@ -206,7 +206,7 @@
       "condition": "payment_status == 'fail'"
     },
     {
-      "id": "e_topped_up",
+      "id": "e_paid_at_office",
       "source_id": "pay_again_task",
       "target_id": "confirm_payment_task"
     }

@@ -46,7 +46,7 @@
       "output_mapping": {
         "payment.payment_status?": "sltb.levy_payment_outcome",
         "payment_review.payment_review_outcome?": "sltb.levy_payment_outcome",
-        "payment.deduction_status?": "sltb.levy_payment_outcome"
+        "payment.receipt_status?": "sltb.levy_payment_outcome"
       }
     },
     {
@@ -87,29 +87,13 @@
       }
     },
     {
-      "id": "sltb_4b_schedule_pickup",
-      "type": "TASK",
-      "name": "[SLTB 4B] Schedule Sample Draw at Warehouse",
-      "task_template_id": "sltb-schedule-pickup-flow",
-      "lane": "Trader/CHA & SLTB Officer",
-      "input_mapping": {},
-      "output_mapping": {
-        "schedule.visit_date": "sltb.schedule.visit_date",
-        "schedule.visit_time": "sltb.schedule.visit_time",
-        "schedule.inspector_name?": "sltb.schedule.inspector_name",
-        "schedule.contact_number?": "sltb.schedule.contact_number"
-      }
-    },
-    {
       "id": "sltb_4c_record_sample_draw",
       "type": "TASK",
-      "name": "[SLTB 4C] Officer Records Sample Draw",
+      "name": "[SLTB 4B] Sample Draw at the Warehouse",
       "task_template_id": "sltb-record-sample-draw-flow",
       "lane": "SLTB Officer",
       "input_mapping": {
-        "sltb.schedule.visit_date": "schedule.visit_date",
-        "sltb.schedule.visit_time": "schedule.visit_time",
-        "sltb.schedule.inspector_name?": "schedule.inspector_name"
+        "sltb.userform.blendsheet_data": "blendsheet_data"
       },
       "output_mapping": {
         "sample_number": "sltb.sample_number"
@@ -149,20 +133,20 @@
       "task_template_id": "sltb-lab-testing-flow",
       "lane": "SLTB Officer",
       "input_mapping": {
-        "sltb.sample_number": "sample_number"
+        "sltb.sample_number": "sample_number",
+        "sltb.userform.blendsheet_data": "blendsheet_data"
       },
       "output_mapping": {
         "result.lab_tests": "sltb.lab_tests",
         "result.test_result": "sltb.lab_test_result",
-        "result.lab_fee_amount?": "sltb.lab_fee_amount",
-        "result.test_report_file": "sltb.lab_test_report_file"
+        "result.lab_fee_amount?": "sltb.lab_fee_amount"
       }
     },
     {
       "id": "sltb_6_lab_result_gateway",
       "type": "GATEWAY",
       "gateway_type": "EXCLUSIVE_SPLIT",
-      "name": "Lab Test Passed?"
+      "name": "Every Lab Sample Passed?"
     },
     {
       "id": "sltb_7_pay_lab_fee",
@@ -178,6 +162,12 @@
       }
     },
     {
+      "id": "sltb_7_lab_fee_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Any Lab Sample Passed?"
+    },
+    {
       "id": "sltb_approval_join",
       "type": "GATEWAY",
       "gateway_type": "EXCLUSIVE_JOIN",
@@ -191,11 +181,15 @@
       "lane": "SLTB Officer",
       "input_mapping": {
         "sltb.sample_number?": "sample_number",
-        "sltb.userform": "userform"
+        "sltb.userform": "userform",
+        "sltb.lab_tests?": "lab_tests",
+        "sltb.lab_test_result?": "lab_test_result"
       },
       "output_mapping": {
         "decision.final_decision_outcome": "sltb.final_decision_outcome",
-        "decision.remarks?": "sltb.final_decision_remarks"
+        "decision.remarks?": "sltb.final_decision_remarks",
+        "userform": "sltb.userform",
+        "userform.cusdec_draft": "sltb.cusdec"
       }
     },
     {
@@ -434,7 +428,7 @@
       "end": {
         "outcome": "rejected",
         "title": "Application Rejected",
-        "description": "The tea sample failed lab testing, and the application was rejected. This application is closed."
+        "description": "Every tea sample failed lab testing, and the application was rejected. This application is closed."
       }
     },
     {
@@ -498,11 +492,10 @@
     {
       "id": "e_split_pickup",
       "source_id": "sltb_4_collection_split",
-      "target_id": "sltb_4b_schedule_pickup",
+      "target_id": "sltb_4c_record_sample_draw",
       "condition": "sltb.collection_method == 'pickup'"
     },
     { "id": "e_dropoff_join", "source_id": "sltb_4a_dropoff", "target_id": "sltb_4_collection_join" },
-    { "id": "e_4b_4c", "source_id": "sltb_4b_schedule_pickup", "target_id": "sltb_4c_record_sample_draw" },
     { "id": "e_4c_join", "source_id": "sltb_4c_record_sample_draw", "target_id": "sltb_4_collection_join" },
     { "id": "e_join_tasting_result", "source_id": "sltb_4_collection_join", "target_id": "sltb_5_tasting_result" },
     { "id": "e_tasting_result_gw", "source_id": "sltb_5_tasting_result", "target_id": "sltb_5_tasting_result_gateway" },
@@ -535,9 +528,21 @@
       "id": "e_lab_fail",
       "source_id": "sltb_6_lab_result_gateway",
       "target_id": "sltb_7_pay_lab_fee",
+      "condition": "sltb.lab_test_result in ['partial', 'fail']"
+    },
+    { "id": "e_lab_fee_gw", "source_id": "sltb_7_pay_lab_fee", "target_id": "sltb_7_lab_fee_gateway" },
+    {
+      "id": "e_lab_fee_partial",
+      "source_id": "sltb_7_lab_fee_gateway",
+      "target_id": "sltb_approval_join",
+      "condition": "sltb.lab_test_result == 'partial'"
+    },
+    {
+      "id": "e_lab_fee_rejected",
+      "source_id": "sltb_7_lab_fee_gateway",
+      "target_id": "end_lab_rejected",
       "condition": "sltb.lab_test_result == 'fail'"
     },
-    { "id": "e_lab_fee_rejected", "source_id": "sltb_7_pay_lab_fee", "target_id": "end_lab_rejected" },
     { "id": "e_join_final", "source_id": "sltb_approval_join", "target_id": "sltb_8_final_decision" },
     { "id": "e_final_gw", "source_id": "sltb_8_final_decision", "target_id": "sltb_8_final_gateway" },
     {

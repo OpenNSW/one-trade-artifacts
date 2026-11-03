@@ -139,6 +139,30 @@
       "path": "sltb_final_decision/userinput_jsonform.json"
     },
     {
+      "id": "sltb-final-decision--request-info",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb_final_decision/request_info.json"
+    },
+    {
+      "id": "sltb-final-decision--previous-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_final_decision/previous_review_markdown.json"
+    },
+    {
+      "id": "sltb-final-decision--awaiting-resubmission",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_final_decision/awaiting_resubmission_markdown.json"
+    },
+    {
+      "id": "sltb-final-decision--lab-results",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_final_decision/lab_results_markdown.json"
+    },
+    {
       "id": "sltb_levy_payment_review_receipt",
       "kind": "task_config",
       "version": "",
@@ -217,160 +241,82 @@
       "path": "sltb_levy_payment_review_receipt/userinput_jsonform.json"
     },
     {
-      "id": "sltb_levy_payment_confirm_pinpack",
+      "id": "sltb_levy_payment_confirm_office",
       "kind": "task_config",
       "version": "",
-      "path": "sltb_levy_payment_confirm_pinpack/sltb_levy_payment_confirm_pinpack.taskconfig.json"
+      "path": "sltb_levy_payment_confirm_office/sltb_levy_payment_confirm_office.taskconfig.json"
     },
     {
-      "id": "sltb_levy_payment_confirm_pinpack",
+      "id": "sltb_levy_payment_confirm_office",
       "kind": "workflow",
       "version": "",
-      "path": "sltb_levy_payment_confirm_pinpack/workflow.json"
+      "path": "sltb_levy_payment_confirm_office/workflow.json"
     },
     {
-      "id": "sltb-levy-payment-confirm-pinpack--review",
+      "id": "sltb-levy-payment-confirm-office--review",
       "kind": "task_template",
       "version": "",
-      "path": "sltb_levy_payment_confirm_pinpack/task_template.json"
+      "path": "sltb_levy_payment_confirm_office/task_template.json"
     },
     {
-      "id": "sltb-levy-payment-confirm-pinpack--review-workflow",
+      "id": "sltb-levy-payment-confirm-office--review-workflow",
       "kind": "workflow",
       "version": "",
-      "path": "sltb_levy_payment_confirm_pinpack/review_workflow.json"
+      "path": "sltb_levy_payment_confirm_office/review_workflow.json"
     },
     {
-      "id": "sltb-levy-payment-confirm-pinpack--review:render",
+      "id": "sltb-levy-payment-confirm-office--review:render",
       "kind": "generic_template",
       "version": "",
-      "path": "sltb_levy_payment_confirm_pinpack/render.json"
+      "path": "sltb_levy_payment_confirm_office/render.json"
     },
     {
-      "id": "sltb-levy-payment-confirm-pinpack--notify-decision",
+      "id": "sltb-levy-payment-confirm-office--notify-decision",
       "kind": "subtask_template",
       "version": "",
-      "path": "sltb_levy_payment_confirm_pinpack/notify_decision.json"
+      "path": "sltb_levy_payment_confirm_office/notify_decision.json"
     },
     {
-      "id": "sltb-levy-payment-confirm-pinpack--officer-review",
+      "id": "sltb-levy-payment-confirm-office--officer-review",
       "kind": "subtask_template",
       "version": "",
-      "path": "sltb_levy_payment_confirm_pinpack/officer_review.json"
+      "path": "sltb_levy_payment_confirm_office/officer_review.json"
     },
     {
-      "id": "sltb-pay-levy--confirm-pinpack-form",
+      "id": "sltb-pay-levy--confirm-office-form",
       "kind": "generic_template",
       "version": "",
-      "path": "sltb_levy_payment_confirm_pinpack/officer_review_jsonform.json"
+      "path": "sltb_levy_payment_confirm_office/officer_review_jsonform.json"
     },
     {
-      "id": "sltb-levy-payment-confirm-pinpack--submission-view",
+      "id": "sltb-levy-payment-confirm-office--submission-view",
       "kind": "generic_template",
       "version": "",
-      "path": "sltb_levy_payment_confirm_pinpack/submission_view_markdown.json"
+      "path": "sltb_levy_payment_confirm_office/submission_view_markdown.json"
     },
     {
-      "id": "sltb-levy-payment-confirm-pinpack--submitted-info",
+      "id": "sltb-levy-payment-confirm-office--submitted-info",
       "kind": "generic_template",
       "version": "",
-      "path": "sltb_levy_payment_confirm_pinpack/submitted_info_markdown.json"
+      "path": "sltb_levy_payment_confirm_office/submitted_info_markdown.json"
     },
     {
-      "id": "sltb-levy-payment-confirm-pinpack--awaiting-resubmission",
+      "id": "sltb-levy-payment-confirm-office--awaiting-resubmission",
       "kind": "generic_template",
       "version": "",
-      "path": "sltb_levy_payment_confirm_pinpack/awaiting_resubmission_markdown.json"
+      "path": "sltb_levy_payment_confirm_office/awaiting_resubmission_markdown.json"
     },
     {
-      "id": "sltb-levy-payment-confirm-pinpack--previous-review",
+      "id": "sltb-levy-payment-confirm-office--previous-review",
       "kind": "generic_template",
       "version": "",
-      "path": "sltb_levy_payment_confirm_pinpack/previous_review_markdown.json"
+      "path": "sltb_levy_payment_confirm_office/previous_review_markdown.json"
     },
     {
-      "id": "sltb-levy-payment-confirm-pinpack--request-info",
+      "id": "sltb-levy-payment-confirm-office--request-info",
       "kind": "subtask_template",
       "version": "",
-      "path": "sltb_levy_payment_confirm_pinpack/request_info.json"
-    },
-    {
-      "id": "sltb_sample_schedule",
-      "kind": "task_config",
-      "version": "",
-      "path": "sltb_sample_schedule/sltb_sample_schedule.taskconfig.json"
-    },
-    {
-      "id": "sltb_sample_schedule",
-      "kind": "workflow",
-      "version": "",
-      "path": "sltb_sample_schedule/workflow.json"
-    },
-    {
-      "id": "sltb-sample-schedule--review",
-      "kind": "task_template",
-      "version": "",
-      "path": "sltb_sample_schedule/task_template.json"
-    },
-    {
-      "id": "sltb-sample-schedule--review-workflow",
-      "kind": "workflow",
-      "version": "",
-      "path": "sltb_sample_schedule/review_workflow.json"
-    },
-    {
-      "id": "sltb-sample-schedule--review:render",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb_sample_schedule/render.json"
-    },
-    {
-      "id": "sltb-sample-schedule--notify-decision",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "sltb_sample_schedule/notify_decision.json"
-    },
-    {
-      "id": "sltb-sample-schedule--officer-review",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "sltb_sample_schedule/officer_review.json"
-    },
-    {
-      "id": "sltb-sample-schedule--request-info",
-      "kind": "subtask_template",
-      "version": "",
-      "path": "sltb_sample_schedule/request_info.json"
-    },
-    {
-      "id": "sltb-sample-schedule--previous-review",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb_sample_schedule/previous_review_markdown.json"
-    },
-    {
-      "id": "sltb-sample-schedule--awaiting-resubmission",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb_sample_schedule/awaiting_resubmission_markdown.json"
-    },
-    {
-      "id": "sltb-sample-schedule--accepted",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb_sample_schedule/accepted_markdown.json"
-    },
-    {
-      "id": "sltb-schedule-pickup--officer-review-form",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb_sample_schedule/officer_review_jsonform.json"
-    },
-    {
-      "id": "sltb-sample-schedule--submission-view",
-      "kind": "generic_template",
-      "version": "",
-      "path": "sltb_sample_schedule/submission_view_markdown.json"
+      "path": "sltb_levy_payment_confirm_office/request_info.json"
     },
     {
       "id": "sltb_sample_ack_dropoff",
@@ -491,6 +437,12 @@
       "kind": "generic_template",
       "version": "",
       "path": "sltb_sample_draw/submission_view_markdown.json"
+    },
+    {
+      "id": "sltb-sample-draw--pickup-details",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_sample_draw/pickup_details_markdown.json"
     },
     {
       "id": "sltb_lab_decision",
@@ -653,6 +605,12 @@
       "kind": "generic_template",
       "version": "",
       "path": "sltb_lab_testing/submission_view_markdown.json"
+    },
+    {
+      "id": "sltb-lab-testing--blendsheets",
+      "kind": "generic_template",
+      "version": "",
+      "path": "sltb_lab_testing/blendsheets_markdown.json"
     },
     {
       "id": "sltb_payment_review_receipt",

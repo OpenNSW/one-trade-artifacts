@@ -1,4 +1,4 @@
 {
   "id": "sltb-payment-confirm--awaiting-resubmission",
-  "template": "Marked as insufficient funds. Waiting for the applicant to top up their Finpak account and notify you again.{{if .remarks}}\n\n> **Your remarks**: {{.remarks}}{{end}}"
+  "template": "Marked as not received. Waiting for the applicant to pay the Lab Test Fee at the SLTB office and notify you again.{{if .remarks}}\n\n> **Your remarks**: {{.remarks}}{{end}}"
 }
