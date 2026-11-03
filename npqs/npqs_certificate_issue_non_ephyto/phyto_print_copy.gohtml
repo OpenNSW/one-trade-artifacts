@@ -16,6 +16,8 @@
     .issue_date              the date of issue the officer enters (YYYY-MM-DD)
     .registration_number     the Reg. No. the officer enters, if any
     .additional_information  box 17's text the officer enters, if any
+    .total_net_weight, .total_gross_weight, .total_weight_unit
+                             the consignment's totals the officer enters (box 09)
     .treatment_items         the treatment request as approved, one row per treated
                              item; empty when nothing was treated
 
@@ -139,7 +141,8 @@
 {{- /* Reg. No. */}}
 <div class="f" style="left:120.7mm; top:97.2mm; width:74mm; height:8.6mm; line-height:4.3mm;">{{ with .registration_number }}{{ . }}{{ else }}NIL{{ end }}</div>
 
-{{- /* 08. Description of packages, distinguishing marks and name of produce, and 09. Quantity declared, one row per certificate item */}}
+{{- /* 08. Description of packages, distinguishing marks and name of produce, one row per certificate item, and
+     09. Quantity declared: the consignment's total net and gross weight the officer enters, beside the item */}}
 <div class="f" style="left:24.7mm; top:115mm; width:171.5mm; height:63mm;">
 <table class="goods">
 {{- if $multi }}
@@ -161,14 +164,8 @@
       <div>REFER THE ATTACHED SHEET</div>
     </td>
     <td class="qty">
-      {{- range $c := $app.commodities }}
-      {{- $included := true }}
-{{- range $.items }}{{ if and (eq (print .id) (print $c.id)) (eq (print .include_in_certificate) "false") }}{{ $included = false }}{{ end }}{{ end }}
-      {{- if $included }}
-      {{- if not (zero $c.quantity_net_weight) }}<div>Net {{ $c.quantity_net_weight }} {{ $c.quantity_net_weight_unit.label }}</div>{{ end }}
-      {{- if not (zero $c.quantity_gross_weight) }}<div>Gross {{ $c.quantity_gross_weight }} {{ $c.quantity_gross_weight_unit.label }}</div>{{ end }}
-      {{- end }}
-      {{- end -}}
+      {{- if not (zero $.total_net_weight) }}<div>Net {{ $.total_net_weight }}{{ with $.total_weight_unit }} {{ .label }}{{ end }}</div>{{ end }}
+      {{- if not (zero $.total_gross_weight) }}<div>Gross {{ $.total_gross_weight }}{{ with $.total_weight_unit }} {{ .label }}{{ end }}</div>{{ end }}
     </td>
   </tr>
 {{- else }}
@@ -192,8 +189,8 @@
       <div>( {{ $c.commodity_botanical_name }} )</div>
     </td>
     <td class="qty">
-      {{- if not (zero $c.quantity_net_weight) }}<div>Net {{ $c.quantity_net_weight }} {{ $c.quantity_net_weight_unit.label }}</div>{{ end }}
-      {{- if not (zero $c.quantity_gross_weight) }}<div>Gross {{ $c.quantity_gross_weight }} {{ $c.quantity_gross_weight_unit.label }}</div>{{ end -}}
+      {{- if not (zero $.total_net_weight) }}<div>Net {{ $.total_net_weight }}{{ with $.total_weight_unit }} {{ .label }}{{ end }}</div>{{ end }}
+      {{- if not (zero $.total_gross_weight) }}<div>Gross {{ $.total_gross_weight }}{{ with $.total_weight_unit }} {{ .label }}{{ end }}</div>{{ end }}
     </td>
   </tr>
 {{- end }}

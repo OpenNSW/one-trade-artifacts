@@ -21,6 +21,9 @@
         "issue_date?": "reviewform.issue_date",
         "registration_number?": "reviewform.registration_number",
         "additional_information?": "reviewform.additional_information",
+        "total_net_weight?": "reviewform.total_net_weight",
+        "total_gross_weight?": "reviewform.total_gross_weight",
+        "total_weight_unit?": "reviewform.total_weight_unit",
         "comments?": "reviewform.comments",
         "certificate_items?": "reviewform.certificate_items"
       }
@@ -35,7 +38,10 @@
         "reviewform.treatment_items?": "treatment_items",
         "reviewform.issue_date?": "issue_date",
         "reviewform.registration_number?": "registration_number",
-        "reviewform.additional_information?": "additional_information"
+        "reviewform.additional_information?": "additional_information",
+        "reviewform.total_net_weight?": "total_net_weight",
+        "reviewform.total_gross_weight?": "total_gross_weight",
+        "reviewform.total_weight_unit?": "total_weight_unit"
       },
       "output_mapping": {
         "print_copy.key": "reviewform.print_copy_key"

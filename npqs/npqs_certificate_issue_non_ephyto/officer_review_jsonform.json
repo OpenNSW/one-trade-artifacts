@@ -207,6 +207,168 @@
           }
         }
       },
+      "total_net_weight": {
+        "type": "number",
+        "title": "Total Net Weight",
+        "description": "The consignment's total net weight, printed in box 09.",
+        "exclusiveMinimum": 0
+      },
+      "total_gross_weight": {
+        "type": "number",
+        "title": "Total Gross Weight",
+        "description": "The consignment's total gross weight, printed in box 09.",
+        "exclusiveMinimum": 0
+      },
+      "total_weight_unit": {
+        "type": "object",
+        "title": "Weight Unit",
+        "description": "The unit of both totals.",
+        "properties": {
+          "value": {
+            "type": "string",
+            "oneOf": [
+              {
+                "const": "DG",
+                "title": "decigram (dg)"
+              },
+              {
+                "const": "KGM",
+                "title": "kilogram (kg)"
+              },
+              {
+                "const": "GRM",
+                "title": "gram (g)"
+              },
+              {
+                "const": "TNE",
+                "title": "ton (t)"
+              },
+              {
+                "const": "MGM",
+                "title": "milligram (mg)"
+              },
+              {
+                "const": "KTN",
+                "title": "kilotonne (kt)"
+              },
+              {
+                "const": "LBR",
+                "title": "pound (lb)"
+              },
+              {
+                "const": "CWA",
+                "title": "hundred pound (cwt)"
+              },
+              {
+                "const": "MTQ",
+                "title": "cubic metre (m³)"
+              },
+              {
+                "const": "LTR",
+                "title": "litre (l)"
+              },
+              {
+                "const": "MAL",
+                "title": "megalitre (Ml)"
+              },
+              {
+                "const": "CMQ",
+                "title": "cubic centimetre (cm³)"
+              },
+              {
+                "const": "MLT",
+                "title": "millilitre (ml)"
+              },
+              {
+                "const": "K6",
+                "title": "kilolitre (kl)"
+              },
+              {
+                "const": "FTQ",
+                "title": "cubic foot (ft³)"
+              },
+              {
+                "const": "GLI",
+                "title": "gallon (gal)"
+              },
+              {
+                "const": "G24",
+                "title": "tablespoon (tablespoon)"
+              },
+              {
+                "const": "BLL",
+                "title": "barrel (barrel)"
+              },
+              {
+                "const": "HUR",
+                "title": "hour (h)"
+              },
+              {
+                "const": "DAY",
+                "title": "day (d)"
+              },
+              {
+                "const": "SEC",
+                "title": "Second (s)"
+              },
+              {
+                "const": "MIN",
+                "title": "minute (min)"
+              },
+              {
+                "const": "MON",
+                "title": "month (mo)"
+              },
+              {
+                "const": "WEE",
+                "title": "week (wk)"
+              },
+              {
+                "const": "g/cm²",
+                "title": "gram per square centimetre (g/cm²)"
+              },
+              {
+                "const": "g/cm³",
+                "title": "gram per cubic centimetre (g/cm³)"
+              },
+              {
+                "const": "GL",
+                "title": "gram per litre (g/l)"
+              },
+              {
+                "const": "GJ",
+                "title": "gram per millilitre (g/ml)"
+              },
+              {
+                "const": "GM",
+                "title": "gram per square metre (g/m²)"
+              },
+              {
+                "const": "g/m³",
+                "title": "gram per cubic metre (g/m³)"
+              },
+              {
+                "const": "KMQ",
+                "title": "kilogram per cubic metre (kg/m³)"
+              },
+              {
+                "const": "CEL",
+                "title": "degree Celsius (°C)"
+              },
+              {
+                "const": "FAH",
+                "title": "degree Fahrenheit (°F)"
+              }
+            ]
+          },
+          "label": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "value"
+        ]
+      },
       "certificate_type": {
         "type": "string",
         "title": "Application Certificate Type",
@@ -309,6 +471,9 @@
     },
     "required": [
       "certificate_items",
+      "total_net_weight",
+      "total_gross_weight",
+      "total_weight_unit",
       "issue_date"
     ]
   },
@@ -370,6 +535,23 @@
           "addable": false,
           "removable": false
         }
+      },
+      {
+        "type": "HorizontalLayout",
+        "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/total_net_weight"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/total_gross_weight"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/total_weight_unit"
+          }
+        ]
       },
       {
         "type": "Control",
