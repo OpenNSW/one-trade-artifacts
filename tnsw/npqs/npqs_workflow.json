@@ -828,7 +828,8 @@
         "npqs.userform": "userform",
         "npqs.date_of_inspection?": "userform.date_of_inspection",
         "npqs.certificate_items?": "certificate_items",
-        "npqs.certificate_issue_date?": "issue_date"
+        "npqs.certificate_issue_date?": "issue_date",
+        "npqs.replaced_certificate?": "replaced_certificate"
       },
       "output_mapping": {
         "withdrawal": "npqs.certificate_withdrawal",
@@ -884,7 +885,8 @@
       "output_mapping": {
         "new_certificate_id": "npqs.certificate_new_id",
         "new_certificate_issue_date": "npqs.certificate_new_issue_date",
-        "certificate_items?": "npqs.certificate_items"
+        "certificate_items?": "npqs.certificate_items",
+        "replaced_certificate": "npqs.replaced_certificate"
       }
     },
     {

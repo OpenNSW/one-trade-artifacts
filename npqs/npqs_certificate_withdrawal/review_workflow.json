@@ -33,6 +33,7 @@
         "submission.certificate_id": "certificate_number",
         "submission.certificate_items?": "items",
         "submission.issue_date?": "issue_date",
+        "submission.replaced_certificate?": "replaced_certificate",
         "reviewform.decision": "withdrawal"
       },
       "output_mapping": {
