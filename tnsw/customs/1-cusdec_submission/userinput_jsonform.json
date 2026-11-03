@@ -289,6 +289,14 @@
                 {
                   "to": "tarification.hsCode",
                   "inputs": {
+                    "hs_code": "Tarification.HScode.Commodity_code"
+                  },
+                  "formula": "CONCATENATE(hs_code,\"00\")",
+                  "as": "string"
+                },
+                {
+                  "to": "tarification.hsCode",
+                  "inputs": {
                     "hs_code": "Tarification.HScode.Commodity_code",
                     "hs_precision": "Tarification.HScode.Precision_1"
                   },
