@@ -4,6 +4,6 @@
   "workflow": "npqs_payment_review_receipt",
   "meta": {
     "title": "NPQS Treatment Fee Receipt Verification",
-    "description": "Officer verifies the payment receipt the trader uploaded for the Treatment Fee (LKR 4500.00)."
+    "description": "Officer verifies the payment receipt the trader uploaded for the Treatment Fee (LKR 1000.00)."
   }
 }
