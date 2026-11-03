@@ -14,6 +14,33 @@
           "COMPLETED"
         ]
       }
+    },
+    "cancel": {
+      "templateId": "customs-wait-cdn-ack--cancel-form",
+      "title": "Cancel CDN",
+      "projector": "FORM",
+      "dataKey": "cancel",
+      "visibleWhen": {
+        "states": [
+          "QUEUED_EXTERNALLY"
+        ]
+      },
+      "handles": [
+        {
+          "command": "cancel",
+          "label": "Cancel CDN",
+          "element": "secondary_action"
+        }
+      ]
+    }
+  },
+  "states": {
+    "QUEUED_EXTERNALLY": {
+      "actions": [
+        {
+          "command": "cancel"
+        }
+      ]
     }
   }
 }

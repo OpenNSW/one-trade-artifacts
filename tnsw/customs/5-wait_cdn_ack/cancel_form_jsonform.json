@@ -1,0 +1,27 @@
+{
+  "id": "customs-wait-cdn-ack--cancel-form",
+  "title": "Cancel This CDN",
+  "description": "Ends this container's dispatch in the Single Window. The CDN stays registered in ASYCUDA World until Customs cancels it there.",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "cancel_cdn": {
+        "type": "boolean",
+        "title": "Cancel this CDN",
+        "const": true
+      }
+    },
+    "required": [
+      "cancel_cdn"
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/cancel_cdn"
+      }
+    ]
+  }
+}

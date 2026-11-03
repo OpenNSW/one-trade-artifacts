@@ -10,7 +10,7 @@
       "id": "authz",
       "phase": "PRE_RESUME",
       "properties": {
-        "QUEUED_EXTERNALLY": { "submit": ["system"] }
+        "QUEUED_EXTERNALLY": { "submit": ["system"], "cancel": ["trader", "cha"] }
       }
     }
   ]

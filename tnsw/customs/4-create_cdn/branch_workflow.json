@@ -23,13 +23,20 @@
       }
     },
     {
+      "id": "cancelled_check",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Cancelled from the CDN Form?"
+    },
+    {
       "id": "wait_ack",
       "type": "TASK",
       "name": "Wait on CDN Acknowledgment",
       "task_template_id": "customs-wait-cdn-ack-flow",
       "lane": "Trader/CHA",
       "input_mapping": {
-        "userform": "userform"
+        "userform": "userform",
+        "cig_cdn.edge_id?": "edge_id"
       },
       "output_mapping": {
         "ack_status?": "ack_status"
@@ -49,7 +56,19 @@
     {
       "id": "e2",
       "source_id": "create_cdn",
-      "target_id": "wait_ack"
+      "target_id": "cancelled_check"
+    },
+    {
+      "id": "e_cancelled",
+      "source_id": "cancelled_check",
+      "target_id": "end",
+      "condition": "userform.cancel_cdn == true"
+    },
+    {
+      "id": "e_to_wait_ack",
+      "source_id": "cancelled_check",
+      "target_id": "wait_ack",
+      "condition": "userform.cancel_cdn != true"
     },
     {
       "id": "e3",
