@@ -1,0 +1,6 @@
+{
+  "id": "customs-wait-cdn-ack--cancel",
+  "task_type": "CUSTOMS_CDN_CANCEL",
+  "output_namespace": "cdn_cancel",
+  "plugin_properties": {}
+}

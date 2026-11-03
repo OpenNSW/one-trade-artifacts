@@ -20,7 +20,7 @@
             "containerNo": {
               "type": "string",
               "title": "Container No",
-              "description": "A container on the parent service order.",
+              "description": "A container on this consignment, by the placeholder number SLPA keys the order by, with the real container it was consolidated to once there is one.",
               "minLength": 1
             },
             "serviceId": {

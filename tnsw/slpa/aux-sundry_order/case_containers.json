@@ -1,0 +1,12 @@
+{
+  "id": "slpa-sundry--case-containers",
+  "task_type": "SLPA_CASE_CONTAINERS",
+  "output_namespace": "containers",
+  "plugin_properties": {
+    "registration_template_id": "slpa-ecdn-submission-flow",
+    "pairing_template_ids": [
+      "slpa-consolidation-flow",
+      "slpa-gate-pass-flow"
+    ]
+  }
+}

@@ -37,7 +37,9 @@
       "input_mapping": {
         "gp?": "gp",
         "cap_id": "cap_id",
-        "client_key?": "client_key"
+        "client_key?": "client_key",
+        "so_container_no": "so_container_no",
+        "container_no": "container_no"
       },
       "output_mapping": {
         "consolidation.deleted": "consolidation.deleted",

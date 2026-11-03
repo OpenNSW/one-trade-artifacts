@@ -3103,6 +3103,18 @@
       "path": "customs/5-wait_cdn_ack/wait_ack.json"
     },
     {
+      "id": "customs-wait-cdn-ack--cancel",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "customs/5-wait_cdn_ack/cancel.json"
+    },
+    {
+      "id": "customs-wait-cdn-ack--cancel-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "customs/5-wait_cdn_ack/cancel_form_jsonform.json"
+    },
+    {
       "id": "customs-wait-cdn-ack--instructions",
       "kind": "generic_template",
       "version": "",
@@ -4259,6 +4271,12 @@
       "kind": "generic_template",
       "version": "",
       "path": "slpa/aux-sundry_order/submitted_message_jsonform.json"
+    },
+    {
+      "id": "slpa-sundry--case-containers",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "slpa/aux-sundry_order/case_containers.json"
     },
     {
       "id": "slpa-sundry--fetch-services",

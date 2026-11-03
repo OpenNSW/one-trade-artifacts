@@ -4,6 +4,11 @@
   "schema": {
     "type": "object",
     "properties": {
+      "cancel_cdn": {
+        "type": "boolean",
+        "title": "Cancel this CDN",
+        "description": "Tick to cancel this container's Cargo Dispatch Note instead of sending it to Sri Lanka Customs. Submitting then ends this container's dispatch, and nothing is sent; the sections below need not be filled in."
+      },
       "officeCode": {
         "type": "string",
         "title": "Customs Office Code",
@@ -58,13 +63,7 @@
             },
             "example": "LK"
           }
-        },
-        "required": [
-          "id",
-          "name",
-          "address",
-          "countryCode"
-        ]
+        }
       },
       "consignee": {
         "type": "object",
@@ -100,13 +99,7 @@
             },
             "example": "MY"
           }
-        },
-        "required": [
-          "id",
-          "name",
-          "address",
-          "countryCode"
-        ]
+        }
       },
       "transport": {
         "type": "object",
@@ -203,20 +196,7 @@
             },
             "example": "CFS1"
           }
-        },
-        "required": [
-          "voyageNumber",
-          "voyageDate",
-          "vessel",
-          "vesselOpCode",
-          "contOpCode",
-          "placeOfDischarge",
-          "placeOfLoading",
-          "lorryRegNo",
-          "trailerRegNo",
-          "driverName",
-          "locationOfGoods"
-        ]
+        }
       },
       "goods": {
         "type": "object",
@@ -267,13 +247,7 @@
             "title": "24. Reefer Temperature Required (°C)",
             "example": 4
           }
-        },
-        "required": [
-          "description",
-          "packageNumber",
-          "packageType",
-          "grossWeight"
-        ]
+        }
       },
       "container": {
         "type": "object",
@@ -310,24 +284,79 @@
             "example": "MSCU-849201-9"
           }
         },
-        "required": [
-          "number",
-          "type",
-          "sealNo",
-          "mark"
-        ],
         "description": "The single container this dispatch note covers. Annex B carries one container per CDN."
       }
     },
-    "required": [
-      "officeCode",
-      "cusdecRef",
-      "shipper",
-      "consignee",
-      "transport",
-      "goods",
-      "container"
-    ]
+    "if": {
+      "properties": {
+        "cancel_cdn": {
+          "const": true
+        }
+      },
+      "required": [
+        "cancel_cdn"
+      ]
+    },
+    "else": {
+      "required": [
+        "officeCode",
+        "cusdecRef",
+        "shipper",
+        "consignee",
+        "transport",
+        "goods",
+        "container"
+      ],
+      "properties": {
+        "shipper": {
+          "required": [
+            "id",
+            "name",
+            "address",
+            "countryCode"
+          ]
+        },
+        "consignee": {
+          "required": [
+            "id",
+            "name",
+            "address",
+            "countryCode"
+          ]
+        },
+        "transport": {
+          "required": [
+            "voyageNumber",
+            "voyageDate",
+            "vessel",
+            "vesselOpCode",
+            "contOpCode",
+            "placeOfDischarge",
+            "placeOfLoading",
+            "lorryRegNo",
+            "trailerRegNo",
+            "driverName",
+            "locationOfGoods"
+          ]
+        },
+        "goods": {
+          "required": [
+            "description",
+            "packageNumber",
+            "packageType",
+            "grossWeight"
+          ]
+        },
+        "container": {
+          "required": [
+            "number",
+            "type",
+            "sealNo",
+            "mark"
+          ]
+        }
+      }
+    }
   },
   "uiSchema": {
     "type": "Categorization",
@@ -339,6 +368,10 @@
         "type": "Category",
         "label": "Declaration and Container",
         "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/cancel_cdn"
+          },
           {
             "type": "Control",
             "scope": "#/properties/cusdecRef"
