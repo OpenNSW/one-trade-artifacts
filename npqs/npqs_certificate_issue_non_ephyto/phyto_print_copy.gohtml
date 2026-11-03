@@ -52,10 +52,10 @@
      doesn't fit is dropped a whole line at a time at the box's edge, never cut through or printed over the next box. */
   .f { position: absolute; overflow: hidden; }
   .pre { white-space: pre-line; }
-  /* Box 17 (78 x 12.9mm): 4 rows at 8pt, 5 at 6.5pt or 6 at 5.5pt, the largest the text fits in. */
-  .info { left: 24.7mm; top: 274.5mm; width: 78mm; height: 12.9mm; line-height: 3.2mm; }
-  .info.smaller { font-size: 6.5pt; line-height: 2.55mm; }
-  .info.smallest { font-size: 5.5pt; line-height: 2.15mm; }
+  /* Box 17 (78 x 12.2mm, starting 2.7mm below its label): 4 rows at 8pt, 5 at 6.5pt or 6 at 5.5pt, the largest the text fits in. */
+  .info { left: 24.7mm; top: 275.5mm; width: 78mm; height: 12.2mm; line-height: 3.05mm; }
+  .info.smaller { font-size: 6.5pt; line-height: 2.44mm; }
+  .info.smallest { font-size: 5.5pt; line-height: 2.03mm; }
   /* 08 ends at the "Number of packages" column (151.9mm) and 09 starts at 167.4mm; the gap stays empty, as in Print.xls. */
   table.goods { width: 100%; border-collapse: collapse; table-layout: fixed; }
   table.goods td { padding: 0; vertical-align: top; }
@@ -215,20 +215,20 @@
 {{- end }}
 {{- end }}
 
-{{- /* 12. Treatment: the type's name as the trader picked it */}}
-<div class="f pre" style="left:24.7mm; top:235.3mm; width:78mm; height:7.6mm; line-height:3.8mm;">{{ $type := "" }}{{ with $treated }}{{ with .treatment_type }}{{ $type = .label }}{{ end }}{{ end }}{{ with $type }}{{ . }}{{ else }}NIL{{ end }}</div>
+{{- /* 12. Treatment: the type's name as the trader picked it, on one line (the longest name takes about half of it) */}}
+<div class="f pre" style="left:24.7mm; top:237.5mm; width:78mm; height:4.5mm;">{{ $type := "" }}{{ with $treated }}{{ with .treatment_type }}{{ $type = .label }}{{ end }}{{ end }}{{ with $type }}{{ . }}{{ else }}NIL{{ end }}</div>
 
 {{- /* 13. Chemical (active ingredient) */}}
-<div class="f" style="left:24.7mm; top:247.4mm; width:37mm; height:8.4mm; line-height:4.2mm;">{{ with $treated }}{{ with .chemical_used }}{{ . }}{{ else }}NIL{{ end }}{{ else }}NIL{{ end }}</div>
+<div class="f" style="left:24.7mm; top:249mm; width:37mm; height:6.8mm; line-height:3.4mm;">{{ with $treated }}{{ with .chemical_used }}{{ . }}{{ else }}NIL{{ end }}{{ else }}NIL{{ end }}</div>
 
 {{- /* 14. Duration and temperature, each on its own line */}}
-<div class="f" style="left:79.5mm; top:247.4mm; width:24.5mm; height:8.4mm; line-height:4.2mm;">
+<div class="f" style="left:79.5mm; top:249mm; width:24.5mm; height:6.8mm; line-height:3.4mm;">
   {{- with $treated }}{{ if or .treatment_duration .treatment_temperature }}{{ .treatment_duration }}
   {{- if and .treatment_duration .treatment_temperature }}<br>{{ end }}{{ .treatment_temperature }}
   {{- else }}NIL{{ end }}{{ else }}NIL{{ end }}</div>
 
 {{- /* 15. Concentration */}}
-<div class="f" style="left:24.7mm; top:260.5mm; width:37mm; height:9mm;">{{ with $treated }}{{ with .treatment_concentration }}{{ . }}{{ else }}NIL{{ end }}{{ else }}NIL{{ end }}</div>
+<div class="f" style="left:24.7mm; top:262mm; width:37mm; height:7.2mm; line-height:3.6mm;">{{ with $treated }}{{ with .treatment_concentration }}{{ . }}{{ else }}NIL{{ end }}{{ else }}NIL{{ end }}</div>
 
 {{- /* 16. Date (of treatment): nothing records it, so the box stays empty for the officer to fill by hand */}}
 
