@@ -1,0 +1,100 @@
+{
+  "id": "customs-additional-cdn",
+  "name": "Add a Cargo Dispatch Note",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "start",
+      "type": "START",
+      "name": "Start"
+    },
+    {
+      "id": "customs_aux_cdn_1_find",
+      "type": "TASK",
+      "name": "[Customs] Find the Declaration",
+      "task_template_id": "customs-additional-cdn-find-flow",
+      "lane": "Trader/CHA",
+      "output_mapping": {
+        "declaration.found": "cdn_aux.found",
+        "declaration.cusdec_ref?": "cdn_aux.cusdec_ref"
+      }
+    },
+    {
+      "id": "gw_declaration_found",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Declaration Registered?"
+    },
+    {
+      "id": "customs_aux_cdn_2_create",
+      "type": "TASK",
+      "name": "[Customs] Create CDN",
+      "task_template_id": "customs-create-cdn-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "cdn_aux.cusdec_ref": "cusdec_ref"
+      },
+      "output_mapping": {
+        "userform": "cdn_aux.userform",
+        "cig_cdn?": "cdn_aux.cig_cdn"
+      }
+    },
+    {
+      "id": "customs_aux_cdn_3_wait_ack",
+      "type": "TASK",
+      "name": "[Customs] Wait on CDN Acknowledgment",
+      "task_template_id": "customs-wait-cdn-ack-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "cdn_aux.userform": "userform"
+      },
+      "output_mapping": {
+        "ack_status?": "cdn_aux.ack_status"
+      }
+    },
+    {
+      "id": "end",
+      "type": "END",
+      "name": "Dispatch Note Raised"
+    },
+    {
+      "id": "end_no_declaration",
+      "type": "END",
+      "name": "No Registered Declaration"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_start",
+      "source_id": "start",
+      "target_id": "customs_aux_cdn_1_find"
+    },
+    {
+      "id": "e_find",
+      "source_id": "customs_aux_cdn_1_find",
+      "target_id": "gw_declaration_found"
+    },
+    {
+      "id": "e_found",
+      "source_id": "gw_declaration_found",
+      "target_id": "customs_aux_cdn_2_create",
+      "condition": "cdn_aux.found == true"
+    },
+    {
+      "id": "e_not_found",
+      "source_id": "gw_declaration_found",
+      "target_id": "end_no_declaration",
+      "condition": "cdn_aux.found != true"
+    },
+    {
+      "id": "e_create_to_ack",
+      "source_id": "customs_aux_cdn_2_create",
+      "target_id": "customs_aux_cdn_3_wait_ack"
+    },
+    {
+      "id": "e_ack_to_end",
+      "source_id": "customs_aux_cdn_3_wait_ack",
+      "target_id": "end"
+    }
+  ]
+}

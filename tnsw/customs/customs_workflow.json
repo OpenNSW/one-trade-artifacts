@@ -131,6 +131,17 @@
       "name": "Boat Note and Export Release in Parallel"
     },
     {
+      "id": "customs_4c_check_cdns",
+      "type": "TASK",
+      "name": "[Customs 4.0c] Check Every Container Has a CDN",
+      "task_template_id": "customs-check-cdns-flow",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "customs.cusdec_number?": "cusdec_ref",
+        "customs.userform.traders?": "userform.traders"
+      }
+    },
+    {
       "id": "customs_6a_prefill_boat_note",
       "type": "TASK",
       "name": "[Customs 6.0a] Prefill Boat Note",
@@ -255,6 +266,11 @@
     {
       "id": "e_fork_to_6",
       "source_id": "customs_post_cdn_fork",
+      "target_id": "customs_4c_check_cdns"
+    },
+    {
+      "id": "e_checked_cdns",
+      "source_id": "customs_4c_check_cdns",
       "target_id": "customs_6a_prefill_boat_note"
     },
     {
