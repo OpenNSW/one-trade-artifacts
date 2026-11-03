@@ -40,7 +40,8 @@
       },
       "output_mapping": {
         "npqs.treatment_certificate_urls": "npqs.treatment_certificate_urls",
-        "npqs.supervision_report_urls": "npqs.supervision_report_urls"
+        "npqs.supervision_report_urls": "npqs.supervision_report_urls",
+        "npqs.treatment_items": "npqs.treatment_items"
       }
     },
     {
