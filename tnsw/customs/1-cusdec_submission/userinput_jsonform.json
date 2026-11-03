@@ -1613,8 +1613,7 @@
               "required": [
                 "originCountryCode",
                 "description",
-                "commercialDescription",
-                "commercialDescription1"
+                "commercialDescription"
               ]
             },
             "marksAndNumbers": {
