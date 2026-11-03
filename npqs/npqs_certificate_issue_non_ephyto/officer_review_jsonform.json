@@ -284,9 +284,8 @@
       "additional_information": {
         "type": "string",
         "title": "Additional Information",
-        "description": "Printed in box 17 of the certificate: at most 300 characters on 5 lines, smaller as it gets longer; NIL when left empty. Filled with the other treated items' treatments, which you can change or remove.",
+        "description": "Printed in box 17 of the certificate, smaller as it gets longer, in at most 5 rows; text beyond that is cut off, so check the print copy. NIL when left empty. Filled with the other treated items' treatments, which you can change or remove.",
         "maxLength": 300,
-        "pattern": "^[^\\n]*(\\n[^\\n]*){0,4}$",
         "x-text": {
           "inputs": {
             "other_treatments": {
