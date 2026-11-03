@@ -4,6 +4,69 @@
   "schema": {
     "type": "object",
     "properties": {
+      "import_application_xml": {
+        "type": "object",
+        "title": "Import Application XML",
+        "description": "Upload an application XML to fill this form automatically. Also accepts a file from Download Application XML. Files to upload still need to be attached by hand. Values can be corrected afterwards.",
+        "x-xml": {
+          "accept": ".xml,text/xml,application/xml",
+          "maxSize": 5242880,
+          "arrayPaths": [
+            "CDA_KERNEL_ASYCUDA.kernel_products"
+          ],
+          "persistDocument": false,
+          "writeTo": [
+            { "from": "CDA_KERNEL_ASYCUDA.exporter_name", "to": "exporter_name", "as": "string" },
+            { "from": "CDA_KERNEL_ASYCUDA.exporter_email", "to": "exporter_email", "as": "string" },
+            { "from": "CDA_KERNEL_ASYCUDA.destination", "to": "destination", "as": "string" },
+            { "from": "CDA_KERNEL_ASYCUDA.expected_export_date", "to": "expected_export_date", "as": "date" },
+            {
+              "from": "CDA_KERNEL_ASYCUDA.kernel_products", "to": "kernel_products",
+              "writeTo": [
+                { "from": "manufacturer_name", "to": "manufacturer_name", "as": "string" },
+                { "from": "manufacturer_email", "to": "manufacturer_email", "as": "string" },
+                { "from": "product_type", "to": "product_type", "as": "string" },
+                { "from": "hs_code", "to": "hs_code", "as": "string" },
+                { "from": "quantity_weight_kg", "to": "quantity_weight_kg", "as": "number" },
+                { "from": "cda_label_start_number", "to": "cda_label_start_number", "as": "string" },
+                { "from": "cda_label_end_number", "to": "cda_label_end_number", "as": "string" },
+                { "from": "manufactured_date", "to": "manufactured_date", "as": "date" },
+                { "from": "whatsapp_number", "to": "whatsapp_number", "as": "string" }
+              ]
+            }
+          ]
+        }
+      },
+      "export_application_xml": {
+        "type": "object",
+        "title": "Download Application XML",
+        "description": "Download this application as XML, to fill it in again later through Import Application XML.",
+        "x-xml-export": {
+          "rootElement": "CDA_KERNEL_ASYCUDA",
+          "declaration": { "standalone": "no" },
+          "fileName": "cda-kernel-asycuda-{today(YYYYMMDD)}.xml",
+          "writeTo": [
+            { "from": "exporter_name", "to": "exporter_name", "as": "string" },
+            { "from": "exporter_email", "to": "exporter_email", "as": "string" },
+            { "from": "destination", "to": "destination", "as": "string" },
+            { "from": "expected_export_date", "to": "expected_export_date", "as": "date" },
+            {
+              "from": "kernel_products", "to": "kernel_products",
+              "writeTo": [
+                { "from": "manufacturer_name", "to": "manufacturer_name", "as": "string" },
+                { "from": "manufacturer_email", "to": "manufacturer_email", "as": "string" },
+                { "from": "product_type", "to": "product_type", "as": "string" },
+                { "from": "hs_code", "to": "hs_code", "as": "string" },
+                { "from": "quantity_weight_kg", "to": "quantity_weight_kg", "as": "number" },
+                { "from": "cda_label_start_number", "to": "cda_label_start_number", "as": "string" },
+                { "from": "cda_label_end_number", "to": "cda_label_end_number", "as": "string" },
+                { "from": "manufactured_date", "to": "manufactured_date", "as": "date" },
+                { "from": "whatsapp_number", "to": "whatsapp_number", "as": "string" }
+              ]
+            }
+          ]
+        }
+      },
       "exporter_name": {
         "type": "string",
         "title": "Exporter Name",
@@ -873,6 +936,14 @@
         "type": "Group",
         "label": "1. Consignment Details",
         "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/import_application_xml"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/export_application_xml"
+          },
           {
             "type": "Control",
             "scope": "#/properties/exporter_name",

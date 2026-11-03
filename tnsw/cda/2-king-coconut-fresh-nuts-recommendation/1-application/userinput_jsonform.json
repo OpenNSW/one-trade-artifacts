@@ -4,6 +4,100 @@
   "schema": {
     "type": "object",
     "properties": {
+      "import_application_xml": {
+        "type": "object",
+        "title": "Import Application XML",
+        "description": "Upload an application XML to fill this form automatically. Also accepts a file from Download Application XML. Files to upload still need to be attached by hand. Values can be corrected afterwards.",
+        "x-xml": {
+          "accept": ".xml,text/xml,application/xml",
+          "maxSize": 5242880,
+          "persistDocument": false,
+          "writeTo": [
+            { "from": "CDA_KCFN.email", "to": "email", "as": "string" },
+            { "from": "CDA_KCFN.company_name", "to": "company_name", "as": "string" },
+            { "from": "CDA_KCFN.cda_registration_no", "to": "cda_registration_no", "as": "string" },
+            { "from": "CDA_KCFN.destination_country", "to": "destination_country", "as": "string" },
+            { "from": "CDA_KCFN.destination_city", "to": "destination_city", "as": "string" },
+            { "from": "CDA_KCFN.vessel", "to": "vessel", "as": "string" },
+            { "from": "CDA_KCFN.date_of_sailing", "to": "date_of_sailing", "as": "date" },
+            { "from": "CDA_KCFN.cargo_type", "to": "cargo_type", "as": "string" },
+            { "from": "CDA_KCFN.port_of_loading", "to": "port_of_loading", "as": "string" },
+            { "from": "CDA_KCFN.port_of_discharge", "to": "port_of_discharge", "as": "string" },
+            { "from": "CDA_KCFN.commercial_invoice_no", "to": "commercial_invoice_no", "as": "string" },
+            { "from": "CDA_KCFN.commercial_invoice_date", "to": "commercial_invoice_date", "as": "date" },
+            { "from": "CDA_KCFN.filling_date", "to": "filling_date", "as": "date" },
+            { "from": "CDA_KCFN.buyer_name", "to": "buyer_name", "as": "string" },
+            { "from": "CDA_KCFN.buyer_country", "to": "buyer_country", "as": "string" },
+            { "from": "CDA_KCFN.buyer_city", "to": "buyer_city", "as": "string" },
+            { "from": "CDA_KCFN.container_type", "to": "container_type", "as": "string" },
+            { "from": "CDA_KCFN.nut_type", "to": "nut_type", "as": "string" },
+            { "from": "CDA_KCFN.with_husk", "to": "with_husk", "as": "boolean" },
+            { "from": "CDA_KCFN.container_number", "to": "container_number", "as": "string" },
+            { "from": "CDA_KCFN.inner_packing_type", "to": "inner_packing_type", "as": "string" },
+            { "from": "CDA_KCFN.serial_no_from", "to": "serial_no_from", "as": "string" },
+            { "from": "CDA_KCFN.serial_no_to", "to": "serial_no_to", "as": "string" },
+            { "from": "CDA_KCFN.quantity_nuts", "to": "quantity_nuts", "as": "number" },
+            { "from": "CDA_KCFN.total_net_weight", "to": "total_net_weight", "as": "number" },
+            { "from": "CDA_KCFN.total_fob", "to": "total_fob", "as": "string" },
+            { "from": "CDA_KCFN.total_cif", "to": "total_cif", "as": "string" },
+            { "from": "CDA_KCFN.location", "to": "location", "as": "string" },
+            { "from": "CDA_KCFN.stuffing_date", "to": "stuffing_date", "as": "date" },
+            { "from": "CDA_KCFN.contact_person_at_venue", "to": "contact_person_at_venue", "as": "string" },
+            { "from": "CDA_KCFN.tel_no", "to": "tel_no", "as": "string" },
+            { "from": "CDA_KCFN.applicant_name", "to": "applicant_name", "as": "string" },
+            { "from": "CDA_KCFN.applicant_designation", "to": "applicant_designation", "as": "string" },
+            { "from": "CDA_KCFN.application_date", "to": "application_date", "as": "date" },
+            { "from": "CDA_KCFN.applicant_email", "to": "applicant_email", "as": "string" }
+          ]
+        }
+      },
+      "export_application_xml": {
+        "type": "object",
+        "title": "Download Application XML",
+        "description": "Download this application as XML, to fill it in again later through Import Application XML.",
+        "x-xml-export": {
+          "rootElement": "CDA_KCFN",
+          "declaration": { "standalone": "no" },
+          "fileName": "cda-kcfn-{today(YYYYMMDD)}.xml",
+          "writeTo": [
+            { "from": "email", "to": "email", "as": "string" },
+            { "from": "company_name", "to": "company_name", "as": "string" },
+            { "from": "cda_registration_no", "to": "cda_registration_no", "as": "string" },
+            { "from": "destination_country", "to": "destination_country", "as": "string" },
+            { "from": "destination_city", "to": "destination_city", "as": "string" },
+            { "from": "vessel", "to": "vessel", "as": "string" },
+            { "from": "date_of_sailing", "to": "date_of_sailing", "as": "date" },
+            { "from": "cargo_type", "to": "cargo_type", "as": "string" },
+            { "from": "port_of_loading", "to": "port_of_loading", "as": "string" },
+            { "from": "port_of_discharge", "to": "port_of_discharge", "as": "string" },
+            { "from": "commercial_invoice_no", "to": "commercial_invoice_no", "as": "string" },
+            { "from": "commercial_invoice_date", "to": "commercial_invoice_date", "as": "date" },
+            { "from": "filling_date", "to": "filling_date", "as": "date" },
+            { "from": "buyer_name", "to": "buyer_name", "as": "string" },
+            { "from": "buyer_country", "to": "buyer_country", "as": "string" },
+            { "from": "buyer_city", "to": "buyer_city", "as": "string" },
+            { "from": "container_type", "to": "container_type", "as": "string" },
+            { "from": "nut_type", "to": "nut_type", "as": "string" },
+            { "from": "with_husk", "to": "with_husk", "as": "boolean" },
+            { "from": "container_number", "to": "container_number", "as": "string" },
+            { "from": "inner_packing_type", "to": "inner_packing_type", "as": "string" },
+            { "from": "serial_no_from", "to": "serial_no_from", "as": "string" },
+            { "from": "serial_no_to", "to": "serial_no_to", "as": "string" },
+            { "from": "quantity_nuts", "to": "quantity_nuts", "as": "number" },
+            { "from": "total_net_weight", "to": "total_net_weight", "as": "number" },
+            { "from": "total_fob", "to": "total_fob", "as": "string" },
+            { "from": "total_cif", "to": "total_cif", "as": "string" },
+            { "from": "location", "to": "location", "as": "string" },
+            { "from": "stuffing_date", "to": "stuffing_date", "as": "date" },
+            { "from": "contact_person_at_venue", "to": "contact_person_at_venue", "as": "string" },
+            { "from": "tel_no", "to": "tel_no", "as": "string" },
+            { "from": "applicant_name", "to": "applicant_name", "as": "string" },
+            { "from": "applicant_designation", "to": "applicant_designation", "as": "string" },
+            { "from": "application_date", "to": "application_date", "as": "date" },
+            { "from": "applicant_email", "to": "applicant_email", "as": "string" }
+          ]
+        }
+      },
       "email": {
         "type": "string",
         "title": "Email",
@@ -262,6 +356,14 @@
         "type": "Category",
         "label": "Exporter",
         "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/import_application_xml"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/export_application_xml"
+          },
           {
             "type": "Control",
             "scope": "#/properties/email"
