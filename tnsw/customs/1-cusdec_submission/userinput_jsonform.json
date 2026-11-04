@@ -411,6 +411,11 @@
           "fileName": "cusdec-{today(YYYYMMDD)}.xml",
           "writeTo": [
             {
+              "from": "packages.totalPackages",
+              "to": "Property.Nbers.Total_number_of_packages",
+              "as": "number"
+            },
+            {
               "from": "identification.officeCode",
               "to": "Identification.Office_segment.Customs_clearance_office_code",
               "as": "string"
@@ -428,6 +433,16 @@
             {
               "from": "identification.manifestRegNumber",
               "to": "Identification.Manifest_reference_number",
+              "as": "string"
+            },
+            {
+              "from": "traders.exporter.code",
+              "to": "Traders.Exporter.Exporter_code",
+              "as": "string"
+            },
+            {
+              "from": "traders.consignee.name",
+              "to": "Traders.Consignee.Consignee_name",
               "as": "string"
             },
             {
@@ -506,21 +521,6 @@
               "as": "string"
             },
             {
-              "from": "transport.warehouseCode",
-              "to": "Warehouse.Identification",
-              "as": "string"
-            },
-            {
-              "from": "transport.warehouseDelay",
-              "to": "Warehouse.Delay",
-              "as": "number"
-            },
-            {
-              "from": "financial.deferredPayment",
-              "to": "Financial.Deffered_payment_reference",
-              "as": "string"
-            },
-            {
               "from": "financial.bankCode",
               "to": "Financial.Bank.Code",
               "as": "string"
@@ -537,12 +537,27 @@
             },
             {
               "from": "valuation.totalAmountInvoiced.amount",
-              "to": "Valuation.Gs_Invoice.Amount_foreign_currency",
+              "to": "Financial.Total_invoice",
+              "as": "number"
+            },
+            {
+              "from": "financial.deferredPayment",
+              "to": "Financial.Deffered_payment_reference",
+              "as": "string"
+            },
+            {
+              "from": "transport.warehouseCode",
+              "to": "Warehouse.Identification",
+              "as": "string"
+            },
+            {
+              "from": "transport.warehouseDelay",
+              "to": "Warehouse.Delay",
               "as": "number"
             },
             {
               "from": "valuation.totalAmountInvoiced.amount",
-              "to": "Financial.Total_invoice",
+              "to": "Valuation.Gs_Invoice.Amount_foreign_currency",
               "as": "number"
             },
             {
@@ -558,6 +573,16 @@
             {
               "from": "valuation.externalFreight.currencyCode",
               "to": "Valuation.Gs_external_freight.Currency_code",
+              "as": "string"
+            },
+            {
+              "from": "valuation.internalFreight.amount",
+              "to": "Valuation.Gs_internal_freight.Amount_foreign_currency",
+              "as": "number"
+            },
+            {
+              "from": "valuation.internalFreight.currencyCode",
+              "to": "Valuation.Gs_internal_freight.Currency_code",
               "as": "string"
             },
             {
@@ -581,16 +606,6 @@
               "as": "string"
             },
             {
-              "from": "valuation.internalFreight.amount",
-              "to": "Valuation.Gs_internal_freight.Amount_foreign_currency",
-              "as": "number"
-            },
-            {
-              "from": "valuation.internalFreight.currencyCode",
-              "to": "Valuation.Gs_internal_freight.Currency_code",
-              "as": "string"
-            },
-            {
               "from": "valuation.deductions.amount",
               "to": "Valuation.Gs_deduction.Amount_foreign_currency",
               "as": "number"
@@ -598,61 +613,6 @@
             {
               "from": "valuation.deductions.currencyCode",
               "to": "Valuation.Gs_deduction.Currency_code",
-              "as": "string"
-            },
-            {
-              "from": "packages.totalPackages",
-              "to": "Property.Nbers.Total_number_of_packages",
-              "as": "number"
-            },
-            {
-              "from": "identification.declarationMode",
-              "to": "NSW.Declaration_mode",
-              "as": "string"
-            },
-            {
-              "from": "traders.exporter.code",
-              "to": "Traders.Exporter.Exporter_code",
-              "as": "string"
-            },
-            {
-              "from": "traders.exporter.name",
-              "to": "NSW.Exporter.Name",
-              "as": "string"
-            },
-            {
-              "from": "traders.exporter.address",
-              "to": "NSW.Exporter.Address",
-              "as": "string"
-            },
-            {
-              "from": "traders.exporter.countryCode",
-              "to": "NSW.Exporter.Country_code",
-              "as": "string"
-            },
-            {
-              "from": "traders.consignee.name",
-              "to": "Traders.Consignee.Consignee_name",
-              "as": "string"
-            },
-            {
-              "from": "traders.consignee.address",
-              "to": "NSW.Consignee.Address",
-              "as": "string"
-            },
-            {
-              "from": "traders.consignee.countryCode",
-              "to": "NSW.Consignee.Country_code",
-              "as": "string"
-            },
-            {
-              "from": "financial.remittanceAmount",
-              "to": "NSW.Remittance.Amount",
-              "as": "number"
-            },
-            {
-              "from": "financial.remittanceCurrencyCode",
-              "to": "NSW.Remittance.Currency_code",
               "as": "string"
             },
             {
@@ -665,13 +625,13 @@
                   "as": "number"
                 },
                 {
-                  "from": "packages.kindCode",
-                  "to": "Packages.Kind_of_packages_code",
+                  "from": "marksAndNumbers",
+                  "to": "Packages.Marks1_of_packages",
                   "as": "string"
                 },
                 {
-                  "from": "marksAndNumbers",
-                  "to": "Packages.Marks1_of_packages",
+                  "from": "packages.kindCode",
+                  "to": "Packages.Kind_of_packages_code",
                   "as": "string"
                 },
                 {
@@ -731,11 +691,6 @@
                   "as": "string"
                 },
                 {
-                  "from": "goodsDescription.commercialDescription1",
-                  "to": "NSW.Commercial_description_2",
-                  "as": "string"
-                },
-                {
                   "from": "valuation.grossWeight",
                   "to": "Valuation_item.Weight_itm.Gross_weight_itm",
                   "as": "number"
@@ -754,8 +709,53 @@
                   "from": "valuation.invoiceAmount.currencyCode",
                   "to": "Valuation_item.Item_Invoice.Currency_code",
                   "as": "string"
+                },
+                {
+                  "from": "goodsDescription.commercialDescription1",
+                  "to": "NSW.Commercial_description_2",
+                  "as": "string"
                 }
               ]
+            },
+            {
+              "from": "identification.declarationMode",
+              "to": "NSW.Declaration_mode",
+              "as": "string"
+            },
+            {
+              "from": "traders.exporter.name",
+              "to": "NSW.Exporter.Name",
+              "as": "string"
+            },
+            {
+              "from": "traders.exporter.address",
+              "to": "NSW.Exporter.Address",
+              "as": "string"
+            },
+            {
+              "from": "traders.exporter.countryCode",
+              "to": "NSW.Exporter.Country_code",
+              "as": "string"
+            },
+            {
+              "from": "traders.consignee.address",
+              "to": "NSW.Consignee.Address",
+              "as": "string"
+            },
+            {
+              "from": "traders.consignee.countryCode",
+              "to": "NSW.Consignee.Country_code",
+              "as": "string"
+            },
+            {
+              "from": "financial.remittanceAmount",
+              "to": "NSW.Remittance.Amount",
+              "as": "number"
+            },
+            {
+              "from": "financial.remittanceCurrencyCode",
+              "to": "NSW.Remittance.Currency_code",
+              "as": "string"
             },
             {
               "from": "supportingDocuments.metaDocuments",
