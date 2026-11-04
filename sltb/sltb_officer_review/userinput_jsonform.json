@@ -80,7 +80,12 @@
                       { "from": "Sale_value", "to": "Sale_value" }
                     ]
                   },
-                  { "from": "sales.derivations.average_value_per_kg.value", "to": "Sale_Sum.Sale_total.SaleTotal_average", "default": { "null": null } },
+                  {
+                    "inputs": { "sales_value": "sales.derivations.total_sales_value.value", "sales_quantity": "sales.derivations.total_sales_quantity.value" },
+                    "formula": "sales_value / sales_quantity",
+                    "to": "Sale_Sum.Sale_total.SaleTotal_average",
+                    "default": { "null": null }
+                  },
                   { "from": "sales.derivations.total_sales_quantity.value", "to": "Sale_Sum.Sale_total.SaleTotal_quantity", "default": { "null": null } },
                   { "from": "sales.derivations.total_sales_value.value", "to": "Sale_Sum.Sale_total.SaleTotal_value", "default": { "null": null } },
                   {
