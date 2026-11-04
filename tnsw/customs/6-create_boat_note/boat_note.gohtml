@@ -56,10 +56,18 @@
   .charges td.num { font-weight: bold; }
   .containers { margin: 2mm 0 0; padding: 0; list-style: none; font-weight: bold; }
   .footer { margin-top: 1.5mm; font-size: 6.5pt; display: flex; justify-content: space-between; }
+  /* Box 15 holds 4 container lines before it stretches the grid (measured with
+     the marks text listing every container, as the prefill fills it); more go on
+     a continuation sheet, with the marks text. */
+  .more { display: block; margin-top: 1mm; font-style: italic; }
+  .page.continuation { height: auto; display: block; break-before: page; }
+  .continuation .ref { width: 60mm; margin-bottom: 2mm; border: 1px solid #000; }
+  .continuation .box { border: 1px solid #000; }
   .hint { margin: 4mm auto; width: 190mm; padding: 2mm 3mm; border: 1px solid #999; background: #f4f4f4; font-size: 10pt; }
   @media screen {
     body { background: #e5e5e5; padding-bottom: 8mm; }
     .page { background: #fff; padding: 10mm; width: 210mm; height: 297mm; box-shadow: 0 0 3mm rgba(0, 0, 0, 0.25); }
+    .page.continuation { height: auto; min-height: 297mm; margin-top: 8mm; }
   }
   @media print {
     .hint { display: none; }
@@ -68,6 +76,7 @@
 </head>
 <body>
 <p class="hint">To print this Boat Note or save it as a PDF, press Ctrl+P (&#8984;P on a Mac).</p>
+{{ $more := false }}{{ with .boat_note.containers }}{{ if gt (len .) 4 }}{{ $more = true }}{{ end }}{{ end }}
 <div class="page">
   <h1>SHIPPING NOTE / BOAT NOTE - EXP.3a</h1>
   <div class="note">
@@ -143,10 +152,11 @@
 
     <div class="box tall" style="grid-column: 1 / 7; grid-row: span 3;">
       <span class="label">15. Marks &amp; Nos. / Container Nos.</span>
-      <span class="value">{{ .boat_note.marks_nos_container_no }}</span>
+      {{ if not $more }}<span class="value">{{ .boat_note.marks_nos_container_no }}</span>{{ end }}
       <ul class="containers">
-        {{ range .boat_note.containers }}<li>{{ .container_number }} &middot; Seal {{ .customs_seal_no }} &middot; CDN {{ .cdn_number }}</li>{{ end }}
+        {{ range $i, $c := .boat_note.containers }}{{ if lt $i 4 }}<li>{{ .container_number }} &middot; Seal {{ .customs_seal_no }} &middot; CDN {{ .cdn_number }}</li>{{ end }}{{ end }}
       </ul>
+      {{ if $more }}<span class="more">Continued on the continuation sheet.</span>{{ end }}
     </div>
     <div class="box tall" style="grid-column: 7 / 11; grid-row: span 3;">
       <span class="label">16. Number &amp; Kind of Pkgs.</span>
@@ -265,5 +275,18 @@
     <span>DARK CAGES FOR OFFICIAL USE ONLY.</span>
   </div>
 </div>
+{{ if $more }}
+<div class="page continuation">
+  <h1>SHIPPING NOTE / BOAT NOTE - EXP.3a &mdash; CONTINUATION</h1>
+  <div class="box ref"><span class="label">9. Customs Entry No.</span><span class="value">{{ .cusdec_number }}</span></div>
+  <div class="box">
+    <span class="label">15. Marks &amp; Nos. / Container Nos. (continued)</span>
+    <span class="value">{{ .boat_note.marks_nos_container_no }}</span>
+    <ul class="containers">
+      {{ range $i, $c := .boat_note.containers }}{{ if ge $i 4 }}<li>{{ .container_number }} &middot; Seal {{ .customs_seal_no }} &middot; CDN {{ .cdn_number }}</li>{{ end }}{{ end }}
+    </ul>
+  </div>
+</div>
+{{ end }}
 </body>
 </html>
