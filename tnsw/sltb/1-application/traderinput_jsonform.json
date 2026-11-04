@@ -768,11 +768,6 @@
                   "as": "string"
                 },
                 {
-                  "from": "ASYCUDA.Identification.Registration.Number",
-                  "to": "identification.registrationNumber",
-                  "as": "string"
-                },
-                {
                   "from": "ASYCUDA.Identification.Registration.Date",
                   "to": "identification.registrationDate",
                   "as": "date",
@@ -1836,9 +1831,9 @@
               "registrationNumber": {
                 "type": "string",
                 "title": "CusDec Registration No.",
-                "description": "The number this declaration is registered under, digits only: 68735 for CBEX1 2026 E 68735.",
+                "description": "Issued by TNSW for the consignment, in place of the number ASYCUDA issues.",
                 "pattern": "^[0-9]+$",
-                "example": "68735"
+                "example": "90000001"
               },
               "registrationDate": {
                 "type": "string",
@@ -3006,7 +3001,10 @@
               },
               {
                 "type": "Control",
-                "scope": "#/properties/cusdec_draft/properties/identification/properties/registrationNumber"
+                "scope": "#/properties/cusdec_draft/properties/identification/properties/registrationNumber",
+                "options": {
+                  "readonly": true
+                }
               },
               {
                 "type": "Control",

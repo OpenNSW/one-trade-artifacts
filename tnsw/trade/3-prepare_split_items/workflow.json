@@ -13,7 +13,8 @@
       "input_mapping": {
         "hs_codes": "hs_codes",
         "company": "company",
-        "cha": "cha"
+        "cha": "cha",
+        "cusdec_registration_no": "cusdec_registration_no"
       },
       "output_mapping": {
         "split_items": "split_items"

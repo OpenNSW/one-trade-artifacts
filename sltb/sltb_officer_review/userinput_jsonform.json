@@ -1076,7 +1076,7 @@
               "registrationNumber": {
                 "type": "string",
                 "title": "CusDec Registration No.",
-                "example": "68735"
+                "example": "90000001"
               },
               "registrationDate": {
                 "type": "string",

@@ -1,0 +1,14 @@
+{
+  "id": "trade-cusdec-registration-no--generate",
+  "task_type": "REFID_GENERATOR",
+  "output_namespace": "refid",
+  "plugin_properties": {
+    "ids": [
+      {
+        "path": "/cusdec_registration_no",
+        "issuer": "TNSW",
+        "id_type": "cusdec_registration_no"
+      }
+    ]
+  }
+}

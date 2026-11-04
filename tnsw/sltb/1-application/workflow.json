@@ -16,7 +16,8 @@
         "userform?": "userform",
         "customs_feedback?": "customs_feedback",
         "customs_error?": "customs_error",
-        "verify?": "verify"
+        "verify?": "verify",
+        "cusdec_registration_no?": "userform.cusdec_draft.identification.registrationNumber"
       },
       "output_mapping": {
         "__command": "command",

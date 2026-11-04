@@ -67,6 +67,30 @@
       "path": "trade/1b-persist_cha/task_template.json"
     },
     {
+      "id": "trade-cusdec-registration-no-flow:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "trade/1c-cusdec_registration_no/render.json"
+    },
+    {
+      "id": "trade-cusdec-registration-no--generate",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "trade/1c-cusdec_registration_no/generate.json"
+    },
+    {
+      "id": "trade-cusdec-registration-no-flow",
+      "kind": "workflow",
+      "version": "",
+      "path": "trade/1c-cusdec_registration_no/workflow.json"
+    },
+    {
+      "id": "trade-cusdec-registration-no-flow",
+      "kind": "task_template",
+      "version": "",
+      "path": "trade/1c-cusdec_registration_no/task_template.json"
+    },
+    {
       "id": "trade-hscode-selection-flow:render",
       "kind": "generic_template",
       "version": "",
