@@ -429,6 +429,17 @@
                   "as": "string"
                 },
                 {
+                  "from": "identification.registrationNumber",
+                  "to": "Identification.Registration.Number",
+                  "as": "string"
+                },
+                {
+                  "from": "identification.registrationDate",
+                  "to": "Identification.Registration.Date",
+                  "as": "date",
+                  "format": "M/D/YY"
+                },
+                {
                   "from": "traders.exporter.code",
                   "to": "Traders.Exporter.Exporter_code",
                   "as": "string"
@@ -1061,6 +1072,17 @@
                 "title": "5. Manifest/Voyage Ref ( Box A )",
                 "description": "Manifest or voyage registration reference. Optional.",
                 "example": "2026/1234"
+              },
+              "registrationNumber": {
+                "type": "string",
+                "title": "CusDec Registration No.",
+                "example": "68735"
+              },
+              "registrationDate": {
+                "type": "string",
+                "format": "date",
+                "title": "CusDec Registration Date",
+                "example": "2026-10-29"
               },
               "declarationType": {
                 "type": "string",
@@ -1766,6 +1788,14 @@
               {
                 "type": "Control",
                 "scope": "#/properties/cusdec_draft/properties/identification/properties/manifestRegNumber"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/cusdec_draft/properties/identification/properties/registrationNumber"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/cusdec_draft/properties/identification/properties/registrationDate"
               }
             ]
           },

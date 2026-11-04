@@ -768,6 +768,17 @@
                   "as": "string"
                 },
                 {
+                  "from": "ASYCUDA.Identification.Registration.Number",
+                  "to": "identification.registrationNumber",
+                  "as": "string"
+                },
+                {
+                  "from": "ASYCUDA.Identification.Registration.Date",
+                  "to": "identification.registrationDate",
+                  "as": "date",
+                  "format": "M/D/YY"
+                },
+                {
                   "from": "ASYCUDA.Declarant.Declarant_code",
                   "to": "traders.declarant.code",
                   "as": "string"
@@ -1167,6 +1178,17 @@
                   "from": "identification.manifestRegNumber",
                   "to": "Identification.Manifest_reference_number",
                   "as": "string"
+                },
+                {
+                  "from": "identification.registrationNumber",
+                  "to": "Identification.Registration.Number",
+                  "as": "string"
+                },
+                {
+                  "from": "identification.registrationDate",
+                  "to": "Identification.Registration.Date",
+                  "as": "date",
+                  "format": "M/D/YY"
                 },
                 {
                   "from": "traders.exporter.code",
@@ -1811,6 +1833,19 @@
                 "description": "Manifest or voyage registration reference. Optional.",
                 "example": "2026/1234"
               },
+              "registrationNumber": {
+                "type": "string",
+                "title": "CusDec Registration No.",
+                "description": "The number this declaration is registered under, digits only: 68735 for CBEX1 2026 E 68735.",
+                "pattern": "^[0-9]+$",
+                "example": "68735"
+              },
+              "registrationDate": {
+                "type": "string",
+                "format": "date",
+                "title": "CusDec Registration Date",
+                "example": "2026-10-29"
+              },
               "declarationType": {
                 "type": "string",
                 "title": "1. Declaration Type ( Box 1 )",
@@ -1854,7 +1889,9 @@
               "officeCode",
               "declarationType",
               "generalProcedureCode",
-              "declarationMode"
+              "declarationMode",
+              "registrationNumber",
+              "registrationDate"
             ]
           },
           "traders": {
@@ -2966,6 +3003,14 @@
               {
                 "type": "Control",
                 "scope": "#/properties/cusdec_draft/properties/identification/properties/manifestRegNumber"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/cusdec_draft/properties/identification/properties/registrationNumber"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/cusdec_draft/properties/identification/properties/registrationDate"
               }
             ]
           },
