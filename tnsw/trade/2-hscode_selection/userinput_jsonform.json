@@ -9,6 +9,15 @@
         "title": "HS Codes",
         "items": {
           "type": "string",
+          "x-search": {
+            "service": "static-data",
+            "mode": "large-paginated-list",
+            "displayTemplate": "{name}",
+            "params": {
+              "id": "trade-hscode-selection--hs-codes",
+              "version": "1"
+            }
+          },
           "oneOf": [
             {
               "const": "fcau-health-certificate-reg",
@@ -569,10 +578,7 @@
     "elements": [
       {
         "type": "Control",
-        "scope": "#/properties/hs_codes",
-        "options": {
-          "itemLabel": "HS Code"
-        }
+        "scope": "#/properties/hs_codes"
       }
     ]
   }

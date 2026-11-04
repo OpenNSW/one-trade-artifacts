@@ -1,0 +1,9 @@
+{
+  "id": "npqs-certificate-withdrawal--generate-withdrawn-copy",
+  "task_type": "HTML_DOCUMENT_GENERATOR",
+  "output_namespace": "withdrawn_copy",
+  "plugin_properties": {
+    "template_id": "npqs-phyto-certificate--html",
+    "filename": "phytosanitary-certificate-withdrawn.html"
+  }
+}

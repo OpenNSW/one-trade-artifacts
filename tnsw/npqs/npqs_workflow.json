@@ -827,7 +827,9 @@
         "npqs.certificate_withdrawal_hub_error?": "withdrawal_hub_error",
         "npqs.userform": "userform",
         "npqs.date_of_inspection?": "userform.date_of_inspection",
-        "npqs.certificate_items?": "certificate_items"
+        "npqs.certificate_items?": "certificate_items",
+        "npqs.certificate_issue_date?": "issue_date",
+        "npqs.replaced_certificate?": "replaced_certificate"
       },
       "output_mapping": {
         "withdrawal": "npqs.certificate_withdrawal",
@@ -883,7 +885,8 @@
       "output_mapping": {
         "new_certificate_id": "npqs.certificate_new_id",
         "new_certificate_issue_date": "npqs.certificate_new_issue_date",
-        "certificate_items?": "npqs.certificate_items"
+        "certificate_items?": "npqs.certificate_items",
+        "replaced_certificate": "npqs.replaced_certificate"
       }
     },
     {
@@ -1227,13 +1230,13 @@
       "id": "e_supervision_split_true",
       "source_id": "n3_3_1_supervision_split",
       "target_id": "n3_3b_treatment_issue_supervised",
-      "condition": "any(npqs.treatment_items, .id == item.id && .treatment_supervision == 'with_supervision')"
+      "condition": "any(npqs.treatment_items, .id == item.id && .treatment_supervision in ['with_supervision', 'with_pqs_supervision'])"
     },
     {
       "id": "e_supervision_split_false",
       "source_id": "n3_3_1_supervision_split",
       "target_id": "n3_3_treatment_cert_issue",
-      "condition": "none(npqs.treatment_items, .id == item.id && .treatment_supervision == 'with_supervision')"
+      "condition": "none(npqs.treatment_items, .id == item.id && .treatment_supervision in ['with_supervision', 'with_pqs_supervision'])"
     },
     {
       "id": "e_treatment_issue_supervised_to_join",
@@ -1266,13 +1269,13 @@
       "id": "e_provider_supervised",
       "source_id": "n3_4_provider_supervision_split",
       "target_id": "n3_4b_treatment_upload_supervised",
-      "condition": "any(npqs.treatment_items, .id == item.id && .treatment_supervision == 'with_supervision')"
+      "condition": "any(npqs.treatment_items, .id == item.id && .treatment_supervision in ['with_supervision', 'with_pqs_supervision'])"
     },
     {
       "id": "e_provider_unsupervised",
       "source_id": "n3_4_provider_supervision_split",
       "target_id": "n3_4_treatment_upload_certs",
-      "condition": "none(npqs.treatment_items, .id == item.id && .treatment_supervision == 'with_supervision')"
+      "condition": "none(npqs.treatment_items, .id == item.id && .treatment_supervision in ['with_supervision', 'with_pqs_supervision'])"
     },
     {
       "id": "e_provider_supervised_upload_to_join",
