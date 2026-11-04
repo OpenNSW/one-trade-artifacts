@@ -67,6 +67,7 @@
               "properties": {
                 "value": {
                   "type": "string",
+                  "readOnly": true,
                   "oneOf": [
                     {
                       "const": "FU",
@@ -155,7 +156,8 @@
                   ]
                 },
                 "label": {
-                  "type": "string"
+                  "type": "string",
+                  "readOnly": true
                 }
               },
               "required": [
@@ -262,7 +264,8 @@
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/treatment_type"
+                    "scope": "#/properties/treatment_type/properties/label",
+                    "label": "Treatment Type Requested"
                   }
                 ]
               },
