@@ -233,7 +233,6 @@
       <div class="part">
       <span class="label">25.(a) Status of Container</span>
       {{ $status := trim .boat_note.status_of_container }}
-      {{ if not (or (eq $status "") (eq $status "FCL") (eq $status "LCL")) }}<span class="value">{{ $status }}</span>{{ end }}
       <div class="ticks">
         <span><span class="tick">{{ if eq $status "FCL" }}X{{ end }}</span> FCL</span>
         <span><span class="tick" style="width: 15mm;">{{ if eq $status "LCL" }}X{{ end }}</span> LCL</span>

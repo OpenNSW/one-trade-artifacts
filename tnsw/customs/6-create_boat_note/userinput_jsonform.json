@@ -278,7 +278,16 @@
       "status_of_container": {
         "type": "string",
         "title": "Status of Container (FCL / LCL)",
-        "example": "FCL"
+        "oneOf": [
+          {
+            "const": "FCL",
+            "title": "FCL"
+          },
+          {
+            "const": "LCL",
+            "title": "LCL"
+          }
+        ]
       },
       "freight_payable_at": {
         "type": "string",
@@ -481,7 +490,10 @@
           {
             "type": "Control",
             "scope": "#/properties/status_of_container",
-            "label": "25.a Status of Container (FCL / LCL)"
+            "label": "25.a Status of Container (FCL / LCL)",
+            "options": {
+              "format": "radio"
+            }
           }
         ]
       },
