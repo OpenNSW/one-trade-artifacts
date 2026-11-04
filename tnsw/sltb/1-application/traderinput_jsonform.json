@@ -1133,6 +1133,11 @@
               "fileName": "cusdec-{today(YYYYMMDD)}.xml",
               "writeTo": [
                 {
+                  "from": "items.length",
+                  "to": "Property.Nbers.Total_number_of_items",
+                  "as": "number"
+                },
+                {
                   "from": "packages.totalPackages",
                   "to": "Property.Nbers.Total_number_of_packages",
                   "as": "number"
