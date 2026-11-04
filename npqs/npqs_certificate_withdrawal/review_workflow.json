@@ -20,6 +20,28 @@
       }
     },
     {
+      "id": "decision_gateway",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "generate_withdrawn_copy",
+      "type": "TASK",
+      "task_template_id": "npqs-certificate-withdrawal--generate-withdrawn-copy",
+      "input_mapping": {
+        "submission.application": "application",
+        "submission.certificate_id": "certificate_number",
+        "submission.certificate_items?": "items",
+        "submission.issue_date?": "issue_date",
+        "submission.replaced_certificate?": "replaced_certificate",
+        "reviewform.decision": "withdrawal"
+      },
+      "output_mapping": {
+        "withdrawn_copy": "withdrawn_copy",
+        "withdrawn_copy.key": "reviewform.withdrawn_certificate_url"
+      }
+    },
+    {
       "id": "api_call",
       "type": "TASK",
       "task_template_id": "npqs-certificate-withdrawal--notify-decision",
@@ -28,6 +50,7 @@
         "reviewform?": "reviewform",
         "submission?": "submission",
         "taskId": "taskId",
+        "withdrawn_copy?": "withdrawn_copy",
         "command": "payload.command",
         "reviewform": "payload.payload"
       }
@@ -46,7 +69,24 @@
     {
       "id": "e2",
       "source_id": "userform",
+      "target_id": "decision_gateway"
+    },
+    {
+      "id": "e_accept",
+      "source_id": "decision_gateway",
+      "target_id": "generate_withdrawn_copy",
+      "condition": "reviewform.decision == 'accept'"
+    },
+    {
+      "id": "e_copy_generated",
+      "source_id": "generate_withdrawn_copy",
       "target_id": "api_call"
+    },
+    {
+      "id": "e_reject",
+      "source_id": "decision_gateway",
+      "target_id": "api_call",
+      "condition": "reviewform.decision == 'reject'"
     },
     {
       "id": "e3",

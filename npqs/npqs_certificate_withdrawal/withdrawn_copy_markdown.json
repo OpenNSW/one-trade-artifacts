@@ -1,0 +1,4 @@
+{
+  "id": "npqs-certificate-withdrawal--withdrawn-copy-view",
+  "template": "#### [📄 Download Withdrawn Certificate](files:{{ .withdrawn_copy.key }})\n\nThis copy of the certificate is marked WITHDRAWN. The certificate is withdrawn only once the IPPC ePhyto Hub confirms it. If the Hub does not, the request comes back to you as a new task, and until then the certificate stands."
+}

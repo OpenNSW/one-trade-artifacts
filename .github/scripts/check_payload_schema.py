@@ -49,6 +49,13 @@ EXEMPT = {
         "its Verify button is a secondary_action on a seven-step form, so it sends a partly "
         "filled declaration that the extension would refuse"
     ),
+    "sltb-submit-blendsheet--user-input": (
+        "its Verify CusDec button is a secondary_action on the blend sheet and CusDec form, so "
+        "it sends a partly filled application that the extension would refuse"
+    ),
+    "sltb-final-decision--trader-amend": (
+        "the same form and Verify CusDec button as sltb-submit-blendsheet--user-input"
+    ),
 }
 
 # Steps whose render shows a second form with a button, and why that is safe.

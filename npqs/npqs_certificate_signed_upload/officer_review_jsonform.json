@@ -4,6 +4,12 @@
   "schema": {
     "type": "object",
     "properties": {
+      "serial_number": {
+        "type": "string",
+        "minLength": 1,
+        "title": "Certificate Serial Number",
+        "description": "The serial number printed on the pre-printed certificate form. Seen by NPQS only."
+      },
       "certificate_url": {
         "type": "string",
         "format": "file",
@@ -18,12 +24,17 @@
       }
     },
     "required": [
+      "serial_number",
       "certificate_url"
     ]
   },
   "uiSchema": {
     "type": "VerticalLayout",
     "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/serial_number"
+      },
       {
         "type": "Control",
         "scope": "#/properties/certificate_url"

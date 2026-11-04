@@ -3,7 +3,10 @@
   "type": "APPLICATION",
   "title": "[NPQS] Certificate Withdrawal",
   "files": [
-    "userform.attachments[*].attachment_file_url"
+    "submission.application.attachments[*].attachment_file_url",
+    "userform.attachments[*].attachment_file_url",
+    "withdrawaldecision.withdrawn_certificate_url",
+    "withdrawn_certificate_url"
   ],
   "sections": {
     "with_officer": {

@@ -4,6 +4,103 @@
   "schema": {
     "type": "object",
     "properties": {
+      "import_application_xml": {
+        "type": "object",
+        "title": "Import Application XML",
+        "description": "Upload an application XML to fill this form automatically. Also accepts a file from Download Application XML. Files to upload still need to be attached by hand. Values can be corrected afterwards.",
+        "x-xml": {
+          "accept": ".xml,text/xml,application/xml",
+          "maxSize": 5242880,
+          "arrayPaths": [
+            "SLPA_ECDN.containers"
+          ],
+          "persistDocument": false,
+          "writeTo": [
+            { "from": "SLPA_ECDN.cusdecDate", "to": "cusdecDate", "as": "date" },
+            { "from": "SLPA_ECDN.cusdecSerLet", "to": "cusdecSerLet", "as": "string" },
+            { "from": "SLPA_ECDN.cdnNumber", "to": "cdnNumber", "as": "string" },
+            { "from": "SLPA_ECDN.terminal", "to": "terminal", "as": "string" },
+            { "from": "SLPA_ECDN.status", "to": "status", "as": "string" },
+            { "from": "SLPA_ECDN.shipperName", "to": "shipperName", "as": "string" },
+            { "from": "SLPA_ECDN.shipperAddress", "to": "shipperAddress", "as": "string" },
+            { "from": "SLPA_ECDN.consigneeName", "to": "consigneeName", "as": "string" },
+            { "from": "SLPA_ECDN.consigneeAddress", "to": "consigneeAddress", "as": "string" },
+            { "from": "SLPA_ECDN.packageNumber", "to": "packageNumber", "as": "number" },
+            { "from": "SLPA_ECDN.packageType", "to": "packageType", "as": "string" },
+            { "from": "SLPA_ECDN.volumeCBM", "to": "volumeCBM", "as": "number" },
+            { "from": "SLPA_ECDN.weightKg", "to": "weightKg", "as": "number" },
+            { "from": "SLPA_ECDN.goodsDescription", "to": "goodsDescription", "as": "string" },
+            { "from": "SLPA_ECDN.voyageNumber", "to": "voyageNumber", "as": "string" },
+            { "from": "SLPA_ECDN.voyageDate", "to": "voyageDate", "as": "date" },
+            { "from": "SLPA_ECDN.portOfLoading", "to": "portOfLoading", "as": "string" },
+            { "from": "SLPA_ECDN.portOfUnloading", "to": "portOfUnloading", "as": "string" },
+            { "from": "SLPA_ECDN.vesselOPCode", "to": "vesselOPCode", "as": "string" },
+            { "from": "SLPA_ECDN.contOPCode", "to": "contOPCode", "as": "string" },
+            { "from": "SLPA_ECDN.exVessel", "to": "exVessel", "as": "string" },
+            { "from": "SLPA_ECDN.email", "to": "email", "as": "string" },
+            { "from": "SLPA_ECDN.contactNo", "to": "contactNo", "as": "string" },
+            { "from": "SLPA_ECDN.remarks", "to": "remarks", "as": "string" },
+            {
+              "from": "SLPA_ECDN.containers", "to": "containers",
+              "writeTo": [
+                { "from": "containerNo", "to": "containerNo", "as": "string" },
+                { "from": "containerType", "to": "containerType", "as": "string" },
+                { "from": "containerSize", "to": "containerSize", "as": "string" },
+                { "from": "sealNumber", "to": "sealNumber", "as": "string" },
+                { "from": "containerMark", "to": "containerMark", "as": "string" },
+                { "from": "commodity", "to": "commodity", "as": "string" }
+              ]
+            }
+          ]
+        }
+      },
+      "export_application_xml": {
+        "type": "object",
+        "title": "Download Application XML",
+        "description": "Download this application as XML, to fill it in again later through Import Application XML.",
+        "x-xml-export": {
+          "rootElement": "SLPA_ECDN",
+          "declaration": { "standalone": "no" },
+          "fileName": "slpa-ecdn-{today(YYYYMMDD)}.xml",
+          "writeTo": [
+            { "from": "cusdecDate", "to": "cusdecDate", "as": "date" },
+            { "from": "cusdecSerLet", "to": "cusdecSerLet", "as": "string" },
+            { "from": "cdnNumber", "to": "cdnNumber", "as": "string" },
+            { "from": "terminal", "to": "terminal", "as": "string" },
+            { "from": "status", "to": "status", "as": "string" },
+            { "from": "shipperName", "to": "shipperName", "as": "string" },
+            { "from": "shipperAddress", "to": "shipperAddress", "as": "string" },
+            { "from": "consigneeName", "to": "consigneeName", "as": "string" },
+            { "from": "consigneeAddress", "to": "consigneeAddress", "as": "string" },
+            { "from": "packageNumber", "to": "packageNumber", "as": "number" },
+            { "from": "packageType", "to": "packageType", "as": "string" },
+            { "from": "volumeCBM", "to": "volumeCBM", "as": "number" },
+            { "from": "weightKg", "to": "weightKg", "as": "number" },
+            { "from": "goodsDescription", "to": "goodsDescription", "as": "string" },
+            { "from": "voyageNumber", "to": "voyageNumber", "as": "string" },
+            { "from": "voyageDate", "to": "voyageDate", "as": "date" },
+            { "from": "portOfLoading", "to": "portOfLoading", "as": "string" },
+            { "from": "portOfUnloading", "to": "portOfUnloading", "as": "string" },
+            { "from": "vesselOPCode", "to": "vesselOPCode", "as": "string" },
+            { "from": "contOPCode", "to": "contOPCode", "as": "string" },
+            { "from": "exVessel", "to": "exVessel", "as": "string" },
+            { "from": "email", "to": "email", "as": "string" },
+            { "from": "contactNo", "to": "contactNo", "as": "string" },
+            { "from": "remarks", "to": "remarks", "as": "string" },
+            {
+              "from": "containers", "to": "containers",
+              "writeTo": [
+                { "from": "containerNo", "to": "containerNo", "as": "string" },
+                { "from": "containerType", "to": "containerType", "as": "string" },
+                { "from": "containerSize", "to": "containerSize", "as": "string" },
+                { "from": "sealNumber", "to": "sealNumber", "as": "string" },
+                { "from": "containerMark", "to": "containerMark", "as": "string" },
+                { "from": "commodity", "to": "commodity", "as": "string" }
+              ]
+            }
+          ]
+        }
+      },
       "cusdecNo": {
         "type": "string",
         "title": "Cusdec No",
@@ -549,6 +646,14 @@
         "type": "Category",
         "label": "CusDec Details",
         "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/import_application_xml"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/export_application_xml"
+          },
           {
             "type": "Control",
             "scope": "#/properties/cusdecNo"

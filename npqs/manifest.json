@@ -1159,6 +1159,18 @@
       "path": "npqs_certificate_withdrawal/decided_view_markdown.json"
     },
     {
+      "id": "npqs-certificate-withdrawal--generate-withdrawn-copy",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_certificate_withdrawal/generate_withdrawn_copy.json"
+    },
+    {
+      "id": "npqs-certificate-withdrawal--withdrawn-copy-view",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_certificate_withdrawal/withdrawn_copy_markdown.json"
+    },
+    {
       "id": "npqs_certificate_replacement",
       "kind": "workflow",
       "version": "",

@@ -4,6 +4,204 @@
   "schema": {
     "type": "object",
     "properties": {
+      "import_application_xml": {
+        "type": "object",
+        "title": "Import Application XML",
+        "description": "Upload an application XML to fill this form automatically. Also accepts a file from Download Application XML. Files to upload still need to be attached by hand. Values can be corrected afterwards.",
+        "x-xml": {
+          "accept": ".xml,text/xml,application/xml",
+          "maxSize": 5242880,
+          "arrayPaths": [
+            "NPQS_PHYTO_CERT.transit_countries",
+            "NPQS_PHYTO_CERT.transport_details",
+            "NPQS_PHYTO_CERT.commodities",
+            "NPQS_PHYTO_CERT.commodities.packages"
+          ],
+          "persistDocument": false,
+          "writeTo": [
+            { "from": "NPQS_PHYTO_CERT.certificate_type", "to": "certificate_type", "as": "string" },
+            { "from": "NPQS_PHYTO_CERT.re_export.original_certificate_number", "to": "re_export.original_certificate_number", "as": "string" },
+            { "from": "NPQS_PHYTO_CERT.re_export.original_certificate_form", "to": "re_export.original_certificate_form", "as": "string" },
+            { "from": "NPQS_PHYTO_CERT.re_export.packing", "to": "re_export.packing", "as": "string" },
+            { "from": "NPQS_PHYTO_CERT.re_export.containers", "to": "re_export.containers", "as": "string" },
+            { "from": "NPQS_PHYTO_CERT.re_export.original_certificate_attached", "to": "re_export.original_certificate_attached", "as": "boolean" },
+            { "from": "NPQS_PHYTO_CERT.re_export.additional_inspection", "to": "re_export.additional_inspection", "as": "boolean" },
+            { "from": "NPQS_PHYTO_CERT.re_export.statement_code", "to": "re_export.statement_code", "as": "string" },
+            { "from": "NPQS_PHYTO_CERT.shipment_value", "to": "shipment_value", "as": "string" },
+            { "from": "NPQS_PHYTO_CERT.applicant_name", "to": "applicant_name", "as": "string" },
+            { "from": "NPQS_PHYTO_CERT.nppo_office_location.value", "to": "nppo_office_location.value", "as": "string" },
+            { "from": "NPQS_PHYTO_CERT.nppo_office_location.label", "to": "nppo_office_location.label", "as": "string" },
+            { "from": "NPQS_PHYTO_CERT.importing_country.value", "to": "importing_country.value", "as": "string" },
+            { "from": "NPQS_PHYTO_CERT.importing_country.label", "to": "importing_country.label", "as": "string" },
+            {
+              "from": "NPQS_PHYTO_CERT.transit_countries", "to": "transit_countries",
+              "writeTo": [
+                { "from": "value", "to": "value", "as": "string" },
+                { "from": "label", "to": "label", "as": "string" }
+              ]
+            },
+            { "from": "NPQS_PHYTO_CERT.exporter_name", "to": "exporter_name", "as": "string" },
+            { "from": "NPQS_PHYTO_CERT.exporter_address", "to": "exporter_address", "as": "string" },
+            { "from": "NPQS_PHYTO_CERT.exporter_country", "to": "exporter_country", "as": "string" },
+            { "from": "NPQS_PHYTO_CERT.consignee_name", "to": "consignee_name", "as": "string" },
+            { "from": "NPQS_PHYTO_CERT.consignee_address", "to": "consignee_address", "as": "string" },
+            { "from": "NPQS_PHYTO_CERT.consignee_country.value", "to": "consignee_country.value", "as": "string" },
+            { "from": "NPQS_PHYTO_CERT.consignee_country.label", "to": "consignee_country.label", "as": "string" },
+            { "from": "NPQS_PHYTO_CERT.distinguishing_marks", "to": "distinguishing_marks", "as": "string" },
+            { "from": "NPQS_PHYTO_CERT.point_of_entry_country.value", "to": "point_of_entry_country.value", "as": "string" },
+            { "from": "NPQS_PHYTO_CERT.point_of_entry_country.label", "to": "point_of_entry_country.label", "as": "string" },
+            { "from": "NPQS_PHYTO_CERT.point_of_entry_port", "to": "point_of_entry_port", "as": "string" },
+            { "from": "NPQS_PHYTO_CERT.seal_number", "to": "seal_number", "as": "string" },
+            { "from": "NPQS_PHYTO_CERT.estimated_shipment_date", "to": "estimated_shipment_date", "as": "date" },
+            {
+              "from": "NPQS_PHYTO_CERT.transport_details", "to": "transport_details",
+              "writeTo": [
+                { "from": "transport_mode", "to": "transport_mode", "as": "string" },
+                { "from": "transport_name", "to": "transport_name", "as": "string" },
+                { "from": "transport_number", "to": "transport_number", "as": "string" }
+              ]
+            },
+            {
+              "from": "NPQS_PHYTO_CERT.commodities", "to": "commodities",
+              "writeTo": [
+                { "from": "commodity_common_name.value", "to": "commodity_common_name.value", "as": "string" },
+                { "from": "commodity_common_name.label", "to": "commodity_common_name.label", "as": "string" },
+                { "from": "commodity_botanical_name", "to": "commodity_botanical_name", "as": "string" },
+                { "from": "commodity_language", "to": "commodity_language", "as": "string" },
+                { "from": "commodity_description", "to": "commodity_description", "as": "string" },
+                { "from": "commodity_plant_part.value", "to": "commodity_plant_part.value", "as": "string" },
+                { "from": "commodity_plant_part.label", "to": "commodity_plant_part.label", "as": "string" },
+                { "from": "commodity_condition.value", "to": "commodity_condition.value", "as": "string" },
+                { "from": "commodity_condition.label", "to": "commodity_condition.label", "as": "string" },
+                { "from": "commodity_intended_use.value", "to": "commodity_intended_use.value", "as": "string" },
+                { "from": "commodity_intended_use.label", "to": "commodity_intended_use.label", "as": "string" },
+                { "from": "quantity_net_weight", "to": "quantity_net_weight", "as": "number" },
+                { "from": "quantity_net_weight_unit.value", "to": "quantity_net_weight_unit.value", "as": "string" },
+                { "from": "quantity_net_weight_unit.label", "to": "quantity_net_weight_unit.label", "as": "string" },
+                { "from": "quantity_gross_weight", "to": "quantity_gross_weight", "as": "number" },
+                { "from": "quantity_gross_weight_unit.value", "to": "quantity_gross_weight_unit.value", "as": "string" },
+                { "from": "quantity_gross_weight_unit.label", "to": "quantity_gross_weight_unit.label", "as": "string" },
+                {
+                  "from": "packages", "to": "packages",
+                  "writeTo": [
+                    { "from": "count", "to": "count", "as": "number" },
+                    { "from": "type.value", "to": "type.value", "as": "string" },
+                    { "from": "type.label", "to": "type.label", "as": "string" }
+                  ]
+                },
+                { "from": "package_arrangement", "to": "package_arrangement", "as": "string" },
+                { "from": "packages_free_text", "to": "packages_free_text", "as": "string" },
+                { "from": "origin_country.value", "to": "origin_country.value", "as": "string" },
+                { "from": "origin_country.label", "to": "origin_country.label", "as": "string" },
+                { "from": "origin_area", "to": "origin_area", "as": "string" },
+                { "from": "id", "to": "id", "as": "string" }
+              ]
+            },
+            { "from": "NPQS_PHYTO_CERT.import_permit_number", "to": "import_permit_number", "as": "string" },
+            { "from": "NPQS_PHYTO_CERT.proposed_inspection_date", "to": "proposed_inspection_date", "as": "date" },
+            { "from": "NPQS_PHYTO_CERT.proposed_inspection_time", "to": "proposed_inspection_time", "as": "string" },
+            { "from": "NPQS_PHYTO_CERT.place_of_inspection", "to": "place_of_inspection", "as": "string" },
+            { "from": "NPQS_PHYTO_CERT.additional_declaration", "to": "additional_declaration", "as": "string" },
+            { "from": "NPQS_PHYTO_CERT.disinfestation_treatment", "to": "disinfestation_treatment", "as": "string" }
+          ]
+        }
+      },
+      "export_application_xml": {
+        "type": "object",
+        "title": "Download Application XML",
+        "description": "Download this application as XML, to fill it in again later through Import Application XML.",
+        "x-xml-export": {
+          "rootElement": "NPQS_PHYTO_CERT",
+          "declaration": { "standalone": "no" },
+          "fileName": "npqs-phyto-cert-{today(YYYYMMDD)}.xml",
+          "writeTo": [
+            { "from": "certificate_type", "to": "certificate_type", "as": "string" },
+            { "from": "re_export.original_certificate_number", "to": "re_export.original_certificate_number", "as": "string" },
+            { "from": "re_export.original_certificate_form", "to": "re_export.original_certificate_form", "as": "string" },
+            { "from": "re_export.packing", "to": "re_export.packing", "as": "string" },
+            { "from": "re_export.containers", "to": "re_export.containers", "as": "string" },
+            { "from": "re_export.original_certificate_attached", "to": "re_export.original_certificate_attached", "as": "boolean" },
+            { "from": "re_export.additional_inspection", "to": "re_export.additional_inspection", "as": "boolean" },
+            { "from": "re_export.statement_code", "to": "re_export.statement_code", "as": "string" },
+            { "from": "shipment_value", "to": "shipment_value", "as": "string" },
+            { "from": "applicant_name", "to": "applicant_name", "as": "string" },
+            { "from": "nppo_office_location.value", "to": "nppo_office_location.value", "as": "string" },
+            { "from": "nppo_office_location.label", "to": "nppo_office_location.label", "as": "string" },
+            { "from": "importing_country.value", "to": "importing_country.value", "as": "string" },
+            { "from": "importing_country.label", "to": "importing_country.label", "as": "string" },
+            {
+              "from": "transit_countries", "to": "transit_countries",
+              "writeTo": [
+                { "from": "value", "to": "value", "as": "string" },
+                { "from": "label", "to": "label", "as": "string" }
+              ]
+            },
+            { "from": "exporter_name", "to": "exporter_name", "as": "string" },
+            { "from": "exporter_address", "to": "exporter_address", "as": "string" },
+            { "from": "exporter_country", "to": "exporter_country", "as": "string" },
+            { "from": "consignee_name", "to": "consignee_name", "as": "string" },
+            { "from": "consignee_address", "to": "consignee_address", "as": "string" },
+            { "from": "consignee_country.value", "to": "consignee_country.value", "as": "string" },
+            { "from": "consignee_country.label", "to": "consignee_country.label", "as": "string" },
+            { "from": "distinguishing_marks", "to": "distinguishing_marks", "as": "string" },
+            { "from": "point_of_entry_country.value", "to": "point_of_entry_country.value", "as": "string" },
+            { "from": "point_of_entry_country.label", "to": "point_of_entry_country.label", "as": "string" },
+            { "from": "point_of_entry_port", "to": "point_of_entry_port", "as": "string" },
+            { "from": "seal_number", "to": "seal_number", "as": "string" },
+            { "from": "estimated_shipment_date", "to": "estimated_shipment_date", "as": "date" },
+            {
+              "from": "transport_details", "to": "transport_details",
+              "writeTo": [
+                { "from": "transport_mode", "to": "transport_mode", "as": "string" },
+                { "from": "transport_name", "to": "transport_name", "as": "string" },
+                { "from": "transport_number", "to": "transport_number", "as": "string" }
+              ]
+            },
+            {
+              "from": "commodities", "to": "commodities",
+              "writeTo": [
+                { "from": "commodity_common_name.value", "to": "commodity_common_name.value", "as": "string" },
+                { "from": "commodity_common_name.label", "to": "commodity_common_name.label", "as": "string" },
+                { "from": "commodity_botanical_name", "to": "commodity_botanical_name", "as": "string" },
+                { "from": "commodity_language", "to": "commodity_language", "as": "string" },
+                { "from": "commodity_description", "to": "commodity_description", "as": "string" },
+                { "from": "commodity_plant_part.value", "to": "commodity_plant_part.value", "as": "string" },
+                { "from": "commodity_plant_part.label", "to": "commodity_plant_part.label", "as": "string" },
+                { "from": "commodity_condition.value", "to": "commodity_condition.value", "as": "string" },
+                { "from": "commodity_condition.label", "to": "commodity_condition.label", "as": "string" },
+                { "from": "commodity_intended_use.value", "to": "commodity_intended_use.value", "as": "string" },
+                { "from": "commodity_intended_use.label", "to": "commodity_intended_use.label", "as": "string" },
+                { "from": "quantity_net_weight", "to": "quantity_net_weight", "as": "number" },
+                { "from": "quantity_net_weight_unit.value", "to": "quantity_net_weight_unit.value", "as": "string" },
+                { "from": "quantity_net_weight_unit.label", "to": "quantity_net_weight_unit.label", "as": "string" },
+                { "from": "quantity_gross_weight", "to": "quantity_gross_weight", "as": "number" },
+                { "from": "quantity_gross_weight_unit.value", "to": "quantity_gross_weight_unit.value", "as": "string" },
+                { "from": "quantity_gross_weight_unit.label", "to": "quantity_gross_weight_unit.label", "as": "string" },
+                {
+                  "from": "packages", "to": "packages",
+                  "writeTo": [
+                    { "from": "count", "to": "count", "as": "number" },
+                    { "from": "type.value", "to": "type.value", "as": "string" },
+                    { "from": "type.label", "to": "type.label", "as": "string" }
+                  ]
+                },
+                { "from": "package_arrangement", "to": "package_arrangement", "as": "string" },
+                { "from": "packages_free_text", "to": "packages_free_text", "as": "string" },
+                { "from": "origin_country.value", "to": "origin_country.value", "as": "string" },
+                { "from": "origin_country.label", "to": "origin_country.label", "as": "string" },
+                { "from": "origin_area", "to": "origin_area", "as": "string" },
+                { "from": "id", "to": "id", "as": "string" }
+              ]
+            },
+            { "from": "import_permit_number", "to": "import_permit_number", "as": "string" },
+            { "from": "proposed_inspection_date", "to": "proposed_inspection_date", "as": "date" },
+            { "from": "proposed_inspection_time", "to": "proposed_inspection_time", "as": "string" },
+            { "from": "place_of_inspection", "to": "place_of_inspection", "as": "string" },
+            { "from": "additional_declaration", "to": "additional_declaration", "as": "string" },
+            { "from": "disinfestation_treatment", "to": "disinfestation_treatment", "as": "string" }
+          ]
+        }
+      },
       "certificate_type": {
         "type": "string",
         "title": "Certificate Type",
@@ -915,6 +1113,14 @@
         "type": "Category",
         "label": "General Info",
         "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/import_application_xml"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/export_application_xml"
+          },
           {
             "type": "Control",
             "scope": "#/properties/certificate_type"

@@ -138,7 +138,8 @@
                 }
               },
               "required": [
-                "value"
+                "value",
+                "label"
               ]
             },
             "chemical_used": {

@@ -3,6 +3,7 @@
   "type": "APPLICATION",
   "title": "[SLTB 1] Submit & Review Blend Sheet and CusDec",
   "files": [
+    "payload.supportingDocuments.scannedDocuments[*].fileBase64",
     "userform.cusdec_draft.supportingDocuments.scannedDocuments[*].fileBase64",
     "submission.cusdec_draft.supportingDocuments.scannedDocuments[*].fileBase64"
   ],
@@ -39,6 +40,18 @@
         "requireDataKey": "reviewerform"
       }
     },
+    "verify_result": {
+      "templateId": "customs-cusdec--verify-result",
+      "title": "CusDec Verification Result",
+      "projector": "MARKDOWN",
+      "dataKey": "verify",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireDataKey": "verify"
+      }
+    },
     "user_form": {
       "templateId": "sltb-submit-blendsheet--user-form",
       "title": "SLTB Tea Blend Sheet Details",
@@ -49,6 +62,11 @@
           "command": "save_as_draft",
           "label": "Save as Draft",
           "element": "draft_action"
+        },
+        {
+          "command": "verify",
+          "label": "Verify CusDec",
+          "element": "secondary_action"
         },
         {
           "command": "submit",
@@ -65,18 +83,26 @@
           "command": "submit"
         },
         {
+          "command": "verify"
+        },
+        {
           "command": "save_as_draft"
         }
       ]
     },
-    "QUEUED_EXTERNALLY":{
-      "order": { "$ref": "#/layouts/1" }
+    "QUEUED_EXTERNALLY": {
+      "order": {
+        "$ref": "#/layouts/1"
+      }
     }
-  }
-  ,
+  },
   "layouts": {
-    "1": ["status_message", "status_awaiting", "review_history", "user_form"]
-     
-    
+    "1": [
+      "status_message",
+      "status_awaiting",
+      "review_history",
+      "verify_result",
+      "user_form"
+    ]
   }
 }
