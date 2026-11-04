@@ -5,12 +5,13 @@
   "plugin_properties": {
     "user_jsonforms_id": "customs-boat-note--user-form"
   },
+  "draft": { "command": "save_as_draft" },
   "extensions": [
     {
       "id": "authz",
       "phase": "PRE_RESUME",
       "properties": {
-        "PENDING_USER": { "submit": ["trader", "cha"] }
+        "PENDING_USER": { "submit": ["trader", "cha"], "save_as_draft": ["trader", "cha"] }
       }
     },
     {

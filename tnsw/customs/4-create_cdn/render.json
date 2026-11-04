@@ -32,6 +32,11 @@
       "dataKey": "userform",
       "handles": [
         {
+          "command": "save_as_draft",
+          "label": "Save as Draft",
+          "element": "draft_action"
+        },
+        {
           "command": "submit",
           "label": "Submit CDN Application",
           "element": "primary_action"
@@ -44,6 +49,9 @@
       "actions": [
         {
           "command": "submit"
+        },
+        {
+          "command": "save_as_draft"
         }
       ]
     }
