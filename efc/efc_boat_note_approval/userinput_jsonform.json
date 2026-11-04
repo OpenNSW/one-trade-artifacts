@@ -59,6 +59,12 @@
         "title": "Exporter's Registration No",
         "example": "7381/92/02/2009"
       },
+      "sn_bl_no": {
+        "type": "string",
+        "title": "SN / (B/L) No.",
+        "example": "BL-9382019-COL",
+        "description": "The bill of lading number on the first dispatch note."
+      },
       "slpa_no": {
         "type": "string",
         "title": "SLPA No.",
@@ -384,6 +390,11 @@
             "type": "Control",
             "scope": "#/properties/notifying_address",
             "label": "3. Notifying Address"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/sn_bl_no",
+            "label": "10. SN / (B/L) No."
           },
           {
             "type": "Control",
