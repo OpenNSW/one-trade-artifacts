@@ -208,6 +208,10 @@
                   "title": "With NPQS Supervision"
                 },
                 {
+                  "const": "with_pqs_supervision",
+                  "title": "With PQS Supervision"
+                },
+                {
                   "const": "without_supervision",
                   "title": "Without Supervision"
                 }
