@@ -17,7 +17,6 @@
         "containers": "userform.containers",
         "declarant_name?": "userform.name_of_declarant",
         "exporter_code?": "userform.exporters_registration_no",
-        "userform.port_of_discharge?": "userform.place_of_delivery",
         "userform?": "userform"
       },
       "output_mapping": {
