@@ -218,7 +218,7 @@
             "x-search": {
               "service": "static-data",
               "mode": "large-searchable-list",
-              "displayTemplate": "{name}",
+              "displayTemplate": "({id}) - {name}",
               "params": {
                 "id": "customs-cusdec--package-types",
                 "version": "1"
@@ -264,7 +264,7 @@
             "x-search": {
               "service": "static-data",
               "mode": "large-searchable-list",
-              "displayTemplate": "{name}",
+              "displayTemplate": "({id}) - {name}",
               "params": {
                 "id": "customs-cusdec--container-types",
                 "version": "1"
