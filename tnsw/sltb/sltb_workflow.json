@@ -12,7 +12,8 @@
       "input_mapping": {
         "sltb.userform?": "userform",
         "sltb.customs_feedback?": "customs_feedback",
-        "sltb.customs_error?": "customs_error"
+        "sltb.customs_error?": "customs_error",
+        "_iter.input.cusdec?": "cusdec"
       },
       "output_mapping": {
         "reviewerform.review_outcome": "sltb.review_outcome",

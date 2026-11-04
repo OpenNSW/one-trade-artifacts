@@ -27,16 +27,6 @@
                   { "from": "BLEND_SHEET.Country", "to": "private_treaty_to_be_exported", "as": "string" },
                   { "from": "BLEND_SHEET.Exporter.registration_number", "to": "exporter_registration_no", "as": "string" },
                   { "from": "BLEND_SHEET.Exporter.TIN_number", "to": "exporter_tin", "as": "string" },
-                  {
-                    "to": "cusdec_number",
-                    "inputs": {
-                      "cusdec_office": "BLEND_SHEET.CUSDEC_info.CUSDEC_office",
-                      "cusdec_year": "BLEND_SHEET.CUSDEC_info.CUSDEC_year",
-                      "cusdec_serial": "BLEND_SHEET.CUSDEC_info.CUSDEC_serial",
-                      "cusdec_no": "BLEND_SHEET.CUSDEC_info.CUSDEC_number"
-                    },
-                    "formula": "CONCATENATE(cusdec_office,\" \",cusdec_year,\" \",cusdec_serial,\" \",cusdec_no)"
-                  },
                   { "from": "BLEND_SHEET.Blend.Blend_number", "to": "blend_no", "as": "string" },
                   { "from": "BLEND_SHEET.Blend.Quantity_export", "to": "quantity_to_be_exported", "as": "number" },
                   { "from": "BLEND_SHEET.Blend.Average_rate", "to": "avg_rate_per_kg", "as": "number" },
@@ -450,8 +440,9 @@
             "cusdec_number": {
               "type": "string",
               "title": "CUSDEC Reg No.",
-              "description": "Office, year, serial and number as printed on the blend sheet.",
-              "example": "CBEX1 2026 E 48428"
+              "description": "Filled in by TNSW when you submit: the consignment's CusDec, as office, year, serial and registration number.",
+              "readOnly": true,
+              "example": "TNSW 2026 E 90000001"
             },
             "blend_no": {
               "type": "string",
@@ -700,7 +691,6 @@
           "required": [
             "exporter_registration_no",
             "exporter_tin",
-            "cusdec_number",
             "form",
             "blend_no",
             "quantity_to_be_exported",
@@ -766,6 +756,12 @@
                   "from": "ASYCUDA.Identification.Manifest_reference_number",
                   "to": "identification.manifestRegNumber",
                   "as": "string"
+                },
+                {
+                  "from": "ASYCUDA.Identification.Registration.Date",
+                  "to": "identification.registrationDate",
+                  "as": "date",
+                  "format": "M/D/YY"
                 },
                 {
                   "from": "ASYCUDA.Declarant.Declarant_code",
@@ -1167,6 +1163,17 @@
                   "from": "identification.manifestRegNumber",
                   "to": "Identification.Manifest_reference_number",
                   "as": "string"
+                },
+                {
+                  "from": "identification.registrationNumber",
+                  "to": "Identification.Registration.Number",
+                  "as": "string"
+                },
+                {
+                  "from": "identification.registrationDate",
+                  "to": "Identification.Registration.Date",
+                  "as": "date",
+                  "format": "M/D/YY"
                 },
                 {
                   "from": "traders.exporter.code",
@@ -1811,6 +1818,19 @@
                 "description": "Manifest or voyage registration reference. Optional.",
                 "example": "2026/1234"
               },
+              "registrationNumber": {
+                "type": "string",
+                "title": "CusDec Registration No.",
+                "description": "Issued by TNSW for the consignment, in place of the number ASYCUDA issues.",
+                "pattern": "^[0-9]+$",
+                "example": "90000001"
+              },
+              "registrationDate": {
+                "type": "string",
+                "format": "date",
+                "title": "CusDec Registration Date",
+                "example": "2026-10-29"
+              },
               "declarationType": {
                 "type": "string",
                 "title": "1. Declaration Type ( Box 1 )",
@@ -1854,7 +1874,9 @@
               "officeCode",
               "declarationType",
               "generalProcedureCode",
-              "declarationMode"
+              "declarationMode",
+              "registrationNumber",
+              "registrationDate"
             ]
           },
           "traders": {
@@ -2967,6 +2989,17 @@
               {
                 "type": "Control",
                 "scope": "#/properties/cusdec_draft/properties/identification/properties/manifestRegNumber"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/cusdec_draft/properties/identification/properties/registrationNumber",
+                "options": {
+                  "readonly": true
+                }
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/cusdec_draft/properties/identification/properties/registrationDate"
               }
             ]
           },

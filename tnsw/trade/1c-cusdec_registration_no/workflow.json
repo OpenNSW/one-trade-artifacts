@@ -1,0 +1,20 @@
+{
+  "id": "trade-cusdec-registration-no-flow",
+  "name": "Issue the CusDec Registration Number",
+  "nodes": [
+    { "id": "start", "type": "START" },
+    {
+      "id": "generate_cusdec_registration_no",
+      "type": "TASK",
+      "task_template_id": "trade-cusdec-registration-no--generate",
+      "output_mapping": {
+        "refid.cusdec": "cusdec"
+      }
+    },
+    { "id": "end", "type": "END" }
+  ],
+  "edges": [
+    { "id": "e1", "source_id": "start", "target_id": "generate_cusdec_registration_no" },
+    { "id": "e2", "source_id": "generate_cusdec_registration_no", "target_id": "end" }
+  ]
+}

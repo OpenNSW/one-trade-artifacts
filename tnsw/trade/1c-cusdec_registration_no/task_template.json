@@ -1,0 +1,12 @@
+{
+  "id": "trade-cusdec-registration-no-flow",
+  "type": "SYSTEM",
+  "workflow_id": "trade-cusdec-registration-no-flow",
+  "render_config_id": "trade-cusdec-registration-no-flow:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
+}
