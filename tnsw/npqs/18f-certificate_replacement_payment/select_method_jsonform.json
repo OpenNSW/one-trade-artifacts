@@ -1,0 +1,40 @@
+{
+  "id": "npqs-pay-replacement-fee--select-method-form",
+  "title": "Select Payment Gateway",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "selected_method": {
+        "type": "string",
+        "title": "Payment Provider",
+        "oneOf": [
+          {
+            "const": "govpay",
+            "title": "GovPay Sandbox (Mock checkout)"
+          },
+          {
+            "const": "payment_slip",
+            "title": "Bank Transfer (Upload Payment Receipt)"
+          },
+          {
+            "const": "officer_confirm",
+            "title": "Pay at the NPQS Counter (Officer Confirms Payment)"
+          }
+        ],
+        "default": "govpay"
+      }
+    },
+    "required": [
+      "selected_method"
+    ]
+  },
+  "uiSchema": {
+    "type": "VerticalLayout",
+    "elements": [
+      {
+        "type": "Control",
+        "scope": "#/properties/selected_method"
+      }
+    ]
+  }
+}
