@@ -19,10 +19,16 @@
         "title": "Notifying Address",
         "example": "Nordic Freight AG, Hafenstrasse 8, 20457 Hamburg, Germany"
       },
-      "voyage_no_date": {
+      "voyage_no": {
         "type": "string",
-        "title": "Voyage No./Date",
-        "example": "NAQ1 10-Sep-26"
+        "title": "Voyage No.",
+        "example": "V092"
+      },
+      "voyage_date": {
+        "type": "string",
+        "format": "date",
+        "title": "Voyage Date",
+        "example": "2026-06-25"
       },
       "warehouse_number": {
         "type": "number",
@@ -58,6 +64,17 @@
         "type": "string",
         "title": "Exporter's Registration No",
         "example": "7381/92/02/2009"
+      },
+      "sn_bl_no": {
+        "type": "string",
+        "title": "SN / (B/L) No.",
+        "example": "BL-9382019-COL",
+        "description": "The bill of lading number on the first dispatch note."
+      },
+      "slpa_no": {
+        "type": "string",
+        "title": "SLPA No.",
+        "example": "SLPA-2026-004512"
       },
       "containers": {
         "type": "array",
@@ -141,6 +158,30 @@
         "type": "number",
         "title": "Cube M3",
         "example": 28.5
+      },
+      "short_shipped": {
+        "type": "string",
+        "title": "19.c Short Shipped"
+      },
+      "short_shipped_gross_wt": {
+        "type": "string",
+        "title": "19.d Gross Wt. (kg)"
+      },
+      "short_shipped_cube_m3": {
+        "type": "string",
+        "title": "20.b Cube m3"
+      },
+      "shipped": {
+        "type": "string",
+        "title": "19.e Shipped"
+      },
+      "shipped_gross_wt": {
+        "type": "string",
+        "title": "19.f"
+      },
+      "shipped_cube_m3": {
+        "type": "string",
+        "title": "20.c"
       },
       "section_22": {
         "type": "object",
@@ -249,7 +290,16 @@
       "status_of_container": {
         "type": "string",
         "title": "Status of Container (FCL / LCL)",
-        "example": "FCL"
+        "oneOf": [
+          {
+            "const": "FCL",
+            "title": "FCL"
+          },
+          {
+            "const": "LCL",
+            "title": "LCL"
+          }
+        ]
       },
       "freight_payable_at": {
         "type": "string",
@@ -298,8 +348,8 @@
     "required": [
       "shipper",
       "consignee",
-      "notifying_address",
-      "voyage_no_date",
+      "voyage_no",
+      "voyage_date",
       "warehouse_number",
       "vessel",
       "port_of_loading",
@@ -324,9 +374,7 @@
       "debit_our_ca_no_with_charges_payable",
       "name_of_company_preparing_this_note",
       "name_of_declarant",
-      "telephone_no",
-      "authorized_signatory",
-      "declaration_date"
+      "telephone_no"
     ]
   },
   "uiSchema": {
@@ -356,8 +404,18 @@
           },
           {
             "type": "Control",
+            "scope": "#/properties/sn_bl_no",
+            "label": "10. SN / (B/L) No."
+          },
+          {
+            "type": "Control",
             "scope": "#/properties/exporters_registration_no",
             "label": "11. Exporter's Registration No"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/slpa_no",
+            "label": "12. SLPA No."
           }
         ]
       },
@@ -366,9 +424,19 @@
         "label": "Voyage and Route",
         "elements": [
           {
-            "type": "Control",
-            "scope": "#/properties/voyage_no_date",
-            "label": "4. Voyage No./Date"
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/voyage_no",
+                "label": "4. Voyage No."
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/voyage_date",
+                "label": "4. Voyage Date"
+              }
+            ]
           },
           {
             "type": "Control",
@@ -448,7 +516,10 @@
           {
             "type": "Control",
             "scope": "#/properties/status_of_container",
-            "label": "25.a Status of Container (FCL / LCL)"
+            "label": "25.a Status of Container (FCL / LCL)",
+            "options": {
+              "format": "radio"
+            }
           }
         ]
       },
@@ -495,6 +566,46 @@
             "type": "Control",
             "scope": "#/properties/cube_m3",
             "label": "20.a Cube M3"
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/short_shipped",
+                "label": "19.c Short Shipped"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/short_shipped_gross_wt",
+                "label": "19.d Gross Wt. (kg)"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/short_shipped_cube_m3",
+                "label": "20.b Cube m3"
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/shipped",
+                "label": "19.e Shipped"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/shipped_gross_wt",
+                "label": "19.f"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/shipped_cube_m3",
+                "label": "20.c"
+              }
+            ]
           }
         ]
       },
