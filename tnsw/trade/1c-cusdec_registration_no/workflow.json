@@ -8,7 +8,7 @@
       "type": "TASK",
       "task_template_id": "trade-cusdec-registration-no--generate",
       "output_mapping": {
-        "refid.cusdec_registration_no": "cusdec_registration_no"
+        "refid.cusdec": "cusdec"
       }
     },
     { "id": "end", "type": "END" }

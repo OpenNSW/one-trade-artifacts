@@ -41,7 +41,7 @@
       "name": "Issue the CusDec Registration Number",
       "task_template_id": "trade-cusdec-registration-no-flow",
       "output_mapping": {
-        "cusdec_registration_no": "trade.cusdec_registration_no"
+        "cusdec": "trade.cusdec"
       }
     },
     {
@@ -67,7 +67,7 @@
         "trade.hs_codes": "hs_codes",
         "traderCompany": "company",
         "trade.cha": "cha",
-        "trade.cusdec_registration_no": "cusdec_registration_no"
+        "trade.cusdec": "cusdec"
       },
       "output_mapping": {
         "split_items": "trade.split_items"

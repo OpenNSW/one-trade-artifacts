@@ -5,9 +5,14 @@
   "plugin_properties": {
     "ids": [
       {
-        "path": "/cusdec_registration_no",
+        "path": "/cusdec/registration_no",
         "issuer": "TNSW",
         "id_type": "cusdec_registration_no"
+      },
+      {
+        "path": "/cusdec/year",
+        "issuer": "TNSW",
+        "id_type": "cusdec_year"
       }
     ]
   }

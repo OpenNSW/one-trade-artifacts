@@ -1,0 +1,22 @@
+{
+  "id": "sltb-submit-blendsheet--write-cusdec-reference",
+  "task_type": "VALUE_WRITER",
+  "output_namespace": "written",
+  "plugin_properties": {
+    "writes": [
+      {
+        "each": "/userform/blendsheet_data",
+        "path": "0/cusdec_number",
+        "template": "TNSW {year} E {registration_no}",
+        "params": {
+          "year": "/cusdec/year",
+          "registration_no": "/cusdec/registration_no"
+        }
+      },
+      {
+        "path": "/userform/cusdec_draft/identification/registrationNumber",
+        "from": "/cusdec/registration_no"
+      }
+    ]
+  }
+}

@@ -13,7 +13,7 @@
         "sltb.userform?": "userform",
         "sltb.customs_feedback?": "customs_feedback",
         "sltb.customs_error?": "customs_error",
-        "_iter.input.cusdec_registration_no?": "cusdec_registration_no"
+        "_iter.input.cusdec?": "cusdec"
       },
       "output_mapping": {
         "reviewerform.review_outcome": "sltb.review_outcome",

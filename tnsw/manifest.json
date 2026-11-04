@@ -3421,6 +3421,12 @@
       "path": "sltb/1-application/generate_blendsheet_nos.json"
     },
     {
+      "id": "sltb-submit-blendsheet--write-cusdec-reference",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "sltb/1-application/write_cusdec_reference.json"
+    },
+    {
       "id": "sltb-submit-blendsheet--officer-review",
       "kind": "subtask_template",
       "version": "",
