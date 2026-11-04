@@ -1,0 +1,12 @@
+{
+  "id": "npqs-pay-replacement-fee",
+  "type": "PAYMENT",
+  "workflow_id": "npqs-pay-replacement-fee",
+  "render_config_id": "npqs-pay-replacement-fee:render",
+  "read": {
+    "roles": [
+      "trader",
+      "cha"
+    ]
+  }
+}
