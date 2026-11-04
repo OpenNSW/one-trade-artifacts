@@ -109,6 +109,12 @@
       "path": "trade/2-hscode_selection/task_template.json"
     },
     {
+      "id": "trade-hscode-selection--hs-codes",
+      "kind": "static_data",
+      "version": "1",
+      "path": "trade/static-data/hs_codes.data.json"
+    },
+    {
       "id": "trade-prepare-split-items-flow:render",
       "kind": "generic_template",
       "version": "",
