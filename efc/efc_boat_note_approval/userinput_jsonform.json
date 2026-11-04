@@ -147,6 +147,30 @@
         "title": "Cube M3",
         "example": 28.5
       },
+      "short_shipped": {
+        "type": "string",
+        "title": "19.c Short Shipped"
+      },
+      "short_shipped_gross_wt": {
+        "type": "string",
+        "title": "19.d Gross Wt. (kg)"
+      },
+      "short_shipped_cube_m3": {
+        "type": "string",
+        "title": "20.b Cube m3"
+      },
+      "shipped": {
+        "type": "string",
+        "title": "19.e Shipped"
+      },
+      "shipped_gross_wt": {
+        "type": "string",
+        "title": "19.f"
+      },
+      "shipped_cube_m3": {
+        "type": "string",
+        "title": "20.c"
+      },
       "section_22": {
         "type": "object",
         "title": "Estimated and final amounts",
@@ -500,6 +524,46 @@
             "type": "Control",
             "scope": "#/properties/cube_m3",
             "label": "20.a Cube M3"
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/short_shipped",
+                "label": "19.c Short Shipped"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/short_shipped_gross_wt",
+                "label": "19.d Gross Wt. (kg)"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/short_shipped_cube_m3",
+                "label": "20.b Cube m3"
+              }
+            ]
+          },
+          {
+            "type": "HorizontalLayout",
+            "elements": [
+              {
+                "type": "Control",
+                "scope": "#/properties/shipped",
+                "label": "19.e Shipped"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/shipped_gross_wt",
+                "label": "19.f"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/shipped_cube_m3",
+                "label": "20.c"
+              }
+            ]
           }
         ]
       },

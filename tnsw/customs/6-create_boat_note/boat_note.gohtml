@@ -183,14 +183,14 @@
       <span class="value num">{{ decimal .boat_note.net_mass 3 }}</span>
     </div>
 
-    <div class="box official" style="grid-column: 16 / 19;"><span class="label">19.(c) Short Shipped</span></div>
-    <div class="box official" style="grid-column: 19 / 22;"><span class="label">19.(d) Gross Wt. (kg)</span></div>
-    <div class="box official" style="grid-column: 22 / 25;"><span class="label">20.(b) Cube m3</span></div>
+    <div class="box official" style="grid-column: 16 / 19;"><span class="label">19.(c) Short Shipped</span><span class="value">{{ .boat_note.short_shipped }}</span></div>
+    <div class="box official" style="grid-column: 19 / 22;"><span class="label">19.(d) Gross Wt. (kg)</span><span class="value">{{ .boat_note.short_shipped_gross_wt }}</span></div>
+    <div class="box official" style="grid-column: 22 / 25;"><span class="label">20.(b) Cube m3</span><span class="value">{{ .boat_note.short_shipped_cube_m3 }}</span></div>
     <div class="box cage-row" style="grid-column: 1 / 9;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
     <div class="box cage-row" style="grid-column: 9 / 16;"><span></span><span></span><span></span><span></span><span></span><span></span></div>
-    <div class="box official" style="grid-column: 16 / 19;"><span class="label">19.(e) Shipped</span></div>
-    <div class="box official" style="grid-column: 19 / 22;"><span class="label">19.(f)</span></div>
-    <div class="box official" style="grid-column: 22 / 25;"><span class="label">20.(c)</span></div>
+    <div class="box official" style="grid-column: 16 / 19;"><span class="label">19.(e) Shipped</span><span class="value">{{ .boat_note.shipped }}</span></div>
+    <div class="box official" style="grid-column: 19 / 22;"><span class="label">19.(f)</span><span class="value">{{ .boat_note.shipped_gross_wt }}</span></div>
+    <div class="box official" style="grid-column: 22 / 25;"><span class="label">20.(c)</span><span class="value">{{ .boat_note.shipped_cube_m3 }}</span></div>
 
     <div class="box official" style="grid-column: 1 / 9;">
       <span class="label">21. For SLPA Use</span>
