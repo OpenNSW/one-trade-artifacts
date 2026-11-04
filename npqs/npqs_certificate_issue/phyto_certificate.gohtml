@@ -11,6 +11,9 @@
                          draft, which lists every commodity.
     .issue_date          the date of issue the officer picks at issuance
                          (YYYY-MM-DD). Printed only on the final certificate.
+    .withdrawal          the NPQS officer's decision on a request to withdraw
+                         the certificate ("accept"). Given only on the copy
+                         made when they accept, which is marked WITHDRAWN.
 
   The certificate carries no signature: a clause in place of the officer's
   name and signature says none is required.
@@ -37,7 +40,7 @@ Consignment re-inspected after treatment and found free from live pests.
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>{{ if .certificate_number }}Phytosanitary Certificate {{ .certificate_number }}{{ else }}Draft Phytosanitary Certificate{{ end }}</title>
+<title>{{ if .certificate_number }}{{ if .withdrawal }}Withdrawn {{ end }}Phytosanitary Certificate {{ .certificate_number }}{{ else }}Draft Phytosanitary Certificate{{ end }}</title>
 <style>
   /* Printed onto A4: fixed margins, a page count in the bottom margin, and
      nothing split across a page break that can be kept whole. */
@@ -56,6 +59,8 @@ Consignment re-inspected after treatment and found free from live pests.
   body { font-family: "DejaVu Sans", Arial, Helvetica, sans-serif; font-size: 10pt; color: #000; margin: 0; }
   .watermark { position: fixed; top: 40%; left: 0; right: 0; text-align: center; font-size: 110pt; font-weight: bold;
     color: rgba(0, 0, 0, 0.08); transform: rotate(-35deg); z-index: 1; pointer-events: none; letter-spacing: 8pt; }
+  /* WITHDRAWN is longer than DRAFT: smaller, so it stays on the sheet. */
+  .watermark.long { font-size: 60pt; }
   /* The whole certificate is one table so its head repeats on every printed page. */
   table.doc, table.doc > * > tr > td.doc-cell { border: 0; padding: 0; }
   .head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4pt; }
@@ -116,6 +121,8 @@ Consignment re-inspected after treatment and found free from live pests.
 {{- $app := .application }}
 {{- if not .certificate_number }}
 <div class="watermark">DRAFT</div>
+{{- else if .withdrawal }}
+<div class="watermark long">WITHDRAWN</div>
 {{- end }}
 <div class="emblem"></div>
 <div class="issuer">

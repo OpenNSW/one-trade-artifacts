@@ -15,6 +15,7 @@
       },
       "output_mapping": {
         "__command": "command",
+        "serial_number": "reviewform.serial_number",
         "certificate_url": "reviewform.certificate_url",
         "comments?": "reviewform.comments"
       }
@@ -29,7 +30,8 @@
         "submission?": "submission",
         "taskId": "taskId",
         "command": "payload.command",
-        "reviewform": "payload.payload"
+        "reviewform.certificate_url": "payload.payload.certificate_url",
+        "reviewform.comments?": "payload.payload.comments"
       }
     },
     {
