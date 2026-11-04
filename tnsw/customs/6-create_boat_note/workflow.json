@@ -42,7 +42,7 @@
         "gross_mass": "userform.gross_mass",
         "net_mass": "userform.net_mass",
         "cube_m3": "userform.cube_m3",
-        "section_22": "userform.section_22",
+        "section_22?": "userform.section_22",
         "status_of_container": "userform.status_of_container",
         "freight_payable_at": "userform.freight_payable_at",
         "number_of_original_bs_l": "userform.number_of_original_bs_l",
@@ -60,7 +60,8 @@
       "task_template_id": "customs-boat-note--generate-document",
       "input_mapping": {
         "userform?": "userform",
-        "userform": "boat_note"
+        "userform": "boat_note",
+        "cusdec_number?": "cusdec_number"
       },
       "output_mapping": {
         "boat_note_document.key": "boat_note_document_key"
