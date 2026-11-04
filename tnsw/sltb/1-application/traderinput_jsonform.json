@@ -1163,6 +1163,11 @@
                   "as": "string"
                 },
                 {
+                  "from": "traders.exporter.name",
+                  "to": "Traders.Exporter.Exporter_name",
+                  "as": "string"
+                },
+                {
                   "from": "traders.consignee.name",
                   "to": "Traders.Consignee.Consignee_name",
                   "as": "string"
