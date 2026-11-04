@@ -1,9 +1,7 @@
 name: Release artifacts
 
 # Publishes bundles from a tag with scripts/release_manifest.py, which adds the
-# next immutable manifest_vN.json and never overwrites or deletes. Pick the tag
-# under "Use workflow from" (its Tags tab); a run from a branch is refused. Only
-# tags that contain this workflow are listed.
+# next immutable manifest_vN.json and never overwrites or deletes.
 #
 # The destination comes from the chosen GitHub environment, never from an
 # input, so a dispatch can't send the store's credentials elsewhere:
@@ -23,6 +21,10 @@ on:
         description: "Environment holding the destination store"
         type: environment
         required: true
+      tag:
+        description: "Tag to release; empty for the newest"
+        type: string
+        default: ""
       bundles:
         description: "Bundles to release, space-separated; empty for every top-level folder with a manifest.json"
         type: string
@@ -44,19 +46,21 @@ jobs:
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
     steps:
-      - name: Require a tag
-        if: github.ref_type != 'tag'
-        run: |
-          echo "::error::Run this from a tag: pick one under \"Use workflow from\", not a branch."
-          exit 1
-
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Show the tag
+      - name: Check out the tag
         id: tag
         env:
-          TAG: ${{ github.ref_name }}
+          TAG: ${{ inputs.tag }}
         run: |
+          set -euo pipefail
+          git fetch origin --tags --force
+          TAG="${TAG:-$(git tag --sort=-creatordate | head -n1)}"
+          git rev-parse -q --verify "refs/tags/$TAG" >/dev/null \
+            || { echo "::error::tag '$TAG' does not exist"; exit 1; }
+          git checkout --quiet --detach "refs/tags/$TAG"
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
           echo "Releasing $TAG ($(git log -1 --format='%h %s'))"
 
