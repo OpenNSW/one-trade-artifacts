@@ -1063,6 +1063,102 @@
       "path": "npqs/18d-certificate_replacement_transmit/completed_markdown.json"
     },
     {
+      "id": "npqs-pay-replacement-fee--payment",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/18f-certificate_replacement_payment/payment.json"
+    },
+    {
+      "id": "npqs-pay-replacement-fee:render",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/18f-certificate_replacement_payment/render.json"
+    },
+    {
+      "id": "npqs-pay-replacement-fee--select-method",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/18f-certificate_replacement_payment/select_method.json"
+    },
+    {
+      "id": "npqs-pay-replacement-fee--select-method-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/18f-certificate_replacement_payment/select_method_jsonform.json"
+    },
+    {
+      "id": "npqs-pay-replacement-fee--success-message",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/18f-certificate_replacement_payment/success_message_jsonform.json"
+    },
+    {
+      "id": "npqs-pay-replacement-fee",
+      "kind": "workflow",
+      "version": "",
+      "path": "npqs/18f-certificate_replacement_payment/workflow.json"
+    },
+    {
+      "id": "npqs-pay-replacement-fee",
+      "kind": "task_template",
+      "version": "",
+      "path": "npqs/18f-certificate_replacement_payment/task_template.json"
+    },
+    {
+      "id": "npqs-pay-replacement-fee--payment-details-markdown",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/18f-certificate_replacement_payment/payment_details_markdown.json"
+    },
+    {
+      "id": "npqs-pay-replacement-fee--upload-receipt",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/18f-certificate_replacement_payment/upload_receipt.json"
+    },
+    {
+      "id": "npqs-pay-replacement-fee--review-receipt",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/18f-certificate_replacement_payment/review_receipt.json"
+    },
+    {
+      "id": "npqs-pay-replacement-fee--confirm-payment",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/18f-certificate_replacement_payment/confirm_payment.json"
+    },
+    {
+      "id": "npqs-pay-replacement-fee--receipt-instructions",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/18f-certificate_replacement_payment/receipt_instructions_markdown.json"
+    },
+    {
+      "id": "npqs-pay-replacement-fee--awaiting-officer",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/18f-certificate_replacement_payment/awaiting_officer_markdown.json"
+    },
+    {
+      "id": "npqs-pay-replacement-fee--not-received",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/18f-certificate_replacement_payment/not_received_markdown.json"
+    },
+    {
+      "id": "npqs-pay-replacement-fee--pay-again",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/18f-certificate_replacement_payment/pay_again.json"
+    },
+    {
+      "id": "npqs-pay-replacement-fee--pay-again-form",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs/18f-certificate_replacement_payment/pay_again_jsonform.json"
+    },
+    {
       "id": "npqs-export-phytosanitary-reg",
       "kind": "workflow",
       "version": "",
