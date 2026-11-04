@@ -69,6 +69,8 @@ Consignment re-inspected after treatment and found free from live pests.
   .items { counter-reset: item; }
   .item { counter-increment: item; break-inside: avoid; margin-top: -1px; }
   tr, .closing { break-inside: avoid; }
+  /* The certificate's own row holds all of it, so it must be free to break, or it moves whole to the next page. */
+  table.doc > tbody > tr { break-inside: auto; }
   .item-no { width: 18pt; text-align: center; font-weight: normal; }
   .item-no::before { content: counter(item); }
   .replacement { margin-top: -1px; break-inside: avoid; }
@@ -93,10 +95,10 @@ Consignment re-inspected after treatment and found free from live pests.
   /* The logos: the emblem above the first page's heading, the ePhyto logo beside the place and date of issue.
      Each is embedded as a data: URL, the one image form the template check allows, so the stored certificate
      needs nothing from outside. Browsers leave backgrounds off a printout unless print-color-adjust says otherwise. */
-  .emblem { display: block; width: 17mm; height: 24mm; margin: 0 auto 1mm; }
-  .issuer { text-align: center; margin-bottom: 4mm; }
-  .issuer .nppo { font-size: 16pt; font-weight: bold; }
-  .issuer .department { font-size: 10.5pt; }
+  .emblem { display: block; width: 14mm; height: 20mm; margin: 0 auto 0.5mm; }
+  .issuer { text-align: center; margin-bottom: 3mm; }
+  .issuer .nppo { font-size: 14pt; font-weight: bold; }
+  .issuer .department { font-size: 9.5pt; }
   .sign-row { display: flex; align-items: center; gap: 4mm; margin-top: 18pt; }
   .sign-row .sign { margin-top: 0; flex: 1; }
   .ephyto-logo { flex: none; width: 22mm; height: 16mm; }
