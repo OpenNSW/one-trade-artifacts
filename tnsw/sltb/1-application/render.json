@@ -88,7 +88,10 @@
         {
           "command": "save_as_draft"
         }
-      ]
+      ],
+      "order": {
+        "$ref": "#/layouts/1"
+      }
     },
     "QUEUED_EXTERNALLY": {
       "order": {
