@@ -899,6 +899,7 @@
         "npqs.certificate_new_id": "new_certificate_id",
         "npqs.certificate_new_issue_date": "new_certificate_issue_date",
         "npqs.certificate_number": "certificate_id",
+        "npqs.replaced_certificate.issue_date?": "replaced_issue_date",
         "npqs.certificate_replacement_note?": "replacement_note",
         "npqs.certificate_replacement_hub_error?": "replacement_hub_error",
         "npqs.userform": "userform",
