@@ -4,6 +4,94 @@
   "schema": {
     "type": "object",
     "properties": {
+      "import_application_xml": {
+        "type": "object",
+        "title": "Import CDN XML",
+        "description": "Upload a CDN XML to fill this form automatically. Also accepts a file from Download CDN XML. Values can be corrected afterwards.",
+        "x-xml": {
+          "accept": ".xml,text/xml,application/xml",
+          "maxSize": 5242880,
+          "persistDocument": false,
+          "writeTo": [
+            { "from": "CUSTOMS_CDN.officeCode", "to": "officeCode", "as": "string" },
+            { "from": "CUSTOMS_CDN.shipper.id", "to": "shipper.id", "as": "string" },
+            { "from": "CUSTOMS_CDN.shipper.name", "to": "shipper.name", "as": "string" },
+            { "from": "CUSTOMS_CDN.shipper.address", "to": "shipper.address", "as": "string" },
+            { "from": "CUSTOMS_CDN.shipper.countryCode", "to": "shipper.countryCode", "as": "string" },
+            { "from": "CUSTOMS_CDN.consignee.id", "to": "consignee.id", "as": "string" },
+            { "from": "CUSTOMS_CDN.consignee.name", "to": "consignee.name", "as": "string" },
+            { "from": "CUSTOMS_CDN.consignee.address", "to": "consignee.address", "as": "string" },
+            { "from": "CUSTOMS_CDN.consignee.countryCode", "to": "consignee.countryCode", "as": "string" },
+            { "from": "CUSTOMS_CDN.transport.voyageNumber", "to": "transport.voyageNumber", "as": "string" },
+            { "from": "CUSTOMS_CDN.transport.voyageDate", "to": "transport.voyageDate", "as": "string" },
+            { "from": "CUSTOMS_CDN.transport.exVessel", "to": "transport.exVessel", "as": "string" },
+            { "from": "CUSTOMS_CDN.transport.vessel", "to": "transport.vessel", "as": "string" },
+            { "from": "CUSTOMS_CDN.transport.vesselOpCode", "to": "transport.vesselOpCode", "as": "string" },
+            { "from": "CUSTOMS_CDN.transport.contOpCode", "to": "transport.contOpCode", "as": "string" },
+            { "from": "CUSTOMS_CDN.transport.placeOfDischarge", "to": "transport.placeOfDischarge", "as": "string" },
+            { "from": "CUSTOMS_CDN.transport.placeOfLoading", "to": "transport.placeOfLoading", "as": "string" },
+            { "from": "CUSTOMS_CDN.transport.lorryRegNo", "to": "transport.lorryRegNo", "as": "string" },
+            { "from": "CUSTOMS_CDN.transport.trailerRegNo", "to": "transport.trailerRegNo", "as": "string" },
+            { "from": "CUSTOMS_CDN.transport.driverName", "to": "transport.driverName", "as": "string" },
+            { "from": "CUSTOMS_CDN.transport.locationOfGoods", "to": "transport.locationOfGoods", "as": "string" },
+            { "from": "CUSTOMS_CDN.goods.description", "to": "goods.description", "as": "string" },
+            { "from": "CUSTOMS_CDN.goods.packageNumber", "to": "goods.packageNumber", "as": "number" },
+            { "from": "CUSTOMS_CDN.goods.packageType", "to": "goods.packageType", "as": "string" },
+            { "from": "CUSTOMS_CDN.goods.grossWeight", "to": "goods.grossWeight", "as": "number" },
+            { "from": "CUSTOMS_CDN.goods.volume", "to": "goods.volume", "as": "number" },
+            { "from": "CUSTOMS_CDN.goods.bol", "to": "goods.bol", "as": "string" },
+            { "from": "CUSTOMS_CDN.goods.tempRequired", "to": "goods.tempRequired", "as": "number" },
+            { "from": "CUSTOMS_CDN.container.number", "to": "container.number", "as": "string" },
+            { "from": "CUSTOMS_CDN.container.type", "to": "container.type", "as": "string" },
+            { "from": "CUSTOMS_CDN.container.sealNo", "to": "container.sealNo", "as": "string" },
+            { "from": "CUSTOMS_CDN.container.mark", "to": "container.mark", "as": "string" }
+          ]
+        }
+      },
+      "export_application_xml": {
+        "type": "object",
+        "title": "Download CDN XML",
+        "description": "Download this CDN as XML, to fill it in again later through Import CDN XML.",
+        "x-xml-export": {
+          "rootElement": "CUSTOMS_CDN",
+          "declaration": { "standalone": "no" },
+          "fileName": "customs-cdn-{today(YYYYMMDD)}.xml",
+          "writeTo": [
+            { "from": "officeCode", "to": "officeCode", "as": "string" },
+            { "from": "shipper.id", "to": "shipper.id", "as": "string" },
+            { "from": "shipper.name", "to": "shipper.name", "as": "string" },
+            { "from": "shipper.address", "to": "shipper.address", "as": "string" },
+            { "from": "shipper.countryCode", "to": "shipper.countryCode", "as": "string" },
+            { "from": "consignee.id", "to": "consignee.id", "as": "string" },
+            { "from": "consignee.name", "to": "consignee.name", "as": "string" },
+            { "from": "consignee.address", "to": "consignee.address", "as": "string" },
+            { "from": "consignee.countryCode", "to": "consignee.countryCode", "as": "string" },
+            { "from": "transport.voyageNumber", "to": "transport.voyageNumber", "as": "string" },
+            { "from": "transport.voyageDate", "to": "transport.voyageDate", "as": "string" },
+            { "from": "transport.exVessel", "to": "transport.exVessel", "as": "string" },
+            { "from": "transport.vessel", "to": "transport.vessel", "as": "string" },
+            { "from": "transport.vesselOpCode", "to": "transport.vesselOpCode", "as": "string" },
+            { "from": "transport.contOpCode", "to": "transport.contOpCode", "as": "string" },
+            { "from": "transport.placeOfDischarge", "to": "transport.placeOfDischarge", "as": "string" },
+            { "from": "transport.placeOfLoading", "to": "transport.placeOfLoading", "as": "string" },
+            { "from": "transport.lorryRegNo", "to": "transport.lorryRegNo", "as": "string" },
+            { "from": "transport.trailerRegNo", "to": "transport.trailerRegNo", "as": "string" },
+            { "from": "transport.driverName", "to": "transport.driverName", "as": "string" },
+            { "from": "transport.locationOfGoods", "to": "transport.locationOfGoods", "as": "string" },
+            { "from": "goods.description", "to": "goods.description", "as": "string" },
+            { "from": "goods.packageNumber", "to": "goods.packageNumber", "as": "number" },
+            { "from": "goods.packageType", "to": "goods.packageType", "as": "string" },
+            { "from": "goods.grossWeight", "to": "goods.grossWeight", "as": "number" },
+            { "from": "goods.volume", "to": "goods.volume", "as": "number" },
+            { "from": "goods.bol", "to": "goods.bol", "as": "string" },
+            { "from": "goods.tempRequired", "to": "goods.tempRequired", "as": "number" },
+            { "from": "container.number", "to": "container.number", "as": "string" },
+            { "from": "container.type", "to": "container.type", "as": "string" },
+            { "from": "container.sealNo", "to": "container.sealNo", "as": "string" },
+            { "from": "container.mark", "to": "container.mark", "as": "string" }
+          ]
+        }
+      },
       "cancel_cdn": {
         "type": "boolean",
         "title": "Cancel this CDN",
@@ -368,6 +456,14 @@
         "type": "Category",
         "label": "Declaration and Container",
         "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/import_application_xml"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/export_application_xml"
+          },
           {
             "type": "Control",
             "scope": "#/properties/cancel_cdn"
