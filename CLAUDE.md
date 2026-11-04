@@ -97,13 +97,12 @@ What it looks like (as in `cda/`):
   on), which its first `TASK` node maps.
 - `<agency>/manifest.json` entries intentionally omit `"loader": "local"`.
 
-**Whenever a new top-level folder is introduced (an `<agency>/` or anything else),
-add it to the `aws s3 sync --include` list in both `.github/workflows/push-to-r2-dev.yml`
-and `.github/workflows/push-to-r2-staging.yml`.** The sync excludes everything not
-listed, so a folder missing from these lists is silently never published to R2. Both
-syncs are currently manual (`workflow_dispatch`) only: dev's push-to-`main` trigger is
-off until ArgoCD deployment is enabled for the nsw-srilanka dev environment, so merging
-alone does not publish anything.
+Every top-level folder with a `manifest.json` is a bundle.
+`.github/workflows/release.yml` (manual `workflow_dispatch` only, so merging publishes
+nothing) checks out a release tag (`tnsw-vX.Y.Z`) and releases each bundle with
+`scripts/release_manifest.py` to `s3://<bucket>/[<prefix>/]<bundle>`, taking the store
+from the chosen GitHub environment. A new top-level folder with a manifest is released
+with the others; one without a manifest is not.
 
 ## Artifact kinds (see any `manifest.json`)
 
