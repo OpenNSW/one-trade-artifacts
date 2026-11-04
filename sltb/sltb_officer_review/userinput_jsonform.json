@@ -113,7 +113,7 @@
                       { "from": "blend_avg_per_kg", "to": "Previous_Average" }
                     ]
                   },
-                  { "from": "blend_balances.derivations.total_blend_balances.value", "to": "balance_total.Previous_total", "default": { "null": null } },
+                  { "from": "total_blend_balances_and_gain", "to": "balance_total.Previous_total", "default": { "null": null } },
                   { "from": "sample_rediness_date", "to": "Sample.Sample_date", "as": "date", "format": "M/D/YY", "default": null },
                   { "from": "warehouse_address", "to": "Sample.Sample_Warehouse", "default": null },
                   { "from": "remarks", "to": "Sample.Remarks", "default": { "null": null } },

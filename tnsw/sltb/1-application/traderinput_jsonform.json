@@ -341,7 +341,7 @@
                     ]
                   },
                   {
-                    "from": "blend_balances.derivations.total_blend_balances.value",
+                    "from": "total_blend_balances_and_gain",
                     "to": "balance_total.Previous_total",
                     "default": {
                       "null": null
