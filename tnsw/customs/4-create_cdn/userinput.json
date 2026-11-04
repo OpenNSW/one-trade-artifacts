@@ -5,6 +5,9 @@
   "plugin_properties": {
     "user_jsonforms_id": "customs-cdn--user-form"
   },
+  "draft": {
+    "command": "save_as_draft"
+  },
   "extensions": [
     {
       "id": "authz",
@@ -12,6 +15,10 @@
       "properties": {
         "PENDING_USER": {
           "submit": [
+            "trader",
+            "cha"
+          ],
+          "save_as_draft": [
             "trader",
             "cha"
           ]

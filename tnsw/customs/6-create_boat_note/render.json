@@ -49,6 +49,11 @@
       "dataKey": "userform",
       "handles": [
         {
+          "command": "save_as_draft",
+          "label": "Save as Draft",
+          "element": "draft_action"
+        },
+        {
           "command": "submit",
           "label": "Submit Boat Note",
           "element": "primary_action"
@@ -61,6 +66,9 @@
       "actions": [
         {
           "command": "submit"
+        },
+        {
+          "command": "save_as_draft"
         }
       ]
     }
