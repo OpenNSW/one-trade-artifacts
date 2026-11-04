@@ -11,7 +11,7 @@
           "type": "string",
           "x-search": {
             "service": "static-data",
-            "mode": "large-searchable-list",
+            "mode": "large-paginated-list",
             "displayTemplate": "{name}",
             "params": {
               "id": "trade-hscode-selection--hs-codes",
