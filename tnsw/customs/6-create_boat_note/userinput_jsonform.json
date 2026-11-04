@@ -361,9 +361,7 @@
       "debit_our_ca_no_with_charges_payable",
       "name_of_company_preparing_this_note",
       "name_of_declarant",
-      "telephone_no",
-      "authorized_signatory",
-      "declaration_date"
+      "telephone_no"
     ]
   },
   "uiSchema": {
