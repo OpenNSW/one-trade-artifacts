@@ -32,6 +32,7 @@
         "cont_op_code": "userform.cont_op_code",
         "containers": "userform.containers",
         "exporters_registration_no": "userform.exporters_registration_no",
+        "slpa_no?": "userform.slpa_no",
         "description_of_goods": "userform.description_of_goods",
         "cccn_no": "userform.cccn_no",
         "name_of_shipping_line": "userform.name_of_shipping_line",
