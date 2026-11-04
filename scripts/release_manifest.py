@@ -18,6 +18,12 @@ artifact store, which only ever grows:
 Nothing is overwritten or deleted, so a flow pinned to an older version keeps
 reading exactly what it read when it started.
 
+Because of D and the store only growing, every file a published manifest lists
+is in the store. So a release checks only the names no published manifest
+lists, usually just the changed files; --verify checks every name. The store's
+requests (reading manifests, checking names, uploading) run --jobs at a time,
+and manifest_vX.json is still written only after every upload has succeeded.
+
 Each manifest_vX.json records where it came from: "version", "commit" (the git
 commit of the bundle) and "released_at" at the top, and on every row "source"
 (the file's path in the repository) and "since" (the version in which the file
@@ -76,16 +82,38 @@ import posixpath
 import subprocess
 import sys
 import tempfile
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Protocol
+from typing import Callable, Iterable, Protocol, TypeVar
 
 MANIFEST = "manifest.json"
 HASH_CHARS = 16
+DEFAULT_JOBS = 16
+
+T = TypeVar("T")
+R = TypeVar("R")
 
 
 def manifest_path(version: int) -> str:
     return f"manifest_v{version}.json"
+
+
+def parallel(fn: Callable[[T], R], items: Iterable[T], jobs: int) -> list[R]:
+    """fn over items, jobs at a time, results in the order of items.
+
+    The first error is raised once the calls already running have finished; the
+    calls that hadn't started are cancelled.
+    """
+    items = list(items)
+    if jobs <= 1 or len(items) <= 1:
+        return [fn(item) for item in items]
+    pool = ThreadPoolExecutor(max_workers=min(jobs, len(items)))
+    try:
+        futures = [pool.submit(fn, item) for item in items]
+        return [f.result() for f in futures]
+    finally:
+        pool.shutdown(wait=True, cancel_futures=True)
 
 
 class ReleaseError(Exception):
@@ -174,6 +202,7 @@ class S3Store:
         endpoint_url: str | None = None,
         region: str | None = None,
         client=None,
+        max_connections: int = DEFAULT_JOBS,
     ) -> None:
         self.bucket = bucket
         self.prefix = prefix.strip("/")
@@ -189,10 +218,13 @@ class S3Store:
                 "s3",
                 endpoint_url=endpoint_url,
                 region_name=s3_region(region, endpoint_url, boto3.Session().region_name),
-                # R2 rejects the checksum headers newer boto3 adds by default.
                 config=Config(
+                    # R2 rejects the checksum headers newer boto3 adds by default.
                     request_checksum_calculation="when_required",
                     response_checksum_validation="when_required",
+                    # One connection per concurrent request; the client is shared by
+                    # every thread (boto3 clients are thread-safe).
+                    max_pool_connections=max(max_connections, 10),
                 ),
             )
         self.client = client
@@ -250,12 +282,16 @@ class S3Store:
         return f"s3://{self.bucket}/{self.prefix}" if self.prefix else f"s3://{self.bucket}"
 
 
-def open_store(dest: str, endpoint_url: str | None, region: str | None) -> Store:
+def open_store(
+    dest: str, endpoint_url: str | None, region: str | None, jobs: int = DEFAULT_JOBS
+) -> Store:
     if dest.startswith("s3://"):
         bucket, _, prefix = dest[len("s3://") :].partition("/")
         if not bucket:
             raise ReleaseError(f"--dest {dest!r} names no bucket")
-        return S3Store(bucket, prefix, endpoint_url=endpoint_url, region=region)
+        return S3Store(
+            bucket, prefix, endpoint_url=endpoint_url, region=region, max_connections=jobs
+        )
     if "://" in dest:
         raise ReleaseError(f"--dest {dest!r}: only s3:// and local directories are supported")
     return LocalStore(dest)
@@ -368,27 +404,39 @@ def read_bundle(bundle: Path) -> tuple[list[dict], dict[str, bytes]]:
     return rows, files
 
 
-def published_manifests(store: Store) -> list[dict]:
-    """Every published manifest, oldest first, up to the first missing version."""
+def published_manifests(store: Store, jobs: int = DEFAULT_JOBS) -> list[dict]:
+    """Every published manifest, oldest first, up to the first missing version.
+
+    Manifests are read jobs versions at a time; versions after the first missing
+    one are ignored, as the backend ignores them.
+    """
     out: list[dict] = []
+    window = max(jobs, 1)
     while True:
-        version = len(out) + 1
-        raw = store.get(manifest_path(version))
-        if raw is None:
-            return out
-        try:
-            out.append(json.loads(raw))
-        except ValueError as err:
-            raise ReleaseError(
-                f"{manifest_path(version)} in {store.describe()} is not valid JSON: {err}"
-            ) from None
+        first = len(out) + 1
+        versions = range(first, first + window)
+        raws = parallel(store.get, [manifest_path(v) for v in versions], jobs)
+        for version, raw in zip(versions, raws):
+            if raw is None:
+                return out
+            try:
+                out.append(json.loads(raw))
+            except ValueError as err:
+                raise ReleaseError(
+                    f"{manifest_path(version)} in {store.describe()} is not valid JSON: {err}"
+                ) from None
 
 
 def plan_release(
-    bundle: Path, store: Store, commit: str, released_at: str
+    bundle: Path,
+    store: Store,
+    commit: str,
+    released_at: str,
+    jobs: int = DEFAULT_JOBS,
+    verify: bool = False,
 ) -> Plan:
     rows, files = read_bundle(bundle)
-    published = published_manifests(store)
+    published = published_manifests(store, jobs)
     latest = len(published)
     version = latest + 1
 
@@ -447,20 +495,30 @@ def plan_release(
         changed=changed,
         removed=removed,
     )
+    # A file a published manifest lists is in the store (see the module docstring),
+    # so only the others are checked, unless verify asks for every one.
+    listed = set() if verify else {r["path"] for m in published for r in m.get("artifacts", [])}
+    unknown = sorted({path for path in stored.values() if path not in listed})
+    present = dict(zip(unknown, parallel(store.exists, unknown, jobs)))
     for source, path in stored.items():
-        if store.exists(path):
+        if path in listed or present[path]:
             plan.shared += 1
         else:
             plan.uploads[path] = files[source]
     return plan
 
 
-def apply(plan: Plan, store: Store) -> None:
-    for path, data in sorted(plan.uploads.items()):
+def apply(plan: Plan, store: Store, jobs: int = DEFAULT_JOBS) -> None:
+    def upload(item: tuple[str, bytes]) -> None:
+        path, data = item
         try:
             store.put_new(path, data, content_type(path))
         except ConflictError:
             pass  # another release stored the same content under the same hash
+
+    # Raises on the first failed upload, before the manifest is written, so nothing
+    # of the release goes live.
+    parallel(upload, sorted(plan.uploads.items()), jobs)
     body = (json.dumps(plan.manifest, indent=2, ensure_ascii=False) + "\n").encode()
     try:
         store.put_new(manifest_path(plan.version), body, "application/json")
@@ -574,7 +632,21 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="print a JSON summary on stdout (progress goes to stderr)",
     )
+    parser.add_argument(
+        "-j",
+        "--jobs",
+        type=int,
+        default=DEFAULT_JOBS,
+        help=f"requests to the store to run at a time (default: {DEFAULT_JOBS})",
+    )
+    parser.add_argument(
+        "--verify",
+        action="store_true",
+        help="check every file is in the store, even those a published manifest lists",
+    )
     args = parser.parse_args(argv)
+    if args.jobs < 1:
+        parser.error("--jobs must be at least 1")
 
     out = sys.stderr if args.json else sys.stdout
 
@@ -586,9 +658,11 @@ def main(argv: list[str] | None = None) -> int:
         if not bundle.is_dir():
             raise ReleaseError(f"{bundle} is not a folder")
         commit = args.commit or git_commit(bundle, args.allow_dirty)
-        store = open_store(args.dest, args.endpoint_url, args.region)
+        store = open_store(args.dest, args.endpoint_url, args.region, args.jobs)
         released_at = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-        plan = plan_release(bundle, store, commit, released_at)
+        plan = plan_release(
+            bundle, store, commit, released_at, jobs=args.jobs, verify=args.verify
+        )
 
         published = False
         if not plan.publishes:
@@ -601,7 +675,7 @@ def main(argv: list[str] | None = None) -> int:
                 log("not published")
                 return 1
             else:
-                apply(plan, store)
+                apply(plan, store, args.jobs)
                 published = True
                 log(f"published manifest_v{plan.version}.json")
     except ReleaseError as err:

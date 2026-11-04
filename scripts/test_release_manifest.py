@@ -8,6 +8,7 @@ import io
 import json
 import sys
 import tempfile
+import threading
 import unittest
 from pathlib import Path
 from unittest import mock
@@ -266,6 +267,110 @@ class LocalReleaseTest(unittest.TestCase):
         self.assertRegex(rm.hashed_path("a/b/render.json", b"x"), r"^a/b/render\.[0-9a-f]{16}\.json$")
         self.assertRegex(rm.hashed_path("x.schema.json", b"x"), r"^x\.schema\.[0-9a-f]{16}\.json$")
         self.assertRegex(rm.hashed_path("README", b"x"), r"^README\.[0-9a-f]{16}$")
+
+
+class CountingStore(rm.LocalStore):
+    """A local store that records the keys of every request, from any thread."""
+
+    def __init__(self, root, fail_on=None):
+        super().__init__(root)
+        self.lock = threading.Lock()
+        self.calls = {"get": [], "exists": [], "put_new": []}
+        self.fail_on = fail_on
+
+    def record(self, op, key):
+        with self.lock:
+            self.calls[op].append(key)
+
+    def get(self, key):
+        self.record("get", key)
+        return super().get(key)
+
+    def exists(self, key):
+        self.record("exists", key)
+        return super().exists(key)
+
+    def put_new(self, key, data, content_type):
+        self.record("put_new", key)
+        if self.fail_on and self.fail_on in key:
+            raise OSError(f"cannot write {key}")
+        super().put_new(key, data, content_type)
+
+
+class ConcurrentReleaseTest(unittest.TestCase):
+    def setUp(self):
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        self.root = Path(tmp.name)
+        self.bundle = Bundle(self.root)
+        for i in range(40):
+            self.bundle.add(f"flow-{i}", "workflow", f"flow/{i}.json", {"n": i})
+        self.dest = str(self.root / "store")
+
+    def publish(self, store, **kw):
+        plan = rm.plan_release(self.bundle.dir, store, "abc", "now", **kw)
+        rm.apply(plan, store, kw.get("jobs", rm.DEFAULT_JOBS))
+        return plan
+
+    def test_parallel_keeps_order_and_raises(self):
+        self.assertEqual(rm.parallel(lambda x: x * 2, range(50), 8), [x * 2 for x in range(50)])
+
+        def boom(x):
+            if x == 7:
+                raise ValueError("seven")
+            return x
+
+        with self.assertRaisesRegex(ValueError, "seven"):
+            rm.parallel(boom, range(50), 8)
+
+    def test_files_a_published_manifest_lists_are_not_checked(self):
+        self.publish(rm.LocalStore(self.dest))
+        self.bundle.write("flow/3.json", {"n": "changed"})
+
+        store = CountingStore(self.dest)
+        plan = rm.plan_release(self.bundle.dir, store, "abc", "now")
+        self.assertEqual(plan.changed, ["flow/3.json"])
+        self.assertEqual(len(store.calls["exists"]), 1)
+        self.assertRegex(store.calls["exists"][0], r"^flow/3\.[0-9a-f]{16}\.json$")
+        self.assertEqual(plan.shared, 39)
+        self.assertEqual(list(plan.uploads), store.calls["exists"])
+
+    def test_verify_checks_every_file(self):
+        self.publish(rm.LocalStore(self.dest))
+        self.bundle.write("flow/3.json", {"n": "changed"})
+
+        store = CountingStore(self.dest)
+        plan = rm.plan_release(self.bundle.dir, store, "abc", "now", verify=True)
+        self.assertEqual(len(store.calls["exists"]), 40)
+        self.assertEqual(plan.shared, 39)
+        self.assertEqual(len(plan.uploads), 1)
+
+    def test_failed_upload_publishes_no_manifest(self):
+        store = CountingStore(self.dest, fail_on="flow/20.")
+        plan = rm.plan_release(self.bundle.dir, store, "abc", "now")
+        with self.assertRaises(OSError):
+            rm.apply(plan, store)
+        self.assertNotIn("manifest_v1.json", store.calls["put_new"])
+        self.assertIsNone(store.get("manifest_v1.json"))
+
+        # Running it again uploads what's missing and publishes.
+        store.fail_on = None
+        plan = self.publish(store)
+        self.assertEqual(plan.version, 1)
+        self.assertIsNotNone(store.get("manifest_v1.json"))
+
+    def test_versions_are_found_past_one_window(self):
+        store = rm.LocalStore(self.dest)
+        for n in range(5):
+            self.bundle.write("flow/0.json", {"n": f"v{n}"})
+            self.assertEqual(self.publish(store, jobs=2).version, n + 1)
+        self.assertEqual(len(rm.published_manifests(store, jobs=2)), 5)
+        self.assertEqual(len(rm.published_manifests(store, jobs=1)), 5)
+
+    def test_jobs_must_be_positive(self):
+        with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit) as exit:
+            rm.main([str(self.bundle.dir), "--dest", self.dest, "--jobs", "0"])
+        self.assertEqual(exit.exception.code, 2)
 
 
 try:
