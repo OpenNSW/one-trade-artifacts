@@ -376,7 +376,9 @@
                   {
                     "from": "flavors",
                     "to": "Total.Flavor",
-                    "default": 0
+                    "default": {
+                      "null": null
+                    }
                   },
                   {
                     "from": "total",

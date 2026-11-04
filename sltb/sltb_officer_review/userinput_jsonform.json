@@ -118,7 +118,7 @@
                   { "from": "warehouse_address", "to": "Sample.Sample_Warehouse", "default": null },
                   { "from": "remarks", "to": "Sample.Remarks", "default": { "null": null } },
                   { "from": "blend_gain_determined", "to": "Total.Blend_gain", "default": { "null": null } },
-                  { "from": "flavors", "to": "Total.Flavor", "default": 0 },
+                  { "from": "flavors", "to": "Total.Flavor", "default": { "null": null } },
                   { "from": "total", "to": "Total.Total", "default": null },
                   { "from": "avg_value_per_kg", "to": "Total.Average_value", "default": null },
                   { "from": "quantity_to_be_shipped_imported", "to": "Total.Ship_import", "default": { "null": null } },
