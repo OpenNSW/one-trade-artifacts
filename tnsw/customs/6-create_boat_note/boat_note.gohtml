@@ -113,7 +113,7 @@
 
     <div class="box" style="grid-column: 1 / 7;">
       <span class="label">4. Voyage No. / Date</span>
-      <span class="value">{{ .boat_note.voyage_no_date }}</span>
+      <span class="value">{{ .boat_note.voyage_no }}{{ with .boat_note.voyage_date }} / {{ date . "2006-01-02" "02/01/2006" }}{{ end }}</span>
     </div>
     <div class="box" style="grid-column: 7 / 13;">
       <span class="label">5. Warehouse No.</span>
