@@ -245,6 +245,23 @@ class LocalReleaseTest(unittest.TestCase):
         self.assertEqual(code, 0, self.last_err)
         self.assertEqual(summary["version"], 2)
 
+    def test_local_put_new_leaves_no_temporary_files(self):
+        store = rm.LocalStore(str(self.dest))
+        store.put_new("a/b.json", b"one", "application/json")
+        with self.assertRaises(rm.ConflictError):
+            store.put_new("a/b.json", b"two", "application/json")
+        self.assertEqual((self.dest / "a" / "b.json").read_bytes(), b"one")
+        self.assertEqual(sorted(p.name for p in (self.dest / "a").iterdir()), ["b.json"])
+
+    def test_s3_region(self):
+        with mock.patch.dict(rm.os.environ, {}, clear=True):
+            self.assertEqual(rm.s3_region("eu-west-1", "https://r2", "us-east-2"), "eu-west-1")
+            self.assertEqual(rm.s3_region(None, "https://r2", "us-east-2"), "us-east-2")
+            self.assertEqual(rm.s3_region(None, "https://r2", None), "auto")
+            self.assertIsNone(rm.s3_region(None, None, None))
+        with mock.patch.dict(rm.os.environ, {"AWS_ENDPOINT_URL": "https://r2"}, clear=True):
+            self.assertEqual(rm.s3_region(None, None, None), "auto")
+
     def test_hashed_path(self):
         self.assertRegex(rm.hashed_path("a/b/render.json", b"x"), r"^a/b/render\.[0-9a-f]{16}\.json$")
         self.assertRegex(rm.hashed_path("x.schema.json", b"x"), r"^x\.schema\.[0-9a-f]{16}\.json$")

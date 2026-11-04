@@ -75,6 +75,7 @@ import os
 import posixpath
 import subprocess
 import sys
+import tempfile
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Protocol
@@ -127,16 +128,42 @@ class LocalStore:
         return self._path(key).is_file()
 
     def put_new(self, key: str, data: bytes, content_type: str) -> None:
+        # The bytes go to a temporary file first and are linked into place whole, so no
+        # reader or later release sees a partly written file under its final name.
+        # os.link fails if the name exists, which keeps the write create-only.
         p = self._path(key)
         p.parent.mkdir(parents=True, exist_ok=True)
+        fd, tmp = tempfile.mkstemp(dir=p.parent, prefix=f".{p.name}.", suffix=".tmp")
         try:
-            with open(p, "xb") as f:
+            with os.fdopen(fd, "wb") as f:
                 f.write(data)
-        except FileExistsError:
-            raise ConflictError(f"{key} already exists in {self.describe()}") from None
+                f.flush()
+                os.fsync(f.fileno())
+            try:
+                os.link(tmp, p)
+            except FileExistsError:
+                raise ConflictError(f"{key} already exists in {self.describe()}") from None
+        finally:
+            os.unlink(tmp)
 
     def describe(self) -> str:
         return str(self.root)
+
+
+def s3_region(region: str | None, endpoint_url: str | None, configured: str | None) -> str | None:
+    """The region to sign S3 requests for.
+
+    --region wins, then the region boto3 finds in the environment or the AWS profile
+    (configured). Without either, a custom endpoint such as R2 gets "auto", which R2
+    expects; AWS itself gets None, so boto3 uses its own default.
+    """
+    if region:
+        return region
+    if configured:
+        return configured
+    if endpoint_url or os.environ.get("AWS_ENDPOINT_URL"):
+        return "auto"
+    return None
 
 
 class S3Store:
@@ -161,10 +188,7 @@ class S3Store:
             client = boto3.client(
                 "s3",
                 endpoint_url=endpoint_url,
-                region_name=region
-                or os.environ.get("AWS_REGION")
-                or os.environ.get("AWS_DEFAULT_REGION")
-                or "auto",
+                region_name=s3_region(region, endpoint_url, boto3.Session().region_name),
                 # R2 rejects the checksum headers newer boto3 adds by default.
                 config=Config(
                     request_checksum_calculation="when_required",
@@ -524,7 +548,10 @@ def main(argv: list[str] | None = None) -> int:
         help="s3://<bucket>[/<prefix>] or a local directory; the backend's loader points here",
     )
     parser.add_argument("--endpoint-url", help="S3 endpoint, e.g. https://<account>.r2.cloudflarestorage.com")
-    parser.add_argument("--region", help='S3 region (default: AWS_REGION, AWS_DEFAULT_REGION or "auto")')
+    parser.add_argument(
+        "--region",
+        help='S3 region (default: the AWS environment or profile; "auto" with a custom endpoint such as R2)',
+    )
     parser.add_argument("--commit", help="commit to record (default: the bundle's git HEAD)")
     parser.add_argument(
         "--allow-dirty",
