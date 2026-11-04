@@ -298,7 +298,6 @@
     "required": [
       "shipper",
       "consignee",
-      "notifying_address",
       "voyage_no_date",
       "warehouse_number",
       "vessel",

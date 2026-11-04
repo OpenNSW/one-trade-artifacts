@@ -22,7 +22,7 @@
       "output_mapping": {
         "shipper": "userform.shipper",
         "consignee": "userform.consignee",
-        "notifying_address": "userform.notifying_address",
+        "notifying_address?": "userform.notifying_address",
         "voyage_no_date": "userform.voyage_no_date",
         "warehouse_number": "userform.warehouse_number",
         "vessel": "userform.vessel",
