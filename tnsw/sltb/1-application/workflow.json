@@ -16,7 +16,8 @@
         "userform?": "userform",
         "customs_feedback?": "customs_feedback",
         "customs_error?": "customs_error",
-        "verify?": "verify"
+        "verify?": "verify",
+        "cusdec.registration_no?": "userform.cusdec_draft.identification.registrationNumber"
       },
       "output_mapping": {
         "__command": "command",
@@ -53,6 +54,18 @@
       },
       "output_mapping": {
         "refid.blendsheet_data": "userform.blendsheet_data"
+      }
+    },
+    {
+      "id": "write_cusdec_reference",
+      "type": "TASK",
+      "task_template_id": "sltb-submit-blendsheet--write-cusdec-reference",
+      "input_mapping": {
+        "userform": "userform",
+        "cusdec": "cusdec"
+      },
+      "output_mapping": {
+        "written.userform": "userform"
       }
     },
     {
@@ -114,6 +127,11 @@
     {
       "id": "e_numbered",
       "source_id": "generate_blendsheet_nos",
+      "target_id": "write_cusdec_reference"
+    },
+    {
+      "id": "e_cusdec_written",
+      "source_id": "write_cusdec_reference",
       "target_id": "officer_review"
     },
     {

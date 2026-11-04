@@ -36,6 +36,15 @@
       }
     },
     {
+      "id": "trade_1c_cusdec_registration_no",
+      "type": "TASK",
+      "name": "Issue the CusDec Registration Number",
+      "task_template_id": "trade-cusdec-registration-no-flow",
+      "output_mapping": {
+        "cusdec": "trade.cusdec"
+      }
+    },
+    {
       "id": "trade_2_hscode_selection",
       "type": "TASK",
       "name": "Select HS Codes",
@@ -57,7 +66,8 @@
       "input_mapping": {
         "trade.hs_codes": "hs_codes",
         "traderCompany": "company",
-        "trade.cha": "cha"
+        "trade.cha": "cha",
+        "trade.cusdec": "cusdec"
       },
       "output_mapping": {
         "split_items": "trade.split_items"
@@ -95,8 +105,13 @@
       "target_id": "trade_1b_persist_cha"
     },
     {
-      "id": "e_persist_to_hscode",
+      "id": "e_persist_to_cusdec_no",
       "source_id": "trade_1b_persist_cha",
+      "target_id": "trade_1c_cusdec_registration_no"
+    },
+    {
+      "id": "e_cusdec_no_to_hscode",
+      "source_id": "trade_1c_cusdec_registration_no",
       "target_id": "trade_2_hscode_selection"
     },
     {
