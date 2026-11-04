@@ -59,6 +59,11 @@
         "title": "Exporter's Registration No",
         "example": "7381/92/02/2009"
       },
+      "slpa_no": {
+        "type": "string",
+        "title": "SLPA No.",
+        "example": "SLPA-2026-004512"
+      },
       "containers": {
         "type": "array",
         "title": "Containers",
@@ -353,6 +358,11 @@
             "type": "Control",
             "scope": "#/properties/exporters_registration_no",
             "label": "11. Exporter's Registration No"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/slpa_no",
+            "label": "12. SLPA No."
           }
         ]
       },
