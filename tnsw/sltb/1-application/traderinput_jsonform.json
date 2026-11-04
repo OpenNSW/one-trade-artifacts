@@ -98,7 +98,10 @@
                 "writeBase": "parent",
                 "writeTo": [
                   {
-                    "from": "blendsheet_no",
+                    "inputs": {
+                      "blendsheet_no": "blendsheet_no"
+                    },
+                    "formula": "SUBSTITUTE(blendsheet_no, \"/\", \"\")",
                     "to": "@_id",
                     "default": 0
                   },
