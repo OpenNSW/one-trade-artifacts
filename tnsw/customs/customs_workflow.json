@@ -165,6 +165,7 @@
       "input_mapping": {
         "customs.boat_note_prefill": "userform",
         "customs.boat_note_prefill.containers": "containers",
+        "customs.cusdec_number?": "cusdec_number",
         "_iter.input.cha?": "cha",
         "_iter.input.cha.name?": "declarant_name",
         "_iter.input.company.data.tin_no?": "exporter_code"

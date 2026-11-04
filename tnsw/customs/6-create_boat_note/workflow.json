@@ -60,7 +60,8 @@
       "task_template_id": "customs-boat-note--generate-document",
       "input_mapping": {
         "userform?": "userform",
-        "userform": "boat_note"
+        "userform": "boat_note",
+        "cusdec_number?": "cusdec_number"
       },
       "output_mapping": {
         "boat_note_document.key": "boat_note_document_key"
