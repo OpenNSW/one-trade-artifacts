@@ -99,7 +99,7 @@ What it looks like (as in `cda/`):
 
 Every top-level folder with a `manifest.json` is a bundle.
 `.github/workflows/release.yml` (manual `workflow_dispatch` only, so merging publishes
-nothing) checks out a release tag (`tnsw-vX.Y.Z`) and releases each bundle with
+nothing) runs from the tag picked under "Use workflow from" and releases each bundle with
 `scripts/release_manifest.py` to `s3://<bucket>/[<prefix>/]<bundle>`, taking the store
 from the chosen GitHub environment. A new top-level folder with a manifest is released
 with the others; one without a manifest is not.
