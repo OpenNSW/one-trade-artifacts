@@ -26,7 +26,9 @@
                 { "from": "id", "to": "id", "as": "string" },
                 { "from": "description_of_food", "to": "description_of_food", "as": "string" },
                 { "from": "consignment_storage_address", "to": "consignment_storage_address", "as": "string" },
-                { "from": "package_batch_weight_details", "to": "package_batch_weight_details", "as": "string" },
+                { "from": "package_type", "to": "package_type", "as": "string" },
+                { "from": "batch_codes", "to": "batch_codes", "as": "string" },
+                { "from": "total_weight", "to": "total_weight", "as": "number" },
                 { "from": "ingredients_details", "to": "ingredients_details", "as": "string" },
                 { "from": "in_house_quality_monitoring", "to": "in_house_quality_monitoring", "as": "string" }
               ]
@@ -57,7 +59,9 @@
                 { "from": "id", "to": "id", "as": "string" },
                 { "from": "description_of_food", "to": "description_of_food", "as": "string" },
                 { "from": "consignment_storage_address", "to": "consignment_storage_address", "as": "string" },
-                { "from": "package_batch_weight_details", "to": "package_batch_weight_details", "as": "string" },
+                { "from": "package_type", "to": "package_type", "as": "string" },
+                { "from": "batch_codes", "to": "batch_codes", "as": "string" },
+                { "from": "total_weight", "to": "total_weight", "as": "number" },
                 { "from": "ingredients_details", "to": "ingredients_details", "as": "string" },
                 { "from": "in_house_quality_monitoring", "to": "in_house_quality_monitoring", "as": "string" }
               ]
@@ -115,10 +119,21 @@
               "title": "Address where consignment is stored",
               "example": "ACME Cold Storage, Sector 4, Export Zone, Biyagama"
             },
-            "package_batch_weight_details": {
+            "package_type": {
               "type": "string",
-              "title": "Type of Package, Batch Codes and Total weight",
-              "example": "Cans in Corrugated Cartons, Batch CC-2026-94, Total Net Weight 5400 kg"
+              "title": "Type of Package",
+              "example": "Cans in Corrugated Cartons"
+            },
+            "batch_codes": {
+              "type": "string",
+              "title": "Batch Codes",
+              "example": "CC-2026-94"
+            },
+            "total_weight": {
+              "type": "number",
+              "title": "Total Weight (kg)",
+              "exclusiveMinimum": 0,
+              "example": 5400
             },
             "ingredients_details": {
               "type": "string",
@@ -147,10 +162,11 @@
             "id",
             "description_of_food",
             "consignment_storage_address",
-            "package_batch_weight_details",
+            "package_type",
+            "batch_codes",
+            "total_weight",
             "ingredients_details",
-            "in_house_quality_monitoring",
-            "analysis_certificates"
+            "in_house_quality_monitoring"
           ]
         },
         "example": [
@@ -158,7 +174,9 @@
             "id": "item-1",
             "description_of_food": "Premium Organic Coconut Cream, canned (400ml) - 500 Cartons, 5400 kg Total Net Weight",
             "consignment_storage_address": "ACME Cold Storage, Sector 4, Export Zone, Biyagama",
-            "package_batch_weight_details": "Cans in Corrugated Cartons, Batch CC-2026-94, Total Net Weight 5400 kg",
+            "package_type": "Cans in Corrugated Cartons",
+            "batch_codes": "CC-2026-94",
+            "total_weight": 5400,
             "ingredients_details": "Organic Coconut Extract (99.8%), Xanthan Gum (0.2%)",
             "in_house_quality_monitoring": "Daily microbiological sampling, temperature control monitoring, and HACCP CCP verification logs."
           }
@@ -303,7 +321,15 @@
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/package_batch_weight_details"
+                    "scope": "#/properties/package_type"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/batch_codes"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/total_weight"
                   },
                   {
                     "type": "Control",
@@ -331,7 +357,7 @@
               },
               "display": "cards",
               "summary": "{id} · {description_of_food}",
-              "summaryDetail": "{package_batch_weight_details}"
+              "summaryDetail": "{package_type} · {batch_codes} · {total_weight} kg"
             }
           }
         ],

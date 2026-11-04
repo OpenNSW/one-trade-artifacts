@@ -40,6 +40,7 @@
         "reference_number?": "reference_number",
         "certificate_id": "replacement.replaced_number",
         "replacement_note": "replacement.reason",
+        "replaced_issue_date?": "replacement.replaced_issue_date",
         "treatment_certificate_url?": "documents.treatment_certificate.url",
         "officerinput.send_treatment_certificate?": "documents.treatment_certificate.send",
         "supervision_report_url?": "documents.treatment_supervision_report.url",

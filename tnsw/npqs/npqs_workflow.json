@@ -869,6 +869,25 @@
       "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
+      "id": "n10b_1_replacement_payment",
+      "name": "Pay for Replacement Certificate",
+      "type": "TASK",
+      "task_template_id": "npqs-pay-replacement-fee",
+      "input_mapping": {
+        "npqs.reference_number": "reference_number",
+        "npqs.userform": "userform"
+      },
+      "output_mapping": {
+        "payment_status": "npqs.replacement_payment_status"
+      }
+    },
+    {
+      "id": "gw_replacement_payment",
+      "name": "Replacement Fee Paid?",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
       "id": "n10c_certificate_reissue",
       "name": "Replacement Certificate Issue",
       "type": "TASK",
@@ -899,6 +918,7 @@
         "npqs.certificate_new_id": "new_certificate_id",
         "npqs.certificate_new_issue_date": "new_certificate_issue_date",
         "npqs.certificate_number": "certificate_id",
+        "npqs.replaced_certificate.issue_date?": "replaced_issue_date",
         "npqs.certificate_replacement_note?": "replacement_note",
         "npqs.certificate_replacement_hub_error?": "replacement_hub_error",
         "npqs.userform": "userform",
@@ -968,6 +988,26 @@
       "type": "GATEWAY",
       "gateway_type": "EXCLUSIVE_SPLIT",
       "name": "Replacement Accepted?"
+    },
+    {
+      "id": "n11b_1_replacement_payment",
+      "type": "TASK",
+      "name": "Pay for Replacement Certificate",
+      "task_template_id": "npqs-pay-replacement-fee",
+      "lane": "Trader/CHA",
+      "input_mapping": {
+        "npqs.reference_number": "reference_number",
+        "npqs.userform": "userform"
+      },
+      "output_mapping": {
+        "payment_status": "npqs.replacement_payment_status"
+      }
+    },
+    {
+      "id": "gw_next_action_replacement_payment",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Replacement Fee Paid?"
     },
     {
       "id": "n11c_certificate_reissue",
@@ -1513,8 +1553,25 @@
     {
       "id": "e_replacement_accepted",
       "source_id": "gw_certificate_replacement",
-      "target_id": "n10c_certificate_reissue",
+      "target_id": "n10b_1_replacement_payment",
       "condition": "npqs.certificate_replacement.decision == 'accept'"
+    },
+    {
+      "id": "e_replacement_payment",
+      "source_id": "n10b_1_replacement_payment",
+      "target_id": "gw_replacement_payment"
+    },
+    {
+      "id": "e_replacement_paid",
+      "source_id": "gw_replacement_payment",
+      "target_id": "n10c_certificate_reissue",
+      "condition": "npqs.replacement_payment_status == 'success'"
+    },
+    {
+      "id": "e_replacement_payment_failed",
+      "source_id": "gw_replacement_payment",
+      "target_id": "n10_certificate_status",
+      "condition": "npqs.replacement_payment_status != 'success'"
     },
     {
       "id": "e_replacement_rejected",
@@ -1569,8 +1626,25 @@
     {
       "id": "e_next_action_replacement_accepted",
       "source_id": "gw_next_action_replacement",
-      "target_id": "n11c_certificate_reissue",
+      "target_id": "n11b_1_replacement_payment",
       "condition": "npqs.certificate_replacement.decision == 'accept'"
+    },
+    {
+      "id": "e_next_action_replacement_payment",
+      "source_id": "n11b_1_replacement_payment",
+      "target_id": "gw_next_action_replacement_payment"
+    },
+    {
+      "id": "e_next_action_replacement_paid",
+      "source_id": "gw_next_action_replacement_payment",
+      "target_id": "n11c_certificate_reissue",
+      "condition": "npqs.replacement_payment_status == 'success'"
+    },
+    {
+      "id": "e_next_action_replacement_payment_failed",
+      "source_id": "gw_next_action_replacement_payment",
+      "target_id": "n11_certificate_next_action",
+      "condition": "npqs.replacement_payment_status != 'success'"
     },
     {
       "id": "e_next_action_replacement_rejected",

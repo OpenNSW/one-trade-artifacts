@@ -220,7 +220,7 @@
               "as": "string"
             },
             {
-              "from": "ASYCUDA.NSW.Exporter.Name",
+              "from": "ASYCUDA.Traders.Exporter.Exporter_name",
               "to": "traders.exporter.name",
               "as": "string"
             },
