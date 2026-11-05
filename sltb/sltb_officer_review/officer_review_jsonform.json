@@ -52,7 +52,8 @@
               "type": "number",
               "title": "Levy Multiplier",
               "exclusiveMinimum": 0,
-              "default": 3
+              "default": 3,
+              "readOnly": true
             },
             "assessed_levy": {
               "type": "number",
