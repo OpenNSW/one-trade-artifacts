@@ -1,7 +1,9 @@
 # Publishes the next release snapshot of every bundle as a GitHub release.
 #
 # Each run builds on the latest release built this way (tag vX.Y.Z), read from
-# its release.json, so bundle versions form one unbroken chain; there is no
+# its release.json and snapshot.tar.gz, so bundle versions form one unbroken
+# chain and each release's snapshot.tar.gz holds every version ever released
+# (unpack the latest one to serve any of them); there is no
 # input for picking another baseline, since building on an older one would
 # publish a manifest_vN.json that already exists with different content. With
 # no such release yet, every bundle starts at v1. Releases are immutable: this
@@ -94,7 +96,11 @@ jobs:
           BASELINE: ${{ steps.tags.outputs.baseline }}
         run: |
           set -euo pipefail
-          if ! gh release download "$BASELINE" --pattern release.json --dir baseline; then
+          # release.json is what the build compares against; snapshot.tar.gz is the
+          # history the next snapshot adds to. The builder refuses a missing or
+          # incomplete snapshot when it releases anything.
+          gh release download "$BASELINE" --pattern release.json --pattern snapshot.tar.gz --dir baseline
+          if [ ! -f baseline/release.json ]; then
             echo "::error::release ${BASELINE} has no release.json to build on"
             exit 1
           fi

@@ -9,8 +9,9 @@ GitHub release is the release workflow's job, and deploying it is out of scope.
 
 Inputs:
   --repo      the repository at the release commit (default: the current folder).
-  --baseline  a folder holding the previous release's assets. Only its summary,
-              release.json, is read. Leave it out for the first release, where
+  --baseline  a folder holding the previous release's assets. Its summary,
+              release.json, is read, and so is its snapshot.tar.gz when this
+              build releases anything. Leave it out for the first release, where
               every bundle starts at v1.
 
 Per bundle (cda, efc, fcau, npqs, sltb, tnsw, each read from <bundle>/manifest.json):
@@ -32,14 +33,24 @@ The build is refused (exit 1, listing every problem, writing nothing) on:
     differs from the file an earlier release published for that (id, version),
     compared by hash, so moving the file is fine; add the next version instead;
   - uncommitted changes in a bundle, since the recorded commit must describe
-    what is built (--allow-dirty skips this, for a local trial build).
+    what is built (--allow-dirty skips this, for a local trial build);
+  - a baseline snapshot.tar.gz that is missing or incomplete: every bundle's
+    manifest_v1.json up to its current version must be in it, each matching the
+    summary's latest manifest for that version, with every file it lists, whose
+    content must match the hash in its name;
+  - a file this build would write into the snapshot at a path the baseline
+    snapshot already holds with other content.
 
 Outputs, in --out (which must be empty or absent):
   <bundle>.tar.gz   one per changed bundle: its manifest_vN.json and every file
                     it lists, at their hashed paths.
-  snapshot.tar.gz   every bundle at its current version, changed or not, each
-                    under <bundle>/: its manifest_vN.json and every file it
-                    lists. One download holds the whole state of the release.
+  snapshot.tar.gz   the whole history: the previous release's snapshot plus every
+                    bundle this build released, each under <bundle>/. It holds
+                    every manifest_vN.json ever released, from v1 up, and every
+                    file any of them lists, so unpacking the latest one gives a
+                    store that can serve any version. Nothing in it is ever
+                    replaced: files are named by their content, and each
+                    manifest_vN.json is new when released.
   release.json      the summary: per bundle, its current version, whether this
                     build changed it, and its changed and removed rows. It also
                     carries each bundle's latest manifest and every versioned row
@@ -54,8 +65,8 @@ Examples:
   # The first release.
   scripts/build_release.py --out build/
 
-  # The next release, from the previous release's assets.
-  gh release download <tag> --dir baseline/
+  # The next release, from the previous release's summary and snapshot.
+  gh release download <tag> --pattern release.json --pattern snapshot.tar.gz --dir baseline/
   scripts/build_release.py --baseline baseline/ --out build/
 
 Exit status: 0 when built (changed or not); 1 when the build is refused; 2 on
@@ -232,6 +243,57 @@ def load_baseline(folder: Path | None) -> dict[str, Previous]:
     except (KeyError, TypeError, AttributeError, ValueError) as err:
         raise BuildError(f"{path} is not a valid release summary: {err!r}") from None
     return out
+
+
+def load_snapshot(folder: Path, baseline: dict[str, Previous]) -> dict[str, bytes]:
+    """The previous release's snapshot (path -> content), checked to hold the whole history."""
+    path = folder / SNAPSHOT
+    entries: dict[str, bytes] = {}
+    problems: list[str] = []
+    try:
+        with tarfile.open(path, mode="r:gz") as tar:
+            for m in tar.getmembers():
+                parts = m.name.split("/")
+                if m.isdir():
+                    continue
+                if (not m.isfile() or m.name.startswith("/") or "" in parts or ".." in parts
+                        or parts[0] not in baseline or len(parts) < 2):
+                    problems.append(f"{SNAPSHOT}: unexpected entry {m.name!r}")
+                    continue
+                entries[m.name] = tar.extractfile(m).read()
+    except FileNotFoundError:
+        raise BuildError(
+            f"{path} does not exist; a baseline must hold the previous release's {SNAPSHOT} "
+            f"as well as its {SUMMARY}"
+        ) from None
+    except (tarfile.TarError, OSError, EOFError) as err:
+        raise BuildError(f"{path} is not a readable archive: {err}") from None
+
+    for name, prev in sorted(baseline.items()):
+        for v in range(1, prev.version + 1):
+            where = f"{SNAPSHOT}: {name}/{manifest_name(v)}"
+            data = entries.get(f"{name}/{manifest_name(v)}")
+            if data is None:
+                problems.append(f"{where} is missing, so the snapshot doesn't hold {name}'s whole history")
+                continue
+            try:
+                manifest = json.loads(data)
+                rows = manifest["artifacts"]
+                if manifest.get("version") != v:
+                    raise ValueError(f"its version is {manifest.get('version')!r}")
+                if v == prev.version and manifest != prev.manifest:
+                    raise ValueError(f"it differs from {name}'s manifest in {SUMMARY}")
+                for row in rows:
+                    stored = f"{name}/{row['path']}"
+                    if stored not in entries:
+                        problems.append(f"{where} lists {row['path']}, which isn't in the snapshot")
+                    elif hashed_path(row["source"], entries[stored]) != row["path"]:
+                        problems.append(f"{where} lists {row['path']}, whose content doesn't match its name")
+            except (ValueError, KeyError, TypeError, AttributeError) as err:
+                problems.append(f"{where} is not a valid manifest: {err}")
+    if problems:
+        raise BuildError(f"the baseline {SNAPSHOT} is refused:\n  " + "\n  ".join(problems))
+    return entries
 
 
 # --- building -------------------------------------------------------------------
@@ -466,17 +528,41 @@ def notes(builds: list[BundleBuild]) -> str:
     return "\n".join(out)
 
 
-def write(out: Path, builds: list[BundleBuild], commit: str, released_at: str) -> None:
+def snapshot_entries(builds: list[BundleBuild], previous: dict[str, bytes]) -> dict[str, bytes]:
+    """The previous snapshot plus every released bundle; refused if that would replace a file."""
+    snapshot = dict(previous)
+    clashes = []
+    for b in builds:
+        if not b.released:
+            continue  # it's in the previous snapshot already, at this version
+        for path, data in bundle_entries(b, f"{b.name}/").items():
+            if path in snapshot and snapshot[path] != data:
+                clashes.append(path)
+            snapshot[path] = data
+    if clashes:
+        raise BuildError(
+            f"build refused: the baseline {SNAPSHOT} already holds other content at:\n  "
+            + "\n  ".join(sorted(clashes))
+        )
+    return snapshot
+
+
+def write(
+    out: Path,
+    builds: list[BundleBuild],
+    commit: str,
+    released_at: str,
+    previous: dict[str, bytes] | None = None,
+) -> None:
     mtime = int(dt.datetime.strptime(released_at, "%Y-%m-%dT%H:%M:%SZ")
                 .replace(tzinfo=dt.timezone.utc).timestamp())
+    released = any(b.released for b in builds)
+    snapshot = snapshot_entries(builds, previous or {}) if released else None
     out.mkdir(parents=True, exist_ok=True)
     for b in builds:
         if b.released:
             (out / b.archive).write_bytes(archive_bytes(bundle_entries(b), mtime))
-    if any(b.released for b in builds):
-        snapshot: dict[str, bytes] = {}
-        for b in builds:
-            snapshot.update(bundle_entries(b, f"{b.name}/"))
+    if snapshot is not None:
         (out / SNAPSHOT).write_bytes(archive_bytes(snapshot, mtime))
     (out / NOTES).write_text(notes(builds), encoding="utf-8")
     (out / SUMMARY).write_bytes(dumps(summary(builds, commit, released_at)))
@@ -527,7 +613,10 @@ def main(argv: list[str] | None = None) -> int:
             commit, problems = git_commit(repo, bundles, args.allow_dirty)
         baseline = load_baseline(Path(args.baseline) if args.baseline else None)
         builds = build(repo, baseline, commit, released_at, bundles, problems)
-        write(out, builds, commit, released_at)
+        previous = None
+        if args.baseline and any(b.released for b in builds):
+            previous = load_snapshot(Path(args.baseline), baseline)
+        write(out, builds, commit, released_at, previous)
     except BuildError as err:
         print(f"error: {err}", file=sys.stderr)
         return 1
