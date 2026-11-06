@@ -1,0 +1,155 @@
+# Publishes the next release snapshot of every bundle as a GitHub release.
+#
+# Each run builds on the latest release built this way (tag vX.Y.Z), read from
+# its release.json, so bundle versions form one unbroken chain; there is no
+# input for picking another baseline, since building on an older one would
+# publish a manifest_vN.json that already exists with different content. With
+# no such release yet, every bundle starts at v1. Releases are immutable: this
+# workflow never edits, deletes or re-uploads an asset, and a bad release is
+# fixed forward with a new one. See scripts/build_release.py for the rules.
+name: GitHub release
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: Which part of the release tag (vX.Y.Z) to bump
+        type: choice
+        options: [patch, minor, major]
+        default: minor
+
+permissions:
+  contents: write
+
+# One release at a time, so two runs never build on the same baseline.
+concurrency:
+  group: github-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - name: Refuse a run off main
+        if: github.ref != 'refs/heads/main'
+        run: |
+          echo "::error::releases are built from main only, not ${GITHUB_REF}"
+          exit 1
+
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Find the previous release and the next tag
+        id: tags
+        env:
+          BUMP: ${{ inputs.bump }}
+        run: |
+          set -euo pipefail
+          releases=$(gh release list --exclude-drafts --limit 1000 --json tagName --jq '.[].tagName')
+
+          # The newest tag of either series, vX.Y.Z or the older tnsw-vX.Y.Z: the next tag
+          # bumps it, and GitHub's notes list the pull requests since it.
+          previous=$(printf '%s\n' "$releases" \
+            | grep -E '^(tnsw-)?v[0-9]+\.[0-9]+\.[0-9]+$' \
+            | awk '{ v = $0; sub(/^(tnsw-)?v/, "", v); print v, $0 }' \
+            | sort -V -k1,1 | tail -n 1 | cut -d' ' -f2 || true)
+
+          # The baseline: the newest vX.Y.Z release. The tnsw-v releases predate the
+          # builder and carry no release.json.
+          baseline=$(printf '%s\n' "$releases" \
+            | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n 1 || true)
+
+          version=${previous#tnsw-}
+          version=${version#v}
+          IFS=. read -r major minor patch <<< "${version:-0.0.0}"
+          major=$((10#$major)); minor=$((10#$minor)); patch=$((10#$patch))
+          case "$BUMP" in
+            major) tag="v$((major + 1)).0.0" ;;
+            minor) tag="v${major}.$((minor + 1)).0" ;;
+            patch) tag="v${major}.${minor}.$((patch + 1))" ;;
+            *) echo "::error::unknown bump ${BUMP}"; exit 1 ;;
+          esac
+
+          if git ls-remote --exit-code --tags origin "refs/tags/${tag}" > /dev/null; then
+            echo "::error::tag ${tag} already exists; releases are never re-published"
+            exit 1
+          fi
+
+          echo "previous=${previous}" >> "$GITHUB_OUTPUT"
+          echo "baseline=${baseline}" >> "$GITHUB_OUTPUT"
+          echo "tag=${tag}" >> "$GITHUB_OUTPUT"
+          echo "previous tag: ${previous:-none}; baseline: ${baseline:-none (first release)}; next tag: ${tag}"
+
+      - name: Download the baseline
+        if: steps.tags.outputs.baseline != ''
+        env:
+          BASELINE: ${{ steps.tags.outputs.baseline }}
+        run: |
+          set -euo pipefail
+          if ! gh release download "$BASELINE" --pattern release.json --dir baseline; then
+            echo "::error::release ${BASELINE} has no release.json to build on"
+            exit 1
+          fi
+
+      - name: Build the snapshot
+        id: build
+        env:
+          BASELINE: ${{ steps.tags.outputs.baseline }}
+        run: |
+          set -euo pipefail
+          python3 scripts/build_release.py --out build ${BASELINE:+--baseline baseline}
+          echo "changed=$(jq -r .changed build/release.json)" >> "$GITHUB_OUTPUT"
+
+      - name: Nothing to publish
+        if: steps.build.outputs.changed != 'true'
+        run: echo "No bundle changed since ${{ steps.tags.outputs.baseline }}; nothing published." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Write the release notes
+        if: steps.build.outputs.changed == 'true'
+        env:
+          TAG: ${{ steps.tags.outputs.tag }}
+          PREVIOUS: ${{ steps.tags.outputs.previous }}
+        run: |
+          set -euo pipefail
+          args=(-f "tag_name=${TAG}" -f "target_commitish=${GITHUB_SHA}")
+          if [ -n "$PREVIOUS" ]; then args+=(-f "previous_tag_name=${PREVIOUS}"); fi
+          gh api "repos/${GH_REPO}/releases/generate-notes" "${args[@]}" --jq .body > generated.md
+
+          {
+            cat build/release-notes.md
+            echo
+            cat generated.md
+          } > notes.md
+          # GitHub refuses a release body over 125000 characters; release.json lists every change.
+          if [ "$(wc -m < notes.md)" -gt 120000 ]; then
+            {
+              echo "## Bundles"
+              echo
+              jq -r '.bundles | to_entries[] | "- **\(.key)**: " + (if .value.released
+                then "v\(.value.version), \(.value.changed | length) changed, \(.value.removed | length) removed"
+                else "unchanged (v\(.value.version))" end)' build/release.json
+              echo
+              echo "Every changed and removed row is listed in \`release.json\`."
+              echo
+              cat generated.md
+            } > notes.md
+          fi
+          cat build/release-notes.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Publish the release
+        if: steps.build.outputs.changed == 'true'
+        env:
+          TAG: ${{ steps.tags.outputs.tag }}
+        run: |
+          set -euo pipefail
+          gh release create "$TAG" --target "$GITHUB_SHA" --title "$TAG" --notes-file notes.md \
+            build/*.tar.gz build/release.json
+          echo "Published [${TAG}](${GITHUB_SERVER_URL}/${GH_REPO}/releases/tag/${TAG})." >> "$GITHUB_STEP_SUMMARY"
