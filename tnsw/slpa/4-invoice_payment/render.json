@@ -4,7 +4,9 @@
   "title": "[SLPA] Invoice & Payment",
   "files": [
     "payment.payment_slip_file.key",
-    "payment_slip_file.key"
+    "payment.receipt_file.key",
+    "payment_slip_file.key",
+    "receipt_file.key"
   ],
   "sections": {
     "request_prompt": {

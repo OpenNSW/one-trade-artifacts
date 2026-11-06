@@ -2,6 +2,12 @@
   "id": "slpa-gate-pass-flow:render",
   "type": "APPLICATION",
   "title": "[SLPA] Container Gate Pass",
+  "files": [
+    "barcode_file.key",
+    "gate_pass_file.key",
+    "gp.barcode_file.key",
+    "gp.gate_pass_file.key"
+  ],
   "sections": {
     "refusal": {
       "templateId": "slpa-gp--refusal",
