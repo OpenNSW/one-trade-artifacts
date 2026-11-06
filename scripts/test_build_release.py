@@ -154,14 +154,90 @@ class BuildTest(unittest.TestCase):
 
         snap = self.archive("snapshot.tar.gz")
         self.assertEqual(snap["alpha/manifest_v2.json"], self.archive("alpha")["manifest_v2.json"])
-        self.assertNotIn("alpha/manifest_v1.json", snap)
         # beta didn't change: it's there at v1, with the files v1 listed.
         beta = json.loads(snap["beta/manifest_v1.json"])
         self.assertEqual(beta, s1["bundles"]["beta"]["manifest"])
-        expected = {f"{b}/{r['path']}" for b, m in (("alpha", s2), ("beta", s1))
-                    for r in m["bundles"][b]["manifest"]["artifacts"]}
-        self.assertEqual(set(snap), expected | {"alpha/manifest_v2.json", "beta/manifest_v1.json"})
         self.assertEqual(json.loads(snap[f"beta/{beta['artifacts'][0]['path']}"]), {"nodes": ["b"]})
+
+    def test_snapshot_holds_the_whole_history(self):
+        _, s1 = self.build(baseline=None)
+        self.a.write("flow/render.json", {"title": "B"})
+        _, s2 = self.build()
+        self.b.write("task/workflow.json", {"nodes": ["c"]})
+        code, s3 = self.build()
+        self.assertEqual(code, 0, self.stderr)
+
+        snap = self.archive("snapshot.tar.gz")
+        manifests = {
+            "alpha/manifest_v1.json": s1["bundles"]["alpha"]["manifest"],
+            "alpha/manifest_v2.json": s2["bundles"]["alpha"]["manifest"],
+            "beta/manifest_v1.json": s1["bundles"]["beta"]["manifest"],
+            "beta/manifest_v2.json": s3["bundles"]["beta"]["manifest"],
+        }
+        for path, manifest in manifests.items():
+            self.assertEqual(json.loads(snap[path]), manifest, path)
+        # Exactly every manifest ever released and every file any of them lists.
+        expected = set(manifests) | {
+            f"{path.split('/')[0]}/{r['path']}" for path, m in manifests.items() for r in m["artifacts"]
+        }
+        self.assertEqual(set(snap), expected)
+        # alpha v1's render, replaced in v2, is still there for v1.
+        old = self.rows("alpha", s1)["flow:render"]["path"]
+        self.assertEqual(json.loads(snap[f"alpha/{old}"]), {"title": "A"})
+        # The per-bundle archive holds that bundle's whole history: its slice of the snapshot.
+        beta = self.archive("beta")
+        self.assertEqual(sorted(k for k in beta if k.startswith("manifest_")), ["manifest_v1.json", "manifest_v2.json"])
+        self.assertEqual(beta, {p[len("beta/"):]: d for p, d in snap.items() if p.startswith("beta/")})
+        self.assertNotIn("alpha.tar.gz", [p.name for p in self.out.iterdir()])  # alpha didn't change
+
+    def test_baseline_without_a_snapshot_is_refused_when_releasing(self):
+        self.build(baseline=None)
+        (self.baseline / "snapshot.tar.gz").unlink()
+        code, s = self.build()  # nothing changed: the snapshot isn't needed
+        self.assertEqual(code, 0, self.stderr)
+        self.assertFalse(s["changed"])
+        self.a.write("flow/render.json", {"title": "B"})
+        code, _ = self.build()
+        self.assertRefused(code, "snapshot.tar.gz does not exist")
+
+    def rewrite_baseline_snapshot(self, change):
+        """Rewrite the baseline's snapshot.tar.gz through change(entries)."""
+        path = self.baseline / "snapshot.tar.gz"
+        with tarfile.open(path) as tar:
+            entries = {m.name: tar.extractfile(m).read() for m in tar.getmembers()}
+        change(entries)
+        path.write_bytes(br.archive_bytes(entries, 0))
+
+    def test_baseline_snapshot_missing_an_earlier_manifest_is_refused(self):
+        self.build(baseline=None)
+        self.a.write("flow/render.json", {"title": "B"})
+        self.build()
+        self.rewrite_baseline_snapshot(lambda e: e.pop("alpha/manifest_v1.json"))
+        self.b.write("task/workflow.json", {"nodes": ["c"]})
+        code, _ = self.build()
+        self.assertRefused(code, "alpha/manifest_v1.json is missing")
+
+    def test_baseline_snapshot_with_a_changed_file_is_refused(self):
+        _, s1 = self.build(baseline=None)
+        render = "alpha/" + self.rows("alpha", s1)["flow:render"]["path"]
+        self.rewrite_baseline_snapshot(lambda e: e.update({render: b'{"title": "X"}'}))
+        self.b.write("task/workflow.json", {"nodes": ["c"]})
+        code, _ = self.build()
+        self.assertRefused(code, "whose content doesn't match its name")
+
+    def test_snapshot_never_replaces_a_file(self):
+        self.build(baseline=None)
+        self.rewrite_baseline_snapshot(lambda e: e.update({"alpha/manifest_v2.json": b"{}"}))
+        self.a.write("flow/render.json", {"title": "B"})
+        code, _ = self.build()
+        self.assertRefused(code, "already holds other content at:\n  alpha/manifest_v2.json")
+
+    def test_baseline_snapshot_with_an_unexpected_entry_is_refused(self):
+        self.build(baseline=None)
+        self.rewrite_baseline_snapshot(lambda e: e.update({"../evil.json": b"{}"}))
+        self.b.write("task/workflow.json", {"nodes": ["c"]})
+        code, _ = self.build()
+        self.assertRefused(code, "unexpected entry '../evil.json'")
 
     def test_skipped_bundle_is_still_known_to_the_next_build(self):
         self.build(baseline=None)
