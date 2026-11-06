@@ -1,6 +1,6 @@
 name: Deploy release
 
-# Deploys a GitHub release (tag vX.Y.Z, published by github-release.yml) into an
+# Deploys a GitHub release (tag vX.Y.Z, published by release.yml) into an
 # artifact store with scripts/deploy_release.py. The release decides every
 # version; deploying copies its snapshot.tar.gz into the store, adds only what
 # the store lacks, writes manifests last, and never overwrites or deletes. A

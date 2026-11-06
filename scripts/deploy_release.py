@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Deploy one bundle of a GitHub release into an artifact store.
 
-A release (scripts/build_release.py, published by .github/workflows/github-release.yml)
+A release (scripts/build_release.py, published by .github/workflows/release.yml)
 decides every version: its snapshot.tar.gz holds, under <bundle>/, every
 manifest_vN.json of that bundle from v1 up and every file any of them lists, at
 content-hashed names. Deploying copies that into a store the backend's artifact

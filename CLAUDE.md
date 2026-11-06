@@ -100,7 +100,7 @@ What it looks like (as in `cda/`):
 Every top-level folder with a `manifest.json` is a bundle. Releasing and deploying are
 two manual `workflow_dispatch` steps, so merging publishes nothing:
 
-1. `.github/workflows/github-release.yml` builds the next release with
+1. `.github/workflows/release.yml` builds the next release with
    `scripts/build_release.py` from `main` and publishes it as a GitHub release tagged
    `vX.Y.Z`. The release decides every bundle's version, and its `snapshot.tar.gz` holds
    every version ever released.

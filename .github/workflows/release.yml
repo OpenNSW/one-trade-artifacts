@@ -10,7 +10,7 @@
 # no such release yet, every bundle starts at v1. Releases are immutable: this
 # workflow never edits, deletes or re-uploads an asset, and a bad release is
 # fixed forward with a new one. See scripts/build_release.py for the rules.
-name: GitHub release
+name: Release
 
 on:
   workflow_dispatch:
@@ -26,7 +26,7 @@ permissions:
 
 # One release at a time, so two runs never build on the same baseline.
 concurrency:
-  group: github-release
+  group: release
   cancel-in-progress: false
 
 jobs:
