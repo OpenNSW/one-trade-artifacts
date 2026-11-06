@@ -184,8 +184,11 @@ class BuildTest(unittest.TestCase):
         # alpha v1's render, replaced in v2, is still there for v1.
         old = self.rows("alpha", s1)["flow:render"]["path"]
         self.assertEqual(json.loads(snap[f"alpha/{old}"]), {"title": "A"})
-        # The per-bundle archive holds only the current version.
-        self.assertEqual(sorted(k for k in self.archive("beta") if k.startswith("manifest_")), ["manifest_v2.json"])
+        # The per-bundle archive holds that bundle's whole history: its slice of the snapshot.
+        beta = self.archive("beta")
+        self.assertEqual(sorted(k for k in beta if k.startswith("manifest_")), ["manifest_v1.json", "manifest_v2.json"])
+        self.assertEqual(beta, {p[len("beta/"):]: d for p, d in snap.items() if p.startswith("beta/")})
+        self.assertNotIn("alpha.tar.gz", [p.name for p in self.out.iterdir()])  # alpha didn't change
 
     def test_baseline_without_a_snapshot_is_refused_when_releasing(self):
         self.build(baseline=None)

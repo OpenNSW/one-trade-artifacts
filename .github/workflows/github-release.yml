@@ -3,7 +3,8 @@
 # Each run builds on the latest release built this way (tag vX.Y.Z), read from
 # its release.json and snapshot.tar.gz, so bundle versions form one unbroken
 # chain and each release's snapshot.tar.gz holds every version ever released
-# (unpack the latest one to serve any of them); there is no
+# (unpack the latest one to serve any of them; to deploy one bundle, unpack its
+# <bundle>/ folder from it); there is no
 # input for picking another baseline, since building on an older one would
 # publish a manifest_vN.json that already exists with different content. With
 # no such release yet, every bundle starts at v1. Releases are immutable: this

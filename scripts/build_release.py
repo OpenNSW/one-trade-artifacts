@@ -42,8 +42,11 @@ The build is refused (exit 1, listing every problem, writing nothing) on:
     snapshot already holds with other content.
 
 Outputs, in --out (which must be empty or absent):
-  <bundle>.tar.gz   one per changed bundle: its manifest_vN.json and every file
-                    it lists, at their hashed paths.
+  <bundle>.tar.gz   one per changed bundle: its whole history, exactly what
+                    snapshot.tar.gz holds under <bundle>/, at the archive's root.
+                    A bundle this build didn't change has none here; its
+                    history is in the snapshot, and in the archive of the
+                    release that last changed it.
   snapshot.tar.gz   the whole history: the previous release's snapshot plus every
                     bundle this build released, each under <bundle>/. It holds
                     every manifest_vN.json ever released, from v1 up, and every
@@ -51,6 +54,10 @@ Outputs, in --out (which must be empty or absent):
                     store that can serve any version. Nothing in it is ever
                     replaced: files are named by their content, and each
                     manifest_vN.json is new when released.
+
+To deploy a bundle, unpack <bundle>/ from the latest release's snapshot.tar.gz
+into its store: it is always there and always complete, whether or not that
+release changed the bundle. The highest manifest_vN.json is its current version.
   release.json      the summary: per bundle, its current version, whether this
                     build changed it, and its changed and removed rows. It also
                     carries each bundle's latest manifest and every versioned row
@@ -561,7 +568,9 @@ def write(
     out.mkdir(parents=True, exist_ok=True)
     for b in builds:
         if b.released:
-            (out / b.archive).write_bytes(archive_bytes(bundle_entries(b), mtime))
+            prefix = f"{b.name}/"
+            history = {p[len(prefix):]: d for p, d in snapshot.items() if p.startswith(prefix)}
+            (out / b.archive).write_bytes(archive_bytes(history, mtime))
     if snapshot is not None:
         (out / SNAPSHOT).write_bytes(archive_bytes(snapshot, mtime))
     (out / NOTES).write_text(notes(builds), encoding="utf-8")
