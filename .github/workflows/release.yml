@@ -37,12 +37,9 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
     steps:
-      - name: Refuse a run off main
-        if: github.ref != 'refs/heads/main'
-        run: |
-          echo "::error::releases are built from main only, not ${GITHUB_REF}"
-          exit 1
-
+      # Any branch can be released (pick it under "Use workflow from"), so a release
+      # can be cut from a commit main has moved past. The next release still builds on
+      # the newest vX.Y.Z, whichever branch that came from.
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
