@@ -94,6 +94,17 @@
       "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
+      "id": "archive_receipt",
+      "type": "TASK",
+      "task_template_id": "slpa-invoice--archive-receipt",
+      "input_mapping": {
+        "payment.receipt_url?": "receipt_url"
+      },
+      "output_mapping": {
+        "receipt_file?": "payment.receipt_file"
+      }
+    },
+    {
       "id": "end",
       "type": "END"
     }
@@ -134,7 +145,7 @@
     {
       "id": "e_already_paid",
       "source_id": "slip_paid_check",
-      "target_id": "end",
+      "target_id": "archive_receipt",
       "condition": "payment.paid == true"
     },
     {
@@ -151,7 +162,7 @@
     {
       "id": "e_paid",
       "source_id": "payment_check",
-      "target_id": "end",
+      "target_id": "archive_receipt",
       "condition": "payment.paid == true"
     },
     {
@@ -159,6 +170,11 @@
       "source_id": "payment_check",
       "target_id": "await_payment",
       "condition": "payment.paid != true"
+    },
+    {
+      "id": "e_receipt_stored",
+      "source_id": "archive_receipt",
+      "target_id": "end"
     }
   ]
 }

@@ -4159,6 +4159,12 @@
       "path": "slpa/4-invoice_payment/archive_payment_slip.json"
     },
     {
+      "id": "slpa-invoice--archive-receipt",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "slpa/4-invoice_payment/archive_receipt.json"
+    },
+    {
       "id": "slpa-invoice--request",
       "kind": "subtask_template",
       "version": "",
@@ -4253,6 +4259,18 @@
       "kind": "subtask_template",
       "version": "",
       "path": "slpa/6-gate_pass/issue.json"
+    },
+    {
+      "id": "slpa-gp--archive-gate-pass",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "slpa/6-gate_pass/archive_gate_pass.json"
+    },
+    {
+      "id": "slpa-gp--archive-barcode",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "slpa/6-gate_pass/archive_barcode.json"
     },
     {
       "id": "slpa-gp--issued-message",

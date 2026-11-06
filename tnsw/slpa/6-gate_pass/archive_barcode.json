@@ -1,0 +1,11 @@
+{
+  "id": "slpa-gp--archive-barcode",
+  "task_type": "REMOTE_FILE_ARCHIVER",
+  "output_namespace": "barcode_file",
+  "plugin_properties": {
+    "service_id": "slpa",
+    "source_input": "barcode",
+    "mime_type": "image/png",
+    "filename": "slpa-gate-pass-barcode.png"
+  }
+}

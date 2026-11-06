@@ -73,6 +73,33 @@
       }
     },
     {
+      "id": "issued_check",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "archive_gate_pass",
+      "type": "TASK",
+      "task_template_id": "slpa-gp--archive-gate-pass",
+      "input_mapping": {
+        "gp.gate_pass_url?": "gate_pass_url"
+      },
+      "output_mapping": {
+        "gate_pass_file?": "gp.gate_pass_file"
+      }
+    },
+    {
+      "id": "archive_barcode",
+      "type": "TASK",
+      "task_template_id": "slpa-gp--archive-barcode",
+      "input_mapping": {
+        "gp.barcode?": "barcode"
+      },
+      "output_mapping": {
+        "barcode_file?": "gp.barcode_file"
+      }
+    },
+    {
       "id": "end",
       "type": "END"
     }
@@ -119,6 +146,28 @@
     {
       "id": "e_after_issue",
       "source_id": "issue",
+      "target_id": "issued_check"
+    },
+    {
+      "id": "e_pass_issued",
+      "source_id": "issued_check",
+      "target_id": "archive_gate_pass",
+      "condition": "gp.issued == true"
+    },
+    {
+      "id": "e_pass_refused",
+      "source_id": "issued_check",
+      "target_id": "haulage_details",
+      "condition": "gp.issued != true"
+    },
+    {
+      "id": "e_pass_stored",
+      "source_id": "archive_gate_pass",
+      "target_id": "archive_barcode"
+    },
+    {
+      "id": "e_barcode_stored",
+      "source_id": "archive_barcode",
       "target_id": "haulage_details"
     }
   ]
