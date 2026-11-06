@@ -1,122 +1,167 @@
-name: Release artifacts
-
-# Publishes bundles from a tag with scripts/release_manifest.py, which adds the
-# next immutable manifest_vN.json and never overwrites or deletes.
+# Publishes the next release snapshot of every bundle as a GitHub release.
 #
-# The destination comes from the chosen GitHub environment, never from an
-# input, so a dispatch can't send the store's credentials elsewhere:
-#   vars.S3_ENDPOINT_URL         endpoint of the S3-compatible store (empty for AWS S3)
-#   vars.S3_BUCKET               bucket
-#   vars.S3_PREFIX               optional; each bundle goes to <prefix>/<bundle>
-#   vars.S3_REGION               optional; defaults to "auto" with an endpoint
-#   secrets.S3_ACCESS_KEY_ID     credentials with read and write access to the bucket
-#   secrets.S3_SECRET_ACCESS_KEY
-# Each bundle is released to s3://<bucket>/[<prefix>/]<bundle>, which is where
-# the backend's artifact loader (its s3.prefix) must point.
+# Each run builds on the latest release built this way (tag vX.Y.Z), read from
+# its release.json and snapshot.tar.gz, so bundle versions form one unbroken
+# chain and each release's snapshot.tar.gz holds every version ever released
+# (unpack the latest one to serve any of them; to deploy one bundle, unpack its
+# <bundle>/ folder from it); there is no
+# input for picking another baseline, since building on an older one would
+# publish a manifest_vN.json that already exists with different content. With
+# no such release yet, the release is tagged v1.0.0 whatever the bump, and every
+# bundle starts at v1. Releases are immutable: this
+# workflow never edits, deletes or re-uploads an asset, and a bad release is
+# fixed forward with a new one. See scripts/build_release.py for the rules.
+name: Release
 
 on:
   workflow_dispatch:
     inputs:
-      environment:
-        description: "Environment holding the destination store"
-        type: environment
-        required: true
-      tag:
-        description: "Tag to release; empty for the newest"
-        type: string
-        default: ""
-      bundles:
-        description: "Bundles to release, space-separated; empty for every top-level folder with a manifest.json"
-        type: string
-        default: ""
-      dry_run:
-        description: "Show what would be published and write nothing"
-        type: boolean
-        default: true
+      bump:
+        description: Which part of the release tag (vX.Y.Z) to bump; the first release is v1.0.0 regardless
+        type: choice
+        options: [patch, minor, major]
+        default: minor
 
 permissions:
-  contents: read
+  contents: write
 
+# One release at a time, so two runs never build on the same baseline.
 concurrency:
-  group: release-${{ inputs.environment }}
+  group: release
   cancel-in-progress: false
 
 jobs:
   release:
     runs-on: ubuntu-latest
-    environment: ${{ inputs.environment }}
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
     steps:
+      - name: Refuse a run off main
+        if: github.ref != 'refs/heads/main'
+        run: |
+          echo "::error::releases are built from main only, not ${GITHUB_REF}"
+          exit 1
+
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-
-      - name: Check out the tag
-        id: tag
-        env:
-          TAG: ${{ inputs.tag }}
-        run: |
-          set -euo pipefail
-          git fetch origin --tags --force
-          TAG="${TAG:-$(git tag --sort=-creatordate | head -n1)}"
-          git rev-parse -q --verify "refs/tags/$TAG" >/dev/null \
-            || { echo "::error::tag '$TAG' does not exist"; exit 1; }
-          git checkout --quiet --detach "refs/tags/$TAG"
-          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
-          echo "Releasing $TAG ($(git log -1 --format='%h %s'))"
+          persist-credentials: false
 
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.x"
 
-      - name: Install boto3
-        # 1.36 added the checksum settings the script turns off for S3-compatible stores.
-        run: python -m pip install 'boto3>=1.36'
-
-      - name: Release
+      - name: Find the previous release and the next tag
+        id: tags
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
-          S3_ENDPOINT_URL: ${{ vars.S3_ENDPOINT_URL }}
-          S3_BUCKET: ${{ vars.S3_BUCKET }}
-          S3_PREFIX: ${{ vars.S3_PREFIX }}
-          S3_REGION: ${{ vars.S3_REGION }}
-          BUNDLES: ${{ inputs.bundles }}
-          DRY_RUN: ${{ inputs.dry_run }}
-          TAG: ${{ steps.tag.outputs.tag }}
+          BUMP: ${{ inputs.bump }}
         run: |
           set -euo pipefail
-          fail() { echo "::error::$1"; exit 1; }
-          [ -n "$S3_BUCKET" ] || fail "set S3_BUCKET on the environment"
-          [ -n "$AWS_ACCESS_KEY_ID" ] && [ -n "$AWS_SECRET_ACCESS_KEY" ] \
-            || fail "set S3_ACCESS_KEY_ID and S3_SECRET_ACCESS_KEY on the environment"
+          releases=$(gh release list --exclude-drafts --limit 1000 --json tagName --jq '.[].tagName')
 
-          if [ -z "$BUNDLES" ]; then
-            BUNDLES="$(for m in */manifest.json; do dirname "$m"; done)"
+          # The newest tag of either series, vX.Y.Z or the older tnsw-vX.Y.Z: GitHub's
+          # notes list the pull requests since it.
+          previous=$(printf '%s\n' "$releases" \
+            | grep -E '^(tnsw-)?v[0-9]+\.[0-9]+\.[0-9]+$' \
+            | awk '{ v = $0; sub(/^(tnsw-)?v/, "", v); print v, $0 }' \
+            | sort -V -k1,1 | tail -n 1 | cut -d' ' -f2 || true)
+
+          # The baseline: the newest vX.Y.Z release. The tnsw-v releases predate the
+          # builder and carry no release.json. The next tag bumps the baseline; with
+          # none yet, this is the first release of the vX.Y.Z series: v1.0.0, whatever
+          # the bump.
+          baseline=$(printf '%s\n' "$releases" \
+            | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n 1 || true)
+
+          if [ -z "$baseline" ]; then
+            tag="v1.0.0"
+          else
+            IFS=. read -r major minor patch <<< "${baseline#v}"
+            major=$((10#$major)); minor=$((10#$minor)); patch=$((10#$patch))
+            case "$BUMP" in
+              major) tag="v$((major + 1)).0.0" ;;
+              minor) tag="v${major}.$((minor + 1)).0" ;;
+              patch) tag="v${major}.${minor}.$((patch + 1))" ;;
+              *) echo "::error::unknown bump ${BUMP}"; exit 1 ;;
+            esac
           fi
-          for b in $BUNDLES; do
-            [[ "$b" =~ ^[a-z0-9-]+$ && -f "$b/manifest.json" ]] \
-              || fail "'$b' is not a top-level folder with a manifest.json at $TAG"
-          done
 
-          args=()
-          [ -n "$S3_ENDPOINT_URL" ] && args+=(--endpoint-url "$S3_ENDPOINT_URL")
-          [ -n "$S3_REGION" ] && args+=(--region "$S3_REGION")
-          if [ "$DRY_RUN" = true ]; then args+=(--dry-run); else args+=(--yes); fi
-          prefix="${S3_PREFIX#/}"; prefix="${prefix%/}"
+          if git ls-remote --exit-code --tags origin "refs/tags/${tag}" > /dev/null; then
+            echo "::error::tag ${tag} already exists; releases are never re-published"
+            exit 1
+          fi
+
+          echo "previous=${previous}" >> "$GITHUB_OUTPUT"
+          echo "baseline=${baseline}" >> "$GITHUB_OUTPUT"
+          echo "tag=${tag}" >> "$GITHUB_OUTPUT"
+          echo "previous tag: ${previous:-none}; baseline: ${baseline:-none (first release)}; next tag: ${tag}"
+
+      - name: Download the baseline
+        if: steps.tags.outputs.baseline != ''
+        env:
+          BASELINE: ${{ steps.tags.outputs.baseline }}
+        run: |
+          set -euo pipefail
+          # release.json is what the build compares against; snapshot.tar.gz is the
+          # history the next snapshot adds to. The builder refuses a missing or
+          # incomplete snapshot when it releases anything.
+          gh release download "$BASELINE" --pattern release.json --pattern snapshot.tar.gz --dir baseline
+          if [ ! -f baseline/release.json ]; then
+            echo "::error::release ${BASELINE} has no release.json to build on"
+            exit 1
+          fi
+
+      - name: Build the snapshot
+        id: build
+        env:
+          BASELINE: ${{ steps.tags.outputs.baseline }}
+        run: |
+          set -euo pipefail
+          python3 scripts/build_release.py --out build ${BASELINE:+--baseline baseline}
+          echo "changed=$(jq -r .changed build/release.json)" >> "$GITHUB_OUTPUT"
+
+      - name: Nothing to publish
+        if: steps.build.outputs.changed != 'true'
+        run: echo "No bundle changed since ${{ steps.tags.outputs.baseline }}; nothing published." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Write the release notes
+        if: steps.build.outputs.changed == 'true'
+        env:
+          TAG: ${{ steps.tags.outputs.tag }}
+          PREVIOUS: ${{ steps.tags.outputs.previous }}
+        run: |
+          set -euo pipefail
+          args=(-f "tag_name=${TAG}" -f "target_commitish=${GITHUB_SHA}")
+          if [ -n "$PREVIOUS" ]; then args+=(-f "previous_tag_name=${PREVIOUS}"); fi
+          gh api "repos/${GH_REPO}/releases/generate-notes" "${args[@]}" --jq .body > generated.md
 
           {
-            echo "### Release $TAG$([ "$DRY_RUN" = true ] && echo ' (dry run)')"
+            cat build/release-notes.md
             echo
-            echo "| Bundle | Destination | Version | Published | Changed | Removed | Uploaded |"
-            echo "| --- | --- | --- | --- | --- | --- | --- |"
-          } >> "$GITHUB_STEP_SUMMARY"
+            cat generated.md
+          } > notes.md
+          # GitHub refuses a release body over 125000 characters; release.json lists every change.
+          if [ "$(wc -m < notes.md)" -gt 120000 ]; then
+            {
+              echo "## Bundles"
+              echo
+              jq -r '.bundles | to_entries[] | "- **\(.key)**: " + (if .value.released
+                then "v\(.value.version), \(.value.changed | length) changed, \(.value.removed | length) removed"
+                else "unchanged (v\(.value.version))" end)' build/release.json
+              echo
+              echo "Every changed and removed row is listed in \`release.json\`."
+              echo
+              cat generated.md
+            } > notes.md
+          fi
+          cat build/release-notes.md >> "$GITHUB_STEP_SUMMARY"
 
-          for b in $BUNDLES; do
-            dest="s3://$S3_BUCKET/${prefix:+$prefix/}$b"
-            echo "::group::$b -> $dest"
-            out="$RUNNER_TEMP/$b.json"
-            python3 scripts/release_manifest.py "$b" --dest "$dest" "${args[@]}" --json > "$out"
-            echo "::endgroup::"
-            jq -r '"| \(.bundle) | \(.dest) | v\(.version) | \(.published) | \(.changed | length) | \(.removed | length) | \(.uploaded) |"' \
-              "$out" >> "$GITHUB_STEP_SUMMARY"
-          done
+      - name: Publish the release
+        if: steps.build.outputs.changed == 'true'
+        env:
+          TAG: ${{ steps.tags.outputs.tag }}
+        run: |
+          set -euo pipefail
+          gh release create "$TAG" --target "$GITHUB_SHA" --title "$TAG" --notes-file notes.md \
+            build/*.tar.gz build/release.json
+          echo "Published [${TAG}](${GITHUB_SERVER_URL}/${GH_REPO}/releases/tag/${TAG})." >> "$GITHUB_STEP_SUMMARY"

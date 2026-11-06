@@ -1,0 +1,135 @@
+name: Deploy release
+
+# Deploys a GitHub release (tag vX.Y.Z, published by release.yml) into an
+# artifact store with scripts/deploy_release.py. The release decides every
+# version; deploying copies its snapshot.tar.gz into the store, adds only what
+# the store lacks, writes manifests last, and never overwrites or deletes. A
+# store holding a manifest_vN.json that differs from the release's is refused:
+# clear it, or point the environment at another prefix.
+#
+# The destination comes from the chosen GitHub environment, never from an
+# input, so a dispatch can't send the store's credentials elsewhere:
+#   vars.S3_ENDPOINT_URL         endpoint of the S3-compatible store (empty for AWS S3)
+#   vars.S3_BUCKET               bucket
+#   vars.S3_PREFIX               optional; each bundle goes to <prefix>/<bundle>
+#   vars.S3_REGION               optional; defaults to "auto" with an endpoint
+#   secrets.S3_ACCESS_KEY_ID     credentials with read and write access to the bucket
+#   secrets.S3_SECRET_ACCESS_KEY
+# Each bundle is deployed to s3://<bucket>/[<prefix>/]<bundle>, which is where
+# the backend's artifact loader (its s3.prefix) must point.
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Environment holding the destination store"
+        type: environment
+        required: true
+      tag:
+        description: "Release to deploy (vX.Y.Z); empty for the newest"
+        type: string
+        default: ""
+      bundles:
+        description: "Bundles to deploy, space-separated; empty for every bundle in the release"
+        type: string
+        default: ""
+      dry_run:
+        description: "Show what would be written and write nothing"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-${{ inputs.environment }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install boto3
+        # 1.36 added the checksum settings the script turns off for S3-compatible stores.
+        run: python -m pip install 'boto3>=1.36'
+
+      - name: Download the release
+        id: release
+        env:
+          TAG: ${{ inputs.tag }}
+        run: |
+          set -euo pipefail
+          if [ -z "$TAG" ]; then
+            TAG=$(gh release list --exclude-drafts --limit 1000 --json tagName --jq '.[].tagName' \
+              | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n 1 || true)
+            [ -n "$TAG" ] || { echo "::error::there is no vX.Y.Z release to deploy"; exit 1; }
+          fi
+          [[ "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] \
+            || { echo "::error::'$TAG' is not a release tag (vX.Y.Z)"; exit 1; }
+          gh release download "$TAG" --pattern snapshot.tar.gz --dir "$RUNNER_TEMP/release" \
+            || { echo "::error::release $TAG has no snapshot.tar.gz"; exit 1; }
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "snapshot=$RUNNER_TEMP/release/snapshot.tar.gz" >> "$GITHUB_OUTPUT"
+          echo "Deploying $TAG"
+
+      - name: Deploy
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
+          S3_ENDPOINT_URL: ${{ vars.S3_ENDPOINT_URL }}
+          S3_BUCKET: ${{ vars.S3_BUCKET }}
+          S3_PREFIX: ${{ vars.S3_PREFIX }}
+          S3_REGION: ${{ vars.S3_REGION }}
+          BUNDLES: ${{ inputs.bundles }}
+          DRY_RUN: ${{ inputs.dry_run }}
+          TAG: ${{ steps.release.outputs.tag }}
+          SNAPSHOT: ${{ steps.release.outputs.snapshot }}
+        run: |
+          set -euo pipefail
+          fail() { echo "::error::$1"; exit 1; }
+          [ -n "$S3_BUCKET" ] || fail "set S3_BUCKET on the environment"
+          [ -n "$AWS_ACCESS_KEY_ID" ] && [ -n "$AWS_SECRET_ACCESS_KEY" ] \
+            || fail "set S3_ACCESS_KEY_ID and S3_SECRET_ACCESS_KEY on the environment"
+
+          available="$(tar tzf "$SNAPSHOT" | cut -d/ -f1 | sort -u)"
+          [ -n "$BUNDLES" ] || BUNDLES="$available"
+          for b in $BUNDLES; do
+            [[ "$b" =~ ^[a-z0-9-]+$ ]] && grep -qx -- "$b" <<< "$available" \
+              || fail "'$b' is not a bundle in $TAG"
+          done
+
+          args=()
+          [ -n "$S3_ENDPOINT_URL" ] && args+=(--endpoint-url "$S3_ENDPOINT_URL")
+          [ -n "$S3_REGION" ] && args+=(--region "$S3_REGION")
+          if [ "$DRY_RUN" = true ]; then args+=(--dry-run); else args+=(--yes); fi
+          prefix="${S3_PREFIX#/}"; prefix="${prefix%/}"
+
+          {
+            echo "### Deploy $TAG$([ "$DRY_RUN" = true ] && echo ' (dry run)')"
+            echo
+            echo "| Bundle | Destination | Release | Store before | Writes | Uploaded | Deployed |"
+            echo "| --- | --- | --- | --- | --- | --- | --- |"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          for b in $BUNDLES; do
+            dest="s3://$S3_BUCKET/${prefix:+$prefix/}$b"
+            echo "::group::$b -> $dest"
+            out="$RUNNER_TEMP/$b.json"
+            python3 scripts/deploy_release.py "$SNAPSHOT" "$b" --dest "$dest" "${args[@]}" --json > "$out"
+            echo "::endgroup::"
+            jq -r '"| \(.bundle) | \(.dest) | v\(.release) | " + (if .stored > 0 then "v\(.stored)" else "empty" end)
+              + " | " + (if (.writes | length) > 0 then (.writes | join(", ")) else "nothing" end)
+              + " | \(.uploads) | \(.deployed) |"' "$out" >> "$GITHUB_STEP_SUMMARY"
+          done

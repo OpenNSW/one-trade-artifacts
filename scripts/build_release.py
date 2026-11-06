@@ -5,7 +5,8 @@ The repository holds only the current state of each bundle: one manifest.json
 and files edited in place. A release turns that state into an immutable,
 environment-agnostic snapshot, built from the previous release plus what changed
 since it. This script only builds the snapshot into a folder; publishing it as a
-GitHub release is the release workflow's job, and deploying it is out of scope.
+GitHub release is the release workflow's job (.github/workflows/release.yml), and
+deploying it into a store is scripts/deploy_release.py's.
 
 Inputs:
   --repo      the repository at the release commit (default: the current folder).
