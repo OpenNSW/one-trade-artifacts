@@ -101,7 +101,8 @@ Every top-level folder with a `manifest.json` is a bundle. Releasing and deployi
 two manual `workflow_dispatch` steps, so merging publishes nothing:
 
 1. `.github/workflows/release.yml` builds the next release with
-   `scripts/build_release.py` from `main` and publishes it as a GitHub release tagged
+   `scripts/build_release.py` from the branch it's run on (usually `main`) and publishes
+   it as a GitHub release tagged
    `vX.Y.Z`, the first one `v1.0.0`, each later one bumped from the newest `vX.Y.Z`
    release (the older `tnsw-vX.Y.Z` tags don't count). The release decides every
    bundle's version, and its `snapshot.tar.gz` holds
