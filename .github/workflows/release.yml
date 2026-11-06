@@ -7,7 +7,8 @@
 # <bundle>/ folder from it); there is no
 # input for picking another baseline, since building on an older one would
 # publish a manifest_vN.json that already exists with different content. With
-# no such release yet, every bundle starts at v1. Releases are immutable: this
+# no such release yet, the release is tagged v1.0.0 whatever the bump, and every
+# bundle starts at v1. Releases are immutable: this
 # workflow never edits, deletes or re-uploads an asset, and a bad release is
 # fixed forward with a new one. See scripts/build_release.py for the rules.
 name: Release
@@ -16,7 +17,7 @@ on:
   workflow_dispatch:
     inputs:
       bump:
-        description: Which part of the release tag (vX.Y.Z) to bump
+        description: Which part of the release tag (vX.Y.Z) to bump; the first release is v1.0.0 regardless
         type: choice
         options: [patch, minor, major]
         default: minor
@@ -58,28 +59,32 @@ jobs:
           set -euo pipefail
           releases=$(gh release list --exclude-drafts --limit 1000 --json tagName --jq '.[].tagName')
 
-          # The newest tag of either series, vX.Y.Z or the older tnsw-vX.Y.Z: the next tag
-          # bumps it, and GitHub's notes list the pull requests since it.
+          # The newest tag of either series, vX.Y.Z or the older tnsw-vX.Y.Z: GitHub's
+          # notes list the pull requests since it.
           previous=$(printf '%s\n' "$releases" \
             | grep -E '^(tnsw-)?v[0-9]+\.[0-9]+\.[0-9]+$' \
             | awk '{ v = $0; sub(/^(tnsw-)?v/, "", v); print v, $0 }' \
             | sort -V -k1,1 | tail -n 1 | cut -d' ' -f2 || true)
 
           # The baseline: the newest vX.Y.Z release. The tnsw-v releases predate the
-          # builder and carry no release.json.
+          # builder and carry no release.json. The next tag bumps the baseline; with
+          # none yet, this is the first release of the vX.Y.Z series: v1.0.0, whatever
+          # the bump.
           baseline=$(printf '%s\n' "$releases" \
             | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n 1 || true)
 
-          version=${previous#tnsw-}
-          version=${version#v}
-          IFS=. read -r major minor patch <<< "${version:-0.0.0}"
-          major=$((10#$major)); minor=$((10#$minor)); patch=$((10#$patch))
-          case "$BUMP" in
-            major) tag="v$((major + 1)).0.0" ;;
-            minor) tag="v${major}.$((minor + 1)).0" ;;
-            patch) tag="v${major}.${minor}.$((patch + 1))" ;;
-            *) echo "::error::unknown bump ${BUMP}"; exit 1 ;;
-          esac
+          if [ -z "$baseline" ]; then
+            tag="v1.0.0"
+          else
+            IFS=. read -r major minor patch <<< "${baseline#v}"
+            major=$((10#$major)); minor=$((10#$minor)); patch=$((10#$patch))
+            case "$BUMP" in
+              major) tag="v$((major + 1)).0.0" ;;
+              minor) tag="v${major}.$((minor + 1)).0" ;;
+              patch) tag="v${major}.${minor}.$((patch + 1))" ;;
+              *) echo "::error::unknown bump ${BUMP}"; exit 1 ;;
+            esac
+          fi
 
           if git ls-remote --exit-code --tags origin "refs/tags/${tag}" > /dev/null; then
             echo "::error::tag ${tag} already exists; releases are never re-published"

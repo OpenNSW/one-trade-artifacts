@@ -102,7 +102,9 @@ two manual `workflow_dispatch` steps, so merging publishes nothing:
 
 1. `.github/workflows/release.yml` builds the next release with
    `scripts/build_release.py` from `main` and publishes it as a GitHub release tagged
-   `vX.Y.Z`. The release decides every bundle's version, and its `snapshot.tar.gz` holds
+   `vX.Y.Z`, the first one `v1.0.0`, each later one bumped from the newest `vX.Y.Z`
+   release (the older `tnsw-vX.Y.Z` tags don't count). The release decides every
+   bundle's version, and its `snapshot.tar.gz` holds
    every version ever released.
 2. `.github/workflows/deploy-release.yml` deploys a release with
    `scripts/deploy_release.py` to `s3://<bucket>/[<prefix>/]<bundle>`, taking the store
