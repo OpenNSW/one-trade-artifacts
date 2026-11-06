@@ -97,12 +97,20 @@ What it looks like (as in `cda/`):
   on), which its first `TASK` node maps.
 - `<agency>/manifest.json` entries intentionally omit `"loader": "local"`.
 
-Every top-level folder with a `manifest.json` is a bundle.
-`.github/workflows/release.yml` (manual `workflow_dispatch` only, so merging publishes
-nothing) checks out the tag given in its `tag` input and releases each bundle with
-`scripts/release_manifest.py` to `s3://<bucket>/[<prefix>/]<bundle>`, taking the store
-from the chosen GitHub environment. A new top-level folder with a manifest is released
-with the others; one without a manifest is not.
+Every top-level folder with a `manifest.json` is a bundle. Releasing and deploying are
+two manual `workflow_dispatch` steps, so merging publishes nothing:
+
+1. `.github/workflows/github-release.yml` builds the next release with
+   `scripts/build_release.py` from `main` and publishes it as a GitHub release tagged
+   `vX.Y.Z`. The release decides every bundle's version, and its `snapshot.tar.gz` holds
+   every version ever released.
+2. `.github/workflows/deploy-release.yml` deploys a release with
+   `scripts/deploy_release.py` to `s3://<bucket>/[<prefix>/]<bundle>`, taking the store
+   from the chosen GitHub environment. It only adds what the store lacks and never
+   overwrites, and it refuses a store whose manifests differ from the release's.
+
+The builder releases the bundles named in its `BUNDLES`; a new top-level folder with a
+manifest goes there too.
 
 ## Artifact kinds (see any `manifest.json`)
 
