@@ -1754,7 +1754,7 @@
               "title": "Packages",
               "properties": {
                 "quantity": {
-                  "type": "integer",
+                  "type": "number",
                   "title": "40. Number & Kind, number ( Box 31 )",
                   "minimum": 0,
                   "example": 12000
