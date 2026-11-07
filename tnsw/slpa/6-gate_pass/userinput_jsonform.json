@@ -47,12 +47,24 @@
         "minLength": 1,
         "description": "The vehicle the container leaves on, as it appears on the plate."
       },
+      "trailer_no": {
+        "type": "string",
+        "title": "Trailer No",
+        "minLength": 1,
+        "description": "The trailer the container is carried on, as it appears on its plate."
+      },
       "driver_name": {
         "type": "string",
         "title": "Driver Name",
         "minLength": 1,
         "pattern": "^[A-Za-z][A-Za-z .]*$",
         "description": "The driver presenting this pass at the gate. Letters, spaces and dots only."
+      },
+      "agent_pass_no": {
+        "type": "string",
+        "title": "Agent Pass No",
+        "minLength": 1,
+        "description": "The number on the agent's SLPA pass."
       },
       "seal_no": {
         "type": "string",
@@ -79,7 +91,9 @@
         "then": {
           "required": [
             "truck_no",
+            "trailer_no",
             "driver_name",
+            "agent_pass_no",
             "seal_no"
           ]
         }
@@ -164,7 +178,33 @@
       },
       {
         "type": "Control",
+        "scope": "#/properties/trailer_no",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/action",
+            "schema": {
+              "const": "generate_gate_pass"
+            }
+          }
+        }
+      },
+      {
+        "type": "Control",
         "scope": "#/properties/driver_name",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/action",
+            "schema": {
+              "const": "generate_gate_pass"
+            }
+          }
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/agent_pass_no",
         "rule": {
           "effect": "SHOW",
           "condition": {
