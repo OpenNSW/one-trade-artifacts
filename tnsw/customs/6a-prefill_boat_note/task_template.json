@@ -1,6 +1,6 @@
 {
   "id": "customs-prefill-boat-note-flow",
-  "type": "APPLICATION",
+  "type": "SYSTEM",
   "workflow_id": "customs-prefill-boat-note-flow",
   "render_config_id": "customs-prefill-boat-note-flow:render",
   "read": {
