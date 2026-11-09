@@ -1,6 +1,6 @@
 {
   "id": "customs-collect-cdn-results-flow",
-  "type": "APPLICATION",
+  "type": "SYSTEM",
   "workflow_id": "customs-collect-cdn-results-flow",
   "render_config_id": "customs-collect-cdn-results-flow:render",
   "read": {

@@ -1,6 +1,6 @@
 {
   "id": "customs-prepare-cdn-items-flow",
-  "type": "APPLICATION",
+  "type": "SYSTEM",
   "workflow_id": "customs-prepare-cdn-items-flow",
   "render_config_id": "customs-prepare-cdn-items-flow:render",
   "read": {
