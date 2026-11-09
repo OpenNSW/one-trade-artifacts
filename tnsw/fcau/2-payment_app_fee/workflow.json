@@ -24,8 +24,31 @@
         "selected_method": "selected_method"
       },
       "output_mapping": {
-        "payment_status": "payment_status"
+        "payment_status?": "payment_status",
+        "__command": "payment_action.command"
       }
+    },
+    {
+      "id": "payment_result_split",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Paid or Change Payment Method?"
+    },
+    {
+      "id": "cancel_checkout_task",
+      "type": "TASK",
+      "task_template_id": "fcau-pay-app-fee--cancel-checkout",
+      "input_mapping": {},
+      "output_mapping": {
+        "payment_cancel.cancel_status": "cancel_status",
+        "payment_cancel.payment_status?": "payment_status"
+      }
+    },
+    {
+      "id": "cancel_split",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT",
+      "name": "Checkout Cancelled?"
     },
     {
       "id": "method_split",
@@ -189,7 +212,36 @@
     {
       "id": "e3",
       "source_id": "pay_app_fee_task",
-      "target_id": "method_join"
+      "target_id": "payment_result_split"
+    },
+    {
+      "id": "e_paid",
+      "source_id": "payment_result_split",
+      "target_id": "method_join",
+      "condition": "payment_action.command == 'submit'"
+    },
+    {
+      "id": "e_change_method",
+      "source_id": "payment_result_split",
+      "target_id": "cancel_checkout_task",
+      "condition": "payment_action.command == 'change_method'"
+    },
+    {
+      "id": "e_cancel_split",
+      "source_id": "cancel_checkout_task",
+      "target_id": "cancel_split"
+    },
+    {
+      "id": "e_checkout_cancelled",
+      "source_id": "cancel_split",
+      "target_id": "select_method_task",
+      "condition": "cancel_status == 'cancelled'"
+    },
+    {
+      "id": "e_paid_before_cancel",
+      "source_id": "cancel_split",
+      "target_id": "method_join",
+      "condition": "cancel_status == 'paid'"
     }
   ]
 }

@@ -13,7 +13,7 @@
       "id": "authz",
       "phase": "PRE_RESUME",
       "properties": {
-        "PENDING_PAYMENT": { "submit": ["system"] }
+        "PENDING_PAYMENT": { "submit": ["system"], "change_method": ["trader", "cha"] }
       }
     }
   ]
