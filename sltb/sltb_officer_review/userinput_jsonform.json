@@ -810,6 +810,11 @@
                   "as": "string"
                 },
                 {
+                  "to": "Financial.Amounts.Totals_taxes",
+                  "formula": "0",
+                  "as": "number"
+                },
+                {
                   "from": "transport.warehouseCode",
                   "to": "Warehouse.Identification",
                   "as": "string"
@@ -817,6 +822,11 @@
                 {
                   "from": "transport.warehouseDelay",
                   "to": "Warehouse.Delay",
+                  "as": "number"
+                },
+                {
+                  "to": "Valuation.Gs_Invoice.Amount_national_currency",
+                  "formula": "0",
                   "as": "number"
                 },
                 {
@@ -894,8 +904,18 @@
                       "as": "string"
                     },
                     {
+                      "to": "Packages.Marks2_of_packages",
+                      "formula": "\".\"",
+                      "as": "string"
+                    },
+                    {
                       "from": "packages.kindCode",
                       "to": "Packages.Kind_of_packages_code",
+                      "as": "string"
+                    },
+                    {
+                      "to": "Packages.Kind_of_packages_name",
+                      "formula": "\".\"",
                       "as": "string"
                     },
                     {
@@ -955,6 +975,36 @@
                       "as": "string"
                     },
                     {
+                      "to": "Taxation.Item_taxes_amount",
+                      "formula": "0",
+                      "as": "number"
+                    },
+                    {
+                      "to": "Taxation.Taxation_line.Duty_tax_code",
+                      "formula": "\"CED\"",
+                      "as": "string"
+                    },
+                    {
+                      "to": "Taxation.Taxation_line.Duty_tax_Base",
+                      "formula": "0",
+                      "as": "number"
+                    },
+                    {
+                      "to": "Taxation.Taxation_line.Duty_tax_rate",
+                      "formula": "0",
+                      "as": "number"
+                    },
+                    {
+                      "to": "Taxation.Taxation_line.Duty_tax_amount",
+                      "formula": "0",
+                      "as": "number"
+                    },
+                    {
+                      "to": "Taxation.Taxation_line.Duty_tax_MP",
+                      "formula": "1",
+                      "as": "number"
+                    },
+                    {
                       "from": "valuation.grossWeight",
                       "to": "Valuation_item.Weight_itm.Gross_weight_itm",
                       "as": "number"
@@ -962,6 +1012,16 @@
                     {
                       "from": "valuation.netWeight",
                       "to": "Valuation_item.Weight_itm.Net_weight_itm",
+                      "as": "number"
+                    },
+                    {
+                      "to": "Valuation_item.Statistical_value",
+                      "formula": "0",
+                      "as": "number"
+                    },
+                    {
+                      "to": "Valuation_item.Item_Invoice.Amount_national_currency",
+                      "formula": "0",
                       "as": "number"
                     },
                     {
