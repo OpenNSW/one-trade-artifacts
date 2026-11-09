@@ -20,7 +20,9 @@
       },
       "output_mapping": {
         "truck_no?": "gpform.truck_no",
+        "trailer_no?": "gpform.trailer_no",
         "driver_name?": "gpform.driver_name",
+        "agent_pass_no?": "gpform.agent_pass_no",
         "seal_no?": "gpform.seal_no",
         "action?": "gpform.action"
       }
@@ -64,7 +66,9 @@
         "gp.gate_pass_id?": "gp.gate_pass_id",
         "gp.container_no?": "gp.container_no",
         "gp.truck_no?": "gp.truck_no",
+        "gp.trailer_no?": "gp.trailer_no",
         "gp.driver_name?": "gp.driver_name",
+        "gp.agent_pass_no?": "gp.agent_pass_no",
         "gp.seal_no?": "gp.seal_no",
         "gp.barcode?": "gp.barcode",
         "gp.status?": "gp.status",
