@@ -57,7 +57,7 @@
         "x-xml-export": {
           "rootElement": "CDA_COCONUT_CERT",
           "declaration": { "standalone": "no" },
-          "fileName": "cda-coconut-cert-{today(YYYYMMDD)}.xml",
+          "fileName": "cda-coconut-cert-{today(yyyyMMdd)}.xml",
           "writeTo": [
             { "from": "exporter_name", "to": "exporter_name", "as": "string" },
             { "from": "exporter_registration_number", "to": "exporter_registration_number", "as": "string" },

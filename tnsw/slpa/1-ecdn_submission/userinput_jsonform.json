@@ -61,7 +61,7 @@
         "x-xml-export": {
           "rootElement": "SLPA_ECDN",
           "declaration": { "standalone": "no" },
-          "fileName": "slpa-ecdn-{today(YYYYMMDD)}.xml",
+          "fileName": "slpa-ecdn-{today(yyyyMMdd)}.xml",
           "writeTo": [
             { "from": "cusdecDate", "to": "cusdecDate", "as": "date" },
             { "from": "cusdecSerLet", "to": "cusdecSerLet", "as": "string" },

@@ -67,7 +67,7 @@
         "x-xml-export": {
           "rootElement": "CUSTOMS_BOAT_NOTE",
           "declaration": { "standalone": "no" },
-          "fileName": "customs-boat-note-{today(YYYYMMDD)}.xml",
+          "fileName": "customs-boat-note-{today(yyyyMMdd)}.xml",
           "writeTo": [
             { "from": "shipper", "to": "shipper", "as": "string" },
             { "from": "consignee", "to": "consignee", "as": "string" },

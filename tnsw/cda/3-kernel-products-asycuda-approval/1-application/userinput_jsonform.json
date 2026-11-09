@@ -44,7 +44,7 @@
         "x-xml-export": {
           "rootElement": "CDA_KERNEL_ASYCUDA",
           "declaration": { "standalone": "no" },
-          "fileName": "cda-kernel-asycuda-{today(YYYYMMDD)}.xml",
+          "fileName": "cda-kernel-asycuda-{today(yyyyMMdd)}.xml",
           "writeTo": [
             { "from": "exporter_name", "to": "exporter_name", "as": "string" },
             { "from": "exporter_email", "to": "exporter_email", "as": "string" },

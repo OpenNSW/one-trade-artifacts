@@ -58,7 +58,7 @@
         "x-xml-export": {
           "rootElement": "CDA_KCFN",
           "declaration": { "standalone": "no" },
-          "fileName": "cda-kcfn-{today(YYYYMMDD)}.xml",
+          "fileName": "cda-kcfn-{today(yyyyMMdd)}.xml",
           "writeTo": [
             { "from": "email", "to": "email", "as": "string" },
             { "from": "company_name", "to": "company_name", "as": "string" },
