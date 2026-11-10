@@ -115,6 +115,11 @@
               "as": "string"
             },
             {
+              "from": "ASYCUDA.Transport.Location_of_goods",
+              "to": "transport.locationOfGoods",
+              "as": "string"
+            },
+            {
               "from": "ASYCUDA.Warehouse.Identification",
               "to": "transport.warehouseCode",
               "as": "string"
@@ -783,6 +788,11 @@
             {
               "from": "transport.placeOfDischargeCode",
               "to": "Transport.Place_of_loading.Code",
+              "as": "string"
+            },
+            {
+              "from": "transport.locationOfGoods",
+              "to": "Transport.Location_of_goods",
               "as": "string"
             },
             {

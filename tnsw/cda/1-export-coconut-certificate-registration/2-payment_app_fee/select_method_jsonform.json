@@ -10,7 +10,6 @@
       "selected_method": {
         "type": "string",
         "title": "Payment Method",
-        "default": "govpay",
         "oneOf": [
           {
             "const": "govpay",
