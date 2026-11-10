@@ -839,6 +839,11 @@
                   "as": "string"
                 },
                 {
+                  "from": "ASYCUDA.Transport.Location_of_goods",
+                  "to": "transport.locationOfGoods",
+                  "as": "string"
+                },
+                {
                   "from": "ASYCUDA.Warehouse.Identification",
                   "to": "transport.warehouseCode",
                   "as": "string"
@@ -1521,6 +1526,11 @@
                   "as": "string"
                 },
                 {
+                  "from": "transport.locationOfGoods",
+                  "to": "Transport.Location_of_goods",
+                  "as": "string"
+                },
+                {
                   "from": "financial.bankCode",
                   "to": "Financial.Bank.Code",
                   "as": "string"
@@ -2135,6 +2145,21 @@
                   }
                 },
                 "example": "PLGDY"
+              },
+              "locationOfGoods": {
+                "type": "string",
+                "title": "Location of Goods ( Box 30 )",
+                "description": "UNSHDTAB shed / location code. Optional.",
+                "x-search": {
+                  "service": "static-data",
+                  "mode": "small-list",
+                  "displayTemplate": "({id})-{name}",
+                  "params": {
+                    "id": "customs-cusdec--sheds",
+                    "version": "1"
+                  }
+                },
+                "example": "CFS1"
               }
             },
             "required": [
@@ -3084,6 +3109,10 @@
               {
                 "type": "Control",
                 "scope": "#/properties/cusdec_draft/properties/containerCount"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/cusdec_draft/properties/transport/properties/locationOfGoods"
               },
               {
                 "type": "Control",

@@ -785,6 +785,11 @@
                   "as": "string"
                 },
                 {
+                  "from": "transport.locationOfGoods",
+                  "to": "Transport.Location_of_goods",
+                  "as": "string"
+                },
+                {
                   "from": "financial.bankCode",
                   "to": "Financial.Bank.Code",
                   "as": "string"
@@ -1323,6 +1328,12 @@
                 "title": "33. Place of Discharging ( Box 27 )",
                 "description": "UNLOCODE of the place where the goods are discharged.",
                 "example": "PLGDY"
+              },
+              "locationOfGoods": {
+                "type": "string",
+                "title": "Location of Goods ( Box 30 )",
+                "description": "UNSHDTAB shed / location code. Optional.",
+                "example": "CFS1"
               }
             }
           },
@@ -1940,6 +1951,10 @@
               {
                 "type": "Control",
                 "scope": "#/properties/cusdec_draft/properties/containerCount"
+              },
+              {
+                "type": "Control",
+                "scope": "#/properties/cusdec_draft/properties/transport/properties/locationOfGoods"
               },
               {
                 "type": "Control",

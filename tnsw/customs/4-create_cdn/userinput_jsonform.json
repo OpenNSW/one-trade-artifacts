@@ -34,6 +34,7 @@
             { "from": "CUSTOMS_CDN.transport.trailerRegNo", "to": "transport.trailerRegNo", "as": "string" },
             { "from": "CUSTOMS_CDN.transport.driverName", "to": "transport.driverName", "as": "string" },
             { "from": "CUSTOMS_CDN.transport.locationOfGoods", "to": "transport.locationOfGoods", "as": "string" },
+            { "from": "CUSTOMS_CDN.transport.slpa", "to": "transport.slpa", "as": "string" },
             { "from": "CUSTOMS_CDN.goods.description", "to": "goods.description", "as": "string" },
             { "from": "CUSTOMS_CDN.goods.packageNumber", "to": "goods.packageNumber", "as": "number" },
             { "from": "CUSTOMS_CDN.goods.packageType", "to": "goods.packageType", "as": "string" },
@@ -78,6 +79,7 @@
             { "from": "transport.trailerRegNo", "to": "transport.trailerRegNo", "as": "string" },
             { "from": "transport.driverName", "to": "transport.driverName", "as": "string" },
             { "from": "transport.locationOfGoods", "to": "transport.locationOfGoods", "as": "string" },
+            { "from": "transport.slpa", "to": "transport.slpa", "as": "string" },
             { "from": "goods.description", "to": "goods.description", "as": "string" },
             { "from": "goods.packageNumber", "to": "goods.packageNumber", "as": "number" },
             { "from": "goods.packageType", "to": "goods.packageType", "as": "string" },
@@ -238,6 +240,12 @@
               }
             },
             "example": "DEHAM"
+          },
+          "slpa": {
+            "type": "string",
+            "title": "SLPA No.",
+            "description": "SLPA serial number",
+            "example": "SLPA-2026-004512"
           },
           "placeOfLoading": {
             "type": "string",
@@ -567,6 +575,10 @@
           {
             "type": "Control",
             "scope": "#/properties/transport/properties/placeOfDischarge"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport/properties/slpa"
           },
           {
             "type": "Control",

@@ -145,6 +145,11 @@
         "readOnly": true,
         "description": "UNLOCTAB."
       },
+      "slpa": {
+        "type": "string",
+        "title": "SLPA No.",
+        "readOnly": true
+      },
       "goodsDescription": {
         "type": "string",
         "title": "Description of Goods",
@@ -439,6 +444,13 @@
                 }
               }
             ]
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/slpa",
+            "options": {
+              "readonly": true
+            }
           },
           {
             "type": "HorizontalLayout",
