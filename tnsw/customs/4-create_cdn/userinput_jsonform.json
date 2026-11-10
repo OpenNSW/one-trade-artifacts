@@ -244,7 +244,7 @@
           "slpa": {
             "type": "string",
             "title": "SLPA No.",
-            "description": "Free text. Optional.",
+            "description": "The Sri Lanka Ports Authority (SLPA) reference number for this dispatch, if SLPA has issued one. Enter it exactly as SLPA gave it, or leave it blank.",
             "example": "SLPA-2026-004512"
           },
           "placeOfLoading": {
