@@ -1383,6 +1383,21 @@
               }
             },
             "example": "PLGDY"
+          },
+          "locationOfGoods": {
+            "type": "string",
+            "title": "Location of Goods ( Box 30 )",
+            "description": "UNSHDTAB shed / location code. Optional.",
+            "x-search": {
+              "service": "static-data",
+              "mode": "small-list",
+              "displayTemplate": "({id})-{name}",
+              "params": {
+                "id": "customs-cusdec--sheds",
+                "version": "1"
+              }
+            },
+            "example": "CFS1"
           }
         },
         "required": [
@@ -2181,6 +2196,10 @@
           {
             "type": "Control",
             "scope": "#/properties/containerCount"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/transport/properties/locationOfGoods"
           },
           {
             "type": "Control",
