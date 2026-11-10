@@ -1391,7 +1391,7 @@
             "x-search": {
               "service": "static-data",
               "mode": "small-list",
-              "displayTemplate": "{name}",
+              "displayTemplate": "({id})-{name}",
               "params": {
                 "id": "customs-cusdec--sheds",
                 "version": "1"
