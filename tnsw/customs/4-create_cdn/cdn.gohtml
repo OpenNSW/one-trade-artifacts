@@ -24,7 +24,6 @@
   .fields > .field { flex: 1; display: flex; flex-direction: column; }
   .box.cols { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 3mm; }
   .options { display: flex; justify-content: space-evenly; margin-top: 1.5mm; }
-  .guide { display: block; margin: 0.5mm 0 0 4mm; font-size: 6.5pt; }
   .sign { margin-top: auto; }
   /* Box 2: the B / R / S / L cells. */
   .box.brsl { display: grid; grid-template-columns: repeat(4, 1fr); padding: 0; }
@@ -173,8 +172,7 @@
     <div class="box fields" style="grid-column: 1 / 13; grid-row: span 5;">
       <div class="field">
         <span class="label">23. Type of container</span>
-        <span class="guide">Height..............Length..........Type.............</span>
-        <span class="value">{{ .userform.container.type }}</span>
+        <span class="value">{{ with .userform.container.type }}{{ $name := staticdata "customs-cusdec--container-types" "1" . }}{{ . }}{{ if ne $name . }} {{ $name }}{{ end }}{{ end }}</span>
       </div>
       <div class="field">
         <span class="label">24. Reefer Temperature Required</span>
