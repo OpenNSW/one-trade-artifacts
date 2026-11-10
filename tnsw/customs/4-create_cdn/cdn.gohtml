@@ -18,10 +18,11 @@
   .box.tall { min-height: 40mm; }
   .box.text { font-size: 7pt; }
   .num { text-align: right; }
-  /* Two numbered boxes in one grid item, split by one line. */
-  .box.split { display: flex; flex-direction: column; padding: 0; }
-  .split > .part { display: flex; flex-direction: column; padding: 1mm 1.5mm; border-bottom: 1px solid #000; }
-  .split > .part:last-child { flex: 1; border-bottom: 0; }
+  /* One box holding several numbered fields, with no line between them: each
+     field takes an equal share of the box's height (.fields) or width (.cols). */
+  .box.fields { display: flex; flex-direction: column; }
+  .fields > .field { flex: 1; display: flex; flex-direction: column; }
+  .box.cols { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 3mm; }
   .options { display: flex; justify-content: space-evenly; margin-top: 1.5mm; }
   .options > span { display: flex; align-items: center; gap: 1.5mm; }
   .tick { display: inline-block; width: 6mm; height: 4mm; border: 1px solid #000; }
@@ -53,12 +54,12 @@
 <div class="page">
   <h1>CARGO DISPATCH NOTE/FCL/LCL/CONTAINER LOAD PLAN - EXP 3b</h1>
   <div class="note">
-    <div class="box split" style="grid-column: 1 / 13; grid-row: span 3;">
-      <div class="part">
+    <div class="box fields" style="grid-column: 1 / 13; grid-row: span 3;">
+      <div class="field">
         <span class="label">1.a Shipper (Name and Address)</span>
         {{ with .userform.shipper }}<span class="value">{{ .name }}</span><span class="value">{{ .address }}</span>{{ end }}
       </div>
-      <div class="part">
+      <div class="field">
         <span class="label">1.b Cusdec Numbers</span>
         <span class="value">{{ .userform.cusdecRef }}</span>
       </div>
@@ -104,9 +105,17 @@
     </div>
 
     <div class="box brsl" style="grid-column: 1 / 13;"><span>2.&nbsp;&nbsp;&nbsp;B</span><span>R</span><span>S</span><span>L</span></div>
-    <div class="box text" style="grid-column: 13 / 25; grid-row: span 2; display: flex; flex-direction: column;">
-      <span class="label">15. Time of Departure from Stores/CFS</span>
-      <span style="margin: auto 0;">The container/lorry was stuffed/loaded under strict security conditions &amp; I certify that this container/lorry is safe to be handled in the Port.</span>
+    <div class="box fields text" style="grid-column: 13 / 25; grid-row: span 4;">
+      <div class="field" style="flex: 2;">
+        <span class="label">15. Time of Departure from Stores/CFS</span>
+        <span style="margin: auto 0;">The container/lorry was stuffed/loaded under strict security conditions &amp; I certify that this container/lorry is safe to be handled in the Port.</span>
+      </div>
+      <div class="field">
+        <span class="label">16. Name of certifying security officer/authorized signatory</span>
+      </div>
+      <div class="field">
+        <span class="label">17. Signature, Designation and Date</span>
+      </div>
     </div>
     <div class="box" style="grid-column: 1 / 7;">
       <span class="label">3.a Voyage No. / Date</span>
@@ -124,9 +133,6 @@
       <span class="label">6. Port of Loading</span>
       <span class="value">{{ staticdata "customs-cusdec--port-of-entry-and-discharge" "1" .userform.transport.placeOfLoading }}</span>
     </div>
-    <div class="box" style="grid-column: 13 / 25;">
-      <span class="label">16. Name of certifying security officer/authorized signatory</span>
-    </div>
     <div class="box" style="grid-column: 1 / 7;">
       <span class="label">5. Port of Discharge</span>
       <span class="value">{{ staticdata "customs-cusdec--port-of-entry-and-discharge" "1" .userform.transport.placeOfDischarge }}</span>
@@ -139,23 +145,22 @@
       <span class="label">Cont. Op.Code</span>
       <span class="value">{{ .userform.transport.contOpCode }}</span>
     </div>
-    <div class="box" style="grid-column: 13 / 25;">
-      <span class="label">17. Signature, Designation and Date</span>
-    </div>
 
-    <div class="box tall" style="grid-column: 1 / 7;">
-      <span class="label">18. Marks &amp; Numbers<br>&nbsp;&nbsp;&nbsp;&nbsp;Container No.</span>
-      <span class="value">{{ .userform.container.number }}</span>
-      <span class="value">{{ .userform.container.mark }}</span>
-    </div>
-    <div class="box tall" style="grid-column: 7 / 13;">
-      <span class="label">19. Number &amp; kind of pkgs.</span>
-      <span class="value">{{ .userform.goods.packageNumber }}</span>
-      <span class="value">{{ .userform.goods.packageType }}</span>
-    </div>
-    <div class="box tall" style="grid-column: 13 / 19;">
-      <span class="label">20. Description of Goods</span>
-      <span class="value">{{ .userform.goods.description }}</span>
+    <div class="box tall cols" style="grid-column: 1 / 19;">
+      <div>
+        <span class="label">18. Marks &amp; Numbers<br>&nbsp;&nbsp;&nbsp;&nbsp;Container No.</span>
+        <span class="value">{{ .userform.container.number }}</span>
+        <span class="value">{{ .userform.container.mark }}</span>
+      </div>
+      <div>
+        <span class="label">19. Number &amp; kind of pkgs.</span>
+        <span class="value">{{ .userform.goods.packageNumber }}</span>
+        <span class="value">{{ .userform.goods.packageType }}</span>
+      </div>
+      <div>
+        <span class="label">20. Description of Goods</span>
+        <span class="value">{{ .userform.goods.description }}</span>
+      </div>
     </div>
     <div class="box tall" style="grid-column: 19 / 22;">
       <span class="label">21. (a) Gross Weight, Kg</span>
@@ -166,10 +171,27 @@
       <span class="value num">{{ .userform.goods.volume }}</span>
     </div>
 
-    <div class="box" style="grid-column: 1 / 13;">
-      <span class="label">23. Type of container</span>
-      <span class="guide">Height..............Lenght..........Type.............</span>
-      <span class="value">{{ .userform.container.type }}</span>
+    <div class="box fields" style="grid-column: 1 / 13; grid-row: span 5;">
+      <div class="field">
+        <span class="label">23. Type of container</span>
+        <span class="guide">Height..............Lenght..........Type.............</span>
+        <span class="value">{{ .userform.container.type }}</span>
+      </div>
+      <div class="field">
+        <span class="label">24. Reefer Temperature Required</span>
+        <span class="value">{{ with .userform.goods.tempRequired }}{{ . }} &deg;C{{ end }}</span>
+      </div>
+      <div class="field">
+        <span class="label">25. Place of Delivery</span>
+        <div class="options"><span><span class="tick"></span> CY</span><span><span class="tick"></span> CFS</span><span><span class="tick"></span> DOOR</span></div>
+      </div>
+      <div class="field">
+        <span class="label">26. Place of Receipt</span>
+        <div class="options"><span><span class="tick"></span> CY</span><span><span class="tick"></span> CFS</span><span><span class="tick"></span> DOOR</span></div>
+      </div>
+      <div class="field">
+        <span class="label">Remarks</span>
+      </div>
     </div>
     <div class="box" style="grid-column: 13 / 19; grid-row: span 3;">
       <span class="label">31. Customs Export Office</span>
@@ -177,18 +199,6 @@
     <div class="box text" style="grid-column: 19 / 25; grid-row: span 3; display: flex; flex-direction: column;">
       <span>Received...................packages / Containers trailers in apparent good order and condition</span>
       <span class="label">33. SLPA Supervising Officer/Pier Clerck</span>
-    </div>
-    <div class="box" style="grid-column: 1 / 13;">
-      <span class="label">24. Reefer Temperature Required</span>
-      <span class="value">{{ with .userform.goods.tempRequired }}{{ . }} &deg;C{{ end }}</span>
-    </div>
-    <div class="box" style="grid-column: 1 / 13;">
-      <span class="label">25. Place of Delivery</span>
-      <div class="options"><span><span class="tick"></span> CY</span><span><span class="tick"></span> CFS</span><span><span class="tick"></span> DOOR</span></div>
-    </div>
-    <div class="box" style="grid-column: 1 / 13;">
-      <span class="label">26. Place of Receipt</span>
-      <div class="options"><span><span class="tick"></span> CY</span><span><span class="tick"></span> CFS</span><span><span class="tick"></span> DOOR</span></div>
     </div>
     <div class="box" style="grid-column: 13 / 19; grid-row: span 2;">
       <span class="label">32. SLPA Export Office</span>
@@ -201,26 +211,15 @@
       <span class="label">36. Telephone No.</span>
       <span class="label sign">37. Signature of Declarant</span>
     </div>
-    <div class="box" style="grid-column: 1 / 13;">
-      <span class="label">Remarks</span>
+    <div class="box fields" style="grid-column: 1 / 13; grid-row: span 3;">
+      <div class="field"><span class="label">28.(a) Time of Arrival at Customs Gate</span></div>
+      <div class="field"><span class="label">29.(a) Time of Arrival Alongside</span></div>
+      <div class="field"><span class="label">30.(a) Time &amp; Date Demounted/Discharged</span></div>
     </div>
-    <div class="box" style="grid-column: 1 / 13;">
-      <span class="label">28.(a) Time of Arrival at Customs Gate</span>
-    </div>
-    <div class="box" style="grid-column: 13 / 19;">
-      <span class="label">28.(b) Customs Officer</span>
-    </div>
-    <div class="box" style="grid-column: 1 / 13;">
-      <span class="label">29.(a) Time of Arrival Alongside</span>
-    </div>
-    <div class="box" style="grid-column: 13 / 19;">
-      <span class="label">29.(b) Pier Clerk</span>
-    </div>
-    <div class="box" style="grid-column: 1 / 13;">
-      <span class="label">30.(a) Time &amp; Date Demounted/Discharged</span>
-    </div>
-    <div class="box" style="grid-column: 13 / 19;">
-      <span class="label">30.(b) Supervisor/ Pier Clerk</span>
+    <div class="box fields" style="grid-column: 13 / 19; grid-row: span 3;">
+      <div class="field"><span class="label">28.(b) Customs Officer</span></div>
+      <div class="field"><span class="label">29.(b) Pier Clerk</span></div>
+      <div class="field"><span class="label">30.(b) Supervisor/ Pier Clerk</span></div>
     </div>
   </div>
 </div>
