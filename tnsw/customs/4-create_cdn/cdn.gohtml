@@ -122,14 +122,14 @@
     </div>
     <div class="box" style="grid-column: 7 / 13;">
       <span class="label">6. Port of Loading</span>
-      <span class="value">{{ .userform.transport.placeOfLoading }}</span>
+      <span class="value">{{ staticdata "customs-cusdec--port-of-entry-and-discharge" "1" .userform.transport.placeOfLoading }}</span>
     </div>
     <div class="box" style="grid-column: 13 / 25;">
       <span class="label">16. Name of certifying security officer/authorized signatory</span>
     </div>
     <div class="box" style="grid-column: 1 / 7;">
       <span class="label">5. Port of Discharge</span>
-      <span class="value">{{ .userform.transport.placeOfDischarge }}</span>
+      <span class="value">{{ staticdata "customs-cusdec--port-of-entry-and-discharge" "1" .userform.transport.placeOfDischarge }}</span>
     </div>
     <div class="box" style="grid-column: 7 / 10;">
       <span class="label">Vessel Op.Code</span>

@@ -256,6 +256,13 @@ See `tnsw/fcau/3-2-warehouse_inspection/workflow.json` or
   no script, event handler, form, frame or `svg`, loads nothing from outside, and has no
   `{{ }}` inside a tag or a `<style>` block.
   `.github/scripts/check_html_templates.py` fails CI on any of them.
+- A document template prints a stored code's name with
+  `{{ staticdata "<id>" "<version>" <value> }}` (NSW-SriLanka's resolver; see its
+  `docs/WORKFLOW_GUIDE.md`), naming the same id and version as the form field's
+  `x-search` `params`. Each call names both as quoted strings, and the template's bundle
+  manifest lists that static_data at that version;
+  `.github/scripts/check_static_data_refs.py` fails CI otherwise. It doesn't check that
+  the version matches the field's `x-search`, so bump both together.
 - **Drafts never go through the workflow.** A step that offers "Save as Draft"
   declares `"draft": {"command": "save_as_draft"}` on its `subtask_template`, and its
   render handle uses `"element": "draft_action"`. The portal saves it with
