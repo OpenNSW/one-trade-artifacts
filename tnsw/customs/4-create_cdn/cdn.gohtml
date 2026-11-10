@@ -84,7 +84,7 @@
     </div>
     <div class="box" style="grid-column: 19 / 25;">
       <span class="label">CDN No.</span>
-      <span class="value">{{ .userform.registeredCdnNumber }}</span>
+      <span class="value">{{ join (split .userform.registeredCdnNumber "/") " " }}</span>
     </div>
 
     <div class="box" style="grid-column: 1 / 13; grid-row: span 3;">
