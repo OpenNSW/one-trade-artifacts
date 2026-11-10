@@ -175,6 +175,15 @@ def field_values(schema, field):
     return values
 
 
+def mapping_source(key):
+    """A mapping key without its optional marker, read the way the workflow engine reads it:
+    "x?!" (optional, removes the destination when absent) or "x?" (optional, keeps it)."""
+    for marker in ("?!", "?"):
+        if key.endswith(marker):
+            return key[: -len(marker)]
+    return key
+
+
 def variable_values(deployment, workflow, renders, var):
     """Every value var can hold in workflow, from the steps whose output_mapping writes it."""
     values = set()
@@ -183,13 +192,13 @@ def variable_values(deployment, workflow, renders, var):
         for source, target in (node.get("output_mapping") or {}).items():
             if not step or target.rstrip("?") != var:
                 continue
-            if source.rstrip("?") == COMMAND_VAR:
+            if mapping_source(source) == COMMAND_VAR:
                 values |= offered(renders, waits_in(step)) - {(step.get("draft") or {}).get("command")}
                 continue
             form_id = props(step).get("user_jsonforms_id")
             if deployment.has("generic_template", form_id):
                 form = deployment.load("generic_template", form_id)
-                values |= field_values(form.get("schema", form), source.rstrip("?"))
+                values |= field_values(form.get("schema", form), mapping_source(source))
     return values
 
 
@@ -230,7 +239,7 @@ def callback_commands(deployment, workflow, renders, node):
     for source, target in (node.get("input_mapping") or {}).items():
         if target.rstrip("?") != "payload.command":
             continue
-        var = source.rstrip("?")
+        var = mapping_source(source)
         values = variable_values(deployment, workflow, renders, var)
         literals = compared_literals(workflow, node["id"], var)
         if literals is not None:
@@ -259,7 +268,7 @@ def agency_sends(agency, workflow_id):
 def stored_token(node):
     """The variable a dispatch node stores the other side's callbackToken in, or None."""
     for source, target in (node.get("output_mapping") or {}).items():
-        if source.rstrip("?") == "callbackToken":
+        if mapping_source(source) == "callbackToken":
             return target.rstrip("?")
     return None
 
@@ -271,7 +280,7 @@ def callback_token(node, step):
         return None
     for source, target in (node.get("input_mapping") or {}).items():
         if target.rstrip("?") == placeholder.group(1):
-            return source.rstrip("?")
+            return mapping_source(source)
     return None
 
 

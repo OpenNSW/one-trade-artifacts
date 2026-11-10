@@ -59,8 +59,16 @@ def load(root, path):
 
 
 def clean(path):
-    # "reviewerform?" marks an optional mapping; "?" can only end a segment.
-    return ".".join(seg.rstrip("?") for seg in path.split("."))
+    # "reviewerform?" and "containerCount?!" mark an optional mapping (the engine keeps or removes
+    # the destination when the source is absent); a marker can only end a segment.
+    return ".".join(strip_marker(seg) for seg in path.split("."))
+
+
+def strip_marker(seg):
+    for marker in ("?!", "?"):
+        if seg.endswith(marker):
+            return seg[: -len(marker)]
+    return seg
 
 
 def transfer(paths, mapping):

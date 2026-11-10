@@ -23,17 +23,17 @@
       },
       "output_mapping": {
         "__command": "command",
-        "shipmentType?": "userform.shipmentType",
+        "shipmentType?!": "userform.shipmentType",
         "containerCount?": "userform.containerCount",
-        "identification?": "userform.identification",
-        "traders?": "userform.traders",
-        "generalInfo?": "userform.generalInfo",
-        "transport?": "userform.transport",
-        "financial?": "userform.financial",
-        "valuation?": "userform.valuation",
-        "packages?": "userform.packages",
-        "items?": "userform.items",
-        "supportingDocuments?": "userform.supportingDocuments"
+        "identification?!": "userform.identification",
+        "traders?!": "userform.traders",
+        "generalInfo?!": "userform.generalInfo",
+        "transport?!": "userform.transport",
+        "financial?!": "userform.financial",
+        "valuation?!": "userform.valuation",
+        "packages?!": "userform.packages",
+        "items?!": "userform.items",
+        "supportingDocuments?!": "userform.supportingDocuments"
       }
     },
     {
