@@ -1,0 +1,9 @@
+{
+  "id": "customs-cdn--generate-document",
+  "task_type": "HTML_DOCUMENT_GENERATOR",
+  "output_namespace": "cdn_document",
+  "plugin_properties": {
+    "template_id": "customs-cdn--html",
+    "filename": "cargo-dispatch-note.html"
+  }
+}

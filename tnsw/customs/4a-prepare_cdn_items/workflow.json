@@ -24,6 +24,7 @@
       "input_mapping": {
         "latest_container_count": "container_count",
         "cusdec_ref?": "cusdec_ref",
+        "declarant_name?": "prefill.declarantName",
         "declaration.baseGeneralSegment.officeCode?": "prefill.officeCode",
         "declaration.baseGeneralSegment.exporter.id?": "prefill.shipper.id",
         "declaration.baseGeneralSegment.exporter.name?": "prefill.shipper.name",

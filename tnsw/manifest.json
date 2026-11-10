@@ -3085,6 +3085,18 @@
       "path": "customs/4-create_cdn/integration_wait.json"
     },
     {
+      "id": "customs-cdn--generate-document",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "customs/4-create_cdn/cdn_document.json"
+    },
+    {
+      "id": "customs-cdn--html",
+      "kind": "html_template",
+      "version": "",
+      "path": "customs/4-create_cdn/cdn.gohtml"
+    },
+    {
       "id": "customs-prepare-cdn-items-flow:render",
       "kind": "generic_template",
       "version": "",

@@ -11,7 +11,8 @@
       "type": "TASK",
       "task_template_id": "customs-wait-cdn-ack",
       "input_mapping": {
-        "userform": "submission"
+        "userform": "submission",
+        "cdn_document_key?": "submission.cdn_document_key"
       },
       "output_mapping": {
         "ack_status?": "ack_status",
