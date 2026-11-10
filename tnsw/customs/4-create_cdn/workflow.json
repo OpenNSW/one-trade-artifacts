@@ -18,7 +18,7 @@
       },
       "output_mapping": {
         "officeCode?": "userform.officeCode",
-        "declarantName?": "userform.declarantName",
+        "declarantTin?": "userform.declarantTin",
         "shipper?": "userform.shipper",
         "consignee?": "userform.consignee",
         "transport?": "userform.transport",
