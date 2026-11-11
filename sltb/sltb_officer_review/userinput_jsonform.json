@@ -59,7 +59,7 @@
                   { "from": "lion_logo_requested", "to": "Blend.Lion_logo", "map": { "yes": "1", "no": "0" }, "default": "0" },
                   { "from": "quantity_to_be_exported", "to": "Blend.Quantity_export", "default": null },
                   { "from": "grade_or_standard", "to": "Blend.Blend_grade", "default": null },
-                  { "from": "date_of_blend", "to": "Blend.Blend_date", "as": "date", "format": "M/D/YY", "default": null },
+                  { "from": "date_of_blend", "to": "Blend.Blend_date", "as": "date", "format": "M/d/yy", "default": null },
                   {
                     "from": "sales.sheet",
                     "to": "Particulars_of_sale",
@@ -114,7 +114,7 @@
                     ]
                   },
                   { "from": "total_blend_balances_and_gain", "to": "balance_total.Previous_total", "default": { "null": null } },
-                  { "from": "sample_rediness_date", "to": "Sample.Sample_date", "as": "date", "format": "M/D/YY", "default": null },
+                  { "from": "sample_rediness_date", "to": "Sample.Sample_date", "as": "date", "format": "M/d/yy", "default": null },
                   { "from": "warehouse_address", "to": "Sample.Sample_Warehouse", "default": null },
                   { "from": "remarks", "to": "Sample.Remarks", "default": { "null": null } },
                   { "from": "blend_gain_determined", "to": "Total.Blend_gain", "default": { "null": null } },
@@ -396,7 +396,7 @@
               "declaration": {
                 "standalone": "no"
               },
-              "fileName": "cusdec-{today(YYYYMMDD)}.xml",
+              "fileName": "cusdec-{today(yyyyMMdd)}.xml",
               "writeTo": [
                 {
                   "from": "items.length",
@@ -437,7 +437,7 @@
                   "from": "identification.registrationDate",
                   "to": "Identification.Registration.Date",
                   "as": "date",
-                  "format": "M/D/YY"
+                  "format": "M/d/yy"
                 },
                 {
                   "from": "traders.exporter.code",

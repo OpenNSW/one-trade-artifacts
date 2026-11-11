@@ -56,7 +56,7 @@
         "x-xml-export": {
           "rootElement": "CUSTOMS_CDN",
           "declaration": { "standalone": "no" },
-          "fileName": "customs-cdn-{today(YYYYMMDD)}.xml",
+          "fileName": "customs-cdn-{today(yyyyMMdd)}.xml",
           "writeTo": [
             { "from": "officeCode", "to": "officeCode", "as": "string" },
             { "from": "shipper.id", "to": "shipper.id", "as": "string" },

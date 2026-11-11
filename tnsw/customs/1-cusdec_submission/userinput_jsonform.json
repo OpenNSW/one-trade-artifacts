@@ -413,7 +413,7 @@
           "declaration": {
             "standalone": "no"
           },
-          "fileName": "cusdec-{today(YYYYMMDD)}.xml",
+          "fileName": "cusdec-{today(yyyyMMdd)}.xml",
           "writeTo": [
             {
               "from": "items.length",

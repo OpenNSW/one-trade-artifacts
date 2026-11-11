@@ -47,7 +47,7 @@
         "x-xml-export": {
           "rootElement": "FCAU_HEALTH_CERT",
           "declaration": { "standalone": "no" },
-          "fileName": "fcau-health-cert-{today(YYYYMMDD)}.xml",
+          "fileName": "fcau-health-cert-{today(yyyyMMdd)}.xml",
           "writeTo": [
             { "from": "exporter_name", "to": "exporter_name", "as": "string" },
             { "from": "exporter_address", "to": "exporter_address", "as": "string" },
