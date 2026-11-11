@@ -87,7 +87,6 @@
       "task_template_id": "customs-prepare-cdn-items-flow",
       "lane": "Trader/CHA",
       "input_mapping": {
-        "customs.userform.containerCount": "container_count",
         "customs.cusdec_number?": "cusdec_ref",
         "customs.userform.traders?": "userform.traders"
       },
