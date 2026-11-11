@@ -88,7 +88,7 @@
 
     <div class="box" style="grid-column: 1 / 13; grid-row: span 3;">
       <span class="label">2.b Consignee (Name and Address)</span>
-      {{ with .userform.consignee }}<span class="value">{{ .name }}</span><span class="value">{{ .address }}</span>{{ end }}
+      {{ with .userform.consignee }}{{ with .id }}<span class="value">{{ . }}</span>{{ end }}<span class="value">{{ .name }}</span><span class="value">{{ .address }}{{ if and .address .countryCode }}, {{ end }}{{ .countryCode }}</span>{{ end }}
     </div>
     <div class="box" style="grid-column: 13 / 25;">
       <span class="label">12. Name of Driver</span>
