@@ -113,7 +113,7 @@
         "x-xml-export": {
           "rootElement": "NPQS_PHYTO_CERT",
           "declaration": { "standalone": "no" },
-          "fileName": "npqs-phyto-cert-{today(YYYYMMDD)}.xml",
+          "fileName": "npqs-phyto-cert-{today(yyyyMMdd)}.xml",
           "writeTo": [
             { "from": "certificate_type", "to": "certificate_type", "as": "string" },
             { "from": "re_export.original_certificate_number", "to": "re_export.original_certificate_number", "as": "string" },

@@ -32,7 +32,7 @@
                   { "from": "BLEND_SHEET.Blend.Average_rate", "to": "avg_rate_per_kg", "as": "number" },
                   { "from": "BLEND_SHEET.Blend.Blend_grade", "to": "grade_or_standard", "as": "string" },
                   { "from": "BLEND_SHEET.Blend.Average_FOB", "to": "fob_avg", "as": "number" },
-                  { "from": "BLEND_SHEET.Blend.Blend_date", "to": "date_of_blend", "as": "date", "format": "M/D/YY" },
+                  { "from": "BLEND_SHEET.Blend.Blend_date", "to": "date_of_blend", "as": "date", "format": "M/d/yy" },
                   {
                     "from": "BLEND_SHEET.Blend.Lion_logo",
                     "to": "lion_logo_requested",
@@ -65,7 +65,7 @@
                     ]
                   },
                   { "from": "BLEND_SHEET.Sample.Remarks", "to": "remarks", "as": "string", "default": "" },
-                  { "from": "BLEND_SHEET.Sample.Sample_date", "to": "sample_rediness_date", "as": "date", "format": "M/D/YY" },
+                  { "from": "BLEND_SHEET.Sample.Sample_date", "to": "sample_rediness_date", "as": "date", "format": "M/d/yy" },
                   { "from": "BLEND_SHEET.Sample.Sample_Warehouse", "to": "warehouse_address", "as": "string" },
                   { "from": "BLEND_SHEET.Total.Blend_gain", "to": "blend_gain_determined", "as": "number" },
                   { "from": "BLEND_SHEET.Total.Flavor", "to": "flavors", "as": "number" },
@@ -189,7 +189,7 @@
                     "from": "date_of_blend",
                     "to": "Blend.Blend_date",
                     "as": "date",
-                    "format": "M/D/YY",
+                    "format": "M/d/yy",
                     "default": null
                   },
                   {
@@ -341,7 +341,7 @@
                     "from": "sample_rediness_date",
                     "to": "Sample.Sample_date",
                     "as": "date",
-                    "format": "M/D/YY",
+                    "format": "M/d/yy",
                     "default": null
                   },
                   {
@@ -761,7 +761,7 @@
                   "from": "ASYCUDA.Identification.Registration.Date",
                   "to": "identification.registrationDate",
                   "as": "date",
-                  "format": "M/D/YY"
+                  "format": "M/d/yy"
                 },
                 {
                   "from": "ASYCUDA.Declarant.Declarant_code",
@@ -1137,7 +1137,7 @@
               "declaration": {
                 "standalone": "no"
               },
-              "fileName": "cusdec-{today(YYYYMMDD)}.xml",
+              "fileName": "cusdec-{today(yyyyMMdd)}.xml",
               "writeTo": [
                 {
                   "from": "items.length",
@@ -1178,7 +1178,7 @@
                   "from": "identification.registrationDate",
                   "to": "Identification.Registration.Date",
                   "as": "date",
-                  "format": "M/D/YY"
+                  "format": "M/d/yy"
                 },
                 {
                   "from": "traders.exporter.code",
