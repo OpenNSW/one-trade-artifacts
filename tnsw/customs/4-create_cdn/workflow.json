@@ -18,7 +18,6 @@
       },
       "output_mapping": {
         "officeCode?": "userform.officeCode",
-        "declarantTin?": "userform.declarantTin",
         "shipper?": "userform.shipper",
         "consignee?": "userform.consignee",
         "transport?": "userform.transport",
@@ -79,7 +78,8 @@
       "type": "TASK",
       "task_template_id": "customs-cdn--generate-document",
       "input_mapping": {
-        "userform": "userform"
+        "userform": "userform",
+        "prefill.declarantTin?": "userform.declarantTin"
       },
       "output_mapping": {
         "cdn_document.key": "cdn_document_key"

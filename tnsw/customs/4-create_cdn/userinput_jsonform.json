@@ -105,12 +105,6 @@
         "example": "CBEX1",
         "description": "Office of exit (UNCUOTAB). Annex B: officeCode."
       },
-      "declarantTin": {
-        "type": "string",
-        "title": "35. Name of Declarant (TIN)",
-        "readOnly": true,
-        "description": "The declarant's TIN, filled in from the CHA profile. Printed on the Cargo Dispatch Note; not sent to Sri Lanka Customs."
-      },
       "cusdecRef": {
         "type": "string",
         "title": "Customs Declaration Reference",
@@ -493,10 +487,6 @@
           {
             "type": "Control",
             "scope": "#/properties/officeCode"
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/declarantTin"
           }
         ]
       },
