@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cargo Dispatch Note - EXP 3b</title>
+<style>
+  @page { size: A4 portrait; margin: 10mm; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Arial, Helvetica, sans-serif; font-size: 8pt; color: #000; }
+  /* The A4 printable height, 1mm short so rounding never spills onto a second
+     page; the grid stretches its rows to fill it. */
+  .page { width: 190mm; height: 276mm; margin: 0 auto; display: flex; flex-direction: column; }
+  h1 { margin: 0 0 2mm; font-size: 11pt; font-weight: normal; text-align: center; letter-spacing: 0.3pt; }
+  .note { flex: 1; display: grid; grid-template-columns: repeat(24, 1fr); border-top: 1px solid #000; border-left: 1px solid #000; }
+  .box { border-right: 1px solid #000; border-bottom: 1px solid #000; padding: 1mm 1.5mm; min-height: 8mm; }
+  .box .label { display: block; font-size: 6.5pt; margin-bottom: 0.5mm; }
+  .box .value { display: block; font-size: 9pt; white-space: pre-line; }
+  .box.tall { min-height: 40mm; }
+  .box.text { font-size: 7pt; }
+  .num { text-align: right; }
+  /* One box holding several numbered fields, with no line between them: each
+     field takes an equal share of the box's height (.fields) or width (.cols). */
+  .box.fields { display: flex; flex-direction: column; }
+  .fields > .field { flex: 1; display: flex; flex-direction: column; }
+  .box.cols { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 3mm; }
+  .options { display: flex; justify-content: space-evenly; margin-top: 1.5mm; }
+  .sign { margin-top: auto; }
+  /* Box 2: the B / R / S / L cells. */
+  .box.brsl { display: grid; grid-template-columns: repeat(4, 1fr); padding: 0; }
+  .brsl > span { padding: 1mm 1.5mm; border-right: 1px solid #000; font-size: 6.5pt; text-align: center; }
+  .brsl > span:first-child { text-align: left; }
+  .brsl > span:last-child { border-right: 0; }
+  .decls { width: 100%; border-collapse: collapse; font-size: 8pt; }
+  .decls th { font-weight: normal; text-align: left; border-bottom: 1px solid #000; padding: 0.5mm 1mm; }
+  .decls td { padding: 0.5mm 1mm; }
+  .decls tfoot td { border-top: 1px solid #000; }
+  .page.continuation { height: auto; display: block; break-before: page; }
+  .hint { margin: 4mm auto; width: 190mm; padding: 2mm 3mm; border: 1px solid #999; background: #f4f4f4; font-size: 10pt; }
+  @media screen {
+    body { background: #e5e5e5; padding-bottom: 8mm; }
+    .page { background: #fff; padding: 10mm; width: 210mm; height: 297mm; box-shadow: 0 0 3mm rgba(0, 0, 0, 0.25); }
+    .page.continuation { height: auto; min-height: 297mm; margin-top: 8mm; }
+  }
+  @media print {
+    .hint { display: none; }
+  }
+</style>
+</head>
+<body>
+<p class="hint">To print this Cargo Dispatch Note or save it as a PDF, press Ctrl+P (&#8984;P on a Mac).</p>
+<div class="page">
+  <h1>CARGO DISPATCH NOTE/FCL/LCL/CONTAINER LOAD PLAN - EXP 3b</h1>
+  <div class="note">
+    <div class="box fields" style="grid-column: 1 / 13; grid-row: span 3;">
+      <div class="field">
+        <span class="label">1.a Shipper (Name and Address)</span>
+        {{ with .userform.shipper }}<span class="value">{{ .name }}</span><span class="value">{{ .address }}</span>{{ end }}
+      </div>
+      <div class="field">
+        <span class="label">1.b Cusdec Numbers</span>
+        <span class="value">{{ join (split .userform.cusdecRef "/") " " }}</span>
+      </div>
+    </div>
+    <div class="box" style="grid-column: 13 / 19;">
+      <span class="label">7. Lorry/Trailer No.</span>
+      <span class="value">{{ .userform.transport.lorryRegNo }}</span>
+      <span class="value">{{ .userform.transport.trailerRegNo }}</span>
+    </div>
+    <div class="box" style="grid-column: 19 / 25;">
+      <span class="label">8. SN/(B/L) No.</span>
+      <span class="value">{{ .userform.goods.bol }}</span>
+    </div>
+    <div class="box" style="grid-column: 13 / 19;">
+      <span class="label">9. Tare Wt. (Kg)</span>
+    </div>
+    <div class="box" style="grid-column: 19 / 25;">
+      <span class="label">10. SLPA No.</span>
+      <span class="value">{{ .userform.transport.slpa }}</span>
+    </div>
+    <div class="box" style="grid-column: 13 / 19;">
+      <span class="label">11.a Seal No.</span>
+      <span class="value">{{ .userform.container.sealNo }}</span>
+    </div>
+    <div class="box" style="grid-column: 19 / 25;">
+      <span class="label">CDN No.</span>
+      <span class="value">{{ join (split .userform.registeredCdnNumber "/") " " }}</span>
+    </div>
+
+    <div class="box" style="grid-column: 1 / 13; grid-row: span 3;">
+      <span class="label">2.b Consignee (Name and Address)</span>
+      {{ with .userform.consignee }}{{ with .id }}<span class="value">{{ . }}</span>{{ end }}<span class="value">{{ .name }}</span><span class="value">{{ .address }}{{ if and .address .countryCode }}, {{ end }}{{ .countryCode }}</span>{{ end }}
+    </div>
+    <div class="box" style="grid-column: 13 / 25;">
+      <span class="label">12. Name of Driver</span>
+      <span class="value">{{ .userform.transport.driverName }}</span>
+    </div>
+    <div class="box" style="grid-column: 13 / 25;">
+      <span class="label">13. Location of Goods</span>
+      <span class="value">{{ .userform.transport.locationOfGoods }}</span>
+    </div>
+    <div class="box" style="grid-column: 13 / 25;">
+      <span class="label">14. Any other Accompanying</span>
+    </div>
+
+    <div class="box brsl" style="grid-column: 1 / 13;"><span>2.&nbsp;&nbsp;&nbsp;B</span><span>R</span><span>S</span><span>L</span></div>
+    <div class="box fields text" style="grid-column: 13 / 25; grid-row: span 4;">
+      <div class="field" style="flex: 2;">
+        <span class="label">15. Time of Departure from Stores/CFS</span>
+        <span style="margin: auto 0;">The container/lorry was stuffed/loaded under strict security conditions &amp; I certify that this container/lorry is safe to be handled in the Port.</span>
+      </div>
+      <div class="field">
+        <span class="label">16. Name of certifying security officer/authorized signatory</span>
+      </div>
+      <div class="field">
+        <span class="label">17. Signature, Designation and Date</span>
+      </div>
+    </div>
+    <div class="box" style="grid-column: 1 / 7;">
+      <span class="label">3.a Voyage No. / Date</span>
+      <span class="value">{{ .userform.transport.voyageNumber }}{{ with .userform.transport.voyageDate }} {{ . }}{{ end }}</span>
+    </div>
+    <div class="box" style="grid-column: 7 / 13;">
+      <span class="label">3.b Ex Vessel</span>
+      <span class="value">{{ .userform.transport.exVessel }}</span>
+    </div>
+    <div class="box" style="grid-column: 1 / 7;">
+      <span class="label">4. Vessel</span>
+      <span class="value">{{ .userform.transport.vessel }}</span>
+    </div>
+    <div class="box" style="grid-column: 7 / 13;">
+      <span class="label">6. Port of Loading</span>
+      <span class="value">{{ staticdata "customs-cusdec--port-of-entry-and-discharge" "1" .userform.transport.placeOfLoading }}</span>
+    </div>
+    <div class="box" style="grid-column: 1 / 7;">
+      <span class="label">5. Port of Discharge</span>
+      <span class="value">{{ staticdata "customs-cusdec--port-of-entry-and-discharge" "1" .userform.transport.placeOfDischarge }}</span>
+    </div>
+    <div class="box" style="grid-column: 7 / 10;">
+      <span class="label">Vessel Op.Code</span>
+      <span class="value">{{ .userform.transport.vesselOpCode }}</span>
+    </div>
+    <div class="box" style="grid-column: 10 / 13;">
+      <span class="label">Cont. Op.Code</span>
+      <span class="value">{{ .userform.transport.contOpCode }}</span>
+    </div>
+
+    <div class="box tall cols" style="grid-column: 1 / 19;">
+      <div>
+        <span class="label">18. Marks &amp; Numbers<br>&nbsp;&nbsp;&nbsp;&nbsp;Container No.</span>
+        <span class="value">{{ .userform.container.number }}</span>
+        <span class="value">{{ .userform.container.mark }}</span>
+      </div>
+      <div>
+        <span class="label">19. Number &amp; kind of pkgs.</span>
+        <span class="value">{{ .userform.goods.packageNumber }}</span>
+        <span class="value">{{ .userform.goods.packageType }}</span>
+      </div>
+      <div>
+        <span class="label">20. Description of Goods</span>
+        <span class="value">{{ .userform.goods.description }}</span>
+      </div>
+    </div>
+    <div class="box tall" style="grid-column: 19 / 22;">
+      <span class="label">21. (a) Gross Weight, Kg</span>
+      <span class="value num">{{ .userform.goods.grossWeight }}</span>
+    </div>
+    <div class="box tall" style="grid-column: 22 / 25;">
+      <span class="label">22. Cube m3</span>
+      <span class="value num">{{ .userform.goods.volume }}</span>
+    </div>
+
+    <div class="box fields" style="grid-column: 1 / 13; grid-row: span 5;">
+      <div class="field">
+        <span class="label">23. Type of container</span>
+        <span class="value">{{ with .userform.container.type }}{{ $name := staticdata "customs-cusdec--container-types" "1" . }}{{ . }}{{ if ne $name . }} {{ $name }}{{ end }}{{ end }}</span>
+      </div>
+      <div class="field">
+        <span class="label">24. Reefer Temperature Required</span>
+        <span class="value">{{ with .userform.goods.tempRequired }}{{ . }} &deg;C{{ end }}</span>
+      </div>
+      <div class="field">
+        <span class="label">25. Place of Delivery</span>
+        <div class="options"><span>CY</span><span>CFS</span><span>DOOR</span></div>
+      </div>
+      <div class="field">
+        <span class="label">26. Place of Receipt</span>
+        <div class="options"><span>CY</span><span>CFS</span><span>DOOR</span></div>
+      </div>
+      <div class="field">
+        <span class="label">Remarks</span>
+      </div>
+    </div>
+    <div class="box" style="grid-column: 13 / 19; grid-row: span 3;">
+      <span class="label">31. Customs Export Office</span>
+    </div>
+    <div class="box text" style="grid-column: 19 / 25; grid-row: span 3; display: flex; flex-direction: column;">
+      <span>Received...................packages / Containers trailers in apparent good order and condition</span>
+      <span class="label">33. SLPA Supervising Officer/Pier Clerk</span>
+    </div>
+    <div class="box" style="grid-column: 13 / 19; grid-row: span 2;">
+      <span class="label">32. SLPA Export Office</span>
+    </div>
+    <div class="box text" style="grid-column: 19 / 25; grid-row: span 5; display: flex; flex-direction: column; gap: 1.5mm;">
+      <span>I certify that the commodities loaded into trailer/lorry mentioned above at our premises were packed in our stores under strict security conditions and is safe handling</span>
+      <span class="label">34. Name of Company preparing note</span>
+      <span class="label">35. Name of Declarant</span>
+      <span class="value">{{ .userform.declarantTin }}</span>
+      <span class="label">36. Telephone No.</span>
+      <span class="label sign">37. Signature of Declarant</span>
+    </div>
+    <div class="box fields" style="grid-column: 1 / 13; grid-row: span 3;">
+      <div class="field"><span class="label">28.(a) Time of Arrival at Customs Gate</span></div>
+      <div class="field"><span class="label">29.(a) Time of Arrival Alongside</span></div>
+      <div class="field"><span class="label">30.(a) Time &amp; Date Demounted/Discharged</span></div>
+    </div>
+    <div class="box fields" style="grid-column: 13 / 19; grid-row: span 3;">
+      <div class="field"><span class="label">28.(b) Customs Officer</span></div>
+      <div class="field"><span class="label">29.(b) Pier Clerk</span></div>
+      <div class="field"><span class="label">30.(b) Supervisor/ Pier Clerk</span></div>
+    </div>
+  </div>
+</div>
+<div class="page continuation">
+  <table class="decls">
+    <thead>
+      <tr><th colspan="4">DECLARATION REFERENCE</th><th class="num">DECLARATION PACKAGES</th></tr>
+    </thead>
+    <tbody>
+      {{ with .userform.cusdecRef }}<tr><td>{{ part . "/" 0 }}</td><td>{{ part . "/" 1 }}</td><td>{{ part . "/" 2 }}</td><td>{{ part . "/" 3 }}</td><td class="num">{{ $.userform.goods.packageNumber }}</td></tr>{{ end }}
+    </tbody>
+    <tfoot>
+      <tr><td colspan="2">TOTAL DECLARATIONS: {{ if .userform.cusdecRef }}1{{ else }}0{{ end }}</td><td colspan="2">TOTAL PACKAGES:</td><td class="num">{{ .userform.goods.packageNumber }}</td></tr>
+    </tfoot>
+  </table>
+</div>
+</body>
+</html>

@@ -36,7 +36,8 @@
       },
       "output_mapping": {
         "userform": "cdn_aux.userform",
-        "cig_cdn?": "cdn_aux.cig_cdn"
+        "cig_cdn?": "cdn_aux.cig_cdn",
+        "cdn_document_key?": "cdn_aux.cdn_document_key"
       }
     },
     {
@@ -53,7 +54,8 @@
       "lane": "Trader/CHA",
       "input_mapping": {
         "cdn_aux.userform": "userform",
-        "cdn_aux.cig_cdn.edge_id?": "edge_id"
+        "cdn_aux.cig_cdn.edge_id?": "edge_id",
+        "cdn_aux.cdn_document_key?": "cdn_document_key"
       },
       "output_mapping": {
         "ack_status?": "cdn_aux.ack_status"
