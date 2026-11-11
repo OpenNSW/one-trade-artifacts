@@ -24,7 +24,7 @@
       "output_mapping": {
         "__command": "command",
         "shipmentType?!": "userform.shipmentType",
-        "containerCount?": "userform.containerCount",
+        "containerCount?!": "userform.containerCount",
         "identification?!": "userform.identification",
         "traders?!": "userform.traders",
         "generalInfo?!": "userform.generalInfo",
