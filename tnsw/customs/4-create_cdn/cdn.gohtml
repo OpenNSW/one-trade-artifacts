@@ -58,7 +58,7 @@
       </div>
       <div class="field">
         <span class="label">1.b Cusdec Numbers</span>
-        <span class="value">{{ .userform.cusdecRef }}</span>
+        <span class="value">{{ join (split .userform.cusdecRef "/") " " }}</span>
       </div>
     </div>
     <div class="box" style="grid-column: 13 / 19;">
