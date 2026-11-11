@@ -181,9 +181,26 @@ of `files` goes out as its raw storage key (see nsw-srilanka's `docs/WORKFLOW_GU
 
 Steps pass data via dotted-path `input_mapping` / `output_mapping` on each `TASK` node,
 namespaced per step's `output_namespace` (e.g. `schedule.visit_date`,
-`sltb.schedule.visit_date`). A trailing `?` on a mapping key/value marks it optional.
-Gateway edge `condition` strings reference these namespaced fields (e.g.
-`sltb.collection_method == 'pickup'`).
+`sltb.schedule.visit_date`). Gateway edge `condition` strings reference these namespaced
+fields (e.g. `sltb.collection_method == 'pickup'`).
+
+The suffix of a mapping key says what happens when its source is absent: `x` is required
+(the node parks), `x?` is optional and leaves the destination as it was, and `x?!` is
+optional and removes the destination. An `output_mapping` entry replaces its destination
+with the value from the latest result; it does not merge into what an earlier run left.
+So a field the user removed from inside a mapped object is gone after a resubmission.
+Choose the suffix of an optional `output_mapping` entry by what an absent value means:
+
+- `x?!` when the result is the whole truth about the value: the optional fields of a form
+  that reopens with its previous submission (its `input_mapping` has `"<ns>?": "<ns>"`),
+  so a field the user removed before resubmitting or re-verifying is removed here too.
+- `x?` when absence means "no change": a value the node only sometimes overrides (an
+  officer's counter-proposed date), a callback or poll that sends only some fields, or an
+  id that must survive a failed retry (`cig.edgeId`). Also keep `x?` where a later node
+  reads the destination as required, since removing it would park that node.
+
+`x?!` needs an nsw-srilanka release whose core understands it; an older backend reads it
+as a required source that never exists and parks the node.
 
 Write each condition on a form value as a match on the values it accepts, never as a
 catch-all: `item.treatment_result in [nil, 'pass']`, not `item.treatment_result != 'fail'`.

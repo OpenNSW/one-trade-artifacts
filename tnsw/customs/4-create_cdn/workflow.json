@@ -17,14 +17,14 @@
         "prefill?": "userform"
       },
       "output_mapping": {
-        "officeCode?": "userform.officeCode",
-        "shipper?": "userform.shipper",
-        "consignee?": "userform.consignee",
-        "transport?": "userform.transport",
-        "goods?": "userform.goods",
-        "container?": "userform.container",
-        "cusdecRef?": "userform.cusdecRef",
-        "cancel_cdn?": "userform.cancel_cdn"
+        "officeCode?!": "userform.officeCode",
+        "shipper?!": "userform.shipper",
+        "consignee?!": "userform.consignee",
+        "transport?!": "userform.transport",
+        "goods?!": "userform.goods",
+        "container?!": "userform.container",
+        "cusdecRef?!": "userform.cusdecRef",
+        "cancel_cdn?!": "userform.cancel_cdn"
       }
     },
     {

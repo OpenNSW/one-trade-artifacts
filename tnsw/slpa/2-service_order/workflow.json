@@ -17,10 +17,10 @@
       },
       "output_mapping": {
         "cusdecNo?": "serviceform.cusdecNo",
-        "cargoType?": "serviceform.cargoType",
-        "declaredVolumeCBM?": "serviceform.declaredVolumeCBM",
-        "containers?": "serviceform.containers",
-        "additionalNote?": "serviceform.additionalNote"
+        "cargoType?!": "serviceform.cargoType",
+        "declaredVolumeCBM?!": "serviceform.declaredVolumeCBM",
+        "containers?!": "serviceform.containers",
+        "additionalNote?!": "serviceform.additionalNote"
       }
     },
     {
