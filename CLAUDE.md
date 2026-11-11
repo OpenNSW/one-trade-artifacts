@@ -256,6 +256,13 @@ See `tnsw/fcau/3-2-warehouse_inspection/workflow.json` or
   no script, event handler, form, frame or `svg`, loads nothing from outside, and has no
   `{{ }}` inside a tag or a `<style>` block.
   `.github/scripts/check_html_templates.py` fails CI on any of them.
+- In a markdown template, a value the reader may need to quote elsewhere (a reference,
+  certificate, invoice, sample or container number) is written
+  `` [`{{.reference_number}}`](copy:) ``: the portal shows it as code with a copy button
+  inside it. Keep the value inside the code, so an `_` or `*` in it stays as written.
+  Mark the value of a labelled field (`* **Reference Number**: …`). Plain code
+  (`` `{{.x}}` ``) has no button: use it for a mention in a sentence, for several values
+  in one list item, and for amounts, dates, statuses, names and item ids.
 - **Drafts never go through the workflow.** A step that offers "Save as Draft"
   declares `"draft": {"command": "save_as_draft"}` on its `subtask_template`, and its
   render handle uses `"element": "draft_action"`. The portal saves it with
