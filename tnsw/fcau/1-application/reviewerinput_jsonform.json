@@ -17,7 +17,6 @@
             "title": "Needs More Information"
           }
         ],
-        "default": "approve",
         "example": "approve"
       },
       "commodities": {
