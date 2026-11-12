@@ -35,7 +35,6 @@
         "declaration.baseGeneralSegment.importer.address?": "prefill.consignee.address",
         "declaration.baseGeneralSegment.importer.countryCode?": "prefill.consignee.countryCode",
         "declaration.generalSegment.transportVesselName?": "prefill.transport.vessel",
-        "declaration.generalSegment.transportVoyageName?": "prefill.transport.voyageNumber",
         "declaration.generalSegment.placeOfDischarge?": "prefill.transport.placeOfDischarge"
       },
       "output_mapping": {
