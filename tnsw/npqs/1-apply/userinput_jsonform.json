@@ -1055,14 +1055,16 @@
       "attachments": {
         "type": "array",
         "title": "Attachments",
+        "description": "Up to 10 attachments, max. 3 MB each.",
+        "maxItems": 10,
         "items": {
           "type": "object",
           "properties": {
             "attachment_file_url": {
               "type": "string",
               "format": "file",
-              "title": "Document Attachment (max. size 12MB)",
-              "x-file": { "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp" }
+              "title": "Document Attachment (max. size 3MB)",
+              "x-file": { "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp", "maxSize": 3145728 }
             },
             "attachment_description": {
               "type": "string",

@@ -7,27 +7,28 @@
       "invoice_file_url": {
         "type": "string",
         "format": "file",
-        "title": "Commercial Invoice (PDF/Image)",
+        "title": "Commercial Invoice (PDF/Image, max. 3 MB)",
         "example": "https://nsw.gov.lk/storage/docs/invoice-1029.pdf",
-        "x-file": { "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp" }
+        "x-file": { "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp", "maxSize": 3145728 }
       },
       "packing_list_file_url": {
         "type": "string",
         "format": "file",
-        "title": "Packing List (PDF/Image)",
+        "title": "Packing List (PDF/Image, max. 3 MB)",
         "example": "https://nsw.gov.lk/storage/docs/packing-list-1029.pdf",
-        "x-file": { "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp" }
+        "x-file": { "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp", "maxSize": 3145728 }
       },
       "additional_file_url": {
         "type": "array",
         "title": "Other Supporting Documents (Bill of Lading / Customs declaration)",
-        "description": "Attach any other supporting documents (up to 10 files).",
+        "description": "Attach any other supporting documents (up to 10 files, max. 3 MB each).",
         "items": {
           "type": "string",
           "format": "file"
         },
         "x-file": {
           "maxFiles": 10,
+          "maxSize": 3145728,
           "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp"
         },
         "example": ["https://nsw.gov.lk/storage/docs/customs-declaration-1029.pdf"]
