@@ -24,7 +24,6 @@
             "title": "Needs More Information (Send back to applicant)"
           }
         ],
-        "default": "approve",
         "example": "approve"
       },
       "rejection_reason": {
