@@ -59,8 +59,8 @@
       "treatment_certificate_url": {
         "type": "string",
         "format": "file",
-        "title": "Treatment Certificate (PDF/Image)",
-        "x-file": { "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp" }
+        "title": "Treatment Certificate (PDF/Image, max. 3 MB)",
+        "x-file": { "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp", "maxSize": 3145728 }
       },
       "issue_comments": {
         "type": "string",
