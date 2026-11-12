@@ -19,8 +19,7 @@
         "oneOf": [
           { "const": "pickup", "title": "Warehouse Pickup (Tea Inspector visits warehouse)" },
           { "const": "dropoff", "title": "Trader Drop-off (Trader delivers sample to SLTB Export Division)" }
-        ],
-        "default": "pickup"
+        ]
       },
       "decision_notes": {
         "type": "string",
