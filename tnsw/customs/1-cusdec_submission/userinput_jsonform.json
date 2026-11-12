@@ -1343,7 +1343,8 @@
           "containerized": {
             "type": "boolean",
             "title": "20. Containerized ( Box 19 )",
-            "example": true
+            "example": true,
+            "default": false
           },
           "deliveryTermsCode": {
             "type": "string",
