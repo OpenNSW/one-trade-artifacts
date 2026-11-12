@@ -2094,7 +2094,7 @@
                 "type": "boolean",
                 "title": "20. Containerized ( Box 19 )",
                 "example": true,
-                "default": false
+                "default": true
               },
               "deliveryTermsCode": {
                 "type": "string",
