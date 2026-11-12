@@ -16,8 +16,7 @@
             "const": "needs_more_info",
             "title": "Needs More Info (Send back to trader with feedback)"
           }
-        ],
-        "default": "approve"
+        ]
       },
       "clarification_comments": {
         "type": "string",
@@ -196,8 +195,7 @@
                   "const": "external",
                   "title": "Authorized External Provider"
                 }
-              ],
-              "default": "npqs"
+              ]
             },
             "treatment_supervision": {
               "type": "string",
@@ -215,8 +213,7 @@
                   "const": "without_supervision",
                   "title": "Without Supervision"
                 }
-              ],
-              "default": "without_supervision"
+              ]
             }
           },
           "required": [

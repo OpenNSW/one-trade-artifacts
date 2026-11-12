@@ -22,8 +22,7 @@
             "const": "needs_more_info",
             "title": "Request Modifications (Send Back to Trader)"
           }
-        ],
-        "default": "approve"
+        ]
       },
       "clarification_reason": {
         "type": "string",

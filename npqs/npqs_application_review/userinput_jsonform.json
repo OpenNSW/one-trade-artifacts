@@ -16,8 +16,7 @@
             "const": "re-export",
             "title": "Re-Export"
           }
-        ],
-        "default": "export"
+        ]
       },
       "shipment_value": {
         "type": "string",
@@ -31,8 +30,7 @@
             "const": "non-commercial",
             "title": "Non-Commercial"
           }
-        ],
-        "default": "commercial"
+        ]
       },
       "applicant_name": {
         "type": "string",
@@ -102,11 +100,7 @@
         },
         "required": [
           "value"
-        ],
-        "default": {
-          "value": "NPQS-KAT",
-          "label": "National Plant Quarantine Service HQ - Katunayake"
-        }
+        ]
       },
       "importing_country": {
         "type": "object",
@@ -541,11 +535,7 @@
               },
               "required": [
                 "value"
-              ],
-              "default": {
-                "value": "18",
-                "label": "Leaves"
-              }
+              ]
             },
             "commodity_condition": {
               "type": "object",
@@ -658,11 +648,7 @@
               },
               "required": [
                 "value"
-              ],
-              "default": {
-                "value": "13",
-                "label": "Fresh"
-              }
+              ]
             },
             "commodity_intended_use": {
               "type": "object",
@@ -743,11 +729,7 @@
               },
               "required": [
                 "value"
-              ],
-              "default": {
-                "value": "3",
-                "label": "Decoration"
-              }
+              ]
             },
             "quantity_net_weight": {
               "type": "number",
@@ -901,11 +883,7 @@
               },
               "required": [
                 "value"
-              ],
-              "default": {
-                "value": "KGM",
-                "label": "kilogram (kg)"
-              }
+              ]
             },
             "quantity_gross_weight": {
               "type": "number",
@@ -1059,11 +1037,7 @@
               },
               "required": [
                 "value"
-              ],
-              "default": {
-                "value": "KGM",
-                "label": "kilogram (kg)"
-              }
+              ]
             },
             "packages": {
               "type": "array",
@@ -1439,8 +1413,7 @@
                   "const": "bulk",
                   "title": "Bulk"
                 }
-              ],
-              "default": "package"
+              ]
             },
             "packages_free_text": {
               "type": "string",
@@ -1639,8 +1612,7 @@
                   "const": "Other",
                   "title": "Other"
                 }
-              ],
-              "default": "Other"
+              ]
             }
           },
           "required": [

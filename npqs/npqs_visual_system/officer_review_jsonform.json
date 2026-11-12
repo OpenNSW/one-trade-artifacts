@@ -16,8 +16,7 @@
             "const": "fail",
             "title": "Fail (System inspection recorded negative outcome)"
           }
-        ],
-        "default": "pass"
+        ]
       },
       "system_reference_id": {
         "type": "string",
@@ -78,8 +77,7 @@
                   "const": "fail",
                   "title": "Fail (Negative outcome in system)"
                 }
-              ],
-              "default": "pass"
+              ]
             },
             "visual_failure_reason": {
               "type": "string",

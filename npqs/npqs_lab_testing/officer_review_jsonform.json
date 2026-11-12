@@ -20,8 +20,7 @@
             "const": "fail_final",
             "title": "Fail Final \u2014 One or More Items Rejected"
           }
-        ],
-        "default": "pass"
+        ]
       },
       "lab_report_attachment_url": {
         "type": "string",
@@ -92,8 +91,7 @@
                   "const": "fail_final",
                   "title": "Fail Final \u2014 Reject Item (Second Failure)"
                 }
-              ],
-              "default": "pass"
+              ]
             },
             "lab_failure_reason": {
               "type": "string",

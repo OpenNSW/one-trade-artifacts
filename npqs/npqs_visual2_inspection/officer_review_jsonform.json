@@ -58,8 +58,7 @@
                   "const": "fail",
                   "title": "Fail (Pests, rot, or damage detected)"
                 }
-              ],
-              "default": "pass"
+              ]
             },
             "visual2_failure_reason": {
               "type": "string",

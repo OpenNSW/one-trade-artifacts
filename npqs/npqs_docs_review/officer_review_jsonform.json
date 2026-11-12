@@ -16,8 +16,7 @@
             "const": "needs_more_info",
             "title": "Needs More Info (Request corrections/re-upload)"
           }
-        ],
-        "default": "approve"
+        ]
       },
       "review_comments": {
         "type": "string",

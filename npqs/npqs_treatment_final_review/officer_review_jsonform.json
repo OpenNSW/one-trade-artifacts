@@ -79,8 +79,7 @@
                   "const": "fail",
                   "title": "Fail (Reject Item)"
                 }
-              ],
-              "default": "pass"
+              ]
             },
             "commodity_botanical_name": {
               "type": "string",
