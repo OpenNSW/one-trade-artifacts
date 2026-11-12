@@ -5,8 +5,7 @@
   "render_config_id": "trade-cha-selection-flow:render",
   "read": {
     "roles": [
-      "trader",
-      "cha"
+      "trader"
     ]
   }
 }
