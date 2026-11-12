@@ -7,16 +7,16 @@
       "treatment_certificate_url": {
         "type": "string",
         "format": "file",
-        "title": "Treatment Provider's Certificate (PDF/Image)",
+        "title": "Treatment Provider's Certificate (PDF/Image, max. 3 MB)",
         "example": "https://nsw.gov.lk/storage/certs/treatment-cert-1092.pdf",
-        "x-file": { "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp" }
+        "x-file": { "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp", "maxSize": 3145728 }
       },
       "supervision_report_url": {
         "type": "string",
         "format": "file",
-        "title": "Supervision Report from the NPQS Officer (PDF/Image)",
+        "title": "Supervision Report from the NPQS Officer (PDF/Image, max. 3 MB)",
         "example": "https://nsw.gov.lk/storage/certs/supervision-report-1092.pdf",
-        "x-file": { "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp" }
+        "x-file": { "accept": ".pdf,.jpg,.jpeg,.jfif,.png,.gif,.webp", "maxSize": 3145728 }
       },
       "upload_remarks": {
         "type": "string",
