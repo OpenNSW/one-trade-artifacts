@@ -10,8 +10,7 @@
         "oneOf": [
           { "const": "approved", "title": "Approve Boat Note" },
           { "const": "needs_more_info", "title": "Request Changes" }
-        ],
-        "default": "approved"
+        ]
       },
       "approved_boat_note_file": {
         "type": "string",
