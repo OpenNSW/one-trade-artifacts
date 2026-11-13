@@ -27,7 +27,11 @@ ACTION = re.compile(r"\{\{.*?\}\}", re.DOTALL)
 # The resolver's name as a word on its own, not part of a field (.staticdata)
 # or a longer name.
 CALL = re.compile(r"(?<![\w.$])staticdata(?![\w])")
-LITERAL_ID = re.compile(r'\s+"([^"\\]*)"')
+# An action's delimiters, with their trim markers.
+DELIMS = re.compile(r"^\{\{(?:-\s)?|(?:\s-)?\}\}$")
+# A string or rune literal: interpreted, raw or rune.
+STRING = re.compile(r'"(?:[^"\\]|\\.)*"|`[^`]*`|\'(?:[^\'\\]|\\.)*\'')
+LITERAL_ID = re.compile(r'"([^"\\]*)"')
 
 
 def blank(match):
@@ -35,16 +39,49 @@ def blank(match):
     return re.sub(r"[^\n]", " ", match.group(0))
 
 
+def operands(body, i):
+    """The operands from body[i] to the end of the command: the end of the
+    action, a | or a ) closing an enclosing group."""
+    args = []
+    while True:
+        while i < len(body) and body[i].isspace():
+            i += 1
+        if i >= len(body) or body[i] in ")|":
+            return args
+        start, depth = i, 0
+        while i < len(body):
+            literal = STRING.match(body, i)
+            if literal:
+                i = literal.end()
+                continue
+            c = body[i]
+            if c == "(":
+                depth += 1
+            elif c == ")":
+                if depth == 0:
+                    break
+                depth -= 1
+            elif depth == 0 and (c.isspace() or c == "|"):
+                break
+            i += 1
+        args.append(body[start:i])
+
+
 def calls(source):
-    """Yield (line, id) for each staticdata call, with id None for one that
-    doesn't name its id as a quoted string."""
+    """Yield (line, args) for each staticdata call: the operands it passes, with
+    a value piped into it (.x | staticdata "id") counted as the last."""
     text = GO_COMMENT.sub(blank, source)
     for action in ACTION.finditer(text):
-        for call in CALL.finditer(action.group(0)):
-            index = action.start() + call.start()
-            line = text.count("\n", 0, index) + 1
-            arg = LITERAL_ID.match(action.group(0), call.end())
-            yield line, arg.group(1) if arg else None
+        body = DELIMS.sub(blank, action.group(0))
+        # Look for the name outside string literals, so "staticdata" printed as
+        # text isn't taken for a call.
+        masked = STRING.sub(lambda m: m.group(0)[0] + " " * (len(m.group(0)) - 2) + m.group(0)[-1], body)
+        for call in CALL.finditer(masked):
+            line = text.count("\n", 0, action.start() + call.start()) + 1
+            args = operands(body, call.end())
+            if masked[: call.start()].rstrip().endswith("|"):
+                args.append("<piped>")
+            yield line, args
 
 
 def static_data(manifest):
@@ -67,14 +104,20 @@ def main():
             continue
         rel = path.relative_to(root)
         manifest = root / parts[0] / "manifest.json"
-        for line, sd_id in calls(path.read_text(encoding="utf-8")):
+        for line, args in calls(path.read_text(encoding="utf-8")):
             checked += 1
-            if sd_id is None:
+            literal = LITERAL_ID.fullmatch(args[0]) if args else None
+            if not literal:
                 print(f"{rel}:{line}: staticdata must name its static_data id as a quoted string")
                 failures += 1
                 continue
+            sd_id = literal.group(1)
             if not sd_id:
                 print(f"{rel}:{line}: staticdata names an empty id")
+                failures += 1
+                continue
+            if len(args) != 2:
+                print(f"{rel}:{line}: staticdata takes an id and a value, got {len(args)} argument(s)")
                 failures += 1
                 continue
             if manifest not in listed:

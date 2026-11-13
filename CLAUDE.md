@@ -278,9 +278,9 @@ See `tnsw/fcau/3-2-warehouse_inspection/workflow.json` or
   `docs/WORKFLOW_GUIDE.md`), naming the same id as the form field's `x-search` `params`.
   It names no version: the server reads that static_data as the task's manifest version
   lists it, as it does the template itself, so the template prints from the static data
-  released with the form. Each call names its id as a quoted string, and the template's
-  bundle manifest lists that id as static_data;
-  `.github/scripts/check_static_data_refs.py` fails CI otherwise.
+  released with the form. Each call names its id as a quoted string and no version after
+  it (the resolver ignores one), and the template's bundle manifest lists that id as
+  static_data; `.github/scripts/check_static_data_refs.py` fails CI otherwise.
 - **Drafts never go through the workflow.** A step that offers "Save as Draft"
   declares `"draft": {"command": "save_as_draft"}` on its `subtask_template`, and its
   render handle uses `"element": "draft_action"`. The portal saves it with
