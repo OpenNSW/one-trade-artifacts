@@ -20,10 +20,10 @@ the commands it can be completed with there.
   * A USER_INPUT step: the commands its task's render config offers in that state, and
     its draft command. It may name any of the deployment's roles.
   * A step this service's own code completes (a PAYMENT step, or a USER_INPUT step that
-    waits in QUEUED_EXTERNALLY for a webhook): SYSTEM_COMMAND, for SYSTEM only. A
-    USER_INPUT one may also take the commands its task's render config offers in that
-    state, such as a trader cancelling what the webhook would complete; those may name
-    any of the deployment's roles.
+    waits in QUEUED_EXTERNALLY for a webhook): SYSTEM_COMMAND, for SYSTEM only. It may
+    also take the commands its task's render config offers in that state, such as a
+    trader cancelling what the webhook would complete or leaving a payment step for
+    another payment method; those may name any of the deployment's roles.
   * A tnsw EXTERNAL_REVIEW step: what its agency's task sends back, for the agency's
     client (the step's service_id) only. That is every value the task's workflows map to
     the command of a callback to tnsw, and the reply command of every step that replies
@@ -314,9 +314,7 @@ def expected_rule(deployment, deployments, step, renders, owners):
     """The commands the step's rule must allow, the names it must allow them for (None:
     any of the deployment's roles), and the problems in finding them."""
     if completed_by_system(step):
-        if step["task_type"] == "USER_INPUT":
-            return {SYSTEM_COMMAND} | offered(renders, waits_in(step)), None, []
-        return {SYSTEM_COMMAND}, [SYSTEM], []
+        return {SYSTEM_COMMAND} | offered(renders, waits_in(step)), None, []
     if step["task_type"] == "USER_INPUT":
         draft = (step.get("draft") or {}).get("command")
         return offered(renders, waits_in(step)) | ({draft} if draft else set()), None, []

@@ -1,0 +1,6 @@
+{
+  "id": "fcau-pay-app-fee--cancel-checkout",
+  "task_type": "PAYMENT_CANCEL_CHECKOUT",
+  "output_namespace": "payment_cancel",
+  "plugin_properties": {}
+}

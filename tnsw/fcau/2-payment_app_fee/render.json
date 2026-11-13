@@ -36,6 +36,24 @@
         ]
       }
     },
+    "change_method": {
+      "templateId": "fcau-pay-app-fee--change-method-form",
+      "title": "Wrong payment method?",
+      "projector": "FORM",
+      "dataKey": "change_method",
+      "visibleWhen": {
+        "states": [
+          "PENDING_PAYMENT"
+        ]
+      },
+      "handles": [
+        {
+          "command": "change_method",
+          "label": "Change Payment Method",
+          "element": "secondary_action"
+        }
+      ]
+    },
     "payment_success": {
       "templateId": "fcau-pay-app-fee--success-message",
       "title": "Payment Successful",
@@ -115,6 +133,19 @@
       }
     }
   },
+  "layouts": {
+    "payment": [
+      "payment_details",
+      "change_method",
+      "workspace",
+      "payment_success",
+      "payment_not_received",
+      "pay_again",
+      "receipt_instructions",
+      "upload_receipt",
+      "awaiting_officer"
+    ]
+  },
   "states": {
     "PENDING_USER": {
       "actions": [
@@ -124,7 +155,14 @@
       ]
     },
     "PENDING_PAYMENT": {
-      "actions": []
+      "actions": [
+        {
+          "command": "change_method"
+        }
+      ],
+      "order": {
+        "$ref": "#/layouts/payment"
+      }
     },
     "PENDING_SLIP_UPLOAD": {
       "actions": [
