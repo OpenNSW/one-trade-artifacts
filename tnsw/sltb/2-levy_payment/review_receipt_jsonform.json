@@ -17,7 +17,6 @@
             "title": "Needs Re-upload / Clarification"
           }
         ],
-        "default": "approve",
         "example": "approve"
       },
       "payment_feedback": {
