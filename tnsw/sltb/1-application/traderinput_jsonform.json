@@ -36,8 +36,7 @@
                   {
                     "from": "BLEND_SHEET.Blend.Lion_logo",
                     "to": "lion_logo_requested",
-                    "map": { "1": "yes", "0": "no" },
-                    "default": "no"
+                    "map": { "1": "yes", "0": "no" }
                   },
                   { "from": "BLEND_SHEET.Particulars_of_sale", "to": "sales.sheet" },
                   {
@@ -172,8 +171,7 @@
                     "map": {
                       "yes": "1",
                       "no": "0"
-                    },
-                    "default": "0"
+                    }
                   },
                   {
                     "from": "quantity_to_be_exported",
