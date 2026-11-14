@@ -48,26 +48,55 @@
               "exclusiveMinimum": 0,
               "readOnly": true
             },
+            "overwrite_levy_multiplier": {
+              "type": "boolean",
+              "title": "Overwrite Levy Multiplier"
+            },
             "levy_multiplier": {
               "type": "number",
               "title": "Levy Multiplier",
-              "exclusiveMinimum": 0,
-              "default": 3
+              "exclusiveMinimum": 0
             },
             "assessed_levy": {
               "type": "number",
               "title": "Assessed Levy (LKR)",
-              "description": "Assessed Levy = Quantity to be Exported × Levy Multiplier",
+              "description": "Assessed Levy = Quantity to be Exported × 3, or × the Levy Multiplier when it is overwritten",
               "x-computed": {
                 "inputs": {
                   "quantity_to_be_exported": "quantity_to_be_exported",
-                  "levy_multiplier": "levy_multiplier"
+                  "overwrite_levy_multiplier": {
+                    "path": "overwrite_levy_multiplier",
+                    "default": false
+                  },
+                  "levy_multiplier": {
+                    "path": "levy_multiplier",
+                    "default": 3
+                  }
                 },
-                "formula": "ROUND(quantity_to_be_exported * levy_multiplier, 2)",
+                "formula": "ROUND(IF(overwrite_levy_multiplier, quantity_to_be_exported * levy_multiplier, quantity_to_be_exported * 3), 2)",
                 "decimals": 2
               }
             }
-          }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "overwrite_levy_multiplier": {
+                    "const": true
+                  }
+                },
+                "required": [
+                  "overwrite_levy_multiplier"
+                ]
+              },
+              "then": {
+                "required": [
+                  "levy_multiplier"
+                ]
+              }
+            }
+          ]
         }
       },
       "levy_amount": {
@@ -157,7 +186,25 @@
               {
                 "type": "HorizontalLayout",
                 "elements": [
-                  { "type": "Control", "scope": "#/properties/levy_multiplier" },
+                  {
+                    "type": "VerticalLayout",
+                    "elements": [
+                      { "type": "Control", "scope": "#/properties/overwrite_levy_multiplier" },
+                      {
+                        "type": "Control",
+                        "scope": "#/properties/levy_multiplier",
+                        "rule": {
+                          "effect": "SHOW",
+                          "condition": {
+                            "scope": "#/properties/overwrite_levy_multiplier",
+                            "schema": {
+                              "const": true
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
                   { "type": "Control", "scope": "#/properties/assessed_levy" }
                 ]
               }
