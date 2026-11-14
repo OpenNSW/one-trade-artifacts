@@ -217,16 +217,36 @@
             }
           },
           "required": [
-            "id",
-            "treatment_provider",
-            "treatment_supervision"
+            "id"
           ]
         }
       }
     },
     "required": [
       "treatment_request_outcome"
-    ]
+    ],
+    "if": {
+      "properties": {
+        "treatment_request_outcome": {
+          "const": "approve"
+        }
+      },
+      "required": [
+        "treatment_request_outcome"
+      ]
+    },
+    "then": {
+      "properties": {
+        "treatment_items": {
+          "items": {
+            "required": [
+              "treatment_provider",
+              "treatment_supervision"
+            ]
+          }
+        }
+      }
+    }
   },
   "uiSchema": {
     "type": "VerticalLayout",
