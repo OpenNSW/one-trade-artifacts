@@ -254,8 +254,8 @@ Consignment re-inspected after treatment and found free from live pests.
 {{- if eq (print $app.certificate_type) "re-export" }}
   {{- $re := $app.re_export }}
   This is to certify that the plants, plant products or other regulated articles described herein were imported into Sri Lanka
-  covered by Phytosanitary Certificate No. {{ $re.original_certificate_number }},
-  {{ if eq (print $re.original_certificate_form) "certified_true_copy" }}a certified true copy{{ else }}the original{{ end }} of which is attached to this certificate;
+  covered by Phytosanitary Certificate No. {{ $re.original_certificate_number }}{{ if $re.original_certificate_attached }},
+  {{ if eq (print $re.original_certificate_form) "certified_true_copy" }}a certified true copy{{ else }}the original{{ end }} of which is attached to this certificate{{ end }};
   that they are {{ if eq (print $re.packing) "repacked" }}repacked{{ else }}packed{{ end }}
   in {{ if eq (print $re.containers) "new" }}new{{ else }}original{{ end }} containers;
   that, based on the original phytosanitary certificate{{ if $re.additional_inspection }} and additional inspection{{ end }},

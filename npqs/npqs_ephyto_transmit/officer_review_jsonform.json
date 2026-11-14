@@ -8,37 +8,37 @@
         "type": "boolean",
         "title": "Documents attached to the application",
         "description": "The files the trader attached when applying: permits, invoices, certificates. Sent with the certificate and listed on it as accompanying the consignment.",
-        "default": true
+        "default": false
       },
       "send_treatment_certificate": {
         "type": "boolean",
         "title": "Treatment certificate",
         "description": "Uploaded at the treatment step. Sent with the certificate and listed on it as accompanying the consignment.",
-        "default": true
+        "default": false
       },
       "send_supervision_report": {
         "type": "boolean",
         "title": "Treatment supervision report",
         "description": "Uploaded at the treatment step, where supervision was requested. Sent with the certificate and listed on it as accompanying the consignment.",
-        "default": true
+        "default": false
       },
       "send_invoice": {
         "type": "boolean",
         "title": "Commercial invoice",
         "description": "Uploaded at the supporting documents step. Sent with the certificate and listed on it as accompanying the consignment.",
-        "default": true
+        "default": false
       },
       "send_packing_list": {
         "type": "boolean",
         "title": "Packing list",
         "description": "Uploaded at the supporting documents step. Sent with the certificate and listed on it as accompanying the consignment.",
-        "default": true
+        "default": false
       },
       "send_additional_document": {
         "type": "boolean",
         "title": "Additional supporting document",
         "description": "Uploaded at the supporting documents step. Sent with the certificate and listed on it as accompanying the consignment.",
-        "default": true
+        "default": false
       }
     }
   },

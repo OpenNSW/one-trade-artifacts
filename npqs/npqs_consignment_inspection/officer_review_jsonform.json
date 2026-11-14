@@ -16,8 +16,7 @@
             "const": "fail",
             "title": "Fail (Consignment has pests, rot, or damage)"
           }
-        ],
-        "default": "pass"
+        ]
       },
       "date_of_inspection": {
         "type": "string",
@@ -79,8 +78,7 @@
                   "const": "fail",
                   "title": "Fail (Pests, rot, or damage detected)"
                 }
-              ],
-              "default": "pass"
+              ]
             },
             "visual_failure_reason": {
               "type": "string",

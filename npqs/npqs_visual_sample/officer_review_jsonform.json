@@ -20,8 +20,7 @@
             "const": "escalate_consignment",
             "title": "Escalate \u2014 One or More Items Need Consignment Inspection"
           }
-        ],
-        "default": "pass"
+        ]
       },
       "visual_comments": {
         "type": "string",
@@ -81,8 +80,7 @@
                   "const": "escalate_consignment",
                   "title": "Escalate to Consignment Inspection"
                 }
-              ],
-              "default": "pass"
+              ]
             },
             "visual_failure_reason": {
               "type": "string",
