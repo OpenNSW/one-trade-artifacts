@@ -14,6 +14,12 @@ Inputs:
               release.json, is read, and so is its snapshot.tar.gz when this
               build releases anything. Leave it out for the first release, where
               every bundle starts at v1.
+  --nsw-srilanka
+              the oldest nsw-srilanka release these artifacts work with, as its
+              tag (v1.1.0). nsw-srilanka stays backward compatible with released
+              artifacts, so every later nsw-srilanka release works too. The
+              release notes open with it and release.json records it. The
+              release workflow always passes it.
 
 Per bundle (cda, efc, fcau, npqs, sltb, tnsw, each read from <bundle>/manifest.json):
   - Each listed file is stored under a name that carries the first 16 hex
@@ -59,12 +65,15 @@ Outputs, in --out (which must be empty or absent):
 To deploy a bundle, unpack <bundle>/ from the latest release's snapshot.tar.gz
 into its store: it is always there and always complete, whether or not that
 release changed the bundle. The highest manifest_vN.json is its current version.
-  release.json      the summary: per bundle, its current version, whether this
-                    build changed it, and its changed and removed rows. It also
-                    carries each bundle's latest manifest and every versioned row
-                    ever published, which is what the next build reads as its
+  release.json      the summary: the nsw-srilanka release it works with
+                    ("nsw_srilanka", null without --nsw-srilanka) and, per
+                    bundle, its current version, whether this build changed it,
+                    and its changed and removed rows. It also carries each
+                    bundle's latest manifest and every versioned row ever
+                    published, which is what the next build reads as its
                     baseline, so a bundle skipped here is still known next time.
-  release-notes.md  the per-bundle changes, for the release notes.
+  release-notes.md  the nsw-srilanka release it works with, then the per-bundle
+                    changes, for the release notes.
 
 release.json is written even when nothing changed; its top-level "changed" is
 false then, and nothing should be published.
@@ -75,7 +84,7 @@ Examples:
 
   # The next release, from the previous release's summary and snapshot.
   gh release download <tag> --pattern release.json --pattern snapshot.tar.gz --dir baseline/
-  scripts/build_release.py --baseline baseline/ --out build/
+  scripts/build_release.py --baseline baseline/ --out build/ --nsw-srilanka v1.1.0
 
 Exit status: 0 when built (changed or not); 1 when the build is refused; 2 on
 bad arguments.
@@ -90,6 +99,7 @@ import hashlib
 import io
 import json
 import posixpath
+import re
 import subprocess
 import sys
 import tarfile
@@ -103,6 +113,10 @@ SNAPSHOT = "snapshot.tar.gz"
 NOTES = "release-notes.md"
 SUMMARY_FORMAT = 1
 HASH_CHARS = 16
+# An nsw-srilanka release tag: v1.1.0, or a pre-release such as v1.2.0-rc.1. Its
+# images are tagged with the same version without the "v".
+NSW_SRILANKA_TAG = re.compile(r"v[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?")
+NSW_SRILANKA_RELEASES = "https://github.com/OpenNSW/nsw-srilanka/releases/tag/"
 
 
 class BuildError(Exception):
@@ -480,11 +494,12 @@ def archive_bytes(entries: dict[str, bytes], mtime: int) -> bytes:
     return raw.getvalue()
 
 
-def summary(builds: list[BundleBuild], commit: str, released_at: str) -> dict:
+def summary(builds: list[BundleBuild], commit: str, released_at: str, nsw_srilanka: str | None) -> dict:
     return {
         "format": SUMMARY_FORMAT,
         "commit": commit,
         "released_at": released_at,
+        "nsw_srilanka": nsw_srilanka,
         "changed": any(b.released for b in builds),
         "snapshot": SNAPSHOT if any(b.released for b in builds) else None,
         "bundles": {
@@ -509,13 +524,20 @@ def summary(builds: list[BundleBuild], commit: str, released_at: str) -> dict:
     }
 
 
-def notes(builds: list[BundleBuild]) -> str:
+def notes(builds: list[BundleBuild], nsw_srilanka: str | None) -> str:
     def row(r: dict) -> str:
         version = f" v{r['version']}" if r.get("version") else ""
         source = f" — `{r['source']}`" if r.get("source") else ""
         return f"- `{r['id']}` ({r['kind']}{version}){source}"
 
-    out = ["## Bundles", ""]
+    out = []
+    if nsw_srilanka:
+        out += [
+            f"Works with nsw-srilanka [{nsw_srilanka}]({NSW_SRILANKA_RELEASES}{nsw_srilanka}) and later "
+            f"(image tag `{nsw_srilanka[1:]}` or newer).",
+            "",
+        ]
+    out += ["## Bundles", ""]
     for b in builds:
         if not b.released:
             out += [f"### {b.name} — unchanged (v{b.version})", ""]
@@ -561,6 +583,7 @@ def write(
     commit: str,
     released_at: str,
     previous: dict[str, bytes] | None = None,
+    nsw_srilanka: str | None = None,
 ) -> None:
     mtime = int(dt.datetime.strptime(released_at, "%Y-%m-%dT%H:%M:%SZ")
                 .replace(tzinfo=dt.timezone.utc).timestamp())
@@ -574,8 +597,8 @@ def write(
             (out / b.archive).write_bytes(archive_bytes(history, mtime))
     if snapshot is not None:
         (out / SNAPSHOT).write_bytes(archive_bytes(snapshot, mtime))
-    (out / NOTES).write_text(notes(builds), encoding="utf-8")
-    (out / SUMMARY).write_bytes(dumps(summary(builds, commit, released_at)))
+    (out / NOTES).write_text(notes(builds, nsw_srilanka), encoding="utf-8")
+    (out / SUMMARY).write_bytes(dumps(summary(builds, commit, released_at, nsw_srilanka)))
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -600,6 +623,12 @@ def main(argv: list[str] | None = None) -> int:
         help="release time to record, as YYYY-MM-DDTHH:MM:SSZ (default: now)",
     )
     parser.add_argument(
+        "--nsw-srilanka",
+        metavar="vX.Y.Z",
+        help="the oldest nsw-srilanka release these artifacts work with, as its tag; "
+        f"the release notes and {SUMMARY} name it",
+    )
+    parser.add_argument(
         "--bundles",
         default=",".join(BUNDLES),
         help=f"comma-separated bundle folders (default: {','.join(BUNDLES)})",
@@ -615,6 +644,8 @@ def main(argv: list[str] | None = None) -> int:
             dt.datetime.strptime(released_at, "%Y-%m-%dT%H:%M:%SZ")
         except ValueError:
             raise BuildError(f"--released-at {released_at!r} is not YYYY-MM-DDTHH:MM:SSZ") from None
+        if args.nsw_srilanka is not None and not NSW_SRILANKA_TAG.fullmatch(args.nsw_srilanka):
+            raise BuildError(f"--nsw-srilanka {args.nsw_srilanka!r} is not an nsw-srilanka release tag like v1.1.0")
         if out.exists() and (not out.is_dir() or any(out.iterdir())):
             raise BuildError(f"{out} is not an empty folder")
         if args.commit:
@@ -626,7 +657,7 @@ def main(argv: list[str] | None = None) -> int:
         previous = None
         if args.baseline and any(b.released for b in builds):
             previous = load_snapshot(Path(args.baseline), baseline)
-        write(out, builds, commit, released_at, previous)
+        write(out, builds, commit, released_at, previous, args.nsw_srilanka)
     except BuildError as err:
         print(f"error: {err}", file=sys.stderr)
         return 1

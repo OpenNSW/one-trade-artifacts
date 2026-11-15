@@ -106,7 +106,11 @@ two manual `workflow_dispatch` steps, so merging publishes nothing:
    `vX.Y.Z`, the first one `v1.0.0`, each later one bumped from the newest `vX.Y.Z`
    release (the older `tnsw-vX.Y.Z` tags don't count). The release decides every
    bundle's version, and its `snapshot.tar.gz` holds
-   every version ever released.
+   every version ever released. Its `nsw_srilanka` input names the oldest nsw-srilanka
+   release the artifacts work with, by default the latest; the release notes open with
+   it, and `release.json` records it. nsw-srilanka stays backward compatible with
+   released artifacts, so every later nsw-srilanka release works too. If the artifacts
+   need an nsw-srilanka change that isn't released yet, release nsw-srilanka first.
 2. `.github/workflows/deploy-release.yml` deploys a release with
    `scripts/deploy_release.py` to `s3://<bucket>/[<prefix>/]<bundle>`, taking the store
    from the chosen GitHub environment. It only adds what the store lacks and never
