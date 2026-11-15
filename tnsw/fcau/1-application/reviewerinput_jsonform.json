@@ -77,28 +77,7 @@
             }
           },
           "required": [
-            "id",
-            "inspection_type"
-          ],
-          "allOf": [
-            {
-              "if": {
-                "properties": {
-                  "inspection_type": {
-                    "const": "lab"
-                  }
-                },
-                "required": [
-                  "inspection_type"
-                ]
-              },
-              "then": {
-                "required": [
-                  "lab_test_type",
-                  "proposed_lab"
-                ]
-              }
-            }
+            "id"
           ]
         }
       },
@@ -133,7 +112,38 @@
           "required": [
             "reference_number",
             "commodities"
-          ]
+          ],
+          "properties": {
+            "commodities": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "inspection_type"
+                ],
+                "allOf": [
+                  {
+                    "if": {
+                      "properties": {
+                        "inspection_type": {
+                          "const": "lab"
+                        }
+                      },
+                      "required": [
+                        "inspection_type"
+                      ]
+                    },
+                    "then": {
+                      "required": [
+                        "lab_test_type",
+                        "proposed_lab"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          }
         }
       },
       {

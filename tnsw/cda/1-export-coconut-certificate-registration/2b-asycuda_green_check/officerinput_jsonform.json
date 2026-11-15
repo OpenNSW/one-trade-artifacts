@@ -13,7 +13,6 @@
             "title": "Approve (Green check on ASYCUDA)"
           }
         ],
-        "default": "approve",
         "example": "approve"
       },
       "asycuda_approval_confirmed": {

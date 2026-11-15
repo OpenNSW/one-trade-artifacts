@@ -41,5 +41,5 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Check every staticdata call names listed static data
+      - name: Check every staticdata call names static data its bundle lists
         run: python .github/scripts/check_static_data_refs.py

@@ -19,8 +19,7 @@
             "const": "not_received",
             "title": "Payment Not Received"
           }
-        ],
-        "default": "success"
+        ]
       },
       "remarks": {
         "type": "string",

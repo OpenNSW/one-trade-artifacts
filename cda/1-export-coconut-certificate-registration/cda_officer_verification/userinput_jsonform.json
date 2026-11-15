@@ -214,8 +214,7 @@
             "const": "part",
             "title": "Part"
           }
-        ],
-        "default": "full"
+        ]
       },
       "balance_material_nature": {
         "type": "string",

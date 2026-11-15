@@ -329,7 +329,9 @@
       "telephone_no": {
         "type": "string",
         "title": "Telephone No",
-        "example": "2906775/5"
+        "pattern": "^(?:0|\\+94|94)?[1-9]\\d{8}$",
+        "description": "9 digits, or the same number prefixed with 0, 94, or +94.",
+        "example": "0771234567"
       },
       "authorized_signatory": {
         "type": "string",

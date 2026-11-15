@@ -16,8 +16,7 @@
             "const": "request_lot_adjustment",
             "title": "Application for Alteration of Bag Details"
           }
-        ],
-        "default": "complete_application"
+        ]
       },
       "exporter_details": {
         "type": "string",

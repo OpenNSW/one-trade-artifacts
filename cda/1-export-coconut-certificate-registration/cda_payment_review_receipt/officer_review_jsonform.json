@@ -16,8 +16,7 @@
             "const": "needs_more_info",
             "title": "Needs Re-upload / Clarification"
           }
-        ],
-        "default": "success"
+        ]
       },
       "payment_feedback": {
         "type": "string",
