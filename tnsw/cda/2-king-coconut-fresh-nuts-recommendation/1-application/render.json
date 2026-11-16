@@ -7,7 +7,6 @@
       "templateId": "cda-kcfn-apply--approved-message",
       "title": "Inspection Status",
       "projector": "MARKDOWN",
-      "dataKey": "userform",
       "visibleWhen": {
         "states": [
           "COMPLETED"

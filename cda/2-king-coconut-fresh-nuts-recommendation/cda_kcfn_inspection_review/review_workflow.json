@@ -17,6 +17,7 @@
       "output_mapping": {
         "review_outcome": "reviewform.review_outcome",
         "inspection_notes?": "reviewform.inspection_notes",
+        "recommendation_fee_amount?": "reviewform.recommendation_fee_amount",
         "rejection_reason?": "reviewform.rejection_reason"
       }
     },

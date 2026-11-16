@@ -20,7 +20,8 @@
       },
       "output_mapping": {
         "userform.commercial_invoice_no": "cda_kcfn.reference_number",
-        "userform": "cda_kcfn.userform"
+        "userform": "cda_kcfn.userform",
+        "reviewerform.recommendation_fee_amount": "cda_kcfn.recommendation_fee_amount"
       }
     },
     {
@@ -31,6 +32,7 @@
       "lane": "Trader/CHA",
       "input_mapping": {
         "cda_kcfn.reference_number": "payment.reference_number",
+        "cda_kcfn.recommendation_fee_amount": "recommendation_fee_amount",
         "_iter.input.company.data.agencies.cda.registration_number?": "payment.exporter_id",
         "cda_kcfn.userform.nut_type?": "payment.sub_category"
       },

@@ -5,7 +5,6 @@
   "plugin_properties": {
     "org_id": "cda",
     "service_id": "kcfn_fee",
-    "amount": "1500.00",
     "currency": "LKR",
     "reference": {
       "issuer": "CDA",

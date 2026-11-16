@@ -384,6 +384,46 @@ class BuildTest(unittest.TestCase):
         self.assertEqual(code, 1)
         self.assertIn("is not an empty folder", self.stderr)
 
+    # --- the nsw-srilanka release it works with -------------------------------
+
+    def test_nsw_srilanka_release_opens_the_notes_and_is_recorded(self):
+        code, s = self.build("--nsw-srilanka", "v1.1.0", baseline=None)
+        self.assertEqual(code, 0, self.stderr)
+        self.assertEqual(s["nsw_srilanka"], "v1.1.0")
+        self.assertTrue((self.out / "release-notes.md").read_text().startswith(
+            "Works with nsw-srilanka [v1.1.0](https://github.com/OpenNSW/nsw-srilanka/releases/tag/v1.1.0)"
+            " and later (image tag `1.1.0` or newer).\n\n## Bundles\n"
+        ))
+
+    def test_nsw_srilanka_pre_release_is_accepted(self):
+        code, s = self.build("--nsw-srilanka", "v1.2.0-rc.1", baseline=None)
+        self.assertEqual(code, 0, self.stderr)
+        self.assertEqual(s["nsw_srilanka"], "v1.2.0-rc.1")
+        self.assertIn("(image tag `1.2.0-rc.1` or newer)", (self.out / "release-notes.md").read_text())
+
+    def test_without_nsw_srilanka_the_notes_start_at_the_bundles(self):
+        code, s = self.build(baseline=None)
+        self.assertEqual(code, 0, self.stderr)
+        self.assertIsNone(s["nsw_srilanka"])
+        self.assertTrue((self.out / "release-notes.md").read_text().startswith("## Bundles\n"))
+
+    def test_nsw_srilanka_that_is_not_a_release_tag_is_refused(self):
+        for value in ("1.1.0", "v1.1", "latest", "v1.1.0 ", ""):
+            with self.subTest(value=value):
+                code, _ = self.build("--nsw-srilanka", value, baseline=None)
+                self.assertRefused(code, "is not an nsw-srilanka release tag like v1.1.0")
+
+    def test_baseline_without_nsw_srilanka_is_read(self):
+        # Releases published before release.json recorded it.
+        self.build(baseline=None)
+        summary = json.loads((self.baseline / "release.json").read_text())
+        del summary["nsw_srilanka"]
+        (self.baseline / "release.json").write_text(json.dumps(summary))
+        self.a.write("flow/render.json", {"title": "B"})
+        code, s = self.build("--nsw-srilanka", "v1.1.0")
+        self.assertEqual(code, 0, self.stderr)
+        self.assertEqual((s["bundles"]["alpha"]["version"], s["nsw_srilanka"]), (2, "v1.1.0"))
+
     def test_hashed_path(self):
         self.assertRegex(br.hashed_path("a/b/render.json", b"x"), r"^a/b/render\.[0-9a-f]{16}\.json$")
         self.assertRegex(br.hashed_path("x.schema.json", b"x"), r"^x\.schema\.[0-9a-f]{16}\.json$")

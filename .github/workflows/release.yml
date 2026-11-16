@@ -21,6 +21,10 @@ on:
         type: choice
         options: [patch, minor, major]
         default: minor
+      nsw_srilanka:
+        description: The oldest nsw-srilanka release these artifacts work with (vX.Y.Z); leave empty for the latest
+        type: string
+        default: ""
 
 permissions:
   contents: write
@@ -93,6 +97,28 @@ jobs:
           echo "tag=${tag}" >> "$GITHUB_OUTPUT"
           echo "previous tag: ${previous:-none}; baseline: ${baseline:-none (first release)}; next tag: ${tag}"
 
+      # nsw-srilanka stays backward compatible with released artifacts, so the release
+      # works with the nsw-srilanka release named here and every later one. Left empty,
+      # that is the latest nsw-srilanka release. If these artifacts need an nsw-srilanka
+      # change that isn't released yet, release nsw-srilanka first.
+      - name: Find the nsw-srilanka release it works with
+        id: nsw
+        env:
+          NSW_SRILANKA: ${{ inputs.nsw_srilanka }}
+        run: |
+          set -euo pipefail
+          if [ -z "$NSW_SRILANKA" ]; then
+            nsw=$(gh release view --repo OpenNSW/nsw-srilanka --json tagName --jq .tagName)
+          else
+            nsw="v${NSW_SRILANKA#v}"
+            if ! gh release view "$nsw" --repo OpenNSW/nsw-srilanka --json tagName > /dev/null; then
+              echo "::error::${nsw} is not a published nsw-srilanka release"
+              exit 1
+            fi
+          fi
+          echo "nsw_srilanka=${nsw}" >> "$GITHUB_OUTPUT"
+          echo "works with nsw-srilanka ${nsw} and later"
+
       - name: Download the baseline
         if: steps.tags.outputs.baseline != ''
         env:
@@ -112,9 +138,10 @@ jobs:
         id: build
         env:
           BASELINE: ${{ steps.tags.outputs.baseline }}
+          NSW_SRILANKA: ${{ steps.nsw.outputs.nsw_srilanka }}
         run: |
           set -euo pipefail
-          python3 scripts/build_release.py --out build ${BASELINE:+--baseline baseline}
+          python3 scripts/build_release.py --out build --nsw-srilanka "$NSW_SRILANKA" ${BASELINE:+--baseline baseline}
           echo "changed=$(jq -r .changed build/release.json)" >> "$GITHUB_OUTPUT"
 
       - name: Nothing to publish
@@ -140,6 +167,8 @@ jobs:
           # GitHub refuses a release body over 125000 characters; release.json lists every change.
           if [ "$(wc -m < notes.md)" -gt 120000 ]; then
             {
+              # The lines above "## Bundles": the nsw-srilanka release it works with.
+              sed -n '/^## Bundles$/q;p' build/release-notes.md
               echo "## Bundles"
               echo
               jq -r '.bundles | to_entries[] | "- **\(.key)**: " + (if .value.released

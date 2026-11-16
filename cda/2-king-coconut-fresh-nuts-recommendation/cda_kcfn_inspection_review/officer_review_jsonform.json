@@ -24,6 +24,14 @@
         "title": "Inspection Notes",
         "example": "Container contents match the declared quantity and product type."
       },
+      "recommendation_fee_amount": {
+        "type": "number",
+        "title": "Application Recommendation Fee (LKR)",
+        "description": "The amount the applicant will be asked to pay for the recommendation report.",
+        "exclusiveMinimum": 0,
+        "multipleOf": 0.01,
+        "example": 1500
+      },
       "rejection_reason": {
         "type": "string",
         "title": "Comments / Deficiencies (Required if Requesting Changes)",
@@ -33,21 +41,42 @@
     "required": [
       "review_outcome"
     ],
-    "if": {
-      "properties": {
-        "review_outcome": {
-          "const": "needs_more_info"
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "review_outcome": {
+              "const": "approve"
+            }
+          },
+          "required": [
+            "review_outcome"
+          ]
+        },
+        "then": {
+          "required": [
+            "recommendation_fee_amount"
+          ]
         }
       },
-      "required": [
-        "review_outcome"
-      ]
-    },
-    "then": {
-      "required": [
-        "rejection_reason"
-      ]
-    }
+      {
+        "if": {
+          "properties": {
+            "review_outcome": {
+              "const": "needs_more_info"
+            }
+          },
+          "required": [
+            "review_outcome"
+          ]
+        },
+        "then": {
+          "required": [
+            "rejection_reason"
+          ]
+        }
+      }
+    ]
   },
   "uiSchema": {
     "type": "VerticalLayout",
@@ -61,6 +90,19 @@
         "scope": "#/properties/inspection_notes",
         "options": {
           "multiLine": true
+        }
+      },
+      {
+        "type": "Control",
+        "scope": "#/properties/recommendation_fee_amount",
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/review_outcome",
+            "schema": {
+              "const": "approve"
+            }
+          }
         }
       },
       {

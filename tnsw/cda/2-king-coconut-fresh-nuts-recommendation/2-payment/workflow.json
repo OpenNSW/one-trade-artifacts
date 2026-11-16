@@ -22,6 +22,7 @@
       "input_mapping": {
         "payment.reference_number": "reference_number",
         "payment.selected_method": "selected_method",
+        "recommendation_fee_amount": "amount",
         "payment.exporter_id?": "exporter_id",
         "payment.sub_category?": "sub_category"
       },
@@ -42,6 +43,7 @@
       "type": "TASK",
       "task_template_id": "cda-kcfn-payment--upload-receipt",
       "input_mapping": {
+        "recommendation_fee_amount": "amount",
         "payment_feedback?": "payment_feedback"
       },
       "output_mapping": {
@@ -56,6 +58,7 @@
       "input_mapping": {
         "payment.selected_method": "selected_payment_method",
         "payment.reference_number?": "submission.reference_number",
+        "recommendation_fee_amount": "submission.amount",
         "payment_slip": "submission.payment_slip",
         "payment_agency_token?": "replyToken",
         "payment_slip_remarks?": "submission.remarks"
@@ -79,6 +82,7 @@
       "input_mapping": {
         "payment.selected_method": "selected_payment_method",
         "payment.reference_number?": "submission.reference_number",
+        "recommendation_fee_amount": "submission.amount",
         "confirm_agency_token?": "replyToken"
       },
       "output_mapping": {
