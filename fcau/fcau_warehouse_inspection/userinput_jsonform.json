@@ -73,11 +73,30 @@
               "title": "Batch Codes",
               "example": "CC-2026-94"
             },
-            "total_weight": {
+            "total_quantity": {
               "type": "number",
-              "title": "Total Weight (kg)",
+              "title": "Total Quantity",
+              "exclusiveMinimum": 0,
+              "example": 500
+            },
+            "total_net_weight": {
+              "type": "number",
+              "title": "Total Net Weight (kg)",
               "exclusiveMinimum": 0,
               "example": 5400
+            },
+            "total_gross_weight": {
+              "type": "number",
+              "title": "Total Gross Weight (kg)",
+              "exclusiveMinimum": 0,
+              "example": 5650
+            },
+            "registration_number": {
+              "type": "string",
+              "title": "Registration Number",
+              "pattern": "^[A-Za-z0-9]+$",
+              "description": "Letters and numbers only.",
+              "example": "3454A"
             },
             "ingredients_details": {
               "type": "string",
@@ -108,7 +127,7 @@
             "consignment_storage_address",
             "package_type",
             "batch_codes",
-            "total_weight",
+            "total_gross_weight",
             "ingredients_details",
             "in_house_quality_monitoring"
           ]
@@ -120,7 +139,10 @@
             "consignment_storage_address": "ACME Cold Storage, Sector 4, Export Zone, Biyagama",
             "package_type": "Cans in Corrugated Cartons",
             "batch_codes": "CC-2026-94",
-            "total_weight": 5400,
+            "total_quantity": 500,
+            "total_net_weight": 5400,
+            "total_gross_weight": 5650,
+            "registration_number": "3454A",
             "ingredients_details": "Organic Coconut Extract (99.8%), Xanthan Gum (0.2%)",
             "in_house_quality_monitoring": "Daily microbiological sampling, temperature control monitoring, and HACCP CCP verification logs."
           }
@@ -267,7 +289,19 @@
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/total_weight"
+                    "scope": "#/properties/total_quantity"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/total_net_weight"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/total_gross_weight"
+                  },
+                  {
+                    "type": "Control",
+                    "scope": "#/properties/registration_number"
                   },
                   {
                     "type": "Control",
@@ -295,7 +329,7 @@
               },
               "display": "cards",
               "summary": "{id} · {description_of_food}",
-              "summaryDetail": "{package_type} · {batch_codes} · {total_weight} kg"
+              "summaryDetail": "{package_type} · {batch_codes} · {total_gross_weight} kg"
             }
           }
         ],
