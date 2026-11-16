@@ -1,0 +1,13 @@
+{
+  "id": "npqs-ephyto-upload--submitted-notice",
+  "task_type": "VALUE_WRITER",
+  "output_namespace": "notice",
+  "plugin_properties": {
+    "writes": [
+      {
+        "path": "/command",
+        "template": "submitted"
+      }
+    ]
+  }
+}

@@ -829,6 +829,18 @@
       "path": "npqs/9-ephyto/submit.json"
     },
     {
+      "id": "npqs-ephyto-upload--submitted-notice",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/9-ephyto/submitted_notice.json"
+    },
+    {
+      "id": "npqs-ephyto-upload--notify-submitted",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs/9-ephyto/notify_submitted.json"
+    },
+    {
       "id": "npqs-ephyto-upload",
       "kind": "workflow",
       "version": "",

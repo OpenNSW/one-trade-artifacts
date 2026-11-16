@@ -1,0 +1,25 @@
+{
+  "id": "npqs-ephyto-transmit--transmit-reply",
+  "task_type": "EXTERNAL_REVIEW",
+  "output_namespace": "transmission",
+  "plugin_properties": {
+    "service_id": "tnsw",
+    "reply_command": "submit"
+  },
+  "extensions": [
+    {
+      "id": "authz",
+      "phase": "PRE_RESUME",
+      "properties": {
+        "QUEUED_EXTERNALLY": {
+          "resubmit": [
+            "tnsw"
+          ],
+          "submitted": [
+            "tnsw"
+          ]
+        }
+      }
+    }
+  ]
+}

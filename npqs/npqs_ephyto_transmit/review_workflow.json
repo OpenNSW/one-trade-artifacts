@@ -24,16 +24,35 @@
       }
     },
     {
-      "id": "api_call",
+      "id": "transmit_reply",
       "type": "TASK",
-      "task_template_id": "npqs-ephyto-transmit--notify-decision",
+      "task_template_id": "npqs-ephyto-transmit--transmit-reply",
       "input_mapping": {
-        "callbackToken": "callbackToken",
-        "reviewform?": "reviewform",
+        "callbackToken": "replyToken",
+        "reviewform": "payload",
+        "submission?": "submission"
+      },
+      "output_mapping": {
+        "__command": "transmit_result",
         "submission?": "submission",
-        "taskId": "taskId",
-        "command": "payload.command",
-        "reviewform": "payload.payload"
+        "callbackToken?": "callbackToken",
+        "transmitted?": "transmitted"
+      }
+    },
+    {
+      "id": "gw_transmit_result",
+      "name": "Accepted by the IPPC Hub?",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "record_transmitted",
+      "name": "Show the certificate as transmitted",
+      "type": "TASK",
+      "task_template_id": "npqs-ephyto-transmit--record-transmitted",
+      "input_mapping": {
+        "submission": "submission",
+        "transmitted": "submission.transmitted"
       }
     },
     {
@@ -50,11 +69,28 @@
     {
       "id": "e2",
       "source_id": "userform",
-      "target_id": "api_call"
+      "target_id": "transmit_reply"
     },
     {
-      "id": "e3",
-      "source_id": "api_call",
+      "id": "e_transmit_result",
+      "source_id": "transmit_reply",
+      "target_id": "gw_transmit_result"
+    },
+    {
+      "id": "e_hub_rejected",
+      "source_id": "gw_transmit_result",
+      "target_id": "userform",
+      "condition": "transmit_result == 'resubmit'"
+    },
+    {
+      "id": "e_hub_accepted",
+      "source_id": "gw_transmit_result",
+      "target_id": "record_transmitted",
+      "condition": "transmit_result == 'submitted'"
+    },
+    {
+      "id": "e_recorded",
+      "source_id": "record_transmitted",
       "target_id": "end"
     }
   ]

@@ -195,11 +195,31 @@ def variable_values(deployment, workflow, renders, var):
             if mapping_source(source) == COMMAND_VAR:
                 values |= offered(renders, waits_in(step)) - {(step.get("draft") or {}).get("command")}
                 continue
+            if step.get("task_type") == "VALUE_WRITER":
+                values |= written_literals(step, mapping_source(source))
+                continue
             form_id = props(step).get("user_jsonforms_id")
             if deployment.has("generic_template", form_id):
                 form = deployment.load("generic_template", form_id)
                 values |= field_values(form.get("schema", form), mapping_source(source))
     return values
+
+
+def written_literals(step, source):
+    """The constants a VALUE_WRITER step writes to source (a dotted path under its
+    output_namespace): each write to that field whose template has no {placeholder}."""
+    namespace = step.get("output_namespace") or ""
+    if not source.startswith(namespace + "."):
+        return set()
+    field = source[len(namespace) + 1:]
+    literals = set()
+    for write in props(step).get("writes") or []:
+        template = write.get("template")
+        if write.get("each") or not isinstance(template, str) or "{" in template:
+            continue
+        if (write.get("path") or "").lstrip("/").replace("/", ".") == field:
+            literals.add(template)
+    return literals
 
 
 def compared_literals(workflow, node_id, var):

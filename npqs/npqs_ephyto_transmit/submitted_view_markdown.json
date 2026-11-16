@@ -1,4 +1,4 @@
 {
   "id": "npqs-ephyto-transmit--submitted-view",
-  "template": "The certificate has been handed over for transmission to the IPPC ePhyto Hub. If the Hub does not accept it, it comes back here with the reason."
+  "template": "The certificate has been sent for transmission to the IPPC ePhyto Hub, and this task is waiting for the Hub's answer. If the Hub accepts it, this task completes. If it does not, the task comes back here with the reason so you can transmit it again."
 }
