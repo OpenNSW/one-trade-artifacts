@@ -248,6 +248,7 @@
           "original_certificate_attached": {
             "type": "boolean",
             "title": "The original certificate (or certified true copy) is attached",
+            "description": "Add it below as an attachment with File Type \"Original Certificate\".",
             "default": false
           },
           "additional_inspection": {
@@ -1115,6 +1116,30 @@
         "re_export": {
           "required": ["original_certificate_number", "original_certificate_form", "packing", "containers"]
         }
+      },
+      "if": {
+        "properties": {
+          "re_export": {
+            "properties": { "original_certificate_attached": { "const": true } },
+            "required": ["original_certificate_attached"]
+          }
+        },
+        "required": ["re_export"]
+      },
+      "then": {
+        "required": ["attachments"],
+        "properties": {
+          "attachments": {
+            "not": {
+              "items": {
+                "not": {
+                  "properties": { "file_type": { "const": "Original Certificate" } },
+                  "required": ["file_type"]
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
@@ -1570,6 +1595,7 @@
               "itemNumber": "word",
               "addLabel": "Add Attachment",
               "emptyLabel": "No attachments have been added yet.",
+              "errorMessage": "Add the original certificate (or certified true copy) as an attachment with File Type \"Original Certificate\".",
               "summary": "{attachment_description}",
               "summaryDetail": "{file_type}"
             }
