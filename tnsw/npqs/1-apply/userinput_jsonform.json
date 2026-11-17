@@ -1214,19 +1214,6 @@
           },
           {
             "type": "Control",
-            "scope": "#/properties/re_export/properties/original_certificate_attached",
-            "rule": {
-              "effect": "SHOW",
-              "condition": {
-                "scope": "#/properties/certificate_type",
-                "schema": {
-                  "const": "re-export"
-                }
-              }
-            }
-          },
-          {
-            "type": "Control",
             "scope": "#/properties/re_export/properties/additional_inspection",
             "rule": {
               "effect": "SHOW",
@@ -1560,6 +1547,19 @@
         "type": "Category",
         "label": "Attachments",
         "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/re_export/properties/original_certificate_attached",
+            "rule": {
+              "effect": "SHOW",
+              "condition": {
+                "scope": "#/properties/certificate_type",
+                "schema": {
+                  "const": "re-export"
+                }
+              }
+            }
+          },
           {
             "type": "Control",
             "scope": "#/properties/attachments",
