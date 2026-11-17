@@ -18,6 +18,70 @@
           }
         ]
       },
+      "re_export": {
+        "type": "object",
+        "title": "Re-Export Details",
+        "properties": {
+          "original_certificate_number": {
+            "type": "string",
+            "title": "Original Phytosanitary Certificate Number"
+          },
+          "original_certificate_form": {
+            "type": "string",
+            "title": "The Original Certificate Is",
+            "oneOf": [
+              {
+                "const": "original",
+                "title": "The original"
+              },
+              {
+                "const": "certified_true_copy",
+                "title": "A certified true copy"
+              }
+            ]
+          },
+          "packing": {
+            "type": "string",
+            "title": "The Consignment Is",
+            "oneOf": [
+              {
+                "const": "packed",
+                "title": "Packed"
+              },
+              {
+                "const": "repacked",
+                "title": "Repacked"
+              }
+            ]
+          },
+          "containers": {
+            "type": "string",
+            "title": "Containers Are",
+            "oneOf": [
+              {
+                "const": "original",
+                "title": "The original containers"
+              },
+              {
+                "const": "new",
+                "title": "New containers"
+              }
+            ]
+          },
+          "original_certificate_attached": {
+            "type": "boolean",
+            "title": "The original certificate (or certified true copy) is attached"
+          },
+          "additional_inspection": {
+            "type": "boolean",
+            "title": "An additional inspection was carried out"
+          },
+          "statement_code": {
+            "type": "string",
+            "title": "ISPM 12 Re-Export Statement Code"
+          }
+        }
+      },
       "shipment_value": {
         "type": "string",
         "title": "Shipment Value",
@@ -1693,6 +1757,72 @@
               }
             },
             "label": "Transit Countries"
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/re_export/properties/original_certificate_number",
+            "rule": {
+              "effect": "SHOW",
+              "condition": {
+                "scope": "#/properties/certificate_type",
+                "schema": { "const": "re-export" }
+              }
+            }
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/re_export/properties/original_certificate_form",
+            "rule": {
+              "effect": "SHOW",
+              "condition": {
+                "scope": "#/properties/certificate_type",
+                "schema": { "const": "re-export" }
+              }
+            }
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/re_export/properties/packing",
+            "rule": {
+              "effect": "SHOW",
+              "condition": {
+                "scope": "#/properties/certificate_type",
+                "schema": { "const": "re-export" }
+              }
+            }
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/re_export/properties/containers",
+            "rule": {
+              "effect": "SHOW",
+              "condition": {
+                "scope": "#/properties/certificate_type",
+                "schema": { "const": "re-export" }
+              }
+            }
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/re_export/properties/additional_inspection",
+            "rule": {
+              "effect": "SHOW",
+              "condition": {
+                "scope": "#/properties/certificate_type",
+                "schema": { "const": "re-export" }
+              }
+            }
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/re_export/properties/statement_code",
+            "rule": {
+              "effect": "SHOW",
+              "condition": {
+                "scope": "#/properties/certificate_type",
+                "schema": { "const": "re-export" }
+              }
+            }
           }
         ]
       },
@@ -2019,6 +2149,17 @@
         "type": "Category",
         "label": "Attachments",
         "elements": [
+          {
+            "type": "Control",
+            "scope": "#/properties/re_export/properties/original_certificate_attached",
+            "rule": {
+              "effect": "SHOW",
+              "condition": {
+                "scope": "#/properties/certificate_type",
+                "schema": { "const": "re-export" }
+              }
+            }
+          },
           {
             "type": "Control",
             "scope": "#/properties/attachments",
