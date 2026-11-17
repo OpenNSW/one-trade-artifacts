@@ -248,7 +248,7 @@
           "original_certificate_attached": {
             "type": "boolean",
             "title": "The original certificate (or certified true copy) is attached",
-            "description": "Add it below as an attachment with File Type \"Original Certificate\".",
+            "description": "Add it above as an attachment with File Type \"Original Certificate\".",
             "default": false
           },
           "additional_inspection": {
@@ -1574,19 +1574,6 @@
         "elements": [
           {
             "type": "Control",
-            "scope": "#/properties/re_export/properties/original_certificate_attached",
-            "rule": {
-              "effect": "SHOW",
-              "condition": {
-                "scope": "#/properties/certificate_type",
-                "schema": {
-                  "const": "re-export"
-                }
-              }
-            }
-          },
-          {
-            "type": "Control",
             "scope": "#/properties/attachments",
             "label": false,
             "options": {
@@ -1598,6 +1585,19 @@
               "errorMessage": "Add the original certificate (or certified true copy) as an attachment with File Type \"Original Certificate\".",
               "summary": "{attachment_description}",
               "summaryDetail": "{file_type}"
+            }
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/re_export/properties/original_certificate_attached",
+            "rule": {
+              "effect": "SHOW",
+              "condition": {
+                "scope": "#/properties/certificate_type",
+                "schema": {
+                  "const": "re-export"
+                }
+              }
             }
           }
         ]
