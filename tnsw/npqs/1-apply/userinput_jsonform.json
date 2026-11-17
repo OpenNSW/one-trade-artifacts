@@ -218,6 +218,7 @@
           "original_certificate_number": {
             "type": "string",
             "title": "Original Phytosanitary Certificate Number",
+            "minLength": 1,
             "description": "The certificate the consignment was imported under. Separate multiple numbers with commas."
           },
           "original_certificate_form": {
@@ -1112,7 +1113,7 @@
       "required": ["re_export"],
       "properties": {
         "re_export": {
-          "required": ["original_certificate_form", "packing", "containers"]
+          "required": ["original_certificate_number", "original_certificate_form", "packing", "containers"]
         }
       }
     }
