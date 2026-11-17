@@ -110,8 +110,7 @@
       "name": "Wait before telling NPQS again",
       "type": "TIMER",
       "timer": {
-        "duration": "1m",
-        "counter_key": "npqs_notice.attempts"
+        "duration": "1m"
       }
     },
     {
@@ -189,14 +188,7 @@
     {
       "id": "e_notify_again",
       "source_id": "gw_notify_retry",
-      "target_id": "notify_submitted",
-      "condition": "npqs_notice.attempts < 60"
-    },
-    {
-      "id": "e_notify_give_up",
-      "source_id": "gw_notify_retry",
-      "target_id": "end",
-      "condition": "npqs_notice.attempts >= 60"
+      "target_id": "notify_submitted"
     }
   ]
 }
