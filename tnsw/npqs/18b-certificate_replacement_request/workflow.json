@@ -63,6 +63,7 @@
       },
       "output_mapping": {
         "certificate_type": "userform.certificate_type",
+        "re_export?!": "userform.re_export",
         "shipment_value": "userform.shipment_value",
         "applicant_name": "userform.applicant_name",
         "nppo_office_location": "userform.nppo_office_location",
