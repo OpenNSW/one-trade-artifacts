@@ -1,0 +1,9 @@
+{
+  "id": "npqs-ephyto-upload--notify-submitted",
+  "task_type": "AUTH_API_CALL",
+  "output_namespace": "notifyresult",
+  "plugin_properties": {
+    "service_id": "npqs",
+    "path": "/api/v1/callbacks/{npqs_reply_token}"
+  }
+}

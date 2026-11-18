@@ -1,0 +1,13 @@
+{
+  "id": "npqs-ephyto-transmit--record-transmitted",
+  "task_type": "VALUE_WRITER",
+  "output_namespace": "recorded",
+  "plugin_properties": {
+    "writes": [
+      {
+        "path": "/submission/transmitted",
+        "from": "/submission/transmitted"
+      }
+    ]
+  }
+}

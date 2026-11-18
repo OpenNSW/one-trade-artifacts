@@ -17,7 +17,8 @@
         "new_certificate_id?": "submission.certificate_id",
         "certificate_id?": "submission.replaced_certificate_id",
         "replacement_note?": "submission.replacement_note",
-        "replacement_hub_error?": "submission.previous_error"
+        "replacement_hub_error?": "submission.previous_error",
+        "officerinput.npqs_reply_token?": "replyToken"
       },
       "output_mapping": {
         "send_application_documents?": "officerinput.send_application_documents",
@@ -25,7 +26,8 @@
         "send_supervision_report?": "officerinput.send_supervision_report",
         "send_invoice?": "officerinput.send_invoice",
         "send_packing_list?": "officerinput.send_packing_list",
-        "send_additional_document?": "officerinput.send_additional_document"
+        "send_additional_document?": "officerinput.send_additional_document",
+        "callbackToken?": "officerinput.npqs_reply_token"
       }
     },
     {
@@ -62,6 +64,43 @@
       }
     },
     {
+      "id": "gw_submit",
+      "name": "Accepted by the IPPC Hub?",
+      "type": "GATEWAY",
+      "gateway_type": "EXCLUSIVE_SPLIT"
+    },
+    {
+      "id": "submitted_notice",
+      "name": "Build the accepted notice for NPQS",
+      "type": "TASK",
+      "task_template_id": "npqs-ephyto-upload--submitted-notice",
+      "input_mapping": {
+        "reference_number": "reference_number",
+        "new_certificate_id": "certificate_id",
+        "ephyto?": "ephyto",
+        "ephyto.tracking_number?": "payload.tracking_number",
+        "replacement_submitted": "payload.transmitted"
+      },
+      "output_mapping": {
+        "notice.command": "npqs_notice.command",
+        "notice.payload?": "npqs_notice.payload"
+      }
+    },
+    {
+      "id": "notify_submitted",
+      "name": "Tell the NPQS officer task the Hub accepted it",
+      "type": "TASK",
+      "task_template_id": "npqs-ephyto-upload--notify-submitted",
+      "input_mapping": {
+        "reference_number": "reference_number",
+        "new_certificate_id": "certificate_id",
+        "ephyto?": "ephyto",
+        "officerinput.npqs_reply_token": "npqs_reply_token",
+        "npqs_notice.command": "payload.command",
+        "npqs_notice.payload?": "payload.payload"
+      }
+    },
+    {
       "id": "end",
       "type": "END"
     }
@@ -78,8 +117,36 @@
       "target_id": "submit_replacement"
     },
     {
-      "id": "e3",
+      "id": "e_submit_gw",
       "source_id": "submit_replacement",
+      "target_id": "gw_submit"
+    },
+    {
+      "id": "e_submitted",
+      "source_id": "gw_submit",
+      "target_id": "submitted_notice",
+      "condition": "replacement_submitted == true && officerinput.npqs_reply_token != nil"
+    },
+    {
+      "id": "e_submitted_no_npqs_token",
+      "source_id": "gw_submit",
+      "target_id": "end",
+      "condition": "replacement_submitted == true && officerinput.npqs_reply_token == nil"
+    },
+    {
+      "id": "e_submit_failed",
+      "source_id": "gw_submit",
+      "target_id": "transmit_replacement",
+      "condition": "replacement_submitted != true"
+    },
+    {
+      "id": "e_notice_built",
+      "source_id": "submitted_notice",
+      "target_id": "notify_submitted"
+    },
+    {
+      "id": "e_notified",
+      "source_id": "notify_submitted",
       "target_id": "end"
     }
   ]

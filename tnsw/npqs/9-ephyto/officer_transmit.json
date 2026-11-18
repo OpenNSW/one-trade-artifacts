@@ -5,7 +5,8 @@
   "plugin_properties": {
     "service_id": "npqs",
     "path": "/api/v1/internal/cases/{caseId}/flows",
-    "service_workflow_id": "npqs_ephyto_transmit"
+    "service_workflow_id": "npqs_ephyto_transmit",
+    "reply_command": "resubmit"
   },
   "extensions": [
     {

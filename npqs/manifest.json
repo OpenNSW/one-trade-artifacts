@@ -1087,10 +1087,16 @@
       "path": "npqs_ephyto_transmit/officer_review_jsonform.json"
     },
     {
-      "id": "npqs-ephyto-transmit--notify-decision",
+      "id": "npqs-ephyto-transmit--transmit-reply",
       "kind": "subtask_template",
       "version": "",
-      "path": "npqs_ephyto_transmit/notify_decision.json"
+      "path": "npqs_ephyto_transmit/transmit_reply.json"
+    },
+    {
+      "id": "npqs-ephyto-transmit--record-transmitted",
+      "kind": "subtask_template",
+      "version": "",
+      "path": "npqs_ephyto_transmit/record_transmitted.json"
     },
     {
       "id": "npqs-ephyto-transmit--certificate-view",
