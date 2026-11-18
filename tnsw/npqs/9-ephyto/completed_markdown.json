@@ -1,4 +1,4 @@
 {
   "id": "npqs-ephyto-upload--completed-msg",
-  "template": "### ✅ Sent to the IPPC ePhyto Hub\n\nThe IPPC ePhyto Hub has accepted the phytosanitary certificate for delivery to the importing country. Its delivery status, and what you can do next, are in the next step.\n\n- **Reference Number**: `{{ .reference_number }}`\n- **ePhyto Reference Number**: `{{ .certificate_id }}`\n{{ with .ephyto }}{{ if .tracking_number }}- **Hub Tracking Number**: `{{ .tracking_number }}`\n{{ end }}{{ end }}"
+  "template": "### ✅ Sent to the IPPC ePhyto Hub\n\nThe IPPC ePhyto Hub has accepted the phytosanitary certificate for delivery to the importing country. Its delivery status, and what you can do next, are in the next step.\n\n- **Reference Number**: [`{{ .reference_number }}`](copy:)\n- **ePhyto Reference Number**: [`{{ .certificate_id }}`](copy:)\n{{ with .ephyto }}{{ if .tracking_number }}- **Hub Tracking Number**: [`{{ .tracking_number }}`](copy:)\n{{ end }}{{ end }}"
 }

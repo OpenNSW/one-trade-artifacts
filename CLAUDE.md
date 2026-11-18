@@ -285,6 +285,13 @@ See `tnsw/fcau/3-2-warehouse_inspection/workflow.json` or
   released with the form. Each call names its id as a quoted string and no version after
   it (the resolver ignores one), and the template's bundle manifest lists that id as
   static_data; `.github/scripts/check_static_data_refs.py` fails CI otherwise.
+- In a markdown template, a value the reader may need to quote elsewhere (a reference,
+  certificate, invoice, sample or container number) is written
+  `` [`{{.reference_number}}`](copy:) ``: the portal shows it as code with a copy button
+  inside it. Keep the value inside the code, so an `_` or `*` in it stays as written.
+  Mark the value of a labelled field (`* **Reference Number**: …`). Plain code
+  (`` `{{.x}}` ``) has no button: use it for a mention in a sentence, for several values
+  in one list item, and for amounts, dates, statuses, names and item ids.
 - **Drafts never go through the workflow.** A step that offers "Save as Draft"
   declares `"draft": {"command": "save_as_draft"}` on its `subtask_template`, and its
   render handle uses `"element": "draft_action"`. The portal saves it with

@@ -1,4 +1,4 @@
 {
   "id": "sltb-lab-testing--blendsheets",
-  "template": "Each blend sheet is a sample. Record a result for each blend sheet tested.\n\n{{with .sample_number}}* **Sample Number**: `{{.}}`\n{{end}}{{range .blendsheet_data}}* Blend sheet `{{.blendsheet_no}}`{{with .blend_no}} — blend no. {{.}}{{end}}{{with .grade_or_standard}}, {{.}}{{end}}\n{{end}}"
+  "template": "Each blend sheet is a sample. Record a result for each blend sheet tested.\n\n{{with .sample_number}}* **Sample Number**: [`{{.}}`](copy:)\n{{end}}{{range .blendsheet_data}}* Blend sheet `{{.blendsheet_no}}`{{with .blend_no}} — blend no. {{.}}{{end}}{{with .grade_or_standard}}, {{.}}{{end}}\n{{end}}"
 }
