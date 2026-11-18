@@ -4,8 +4,6 @@
   "output_namespace": "notifyresult",
   "plugin_properties": {
     "service_id": "npqs",
-    "path": "/api/v1/callbacks/{npqs_reply_token}",
-    "result_field": "notified",
-    "retain_state": true
+    "path": "/api/v1/callbacks/{npqs_reply_token}"
   }
 }

@@ -94,30 +94,7 @@
         "officerinput.npqs_reply_token": "npqs_reply_token",
         "npqs_notice.command": "payload.command",
         "npqs_notice.payload?": "payload.payload"
-      },
-      "output_mapping": {
-        "notifyresult.notified": "npqs_notice.notified"
       }
-    },
-    {
-      "id": "gw_notified",
-      "name": "NPQS told?",
-      "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
-    },
-    {
-      "id": "notify_wait",
-      "name": "Wait before telling NPQS again",
-      "type": "TIMER",
-      "timer": {
-        "duration": "1m"
-      }
-    },
-    {
-      "id": "gw_notify_retry",
-      "name": "Try NPQS again?",
-      "type": "GATEWAY",
-      "gateway_type": "EXCLUSIVE_SPLIT"
     },
     {
       "id": "end",
@@ -164,31 +141,9 @@
       "target_id": "notify_submitted"
     },
     {
-      "id": "e_notify_gw",
-      "source_id": "notify_submitted",
-      "target_id": "gw_notified"
-    },
-    {
       "id": "e_notified",
-      "source_id": "gw_notified",
-      "target_id": "end",
-      "condition": "npqs_notice.notified == true"
-    },
-    {
-      "id": "e_notify_failed",
-      "source_id": "gw_notified",
-      "target_id": "notify_wait",
-      "condition": "npqs_notice.notified != true"
-    },
-    {
-      "id": "e_notify_waited",
-      "source_id": "notify_wait",
-      "target_id": "gw_notify_retry"
-    },
-    {
-      "id": "e_notify_again",
-      "source_id": "gw_notify_retry",
-      "target_id": "notify_submitted"
+      "source_id": "notify_submitted",
+      "target_id": "end"
     }
   ]
 }
