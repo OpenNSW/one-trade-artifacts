@@ -218,6 +218,7 @@
           "original_certificate_number": {
             "type": "string",
             "title": "Original Phytosanitary Certificate Number",
+            "minLength": 1,
             "description": "The certificate the consignment was imported under. Separate multiple numbers with commas."
           },
           "original_certificate_form": {
@@ -247,6 +248,7 @@
           "original_certificate_attached": {
             "type": "boolean",
             "title": "The original certificate (or certified true copy) is attached",
+            "description": "Add it above as an attachment with File Type \"Original Certificate\".",
             "default": false
           },
           "additional_inspection": {
@@ -1112,7 +1114,31 @@
       "required": ["re_export"],
       "properties": {
         "re_export": {
-          "required": ["original_certificate_form", "packing", "containers"]
+          "required": ["original_certificate_number", "original_certificate_form", "packing", "containers"]
+        }
+      },
+      "if": {
+        "properties": {
+          "re_export": {
+            "properties": { "original_certificate_attached": { "const": true } },
+            "required": ["original_certificate_attached"]
+          }
+        },
+        "required": ["re_export"]
+      },
+      "then": {
+        "required": ["attachments"],
+        "properties": {
+          "attachments": {
+            "not": {
+              "items": {
+                "not": {
+                  "properties": { "file_type": { "const": "Original Certificate" } },
+                  "required": ["file_type"]
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -1201,19 +1227,6 @@
           {
             "type": "Control",
             "scope": "#/properties/re_export/properties/containers",
-            "rule": {
-              "effect": "SHOW",
-              "condition": {
-                "scope": "#/properties/certificate_type",
-                "schema": {
-                  "const": "re-export"
-                }
-              }
-            }
-          },
-          {
-            "type": "Control",
-            "scope": "#/properties/re_export/properties/original_certificate_attached",
             "rule": {
               "effect": "SHOW",
               "condition": {
@@ -1569,8 +1582,22 @@
               "itemNumber": "word",
               "addLabel": "Add Attachment",
               "emptyLabel": "No attachments have been added yet.",
+              "errorMessage": "Add the original certificate (or certified true copy) as an attachment with File Type \"Original Certificate\".",
               "summary": "{attachment_description}",
               "summaryDetail": "{file_type}"
+            }
+          },
+          {
+            "type": "Control",
+            "scope": "#/properties/re_export/properties/original_certificate_attached",
+            "rule": {
+              "effect": "SHOW",
+              "condition": {
+                "scope": "#/properties/certificate_type",
+                "schema": {
+                  "const": "re-export"
+                }
+              }
             }
           }
         ]
