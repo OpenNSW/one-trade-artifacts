@@ -140,6 +140,31 @@ manifest goes there too.
 - `generic_template` — a JSONForms schema+uiSchema (`*_jsonform.json`), a markdown
   template, or a `render.json` UI layout (sections, `visibleWhen` states, action
   `handles`).
+- `static_data` — a `*.data.json` file, `{"data": [{"const": "LK", "title": "Sri Lanka"}]}`,
+  that a form field with `"x-search": {"service": "static-data", ...}` takes its options
+  from. The field's `params.id` and `params.version` pick the file as the bundle's manifest
+  lists it (`schemas/staticdata.schema.json` checks the file).
+  - `const` is the stored value and `title` the label; both are required. A row may carry
+    other keys, each a string, number or boolean under a name of letters, digits and
+    underscores, but not `id` or `name`. `parents` is the list `x-search.dependsOn`
+    filters on. Every row of a file has exactly the keys of its first row; files can
+    differ from each other, but one file never mixes key sets
+    (`.github/scripts/check_static_data_rows.py` fails CI on a row that differs).
+  - `displayTemplate` fills `{const}`, `{title}` and `{key}` for any other key of the
+    row. `{id}` and `{name}` are legacy names for `const` and `title`: they keep working,
+    because deployed forms use them, but new fields use `{const}` and `{title}`.
+  - `params.searchKeys` lists up to 10 row keys a typed search matches, in priority order
+    (default `["title", "const"]`).
+  - Content under an existing `(id, version)` never changes, so rows with new keys ship as
+    a new version, and a field opts in by pointing `params.version` at it.
+  - A field may use `{const}`, `{title}`, an extra key or `searchKeys` only once the
+    deployed trader-app and nsw-srilanka support them. An older API returns only `const`,
+    `title` and `parents` after a typed search, so an extra key would show as the literal
+    `{key}`. Release nsw-srilanka first and name it in the release's `nsw_srilanka` input;
+    this repo can't check that.
+  - `.github/scripts/check_static_data_fields.py` checks every such field against its
+    rows: a template key or `searchKeys` entry no row has fails CI, and so does a bad
+    `searchKeys` list. `{id}` / `{name}` are warnings.
 
 ### File fields (`render.json` `files`)
 
