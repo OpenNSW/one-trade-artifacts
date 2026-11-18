@@ -72,6 +72,9 @@ TNSW = "tnsw"
 NAMES = {
     TNSW: {"roles": {"trader", "cha"}, "clients": {"cda", "efc", "fcau", "govpay", "npqs", "slce", "slpa", "sltb"}},
     "agency": {"roles": {"officer"}, "clients": {TNSW}},
+    # nsw-srilanka configs/agency/npqs/config.yaml catalog.roles: the NPPO roles
+    # alongside the NPQS Officer.
+    "npqs": {"roles": {"officer", "nppo_assistant", "nppo_inspector", "nppo_officer"}, "clients": {TNSW}},
 }
 
 
@@ -81,7 +84,7 @@ class Deployment:
     def __init__(self, root, folder):
         self.folder = folder
         self.service = folder
-        self.names = NAMES[TNSW if folder == TNSW else "agency"]
+        self.names = NAMES.get(folder, NAMES["agency"])
         self.paths = defaultdict(dict)
         for artifact in json.loads((root / folder / "manifest.json").read_text())["artifacts"]:
             self.paths[artifact["kind"]][artifact["id"]] = root / folder / artifact["path"]

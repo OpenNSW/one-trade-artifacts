@@ -6,7 +6,8 @@
   "claimable": true,
   "read": {
     "roles": [
-      "officer"
+      "nppo_officer",
+      "nppo_inspector"
     ]
   }
 }

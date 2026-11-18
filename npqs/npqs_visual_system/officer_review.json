@@ -12,7 +12,8 @@
       "properties": {
         "PENDING_USER": {
           "submit": [
-            "officer"
+            "nppo_officer",
+            "nppo_inspector"
           ]
         }
       }

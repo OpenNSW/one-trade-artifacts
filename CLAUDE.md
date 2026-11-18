@@ -260,8 +260,13 @@ See `tnsw/fcau/3-2-warehouse_inspection/workflow.json` or
 
   Each task's `task_template` carries `"read": {"roles": [...]}`, an ordered precedence
   list (`["trader", "cha"]` in `tnsw/`, `["officer"]` in an agency) that includes every
-  role its steps let act. The names are the catalogs' (`configs/catalog.example.json`
-  and `configs/agency/<agency>/catalog.json` in nsw-srilanka).
+  role its steps let act, plus any role that may only view it. The names are the
+  catalogs' (`configs/catalog.example.json` and `configs/agency/<agency>/catalog.json`
+  in nsw-srilanka). NPQS also has `nppo_officer`, `nppo_inspector` and
+  `nppo_assistant`, granted per task. A task an NPPO role acts on names only NPPO
+  roles; `officer` stays where it is the only role that acts: the tasks no NPPO role is
+  granted, and the treatment issue and request review tasks, which `nppo_officer` and
+  `nppo_inspector` may only view. The check's `NAMES` lists each agency's roles.
   `.github/scripts/check_agency_authz.py` works each step's rule out from the artifacts
   and fails CI on any difference.
 - A step a person fills in a form on lists a `payload_schema` extension
