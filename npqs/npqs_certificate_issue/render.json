@@ -21,6 +21,12 @@
       "title": "Officer Review",
       "projector": "FORM",
       "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:nppo_officer"
+      },
       "handles": [
         {
           "command": "submit",
@@ -28,6 +34,45 @@
           "element": "primary_action"
         }
       ]
+    },
+    "review_result": {
+      "templateId": "npqs-issue-certificate--officer-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "STARTING",
+          "STARTING_STEP",
+          "ADVANCING",
+          "QUEUED_EXTERNALLY",
+          "COMPLETED",
+          "ON_HOLD",
+          "CANCELLED"
+        ]
+      }
+    },
+    "awaiting_review_nppo_inspector": {
+      "templateId": "npqs-certificate-issue--awaiting-review",
+      "title": "Officer Review",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:nppo_inspector"
+      }
+    },
+    "awaiting_review_nppo_assistant": {
+      "templateId": "npqs-certificate-issue--awaiting-review",
+      "title": "Officer Review",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:nppo_assistant"
+      }
     },
     "issued_certificate": {
       "templateId": "npqs-certificate-issue--certificate-msg",

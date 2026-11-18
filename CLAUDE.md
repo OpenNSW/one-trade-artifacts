@@ -269,6 +269,16 @@ See `tnsw/fcau/3-2-warehouse_inspection/workflow.json` or
   `nppo_inspector` may only view. The check's `NAMES` lists each agency's roles.
   `.github/scripts/check_agency_authz.py` works each step's rule out from the artifacts
   and fails CI on any difference.
+
+  A task with roles that may only view it lists the role that acts first in
+  `read.roles`: a reader sees the task as the first role there they hold. Its render
+  shows the form with the button in `PENDING_USER` only to that role
+  (`"visibleWhen": {"states": ["PENDING_USER"], "requireClaim": "role:<role>"}`), and
+  each viewing role a markdown section with its own `requireClaim` saying who acts
+  (`requireClaim` names one role). A second copy of the form, without the button,
+  shows what was submitted in every other state. A `requireClaim` naming a role the
+  catalog lacks fails the task view, so name only roles in the task's `read.roles`
+  (see `npqs/npqs_certificate_issue/render.json`).
 - A step a person fills in a form on lists a `payload_schema` extension
   (`{"id": "payload_schema", "phase": "PRE_RESUME", "properties": {"form": "<form id>"}}`),
   so the server checks the submission against that form's schema. `form` must be the form
