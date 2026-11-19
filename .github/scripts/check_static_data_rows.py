@@ -17,6 +17,9 @@ import json
 import sys
 from pathlib import Path
 
+# The only folder not scanned: git's own. Every other `*.data.json` is checked, as the
+# schema step does, including one a manifest lists under a dot-prefixed folder.
+SKIPPED_DIR = ".git"
 # A file with many mismatched rows (a wrong first row) reports this many, then a count.
 MAX_REPORTED = 5
 
@@ -47,7 +50,7 @@ def main():
     root = Path(sys.argv[1] if len(sys.argv) > 1 else ".").resolve()
     files = failed = 0
     for path in sorted(root.rglob("*.data.json")):
-        if any(part.startswith(".") for part in path.relative_to(root).parts):
+        if SKIPPED_DIR in path.relative_to(root).parts:
             continue
         files += 1
         rel = path.relative_to(root).as_posix()
