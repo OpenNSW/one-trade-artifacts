@@ -451,6 +451,12 @@
       "path": "npqs_consignment_inspection/userinput_jsonform.json"
     },
     {
+      "id": "npqs-consignment-inspection--awaiting-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_consignment_inspection/awaiting_review_markdown.json"
+    },
+    {
       "id": "npqs_visual_system",
       "kind": "workflow",
       "version": "",
@@ -673,6 +679,12 @@
       "path": "npqs_treatment_request_review/userinput_jsonform.json"
     },
     {
+      "id": "npqs-treatment-request-review--awaiting-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_treatment_request_review/awaiting_review_markdown.json"
+    },
+    {
       "id": "npqs_treatment_final_review",
       "kind": "workflow",
       "version": "",
@@ -769,6 +781,12 @@
       "path": "npqs_treatment_issue/submission_view_markdown.json"
     },
     {
+      "id": "npqs-treatment-issue--awaiting-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_treatment_issue/awaiting_review_markdown.json"
+    },
+    {
       "id": "npqs_treatment_issue_supervised",
       "kind": "workflow",
       "version": "",
@@ -815,6 +833,12 @@
       "kind": "generic_template",
       "version": "",
       "path": "npqs_treatment_issue_supervised/submission_view_markdown.json"
+    },
+    {
+      "id": "npqs-treatment-issue-supervised--awaiting-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_treatment_issue_supervised/awaiting_review_markdown.json"
     },
     {
       "id": "npqs_docs_review",
@@ -869,6 +893,12 @@
       "kind": "generic_template",
       "version": "",
       "path": "npqs_docs_review/userinput_jsonform.json"
+    },
+    {
+      "id": "npqs-docs-review--awaiting-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_docs_review/awaiting_review_markdown.json"
     },
     {
       "id": "npqs_certificate_issue",
@@ -947,6 +977,12 @@
       "kind": "subtask_template",
       "version": "",
       "path": "npqs_certificate_issue/generate_both_references.json"
+    },
+    {
+      "id": "npqs-certificate-issue--awaiting-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_certificate_issue/awaiting_review_markdown.json"
     },
     {
       "id": "npqs_certificate_issue_non_ephyto",
@@ -1175,6 +1211,12 @@
       "kind": "generic_template",
       "version": "",
       "path": "npqs_certificate_withdrawal/withdrawn_copy_markdown.json"
+    },
+    {
+      "id": "npqs-certificate-withdrawal--awaiting-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "npqs_certificate_withdrawal/awaiting_review_markdown.json"
     },
     {
       "id": "npqs_certificate_replacement",

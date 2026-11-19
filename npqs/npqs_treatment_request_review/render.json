@@ -29,6 +29,12 @@
       "title": "Officer Review",
       "projector": "FORM",
       "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:officer"
+      },
       "handles": [
         {
           "command": "submit",
@@ -36,6 +42,45 @@
           "element": "primary_action"
         }
       ]
+    },
+    "review_result": {
+      "templateId": "npqs-treatment-request--reviewer-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "STARTING",
+          "STARTING_STEP",
+          "ADVANCING",
+          "QUEUED_EXTERNALLY",
+          "COMPLETED",
+          "ON_HOLD",
+          "CANCELLED"
+        ]
+      }
+    },
+    "awaiting_review_nppo_officer": {
+      "templateId": "npqs-treatment-request-review--awaiting-review",
+      "title": "Officer Review",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:nppo_officer"
+      }
+    },
+    "awaiting_review_nppo_inspector": {
+      "templateId": "npqs-treatment-request-review--awaiting-review",
+      "title": "Officer Review",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:nppo_inspector"
+      }
     },
     "status_message": {
       "templateId": "npqs-treatment-request-review--submission-view",
