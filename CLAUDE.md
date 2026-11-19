@@ -292,6 +292,11 @@ See `tnsw/fcau/3-2-warehouse_inspection/workflow.json` or
   no script, event handler, form, frame or `svg`, loads nothing from outside, and has no
   `{{ }}` inside a tag or a `<style>` block.
   `.github/scripts/check_html_templates.py` fails CI on any of them.
+- A form field that offers a static data list names it by id alone:
+  `"x-search": {"service": "static-data", "params": {"id": "<id>"}}`, an id its bundle
+  manifest lists as static_data. nsw-srilanka loads it as the task's manifest version
+  lists it (its row without a version, otherwise its highest version), so a changed list
+  is a new data file listed at the next version, with no form to edit.
 - A document template prints a stored code's name with
   `{{ staticdata "<id>" <value> }}` (NSW-SriLanka's resolver; see its
   `docs/WORKFLOW_GUIDE.md`), naming the same id as the form field's `x-search` `params`.

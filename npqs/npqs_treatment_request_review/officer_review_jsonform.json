@@ -54,8 +54,7 @@
                 "service": "static-data",
                 "mode": "small-list",
                 "params": {
-                  "id": "npqs-apply-phyto-cert--commodity-common-names",
-                  "version": "1"
+                  "id": "npqs-apply-phyto-cert--commodity-common-names"
                 }
               }
             },

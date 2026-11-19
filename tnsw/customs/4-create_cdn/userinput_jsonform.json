@@ -147,8 +147,7 @@
               "mode": "large-searchable-list",
               "displayTemplate": "{name}",
               "params": {
-                "id": "customs-cusdec--countries",
-                "version": "1"
+                "id": "customs-cusdec--countries"
               }
             },
             "example": "LK"
@@ -183,8 +182,7 @@
               "mode": "large-searchable-list",
               "displayTemplate": "{name}",
               "params": {
-                "id": "customs-cusdec--countries",
-                "version": "1"
+                "id": "customs-cusdec--countries"
               }
             },
             "example": "MY"
@@ -235,8 +233,7 @@
               "mode": "large-paginated-list",
               "displayTemplate": "{name} ({id})",
               "params": {
-                "id": "customs-cusdec--port-of-entry-and-discharge",
-                "version": "1"
+                "id": "customs-cusdec--port-of-entry-and-discharge"
               }
             },
             "example": "DEHAM"
@@ -256,8 +253,7 @@
               "mode": "large-paginated-list",
               "displayTemplate": "{name} ({id})",
               "params": {
-                "id": "customs-cusdec--port-of-entry-and-discharge",
-                "version": "1"
+                "id": "customs-cusdec--port-of-entry-and-discharge"
               }
             },
             "example": "LKCMB"
@@ -286,8 +282,7 @@
               "mode": "small-list",
               "displayTemplate": "{name}",
               "params": {
-                "id": "customs-cusdec--sheds",
-                "version": "1"
+                "id": "customs-cusdec--sheds"
               }
             },
             "example": "CFS1"
@@ -316,8 +311,7 @@
               "mode": "large-searchable-list",
               "displayTemplate": "({id}) - {name}",
               "params": {
-                "id": "customs-cusdec--package-types",
-                "version": "1"
+                "id": "customs-cusdec--package-types"
               }
             },
             "example": "DR",
@@ -362,8 +356,7 @@
               "mode": "large-searchable-list",
               "displayTemplate": "({id}) - {name}",
               "params": {
-                "id": "customs-cusdec--container-types",
-                "version": "1"
+                "id": "customs-cusdec--container-types"
               }
             },
             "example": "20GP",

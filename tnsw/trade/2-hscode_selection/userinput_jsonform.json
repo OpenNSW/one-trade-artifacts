@@ -14,8 +14,7 @@
             "mode": "large-paginated-list",
             "displayTemplate": "{name}",
             "params": {
-              "id": "trade-hscode-selection--hs-codes",
-              "version": "1"
+              "id": "trade-hscode-selection--hs-codes"
             }
           },
           "oneOf": [

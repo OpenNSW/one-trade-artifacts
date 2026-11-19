@@ -187,8 +187,7 @@
           "mode": "large-searchable-list",
           "displayTemplate": "{name}",
           "params": {
-            "id": "npqs-apply-phyto-cert--importing-countries",
-            "version": "1"
+            "id": "npqs-apply-phyto-cert--importing-countries"
           }
         },
         "example": {
@@ -218,8 +217,7 @@
             "mode": "large-searchable-list",
             "displayTemplate": "{name}",
             "params": {
-              "id": "npqs-apply-phyto-cert--importing-countries",
-              "version": "1"
+              "id": "npqs-apply-phyto-cert--importing-countries"
             }
           }
         },
@@ -277,8 +275,7 @@
           "mode": "large-searchable-list",
           "displayTemplate": "{name}",
           "params": {
-            "id": "npqs-apply-phyto-cert--importing-countries",
-            "version": "1"
+            "id": "npqs-apply-phyto-cert--importing-countries"
           }
         }
       },
@@ -308,8 +305,7 @@
           "mode": "large-searchable-list",
           "displayTemplate": "{name}",
           "params": {
-            "id": "npqs-apply-phyto-cert--importing-countries",
-            "version": "1"
+            "id": "npqs-apply-phyto-cert--importing-countries"
           }
         }
       },
@@ -416,8 +412,7 @@
                 "mode": "large-searchable-list",
                 "displayTemplate": "{name}",
                 "params": {
-                  "id": "npqs-apply-phyto-cert--commodity-common-names",
-                  "version": "1"
+                  "id": "npqs-apply-phyto-cert--commodity-common-names"
                 }
               }
             },
