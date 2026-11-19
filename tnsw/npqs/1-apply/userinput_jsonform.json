@@ -311,8 +311,7 @@
           "mode": "large-searchable-list",
           "displayTemplate": "{name}",
           "params": {
-            "id": "npqs-apply-phyto-cert--importing-countries",
-            "version": "1"
+            "id": "npqs-apply-phyto-cert--importing-countries"
           }
         },
         "properties": {
@@ -333,8 +332,7 @@
             "mode": "large-searchable-list",
             "displayTemplate": "{name}",
             "params": {
-              "id": "npqs-apply-phyto-cert--importing-countries",
-              "version": "1"
+              "id": "npqs-apply-phyto-cert--importing-countries"
             }
           },
           "properties": {
@@ -380,8 +378,7 @@
           "mode": "large-searchable-list",
           "displayTemplate": "{name}",
           "params": {
-            "id": "npqs-apply-phyto-cert--importing-countries",
-            "version": "1"
+            "id": "npqs-apply-phyto-cert--importing-countries"
           }
         },
         "properties": {
@@ -403,8 +400,7 @@
           "mode": "large-searchable-list",
           "displayTemplate": "{name}",
           "params": {
-            "id": "npqs-apply-phyto-cert--importing-countries",
-            "version": "1"
+            "id": "npqs-apply-phyto-cert--importing-countries"
           }
         },
         "properties": {
@@ -485,8 +481,7 @@
                 "mode": "large-paginated-list",
                 "displayTemplate": "{name}",
                 "params": {
-                  "id": "npqs-apply-phyto-cert--commodity-common-names",
-                  "version": "1"
+                  "id": "npqs-apply-phyto-cert--commodity-common-names"
                 }
               },
               "properties": {
@@ -504,8 +499,7 @@
                 "displayTemplate": "{name}",
                 "dependsOn": "commodity_common_name",
                 "params": {
-                  "id": "npqs-apply-phyto-cert--scientific-names",
-                  "version": "1"
+                  "id": "npqs-apply-phyto-cert--scientific-names"
                 }
               }
             },
