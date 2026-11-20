@@ -58,6 +58,10 @@
                 {
                   "const": "fail",
                   "title": "Fail"
+                },
+                {
+                  "const": "not_applicable",
+                  "title": "Not Applicable"
                 }
               ]
             },
