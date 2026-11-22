@@ -339,11 +339,6 @@
                   "as": "string"
                 },
                 {
-                  "from": "Goods_description.Description_of_goods",
-                  "to": "goodsDescription.description",
-                  "as": "string"
-                },
-                {
                   "from": "Goods_description.Commercial_Description",
                   "to": "goodsDescription.commercialDescription",
                   "as": "string"
@@ -953,11 +948,6 @@
                 {
                   "from": "goodsDescription.originCountryCode",
                   "to": "Goods_description.Country_of_origin_code",
-                  "as": "string"
-                },
-                {
-                  "from": "goodsDescription.description",
-                  "to": "Goods_description.Description_of_goods",
                   "as": "string"
                 },
                 {
@@ -1859,14 +1849,10 @@
                   },
                   "example": "LK"
                 },
-                "description": {
-                  "type": "string",
-                  "title": "42. Description ( Box 31 )",
-                  "example": "TEST DESCRIPTION"
-                },
                 "commercialDescription": {
                   "type": "string",
                   "title": "43. Commercial Description ( Box 31 )",
+                  "description": "The description of the goods printed on the CusDec.",
                   "example": "COCONUT KERNEL POWDER"
                 },
                 "commercialDescription1": {
@@ -1878,7 +1864,6 @@
               },
               "required": [
                 "originCountryCode",
-                "description",
                 "commercialDescription",
                 "commercialDescription1"
               ]
@@ -2441,10 +2426,6 @@
                   },
                   {
                     "type": "Control",
-                    "scope": "#/properties/goodsDescription/properties/description"
-                  },
-                  {
-                    "type": "Control",
                     "scope": "#/properties/goodsDescription/properties/commercialDescription"
                   },
                   {
@@ -2512,7 +2493,7 @@
                 ]
               },
               "display": "cards",
-              "summary": "{goodsDescription.description} · HS {tarification.hsCode}",
+              "summary": "{goodsDescription.commercialDescription} · HS {tarification.hsCode}",
               "summaryDetail": "{packages.quantity} {packages.kindCode} · {valuation.grossWeight} kg gross",
               "totals": [
                 {
