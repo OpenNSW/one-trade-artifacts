@@ -1814,8 +1814,7 @@
                   "mode": "large-searchable-list",
                   "displayTemplate": "{name} ({id})",
                   "params": {
-                    "id": "customs-cusdec--office-codes",
-                    "version": "1"
+                    "id": "customs-cusdec--office-codes"
                   }
                 },
                 "example": "CBEX1"
@@ -1858,8 +1857,7 @@
                   "mode": "small-list",
                   "displayTemplate": "{name}",
                   "params": {
-                    "id": "customs-cusdec--declaration-procedures",
-                    "version": "1"
+                    "id": "customs-cusdec--declaration-procedures"
                   }
                 },
                 "example": "1"
@@ -1918,8 +1916,7 @@
                       "mode": "large-searchable-list",
                       "displayTemplate": "{name}",
                       "params": {
-                        "id": "customs-cusdec--countries",
-                        "version": "1"
+                        "id": "customs-cusdec--countries"
                       }
                     },
                     "example": "LK"
@@ -1983,8 +1980,7 @@
                   "mode": "large-searchable-list",
                   "displayTemplate": "{name}",
                   "params": {
-                    "id": "customs-cusdec--countries",
-                    "version": "1"
+                    "id": "customs-cusdec--countries"
                   }
                 },
                 "example": "PL"
@@ -1997,8 +1993,7 @@
                   "mode": "large-searchable-list",
                   "displayTemplate": "{name}",
                   "params": {
-                    "id": "customs-cusdec--countries",
-                    "version": "1"
+                    "id": "customs-cusdec--countries"
                   }
                 },
                 "example": "LK"
@@ -2011,8 +2006,7 @@
                   "mode": "large-searchable-list",
                   "displayTemplate": "{name}",
                   "params": {
-                    "id": "customs-cusdec--countries",
-                    "version": "1"
+                    "id": "customs-cusdec--countries"
                   }
                 },
                 "example": "MY"
@@ -2051,8 +2045,7 @@
                   "mode": "large-searchable-list",
                   "displayTemplate": "{name}",
                   "params": {
-                    "id": "customs-cusdec--countries",
-                    "version": "1"
+                    "id": "customs-cusdec--countries"
                   }
                 },
                 "example": "SG"
@@ -2070,8 +2063,7 @@
                   "mode": "large-searchable-list",
                   "displayTemplate": "{name}",
                   "params": {
-                    "id": "customs-cusdec--countries",
-                    "version": "1"
+                    "id": "customs-cusdec--countries"
                   }
                 },
                 "example": "SG"
@@ -2084,8 +2076,7 @@
                   "mode": "small-list",
                   "displayTemplate": "{name}",
                   "params": {
-                    "id": "customs-cusdec--mode-of-transport",
-                    "version": "1"
+                    "id": "customs-cusdec--mode-of-transport"
                   }
                 },
                 "example": "1"
@@ -2104,8 +2095,7 @@
                   "mode": "small-list",
                   "displayTemplate": "{name}",
                   "params": {
-                    "id": "customs-cusdec--delivery-terms",
-                    "version": "1"
+                    "id": "customs-cusdec--delivery-terms"
                   }
                 },
                 "example": "CIF"
@@ -2123,8 +2113,7 @@
                   "mode": "large-searchable-list",
                   "displayTemplate": "{name} ({id})",
                   "params": {
-                    "id": "customs-cusdec--office-codes",
-                    "version": "1"
+                    "id": "customs-cusdec--office-codes"
                   }
                 },
                 "example": "CBEX1"
@@ -2138,8 +2127,7 @@
                   "mode": "large-paginated-list",
                   "displayTemplate": "{name} ({id})",
                   "params": {
-                    "id": "customs-cusdec--port-of-entry-and-discharge",
-                    "version": "1"
+                    "id": "customs-cusdec--port-of-entry-and-discharge"
                   }
                 },
                 "example": "PLGDY"
@@ -2153,8 +2141,7 @@
                   "mode": "small-list",
                   "displayTemplate": "({id})-{name}",
                   "params": {
-                    "id": "customs-cusdec--sheds",
-                    "version": "1"
+                    "id": "customs-cusdec--sheds"
                   }
                 },
                 "example": "CFS1"
@@ -2189,8 +2176,7 @@
                   "mode": "large-searchable-list",
                   "displayTemplate": "{name} ({id})",
                   "params": {
-                    "id": "customs-cusdec--banks",
-                    "version": "1"
+                    "id": "customs-cusdec--banks"
                   }
                 },
                 "example": "7056"
@@ -2215,8 +2201,7 @@
                   "mode": "large-searchable-list",
                   "displayTemplate": "{name} ({id})",
                   "params": {
-                    "id": "customs-cusdec--currencies",
-                    "version": "1"
+                    "id": "customs-cusdec--currencies"
                   }
                 },
                 "example": "USD"
@@ -2256,8 +2241,7 @@
                       "mode": "large-searchable-list",
                       "displayTemplate": "{name} ({id})",
                       "params": {
-                        "id": "customs-cusdec--currencies",
-                        "version": "1"
+                        "id": "customs-cusdec--currencies"
                       }
                     },
                     "example": "USD"
@@ -2299,8 +2283,7 @@
                       "mode": "large-searchable-list",
                       "displayTemplate": "{name} ({id})",
                       "params": {
-                        "id": "customs-cusdec--currencies",
-                        "version": "1"
+                        "id": "customs-cusdec--currencies"
                       }
                     },
                     "example": "USD"
@@ -2342,8 +2325,7 @@
                       "mode": "large-searchable-list",
                       "displayTemplate": "{name} ({id})",
                       "params": {
-                        "id": "customs-cusdec--currencies",
-                        "version": "1"
+                        "id": "customs-cusdec--currencies"
                       }
                     },
                     "example": "USD"
@@ -2385,8 +2367,7 @@
                       "mode": "large-searchable-list",
                       "displayTemplate": "{name} ({id})",
                       "params": {
-                        "id": "customs-cusdec--currencies",
-                        "version": "1"
+                        "id": "customs-cusdec--currencies"
                       }
                     },
                     "example": "USD"
@@ -2428,8 +2409,7 @@
                       "mode": "large-searchable-list",
                       "displayTemplate": "{name} ({id})",
                       "params": {
-                        "id": "customs-cusdec--currencies",
-                        "version": "1"
+                        "id": "customs-cusdec--currencies"
                       }
                     },
                     "example": "USD"
@@ -2471,8 +2451,7 @@
                       "mode": "large-searchable-list",
                       "displayTemplate": "{name} ({id})",
                       "params": {
-                        "id": "customs-cusdec--currencies",
-                        "version": "1"
+                        "id": "customs-cusdec--currencies"
                       }
                     },
                     "example": "USD"
@@ -2567,8 +2546,7 @@
                         "mode": "large-searchable-list",
                         "displayTemplate": "({id}) - {name}",
                         "params": {
-                          "id": "customs-cusdec--extended-procedures",
-                          "version": "1"
+                          "id": "customs-cusdec--extended-procedures"
                         }
                       },
                       "example": "1100"
@@ -2581,8 +2559,7 @@
                         "mode": "large-searchable-list",
                         "displayTemplate": "({id}) - {name}",
                         "params": {
-                          "id": "customs-cusdec--national-procedures",
-                          "version": "1"
+                          "id": "customs-cusdec--national-procedures"
                         }
                       },
                       "example": "000"
@@ -2627,8 +2604,7 @@
                         "mode": "large-searchable-list",
                         "displayTemplate": "{name}",
                         "params": {
-                          "id": "customs-cusdec--countries",
-                          "version": "1"
+                          "id": "customs-cusdec--countries"
                         }
                       },
                       "example": "LK"
@@ -2695,8 +2671,7 @@
                             "mode": "large-searchable-list",
                             "displayTemplate": "{name} ({id})",
                             "params": {
-                              "id": "customs-cusdec--currencies",
-                              "version": "1"
+                              "id": "customs-cusdec--currencies"
                             }
                           },
                           "example": "USD"
@@ -2754,8 +2729,7 @@
                         "mode": "large-searchable-list",
                         "displayTemplate": "{name} ({id})",
                         "params": {
-                          "id": "customs-cusdec--scanned-document-codes",
-                          "version": "1"
+                          "id": "customs-cusdec--scanned-document-codes"
                         }
                       },
                       "example": "INV"
@@ -2790,8 +2764,7 @@
                         "mode": "large-searchable-list",
                         "displayTemplate": "{name} ({id})",
                         "params": {
-                          "id": "customs-cusdec--supporting-document-codes",
-                          "version": "1"
+                          "id": "customs-cusdec--supporting-document-codes"
                         }
                       },
                       "example": "INV"
