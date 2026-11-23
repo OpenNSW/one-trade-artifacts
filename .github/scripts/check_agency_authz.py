@@ -75,6 +75,9 @@ NAMES = {
     # nsw-srilanka configs/agency/npqs/config.yaml catalog.roles: the NPPO roles
     # alongside the NPQS Officer.
     "npqs": {"roles": {"officer", "nppo_assistant", "nppo_inspector", "nppo_officer"}, "clients": {TNSW}},
+    # nsw-srilanka configs/agency/fcau/config.yaml catalog.roles: the staff roles from
+    # FCAU's access matrix alongside the FCAU Officer.
+    "fcau": {"roles": {"officer", "director", "assistant_director", "food_drugs_inspector"}, "clients": {TNSW}},
 }
 
 

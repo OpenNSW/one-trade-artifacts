@@ -25,6 +25,12 @@
       "path": "fcau_application_review/render.json"
     },
     {
+      "id": "fcau-application-review--awaiting-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau_application_review/awaiting_review_markdown.json"
+    },
+    {
       "id": "fcau-application-review--notify-decision",
       "kind": "subtask_template",
       "version": "",
@@ -97,6 +103,12 @@
       "path": "fcau_issue_certificate/render.json"
     },
     {
+      "id": "fcau-issue-certificate--awaiting-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau_issue_certificate/awaiting_review_markdown.json"
+    },
+    {
       "id": "fcau-issue-certificate--notify-decision",
       "kind": "subtask_template",
       "version": "",
@@ -143,6 +155,12 @@
       "kind": "generic_template",
       "version": "",
       "path": "fcau-warehouse-scheduling--review/render.json"
+    },
+    {
+      "id": "fcau-warehouse-scheduling--awaiting-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau-warehouse-scheduling--review/awaiting_review_markdown.json"
     },
     {
       "id": "fcau-warehouse-scheduling--notify-decision",
@@ -223,6 +241,12 @@
       "path": "fcau_warehouse_inspection/render.json"
     },
     {
+      "id": "fcau-warehouse-inspection--awaiting-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau_warehouse_inspection/awaiting_review_markdown.json"
+    },
+    {
       "id": "fcau-warehouse-inspection--notify-decision",
       "kind": "subtask_template",
       "version": "",
@@ -275,6 +299,12 @@
       "kind": "generic_template",
       "version": "",
       "path": "fcau_post_wh_lab_fee_review/render.json"
+    },
+    {
+      "id": "fcau-post-wh-lab-fee-review--awaiting-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau_post_wh_lab_fee_review/awaiting_review_markdown.json"
     },
     {
       "id": "fcau-post-wh-lab-fee-review--notify-decision",
@@ -349,6 +379,12 @@
       "path": "fcau_post_wh_lab_test/render.json"
     },
     {
+      "id": "fcau-post-wh-lab-test--awaiting-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau_post_wh_lab_test/awaiting_review_markdown.json"
+    },
+    {
       "id": "fcau-post-wh-lab-test--notify-decision",
       "kind": "subtask_template",
       "version": "",
@@ -395,6 +431,12 @@
       "kind": "generic_template",
       "version": "",
       "path": "fcau_sample_collection/render.json"
+    },
+    {
+      "id": "fcau-sample-collection--awaiting-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau_sample_collection/awaiting_review_markdown.json"
     },
     {
       "id": "fcau-sample-collection--notify-decision",
@@ -445,6 +487,12 @@
       "path": "fcau_visual_assessment/render.json"
     },
     {
+      "id": "fcau-visual-assessment--awaiting-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau_visual_assessment/awaiting_review_markdown.json"
+    },
+    {
       "id": "fcau-visual-assessment--notify-decision",
       "kind": "subtask_template",
       "version": "",
@@ -491,6 +539,12 @@
       "kind": "generic_template",
       "version": "",
       "path": "fcau_lab_fee_payment_review/render.json"
+    },
+    {
+      "id": "fcau-lab-fee-payment-review--awaiting-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau_lab_fee_payment_review/awaiting_review_markdown.json"
     },
     {
       "id": "fcau-lab-fee-payment-review--notify-decision",
@@ -563,6 +617,12 @@
       "kind": "generic_template",
       "version": "",
       "path": "fcau_lab_test/render.json"
+    },
+    {
+      "id": "fcau-lab-test--awaiting-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau_lab_test/awaiting_review_markdown.json"
     },
     {
       "id": "fcau-lab-test--notify-decision",

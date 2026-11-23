@@ -29,6 +29,12 @@
       "title": "Officer Review",
       "projector": "FORM",
       "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:food_drugs_inspector"
+      },
       "handles": [
         {
           "command": "submit",
@@ -36,6 +42,45 @@
           "element": "primary_action"
         }
       ]
+    },
+    "review_result": {
+      "templateId": "fcau-pay-lab-fee--review-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "STARTING",
+          "STARTING_STEP",
+          "ADVANCING",
+          "QUEUED_EXTERNALLY",
+          "COMPLETED",
+          "ON_HOLD",
+          "CANCELLED"
+        ]
+      }
+    },
+    "awaiting_review_director": {
+      "templateId": "fcau-lab-fee-payment-review--awaiting-review",
+      "title": "Officer Review",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:director"
+      }
+    },
+    "awaiting_review_assistant_director": {
+      "templateId": "fcau-lab-fee-payment-review--awaiting-review",
+      "title": "Officer Review",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:assistant_director"
+      }
     },
     "status_message": {
       "templateId": "fcau-lab-fee-payment-review--submission-view",

@@ -261,12 +261,18 @@ See `tnsw/fcau/3-2-warehouse_inspection/workflow.json` or
   Each task's `task_template` carries `"read": {"roles": [...]}`, an ordered precedence
   list (`["trader", "cha"]` in `tnsw/`, `["officer"]` in an agency) that includes every
   role its steps let act, plus any role that may only view it. The names are the
-  catalogs' (`configs/catalog.example.json` and `configs/agency/<agency>/catalog.json`
-  in nsw-srilanka). NPQS also has `nppo_officer`, `nppo_inspector` and
+  catalogs' (`catalog.roles` in nsw-srilanka's `configs/config.yaml` and
+  `configs/agency/<agency>/config.yaml`). NPQS also has `nppo_officer`, `nppo_inspector` and
   `nppo_assistant`, granted per task. A task an NPPO role acts on names only NPPO
   roles; `officer` stays where it is the only role that acts: the tasks no NPPO role is
   granted, and the treatment issue and request review tasks, which `nppo_officer` and
-  `nppo_inspector` may only view. The check's `NAMES` lists each agency's roles.
+  `nppo_inspector` may only view. FCAU has three staff roles from its access matrix:
+  `food_drugs_inspector` acts on the application review, sample collection, visual
+  assessment, lab fee payment review, lab test, warehouse scheduling review, warehouse
+  inspection, post-warehouse lab fee review, post-warehouse lab test and certificate
+  issue tasks, which `director` and `assistant_director` may only view. The two payment
+  tasks (`fcau_payment_confirm`, `fcau_payment_review_receipt`) are not in the matrix and
+  keep `officer`. The check's `NAMES` lists each agency's roles.
   `.github/scripts/check_agency_authz.py` works each step's rule out from the artifacts
   and fails CI on any difference.
 
