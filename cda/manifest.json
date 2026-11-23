@@ -25,6 +25,12 @@
       "path": "1-export-coconut-certificate-registration/cda_officer_verification/render.json"
     },
     {
+      "id": "cda-officer-verification--awaiting-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "1-export-coconut-certificate-registration/cda_officer_verification/awaiting_review_markdown.json"
+    },
+    {
       "id": "cda-officer-verification--generate-application-ref",
       "kind": "subtask_template",
       "version": "",
@@ -101,6 +107,12 @@
       "kind": "generic_template",
       "version": "",
       "path": "1-export-coconut-certificate-registration/cda_lot_adjustment_review/render.json"
+    },
+    {
+      "id": "cda-lot-adjustment-review--awaiting-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "1-export-coconut-certificate-registration/cda_lot_adjustment_review/awaiting_review_markdown.json"
     },
     {
       "id": "cda-lot-adjustment-review--officer-review",
@@ -181,6 +193,12 @@
       "path": "1-export-coconut-certificate-registration/cda_review_result/render.json"
     },
     {
+      "id": "cda-review-result--awaiting-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "1-export-coconut-certificate-registration/cda_review_result/awaiting_review_markdown.json"
+    },
+    {
       "id": "cda-review-result--generate-certificate-serial",
       "kind": "subtask_template",
       "version": "",
@@ -251,6 +269,12 @@
       "kind": "generic_template",
       "version": "",
       "path": "1-export-coconut-certificate-registration/cda_asycuda_green_check/render.json"
+    },
+    {
+      "id": "cda-asycuda-green-check--awaiting-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "1-export-coconut-certificate-registration/cda_asycuda_green_check/awaiting_review_markdown.json"
     },
     {
       "id": "cda-asycuda-green-check--officer-review",
@@ -553,6 +577,12 @@
       "path": "1-export-coconut-certificate-registration/cda_payment_review_receipt/render.json"
     },
     {
+      "id": "cda-payment-review-receipt--awaiting-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "1-export-coconut-certificate-registration/cda_payment_review_receipt/awaiting_review_markdown.json"
+    },
+    {
       "id": "cda-payment-review-receipt--notify-decision",
       "kind": "subtask_template",
       "version": "",
@@ -629,6 +659,12 @@
       "kind": "generic_template",
       "version": "",
       "path": "1-export-coconut-certificate-registration/cda_payment_confirm/render.json"
+    },
+    {
+      "id": "cda-payment-confirm--awaiting-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "1-export-coconut-certificate-registration/cda_payment_confirm/awaiting_review_markdown.json"
     },
     {
       "id": "cda-payment-confirm--notify-decision",

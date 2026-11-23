@@ -75,6 +75,24 @@ NAMES = {
     # nsw-srilanka configs/agency/npqs/config.yaml catalog.roles: the NPPO roles
     # alongside the NPQS Officer.
     "npqs": {"roles": {"officer", "nppo_assistant", "nppo_inspector", "nppo_officer"}, "clients": {TNSW}},
+    # nsw-srilanka configs/agency/cda/config.yaml catalog.roles: the Process 1 staff
+    # roles alongside the CDA Officer.
+    "cda": {
+        "roles": {
+            "officer",
+            "application_reviewer",
+            "application_reviewer_in_lieu",
+            "payment_officer",
+            "technical_support_officer",
+            "certificate_authorizer",
+            "certificate_authorizer_in_lieu",
+            "processing_senior_officer",
+            "marketing_senior_officer",
+            "asycuda_officer",
+            "asycuda_officer_in_lieu",
+        },
+        "clients": {TNSW},
+    },
 }
 
 

@@ -29,11 +29,17 @@
       "projector": "FORM",
       "dataKey": "submission"
     },
-    "review_form": {
+    "review_form_application_reviewer": {
       "templateId": "cda-lot-adjustment-officer--review-form",
       "title": "Officer Review",
       "projector": "FORM",
       "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:application_reviewer"
+      },
       "handles": [
         {
           "command": "submit",
@@ -41,6 +47,170 @@
           "element": "primary_action"
         }
       ]
+    },
+    "review_form_application_reviewer_in_lieu": {
+      "templateId": "cda-lot-adjustment-officer--review-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:application_reviewer_in_lieu"
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Assessment",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "review_form_payment_officer": {
+      "templateId": "cda-lot-adjustment-officer--review-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:payment_officer"
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Assessment",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "review_form_technical_support_officer": {
+      "templateId": "cda-lot-adjustment-officer--review-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:technical_support_officer"
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Assessment",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "review_form_certificate_authorizer": {
+      "templateId": "cda-lot-adjustment-officer--review-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:certificate_authorizer"
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Assessment",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "review_form_certificate_authorizer_in_lieu": {
+      "templateId": "cda-lot-adjustment-officer--review-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:certificate_authorizer_in_lieu"
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Assessment",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "review_form_processing_senior_officer": {
+      "templateId": "cda-lot-adjustment-officer--review-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:processing_senior_officer"
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Assessment",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "review_result": {
+      "templateId": "cda-lot-adjustment-officer--review-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "STARTING",
+          "STARTING_STEP",
+          "ADVANCING",
+          "QUEUED_EXTERNALLY",
+          "COMPLETED",
+          "ON_HOLD",
+          "CANCELLED"
+        ]
+      }
+    },
+    "awaiting_review_marketing_senior_officer": {
+      "templateId": "cda-lot-adjustment-review--awaiting-review",
+      "title": "Officer Review",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:marketing_senior_officer"
+      }
+    },
+    "awaiting_review_asycuda_officer": {
+      "templateId": "cda-lot-adjustment-review--awaiting-review",
+      "title": "Officer Review",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:asycuda_officer"
+      }
+    },
+    "awaiting_review_asycuda_officer_in_lieu": {
+      "templateId": "cda-lot-adjustment-review--awaiting-review",
+      "title": "Officer Review",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:asycuda_officer_in_lieu"
+      }
     },
     "status_message": {
       "templateId": "cda-lot-adjustment-review--submission-view",
