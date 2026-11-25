@@ -269,10 +269,9 @@ See `tnsw/fcau/3-2-warehouse_inspection/workflow.json` or
   `nppo_inspector` may only view. FCAU has three staff roles from its access matrix:
   `food_drugs_inspector` acts on the application review, sample collection, visual
   assessment, lab fee payment review, lab test, warehouse scheduling review, warehouse
-  inspection, post-warehouse lab fee review, post-warehouse lab test and certificate
-  issue tasks, which `director` and `assistant_director` may only view. The two payment
-  tasks (`fcau_payment_confirm`, `fcau_payment_review_receipt`) are not in the matrix and
-  keep `officer`. The check's `NAMES` lists each agency's roles.
+  inspection, post-warehouse lab fee review, post-warehouse lab test, payment receipt
+  review, payment confirmation and certificate issue tasks, which `director` and
+  `assistant_director` may only view. The check's `NAMES` lists each agency's roles.
   `.github/scripts/check_agency_authz.py` works each step's rule out from the artifacts
   and fails CI on any difference.
 

@@ -673,6 +673,12 @@
       "path": "fcau_payment_review_receipt/render.json"
     },
     {
+      "id": "fcau-payment-review-receipt--awaiting-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau_payment_review_receipt/awaiting_review_markdown.json"
+    },
+    {
       "id": "fcau-payment-review-receipt--notify-decision",
       "kind": "subtask_template",
       "version": "",
@@ -749,6 +755,12 @@
       "kind": "generic_template",
       "version": "",
       "path": "fcau_payment_confirm/render.json"
+    },
+    {
+      "id": "fcau-payment-confirm--awaiting-review",
+      "kind": "generic_template",
+      "version": "",
+      "path": "fcau_payment_confirm/awaiting_review_markdown.json"
     },
     {
       "id": "fcau-payment-confirm--notify-decision",

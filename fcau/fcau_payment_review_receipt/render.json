@@ -35,6 +35,12 @@
       "title": "Officer Review",
       "projector": "FORM",
       "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:food_drugs_inspector"
+      },
       "handles": [
         {
           "command": "submit",
@@ -42,6 +48,45 @@
           "element": "primary_action"
         }
       ]
+    },
+    "review_result": {
+      "templateId": "fcau-payment--review-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "STARTING",
+          "STARTING_STEP",
+          "ADVANCING",
+          "QUEUED_EXTERNALLY",
+          "COMPLETED",
+          "ON_HOLD",
+          "CANCELLED"
+        ]
+      }
+    },
+    "awaiting_review_director": {
+      "templateId": "fcau-payment-review-receipt--awaiting-review",
+      "title": "Officer Review",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:director"
+      }
+    },
+    "awaiting_review_assistant_director": {
+      "templateId": "fcau-payment-review-receipt--awaiting-review",
+      "title": "Officer Review",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:assistant_director"
+      }
     },
     "status_message": {
       "templateId": "fcau-payment-review-receipt--submission-view",
@@ -73,6 +118,9 @@
       "payment_details",
       "submission_view",
       "review_form",
+      "review_result",
+      "awaiting_review_director",
+      "awaiting_review_assistant_director",
       "status_message",
       "awaiting_resubmission"
     ]
