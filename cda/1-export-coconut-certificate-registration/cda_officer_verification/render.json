@@ -24,6 +24,25 @@
       "projector": "FORM",
       "dataKey": "submission"
     },
+    "review_form_officer": {
+      "templateId": "cda-apply-coconut-cert--officer-verification-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:officer"
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Review",
+          "element": "primary_action"
+        }
+      ]
+    },
     "review_form_application_reviewer": {
       "templateId": "cda-apply-coconut-cert--officer-verification-form",
       "title": "Officer Review",

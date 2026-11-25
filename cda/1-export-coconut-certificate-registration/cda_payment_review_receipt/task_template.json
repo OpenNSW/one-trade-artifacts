@@ -5,6 +5,7 @@
   "render_config_id": "cda-payment-review-receipt--review:render",
   "read": {
     "roles": [
+      "officer",
       "application_reviewer",
       "application_reviewer_in_lieu",
       "payment_officer",

@@ -12,6 +12,25 @@
       "projector": "FORM",
       "dataKey": "submission"
     },
+    "review_form_officer": {
+      "templateId": "cda-asycuda-green-check--officer-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:officer"
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Confirm Green Check",
+          "element": "primary_action"
+        }
+      ]
+    },
     "review_form_marketing_senior_officer": {
       "templateId": "cda-asycuda-green-check--officer-form",
       "title": "Officer Review",

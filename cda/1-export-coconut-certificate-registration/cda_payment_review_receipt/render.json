@@ -30,6 +30,25 @@
       "projector": "FORM",
       "dataKey": "submission"
     },
+    "review_form_officer": {
+      "templateId": "cda-payment--review-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:officer"
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Review",
+          "element": "primary_action"
+        }
+      ]
+    },
     "review_form_application_reviewer": {
       "templateId": "cda-payment--review-form",
       "title": "Officer Review",
@@ -242,7 +261,14 @@
       "previous_review",
       "payment_details",
       "submission_view",
-      "review_form",
+      "review_form_officer",
+      "review_form_application_reviewer",
+      "review_form_application_reviewer_in_lieu",
+      "review_form_payment_officer",
+      "review_form_technical_support_officer",
+      "review_form_certificate_authorizer",
+      "review_form_certificate_authorizer_in_lieu",
+      "review_form_processing_senior_officer",
       "status_message",
       "awaiting_resubmission"
     ]

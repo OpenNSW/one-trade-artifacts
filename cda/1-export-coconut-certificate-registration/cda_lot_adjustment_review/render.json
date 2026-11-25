@@ -29,6 +29,25 @@
       "projector": "FORM",
       "dataKey": "submission"
     },
+    "review_form_officer": {
+      "templateId": "cda-lot-adjustment-officer--review-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:officer"
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Submit Assessment",
+          "element": "primary_action"
+        }
+      ]
+    },
     "review_form_application_reviewer": {
       "templateId": "cda-lot-adjustment-officer--review-form",
       "title": "Officer Review",

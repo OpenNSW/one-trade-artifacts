@@ -277,8 +277,9 @@ See `tnsw/fcau/3-2-warehouse_inspection/workflow.json` or
   `certificate_authorizer`, `certificate_authorizer_in_lieu`,
   `processing_senior_officer` and `application_reviewer_in_lieu` may only view. An
   `_in_lieu` role is an officer standing in for the role it is named after, with its own
-  grants so CDA can limit it separately. These tasks no
-  longer name `officer`, which keeps the other CDA processes' tasks. The check's `NAMES`
+  grants so CDA can limit it separately. `officer`, the CDA Officer who
+  worked every task before these roles, still acts on all of them and is listed first in
+  their `read.roles`, and keeps the other CDA processes' tasks. The check's `NAMES`
   lists each agency's roles.
   `.github/scripts/check_agency_authz.py` works each step's rule out from the artifacts
   and fails CI on any difference.

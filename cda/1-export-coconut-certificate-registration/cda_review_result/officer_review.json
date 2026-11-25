@@ -12,6 +12,7 @@
       "properties": {
         "PENDING_USER": {
           "submit": [
+            "officer",
             "application_reviewer",
             "application_reviewer_in_lieu",
             "payment_officer",

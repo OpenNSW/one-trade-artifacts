@@ -16,6 +16,25 @@
       "projector": "FORM",
       "dataKey": "submission"
     },
+    "review_form_officer": {
+      "templateId": "cda-review-result--officer-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:officer"
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Issue Certificate",
+          "element": "primary_action"
+        }
+      ]
+    },
     "review_form_application_reviewer": {
       "templateId": "cda-review-result--officer-form",
       "title": "Officer Review",
