@@ -140,6 +140,38 @@ manifest goes there too.
 - `generic_template` — a JSONForms schema+uiSchema (`*_jsonform.json`), a markdown
   template, or a `render.json` UI layout (sections, `visibleWhen` states, action
   `handles`).
+- `static_data` — a `*.data.json` file, `{"data": [{"const": "LK", "title": "Sri Lanka"}]}`,
+  that a form field with `"x-search": {"service": "static-data", "params": {"id": "<id>"}}`
+  takes its options from (`schemas/staticdata.schema.json` checks the file). The field
+  names the list by id alone; `params.version` is ignored (see the lookup below).
+  - `const` is the stored value and `title` the label; both are required. A row may carry
+    other keys, each a string, number or boolean under a name of letters, digits and
+    underscores, but not `id` or `name`. `parents` is the list `x-search.dependsOn`
+    filters on. Every row of a file has exactly the keys of its first row; files can
+    differ from each other, but one file never mixes key sets
+    (`.github/scripts/check_static_data_rows.py` fails CI on a row that differs).
+  - `displayTemplate` fills `{const}`, `{title}` and `{key}` for any other key of the
+    row. `{id}` and `{name}` are legacy names for `const` and `title`: they keep working,
+    because deployed forms use them, but new fields use `{const}` and `{title}`.
+  - `params.searchKeys` lists up to 10 row keys a typed search matches, in priority order
+    (default `["title", "const"]`).
+  - Lookup, as of nsw-srilanka v1.2.0: nsw-srilanka loads the list as the task's manifest
+    version lists it, taking the id's row without a version if the manifest has one,
+    otherwise its highest version (`"2"` before `"10"`, compared as numbers). Content under
+    an existing `(id, version)` never changes, so a richer list is a new data file listed
+    at a new version in the next bundle manifest. Every field that names that id, on a task
+    started on that manifest, loads it, so the new file must keep every row and every key
+    those fields use. A field cannot opt in on its own, and a case already open stays on
+    the older manifest, which still lists the old file.
+  - A field may use `{const}`, `{title}`, an extra key or `searchKeys` only once the
+    deployed trader-app and nsw-srilanka support them. An older API returns only `const`,
+    `title` and `parents` after a typed search, so an extra key would show as the literal
+    `{key}`. Release nsw-srilanka first and name it in the release's `nsw_srilanka` input;
+    this repo can't check that.
+  - `.github/scripts/check_static_data_fields.py` checks every such field against the
+    file its manifest serves for the id, as above: a template key or `searchKeys` entry
+    no row has fails CI, and so does a bad `searchKeys` list. `{id}` / `{name}` and a
+    `params.version`, which is ignored, are warnings.
 
 ### File fields (`render.json` `files`)
 

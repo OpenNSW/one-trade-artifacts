@@ -5,12 +5,14 @@ on:
     paths:
       - "**/*.data.json"
       - "schemas/staticdata.schema.json"
+      - ".github/scripts/check_static_data_rows.py"
       - ".github/workflows/validate-staticdata.yml"
   push:
     branches: [main]
     paths:
       - "**/*.data.json"
       - "schemas/staticdata.schema.json"
+      - ".github/scripts/check_static_data_rows.py"
       - ".github/workflows/validate-staticdata.yml"
 
 permissions:
@@ -39,3 +41,6 @@ jobs:
             exit 0
           fi
           check-jsonschema --schemafile schemas/staticdata.schema.json "${files[@]}"
+
+      - name: Check every row has the keys of its file's first row
+        run: python .github/scripts/check_static_data_rows.py
