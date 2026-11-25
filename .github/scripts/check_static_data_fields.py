@@ -2,14 +2,17 @@
 """Check that every static-data field of a form fits the static data it names.
 
 A form field with `x-search.service: "static-data"` takes its options from one
-static_data artifact, picked by `x-search.params.id` and `.version`. Its
-`displayTemplate` fills `{key}` from each row of that artifact, and
-`x-search.params.searchKeys` names the row keys a typed search matches. A key no
-row has only shows when someone opens the form: the label keeps the literal
-`{key}`, or the search finds nothing. So for every such field in the generic
-templates a bundle's manifest lists (`<bundle>/manifest.json`):
+static_data artifact, named by `x-search.params.id` alone: nsw-srilanka loads it as
+the task's manifest version lists it and ignores `params.version`. A manifest can
+list one id at several versions, and the one served is the row without a version if
+there is one, otherwise the highest version (core's artifact.Latest, which
+nsw-srilanka's LoadAt calls). Its `displayTemplate` fills `{key}` from each row of
+that file, and `x-search.params.searchKeys` names the row keys a typed search
+matches. A key no row has only shows when someone opens the form: the label keeps
+the literal `{key}`, or the search finds nothing. So for every such field in the
+generic templates a bundle's manifest lists (`<bundle>/manifest.json`):
 
-- the id and version must be listed as static_data in that manifest, and the file
+- the id must be listed as static_data in that manifest, and the file served for it
   must hold a static data object with a `data` list;
 - every `{key}` of the displayTemplate must be a key the rows have, and its value a
   string, number or boolean (a row key such as `parents` holds a list, which a
@@ -21,7 +24,8 @@ templates a bundle's manifest lists (`<bundle>/manifest.json`):
 `{id}` and `{name}` are legacy names for a row's const and title, which the
 trader-app still sets on every option, so deployed forms keep working. They are
 warnings, never errors, and reported as one list so that the many existing forms
-don't bury the rest.
+don't bury the rest. A `params.version` is a warning too: it is harmless, but it looks
+like a pin on the file, and every field that names the id gets the served one.
 
 Function calls in a template (`{today(yyyy)}`), fields without a displayTemplate
 and other search services (`cha`) are not checked.
@@ -46,6 +50,35 @@ MAX_SEARCH_KEYS = 10
 LEGACY_PLACEHOLDERS = {"id": "const", "name": "title"}
 # The values a template prints.
 PRINTABLE = (str, int, float, bool)
+# A version core's artifact registry compares as a number (Go's strconv.Atoi).
+INTEGER = re.compile(r"[+-]?[0-9]+")
+
+
+def version_less(a, b):
+    """Whether version a is older than b, as core's artifact registry compares them.
+
+    A leading "v" or "V" is dropped; two integers compare as numbers ("2" < "10"),
+    anything else as text.
+    """
+    clean_a, clean_b = a.removeprefix("v").removeprefix("V"), b.removeprefix("v").removeprefix("V")
+    if INTEGER.fullmatch(clean_a) and INTEGER.fullmatch(clean_b):
+        return int(clean_a) < int(clean_b)
+    return a < b
+
+
+def served_path(versions):
+    """The path of the file a manifest serves for one id, given {version: path}.
+
+    The row without a version if the manifest has one, otherwise the highest version
+    (core's artifact.Latest).
+    """
+    if "" in versions:
+        return versions[""]
+    best = None
+    for version in sorted(versions):
+        if best is None or version_less(best, version):
+            best = version
+    return versions[best]
 
 
 class Rows:
@@ -100,16 +133,17 @@ def placeholder_keys(template):
 def check_field(search, listed, load=load_rows):
     """Return ([(level, message)], legacy placeholders used) for one static-data field.
 
-    listed maps (id, version) to the path of that static data file, as its bundle's
-    manifest lists it; load reads a path into Rows.
+    listed maps an id to the path of the static data file its bundle's manifest serves
+    for it (see served_path); load reads a path into Rows. params.version is not read:
+    the API ignores it.
     """
     params = search.get("params") if isinstance(search.get("params"), dict) else {}
-    sd_id, version = params.get("id"), params.get("version")
-    if not (isinstance(sd_id, str) and sd_id and isinstance(version, str) and version):
-        return [("error", "x-search.params.id and .version must be non-empty strings")], []
-    path = listed.get((sd_id, version))
+    sd_id = params.get("id")
+    if not (isinstance(sd_id, str) and sd_id):
+        return [("error", "x-search.params.id must be a non-empty string")], []
+    path = listed.get(sd_id)
     if path is None:
-        return [("error", f"static_data {sd_id!r} version {version!r} is not listed in the bundle's manifest")], []
+        return [("error", f"static_data {sd_id!r} is not listed in the bundle's manifest")], []
     try:
         rows = load(path)
     except (OSError, ValueError) as err:
@@ -143,20 +177,40 @@ def check_field(search, listed, load=load_rows):
     return problems, legacy
 
 
+def ignored_version(search):
+    """The field's x-search.params.version, which nsw-srilanka ignores, or None if it has none."""
+    params = search.get("params")
+    return params.get("version") if isinstance(params, dict) else None
+
+
+def print_group(lines, title, summary):
+    """Print lines as a collapsed log group, then one warning annotation.
+
+    GitHub shows only the first 10 annotations of a step, so many forms with the same
+    warning are listed in the log and counted in a single annotation.
+    """
+    if lines:
+        print(f"::group::{len(lines)} {title}")
+        print("\n".join(lines))
+        print("::endgroup::")
+        print(f"::warning::{len(lines)} {summary}")
+
+
 def main():
     root = Path(sys.argv[1] if len(sys.argv) > 1 else ".").resolve()
     errors = fields = 0
-    legacy_lines = []
+    legacy_lines, version_lines = [], []
     for manifest in sorted(root.glob("*/manifest.json")):
         bundle = manifest.parent
         if bundle.name.startswith("."):
             continue
         artifacts = [row for row in read_json(manifest).get("artifacts", []) if isinstance(row, dict)]
-        listed = {
-            (row.get("id"), row.get("version")): bundle / row["path"]
-            for row in artifacts
-            if row.get("kind") == "static_data" and "path" in row
-        }
+        versions = {}  # static data id -> {version: path}
+        for row in artifacts:
+            if row.get("kind") == "static_data" and "path" in row:
+                version = "" if row.get("version") is None else str(row["version"])
+                versions.setdefault(row.get("id"), {})[version] = bundle / row["path"]
+        listed = {sd_id: served_path(by_version) for sd_id, by_version in versions.items()}
         for row in artifacts:
             path = str(row.get("path", ""))
             if row.get("kind") != "generic_template" or not path.endswith(".json"):
@@ -178,15 +232,23 @@ def main():
                 if legacy:
                     names = ", ".join(f"{{{key}}} -> {{{LEGACY_PLACEHOLDERS[key]}}}" for key in legacy)
                     legacy_lines.append(f"{rel} {json_path}: {names}")
+                version = ignored_version(search)
+                if version is not None:
+                    version_lines.append(f"{rel} {json_path}: version {version!r}")
 
-    if legacy_lines:
-        print(f"::group::{len(legacy_lines)} static-data field(s) use the legacy {{id}} / {{name}}")
-        print("\n".join(legacy_lines))
-        print("::endgroup::")
-        print(
-            f"::warning::{len(legacy_lines)} static-data field(s) use {{id}} / {{name}}. They keep working, "
-            "because deployed forms use them; new fields should use {const} / {title}."
-        )
+    print_group(
+        legacy_lines,
+        "static-data field(s) use the legacy {id} / {name}",
+        "static-data field(s) use {id} / {name}. They keep working, "
+        "because deployed forms use them; new fields should use {const} / {title}.",
+    )
+    print_group(
+        version_lines,
+        "static-data field(s) set x-search.params.version, which is ignored",
+        "static-data field(s) set x-search.params.version. nsw-srilanka ignores it: it serves the file "
+        "the task's manifest lists for the id (its row without a version, else the highest version), "
+        "for every field that names the id. Remove it.",
+    )
     if errors:
         print(f"\n{errors} problem(s) in {fields} static-data field(s)")
         return 1
