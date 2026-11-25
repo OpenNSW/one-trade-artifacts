@@ -34,7 +34,6 @@
         "id_field": "id"
       },
       "input_mapping": {
-        "npqs.lab_sample_method?": "npqs.lab_sample_method",
         "npqs.reference_number?": "npqs.reference_number",
         "npqs.userform?": "npqs.userform"
       },
@@ -52,7 +51,6 @@
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
-        "npqs.lab_sample_method?": "lab_sample_method",
         "commodities": "commodities"
       },
       "output_mapping": {
@@ -98,7 +96,6 @@
         "id_field": "id"
       },
       "input_mapping": {
-        "npqs.lab_sample_method?": "npqs.lab_sample_method",
         "npqs.reference_number?": "npqs.reference_number",
         "npqs.userform?": "npqs.userform"
       }
@@ -122,7 +119,6 @@
       "input_mapping": {
         "npqs.reference_number": "reference_number",
         "npqs.userform": "userform",
-        "npqs.lab_sample_method?": "lab_sample_method",
         "commodities": "commodities"
       },
       "output_mapping": {
