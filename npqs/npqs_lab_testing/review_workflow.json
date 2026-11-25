@@ -17,8 +17,8 @@
       "output_mapping": {
         "items": "reviewform.items",
         "sample_test_result": "reviewform.sample_test_result",
-        "lab_comments?": "reviewform.lab_comments",
-        "lab_report_attachment_url?": "reviewform.lab_report_attachment_url"
+        "lab_comments": "reviewform.lab_comments",
+        "lab_report_attachment_url": "reviewform.lab_report_attachment_url"
       }
     },
     {

@@ -12,8 +12,16 @@
       "minItems": 1,
       "items": {
         "type": "object",
-        "additionalProperties": false,
+        "description": "One option. A field's x-search.displayTemplate fills {const}, {title} and {key} for any other key of the row. {id} and {name} are legacy names for const and title, kept for deployed forms. Other keys can be named in x-search.params.searchKeys, so a typed search matches them. Content under an existing (id, version) cannot change, so rows with new keys ship as a new version.",
         "required": ["const", "title"],
+        "propertyNames": {
+          "pattern": "^[A-Za-z0-9_]+$",
+          "not": { "enum": ["id", "name"] }
+        },
+        "additionalProperties": {
+          "type": ["string", "number", "boolean"],
+          "description": "An extra key a template or a search can use. Its name uses letters, digits and underscores, as a template placeholder does, and is not id or name, which the trader-app sets from const and title. Its value is a string, number or boolean, the values a template prints and a search matches."
+        },
         "properties": {
           "const": {
             "type": "string",
