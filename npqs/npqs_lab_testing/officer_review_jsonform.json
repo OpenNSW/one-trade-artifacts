@@ -112,6 +112,7 @@
     },
     "required": [
       "sample_test_result",
+      "lab_report_attachment_url",
       "lab_comments"
     ]
   },
