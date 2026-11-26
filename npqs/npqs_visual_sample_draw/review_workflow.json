@@ -12,6 +12,7 @@
       "task_template_id": "npqs-visual-sample-draw--officer-review",
       "input_mapping": {
         "submission?": "submission",
+        "submission.items": "reviewform.items",
         "submission.reference_number": "reviewform.sample_number"
       },
       "output_mapping": {
