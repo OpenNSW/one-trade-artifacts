@@ -17,6 +17,7 @@
       },
       "output_mapping": {
         "__command": "command",
+        "items": "reviewform.items",
         "sample_number": "reviewform.sample_number",
         "draw_date?": "reviewform.draw_date"
       }
