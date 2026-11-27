@@ -6,7 +6,9 @@
   "claimable": true,
   "read": {
     "roles": [
-      "officer"
+      "food_drugs_inspector",
+      "director",
+      "assistant_director"
     ]
   }
 }

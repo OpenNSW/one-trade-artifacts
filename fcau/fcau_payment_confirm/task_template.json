@@ -5,7 +5,9 @@
   "render_config_id": "fcau-payment-confirm--review:render",
   "read": {
     "roles": [
-      "officer"
+      "food_drugs_inspector",
+      "director",
+      "assistant_director"
     ]
   }
 }
