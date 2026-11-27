@@ -440,7 +440,7 @@
               "title": "CUSDEC Reg No.",
               "description": "Filled in by TNSW when you submit: the consignment's CusDec, as office, year, serial and registration number.",
               "readOnly": true,
-              "example": "TNSW 2026 E 90000001"
+              "example": "CBEX1 2026 E 90000001"
             },
             "blend_no": {
               "type": "string",

@@ -7,8 +7,9 @@
       {
         "each": "/userform/blendsheet_data",
         "path": "0/cusdec_number",
-        "template": "TNSW {year} E {registration_no}",
+        "template": "{office} {year} E {registration_no}",
         "params": {
+          "office": "/userform/cusdec_draft/identification/officeCode",
           "year": "/cusdec/year",
           "registration_no": "/cusdec/registration_no"
         }
