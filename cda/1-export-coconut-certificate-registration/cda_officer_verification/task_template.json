@@ -6,7 +6,17 @@
   "claimable": true,
   "read": {
     "roles": [
-      "officer"
+      "officer",
+      "application_reviewer",
+      "application_reviewer_in_lieu",
+      "payment_officer",
+      "technical_support_officer",
+      "certificate_authorizer",
+      "certificate_authorizer_in_lieu",
+      "processing_senior_officer",
+      "marketing_senior_officer",
+      "asycuda_officer",
+      "asycuda_officer_in_lieu"
     ]
   }
 }

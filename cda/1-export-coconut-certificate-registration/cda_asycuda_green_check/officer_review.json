@@ -12,7 +12,10 @@
       "properties": {
         "PENDING_USER": {
           "submit": [
-            "officer"
+            "officer",
+            "marketing_senior_officer",
+            "asycuda_officer",
+            "asycuda_officer_in_lieu"
           ]
         }
       }

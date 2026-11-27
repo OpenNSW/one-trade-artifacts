@@ -12,11 +12,17 @@
       "projector": "FORM",
       "dataKey": "submission"
     },
-    "review_form": {
+    "review_form_officer": {
       "templateId": "cda-asycuda-green-check--officer-form",
       "title": "Officer Review",
       "projector": "FORM",
       "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:officer"
+      },
       "handles": [
         {
           "command": "submit",
@@ -24,6 +30,135 @@
           "element": "primary_action"
         }
       ]
+    },
+    "review_form_marketing_senior_officer": {
+      "templateId": "cda-asycuda-green-check--officer-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:marketing_senior_officer"
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Confirm Green Check",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "review_form_asycuda_officer": {
+      "templateId": "cda-asycuda-green-check--officer-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:asycuda_officer"
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Confirm Green Check",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "review_form_asycuda_officer_in_lieu": {
+      "templateId": "cda-asycuda-green-check--officer-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:asycuda_officer_in_lieu"
+      },
+      "handles": [
+        {
+          "command": "submit",
+          "label": "Confirm Green Check",
+          "element": "primary_action"
+        }
+      ]
+    },
+    "review_result": {
+      "templateId": "cda-asycuda-green-check--officer-form",
+      "title": "Officer Review",
+      "projector": "FORM",
+      "dataKey": "reviewform",
+      "visibleWhen": {
+        "states": [
+          "STARTING",
+          "STARTING_STEP",
+          "ADVANCING",
+          "QUEUED_EXTERNALLY",
+          "COMPLETED",
+          "ON_HOLD",
+          "CANCELLED"
+        ]
+      }
+    },
+    "awaiting_review_technical_support_officer": {
+      "templateId": "cda-asycuda-green-check--awaiting-review",
+      "title": "Officer Review",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:technical_support_officer"
+      }
+    },
+    "awaiting_review_certificate_authorizer": {
+      "templateId": "cda-asycuda-green-check--awaiting-review",
+      "title": "Officer Review",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:certificate_authorizer"
+      }
+    },
+    "awaiting_review_certificate_authorizer_in_lieu": {
+      "templateId": "cda-asycuda-green-check--awaiting-review",
+      "title": "Officer Review",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:certificate_authorizer_in_lieu"
+      }
+    },
+    "awaiting_review_processing_senior_officer": {
+      "templateId": "cda-asycuda-green-check--awaiting-review",
+      "title": "Officer Review",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:processing_senior_officer"
+      }
+    },
+    "awaiting_review_application_reviewer_in_lieu": {
+      "templateId": "cda-asycuda-green-check--awaiting-review",
+      "title": "Officer Review",
+      "projector": "MARKDOWN",
+      "visibleWhen": {
+        "states": [
+          "PENDING_USER"
+        ],
+        "requireClaim": "role:application_reviewer_in_lieu"
+      }
     },
     "status_message": {
       "templateId": "cda-asycuda-green-check--submission-view",

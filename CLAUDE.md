@@ -298,7 +298,21 @@ See `tnsw/fcau/3-2-warehouse_inspection/workflow.json` or
   `nppo_assistant`, granted per task. A task an NPPO role acts on names only NPPO
   roles; `officer` stays where it is the only role that acts: the tasks no NPPO role is
   granted, and the treatment issue and request review tasks, which `nppo_officer` and
-  `nppo_inspector` may only view. The check's `NAMES` lists each agency's roles.
+  `nppo_inspector` may only view. CDA has ten Process 1 staff roles from its access
+  matrix, granted per task in `cda/1-export-coconut-certificate-registration/`:
+  `application_reviewer`, `application_reviewer_in_lieu`, `payment_officer`,
+  `technical_support_officer`, `certificate_authorizer`, `certificate_authorizer_in_lieu`
+  and `processing_senior_officer` act on the application verification, payment receipt,
+  payment confirmation, review result and lot adjustment tasks, which
+  `marketing_senior_officer`, `asycuda_officer` and `asycuda_officer_in_lieu` may only
+  view; those three act on the ASYCUDA green check, which `technical_support_officer`,
+  `certificate_authorizer`, `certificate_authorizer_in_lieu`,
+  `processing_senior_officer` and `application_reviewer_in_lieu` may only view. An
+  `_in_lieu` role is an officer standing in for the role it is named after, with its own
+  grants so CDA can limit it separately. `officer`, the CDA Officer who
+  worked every task before these roles, still acts on all of them and is listed first in
+  their `read.roles`, and keeps the other CDA processes' tasks. The check's `NAMES`
+  lists each agency's roles.
   `.github/scripts/check_agency_authz.py` works each step's rule out from the artifacts
   and fails CI on any difference.
 
@@ -310,7 +324,10 @@ See `tnsw/fcau/3-2-warehouse_inspection/workflow.json` or
   (`requireClaim` names one role). A second copy of the form, without the button,
   shows what was submitted in every other state. A `requireClaim` naming a role the
   catalog lacks fails the task view, so name only roles in the task's `read.roles`
-  (see `npqs/npqs_certificate_issue/render.json`).
+  (see `npqs/npqs_certificate_issue/render.json`). When several roles act, the render
+  has one copy of the form with the button per acting role, `review_form_<role>`, each
+  with that role's `requireClaim` (see
+  `cda/1-export-coconut-certificate-registration/cda_officer_verification/render.json`).
 - A step a person fills in a form on lists a `payload_schema` extension
   (`{"id": "payload_schema", "phase": "PRE_RESUME", "properties": {"form": "<form id>"}}`),
   so the server checks the submission against that form's schema. `form` must be the form
